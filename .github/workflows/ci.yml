@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  governance-and-smoke:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository and pinned submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Validate repository metadata
+        run: |
+          git diff --check
+          test -f README.md
+          test -f UPSTREAM.md
+          test -f docs/PROJECT_ANALYSIS.md
+          test -f docs/ARCHITECTURE.md
+          test -f docs/DEVELOPMENT_PLAN.md
+          test -f docs/CONTRIBUTING.md
+          test -f LICENSE
+          test -f .env.example
+
+      - name: Install Vidur test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r vidur-alibabacloud/requirements.txt -r vidur-alibabacloud/requirements-dev.txt
+
+      - name: Run Vidur focused tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}/vidur-alibabacloud
+        run: |
+          python -m compileall -q vidur-alibabacloud/vidur
+          python -m pytest -q vidur-alibabacloud/tests
+
+      - name: Build and smoke-test SimCCL standalone
+        run: |
+          cmake -S SimCCL/src -B "$RUNNER_TEMP/simccl-build" -DMOCK_VERSION=v2.30 -DCMAKE_BUILD_TYPE=Release
+          cmake --build "$RUNNER_TEMP/simccl-build" --parallel 2
+          mkdir "$RUNNER_TEMP/simccl-smoke"
+          cd "$RUNNER_TEMP/simccl-smoke"
+          "$RUNNER_TEMP/simccl-build/simccl-standalone" --op AlltoAll --size 4194304 --nRanks 8 --nNodes 1 --gpus_per_node 8 --gpu_type H20
+          test -s ncclFlowModel_detailed_flows.csv
+
+# Full ns-3 and GPU/AIOB scenarios are intentionally excluded from PR CI.
+# Add them as scheduled/manual jobs only after their Linux, CUDA, and hardware matrix is pinned.

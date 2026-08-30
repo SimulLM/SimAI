@@ -1,4 +1,18 @@
 .vscode
+.idea/
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
 astra-sim-alibabacloud/build/simai_analytical/build/
 astra-sim-alibabacloud/build/astra_ns3/build/
 astra-sim-alibabacloud/extern/
@@ -17,6 +31,7 @@ send.txt
 SimCCL/standalone/build/
 SimCCL/standalone/build_*/
 SimCCL/tools/pat_simulator
+SimCCL/src/build/
 
 # Generated topology files (kept local, excluded from PR)
 astra-sim-alibabacloud/inputs/topo/Rail_Opti_SingleToR_*
@@ -26,3 +41,11 @@ astra-sim-alibabacloud/inputs/topo/Rail_Opti_SingleToR_*
 *.swp
 *.swo
 *~
+
+# Local inference profiling/cache outputs
+tmp_simai_inference_workload/
+vidur-alibabacloud/data/aicb_workload/cache/
+vidur-alibabacloud/data/aicb_workload/logs/
+vidur-alibabacloud/data/aicb_workload/cache_index.json
+vidur-alibabacloud/examples/vidur-ali-scenarios/logs/
+vidur-alibabacloud/examples/vidur-ali-scenarios/simulator_output/

@@ -2,6 +2,16 @@
 
 ## Navigation / 文档导航
 
+### 项目治理
+
+| 文档 | 说明 |
+|---|---|
+| [PROJECT_ANALYSIS.md](PROJECT_ANALYSIS.md) | 代码基线、模块地图、执行路径、扩展点和已知风险 |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 当前系统架构和组件接口 |
+| [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) | 二次开发计划、里程碑、Backlog 和首批 Issue 建议 |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | 团队流程、评审、测试和完成定义 |
+| [UPSTREAM.md](../UPSTREAM.md) | 上游基线、许可证、子模块和同步策略 |
+
 ### English
 
 | Category | Document | Description |

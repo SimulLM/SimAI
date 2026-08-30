@@ -1,10 +1,10 @@
 [submodule "SimCCL"]
 	path = SimCCL
-	url = https://github.com/aliyun/SimCCL
+	url = https://github.com/SimulLM/SimCCL.git
 	branch = master
 [submodule "aicb"]
 	path = aicb
-	url = https://github.com/aliyun/aicb
+	url = https://github.com/SimulLM/aicb.git
 	branch = master
 [submodule "ns-3-alibabacloud"]
 	path = ns-3-alibabacloud

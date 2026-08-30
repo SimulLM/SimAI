@@ -1,10 +1,54 @@
+# SimInfer / SimAI 开发分支
+
+> 本仓库是 [`aliyun/SimAI`](https://github.com/aliyun/SimAI) 的维护型 fork，当前基线为 upstream `master` 的提交 `cef83f9`（SimAI 1.7）。下方保留上游 README，作为功能与运行参考；本节定义本团队的二次开发入口和协作规则。
+
+## 三分钟了解项目
+
+SimInfer 在 SimAI 的计算、集合通信和 ns-3 网络仿真能力之上，继续完善面向大语言模型推理的高精度仿真。现有仓库已经包含 AICB/AIOB 工作负载生成、Astra-Sim 调度、SimCCL flow 展开、ns-3 网络后端，以及 Vidur 多请求推理调度。
+
+二次开发聚焦于已确认的研究方向：请求级 DAG 时序、Prefill/Decode（PD）分离、MoE 专家负载不均衡，以及将 EP All-to-All 的 flow/包级网络结果可靠回灌到推理调度器。具体范围与里程碑见 [开发计划](docs/DEVELOPMENT_PLAN.md)。
+
+## 快速开始
+
+开发与 CI 的受支持环境是 Linux（Ubuntu 20.04+）、GCC/G++ 9.4+、CMake 3.14+ 与 Python 3.10+；完整要求见 [安装指南](docs/getting_started/installation.md)。
+
+```bash
+git clone --recurse-submodules https://github.com/SimulLM/SimAI.git
+cd SimAI
+git submodule update --init --recursive
+
+# 快速解析式后端
+./scripts/build.sh -c analytical
+./bin/SimAI_analytical -w ./example/workload_analytical.txt \
+  -g 9216 -nv 360 -nic 48.5 -n_p_s 8 -g_p_s 8 -r example-
+```
+
+完整 ns-3 构建与运行命令见 [快速开始](docs/getting_started/quickstart.md)。多请求推理场景见 [Vidur README](vidur-alibabacloud/README.md)。不要提交本地生成的二进制、拓扑、结果或 `.env` 文件。
+
+## 文档导航
+
+- [项目分析](docs/PROJECT_ANALYSIS.md)：当前代码、数据流、扩展点与已知风险
+- [架构](docs/ARCHITECTURE.md)：组件边界、执行路径与主要接口
+- [开发计划](docs/DEVELOPMENT_PLAN.md)：范围、里程碑、首批 Issue 与测试策略
+- [贡献指南](docs/CONTRIBUTING.md)：分支、提交、PR、评审与完成标准
+- [Upstream 基线](UPSTREAM.md)：上游、提交、许可证、子模块和同步策略
+- [原始 SimAI 文档](docs/README.md)：安装、配置与使用说明
+
+## 参与开发
+
+禁止直接在默认分支开发。先建立 Issue，再创建 `feat/*`、`fix/*`、`docs/*`、`refactor/*` 或 `test/*` 分支，完成测试后通过 Pull Request 合并。详见 [贡献指南](docs/CONTRIBUTING.md)。
+
+---
+
+## 上游 SimAI README（保留）
+
 <p align="left">
     <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp ｜ &nbsp<a href="README.ja.md">日本語</a>
 </p>
 
 # SimAI
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)](LICENSE)
 [![NSDI'25](https://img.shields.io/badge/NSDI'25-SimAI-blue.svg)](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)
 
 # Latest News
