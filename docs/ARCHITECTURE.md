@@ -15,6 +15,8 @@ SimCCL（FlowModel）        解析后端（busbw 估计）
 ns-3 / 物理后端（分组或 RDMA 执行）
 
 Vidur（请求事件模型） -> 执行时间预测器 -> AICB / SimAI / Vidur 模型
+
+DeepSeek profile-data（公开 trace） -> 事件/重叠校准 -> 模型参数与误差报告
 ```
 
 ## 核心执行路径
@@ -40,6 +42,7 @@ Vidur（请求事件模型） -> 执行时间预测器 -> AICB / SimAI / Vidur �
 | SimCCL → ns-3 | flow 元数据与前端发送操作 | 不修改复制生成的 ns-3 文件 |
 | Vidur → SimAI | 子进程命令、工作负载文件、结果 CSV | 逐步替换为版本化通信结果契约 |
 | Vidur → 使用者 | 指标 CSV 与可选 trace | 将输出 schema 视为公开实验接口 |
+| DeepSeek profile-data → 校准工具 | PyTorch Profiler JSON trace | 仅用于事件结构和重叠行为校准；记录来源与配置，不能当作端到端真值 |
 
 ## 目标架构方向
 

@@ -10,6 +10,7 @@
 | [ARCHITECTURE.md](ARCHITECTURE.md) | 当前系统架构和组件接口 |
 | [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) | 二次开发计划、里程碑、Backlog 和首批 Issue 建议 |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 团队流程、评审、测试和完成定义 |
+| [CALIBRATION.md](CALIBRATION.md) | 公开 trace、GPU 资源和端到端实验的分层校准策略 |
 | [UPSTREAM.md](../UPSTREAM.md) | 上游基线、许可证、子模块和同步策略 |
 
 ### English

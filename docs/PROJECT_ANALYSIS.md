@@ -15,6 +15,7 @@ SimInfer 是基于 SimAI 的维护型 Fork，作为高保真 LLM 推理仿真的
 | 解析后端 | 基于 bus-bandwidth 的快速通信估计 | `astra-sim-alibabacloud/astra-sim/network_frontend/analytical/` |
 | 物理后端 | RDMA 流量生成模式 | `astra-sim-alibabacloud/astra-sim/network_frontend/phynet/` |
 | Vidur | 请求级推理事件仿真、调度和指标 | `vidur-alibabacloud/vidur/` |
+| DeepSeek profile-data（外部参考） | V3/R1 的公开 PyTorch Profiler trace，用于计算—通信重叠行为校准 | `https://github.com/deepseek-ai/profile-data` |
 
 ## 执行与数据流
 
@@ -53,6 +54,11 @@ Vidur 请求生成器
 - 根 Dockerfile 的路径移动逻辑应在作为开发镜像之前复核；已列为首批 Issue，而非在本次治理中修改。
 - 除 ns-3 外，目前仅有聚焦 Vidur PD 的 pytest；此前没有顶层 CI 工作流。
 - ns-3 的 GPL-2.0 分发风险见 [UPSTREAM.md](../UPSTREAM.md#许可证说明)。
+- AIOB 的真实算子画像需要 GPU；但公开 DeepSeek profile-data 可在无 GPU 条件下用于解析和比对 trace。它采用均衡 MoE 路由，且不是端到端服务压测，不能替代偏斜 MoE 或 TTFT/TPOT 的真实校准。
+
+## 校准数据边界
+
+DeepSeek 的 V3/R1 `profile-data` 是第一阶段的行为校准参考：比较 Prefill/Decode 中计算、AllToAll、等待事件的顺序、持续时间占比和重叠比例。它不构成端到端服务时延真值。正式的 TTFT、TPOT、P95/P99、吞吐和网络拥塞精度结论，必须在后续通过带有明确硬件/拓扑元数据的真实或可信实验数据验证。完整策略见 [CALIBRATION.md](CALIBRATION.md)。
 
 ## 建议的粒度模型
 
