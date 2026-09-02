@@ -1,0 +1,4340 @@
+{
+  "name": "SimAI",
+  "description": "SimAI 是业界首个全栈高精度 AI 大规模推理与训练模拟器，对 LLM 训练全流程进行详细建模与仿真，涵盖框架、集合通信与网络层。项目由 AICB（工作负载生成）、SimCCL（集合通信分解）、astra-sim-alibabacloud（执行引擎）、ns-3-alibabacloud（网络仿真）与 vidur-alibabacloud（请求调度）等组件构成，支持分析、仿真与物理三种运行模式。注意：该项目源码文件超过 100 个，建议将分析范围限定到某个子目录以获得更快的结果。",
+  "languages": [
+    "c",
+    "conf",
+    "config",
+    "cpp",
+    "csv",
+    "deb",
+    "dockerfile",
+    "hh",
+    "html",
+    "json",
+    "makefile",
+    "markdown",
+    "python",
+    "shell",
+    "txt",
+    "unknown",
+    "yaml"
+  ],
+  "frameworks": [
+    "Docker",
+    "FastAPI",
+    "GitHub Actions"
+  ],
+  "files": [
+    {
+      "path": ".env.example",
+      "language": "config",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "language": "markdown",
+      "sizeLines": 27,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "sizeLines": 61,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".gitmodules",
+      "language": "unknown",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "language": "markdown",
+      "sizeLines": 23,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 35,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "README.ja.md",
+      "language": "markdown",
+      "sizeLines": 294,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 338,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README_CN.md",
+      "language": "markdown",
+      "sizeLines": 294,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/README.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/configuration/build-options.md",
+      "language": "markdown",
+      "sizeLines": 43,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/configuration/env-variables.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/design/architecture.md",
+      "language": "markdown",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/design/callstack-analysis.md",
+      "language": "markdown",
+      "sizeLines": 81,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/design/nccl-comparison.md",
+      "language": "markdown",
+      "sizeLines": 147,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/development/adding-new-collective.md",
+      "language": "markdown",
+      "sizeLines": 130,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/getting_started/installation.md",
+      "language": "markdown",
+      "sizeLines": 86,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/getting_started/quickstart.md",
+      "language": "markdown",
+      "sizeLines": 142,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/CN/integration/integration-with-simai.md",
+      "language": "markdown",
+      "sizeLines": 138,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/README.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/configuration/build-options.md",
+      "language": "markdown",
+      "sizeLines": 43,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/configuration/env-variables.md",
+      "language": "markdown",
+      "sizeLines": 86,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/design/architecture.md",
+      "language": "markdown",
+      "sizeLines": 90,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/design/callstack-analysis.md",
+      "language": "markdown",
+      "sizeLines": 76,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/design/nccl-comparison.md",
+      "language": "markdown",
+      "sizeLines": 147,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/development/adding-new-collective.md",
+      "language": "markdown",
+      "sizeLines": 130,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/getting_started/installation.md",
+      "language": "markdown",
+      "sizeLines": 88,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/getting_started/quickstart.md",
+      "language": "markdown",
+      "sizeLines": 154,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/docs/integration/integration-with-simai.md",
+      "language": "markdown",
+      "sizeLines": 136,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/scripts/run_all.sh",
+      "language": "shell",
+      "sizeLines": 117,
+      "fileCategory": "script"
+    },
+    {
+      "path": "SimCCL/src/CMakeLists.txt",
+      "language": "txt",
+      "sizeLines": 39,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/src/build.sh",
+      "language": "shell",
+      "sizeLines": 14,
+      "fileCategory": "script"
+    },
+    {
+      "path": "SimCCL/src/main.cc",
+      "language": "cpp",
+      "sizeLines": 191,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/README.md",
+      "language": "markdown",
+      "sizeLines": 39,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNccl.h",
+      "language": "c",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNcclChannel.cc",
+      "language": "cpp",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNcclChannel.h",
+      "language": "c",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNcclGroup.cc",
+      "language": "cpp",
+      "sizeLines": 2190,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNcclGroup.h",
+      "language": "c",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNcclLog.cc",
+      "language": "cpp",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNcclLog.h",
+      "language": "c",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.20/MockNcclQps.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNccl.h",
+      "language": "c",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNcclChannel.cc",
+      "language": "cpp",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNcclChannel.h",
+      "language": "c",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNcclGroup.cc",
+      "language": "cpp",
+      "sizeLines": 2516,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNcclGroup.h",
+      "language": "c",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNcclLog.cc",
+      "language": "cpp",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNcclLog.h",
+      "language": "c",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/MockNcclQps.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/mock/v2.30/PatAlgorithm.h",
+      "language": "c",
+      "sizeLines": 513,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/workload_parser.cc",
+      "language": "cpp",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "SimCCL/src/workload_parser.h",
+      "language": "c",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "UPSTREAM.md",
+      "language": "markdown",
+      "sizeLines": 47,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 29,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "aicb/README.md",
+      "language": "markdown",
+      "sizeLines": 428,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/aicb.py",
+      "language": "python",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/core/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/core/grouped_gemm_util.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/download/AICB_v1.0.deb",
+      "language": "deb",
+      "sizeLines": 45774,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/log_analyzer/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/log_analyzer/analyze_res_csv.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/log_analyzer/ds_comm_log_analyzer.py",
+      "language": "python",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/log_analyzer/log.py",
+      "language": "python",
+      "sizeLines": 310,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/log_analyzer/plot.py",
+      "language": "python",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/log_analyzer/utils.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/requirements.txt",
+      "language": "txt",
+      "sizeLines": 16,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/results/visual_output/A100_example.html",
+      "language": "html",
+      "sizeLines": 96780,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "aicb/run_suites.py",
+      "language": "python",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/scripts/coll_comm_check.sh",
+      "language": "shell",
+      "sizeLines": 93,
+      "fileCategory": "script"
+    },
+    {
+      "path": "aicb/scripts/deepspeed_llama.sh",
+      "language": "shell",
+      "sizeLines": 114,
+      "fileCategory": "script"
+    },
+    {
+      "path": "aicb/scripts/inference_configs/deepseek_default.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": "aicb/scripts/inference_configs/qwen3_moe_default.json",
+      "language": "json",
+      "sizeLines": 37,
+      "fileCategory": "config"
+    },
+    {
+      "path": "aicb/scripts/inference_configs/qwen3_next_default.json",
+      "language": "json",
+      "sizeLines": 42,
+      "fileCategory": "config"
+    },
+    {
+      "path": "aicb/scripts/inference_workload_with_aiob.sh",
+      "language": "shell",
+      "sizeLines": 197,
+      "fileCategory": "script"
+    },
+    {
+      "path": "aicb/scripts/megatron_gpt.sh",
+      "language": "shell",
+      "sizeLines": 320,
+      "fileCategory": "script"
+    },
+    {
+      "path": "aicb/scripts/megatron_workload_with_aiob.sh",
+      "language": "shell",
+      "sizeLines": 281,
+      "fileCategory": "script"
+    },
+    {
+      "path": "aicb/scripts/run_in_cluster.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/training/tutorial.md",
+      "language": "markdown",
+      "sizeLines": 332,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/utils/benchmark_logger.py",
+      "language": "python",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/utils/deepgemm_utils.py",
+      "language": "python",
+      "sizeLines": 235,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/utils/rank_analysis.csv",
+      "language": "csv",
+      "sizeLines": 9,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/utils/timer.py",
+      "language": "python",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/utils/utils.py",
+      "language": "python",
+      "sizeLines": 920,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/visualize/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/visualize/example.html",
+      "language": "html",
+      "sizeLines": 143,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "aicb/visualize/generate.py",
+      "language": "python",
+      "sizeLines": 544,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/visualize/inputs/A100_example.csv",
+      "language": "csv",
+      "sizeLines": 8539,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/Workload_spec_v1.1.csv",
+      "language": "csv",
+      "sizeLines": 10,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/aiob_inputs/Example.txt",
+      "language": "txt",
+      "sizeLines": 49,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/physical/micro_test/all_gather_workload.csv",
+      "language": "csv",
+      "sizeLines": 2303,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/micro_test/all_reduce_workload.csv",
+      "language": "csv",
+      "sizeLines": 2303,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/micro_test/all_to_all_workload.csv",
+      "language": "csv",
+      "sizeLines": 2003,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/micro_test/multi_all_reduce_workload.csv",
+      "language": "csv",
+      "sizeLines": 2003,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/micro_test/reduce_scatter_workload.csv",
+      "language": "csv",
+      "sizeLines": 2303,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/G13B-M1-C01_GPT13B_megatron_tp8_pp1_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 183,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/G13B-M1-C02_GPT13B_megatron_tp8_pp1_mbs1_sp.csv",
+      "language": "csv",
+      "sizeLines": 423,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/G175B-M1-C03_GPT175B_megatron_tp8_pp16_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 100514,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L13B-D1-C03_Llama13B_zero2_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 396,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L13B-D1-C04_Llama13B_zero3_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 1556,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L30B-D1-C05_Llama30B_zero2_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 615,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L30B-D1-C06_Llama30B_zero3_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 2336,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L65B-D1-C07_Llama65B_zero2_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 888,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L65B-D1-C07_Llama65B_zero3_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 3143,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L65B-M1-C05_Llama65B_megatron_tp2_pp8_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 21074,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L7B-D1-C01_Llama7B_zero2_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 310,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L7B-D1-C02_Llama7B_zero3_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 1245,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/physical/model_workload/L7B-M1-C04_Llama7B_megatron_tp2_pp1_mbs1.csv",
+      "language": "csv",
+      "sizeLines": 151,
+      "fileCategory": "data"
+    },
+    {
+      "path": "aicb/workload/simAI/micro_test/all_gather.txt",
+      "language": "txt",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/micro_test/all_reduce.txt",
+      "language": "txt",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/micro_test/all_to_all.txt",
+      "language": "txt",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/micro_test/muti_all_reduce.txt",
+      "language": "txt",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/model_workload/G13B-M1-C01_GPT13B_megatron_tp8_pp1_mbs1_A100.txt",
+      "language": "txt",
+      "sizeLines": 94,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/model_workload/G13B-M1-C02_GPT13B_megatron_tp8_pp1_mbs1_sp_A100.txt",
+      "language": "txt",
+      "sizeLines": 174,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/model_workload/G175B-M1-C03_GPT175B_megatron_tp8_pp1_mbs1_A100.txt",
+      "language": "txt",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/model_workload/L65B-M1-C05_Llama65B_megatron_tp8_pp1_mbs1_A100.txt",
+      "language": "txt",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/model_workload/L65B_D1_C08_Llama65B_deepspeed_zero3_A100.txt",
+      "language": "txt",
+      "sizeLines": 13,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/model_workload/L7B-D1-C02_Llama7B_deepspeed_zero3_A100.txt",
+      "language": "txt",
+      "sizeLines": 13,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload/simAI/model_workload/L7B-M1-C04_Llama7B_megatron_tp2_pp1_mbs1_A100.txt",
+      "language": "txt",
+      "sizeLines": 78,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "aicb/workload_applyer.py",
+      "language": "python",
+      "sizeLines": 397,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/SimAI_inference_workload_generator.py",
+      "language": "python",
+      "sizeLines": 361,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/SimAI_training_workload_generator.py",
+      "language": "python",
+      "sizeLines": 989,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/Vidur_workload_generator.py",
+      "language": "python",
+      "sizeLines": 267,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/analysis_pytorch_trace.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/generate_collective_test.py",
+      "language": "python",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/generate_deepspeed_stage1_2_workload.py",
+      "language": "python",
+      "sizeLines": 267,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/generate_deepspeed_stage3_workload.py",
+      "language": "python",
+      "sizeLines": 325,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/generate_ds_trace_replay_workload.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/generate_megatron_workload.py",
+      "language": "python",
+      "sizeLines": 460,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/MockedModel.py",
+      "language": "python",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/inference/AiobDeepSeek.py",
+      "language": "python",
+      "sizeLines": 495,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/inference/AiobQwen3Moe.py",
+      "language": "python",
+      "sizeLines": 427,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/inference/AiobQwen3Next.py",
+      "language": "python",
+      "sizeLines": 697,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/inference/MockedDeepSeek.py",
+      "language": "python",
+      "sizeLines": 575,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/inference/MockedQwen3Moe.py",
+      "language": "python",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/inference/MockedQwen3Next.py",
+      "language": "python",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/inference/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/training/AiobDeepSeek.py",
+      "language": "python",
+      "sizeLines": 917,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/training/AiobMegatron.py",
+      "language": "python",
+      "sizeLines": 1107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/training/MockedDeepSeek.py",
+      "language": "python",
+      "sizeLines": 536,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/training/MockedDeepspeed.py",
+      "language": "python",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/training/MockedMegatron.py",
+      "language": "python",
+      "sizeLines": 675,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/mocked_model/training/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "aicb/workload_generator/workload_generator.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/CMakeLists.txt",
+      "language": "txt",
+      "sizeLines": 48,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnaSim.cc",
+      "language": "cpp",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnaSim.h",
+      "language": "c",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalAstra.cc",
+      "language": "cpp",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalNetwork.cc",
+      "language": "cpp",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalNetwork.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/CMakeLists.txt",
+      "language": "txt",
+      "sizeLines": 17,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/AstraSimNetwork.cc",
+      "language": "cpp",
+      "sizeLines": 335,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/AstraSimNetwork.h",
+      "language": "c",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/common.h",
+      "language": "c",
+      "sizeLines": 1035,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/entry.h",
+      "language": "c",
+      "sizeLines": 429,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/CMakeLists.txt",
+      "language": "txt",
+      "sizeLines": 23,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/PhySimAi.cc",
+      "language": "cpp",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/PhySimAi.h",
+      "language": "c",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiEntry.cc",
+      "language": "cpp",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiEntry.h",
+      "language": "c",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiMain.cc",
+      "language": "cpp",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiPhyNetwork.cc",
+      "language": "cpp",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiPhyNetwork.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/AstraComputeAPI.hh",
+      "language": "hh",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/AstraMemoryAPI.hh",
+      "language": "hh",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/AstraNetworkAPI.hh",
+      "language": "hh",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/AstraParamParse.cc",
+      "language": "cpp",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/AstraParamParse.hh",
+      "language": "hh",
+      "sizeLines": 257,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/AstraSimDataAPI.hh",
+      "language": "hh",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/BaseStream.cc",
+      "language": "cpp",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/BaseStream.hh",
+      "language": "hh",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/BasicEventHandlerData.cc",
+      "language": "cpp",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/BasicEventHandlerData.hh",
+      "language": "hh",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/BootStrapnet.cc",
+      "language": "cpp",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/BootStrapnet.hh",
+      "language": "hh",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/CallData.hh",
+      "language": "hh",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/Callable.hh",
+      "language": "hh",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/CollectivePhase.cc",
+      "language": "cpp",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/CollectivePhase.hh",
+      "language": "hh",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/Common.hh",
+      "language": "hh",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/DMA_Request.cc",
+      "language": "cpp",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/DMA_Request.hh",
+      "language": "hh",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/DataSet.cc",
+      "language": "cpp",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/DataSet.hh",
+      "language": "hh",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/IntData.cc",
+      "language": "cpp",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/IntData.hh",
+      "language": "hh",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/LogGP.cc",
+      "language": "cpp",
+      "sizeLines": 318,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/LogGP.hh",
+      "language": "hh",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/MemBus.cc",
+      "language": "cpp",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/MemBus.hh",
+      "language": "hh",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/MemMovRequest.cc",
+      "language": "cpp",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/MemMovRequest.hh",
+      "language": "hh",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/MyPacket.cc",
+      "language": "cpp",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/MyPacket.hh",
+      "language": "hh",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/NetworkStat.cc",
+      "language": "cpp",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/NetworkStat.hh",
+      "language": "hh",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/PacketBundle.cc",
+      "language": "cpp",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/PacketBundle.hh",
+      "language": "hh",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/PhyMultiThread.cc",
+      "language": "cpp",
+      "sizeLines": 226,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/PhyMultiThread.hh",
+      "language": "hh",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/QueueLevelHandler.cc",
+      "language": "cpp",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/QueueLevelHandler.hh",
+      "language": "hh",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/QueueLevels.cc",
+      "language": "cpp",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/QueueLevels.hh",
+      "language": "hh",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/README.md",
+      "language": "markdown",
+      "sizeLines": 3,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/RecvPacketEventHadndlerData.cc",
+      "language": "cpp",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/RecvPacketEventHadndlerData.hh",
+      "language": "hh",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/RendezvousRecvData.cc",
+      "language": "cpp",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/RendezvousRecvData.hh",
+      "language": "hh",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/RendezvousSendData.cc",
+      "language": "cpp",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/RendezvousSendData.hh",
+      "language": "hh",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SendPacketEventHandlerData.cc",
+      "language": "cpp",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SendPacketEventHandlerData.hh",
+      "language": "hh",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SharedBusStat.cc",
+      "language": "cpp",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SharedBusStat.hh",
+      "language": "hh",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SimAiFlowModelRdma.cc",
+      "language": "cpp",
+      "sizeLines": 744,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SimAiFlowModelRdma.hh",
+      "language": "hh",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SimAiPhyCommon.hh",
+      "language": "hh",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SimRecvCaller.cc",
+      "language": "cpp",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SimRecvCaller.hh",
+      "language": "hh",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SimSendCaller.cc",
+      "language": "cpp",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/SimSendCaller.hh",
+      "language": "hh",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/StatData.cc",
+      "language": "cpp",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/StatData.hh",
+      "language": "hh",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/StreamBaseline.cc",
+      "language": "cpp",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/StreamBaseline.hh",
+      "language": "hh",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/StreamStat.cc",
+      "language": "cpp",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/StreamStat.hh",
+      "language": "hh",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/Sys.cc",
+      "language": "cpp",
+      "sizeLines": 2148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/Sys.hh",
+      "language": "hh",
+      "sizeLines": 408,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/Usage.cc",
+      "language": "cpp",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/Usage.hh",
+      "language": "hh",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/UsageTracker.cc",
+      "language": "cpp",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/UsageTracker.hh",
+      "language": "hh",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/calbusbw.cc",
+      "language": "cpp",
+      "sizeLines": 462,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/calbusbw.h",
+      "language": "c",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/Algorithm.cc",
+      "language": "cpp",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/Algorithm.hh",
+      "language": "hh",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/AllToAll.cc",
+      "language": "cpp",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/AllToAll.hh",
+      "language": "hh",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/DoubleBinaryTreeAllReduce.cc",
+      "language": "cpp",
+      "sizeLines": 336,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/DoubleBinaryTreeAllReduce.hh",
+      "language": "hh",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/HalvingDoubling.cc",
+      "language": "cpp",
+      "sizeLines": 310,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/HalvingDoubling.hh",
+      "language": "hh",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/NcclFlowModel.cc",
+      "language": "cpp",
+      "sizeLines": 760,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/NcclFlowModel.hh",
+      "language": "hh",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/Ring.cc",
+      "language": "cpp",
+      "sizeLines": 290,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/collective/Ring.hh",
+      "language": "hh",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/fast-backend/FastBackEnd.cc",
+      "language": "cpp",
+      "sizeLines": 540,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/fast-backend/FastBackEnd.hh",
+      "language": "hh",
+      "sizeLines": 231,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/memory/SimpleMemory.cc",
+      "language": "cpp",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/memory/SimpleMemory.hh",
+      "language": "hh",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/scheduling/OfflineGreedy.cc",
+      "language": "cpp",
+      "sizeLines": 302,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/scheduling/OfflineGreedy.hh",
+      "language": "hh",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/BasicLogicalTopology.cc",
+      "language": "cpp",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/BasicLogicalTopology.hh",
+      "language": "hh",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/BinaryTree.cc",
+      "language": "cpp",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/BinaryTree.hh",
+      "language": "hh",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/ComplexLogicalTopology.cc",
+      "language": "cpp",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/ComplexLogicalTopology.hh",
+      "language": "hh",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/ComputeNode.hh",
+      "language": "hh",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/DoubleBinaryTreeTopology.cc",
+      "language": "cpp",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/DoubleBinaryTreeTopology.hh",
+      "language": "hh",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/GeneralComplexTopology.cc",
+      "language": "cpp",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/GeneralComplexTopology.hh",
+      "language": "hh",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingGlobalBinaryTree.cc",
+      "language": "cpp",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingGlobalBinaryTree.hh",
+      "language": "hh",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingNodeA2AGlobalDBT.cc",
+      "language": "cpp",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingNodeA2AGlobalDBT.hh",
+      "language": "hh",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/LogicalTopology.cc",
+      "language": "cpp",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/LogicalTopology.hh",
+      "language": "hh",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/Node.cc",
+      "language": "cpp",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/Node.hh",
+      "language": "hh",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/RingTopology.cc",
+      "language": "cpp",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/RingTopology.hh",
+      "language": "hh",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/Torus3D.cc",
+      "language": "cpp",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/system/topology/Torus3D.hh",
+      "language": "hh",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/workload/CSVWriter.cc",
+      "language": "cpp",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/workload/CSVWriter.hh",
+      "language": "hh",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/workload/Layer.cc",
+      "language": "cpp",
+      "sizeLines": 1595,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/workload/Layer.hh",
+      "language": "hh",
+      "sizeLines": 172,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/workload/Workload.cc",
+      "language": "cpp",
+      "sizeLines": 1555,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/astra-sim/workload/Workload.hh",
+      "language": "hh",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/build.sh",
+      "language": "shell",
+      "sizeLines": 73,
+      "fileCategory": "script"
+    },
+    {
+      "path": "astra-sim-alibabacloud/inputs/config/SimAI.conf",
+      "language": "conf",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "astra-sim-alibabacloud/inputs/ratio/ata_ratio.csv",
+      "language": "csv",
+      "sizeLines": 11,
+      "fileCategory": "data"
+    },
+    {
+      "path": "astra-sim-alibabacloud/inputs/ratio/nic_ratio.csv",
+      "language": "csv",
+      "sizeLines": 11,
+      "fileCategory": "data"
+    },
+    {
+      "path": "astra-sim-alibabacloud/inputs/ratio/nvlink_ratio.csv",
+      "language": "csv",
+      "sizeLines": 11,
+      "fileCategory": "data"
+    },
+    {
+      "path": "astra-sim-alibabacloud/inputs/topo/gen_Topo_Template.py",
+      "language": "python",
+      "sizeLines": 600,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "language": "markdown",
+      "sizeLines": 51,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CALIBRATION.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CN/Tutorial.md",
+      "language": "markdown",
+      "sizeLines": 412,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CN/configuration/build-options.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CN/configuration/env-variables.md",
+      "language": "markdown",
+      "sizeLines": 65,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CN/configuration/send-lat-analysis.md",
+      "language": "markdown",
+      "sizeLines": 178,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CN/getting_started/installation.md",
+      "language": "markdown",
+      "sizeLines": 115,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CN/getting_started/quickstart.md",
+      "language": "markdown",
+      "sizeLines": 203,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/CONTRIBUTING.md",
+      "language": "markdown",
+      "sizeLines": 75,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/DEVELOPMENT_PLAN.md",
+      "language": "markdown",
+      "sizeLines": 102,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/PROJECT_ANALYSIS.md",
+      "language": "markdown",
+      "sizeLines": 72,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/README.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/Tutorial.md",
+      "language": "markdown",
+      "sizeLines": 410,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/configuration/build-options.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/configuration/env-variables.md",
+      "language": "markdown",
+      "sizeLines": 65,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/configuration/send-lat-analysis.md",
+      "language": "markdown",
+      "sizeLines": 178,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/getting_started/installation.md",
+      "language": "markdown",
+      "sizeLines": 132,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/getting_started/quickstart.md",
+      "language": "markdown",
+      "sizeLines": 204,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "example/busbw.yaml",
+      "language": "yaml",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": "example/microAllReduce.txt",
+      "language": "txt",
+      "sizeLines": 3,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "example/workload_analytical.txt",
+      "language": "txt",
+      "sizeLines": 1791,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/build.sh",
+      "language": "shell",
+      "sizeLines": 84,
+      "fileCategory": "script"
+    },
+    {
+      "path": "vidur-alibabacloud/CODE_OF_CONDUCT.md",
+      "language": "markdown",
+      "sizeLines": 9,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/Makefile",
+      "language": "makefile",
+      "sizeLines": 24,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "vidur-alibabacloud/README-vidur.md",
+      "language": "markdown",
+      "sizeLines": 168,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/README.md",
+      "language": "markdown",
+      "sizeLines": 651,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/README_CN.md",
+      "language": "markdown",
+      "sizeLines": 624,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/SECURITY.md",
+      "language": "markdown",
+      "sizeLines": 41,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/SUPPORT.md",
+      "language": "markdown",
+      "sizeLines": 25,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/deepseek_R1_0528_config.json",
+      "language": "json",
+      "sizeLines": 67,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/deepseek_v3_config.json",
+      "language": "json",
+      "sizeLines": 70,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/qwen3-235B-A22B_FP8_config.json",
+      "language": "json",
+      "sizeLines": 49,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/qwen3-235B-A22B_config.json",
+      "language": "json",
+      "sizeLines": 38,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/qwen3-30B-A3B_config.json",
+      "language": "json",
+      "sizeLines": 38,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/qwen3-8B_config.json",
+      "language": "json",
+      "sizeLines": 30,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/qwen3-next-80B-A3B_Instruct_FP8_config.json",
+      "language": "json",
+      "sizeLines": 43,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/data/hf_configs/qwen3-next-80B-A3B_config.json",
+      "language": "json",
+      "sizeLines": 43,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/docs/metrics.md",
+      "language": "markdown",
+      "sizeLines": 41,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/docs/profiling.md",
+      "language": "markdown",
+      "sizeLines": 120,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/environment-dev.yml",
+      "language": "yaml",
+      "sizeLines": 12,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/environment.yml",
+      "language": "yaml",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh",
+      "language": "shell",
+      "sizeLines": 359,
+      "fileCategory": "script"
+    },
+    {
+      "path": "vidur-alibabacloud/requirements-dev.txt",
+      "language": "txt",
+      "sizeLines": 7,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/requirements.txt",
+      "language": "txt",
+      "sizeLines": 43,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/setup.py",
+      "language": "python",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/tests/test_pd_separation.py",
+      "language": "python",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/tests/test_tutorial_report_cn.md",
+      "language": "markdown",
+      "sizeLines": 529,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/base_fixed_config.py",
+      "language": "python",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/base_poly_config.py",
+      "language": "python",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/config.py",
+      "language": "python",
+      "sizeLines": 866,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/device_sku_config.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/flat_dataclass.py",
+      "language": "python",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/model_config.py",
+      "language": "python",
+      "sizeLines": 439,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/node_sku_config.py",
+      "language": "python",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config/utils.py",
+      "language": "python",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_analyzer.py",
+      "language": "python",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_cases.py",
+      "language": "python",
+      "sizeLines": 228,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "language": "python",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/assets/index.html",
+      "language": "html",
+      "sizeLines": 39,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/assets/nginx.conf",
+      "language": "conf",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/best_config_page.py",
+      "language": "python",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/config_compare_page.py",
+      "language": "python",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/cost_analysis_page.py",
+      "language": "python",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/intro_page.py",
+      "language": "python",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/main.py",
+      "language": "python",
+      "sizeLines": 190,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/pareto_curve_page.py",
+      "language": "python",
+      "sizeLines": 263,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/search_analysis_page.py",
+      "language": "python",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py",
+      "language": "python",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/generate_pareto_curves.py",
+      "language": "python",
+      "sizeLines": 349,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/stats_extractor.py",
+      "language": "python",
+      "sizeLines": 260,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/analyzer/utils.py",
+      "language": "python",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/capacity_search.py",
+      "language": "python",
+      "sizeLines": 182,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/__init__.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/config.py",
+      "language": "python",
+      "sizeLines": 271,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/config.yml",
+      "language": "yaml",
+      "sizeLines": 65,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/debug_config.yml",
+      "language": "yaml",
+      "sizeLines": 37,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config_explorer.py",
+      "language": "python",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/main.py",
+      "language": "python",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/config_optimizer/config_explorer/ray_utils.py",
+      "language": "python",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/__init__.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/base_entity.py",
+      "language": "python",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/batch.py",
+      "language": "python",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/batch_stage.py",
+      "language": "python",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/cluster.py",
+      "language": "python",
+      "sizeLines": 189,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/execution_time.py",
+      "language": "python",
+      "sizeLines": 1342,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/flow.py",
+      "language": "python",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/interconnect.py",
+      "language": "python",
+      "sizeLines": 239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/node.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/processor.py",
+      "language": "python",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/replica.py",
+      "language": "python",
+      "sizeLines": 354,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/request.py",
+      "language": "python",
+      "sizeLines": 477,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/entities/task.py",
+      "language": "python",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/__init__.py",
+      "language": "python",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/base_event.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/batch_end_event.py",
+      "language": "python",
+      "sizeLines": 291,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/batch_stage_arrival_event.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/batch_stage_end_event.py",
+      "language": "python",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/global_schedule_event.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/replica_schedule_event.py",
+      "language": "python",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/replica_stage_schedule_event.py",
+      "language": "python",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/events/request_arrival_event.py",
+      "language": "python",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/SimAIWorkload.py",
+      "language": "python",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/__init__.py",
+      "language": "python",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/base_execution_time_predictor.py",
+      "language": "python",
+      "sizeLines": 329,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/communication_time_predictor.py",
+      "language": "python",
+      "sizeLines": 322,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/execution_time_predictor_registry.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/linear_regression_execution_time_predictor.py",
+      "language": "python",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/random_forrest_execution_time_predictor.py",
+      "language": "python",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/execution_time_predictor/sklearn_execution_time_predictor.py",
+      "language": "python",
+      "sizeLines": 1364,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/logger.py",
+      "language": "python",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/main.py",
+      "language": "python",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/metrics/cdf_sketch.py",
+      "language": "python",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/metrics/constants.py",
+      "language": "python",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/metrics/data_series.py",
+      "language": "python",
+      "sizeLines": 390,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/metrics/metrics_store.py",
+      "language": "python",
+      "sizeLines": 887,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/metrics/series_average_meter.py",
+      "language": "python",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/attention/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/attention/attention_input.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/attention/attention_wrapper.py",
+      "language": "python",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/attention/main.py",
+      "language": "python",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/attention/sequence_proxy.py",
+      "language": "python",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/collectives/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/collectives/benchmark_runner.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/collectives/collectives_impl.py",
+      "language": "python",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/collectives/collectives_input.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/collectives/collectives_wrapper.py",
+      "language": "python",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/collectives/main.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/common/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/common/cuda_timer.py",
+      "language": "python",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/common/model_config.py",
+      "language": "python",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/common/timer_stats_store.py",
+      "language": "python",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/cpu_overhead/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/cpu_overhead/benchmark_runner.py",
+      "language": "python",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/cpu_overhead/main.py",
+      "language": "python",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/mlp/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/mlp/main.py",
+      "language": "python",
+      "sizeLines": 166,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/mlp/mlp_impl.py",
+      "language": "python",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/mlp/mlp_wrapper.py",
+      "language": "python",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/utils/__init__.py",
+      "language": "python",
+      "sizeLines": 236,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/utils/record_function_tracer.py",
+      "language": "python",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/profiling/utils/singleton.py",
+      "language": "python",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/base_request_generator.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/base_request_interval_generator.py",
+      "language": "python",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/base_request_length_generator.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/fixed_request_length_generator.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/gamma_request_interval_generator.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/poisson_request_interval_generator.py",
+      "language": "python",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/request_generator_registry.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/request_interval_generator_registry.py",
+      "language": "python",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/request_length_generator_registry.py",
+      "language": "python",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/static_request_interval_generator.py",
+      "language": "python",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/synthetic_request_generator.py",
+      "language": "python",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/trace_replay_request_generator.py",
+      "language": "python",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/trace_request_interval_generator.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/trace_request_length_generator.py",
+      "language": "python",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/uniform_request_length_generator.py",
+      "language": "python",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/request_generator/zipf_request_length_generator.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "language": "python",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/global_scheduler/__init__.py",
+      "language": "python",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/global_scheduler/base_global_scheduler.py",
+      "language": "python",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/global_scheduler/global_scheduler_registry.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/global_scheduler/lor_global_scheduler.py",
+      "language": "python",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/global_scheduler/random_global_scheduler.py",
+      "language": "python",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/global_scheduler/round_robin_global_scheduler.py",
+      "language": "python",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/global_scheduler/splitwise_global_scheduler.py",
+      "language": "python",
+      "sizeLines": 445,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py",
+      "language": "python",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/faster_transformer_replica_scheduler.py",
+      "language": "python",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/lightllm_replica_scheduler.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/orca_replica_scheduler.py",
+      "language": "python",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/replica_scheduler_registry.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/sarathi_replica_scheduler.py",
+      "language": "python",
+      "sizeLines": 186,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/splitwise_replica_scheduler.py",
+      "language": "python",
+      "sizeLines": 464,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_scheduler/vllm_replica_scheduler.py",
+      "language": "python",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_stage_scheduler/__init__.py",
+      "language": "python",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/replica_stage_scheduler/replica_stage_schduler.py",
+      "language": "python",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/utils/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/scheduler/utils/memory_planner.py",
+      "language": "python",
+      "sizeLines": 329,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/simulator.py",
+      "language": "python",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/__init__.py",
+      "language": "python",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/activation_type.py",
+      "language": "python",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/base_int_enum.py",
+      "language": "python",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/device_sku_type.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/event_type.py",
+      "language": "python",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/execution_time_predictor_type.py",
+      "language": "python",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/global_scheduler_type.py",
+      "language": "python",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/node_sku_type.py",
+      "language": "python",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/norm_type.py",
+      "language": "python",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/replica_scheduler_type.py",
+      "language": "python",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/request_generator_type.py",
+      "language": "python",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/request_interval_generator_type.py",
+      "language": "python",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/types/request_length_generator_type.py",
+      "language": "python",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/utils/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/utils/base_registry.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/utils/event_queue.py",
+      "language": "python",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/utils/mfu_calculator.py",
+      "language": "python",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/utils/param_counter.py",
+      "language": "python",
+      "sizeLines": 528,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/utils/random.py",
+      "language": "python",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vidur-alibabacloud/vidur/utils/zipf_generator.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 500,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "large",
+  "importMap": {
+    ".env.example": [],
+    ".github/ISSUE_TEMPLATE/bug.md": [],
+    ".github/ISSUE_TEMPLATE/feature.md": [],
+    ".github/pull_request_template.md": [],
+    ".github/workflows/ci.yml": [],
+    ".gitmodules": [],
+    "CHANGELOG.md": [],
+    "Dockerfile": [],
+    "README.ja.md": [],
+    "README.md": [],
+    "README_CN.md": [],
+    "SimCCL/README.md": [],
+    "SimCCL/docs/CN/configuration/build-options.md": [],
+    "SimCCL/docs/CN/configuration/env-variables.md": [],
+    "SimCCL/docs/CN/design/architecture.md": [],
+    "SimCCL/docs/CN/design/callstack-analysis.md": [],
+    "SimCCL/docs/CN/design/nccl-comparison.md": [],
+    "SimCCL/docs/CN/development/adding-new-collective.md": [],
+    "SimCCL/docs/CN/getting_started/installation.md": [],
+    "SimCCL/docs/CN/getting_started/quickstart.md": [],
+    "SimCCL/docs/CN/integration/integration-with-simai.md": [],
+    "SimCCL/docs/README.md": [],
+    "SimCCL/docs/configuration/build-options.md": [],
+    "SimCCL/docs/configuration/env-variables.md": [],
+    "SimCCL/docs/design/architecture.md": [],
+    "SimCCL/docs/design/callstack-analysis.md": [],
+    "SimCCL/docs/design/nccl-comparison.md": [],
+    "SimCCL/docs/development/adding-new-collective.md": [],
+    "SimCCL/docs/getting_started/installation.md": [],
+    "SimCCL/docs/getting_started/quickstart.md": [],
+    "SimCCL/docs/integration/integration-with-simai.md": [],
+    "SimCCL/scripts/run_all.sh": [],
+    "SimCCL/src/CMakeLists.txt": [],
+    "SimCCL/src/build.sh": [],
+    "SimCCL/src/main.cc": [
+      "SimCCL/src/workload_parser.h"
+    ],
+    "SimCCL/src/mock/README.md": [],
+    "SimCCL/src/mock/v2.20/MockNccl.h": [],
+    "SimCCL/src/mock/v2.20/MockNcclChannel.cc": [
+      "SimCCL/src/mock/v2.20/MockNcclChannel.h"
+    ],
+    "SimCCL/src/mock/v2.20/MockNcclChannel.h": [],
+    "SimCCL/src/mock/v2.20/MockNcclGroup.cc": [
+      "SimCCL/src/mock/v2.20/MockNcclChannel.h",
+      "SimCCL/src/mock/v2.20/MockNcclGroup.h",
+      "SimCCL/src/mock/v2.20/MockNcclLog.h"
+    ],
+    "SimCCL/src/mock/v2.20/MockNcclGroup.h": [],
+    "SimCCL/src/mock/v2.20/MockNcclLog.cc": [
+      "SimCCL/src/mock/v2.20/MockNcclLog.h"
+    ],
+    "SimCCL/src/mock/v2.20/MockNcclLog.h": [],
+    "SimCCL/src/mock/v2.20/MockNcclQps.h": [],
+    "SimCCL/src/mock/v2.30/MockNccl.h": [],
+    "SimCCL/src/mock/v2.30/MockNcclChannel.cc": [
+      "SimCCL/src/mock/v2.30/MockNcclChannel.h"
+    ],
+    "SimCCL/src/mock/v2.30/MockNcclChannel.h": [],
+    "SimCCL/src/mock/v2.30/MockNcclGroup.cc": [
+      "SimCCL/src/mock/v2.30/MockNcclChannel.h",
+      "SimCCL/src/mock/v2.30/MockNcclGroup.h",
+      "SimCCL/src/mock/v2.30/MockNcclLog.h",
+      "SimCCL/src/mock/v2.30/PatAlgorithm.h"
+    ],
+    "SimCCL/src/mock/v2.30/MockNcclGroup.h": [],
+    "SimCCL/src/mock/v2.30/MockNcclLog.cc": [
+      "SimCCL/src/mock/v2.30/MockNcclLog.h"
+    ],
+    "SimCCL/src/mock/v2.30/MockNcclLog.h": [],
+    "SimCCL/src/mock/v2.30/MockNcclQps.h": [],
+    "SimCCL/src/mock/v2.30/PatAlgorithm.h": [],
+    "SimCCL/src/workload_parser.cc": [
+      "SimCCL/src/workload_parser.h"
+    ],
+    "SimCCL/src/workload_parser.h": [],
+    "UPSTREAM.md": [],
+    "aicb/Dockerfile": [],
+    "aicb/README.md": [],
+    "aicb/aicb.py": [
+      "aicb/utils/benchmark_logger.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_applyer.py",
+      "aicb/workload_generator/generate_collective_test.py",
+      "aicb/workload_generator/generate_deepspeed_stage1_2_workload.py",
+      "aicb/workload_generator/generate_deepspeed_stage3_workload.py",
+      "aicb/workload_generator/generate_megatron_workload.py",
+      "aicb/workload_generator/mocked_model/training/MockedDeepSeek.py",
+      "aicb/workload_generator/mocked_model/training/MockedDeepspeed.py",
+      "aicb/workload_generator/mocked_model/training/MockedMegatron.py"
+    ],
+    "aicb/core/__init__.py": [],
+    "aicb/core/grouped_gemm_util.py": [],
+    "aicb/download/AICB_v1.0.deb": [],
+    "aicb/log_analyzer/__init__.py": [],
+    "aicb/log_analyzer/analyze_res_csv.py": [
+      "aicb/log_analyzer/utils.py"
+    ],
+    "aicb/log_analyzer/ds_comm_log_analyzer.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/log_analyzer/utils.py",
+      "aicb/utils/benchmark_logger.py",
+      "aicb/utils/utils.py"
+    ],
+    "aicb/log_analyzer/log.py": [
+      "aicb/log_analyzer/utils.py",
+      "aicb/utils/utils.py"
+    ],
+    "aicb/log_analyzer/plot.py": [
+      "aicb/log_analyzer/ds_comm_log_analyzer.py",
+      "aicb/log_analyzer/utils.py",
+      "aicb/utils/benchmark_logger.py"
+    ],
+    "aicb/log_analyzer/utils.py": [
+      "aicb/utils/utils.py"
+    ],
+    "aicb/requirements.txt": [],
+    "aicb/results/visual_output/A100_example.html": [],
+    "aicb/run_suites.py": [],
+    "aicb/scripts/coll_comm_check.sh": [],
+    "aicb/scripts/deepspeed_llama.sh": [],
+    "aicb/scripts/inference_configs/deepseek_default.json": [],
+    "aicb/scripts/inference_configs/qwen3_moe_default.json": [],
+    "aicb/scripts/inference_configs/qwen3_next_default.json": [],
+    "aicb/scripts/inference_workload_with_aiob.sh": [],
+    "aicb/scripts/megatron_gpt.sh": [],
+    "aicb/scripts/megatron_workload_with_aiob.sh": [],
+    "aicb/scripts/run_in_cluster.py": [],
+    "aicb/training/tutorial.md": [],
+    "aicb/utils/benchmark_logger.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/timer.py"
+    ],
+    "aicb/utils/deepgemm_utils.py": [],
+    "aicb/utils/rank_analysis.csv": [],
+    "aicb/utils/timer.py": [],
+    "aicb/utils/utils.py": [],
+    "aicb/visualize/__init__.py": [],
+    "aicb/visualize/example.html": [],
+    "aicb/visualize/generate.py": [
+      "aicb/log_analyzer/log.py"
+    ],
+    "aicb/visualize/inputs/A100_example.csv": [],
+    "aicb/workload/Workload_spec_v1.1.csv": [],
+    "aicb/workload/aiob_inputs/Example.txt": [],
+    "aicb/workload/physical/micro_test/all_gather_workload.csv": [],
+    "aicb/workload/physical/micro_test/all_reduce_workload.csv": [],
+    "aicb/workload/physical/micro_test/all_to_all_workload.csv": [],
+    "aicb/workload/physical/micro_test/multi_all_reduce_workload.csv": [],
+    "aicb/workload/physical/micro_test/reduce_scatter_workload.csv": [],
+    "aicb/workload/physical/model_workload/G13B-M1-C01_GPT13B_megatron_tp8_pp1_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/G13B-M1-C02_GPT13B_megatron_tp8_pp1_mbs1_sp.csv": [],
+    "aicb/workload/physical/model_workload/G175B-M1-C03_GPT175B_megatron_tp8_pp16_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L13B-D1-C03_Llama13B_zero2_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L13B-D1-C04_Llama13B_zero3_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L30B-D1-C05_Llama30B_zero2_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L30B-D1-C06_Llama30B_zero3_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L65B-D1-C07_Llama65B_zero2_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L65B-D1-C07_Llama65B_zero3_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L65B-M1-C05_Llama65B_megatron_tp2_pp8_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L7B-D1-C01_Llama7B_zero2_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L7B-D1-C02_Llama7B_zero3_mbs1.csv": [],
+    "aicb/workload/physical/model_workload/L7B-M1-C04_Llama7B_megatron_tp2_pp1_mbs1.csv": [],
+    "aicb/workload/simAI/micro_test/all_gather.txt": [],
+    "aicb/workload/simAI/micro_test/all_reduce.txt": [],
+    "aicb/workload/simAI/micro_test/all_to_all.txt": [],
+    "aicb/workload/simAI/micro_test/muti_all_reduce.txt": [],
+    "aicb/workload/simAI/model_workload/G13B-M1-C01_GPT13B_megatron_tp8_pp1_mbs1_A100.txt": [],
+    "aicb/workload/simAI/model_workload/G13B-M1-C02_GPT13B_megatron_tp8_pp1_mbs1_sp_A100.txt": [],
+    "aicb/workload/simAI/model_workload/G175B-M1-C03_GPT175B_megatron_tp8_pp1_mbs1_A100.txt": [],
+    "aicb/workload/simAI/model_workload/L65B-M1-C05_Llama65B_megatron_tp8_pp1_mbs1_A100.txt": [],
+    "aicb/workload/simAI/model_workload/L65B_D1_C08_Llama65B_deepspeed_zero3_A100.txt": [],
+    "aicb/workload/simAI/model_workload/L7B-D1-C02_Llama7B_deepspeed_zero3_A100.txt": [],
+    "aicb/workload/simAI/model_workload/L7B-M1-C04_Llama7B_megatron_tp2_pp1_mbs1_A100.txt": [],
+    "aicb/workload_applyer.py": [
+      "aicb/utils/benchmark_logger.py",
+      "aicb/utils/utils.py"
+    ],
+    "aicb/workload_generator/SimAI_inference_workload_generator.py": [
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/inference/MockedDeepSeek.py",
+      "aicb/workload_generator/mocked_model/inference/MockedQwen3Moe.py",
+      "aicb/workload_generator/mocked_model/inference/MockedQwen3Next.py"
+    ],
+    "aicb/workload_generator/SimAI_training_workload_generator.py": [
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/training/MockedDeepSeek.py",
+      "aicb/workload_generator/mocked_model/training/MockedDeepspeed.py",
+      "aicb/workload_generator/mocked_model/training/MockedMegatron.py",
+      "aicb/workload_generator/mocked_model/training/__init__.py"
+    ],
+    "aicb/workload_generator/Vidur_workload_generator.py": [
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/SimAI_inference_workload_generator.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/inference/MockedDeepSeek.py",
+      "aicb/workload_generator/mocked_model/inference/MockedQwen3Moe.py",
+      "aicb/workload_generator/mocked_model/inference/MockedQwen3Next.py"
+    ],
+    "aicb/workload_generator/__init__.py": [],
+    "aicb/workload_generator/analysis_pytorch_trace.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/workload_generator.py"
+    ],
+    "aicb/workload_generator/generate_collective_test.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/workload_generator.py"
+    ],
+    "aicb/workload_generator/generate_deepspeed_stage1_2_workload.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/training/MockedDeepspeed.py",
+      "aicb/workload_generator/workload_generator.py"
+    ],
+    "aicb/workload_generator/generate_deepspeed_stage3_workload.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/training/MockedDeepspeed.py",
+      "aicb/workload_generator/workload_generator.py"
+    ],
+    "aicb/workload_generator/generate_ds_trace_replay_workload.py": [
+      "aicb/utils/utils.py"
+    ],
+    "aicb/workload_generator/generate_megatron_workload.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/training/MockedDeepSeek.py",
+      "aicb/workload_generator/mocked_model/training/MockedMegatron.py",
+      "aicb/workload_generator/workload_generator.py"
+    ],
+    "aicb/workload_generator/mocked_model/MockedModel.py": [],
+    "aicb/workload_generator/mocked_model/__init__.py": [],
+    "aicb/workload_generator/mocked_model/inference/AiobDeepSeek.py": [
+      "aicb/utils/deepgemm_utils.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/inference/MockedDeepSeek.py"
+    ],
+    "aicb/workload_generator/mocked_model/inference/AiobQwen3Moe.py": [
+      "aicb/utils/deepgemm_utils.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/inference/MockedQwen3Moe.py"
+    ],
+    "aicb/workload_generator/mocked_model/inference/AiobQwen3Next.py": [
+      "aicb/utils/deepgemm_utils.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/inference/MockedQwen3Next.py"
+    ],
+    "aicb/workload_generator/mocked_model/inference/MockedDeepSeek.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py"
+    ],
+    "aicb/workload_generator/mocked_model/inference/MockedQwen3Moe.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py"
+    ],
+    "aicb/workload_generator/mocked_model/inference/MockedQwen3Next.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py"
+    ],
+    "aicb/workload_generator/mocked_model/inference/__init__.py": [],
+    "aicb/workload_generator/mocked_model/training/AiobDeepSeek.py": [
+      "aicb/utils/utils.py"
+    ],
+    "aicb/workload_generator/mocked_model/training/AiobMegatron.py": [
+      "aicb/core/__init__.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/training/AiobDeepSeek.py"
+    ],
+    "aicb/workload_generator/mocked_model/training/MockedDeepSeek.py": [
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py",
+      "aicb/workload_generator/mocked_model/training/MockedMegatron.py"
+    ],
+    "aicb/workload_generator/mocked_model/training/MockedDeepspeed.py": [
+      "aicb/workload_generator/mocked_model/MockedModel.py"
+    ],
+    "aicb/workload_generator/mocked_model/training/MockedMegatron.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py"
+    ],
+    "aicb/workload_generator/mocked_model/training/__init__.py": [],
+    "aicb/workload_generator/workload_generator.py": [
+      "aicb/log_analyzer/log.py",
+      "aicb/utils/utils.py",
+      "aicb/workload_generator/mocked_model/MockedModel.py"
+    ],
+    "astra-sim-alibabacloud/CMakeLists.txt": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnaSim.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnaSim.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnaSim.h": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalAstra.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnaSim.h",
+      "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalNetwork.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalNetwork.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnaSim.h",
+      "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalNetwork.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/AnalyticalNetwork.h": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/analytical/CMakeLists.txt": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/AstraSimNetwork.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/entry.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/AstraSimNetwork.h": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/common.h": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/ns3/entry.h": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/CMakeLists.txt": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/PhySimAi.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/PhySimAi.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/PhySimAi.h": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiEntry.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiEntry.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiEntry.h": [],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiMain.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/PhySimAi.h",
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiEntry.h",
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiPhyNetwork.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiPhyNetwork.cc": [
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/PhySimAi.h",
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiEntry.h",
+      "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiPhyNetwork.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/network_frontend/phynet/SimAiPhyNetwork.h": [],
+    "astra-sim-alibabacloud/astra-sim/system/AstraComputeAPI.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/AstraMemoryAPI.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/AstraNetworkAPI.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/AstraParamParse.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/AstraParamParse.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/AstraParamParse.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/AstraSimDataAPI.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/BaseStream.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/BaseStream.hh",
+      "astra-sim-alibabacloud/astra-sim/system/StreamBaseline.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/BaseStream.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/BasicEventHandlerData.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/BasicEventHandlerData.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/BasicEventHandlerData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/BootStrapnet.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/BootStrapnet.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/BootStrapnet.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/CallData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/Callable.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/CollectivePhase.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/CollectivePhase.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/CollectivePhase.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/Common.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/DMA_Request.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/DMA_Request.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/DMA_Request.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/DataSet.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/DataSet.hh",
+      "astra-sim-alibabacloud/astra-sim/system/IntData.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/DataSet.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/IntData.cc": [],
+    "astra-sim-alibabacloud/astra-sim/system/IntData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/LogGP.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/LogGP.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/LogGP.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/MemBus.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/LogGP.hh",
+      "astra-sim-alibabacloud/astra-sim/system/MemBus.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/MemBus.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/MemMovRequest.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/LogGP.hh",
+      "astra-sim-alibabacloud/astra-sim/system/MemMovRequest.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/MemMovRequest.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/MyPacket.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/MyPacket.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/MyPacket.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/NetworkStat.cc": [],
+    "astra-sim-alibabacloud/astra-sim/system/NetworkStat.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/PacketBundle.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/PacketBundle.hh",
+      "astra-sim-alibabacloud/astra-sim/system/PhyMultiThread.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/PacketBundle.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/PhyMultiThread.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/PhyMultiThread.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/PhyMultiThread.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/QueueLevelHandler.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/QueueLevelHandler.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/QueueLevelHandler.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/QueueLevels.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/QueueLevels.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/QueueLevels.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/README.md": [],
+    "astra-sim-alibabacloud/astra-sim/system/RecvPacketEventHadndlerData.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/RecvPacketEventHadndlerData.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/RecvPacketEventHadndlerData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/RendezvousRecvData.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/RendezvousRecvData.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/RendezvousRecvData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/RendezvousSendData.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/RendezvousSendData.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/RendezvousSendData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/SendPacketEventHandlerData.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/SendPacketEventHandlerData.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/SendPacketEventHandlerData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/SharedBusStat.cc": [],
+    "astra-sim-alibabacloud/astra-sim/system/SharedBusStat.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/SimAiFlowModelRdma.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/AstraNetworkAPI.hh",
+      "astra-sim-alibabacloud/astra-sim/system/BootStrapnet.hh",
+      "astra-sim-alibabacloud/astra-sim/system/PhyMultiThread.hh",
+      "astra-sim-alibabacloud/astra-sim/system/SimAiFlowModelRdma.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/SimAiFlowModelRdma.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/SimAiPhyCommon.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/SimRecvCaller.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/SimRecvCaller.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/SimRecvCaller.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/SimSendCaller.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/SimSendCaller.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/SimSendCaller.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/StatData.cc": [],
+    "astra-sim-alibabacloud/astra-sim/system/StatData.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/StreamBaseline.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/StreamBaseline.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/StreamBaseline.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/StreamStat.cc": [],
+    "astra-sim-alibabacloud/astra-sim/system/StreamStat.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/Sys.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/BaseStream.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Common.hh",
+      "astra-sim-alibabacloud/astra-sim/system/DataSet.hh",
+      "astra-sim-alibabacloud/astra-sim/system/MemBus.hh",
+      "astra-sim-alibabacloud/astra-sim/system/QueueLevels.hh",
+      "astra-sim-alibabacloud/astra-sim/system/RendezvousRecvData.hh",
+      "astra-sim-alibabacloud/astra-sim/system/RendezvousSendData.hh",
+      "astra-sim-alibabacloud/astra-sim/system/SimRecvCaller.hh",
+      "astra-sim-alibabacloud/astra-sim/system/SimSendCaller.hh",
+      "astra-sim-alibabacloud/astra-sim/system/StreamBaseline.hh",
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh",
+      "astra-sim-alibabacloud/astra-sim/system/calbusbw.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/Sys.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/Usage.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/Usage.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/Usage.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/UsageTracker.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/Sys.hh",
+      "astra-sim-alibabacloud/astra-sim/system/UsageTracker.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/UsageTracker.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/calbusbw.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/calbusbw.h"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/calbusbw.h": [],
+    "astra-sim-alibabacloud/astra-sim/system/collective/Algorithm.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/collective/Algorithm.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/collective/Algorithm.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/collective/AllToAll.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/collective/AllToAll.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/collective/AllToAll.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/collective/DoubleBinaryTreeAllReduce.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/collective/DoubleBinaryTreeAllReduce.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/collective/DoubleBinaryTreeAllReduce.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/collective/HalvingDoubling.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/collective/HalvingDoubling.hh",
+      "astra-sim-alibabacloud/astra-sim/system/collective/Ring.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/collective/HalvingDoubling.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/collective/NcclFlowModel.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/collective/NcclFlowModel.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/collective/NcclFlowModel.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/collective/Ring.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/collective/Ring.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/collective/Ring.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/fast-backend/FastBackEnd.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/fast-backend/FastBackEnd.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/fast-backend/FastBackEnd.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/memory/SimpleMemory.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/memory/SimpleMemory.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/memory/SimpleMemory.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/scheduling/OfflineGreedy.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/scheduling/OfflineGreedy.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/scheduling/OfflineGreedy.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/BasicLogicalTopology.cc": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/BasicLogicalTopology.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/BinaryTree.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/BinaryTree.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/BinaryTree.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/ComplexLogicalTopology.cc": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/ComplexLogicalTopology.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/ComputeNode.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/DoubleBinaryTreeTopology.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/DoubleBinaryTreeTopology.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/DoubleBinaryTreeTopology.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/GeneralComplexTopology.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/DoubleBinaryTreeTopology.hh",
+      "astra-sim-alibabacloud/astra-sim/system/topology/GeneralComplexTopology.hh",
+      "astra-sim-alibabacloud/astra-sim/system/topology/RingTopology.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/GeneralComplexTopology.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingGlobalBinaryTree.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingGlobalBinaryTree.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingGlobalBinaryTree.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingNodeA2AGlobalDBT.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingNodeA2AGlobalDBT.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/LocalRingNodeA2AGlobalDBT.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/LogicalTopology.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/LogicalTopology.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/LogicalTopology.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/Node.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/Node.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/Node.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/RingTopology.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/RingTopology.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/RingTopology.hh": [],
+    "astra-sim-alibabacloud/astra-sim/system/topology/Torus3D.cc": [
+      "astra-sim-alibabacloud/astra-sim/system/topology/Torus3D.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/system/topology/Torus3D.hh": [],
+    "astra-sim-alibabacloud/astra-sim/workload/CSVWriter.cc": [
+      "astra-sim-alibabacloud/astra-sim/workload/CSVWriter.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/workload/CSVWriter.hh": [],
+    "astra-sim-alibabacloud/astra-sim/workload/Layer.cc": [
+      "astra-sim-alibabacloud/astra-sim/workload/Layer.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/workload/Layer.hh": [],
+    "astra-sim-alibabacloud/astra-sim/workload/Workload.cc": [
+      "astra-sim-alibabacloud/astra-sim/workload/CSVWriter.hh",
+      "astra-sim-alibabacloud/astra-sim/workload/Layer.hh",
+      "astra-sim-alibabacloud/astra-sim/workload/Workload.hh"
+    ],
+    "astra-sim-alibabacloud/astra-sim/workload/Workload.hh": [],
+    "astra-sim-alibabacloud/build.sh": [],
+    "astra-sim-alibabacloud/inputs/config/SimAI.conf": [],
+    "astra-sim-alibabacloud/inputs/ratio/ata_ratio.csv": [],
+    "astra-sim-alibabacloud/inputs/ratio/nic_ratio.csv": [],
+    "astra-sim-alibabacloud/inputs/ratio/nvlink_ratio.csv": [],
+    "astra-sim-alibabacloud/inputs/topo/gen_Topo_Template.py": [],
+    "docs/ARCHITECTURE.md": [],
+    "docs/CALIBRATION.md": [],
+    "docs/CN/Tutorial.md": [],
+    "docs/CN/configuration/build-options.md": [],
+    "docs/CN/configuration/env-variables.md": [],
+    "docs/CN/configuration/send-lat-analysis.md": [],
+    "docs/CN/getting_started/installation.md": [],
+    "docs/CN/getting_started/quickstart.md": [],
+    "docs/CONTRIBUTING.md": [],
+    "docs/DEVELOPMENT_PLAN.md": [],
+    "docs/PROJECT_ANALYSIS.md": [],
+    "docs/README.md": [],
+    "docs/Tutorial.md": [],
+    "docs/configuration/build-options.md": [],
+    "docs/configuration/env-variables.md": [],
+    "docs/configuration/send-lat-analysis.md": [],
+    "docs/getting_started/installation.md": [],
+    "docs/getting_started/quickstart.md": [],
+    "example/busbw.yaml": [],
+    "example/microAllReduce.txt": [],
+    "example/workload_analytical.txt": [],
+    "scripts/build.sh": [],
+    "vidur-alibabacloud/CODE_OF_CONDUCT.md": [],
+    "vidur-alibabacloud/Makefile": [],
+    "vidur-alibabacloud/README-vidur.md": [],
+    "vidur-alibabacloud/README.md": [],
+    "vidur-alibabacloud/README_CN.md": [],
+    "vidur-alibabacloud/SECURITY.md": [],
+    "vidur-alibabacloud/SUPPORT.md": [],
+    "vidur-alibabacloud/data/hf_configs/deepseek_R1_0528_config.json": [],
+    "vidur-alibabacloud/data/hf_configs/deepseek_v3_config.json": [],
+    "vidur-alibabacloud/data/hf_configs/qwen3-235B-A22B_FP8_config.json": [],
+    "vidur-alibabacloud/data/hf_configs/qwen3-235B-A22B_config.json": [],
+    "vidur-alibabacloud/data/hf_configs/qwen3-30B-A3B_config.json": [],
+    "vidur-alibabacloud/data/hf_configs/qwen3-8B_config.json": [],
+    "vidur-alibabacloud/data/hf_configs/qwen3-next-80B-A3B_Instruct_FP8_config.json": [],
+    "vidur-alibabacloud/data/hf_configs/qwen3-next-80B-A3B_config.json": [],
+    "vidur-alibabacloud/docs/metrics.md": [],
+    "vidur-alibabacloud/docs/profiling.md": [],
+    "vidur-alibabacloud/environment-dev.yml": [],
+    "vidur-alibabacloud/environment.yml": [],
+    "vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh": [],
+    "vidur-alibabacloud/requirements-dev.txt": [],
+    "vidur-alibabacloud/requirements.txt": [],
+    "vidur-alibabacloud/setup.py": [],
+    "vidur-alibabacloud/tests/test_pd_separation.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/cluster.py"
+    ],
+    "vidur-alibabacloud/tests/test_tutorial_report_cn.md": [],
+    "vidur-alibabacloud/vidur/config/__init__.py": [
+      "vidur-alibabacloud/vidur/config/config.py"
+    ],
+    "vidur-alibabacloud/vidur/config/base_fixed_config.py": [
+      "vidur-alibabacloud/vidur/config/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config/base_poly_config.py": [
+      "vidur-alibabacloud/vidur/config/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config/config.py": [
+      "vidur-alibabacloud/vidur/config/base_poly_config.py",
+      "vidur-alibabacloud/vidur/config/device_sku_config.py",
+      "vidur-alibabacloud/vidur/config/flat_dataclass.py",
+      "vidur-alibabacloud/vidur/config/model_config.py",
+      "vidur-alibabacloud/vidur/config/node_sku_config.py",
+      "vidur-alibabacloud/vidur/config/utils.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/config/device_sku_config.py": [
+      "vidur-alibabacloud/vidur/config/base_fixed_config.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/config/flat_dataclass.py": [
+      "vidur-alibabacloud/vidur/config/base_poly_config.py",
+      "vidur-alibabacloud/vidur/config/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config/model_config.py": [
+      "vidur-alibabacloud/vidur/config/base_fixed_config.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/config/node_sku_config.py": [
+      "vidur-alibabacloud/vidur/config/base_fixed_config.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/config/utils.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/__init__.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/__init__.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_analyzer.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_cases.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_cases.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/__init__.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/assets/index.html": [],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/assets/nginx.conf": [],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/best_config_page.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_analyzer.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/config_compare_page.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/cost_analysis_page.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_analyzer.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/intro_page.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/main.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/best_config_page.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/config_compare_page.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/cost_analysis_page.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/intro_page.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/pareto_curve_page.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/search_analysis_page.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/pareto_curve_page.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/bottleneck_analyzer.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/search_analysis_page.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/dashboard/utils.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/generate_pareto_curves.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/stats_extractor.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/analyzer/constants.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/analyzer/utils.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/__init__.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/capacity_search.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/__init__.py",
+      "vidur-alibabacloud/vidur/config_optimizer/config_explorer/ray_utils.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/__init__.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/config.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/config.py": [],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/config.yml": [],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/debug_config.yml": [],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config_explorer.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/config_explorer/capacity_search.py",
+      "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config/__init__.py",
+      "vidur-alibabacloud/vidur/config_optimizer/config_explorer/ray_utils.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/main.py": [
+      "vidur-alibabacloud/vidur/config_optimizer/config_explorer/config_explorer.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/config_optimizer/config_explorer/ray_utils.py": [],
+    "vidur-alibabacloud/vidur/entities/__init__.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/entities/batch_stage.py",
+      "vidur-alibabacloud/vidur/entities/cluster.py",
+      "vidur-alibabacloud/vidur/entities/execution_time.py",
+      "vidur-alibabacloud/vidur/entities/flow.py",
+      "vidur-alibabacloud/vidur/entities/node.py",
+      "vidur-alibabacloud/vidur/entities/replica.py",
+      "vidur-alibabacloud/vidur/entities/request.py",
+      "vidur-alibabacloud/vidur/entities/task.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/base_entity.py": [],
+    "vidur-alibabacloud/vidur/entities/batch.py": [
+      "vidur-alibabacloud/vidur/entities/base_entity.py",
+      "vidur-alibabacloud/vidur/entities/request.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/batch_stage.py": [
+      "vidur-alibabacloud/vidur/entities/base_entity.py",
+      "vidur-alibabacloud/vidur/entities/request.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/cluster.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/base_entity.py",
+      "vidur-alibabacloud/vidur/entities/replica.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/execution_time.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/base_entity.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/flow.py": [
+      "vidur-alibabacloud/vidur/entities/node.py",
+      "vidur-alibabacloud/vidur/entities/replica.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/interconnect.py": [
+      "vidur-alibabacloud/vidur/entities/flow.py",
+      "vidur-alibabacloud/vidur/entities/processor.py",
+      "vidur-alibabacloud/vidur/entities/replica.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/node.py": [],
+    "vidur-alibabacloud/vidur/entities/processor.py": [
+      "vidur-alibabacloud/vidur/entities/replica.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/replica.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/base_entity.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/request.py": [
+      "vidur-alibabacloud/vidur/entities/base_entity.py",
+      "vidur-alibabacloud/vidur/entities/flow.py",
+      "vidur-alibabacloud/vidur/entities/task.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/entities/task.py": [
+      "vidur-alibabacloud/vidur/entities/node.py"
+    ],
+    "vidur-alibabacloud/vidur/events/__init__.py": [
+      "vidur-alibabacloud/vidur/events/base_event.py",
+      "vidur-alibabacloud/vidur/events/request_arrival_event.py"
+    ],
+    "vidur-alibabacloud/vidur/events/base_event.py": [
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/events/batch_end_event.py": [
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/entities/replica.py",
+      "vidur-alibabacloud/vidur/entities/request.py",
+      "vidur-alibabacloud/vidur/events/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/events/batch_stage_arrival_event.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/events/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/events/batch_stage_end_event.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/entities/batch_stage.py",
+      "vidur-alibabacloud/vidur/events/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/events/global_schedule_event.py": [
+      "vidur-alibabacloud/vidur/events/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/events/replica_schedule_event.py": [
+      "vidur-alibabacloud/vidur/events/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/events/replica_stage_schedule_event.py": [
+      "vidur-alibabacloud/vidur/events/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/events/request_arrival_event.py": [
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/events/base_event.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/execution_time_predictor/SimAIWorkload.py": [],
+    "vidur-alibabacloud/vidur/execution_time_predictor/__init__.py": [
+      "vidur-alibabacloud/vidur/execution_time_predictor/base_execution_time_predictor.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/execution_time_predictor_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/execution_time_predictor/base_execution_time_predictor.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/communication_time_predictor.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/execution_time_predictor/communication_time_predictor.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/SimAIWorkload.py"
+    ],
+    "vidur-alibabacloud/vidur/execution_time_predictor/execution_time_predictor_registry.py": [
+      "vidur-alibabacloud/vidur/execution_time_predictor/linear_regression_execution_time_predictor.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/random_forrest_execution_time_predictor.py",
+      "vidur-alibabacloud/vidur/types/__init__.py",
+      "vidur-alibabacloud/vidur/utils/base_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/execution_time_predictor/linear_regression_execution_time_predictor.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/sklearn_execution_time_predictor.py"
+    ],
+    "vidur-alibabacloud/vidur/execution_time_predictor/random_forrest_execution_time_predictor.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/sklearn_execution_time_predictor.py"
+    ],
+    "vidur-alibabacloud/vidur/execution_time_predictor/sklearn_execution_time_predictor.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/base_execution_time_predictor.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/logger.py": [],
+    "vidur-alibabacloud/vidur/main.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/simulator.py",
+      "vidur-alibabacloud/vidur/utils/random.py"
+    ],
+    "vidur-alibabacloud/vidur/metrics/__init__.py": [
+      "vidur-alibabacloud/vidur/metrics/metrics_store.py"
+    ],
+    "vidur-alibabacloud/vidur/metrics/cdf_sketch.py": [
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/data_series.py"
+    ],
+    "vidur-alibabacloud/vidur/metrics/constants.py": [],
+    "vidur-alibabacloud/vidur/metrics/data_series.py": [
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/metrics/metrics_store.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/cdf_sketch.py",
+      "vidur-alibabacloud/vidur/metrics/constants.py",
+      "vidur-alibabacloud/vidur/metrics/data_series.py",
+      "vidur-alibabacloud/vidur/metrics/series_average_meter.py",
+      "vidur-alibabacloud/vidur/utils/mfu_calculator.py"
+    ],
+    "vidur-alibabacloud/vidur/metrics/series_average_meter.py": [
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/__init__.py": [],
+    "vidur-alibabacloud/vidur/profiling/attention/__init__.py": [],
+    "vidur-alibabacloud/vidur/profiling/attention/attention_input.py": [],
+    "vidur-alibabacloud/vidur/profiling/attention/attention_wrapper.py": [
+      "vidur-alibabacloud/vidur/profiling/attention/attention_input.py",
+      "vidur-alibabacloud/vidur/profiling/attention/sequence_proxy.py",
+      "vidur-alibabacloud/vidur/profiling/common/cuda_timer.py",
+      "vidur-alibabacloud/vidur/profiling/common/model_config.py",
+      "vidur-alibabacloud/vidur/profiling/common/timer_stats_store.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/attention/main.py": [
+      "vidur-alibabacloud/vidur/profiling/attention/attention_input.py",
+      "vidur-alibabacloud/vidur/profiling/attention/attention_wrapper.py",
+      "vidur-alibabacloud/vidur/profiling/common/model_config.py",
+      "vidur-alibabacloud/vidur/profiling/utils/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/attention/sequence_proxy.py": [],
+    "vidur-alibabacloud/vidur/profiling/collectives/__init__.py": [],
+    "vidur-alibabacloud/vidur/profiling/collectives/benchmark_runner.py": [
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/profiling/collectives/collectives_input.py",
+      "vidur-alibabacloud/vidur/profiling/collectives/collectives_wrapper.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/collectives/collectives_impl.py": [],
+    "vidur-alibabacloud/vidur/profiling/collectives/collectives_input.py": [],
+    "vidur-alibabacloud/vidur/profiling/collectives/collectives_wrapper.py": [
+      "vidur-alibabacloud/vidur/profiling/collectives/collectives_impl.py",
+      "vidur-alibabacloud/vidur/profiling/common/cuda_timer.py",
+      "vidur-alibabacloud/vidur/profiling/common/timer_stats_store.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/collectives/main.py": [
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/profiling/collectives/benchmark_runner.py",
+      "vidur-alibabacloud/vidur/profiling/utils/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/common/__init__.py": [],
+    "vidur-alibabacloud/vidur/profiling/common/cuda_timer.py": [
+      "vidur-alibabacloud/vidur/profiling/common/timer_stats_store.py",
+      "vidur-alibabacloud/vidur/profiling/utils/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/common/model_config.py": [
+      "vidur-alibabacloud/vidur/config/model_config.py",
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/common/timer_stats_store.py": [
+      "vidur-alibabacloud/vidur/profiling/utils/__init__.py",
+      "vidur-alibabacloud/vidur/profiling/utils/singleton.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/cpu_overhead/__init__.py": [],
+    "vidur-alibabacloud/vidur/profiling/cpu_overhead/benchmark_runner.py": [
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/cpu_overhead/main.py": [
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/profiling/cpu_overhead/benchmark_runner.py",
+      "vidur-alibabacloud/vidur/profiling/utils/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/mlp/__init__.py": [],
+    "vidur-alibabacloud/vidur/profiling/mlp/main.py": [
+      "vidur-alibabacloud/vidur/profiling/common/model_config.py",
+      "vidur-alibabacloud/vidur/profiling/mlp/mlp_wrapper.py",
+      "vidur-alibabacloud/vidur/profiling/utils/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/mlp/mlp_impl.py": [
+      "vidur-alibabacloud/vidur/profiling/common/cuda_timer.py",
+      "vidur-alibabacloud/vidur/profiling/common/model_config.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/mlp/mlp_wrapper.py": [
+      "vidur-alibabacloud/vidur/profiling/common/cuda_timer.py",
+      "vidur-alibabacloud/vidur/profiling/common/model_config.py",
+      "vidur-alibabacloud/vidur/profiling/common/timer_stats_store.py",
+      "vidur-alibabacloud/vidur/profiling/mlp/mlp_impl.py",
+      "vidur-alibabacloud/vidur/profiling/utils/__init__.py",
+      "vidur-alibabacloud/vidur/profiling/utils/record_function_tracer.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/utils/__init__.py": [
+      "vidur-alibabacloud/vidur/profiling/attention/attention_input.py",
+      "vidur-alibabacloud/vidur/profiling/collectives/collectives_input.py",
+      "vidur-alibabacloud/vidur/profiling/common/model_config.py"
+    ],
+    "vidur-alibabacloud/vidur/profiling/utils/record_function_tracer.py": [],
+    "vidur-alibabacloud/vidur/profiling/utils/singleton.py": [],
+    "vidur-alibabacloud/vidur/request_generator/__init__.py": [
+      "vidur-alibabacloud/vidur/request_generator/request_generator_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/base_request_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/base_request_interval_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/base_request_length_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/fixed_request_length_generator.py": [
+      "vidur-alibabacloud/vidur/request_generator/base_request_length_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/gamma_request_interval_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/base_request_interval_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/poisson_request_interval_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/base_request_interval_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/request_generator_registry.py": [
+      "vidur-alibabacloud/vidur/request_generator/synthetic_request_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/trace_replay_request_generator.py",
+      "vidur-alibabacloud/vidur/types/__init__.py",
+      "vidur-alibabacloud/vidur/utils/base_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/request_interval_generator_registry.py": [
+      "vidur-alibabacloud/vidur/request_generator/gamma_request_interval_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/poisson_request_interval_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/static_request_interval_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/trace_request_interval_generator.py",
+      "vidur-alibabacloud/vidur/types/__init__.py",
+      "vidur-alibabacloud/vidur/utils/base_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/request_length_generator_registry.py": [
+      "vidur-alibabacloud/vidur/request_generator/fixed_request_length_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/trace_request_length_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/uniform_request_length_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/zipf_request_length_generator.py",
+      "vidur-alibabacloud/vidur/types/__init__.py",
+      "vidur-alibabacloud/vidur/utils/base_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/static_request_interval_generator.py": [
+      "vidur-alibabacloud/vidur/request_generator/base_request_interval_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/synthetic_request_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/base_request_generator.py",
+      "vidur-alibabacloud/vidur/request_generator/request_interval_generator_registry.py",
+      "vidur-alibabacloud/vidur/request_generator/request_length_generator_registry.py",
+      "vidur-alibabacloud/vidur/types/__init__.py",
+      "vidur-alibabacloud/vidur/utils/random.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/trace_replay_request_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/base_request_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/trace_request_interval_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/base_request_interval_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/trace_request_length_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/base_request_length_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/uniform_request_length_generator.py": [
+      "vidur-alibabacloud/vidur/request_generator/base_request_length_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/request_generator/zipf_request_length_generator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/base_request_length_generator.py",
+      "vidur-alibabacloud/vidur/utils/zipf_generator.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/__init__.py": [
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/global_scheduler/__init__.py": [
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/base_global_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/global_scheduler_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/global_scheduler/base_global_scheduler.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/replica_scheduler_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/global_scheduler/global_scheduler_registry.py": [
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/lor_global_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/random_global_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/round_robin_global_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/splitwise_global_scheduler.py",
+      "vidur-alibabacloud/vidur/types/__init__.py",
+      "vidur-alibabacloud/vidur/utils/base_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/global_scheduler/lor_global_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/base_global_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/global_scheduler/random_global_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/base_global_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/global_scheduler/round_robin_global_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/base_global_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/global_scheduler/splitwise_global_scheduler.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/entities/flow.py",
+      "vidur-alibabacloud/vidur/entities/interconnect.py",
+      "vidur-alibabacloud/vidur/entities/replica.py",
+      "vidur-alibabacloud/vidur/entities/request.py",
+      "vidur-alibabacloud/vidur/entities/task.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/scheduler/global_scheduler/base_global_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/replica_scheduler_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/__init__.py": [],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_stage_scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/utils/memory_planner.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/faster_transformer_replica_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/lightllm_replica_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/orca_replica_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/replica_scheduler_registry.py": [
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/faster_transformer_replica_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/lightllm_replica_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/orca_replica_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/sarathi_replica_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/splitwise_replica_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/vllm_replica_scheduler.py",
+      "vidur-alibabacloud/vidur/types/__init__.py",
+      "vidur-alibabacloud/vidur/utils/base_registry.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/sarathi_replica_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/splitwise_replica_scheduler.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/entities/node.py",
+      "vidur-alibabacloud/vidur/entities/replica.py",
+      "vidur-alibabacloud/vidur/entities/request.py",
+      "vidur-alibabacloud/vidur/entities/task.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_stage_scheduler/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/utils/memory_planner.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_scheduler/vllm_replica_scheduler.py": [
+      "vidur-alibabacloud/vidur/entities/batch.py",
+      "vidur-alibabacloud/vidur/scheduler/replica_scheduler/base_replica_scheduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_stage_scheduler/__init__.py": [
+      "vidur-alibabacloud/vidur/scheduler/replica_stage_scheduler/replica_stage_schduler.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/replica_stage_scheduler/replica_stage_schduler.py": [
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/execution_time_predictor/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/scheduler/utils/__init__.py": [],
+    "vidur-alibabacloud/vidur/scheduler/utils/memory_planner.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/replica.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/utils/param_counter.py"
+    ],
+    "vidur-alibabacloud/vidur/simulator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/events/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/metrics/__init__.py",
+      "vidur-alibabacloud/vidur/request_generator/__init__.py",
+      "vidur-alibabacloud/vidur/scheduler/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/types/__init__.py": [
+      "vidur-alibabacloud/vidur/types/activation_type.py",
+      "vidur-alibabacloud/vidur/types/base_int_enum.py",
+      "vidur-alibabacloud/vidur/types/device_sku_type.py",
+      "vidur-alibabacloud/vidur/types/event_type.py",
+      "vidur-alibabacloud/vidur/types/execution_time_predictor_type.py",
+      "vidur-alibabacloud/vidur/types/global_scheduler_type.py",
+      "vidur-alibabacloud/vidur/types/node_sku_type.py",
+      "vidur-alibabacloud/vidur/types/norm_type.py",
+      "vidur-alibabacloud/vidur/types/replica_scheduler_type.py",
+      "vidur-alibabacloud/vidur/types/request_generator_type.py",
+      "vidur-alibabacloud/vidur/types/request_interval_generator_type.py",
+      "vidur-alibabacloud/vidur/types/request_length_generator_type.py"
+    ],
+    "vidur-alibabacloud/vidur/types/activation_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/base_int_enum.py": [],
+    "vidur-alibabacloud/vidur/types/device_sku_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/event_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/execution_time_predictor_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/global_scheduler_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/node_sku_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/norm_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/replica_scheduler_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/request_generator_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/request_interval_generator_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/types/request_length_generator_type.py": [
+      "vidur-alibabacloud/vidur/types/base_int_enum.py"
+    ],
+    "vidur-alibabacloud/vidur/utils/__init__.py": [],
+    "vidur-alibabacloud/vidur/utils/base_registry.py": [
+      "vidur-alibabacloud/vidur/types/__init__.py"
+    ],
+    "vidur-alibabacloud/vidur/utils/event_queue.py": [],
+    "vidur-alibabacloud/vidur/utils/mfu_calculator.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/entities/__init__.py",
+      "vidur-alibabacloud/vidur/entities/request.py",
+      "vidur-alibabacloud/vidur/logger.py",
+      "vidur-alibabacloud/vidur/utils/param_counter.py"
+    ],
+    "vidur-alibabacloud/vidur/utils/param_counter.py": [
+      "vidur-alibabacloud/vidur/config/__init__.py",
+      "vidur-alibabacloud/vidur/logger.py"
+    ],
+    "vidur-alibabacloud/vidur/utils/random.py": [
+      "vidur-alibabacloud/vidur/utils/random.py"
+    ],
+    "vidur-alibabacloud/vidur/utils/zipf_generator.py": []
+  }
+}

@@ -49,3 +49,6 @@ vidur-alibabacloud/data/aicb_workload/logs/
 vidur-alibabacloud/data/aicb_workload/cache_index.json
 vidur-alibabacloud/examples/vidur-ali-scenarios/logs/
 vidur-alibabacloud/examples/vidur-ali-scenarios/simulator_output/
+
+# Local development plan
+mydocs
