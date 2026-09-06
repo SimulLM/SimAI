@@ -27,8 +27,8 @@
       "GitHub Actions"
     ],
     "description": "SimAI 是业界首个全栈高精度 AI 大规模推理与训练模拟器，对 LLM 训练全流程进行详细建模与仿真，涵盖框架、集合通信与网络层。项目由 AICB（工作负载生成）、SimCCL（集合通信分解）、astra-sim-alibabacloud（执行引擎）、ns-3-alibabacloud（网络仿真）与 vidur-alibabacloud（请求调度）等组件构成，支持分析、仿真与物理三种运行模式。注意：该项目源码文件超过 100 个，建议将分析范围限定到某个子目录以获得更快的结果。",
-    "analyzedAt": "2026-09-02T12:58:09.908Z",
-    "gitCommitHash": "cf9ed25e41887a633c220ba1661a995ccab6d131"
+    "analyzedAt": "2026-09-02T16:10:50.541Z",
+    "gitCommitHash": "946546f443a5f907990f92dcc955fd3f616fb6af"
   },
   "nodes": [
     {
