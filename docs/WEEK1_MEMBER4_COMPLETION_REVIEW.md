@@ -5,8 +5,8 @@
 复审日期：2026-09-07。验收依据为 `大创_第一周plan.md` 中的统一基线要求和成员四交付清单。
 
 复审前发现两项缺口：统一解析主基线与 Vidur PD 测试未实际归档；实验记录和校准表仅散落在
-方案描述中，没有形成可直接复制的模板。本次已补跑基线并新增 Markdown/CSV 模板。随后又根据
-团队测试记录模板补齐逐次实验的环境、失败排查、结论边界和审核字段，并为两项实测各自归档。
+方案描述中，没有形成可直接复制的模板。本次已补跑基线并新增 Markdown/CSV 模板，并将团队提供的
+`experiment_record.md` 按第一周实际结果填写完成，作为本周实验记录成果归档。
 
 补齐后，成员四的第一周专属交付 **7/7 已具备**，统一基线中与成员四相关的环境、版本、输入、
 解析主运行和 PD 测试均有可追溯记录。尚未实现的请求-通信-网络闭环属于计划明确的第二周及后续
@@ -23,10 +23,9 @@
 | 5 | DeepSeek Prefill/Decode 关键事件表与 trace 卡 | 完成 | `WEEK1_MEMBER4_DEEPSEEK_TRACE_ANALYSIS.md`、CSV/JSON | EP32/EP128、事件、重叠、来源和校准边界齐全 |
 | 6 | MoE 均匀/热点/长尾方案与假设 | 完成 | `WEEK1_MEMBER4_MOE_SKEW_PLAN.md`、CSV/JSON | 固定总量、seed、偏斜指标、实验矩阵和假设齐全 |
 | 7 | 四篇核心文献阅读卡 | 完成 | `paper_reading/` 四文件及 summary | 独立卡片；按 Vidur→DistServe→vLLM→Clockwork 串联 |
-| 8 | 实验记录模板 | 完成 | `templates/WEEK1_EXPERIMENT_RECORD_TEMPLATE.md`、CSV 与说明文档 | 版本、输入、命令、输出、失败排查、边界、审核和运行成本齐全 |
+| 8 | 实验记录 | 完成 | `experiment_record.md`、`experiment_record_template.csv` 与说明文档 | 团队模板已实填；版本、输入、命令、输出、失败排查、边界、审核和成本齐全 |
 | 9 | 初版校准数据表设计 | 完成 | `calibration_table_template.csv` 与说明文档 | 真实/仿真、绝对/相对、P95/P99 和成本齐全 |
 | 10 | 三个成员四分析脚本可重复运行 | 完成 | `scripts/` 与 `docs/data/` | 本次重跑后 Git 无差异，说明生成结果确定 |
-| 11 | 已完成测试逐次归档 | 完成 | `test_records/` 两份记录 | analytical 主基线与 Vidur PD 分开记录；缺失时间/日志未伪造，原因已注明 |
 
 ## 本次实际复核
 

@@ -19,9 +19,7 @@
 |---|---|
 | [WEEK1_MEMBER4_COMPLETION_REVIEW.md](WEEK1_MEMBER4_COMPLETION_REVIEW.md) | 第一周任务完成度、复核结果与边界 |
 | [WEEK1_MEMBER4_EXPERIMENT_CALIBRATION_TEMPLATE.md](WEEK1_MEMBER4_EXPERIMENT_CALIBRATION_TEMPLATE.md) | 实验记录、校准口径和配套文件索引 |
-| [templates/WEEK1_EXPERIMENT_RECORD_TEMPLATE.md](templates/WEEK1_EXPERIMENT_RECORD_TEMPLATE.md) | 每次构建、测试或仿真的可复制记录模板 |
-| [test_records/W1-M4-20260907-01_ANALYTICAL_BASELINE.md](test_records/W1-M4-20260907-01_ANALYTICAL_BASELINE.md) | analytical 构建与主基线实填记录 |
-| [test_records/W1-M4-20260907-02_VIDUR_PD_TEST.md](test_records/W1-M4-20260907-02_VIDUR_PD_TEST.md) | Vidur PD 单元测试实填记录 |
+| [experiment_record.md](experiment_record.md) | 按团队测试模板填写的第一周完整实验记录 |
 
 ### English
 
