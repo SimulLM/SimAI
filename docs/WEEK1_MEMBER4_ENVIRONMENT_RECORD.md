@@ -8,7 +8,7 @@
 - 仓库与输入基线：已完成
 - 子模块初始化：已完成
 - 统一 Linux 环境验收：已完成（Ubuntu 24.04.4 LTS，WSL2）
-- 本记录不包含编译、主通信基线或 Vidur pytest 结果；这些属于后续基线运行步骤
+- 解析后端构建、主通信基线与 Vidur PD pytest：已完成并归档
 
 ## 2. 主仓库版本
 
@@ -125,7 +125,68 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake
 - 正式验收克隆无未提交修改；
 - 未安装 ninja，满足 ns-3 构建前置要求。
 
-## 7. 复核结果归档
+## 7. 统一基线运行结果
+
+补充验收时间：2026-09-07（Asia/Shanghai）。仍使用 `/root/SimAI-week1` 中固定在
+`cf9ed25e41887a633c220ba1661a995ccab6d131` 的干净基线代码；构建物、虚拟环境和结果文件
+只保留在该验收克隆，不提交到主仓库。
+
+### 7.1 解析后端构建
+
+实际执行：
+
+```bash
+cd /root/SimAI-week1
+./scripts/build.sh -c analytical
+```
+
+结果：退出码 0，`SimAI_analytical` 构建至 100%。GCC 报告了上游代码已有的
+`control reaches end of non-void function` 和 string literal 转 `char*` 等警告，但没有编译错误。
+
+### 7.2 主通信基线
+
+实际执行计划规定的完整命令：
+
+```bash
+/usr/bin/time -f 'ELAPSED=%e\nMAX_RSS_KB=%M\nEXIT=%x' \
+  ./bin/SimAI_analytical \
+  -w ./example/workload_analytical.txt \
+  -g 9216 -nv 360 -nic 48.5 -n_p_s 8 -g_p_s 8 \
+  -r example-
+```
+
+| 项目 | 实际值 |
+|---|---|
+| 退出状态 | `EXIT=0`，日志结尾为 `SimAI-Analytical finished.` |
+| Wall-clock | 1.24 s |
+| 峰值 RSS | 7,620 KiB |
+| 输出 | `/root/SimAI-week1/results/example-EndToEnd.csv` |
+| 输出行数 | 1,792 |
+| 输出 SHA-256 | `b3d73975f0081c119094852f15b7926b288afb33b337aa19fd46ed6a20acdd69` |
+| Summary total time | 7,545,619（沿用输出文件原始时间单位） |
+| Total computation | 4,542,795（60.20%） |
+| Total exposed communication | 2,656,839（35.21%） |
+| Bubble time | 345,984（4.59%） |
+
+结果文件中，无通信或零字节通信行的 `algbw` 会出现 `-nan`。这不影响本次基线正常退出，
+但后续数据清洗不得把 `-nan` 当作零或有效带宽；应按通信类型与字节量将其标记为“不适用”。
+
+### 7.3 Vidur PD 测试
+
+系统最初没有 `pytest`，因此安装 Ubuntu 官方 `python3.12-venv`，并在子模块目录创建隔离环境
+`.venv-week1`。测试所需的最小额外包为 `pytest` 与 `networkx`。
+
+```bash
+cd /root/SimAI-week1/vidur-alibabacloud
+python3 -m venv .venv-week1
+.venv-week1/bin/python -m pip install pytest networkx
+.venv-week1/bin/python -m pytest tests/test_pd_separation.py -q
+```
+
+结果：`10 passed in 0.13s`，退出码 0。覆盖 PD 关闭、PD 开启、Prefill/Decode 独立 world size、
+阶段参数回退、非法比例拒绝和显式 Prefill 副本数优先级。
+
+## 8. 复核结果归档
 
 | 检查项 | 实际值 | 结论 |
 |---|---|---|
@@ -139,7 +200,12 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake
 | aicb SHA | `23eec3c48ca2d2d93dd888a4c7b22ab4421e782f` | 通过 |
 | ns-3-alibabacloud SHA | `3e0c7c1bfbbe9f77890ddcf5e5b9c79fc6dd7437` | 通过 |
 | 输入哈希 | 四项均与第 4 节一致 | 通过 |
+| 解析后端构建 | 100%，退出码 0 | 通过 |
+| 主通信基线 | 退出码 0；1,792 行结果，SHA-256 已记录 | 通过 |
+| Vidur PD 测试 | 10 passed | 通过 |
 
-## 8. 当前结论
+## 9. 当前结论
 
-第一项工作已经闭环：Ubuntu 24.04 WSL 工具链满足项目要求，正式 ext4 克隆状态干净，主仓库、三个子模块和四项固定输入均已唯一标识并通过复核。该记录可直接作为第一周环境与输入基线交付物。
+统一基线已经闭环：Ubuntu 24.04 WSL 工具链满足项目要求，主仓库、三个子模块和四项固定输入
+均已唯一标识；解析后端构建、主通信基线和 Vidur PD 测试均通过。`-nan` 仅出现在无通信/零字节
+行，已作为结果解析边界记录。
