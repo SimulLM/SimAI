@@ -44,6 +44,7 @@ astra-sim-alibabacloud/inputs/topo/Rail_Opti_SingleToR_*
 
 # Local inference profiling/cache outputs
 tmp_simai_inference_workload/
+/tmp/deepseek-profile-data/
 vidur-alibabacloud/data/aicb_workload/cache/
 vidur-alibabacloud/data/aicb_workload/logs/
 vidur-alibabacloud/data/aicb_workload/cache_index.json

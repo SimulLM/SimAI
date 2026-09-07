@@ -1,0 +1,17 @@
+trace,ep_world_size,category,first_start_us,event_count,median_duration_us,p95_duration_us,summed_duration_us,union_duration_us,direct_overlap_us,overlap_pct_of_category_union,streams,relationship,source_sha256
+prefill,32,attention_compute,29708,244,1179.5,3031,372233,372233,350262,94.098,7,overlaps EP kernels,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,dense_gemm,28795,727,428,1739,474157,474157,311569,65.71,7,overlaps EP kernels,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,ep_combine,123846,116,8618.0,10139,1006189,1006189,781793,77.698,16,directly overlaps GPU compute,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,ep_dispatch,107883,116,4560.5,4942,532860,532860,512017,96.088,16,directly overlaps GPU compute,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,ep_dispatch_layout,104906,116,135.5,191,16853,16853,0,0.0,16,prepares EP dispatch,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,ep_notify_dispatch,105093,116,893.5,2690,123618,123618,122891,99.412,16,directly overlaps GPU compute,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,expert_compute,29926,470,646.5,3687,764006,764006,662818,86.756,7,overlaps EP kernels,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,other_gpu_kernel,0,1137,104,940,286323,285273,89629,31.419,"7,13,16",overlaps EP kernels,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+prefill,32,routing_and_elementwise,28731,1069,141,328,173054,173054,92052,53.193,7,overlaps EP kernels,b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2
+decode,128,attention_compute,1922,364,11.0,243,32217,32217,0,0.0,7,no direct EP-kernel overlap,6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62
+decode,128,dense_gemm,1845,1077,15,51,19956,19956,0,0.0,7,no direct EP-kernel overlap,6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62
+decode,128,ep_combine,8090,235,18,21,5138,5138,0,0.0,"7,16",no direct GPU-kernel overlap,6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62
+decode,128,ep_dispatch,6234,235,37,82,11921,11921,1,0.008,"7,16",directly overlaps GPU compute,6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62
+decode,128,expert_compute,7958,236,56.5,81,13599,13599,1,0.007,7,overlaps EP kernels,6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62
+decode,128,other_gpu_kernel,0,781,2,8,3645,3645,0,0.0,"7,13",no direct EP-kernel overlap,6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62
+decode,128,routing_and_elementwise,1840,719,4,8,3310,3310,0,0.0,7,no direct EP-kernel overlap,6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62
