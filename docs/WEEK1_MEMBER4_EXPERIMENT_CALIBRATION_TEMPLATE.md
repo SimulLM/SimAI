@@ -10,6 +10,12 @@
 - `docs/data/experiment_record_template.csv`：一次 run 一行，记录复现上下文与结果。
 - `docs/data/calibration_table_template.csv`：一个 run 的一个 metric 一行，记录参考值、仿真值和误差。
 
+配套人工填写与复核材料：
+
+- `docs/templates/WEEK1_EXPERIMENT_RECORD_TEMPLATE.md`：每次构建、测试或仿真单独复制的完整记录模板；
+- `docs/test_records/W1-M4-20260907-01_ANALYTICAL_BASELINE.md`：本周 analytical 构建与主基线实填记录；
+- `docs/test_records/W1-M4-20260907-02_VIDUR_PD_TEST.md`：本周 Vidur PD 测试实填记录。
+
 提交实验结果时复制模板并改名，不直接覆盖空模板。大体积原始 trace、二进制、`results/` 和
 ns-3 临时输出不进入 Git；仓库只保存摘要、哈希和可重新生成它们的命令。
 
@@ -44,6 +50,7 @@ YYYYMMDD-<phase>-<model>-<routing>-<backend>-<short-seq>
 | git_branch / git_sha | 主仓库分支和完整提交 SHA |
 | submodule_shas | SimCCL、AICB、ns-3 的固定 SHA |
 | dirty_worktree | 必须为 false；否则解释差异 |
+| task_category / pass_criteria | 任务类型与可判定的通过标准 |
 
 ### 输入与环境
 
@@ -73,11 +80,15 @@ YYYYMMDD-<phase>-<model>-<routing>-<backend>-<short-seq>
 |---|---|
 | backend | real、vidur、aicb、simai_analytical、simai_simulation |
 | command | 完整可执行命令，不省略环境变量 |
+| working_directory / start/end time | 工作目录和带时区时间；缺失时必须解释原因 |
 | exit_code / status | passed、failed、partial |
 | output_path / output_sha256 | 结果路径、哈希和是否提交 |
 | repetitions | 重复次数；聚合规则另行写明 |
 | wall_time_s / peak_rss_mb | 仿真运行成本 |
 | notes / limitations | 警告、异常、未建模因素、结果边界 |
+
+若执行失败，还必须记录失败阶段、错误原文、最小复现步骤、已排查项、未排查项和关联 Issue。
+结论部分应分开说明“能够验证”和“不能验证”的内容，并保留提交人确认与成员一复核状态。
 
 ## 4. 校准表粒度
 
@@ -147,3 +158,4 @@ P95/P99 不是误差公式，而是对样本分布取分位数。若要报告 P9
 - 增加了单位、样本数、比较层级、参考/仿真配置哈希，防止错误对齐。
 - 增加 zero reference、NaN 和 quantile gap 规则，避免产生无意义百分比。
 - 模板不伪造尚未取得的真实值；未知值为空并由 `status/notes` 解释。
+- 新增逐次 Markdown 记录层，覆盖失败排查、结论边界和审核；两项本周实际测试均已有独立实填记录。
