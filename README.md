@@ -8,6 +8,21 @@ SimInfer 在 SimAI 的计算、集合通信和 ns-3 网络仿真能力之上，�
 
 二次开发聚焦于已确认的研究方向：请求级 DAG 时序、Prefill/Decode（PD）分离、MoE 专家负载不均衡，以及将 EP All-to-All 的 flow/包级网络结果可靠回灌到推理调度器。具体范围与里程碑见 [开发计划](docs/DEVELOPMENT_PLAN.md)。
 
+## 当前执行：第二周接口开发
+
+本周以 [第二周团队执行计划](docs/plan/week2/WEEK2_PLAN.md) 为准；`docs/DEVELOPMENT_PLAN.md` 是总体路线图，不是本周任务清单。
+
+目标：固定 EP 字节矩阵 → 通信后端 → Vidur MoE 执行依赖 → 可追踪的请求指标。D1 上午冻结契约并启动开发，D3 验证 mock 回写，D4–D5 争取完成真实后端闭环。D1–D5 从团队确认的启动日算起。
+
+| 负责人 | 本周主责 | 首项交付 |
+|---|---|---|
+| 成员一（组长） | 接口契约、mock、集成与验收 | D1 发布 v0 契约、校验和调用样例 |
+| 成员二 | EP 矩阵消费与真实通信后端适配 | D1 明确 AllToAll 字节映射，建立 adapter 骨架 |
+| 成员三 | Vidur EP 调用、执行依赖与指标回写 | D1 定位 MoE 插入点，接入 mock |
+| 成员四 | 流量矩阵生成与守恒校验 | D1 提交 EP4 uniform JSON 与校验 |
+
+第一周成果作为 [历史审核与补证依据](docs/plan/week1/week1_acceptance.md)，补证与开发并行。仅 mock 通过不代表本周完成；详细验收标准见第二周计划第 7 节。计划与验收成果统一归档在 `docs/plan/weekN/`。
+
 ## 快速开始
 
 开发与 CI 的受支持环境是 Linux（Ubuntu 20.04+）、GCC/G++ 9.4+、CMake 3.14+ 与 Python 3.10+；完整要求见 [安装指南](docs/getting_started/installation.md)。
@@ -30,6 +45,8 @@ git submodule update --init --recursive
 - [项目分析](docs/PROJECT_ANALYSIS.md)：当前代码、数据流、扩展点与已知风险
 - [架构](docs/ARCHITECTURE.md)：组件边界、执行路径与主要接口
 - [开发计划](docs/DEVELOPMENT_PLAN.md)：范围、里程碑、首批 Issue 与测试策略
+- [第二周执行计划](docs/plan/week2/WEEK2_PLAN.md)：当前接口开发任务、分工、每日里程碑与验收标准
+- [小组周计划与验收](docs/plan/README.md)：按 week1、week2 等归档的组长计划、成果审核与最新验收状态
 - [贡献指南](docs/CONTRIBUTING.md)：分支、提交、PR、评审与完成标准
 - [Upstream 基线](UPSTREAM.md)：上游、提交、许可证、子模块和同步策略
 - [原始 SimAI 文档](docs/README.md)：安装、配置与使用说明
@@ -42,9 +59,7 @@ git submodule update --init --recursive
 
 ## 上游 SimAI README（保留）
 
-<p align="left">
-    <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp ｜ &nbsp<a href="README.ja.md">日本語</a>
-</p>
+<p align="left">English（上游参考内容）</p>
 
 # SimAI
 
@@ -321,9 +336,9 @@ We welcome all contributions! Please read the following guides before getting st
 
 | | |
 |---|---|
-| [Contributing Guide](./CONTRIBUTING.md) | How to submit issues and pull requests |
-| [Security Policy](./SECURITY.md) | How to report security vulnerabilities |
-| [Code of Conduct](./CODE_OF_CONDUCT.md) | Our community standards |
+| [Contributing Guide](./docs/CONTRIBUTING.md) | How to submit issues and pull requests |
+| Security Policy | Repository-level policy document not yet provided |
+| Code of Conduct | Repository-level policy document not yet provided |
 | [Changelog](./CHANGELOG.md) | Version history from v1.5 onwards |
 
 # Contact us

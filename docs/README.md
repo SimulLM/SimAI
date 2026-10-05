@@ -13,6 +13,15 @@
 | [CALIBRATION.md](CALIBRATION.md) | 公开 trace、GPU 资源和端到端实验的分层校准策略 |
 | [UPSTREAM.md](../UPSTREAM.md) | 上游基线、许可证、子模块和同步策略 |
 
+### 小组周计划与验收
+
+当前执行 [第二周接口开发计划](plan/week2/WEEK2_PLAN.md)。组长计划与验收成果统一按周归档在 `docs/plan/weekN/`，完整目录及维护规则见 [周计划总索引](plan/README.md)。
+
+| 周次 | 文档入口 |
+|---|---|
+| Week 2（当前） | [团队执行计划](plan/week2/WEEK2_PLAN.md)（验收记录尚未形成） |
+| Week 1（历史与补证） | [团队成果审核](plan/week1/WEEK1_TEAM_REVIEW_AND_NEXT_PLAN.md)、[验收表](plan/week1/week1_acceptance.md)、[统一基线](plan/week1/week1_baseline_manifest.md) |
+
 ### English
 
 | Category | Document | Description |
