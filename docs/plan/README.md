@@ -8,7 +8,7 @@
 
 | 周次 | 计划与审核 | 验收与基线 |
 |---|---|---|
-| Week 2（当前） | [团队执行计划（可分发）](week2/WEEK2_PLAN.md) | 尚未形成验收记录；计划中的验收标准不代表任务已经完成 |
+| Week 2（当前） | [团队执行计划（可分发）](week2/WEEK2_PLAN.md)、[开工阅读清单](week2/START_HERE.md) | [验收表](week2/week2_acceptance.md)（已建入口，尚未验收） |
 | Week 1（历史与补证） | [团队成果审核与复盘](week1/WEEK1_TEAM_REVIEW_AND_NEXT_PLAN.md) | [第一周验收状态](week1/week1_acceptance.md)、[统一基线](week1/week1_baseline_manifest.md) |
 
 Week 1 的下一阶段建议仅作为历史审核背景；第二周执行安排以 Week 2 计划为准。第一周统一验收仍待补证。

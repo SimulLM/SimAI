@@ -53,7 +53,7 @@ git submodule update --init --recursive
 
 ## 参与开发
 
-禁止直接在默认分支开发。先建立 Issue，再创建 `feat/*`、`fix/*`、`docs/*`、`refactor/*` 或 `test/*` 分支，完成测试后通过 Pull Request 合并。详见 [贡献指南](docs/CONTRIBUTING.md)。
+团队以 `dev` 为开发集成分支，不直接向 `dev` 或默认分支推实现。先建立小任务 Issue，再从共同基线建立任务分支，测试及非作者评审后通过 PR 合回 `dev`，联调验收通过才标记完成。详见 [贡献指南](docs/CONTRIBUTING.md)；第二周开工前按 [成员阅读清单](docs/plan/week2/START_HERE.md) 完成对齐。
 
 ---
 

@@ -19,7 +19,7 @@
 
 | 周次 | 文档入口 |
 |---|---|
-| Week 2（当前） | [团队执行计划](plan/week2/WEEK2_PLAN.md)（验收记录尚未形成） |
+| Week 2（当前） | [团队执行计划](plan/week2/WEEK2_PLAN.md)、[开工阅读清单](plan/week2/START_HERE.md)、[验收表](plan/week2/week2_acceptance.md)（尚未验收） |
 | Week 1（历史与补证） | [团队成果审核](plan/week1/WEEK1_TEAM_REVIEW_AND_NEXT_PLAN.md)、[验收表](plan/week1/week1_acceptance.md)、[统一基线](plan/week1/week1_baseline_manifest.md) |
 
 ### English
