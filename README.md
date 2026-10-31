@@ -1,294 +1,112 @@
-<p align="left">
-    <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp ｜ &nbsp<a href="README.ja.md">日本語</a>
-</p>
+# 大模型推理 DAG 时间域仿真
 
-# SimAI
+基于 [SimAI](https://github.com/aliyun/SimAI) 的大模型推理仿真改造项目。我们计划构建依赖驱动、资源约束的 DAG 执行引擎，统一描述计算、通信和同步时序，并以原模型参考数据、原 SimAI 结果和改造后的结果进行对照，验证预测精度的改善。
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![NSDI'25](https://img.shields.io/badge/NSDI'25-SimAI-blue.svg)](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)
+**当前处于设计与开发准备阶段。DAG 执行核、PD 和动态 MoE 改造尚待实现，精度提升尚未完成验证。**
 
-# Latest News
+## 项目目标
 
-### Recent Updates
+- 接入现有请求调度和推理执行流程，让 DAG 实际控制任务执行和仿真时间推进。
+- 显式建模任务依赖、GPU/通信资源竞争以及计算通信重叠。
+- 支持 PD 分离中的 KV 传输、接收就绪、容量背压与 Decode 准入。
+- 支持 MoE 动态路由、Expert 负载差异、Dispatch/Combine 和同步拖尾。
+- 输出任务与请求时间线、资源等待和推理指标，解释预测误差及性能瓶颈。
 
-- [2026/08] **SimAI 1.7 Released!** Key updates:
-  - [SimCCL](https://github.com/aliyun/SimCCL): Updated to NCCL v2.30, decoupled from the SimAI main repository, and able to generate the flow model standalone for offline analysis.
+完整交付流程：
 
-- [2026/04] **SimAI 1.6 Released!** Key updates:
-  - GPU memory modeling for inference simulation (parameter counting & KV cache).
-  - Linear interpolation for decode time estimation (replacing nearest-neighbor).
-  - Prefill-Decode Disaggregation memory planning (independent budgets for Prefill/Decode).
-
-- [2025/12] **SimAI 1.5 Released!** This release brings end-to-end simulation for multi-request **inference** workloads. Key features include:
-
-  - **Advanced Inference Simulation:** Model complex scenarios with Prefill/Decode separation.
-  - **Modern Model Support:** Now includes DeepSeek, Qwen3Moe and Qwen3Next. See [AICB's README](./aicb/README.md) for more detailed information.
-  - **Request Scheduling:** Request scheduling is now handled by a component adapted from Microsoft's [Vidur](https://github.com/microsoft/vidur). See [Vidur-Alibabacloud's README](./vidur-alibabacloud/README.md) for more detailed information.
-
-- [2025/11] [AICB](https://github.com/aliyun/aicb/tree/master) now supports generating **prefill/decode** inference workloads for **DeepSeek**, **Qwen3-MoE** and **Qwen3-Next**.
-
-- [2025/09] [AICB](https://github.com/aliyun/aicb/tree/master) now supports generating training workloads for DeepSeek. Thanks to [@parthpower](https://github.com/parthpower) for this contribution.
-
-- [2025/06] The code of SimCCL is first released in the branch [SimCCL](https://github.com/aliyun/SimAI/tree/SimCCL) and will be released in SimCCL repository soon.
-
-**We warmly welcome contributions from the community!** If you are interested in helping shape the future of SimAI, please feel free to open an issue to discuss your ideas or submit a pull request.
-
-
-<div align="center">
-🎯 <b>Events & Community Engagement</b> 🎯
-
-### 📅 Upcoming Events
-
-| Date | Event | Location | Content | Type |
-|:----:|:----- |:-------- |:------- |:----:|
-| --   |       |          |         |      |
-
-### 🌟 Past Events
-
-| Date             | Event                                                                    | Location                | Content                                                  | Type          |
-|:----------------:|:------------------------------------------------------------------------ |:----------------------- |:-------------------------------------------------------- |:-------------:|
-| Aug 14, 2026     | SimAI 1.7                                                                | 🌐 Online               | The release of SimAI 1.7                                 | 💻 Virtual    |
-| Apr 23, 2026     | SimAI 1.6                                                                | 🌐 Online               | The release of SimAI 1.6                                 | 💻 Virtual    |
-| Dec 30, 2025     | SimAI 1.5                                                                | 🌐 Online               | The release of SimAI 1.5                                 | 💻 Virtual    |
-| Jun 4, 2025      | The first workshop of the SimAI community                                | 📍 Peking University    | Three talks from community contributors                  | 🎓 On-site    |
-| May 24, 2025     | The 28th Chinasys workshop                                               | 📍 Chongqing University | An invited talk about SimAI                              | 🎓 On-site    |
-| Dec 27, 2024     | SimAI Technical Presentation                                             | 📍 Beihang University   | SimAI Technical Sharing & Discussion                     | 🎓 On-site    |
-| Dec 6, 2024      | HKUST Technical Workshop                                                 | 📍 HKUST(GZ)            | SimAI Technical Sharing & Discussion                     | 🎓 On-site    |
-| Dec 5, 2024      | [Bench'24 Conference](https://mp.weixin.qq.com/s/STic_E12xMhZRxhzK9wRnw) | 📍 Guangzhou            | SimAI Tutorial & Deep-dive Session                       | 🎓 On-site    |
-| Nov 26, 2024     | SimAI Community Live Stream                                              | 🌐 Online               | Interactive Technical Discussion & Demo (400+ Attendees) | 💻 Virtual    |
-| Nov 15, 2024     | Technical Workshop                                                       | 📍 Thousand Island Lake | SimAI Offline Technical Exchange                         | 🎯 On-site    |
-| Oct 18, 2024     | Guest Lecture                                                            | 📍 Fudan University     | SimAI Tutorial & Public Course                           | 🎓 On-site    |
-| Sept 24-26, 2024 | CCF HPC China 2024                                                       | 📍 Wuhan                | SimAI Introduction & Technical Presentation              | 🎤 Conference |
-
-</div>
-
----
-
-## Documentation
-
-See [Tutorial](./docs/Tutorial.md) for full documentation.
-
----
-
-# Table of Contents
-
-- [SimAI Overview](#simai-overview)
-  - [Introduction](#introduction)
-  - [Components](#components)
-  - [Scenario](#scenario)
-  - [Citation](#citation)
-- [Quick Start](#quick-start)
-  - [Setup](#setup)
-  - [Use SimAI-Analytical](#use-simai-analytical)
-  - [Use SimAI-Simulation](#use-simai-simulation)
-  - [Use SimCCL](#use-simccl)
-  - [Use Multi-requests Inference Simulation](#use-multi-requests-inference-simulation)
-
-# SimAI Overview
-
-## Introduction
-
-**SimAI** is the industry's first full-stack, high-precision **Sim**ulator for **AI** large-scale **inference** and **training**. It provides detailed modeling and simulation of the entire LLM training process, encompassing framework, collective communication, network layers, and more. This comprehensive approach offers end-to-end performance data, enabling researchers to:
-
-- Analyze inference/training process details
-- Evaluate the time consumption of AI tasks under specific conditions
-- Evaluate E2E performance gains from various algorithmic optimizations including:
-  - Framework parameters settings
-  - Collective communication algorithms
-  - NCCL environment variables
-  - Network transmission protocols
-  - Congestion control algorithms
-  - Adaptive routing algorithms
-  - Scale-up/out network topology modifications
-  - ...
-
-## Components
-
-<pre>
-        |--- <a href="https://github.com/aliyun/aicb">AICB</a>
-SimAI --|--- <a href="https://github.com/aliyun/SimCCL">SimCCL</a>
-        |--- <a href="https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud">astra-sim-alibabacloud</a>
-        |--- <a href="https://github.com/aliyun/ns-3-alibabacloud">ns-3-alibabacloud</a>
-        |--- vidur-alibabacloud
-</pre>
-
-Building on pure simulation capabilities, SimAI has evolved into a versatile full-stack toolkit comprising four components ([aicb](https://github.com/aliyun/aicb), [SimCCL](https://github.com/aliyun/SimCCL), [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud), [ns-3-alibabacloud](https://github.com/aliyun/ns-3-alibabacloud)). These components can be combined in various ways to achieve different functionalities. Below, we present the main usage scenarios for SimAI. We encourage users to explore even more possibilities with this powerful tool.
-
-Below is the architecture diagram of the SimAI Simulator:
-![SimAI_Arc](./docs/images/SimAI_Arc.png)
-
-astra-sim-alibabacloud is extended from [astra-sim](https://github.com/astra-sim/astra-sim/tree/ASTRA-sim-1.0). We are grateful to the astra-sim team for their excellent work and open-source contribution. We have integrated NCCL algorithms and added some new features.
-
-## Scenario
-
-SimAI supports three major operation modes to meet different simulation requirements:
-
-**SimAI-Analytical** offers fast simulation by abstracting network communication details using bus bandwidth (busbw) to estimate collective communication time. The current open-source binary computes busbw automatically from `-nv`/`-nic`/`-n_p_s` (the default, shown below). Note: the user-defined `busbw.yaml` path (`-busbw`) is not wired in the current open-source analytical binary; refer to earlier SimAI versions for that workflow.
-
-**SimAI-Simulation** provides full-stack simulation with fine-grained network communication modeling. It leverages NS3 or other network simulators (NS3 currently open-sourced) to achieve detailed simulation of all communication behaviors, aiming for high-fidelity reproduction of actual training environments.
-
-**SimAI-Physical** *(Beta)* enables physical traffic generation for CPU RDMA cluster environments. This mode generates NCCL-like traffic patterns, allowing in-depth study of NIC behaviors during LLM training. It is currently in internal testing phase.
-
-| Scenario                               | Description                                                                                         | Component Combination                                                                                                                                                                                                                                             |
-|----------------------------------------|-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1. AICB Test Suite                     | Run communication patterns on GPU clusters using AICB Test suite                                    | [AICB](https://github.com/aliyun/aicb)                                                                                                                                                                                                                            |
-| 2. AICB/AIOB Workload                  | Model compute/communication patterns of **inference**/training process to generate workload         | [AICB](https://github.com/aliyun/aicb)                                                                                                                                                                                                                            |
-| 3. Collective Comm Analyze             | Break down collective communication operations into point-to-point communication sets               | [SimCCL](https://github.com/aliyun/SimCCL)                                                                                                                                                                                                                        |
-| 4. Collective Comm w/o GPU             | Perform RDMA collective communication traffic on non-GPU clusters                                   | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(physical)                                                                      |
-| 5. SimAI-Analytical                    | Conduct rapid AICB workload analysis and simulation on any server (ignoring underlying network details) | [AICB](https://github.com/aliyun/aicb) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical)                                                                                                                 |
-| 6. SimAI-Simulation                    | Perform full simulation on any server                                                               | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(simulation) + [ns-3-alibabacloud](https://github.com/aliyun/ns-3-alibabacloud) |
-| 7. Multi-requests Inference Simulation | Perform full multi-requests **inference** simulation using one GPU server                           | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [vidur-alibabacloud](./vidur-alibabacloud) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical/simulation)            |
-
-## Citation
-
-SimAI work has been accepted by NSDI'25 Spring, for more details, please refer to our paper below:
-
-*SimAI: Unifying Architecture Design and Performance Tuning for Large-Scale Large Language Model Training with Scalability and Precision.*
-
-[[pdf](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)] / [[slides](./docs/SimAI_Intro_Online.pdf)] / [[video](https://n.dingtalk.com/dingding/live-room/index.html?roomId=OF5BkBUXVxmgsK7x&liveUuid=305736cd-aa70-498b-8003-2b471a53decd)]
-
-We encourage innovative research and extensions based on SimAI. Welcome to join our community group or reach out via email for discussion. We may provide technical support.
-
-# Quick Start
-
-Here are some simple examples. SimAI full tutorials can be found here: [**SimAI@Tutorial**](./docs/Tutorial.md), [**aicb@Tutorial**](https://github.com/aliyun/aicb/blob/master/training/tutorial.md), [**SimCCL@Tutorial**](./SimCCL/README.md), [**ns-3-alibabacloud@Tutorial**](https://github.com/aliyun/ns-3-alibabacloud)
-
-## Setup
-
-You can follow the instructions below to quickly set up the environments and run SimAI.
-
-### From Source Code
-
-The following code has been successfully tested on GCC/G++ 9.4.0, python 3.8.10 in Ubuntu 20.04.
-
-You can use the official Ubuntu 20.04 image, and do not install ninja.
-
-(For generation workloads, it's recommended to leverage NGC container images directly.)
-
-```bash
-# Clone the repository
-$ git clone https://github.com/aliyun/SimAI.git
-$ cd ./SimAI/
-
-# Clone submodules
-$ git submodule update --init --recursive
-# Make sure use the newest commit
-$ git submodule update --remote
-
-# Compile SimAI-Analytical
-$ ./scripts/build.sh -c analytical
-
-# Compile SimAI-Simulation (ns3)
-$ ./scripts/build.sh -c ns3
+```mermaid
+flowchart LR
+    W[请求与配置] --> S[调度与组批]
+    S --> G[DAG 构图]
+    G --> E[依赖与资源约束执行]
+    E --> C[事件推进与完成回调]
+    C --> M[请求指标与任务时间线]
 ```
 
-## Use SimAI-Analytical
+## 当前基础与改造重点
 
-By default, SimAI-Analytical calculates bus bandwidth automatically:
+| 部分 | 当前基础 | 改造重点 |
+|---|---|---|
+| 推理调度 | 请求生成、组批、逐 Token 迭代和 Stage 队列 | 保留策略，将执行边界接入 DAG |
+| 时序与依赖 | 离散事件推进、请求 DAG 数据结构、底层集合 flow 依赖 | 接通任务就绪、资源申请、完成释放和后继激活 |
+| 计算通信 | 预测器和 Stage 汇总耗时 | 选择性展开计算、通信和同步任务，避免重复计费 |
+| PD | P/D 配置、KV 大小估计和静态传输延迟 | KVReady 门控、源缓存保留、目标容量预留及争用 |
+| MoE | 层级估时与聚合负载近似 | 动态任务图、Expert 独立耗时和共享资源等待 |
+| 数据与验证 | 已归档基准、通信日志、负载数据和分析材料 | 对齐配置与单位，建立独立验证集和误差对照 |
 
-```bash
-$ ./bin/SimAI_analytical -w ./example/workload_analytical.txt -g 9216 -nv 360 -nic 48.5 -n_p_s 8 -g_p_s 8 -r example-
-```
+图结构、任务顺序和共享资源是不同概念：依赖边表示必须遵守的先后关系，资源管理器决定就绪任务能否启动。
 
-> Note: The `-busbw example/busbw.yaml` (user-defined busbw) command below is **not supported** by the current open-source analytical binary — the `-busbw` flag is not parsed, so the command prints usage and exits. It is kept here for reference; see earlier SimAI versions for the manual `busbw.yaml` workflow.
+## 八阶段实施路线
 
-```bash
-$ ./bin/SimAI_analytical -w example/workload_analytical.txt -g 9216 -g_p_s 8 -r test- -busbw example/busbw.yaml
-```
-
-## Use SimAI-Simulation
-
-```bash
-# Create network topo
-$ python3 ./astra-sim-alibabacloud/inputs/topo/gen_Topo_Template.py -topo Spectrum-X -g 128 -gt A100 -bw 100Gbps -nvbw 2400Gbps
-
-# Running
-$ AS_SEND_LAT=3 AS_NVLS_ENABLE=1 ./bin/SimAI_simulator -t 16 -w ./example/microAllReduce.txt -n ./Spectrum-X_128g_8gps_100Gbps_A100 -c astra-sim-alibabacloud/inputs/config/SimAI.conf
-```
-
-## Use SimCCL
-
-SimCCL can be used independently to analyze collective communication flow decomposition without running full network simulation:
-
-```bash
-# Build SimCCL standalone binary
-$ cd SimCCL/standalone
-$ bash build.sh v2.30
-
-# Single collective operation analysis
-$ ./build/simccl-standalone --op AllReduce --size 4194304 \
-    --nRanks 8 --nNodes 1 --gpus_per_node 8 --gpu_type H20
-
-# Workload file mode
-$ ./build/simccl-standalone -w ../../example/microAllReduce.txt \
-    --nRanks 16 --nNodes 2 --gpus_per_node 8 --gpu_type H20
-```
-
-Output: `ncclFlowModel_detailed_flows.csv` — point-to-point flow decomposition of collective operations.
-
-For detailed documentation, see [SimCCL README](./SimCCL/README.md).
-
-## Use Multi-requests Inference Simulation
-
-For detailed information, please refer to the [README](./vidur-alibabacloud/README.md) file in the `vidur-alibabacloud` directory. This module leverages AICB to profile the computation time of **inference** workloads. Due to its reliance on specific hardware-accelerated libraries like DeepGEMM and FlashMLA, it is exclusively compatible with NVIDIA GPUs based on the **Hopper (SM90)** and **Blackwell (SM100)** architectures.
-
-```bash
-# Build from Dockerfile
-docker build -t image:latest .
-docker run --gpus all -it --rm image:latest
-```
-
-**Note:** Please add `ENV FLASH_MLA_DISABLE_SM100=1` to Dockerfile if using Hopper GPUs.
-
-To quickly validate all supported inference scenarios (Qwen3-Next-80B, DeepSeek-671B, Qwen3-MoE-235B), use the bundled 4-scenario test suite:
-
-```bash
-# Prerequisites: conda activate vidur
-bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --all
-# Or run a single scenario:
-bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --scenario 1
-```
-
-> **Prerequisites:** Requires `conda activate vidur` environment. See [Environment Setup](./vidur-alibabacloud/README.md#-environment-setup) for details.
->
-> For detailed scenario configuration table and output file descriptions, see [Vidur-AlibabaCloud README](./vidur-alibabacloud/README.md#4-scenario-configuration).
-
-# Acknowledgments
-
-A huge thanks to the following people and organizations who have contributed to this project:
-
-- TianHao Fu (Peking University) and [TELOS-syslab](https://github.com/TELOS-syslab/)
-- Parth Parikh (KEYSIGHT)
-- Sarah-Michelle Hammer & Ziyi Wang (TU-Berlin)
-- Xinyue Li (BUPT)
-- Tong Chen (Zhejiang University)
-- Ming Wang (BUPT)
-- Tao Jiang (Institute of Computing Technology, Chinese Academy of Sciences)
-
-...and many other individual contributors from the community (See the [Contributors to aliyun/SimAI](https://github.com/aliyun/SimAI/graphs/contributors)).
-
-We also thank Chenning Li (MIT CSAIL) who initiated the cooperation on integrating SimAI into [M4](https://github.com/netiken/m4), a new, innovative simulator.
-
-**This project still welcomes more contributions and suggestions.**
-
-# Contributing
-
-We welcome all contributions! Please read the following guides before getting started:
-
-| | |
+| 阶段 | 主要产出 |
 |---|---|
-| [Contributing Guide](./CONTRIBUTING.md) | How to submit issues and pull requests |
-| [Security Policy](./SECURITY.md) | How to report security vulnerabilities |
-| [Code of Conduct](./CODE_OF_CONDUCT.md) | Our community standards |
-| [Changelog](./CHANGELOG.md) | Version history from v1.5 onwards |
+| 1. 定义任务图与执行边界 | 图 schema、接口、支持配置、原 SimAI 误差基线 |
+| 2. 实现最小 DAG 执行核 | 依赖跟踪、Ready/事件队列、完成解锁 |
+| 3. 加入资源约束 | 计算/通信资源、原子申请释放、等待与并行 |
+| 4. 接入现有推理执行链 | 原入口下运行 DAG，保持请求与 Token 状态正确 |
+| 5. 拆分计算与通信任务 | 层级计算、TP/PP/EP 通信、分项 cost 和同步 |
+| 6. 扩展 PD 分离 | KV 传输、KVReady、源 pin、目标 reserve 与背压 |
+| 7. 扩展动态 MoE | 路由、Expert/Group、Dispatch/Combine 与拖尾 |
+| 8. 回归、校准与规模优化 | 独立验证集误差、运行开销和可复现交付 |
 
-# Contact us
+PD 与 MoE 在共享执行基础完成后并行推进。每阶段由成员自行认领，任务、交付、验收和 DDL 见[八阶段分工与验收计划](<docs/DAG 改造八阶段分工与验收计划.md>)。
 
-Please email Gang Lu (yunding.lg@alibaba-inc.com), Feiyang Xue (xuefeiyang.xfy@alibaba-inc.com) or Qingxu Li (qingxu.lqx@alibaba-inc.com) if you have any questions.
+## 文档与数据
 
-Welcome to join the SimAI community chat groups, with the DingTalk group on the left and the WeChat group on the right.
+| 入口 | 内容 |
+|---|---|
+| [DAG 架构与改造计划](docs/dag架构与改造计划.md) | 目标、架构、接口和验证设计 |
+| [DAG 实现现状与缺陷](docs/DAG实现现状与缺陷.md) | 已有实现与源码定位 |
+| [八阶段分工与验收计划](<docs/DAG 改造八阶段分工与验收计划.md>) | 阶段认领、排期、交付与精度验收 |
+| [基准数据说明](baseline-data/README.md) | 分类、可用范围、待核验项和隔离样本 |
+| [基准文件索引](baseline-data/INDEX.md) | 具体数据、脚本和实验记录的位置 |
+| [SimAI 使用文档](docs/simai/README.md) | 继承组件的安装、运行与配置说明 |
 
-<div style="display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-left: 20px;">
-    <img src="./docs/images/simai_dingtalk.jpg" alt="SimAI DingTalk" style="width: 300px; height: auto;">
-    <img src="./docs/images/simai_wechat.jpeg" alt="SimAI WeChat" style="width: 300px; height: auto;">
-</div>
+`baseline-data/` 保存历史原件和分析产物；新实验结果应另存到 `results/`，保留运行配置和输入身份，不覆盖基准文件。
+
+## 环境与运行
+
+当前沿用 SimAI/Vidur 的环境和入口。初始化子模块：
+
+```bash
+git submodule update --init --recursive
+```
+
+- SimAI 编译与运行：[中文安装](docs/simai/CN/getting_started/installation.md)、[快速开始](docs/simai/CN/getting_started/quickstart.md)。
+- 推理环境、请求生成与场景配置：[Vidur-AlibabaCloud](vidur-alibabacloud/README_CN.md)。
+- 原有 PD 配置测试，在按推理文档准备好 Python 环境后运行：
+
+```bash
+cd vidur-alibabacloud
+python -m pytest tests/test_pd_separation.py -v
+```
+
+该测试覆盖配置与集群构造，不能代替 DAG、KV 传输或端到端精度验收。独立 DAG 命令入口随执行核实现后补充。
+
+## 验证标准
+
+**功能正确性**：验证 DAG 拓扑、依赖、时间单调性、确定性、资源容量和请求完成回调；使用可手算用例检验串行、并行、争用与同步。
+
+**精度提升**：在相同模型、硬件、输入、并行配置和指标定义下，比较原模型参考数据、原 SimAI 和新 DAG 系统。校准数据与独立验证数据分开，报告绝对/相对误差、样本数、退化情况和运行开销。
+
+原模型数据的测量或估计属性需明确。合成测试通过、历史模拟结果导入或新旧输出不同，都不能单独证明真实硬件预测更准确。
+
+## 仓库结构
+
+```text
+baseline-data/          历史基准、输入、日志、分析与隔离样本
+docs/                  DAG 设计、分工与技术文档
+  simai/               SimAI 教程、配置与图片
+  upstream/simai/      原 SimAI 多语言 README
+vidur-alibabacloud/     请求调度、推理事件与性能预测
+aicb/                  计算画像与工作负载
+astra-sim-alibabacloud/ 集合通信仿真
+SimCCL/                集合通信 flow model
+ns-3-alibabacloud/      网络仿真
+scripts/               现有构建与运行脚本
+example/               现有示例输入
+```
+
+## 原 SimAI 项目
+
+本项目保留 SimAI、Vidur-AlibabaCloud、AICB、Astra-Sim、SimCCL 和 ns-3 的已有实现作为改造基础。原项目说明已归档：[中文](docs/upstream/simai/README_CN.md)、[English](docs/upstream/simai/README.md)、[日本語](docs/upstream/simai/README.ja.md)。许可证见 [LICENSE](LICENSE)。

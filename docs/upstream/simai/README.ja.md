@@ -1,10 +1,12 @@
+> 本页保留原 SimAI 项目说明。返回[本项目首页](../../../README.md)，或查看[SimAI 使用文档](../../simai/README.md)。以下命令仍从仓库根目录执行。
+
 <p align="left">
     <a href="README_CN.md">中文</a> ｜ <a href="README.md">English</a> ｜ 日本語
 </p>
 
 # SimAI
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](../../../LICENSE)
 [![NSDI'25](https://img.shields.io/badge/NSDI'25-SimAI-blue.svg)](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)
 
 # 最新ニュース
@@ -22,8 +24,8 @@
 - [2025/12] **SimAI 1.5 リリース！** このリリースでは、マルチリクエスト**推論**ワークロード向けのエンドツーエンドシミュレーションが実現されました。主な機能：
 
   - **高度な推論シミュレーション：** Prefill/Decode 分離を用いた複雑なシナリオのモデリング。
-  - **最新モデルサポート：** DeepSeek、Qwen3Moe、Qwen3Next に対応。詳細は [AICB の README](./aicb/README.md) を参照してください。
-  - **リクエストスケジューリング：** リクエストスケジューリングは、Microsoft の [Vidur](https://github.com/microsoft/vidur) から適応したコンポーネントによって処理されます。詳細は [Vidur-Alibabacloud の README](./vidur-alibabacloud/README.md) を参照してください。
+  - **最新モデルサポート：** DeepSeek、Qwen3Moe、Qwen3Next に対応。詳細は [AICB の README](../../../aicb/README.md) を参照してください。
+  - **リクエストスケジューリング：** リクエストスケジューリングは、Microsoft の [Vidur](https://github.com/microsoft/vidur) から適応したコンポーネントによって処理されます。詳細は [Vidur-Alibabacloud の README](../../../vidur-alibabacloud/README.md) を参照してください。
 
 - [2025/11] [AICB](https://github.com/aliyun/aicb/tree/master) が **DeepSeek**、**Qwen3-MoE**、**Qwen3-Next** 向けの **prefill/decode** 推論ワークロード生成に対応しました。
 
@@ -66,7 +68,7 @@
 
 ## ドキュメント
 
-詳細なドキュメントは [チュートリアル](./docs/Tutorial.md) を参照してください。
+詳細なドキュメントは [チュートリアル](../../simai/Tutorial.md) を参照してください。
 
 ---
 
@@ -115,7 +117,7 @@ SimAI --|--- <a href="https://github.com/aliyun/SimCCL">SimCCL</a>
 純粋なシミュレーション能力を基盤に、SimAIは4つのコンポーネント（[aicb](https://github.com/aliyun/aicb)、[SimCCL](https://github.com/aliyun/SimCCL)、[astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)、[ns-3-alibabacloud](https://github.com/aliyun/ns-3-alibabacloud)）からなる多機能なフルスタックツールキットに進化しました。これらのコンポーネントは、様々な方法で組み合わせて異なる機能を実現できます。以下に、SimAIの主な使用シナリオを示します。この強力なツールでさらに多くの可能性を探求することをお勧めします。
 
 以下はSimAIシミュレータのアーキテクチャ図です：
-![SimAI_Arc](./docs/images/SimAI_Arc.png)
+![SimAI_Arc](../../simai/images/SimAI_Arc.png)
 
 astra-sim-alibabacloudは[astra-sim](https://github.com/astra-sim/astra-sim/tree/ASTRA-sim-1.0)を拡張したものです。astra-simチームの素晴らしい仕事とオープンソースへの貢献に感謝します。私たちはNCCLアルゴリズムを統合し、いくつかの新機能を追加しました。
 
@@ -137,7 +139,7 @@ SimAIは、さまざまなシミュレーション要件を満たすために、
 | 4. GPUなしでの集合通信 | 非GPUクラスタでRDMA集合通信トラフィックを実行 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(physical) |
 | 5. SimAI-Analytical | 任意のサーバーで迅速なAICBワークロード分析とシミュレーションを実施（基盤となるネットワークの詳細は無視） | [AICB](https://github.com/aliyun/aicb) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical) |
 | 6. SimAI-Simulation | 任意のサーバーで完全なシミュレーションを実行 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(simulation) + [ns-3-alibabacloud](https://github.com/aliyun/ns-3-alibabacloud) |
-| 7. マルチリクエスト推論シミュレーション | 1台のGPUサーバーを使用してマルチリクエスト**推論**のフルシミュレーションを実行 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [vidur-alibabacloud](./vidur-alibabacloud) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical/simulation) |
+| 7. マルチリクエスト推論シミュレーション | 1台のGPUサーバーを使用してマルチリクエスト**推論**のフルシミュレーションを実行 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [vidur-alibabacloud](../../../vidur-alibabacloud) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical/simulation) |
 
 ## 引用
 
@@ -145,13 +147,13 @@ SimAIの研究はNSDI'25 Springに採択されました。詳細については�
 
 *SimAI: Unifying Architecture Design and Performance Tuning for Large-Scale Large Language Model Training with Scalability and Precision.*
 
-[[pdf](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)] / [[slides](./docs/SimAI_Intro_Online.pdf)] / [[video](https://n.dingtalk.com/dingding/live-room/index.html?roomId=OF5BkBUXVxmgsK7x&liveUuid=305736cd-aa70-498b-8003-2b471a53decd)]
+[[pdf](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)] / [[slides](../../simai/SimAI_Intro_Online.pdf)] / [[video](https://n.dingtalk.com/dingding/live-room/index.html?roomId=OF5BkBUXVxmgsK7x&liveUuid=305736cd-aa70-498b-8003-2b471a53decd)]
 
 SimAIを基盤とした革新的な研究や拡張を奨励します。ディスカッションのために私たちのコミュニティグループに参加するか、メールでお問い合わせください。技術的なサポートを提供する場合があります。
 
 # クイックスタート
 
-以下に簡単な例を示します。SimAIの完全なチュートリアルはこちらにあります：[**SimAI@Tutorial**](./docs/Tutorial.md)、[**aicb@Tutorial**](https://github.com/aliyun/aicb/blob/master/training/tutorial.md)、[**SimCCL@Tutorial**](./SimCCL/README.md)、[**ns-3-alibabacloud@Tutorial**](https://github.com/aliyun/ns-3-alibabacloud)
+以下に簡単な例を示します。SimAIの完全なチュートリアルはこちらにあります：[**SimAI@Tutorial**](../../simai/Tutorial.md)、[**aicb@Tutorial**](https://github.com/aliyun/aicb/blob/master/training/tutorial.md)、[**SimCCL@Tutorial**](../../../SimCCL/README.md)、[**ns-3-alibabacloud@Tutorial**](https://github.com/aliyun/ns-3-alibabacloud)
 
 ## セットアップ
 
@@ -226,11 +228,11 @@ $ ./build/simccl-standalone -w ../../example/microAllReduce.txt \
 
 出力：`ncclFlowModel_detailed_flows.csv` — 集合操作のポイントツーポイントフロー分解。
 
-詳細なドキュメントについては [SimCCL README](./SimCCL/README.md) を参照してください。
+詳細なドキュメントについては [SimCCL README](../../../SimCCL/README.md) を参照してください。
 
 ## マルチリクエスト推論シミュレーションの使い方
 
-詳細については、`vidur-alibabacloud` ディレクトリ内の [README](./vidur-alibabacloud/README.md) ファイルを参照してください。このモジュールは AICB を活用して**推論**ワークロードの計算時間をプロファイリングします。DeepGEMM や FlashMLA などの特定のハードウェアアクセラレーションライブラリに依存するため、**Hopper (SM90)** および **Blackwell (SM100)** アーキテクチャベースの NVIDIA GPU のみに対応しています。
+詳細については、`vidur-alibabacloud` ディレクトリ内の [README](../../../vidur-alibabacloud/README.md) ファイルを参照してください。このモジュールは AICB を活用して**推論**ワークロードの計算時間をプロファイリングします。DeepGEMM や FlashMLA などの特定のハードウェアアクセラレーションライブラリに依存するため、**Hopper (SM90)** および **Blackwell (SM100)** アーキテクチャベースの NVIDIA GPU のみに対応しています。
 
 ```bash
 # Dockerfile からビルド
@@ -249,9 +251,9 @@ bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --all
 bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --scenario 1
 ```
 
-> **前提条件：** `conda activate vidur` 環境が必要です。詳細は [環境セットアップ](./vidur-alibabacloud/README.md#-environment-setup) を参照してください。
+> **前提条件：** `conda activate vidur` 環境が必要です。詳細は [環境セットアップ](../../../vidur-alibabacloud/README.md#-environment-setup) を参照してください。
 >
-> シナリオ設定テーブルと出力ファイルの詳細については、[Vidur-AlibabaCloud README](./vidur-alibabacloud/README.md#4-scenario-configuration) を参照してください。
+> シナリオ設定テーブルと出力ファイルの詳細については、[Vidur-AlibabaCloud README](../../../vidur-alibabacloud/README.md#4-scenario-configuration) を参照してください。
 
 # 謝辞
 
@@ -277,10 +279,10 @@ Chenning Li（MIT CSAIL）にも感謝いたします。革新的な新しいシ
 
 | | |
 |---|---|
-| [コントリビューションガイド](./CONTRIBUTING.md) | Issue やプルリクエストの提出方法 |
-| [セキュリティポリシー](./SECURITY.md) | セキュリティ脆弱性の報告方法 |
-| [行動規範](./CODE_OF_CONDUCT.md) | 私たちのコミュニティ基準 |
-| [変更履歴](./CHANGELOG.md) | v1.5 以降のバージョン履歴 |
+| コントリビューションガイド | Issue やプルリクエストの提出方法 |
+| セキュリティポリシー | セキュリティ脆弱性の報告方法 |
+| 行動規範 | 私たちのコミュニティ基準 |
+| [変更履歴](../../../CHANGELOG.md) | v1.5 以降のバージョン履歴 |
 
 # お問い合わせ
 
@@ -289,6 +291,6 @@ Chenning Li（MIT CSAIL）にも感謝いたします。革新的な新しいシ
 SimAIコミュニティのチャットグループへの参加を歓迎します。左がDingTalkグループ、右がWeChatグループです。
 
 <div style="display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-left: 20px;">
-    <img src="./docs/images/simai_dingtalk.jpg" alt="SimAI DingTalk" style="width: 300px; height: auto;">
-    <img src="./docs/images/simai_wechat.jpeg" alt="SimAI WeChat" style="width: 300px; height: auto;">
+    <img src="../../simai/images/simai_dingtalk.jpg" alt="SimAI DingTalk" style="width: 300px; height: auto;">
+    <img src="../../simai/images/simai_wechat.jpeg" alt="SimAI WeChat" style="width: 300px; height: auto;">
 </div>

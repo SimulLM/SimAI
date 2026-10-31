@@ -1,10 +1,12 @@
+> 本页保留原 SimAI 项目说明。返回[本项目首页](../../../README.md)，或查看[SimAI 使用文档](../../simai/README.md)。以下命令仍从仓库根目录执行。
+
 <p align="left">
     中文&nbsp ｜ &nbsp<a href="README.md">English</a>&nbsp ｜ &nbsp<a href="README.ja.md">日本語</a>
 </p>
 
 # SimAI
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](../../../LICENSE)
 [![NSDI'25](https://img.shields.io/badge/NSDI'25-SimAI-blue.svg)](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)
 
 # 最新动态
@@ -22,8 +24,8 @@
 - [2025/12] **SimAI 1.5 正式发布！** 本版本新增对多请求**推理**工作负载的端到端仿真支持，主要特性包括：
 
   - **高级推理仿真：** 支持 Prefill/Decode 分离等复杂场景建模。
-  - **主流模型支持：** 新增 DeepSeek、Qwen3Moe 和 Qwen3Next 模型。详见 [AICB README](./aicb/README.md)。
-  - **请求调度：** 请求调度组件基于微软 [Vidur](https://github.com/microsoft/vidur) 适配，详见 [Vidur-Alibabacloud README](./vidur-alibabacloud/README_CN.md)。
+  - **主流模型支持：** 新增 DeepSeek、Qwen3Moe 和 Qwen3Next 模型。详见 [AICB README](../../../aicb/README.md)。
+  - **请求调度：** 请求调度组件基于微软 [Vidur](https://github.com/microsoft/vidur) 适配，详见 [Vidur-Alibabacloud README](../../../vidur-alibabacloud/README_CN.md)。
 
 - [2025/11] [AICB](https://github.com/aliyun/aicb/tree/master) 新增对 **DeepSeek**、**Qwen3-MoE** 和 **Qwen3-Next** 的 **prefill/decode** 推理工作负载生成支持。
 
@@ -65,7 +67,7 @@
 
 ## 文档
 
-详见 [Tutorial](./docs/Tutorial.md) 获取完整文档。
+详见 [Tutorial](../../simai/Tutorial.md) 获取完整文档。
 
 ---
 
@@ -114,7 +116,7 @@ SimAI --|--- <a href="https://github.com/aliyun/SimCCL">SimCCL</a>
 在纯仿真能力基础上，SimAI 已演进为一个由四个组件（[aicb](https://github.com/aliyun/aicb)、[SimCCL](https://github.com/aliyun/SimCCL)、[astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)、[ns-3-alibabacloud](https://github.com/aliyun/ns-3-alibabacloud)）构成的全栈工具套件。这些组件可以灵活组合以实现不同功能。我们鼓励用户探索更多可能性。
 
 下图为 SimAI 模拟器架构图：
-![SimAI_Arc](./docs/images/SimAI_Arc.png)
+![SimAI_Arc](../../simai/images/SimAI_Arc.png)
 
 astra-sim-alibabacloud 基于 [astra-sim](https://github.com/astra-sim/astra-sim/tree/ASTRA-sim-1.0) 扩展开发。感谢 astra-sim 团队的优秀工作和开源贡献。我们在其基础上集成了 NCCL 算法并添加了若干新特性。
 
@@ -136,7 +138,7 @@ SimAI 支持三种主要运行模式：
 | 4. 无 GPU 集合通信 | 在非 GPU 集群上执行 RDMA 集合通信流量 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(physical) |
 | 5. SimAI-Analytical | 在任意服务器上快速进行 AICB 工作负载分析与仿真（忽略底层网络细节） | [AICB](https://github.com/aliyun/aicb) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical) |
 | 6. SimAI-Simulation | 在任意服务器上进行全栈仿真 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(simulation) + [ns-3-alibabacloud](https://github.com/aliyun/ns-3-alibabacloud) |
-| 7. 多请求推理仿真 | 在单 GPU 服务器上进行多请求**推理**全栈仿真 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [vidur-alibabacloud](./vidur-alibabacloud) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical/simulation) |
+| 7. 多请求推理仿真 | 在单 GPU 服务器上进行多请求**推理**全栈仿真 | [AICB](https://github.com/aliyun/aicb) + [SimCCL](https://github.com/aliyun/SimCCL) + [vidur-alibabacloud](../../../vidur-alibabacloud) + [astra-sim-alibabacloud](https://github.com/aliyun/SimAI/tree/master/astra-sim-alibabacloud)(analytical/simulation) |
 
 ## 引用
 
@@ -144,13 +146,13 @@ SimAI 论文已被 NSDI'25 Spring 接收，详情请参阅：
 
 *SimAI: Unifying Architecture Design and Performance Tuning for Large-Scale Large Language Model Training with Scalability and Precision.*
 
-[[pdf](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)] / [[slides](./docs/SimAI_Intro_Online.pdf)] / [[video](https://n.dingtalk.com/dingding/live-room/index.html?roomId=OF5BkBUXVxmgsK7x&liveUuid=305736cd-aa70-498b-8003-2b471a53decd)]
+[[pdf](https://ennanzhai.github.io/pub/nsdi25spring-simai.pdf)] / [[slides](../../simai/SimAI_Intro_Online.pdf)] / [[video](https://n.dingtalk.com/dingding/live-room/index.html?roomId=OF5BkBUXVxmgsK7x&liveUuid=305736cd-aa70-498b-8003-2b471a53decd)]
 
 欢迎基于 SimAI 开展创新研究和功能扩展。欢迎加入社区群或通过邮件联系我们交流，我们可提供技术支持。
 
 # 快速开始
 
-以下为简单示例。完整教程请参见：[**SimAI@Tutorial**](./docs/Tutorial.md)、[**aicb@Tutorial**](https://github.com/aliyun/aicb/blob/master/training/tutorial.md)、[**SimCCL@Tutorial**](./SimCCL/README.md)、[**ns-3-alibabacloud@Tutorial**](https://github.com/aliyun/ns-3-alibabacloud)
+以下为简单示例。完整教程请参见：[**SimAI@Tutorial**](../../simai/Tutorial.md)、[**aicb@Tutorial**](https://github.com/aliyun/aicb/blob/master/training/tutorial.md)、[**SimCCL@Tutorial**](../../../SimCCL/README.md)、[**ns-3-alibabacloud@Tutorial**](https://github.com/aliyun/ns-3-alibabacloud)
 
 ## 环境搭建
 
@@ -225,11 +227,11 @@ $ ./build/simccl-standalone -w ../../example/microAllReduce.txt \
 
 输出：`ncclFlowModel_detailed_flows.csv` — 集合操作的点对点流分解。
 
-详细文档请参见 [SimCCL README](./SimCCL/README.md)。
+详细文档请参见 [SimCCL README](../../../SimCCL/README.md)。
 
 ## 使用多请求推理仿真
 
-详情请参见 `vidur-alibabacloud` 目录下的 [README](./vidur-alibabacloud/README_CN.md)。该模块利用 AICB 对**推理**工作负载的计算时间进行 profiling。由于依赖 DeepGEMM 和 FlashMLA 等特定硬件加速库，目前仅兼容基于 **Hopper（SM90）** 和 **Blackwell（SM100）** 架构的 NVIDIA GPU。
+详情请参见 `vidur-alibabacloud` 目录下的 [README](../../../vidur-alibabacloud/README_CN.md)。该模块利用 AICB 对**推理**工作负载的计算时间进行 profiling。由于依赖 DeepGEMM 和 FlashMLA 等特定硬件加速库，目前仅兼容基于 **Hopper（SM90）** 和 **Blackwell（SM100）** 架构的 NVIDIA GPU。
 
 ```bash
 # 从 Dockerfile 构建
@@ -248,9 +250,9 @@ bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --all
 bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --scenario 1
 ```
 
-> **前置条件：** 需先激活 `conda activate vidur` 环境。详见 [环境配置](./vidur-alibabacloud/README_CN.md#-环境配置)。
+> **前置条件：** 需先激活 `conda activate vidur` 环境。详见 [环境配置](../../../vidur-alibabacloud/README_CN.md#-环境配置)。
 >
-> 完整场景配置表与输出文件说明请参见 [Vidur-AlibabaCloud README](./vidur-alibabacloud/README_CN.md#四场景配置说明)。
+> 完整场景配置表与输出文件说明请参见 [Vidur-AlibabaCloud README](../../../vidur-alibabacloud/README_CN.md#四场景配置说明)。
 
 # 致谢
 
@@ -277,10 +279,10 @@ bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --scenario
 
 | | |
 |---|---|
-| [贡献指南](./CONTRIBUTING.zh-CN.md) | 如何提交 Issue 和 Pull Request |
-| [安全政策](./SECURITY_CN.md) | 如何报告安全漏洞 |
-| [行为准则](./CODE_OF_CONDUCT_CN.md) | 社区行为规范 |
-| [更新日志](./CHANGELOG_CN.md) | v1.5 起的版本历史 |
+| 贡献指南 | 如何提交 Issue 和 Pull Request |
+| 安全政策 | 如何报告安全漏洞 |
+| 行为准则 | 社区行为规范 |
+| 更新日志 | v1.5 起的版本历史 |
 
 # 联系我们
 
@@ -289,6 +291,6 @@ bash vidur-alibabacloud/examples/vidur-ali-scenarios/run_scenarios.sh --scenario
 欢迎加入 SimAI 社区交流群，左侧为钉钉群，右侧为微信群。
 
 <div style="display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-left: 20px;">
-    <img src="./docs/images/simai_dingtalk.jpg" alt="SimAI 钉钉群" style="width: 300px; height: auto;">
-    <img src="./docs/images/simai_wechat.jpeg" alt="SimAI 微信群" style="width: 300px; height: auto;">
+    <img src="../../simai/images/simai_dingtalk.jpg" alt="SimAI 钉钉群" style="width: 300px; height: auto;">
+    <img src="../../simai/images/simai_wechat.jpeg" alt="SimAI 微信群" style="width: 300px; height: auto;">
 </div>
