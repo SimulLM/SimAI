@@ -1,0 +1,56 @@
+The final active chunks per dimension 1 after allocating to queues is: 1
+ring of node 0, id: 0 dimension: local total nodes in ring: 16 index in ring: 0 offset: 1total nodes in ring: 16
+ring of node 0, id: 0 dimension: local total nodes in ring: 16 index in ring: 0 offset: 1total nodes in ring: 16
+ring of node 0, id: 0 dimension: local total nodes in ring: 16 index in ring: 0 offset: 1total nodes in ring: 16
+ring of node 0, id: 0 dimension: local total nodes in ring: 16 index in ring: 0 offset: 1total nodes in ring: 16
+total nodes: 16
+Success in opening workload file
+model_parallel_NPU_group is 8
+checkpoints layers are: 
+layers initiating fwd_in_bckwd are: 
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 8total nodes in ring: 2
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 8total nodes in ring: 2
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 8total nodes in ring: 2
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 8total nodes in ring: 2
+pp_commize:0
+id: alltoall_test , depen: -1 , wg_comp_time: 1
+type: HYBRID_TRANSFORMER_FWD_IN_BCKWD ,num passes: 1 ,lines: 1 compute scale: 1 ,comm scale: 1
+stat path: ./results/alltoall-minimal- ,total rows: 1 ,stat row: 0
+CSV path and filename: ./results/alltoall-minimal-EndToEnd.csv
+SimAI begin run Analytical
+pass: 0 finished at time: 5
+workload stats for the job scheduled at NPU offset: 0
+{"retcode":0, "info":"Success!", "node_count":8, "nic_type":"cx7", "gpus_pernode":1, "nics_pernode":8.0, "coll_type":"alltoall", "cross_nic":1, "nccl_algo":"none", "theoretical_bus_bw_GBps":800.000}
+Communication Type: alltoallCommunication Group: 0Group Size: 8Data Size: 16777216Ratio: 0.680851Bottleneck is nvlink: 0
+*******************
+Layer id: alltoall_test
+Total collectives issued for this layer: 0
+*************************  Workload stats  ************************* alltoall_test
+id: alltoall_test ,Total cycles spent on fwd pass compute: 0
+id: alltoall_test ,Total cycles spent on weight grad compute: 0
+id: alltoall_test ,Total cycles spent on input grad compute: 0
+id: alltoall_test ,Total cycles spent idle waiting for fwd finish: 25
+id: alltoall_test ,Total cycles spent idle waiting for weight grad finish: 0
+id: alltoall_test ,Total cycles spent idle waiting for input grad finish: 0
+id: alltoall_test ,Total cycles spent on fwd pass comm: 25
+id: alltoall_test ,Total cycles spent on weight grad comm: 0
+id: alltoall_test ,Total cycles spent on input grad comm: 0
+*************************
+all passes finished at time: 6, id of first layer: alltoall_test
+*****
+Time to exit: Sat Sep  5 21:55:21 2026
+all-reduce Collective implementation: NcclFlowModel
+reduce-scatter Collective implementation: NcclFlowModel
+all-gather Collective implementation: NcclFlowModel
+all-to-all Collective implementation: NcclFlowModel
+Collective optimization: baseline
+Total sim duration: 0:0 hours
+Total streams injected: 0
+Total streams finished: 0
+Percentage of finished streams: -nan %
+*****
+SimAI-Analytical finished.

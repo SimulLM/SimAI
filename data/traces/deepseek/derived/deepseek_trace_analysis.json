@@ -1,0 +1,431 @@
+{
+  "schema_version": 1,
+  "metric_definitions": {
+    "duration_unit": "microseconds",
+    "first_start_us": "start relative to the first GPU kernel in the same trace",
+    "summed_duration_us": "sum of event durations; may double-count concurrency",
+    "union_duration_us": "length of merged event intervals; does not double-count concurrency",
+    "direct_overlap_us": "intersection of visible EP and non-EP GPU kernel interval unions"
+  },
+  "traces": [
+    {
+      "trace": "prefill",
+      "source": {
+        "path": "tmp/deepseek-profile-data/prefill.json",
+        "sha256": "b96f9faffe1b5882c6947d7c664cfe60f9e05e004380aa9825ad54f6433b0ce2",
+        "size_bytes": 18035030,
+        "repository_commit": "449602428a1b023acb8a505d4f34fef536535db6"
+      },
+      "metadata": {
+        "schema_version": 1,
+        "trace_name": "./dsv3-600B-tp1-ep32-input4096-output1-bs16384-split1-sm24.json",
+        "backend": "nccl",
+        "rank": 0,
+        "world_size": 32,
+        "device": "NVIDIA H800",
+        "gpu_streams": {
+          "7": "stream 7 ",
+          "13": "stream 13 ",
+          "16": "stream 16 ",
+          "1097": "thread 1097 (python3)"
+        }
+      },
+      "data_quality": {
+        "status": "pass",
+        "checks": {
+          "trace_events_is_nonempty": true,
+          "complete_events_have_numeric_timing": true,
+          "complete_events_have_nonnegative_duration": true,
+          "gpu_kernel_events_are_present": true,
+          "distributed_world_size_is_positive": true,
+          "rank_is_zero": true,
+          "device_metadata_is_present": true
+        },
+        "missing_timing_event_count": 0,
+        "negative_duration_event_count": 0,
+        "invalid_named_event_count": 3368
+      },
+      "event_counts": {
+        "all_trace_events": 85422,
+        "complete_events": 55257,
+        "gpu_kernel_events": 4111,
+        "by_trace_category": {
+          "<none>": 40,
+          "Trace": 1,
+          "ac2g": 30125,
+          "cpu_op": 25125,
+          "cuda_driver": 367,
+          "cuda_runtime": 25606,
+          "gpu_memcpy": 37,
+          "gpu_memset": 4,
+          "kernel": 4111,
+          "user_annotation": 6
+        }
+      },
+      "gpu_timeline": {
+        "origin_timestamp_us": 1740462778110736,
+        "span_us": 2120106,
+        "ep_kernel_union_us": 1662667,
+        "compute_kernel_union_us": 1783450,
+        "direct_overlap_us": 1416701,
+        "ep_kernel_direct_overlap_pct": 85.207,
+        "measurement_note": "Union-based overlap between visible EP kernels and explicitly classified attention, expert, dense-GEMM, routing, and elementwise GPU kernels. It excludes unclassified kernels and does not measure RDMA activity after a launch kernel frees the GPU SMs."
+      },
+      "key_event_categories": [
+        {
+          "trace": "prefill",
+          "category": "attention_compute",
+          "first_start_us": 29708,
+          "event_count": 244,
+          "median_duration_us": 1179.5,
+          "p95_duration_us": 3031,
+          "summed_duration_us": 372233,
+          "union_duration_us": 372233,
+          "direct_overlap_us": 350262,
+          "overlap_pct_of_category_union": 94.098,
+          "streams": [
+            7
+          ],
+          "relationship": "overlaps EP kernels"
+        },
+        {
+          "trace": "prefill",
+          "category": "dense_gemm",
+          "first_start_us": 28795,
+          "event_count": 727,
+          "median_duration_us": 428,
+          "p95_duration_us": 1739,
+          "summed_duration_us": 474157,
+          "union_duration_us": 474157,
+          "direct_overlap_us": 311569,
+          "overlap_pct_of_category_union": 65.71,
+          "streams": [
+            7
+          ],
+          "relationship": "overlaps EP kernels"
+        },
+        {
+          "trace": "prefill",
+          "category": "ep_combine",
+          "first_start_us": 123846,
+          "event_count": 116,
+          "median_duration_us": 8618.0,
+          "p95_duration_us": 10139,
+          "summed_duration_us": 1006189,
+          "union_duration_us": 1006189,
+          "direct_overlap_us": 781793,
+          "overlap_pct_of_category_union": 77.698,
+          "streams": [
+            16
+          ],
+          "relationship": "directly overlaps GPU compute"
+        },
+        {
+          "trace": "prefill",
+          "category": "ep_dispatch",
+          "first_start_us": 107883,
+          "event_count": 116,
+          "median_duration_us": 4560.5,
+          "p95_duration_us": 4942,
+          "summed_duration_us": 532860,
+          "union_duration_us": 532860,
+          "direct_overlap_us": 512017,
+          "overlap_pct_of_category_union": 96.088,
+          "streams": [
+            16
+          ],
+          "relationship": "directly overlaps GPU compute"
+        },
+        {
+          "trace": "prefill",
+          "category": "ep_dispatch_layout",
+          "first_start_us": 104906,
+          "event_count": 116,
+          "median_duration_us": 135.5,
+          "p95_duration_us": 191,
+          "summed_duration_us": 16853,
+          "union_duration_us": 16853,
+          "direct_overlap_us": 0,
+          "overlap_pct_of_category_union": 0.0,
+          "streams": [
+            16
+          ],
+          "relationship": "prepares EP dispatch"
+        },
+        {
+          "trace": "prefill",
+          "category": "ep_notify_dispatch",
+          "first_start_us": 105093,
+          "event_count": 116,
+          "median_duration_us": 893.5,
+          "p95_duration_us": 2690,
+          "summed_duration_us": 123618,
+          "union_duration_us": 123618,
+          "direct_overlap_us": 122891,
+          "overlap_pct_of_category_union": 99.412,
+          "streams": [
+            16
+          ],
+          "relationship": "directly overlaps GPU compute"
+        },
+        {
+          "trace": "prefill",
+          "category": "expert_compute",
+          "first_start_us": 29926,
+          "event_count": 470,
+          "median_duration_us": 646.5,
+          "p95_duration_us": 3687,
+          "summed_duration_us": 764006,
+          "union_duration_us": 764006,
+          "direct_overlap_us": 662818,
+          "overlap_pct_of_category_union": 86.756,
+          "streams": [
+            7
+          ],
+          "relationship": "overlaps EP kernels"
+        },
+        {
+          "trace": "prefill",
+          "category": "other_gpu_kernel",
+          "first_start_us": 0,
+          "event_count": 1137,
+          "median_duration_us": 104,
+          "p95_duration_us": 940,
+          "summed_duration_us": 286323,
+          "union_duration_us": 285273,
+          "direct_overlap_us": 89629,
+          "overlap_pct_of_category_union": 31.419,
+          "streams": [
+            7,
+            13,
+            16
+          ],
+          "relationship": "overlaps EP kernels"
+        },
+        {
+          "trace": "prefill",
+          "category": "routing_and_elementwise",
+          "first_start_us": 28731,
+          "event_count": 1069,
+          "median_duration_us": 141,
+          "p95_duration_us": 328,
+          "summed_duration_us": 173054,
+          "union_duration_us": 173054,
+          "direct_overlap_us": 92052,
+          "overlap_pct_of_category_union": 53.193,
+          "streams": [
+            7
+          ],
+          "relationship": "overlaps EP kernels"
+        }
+      ]
+    },
+    {
+      "trace": "decode",
+      "source": {
+        "path": "tmp/deepseek-profile-data/decode.json",
+        "sha256": "6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62",
+        "size_bytes": 4660769,
+        "repository_commit": "449602428a1b023acb8a505d4f34fef536535db6"
+      },
+      "metadata": {
+        "schema_version": 1,
+        "trace_name": "./decode-debug-rank0.json",
+        "backend": "nccl",
+        "rank": 0,
+        "world_size": 128,
+        "device": "NVIDIA H800",
+        "gpu_streams": {
+          "7": "stream 7 ",
+          "13": "stream 13 ",
+          "16": "stream 16 ",
+          "494": "thread 494 (python3)"
+        }
+      },
+      "data_quality": {
+        "status": "pass",
+        "checks": {
+          "trace_events_is_nonempty": true,
+          "complete_events_have_numeric_timing": true,
+          "complete_events_have_nonnegative_duration": true,
+          "gpu_kernel_events_are_present": true,
+          "distributed_world_size_is_positive": true,
+          "rank_is_zero": true,
+          "device_metadata_is_present": true
+        },
+        "missing_timing_event_count": 0,
+        "negative_duration_event_count": 0,
+        "invalid_named_event_count": 36
+      },
+      "event_counts": {
+        "all_trace_events": 19417,
+        "complete_events": 6852,
+        "gpu_kernel_events": 3647,
+        "by_trace_category": {
+          "<none>": 40,
+          "ac2g": 12525,
+          "cpu_op": 2674,
+          "cuda_driver": 7,
+          "cuda_runtime": 452,
+          "gpu_memcpy": 66,
+          "gpu_memset": 3,
+          "kernel": 3647,
+          "user_annotation": 3
+        }
+      },
+      "gpu_timeline": {
+        "origin_timestamp_us": 1742522672415259,
+        "span_us": 95889,
+        "ep_kernel_union_us": 17059,
+        "compute_kernel_union_us": 69082,
+        "direct_overlap_us": 1,
+        "ep_kernel_direct_overlap_pct": 0.006,
+        "measurement_note": "Union-based overlap between visible EP kernels and explicitly classified attention, expert, dense-GEMM, routing, and elementwise GPU kernels. It excludes unclassified kernels and does not measure RDMA activity after a launch kernel frees the GPU SMs."
+      },
+      "key_event_categories": [
+        {
+          "trace": "decode",
+          "category": "attention_compute",
+          "first_start_us": 1922,
+          "event_count": 364,
+          "median_duration_us": 11.0,
+          "p95_duration_us": 243,
+          "summed_duration_us": 32217,
+          "union_duration_us": 32217,
+          "direct_overlap_us": 0,
+          "overlap_pct_of_category_union": 0.0,
+          "streams": [
+            7
+          ],
+          "relationship": "no direct EP-kernel overlap"
+        },
+        {
+          "trace": "decode",
+          "category": "dense_gemm",
+          "first_start_us": 1845,
+          "event_count": 1077,
+          "median_duration_us": 15,
+          "p95_duration_us": 51,
+          "summed_duration_us": 19956,
+          "union_duration_us": 19956,
+          "direct_overlap_us": 0,
+          "overlap_pct_of_category_union": 0.0,
+          "streams": [
+            7
+          ],
+          "relationship": "no direct EP-kernel overlap"
+        },
+        {
+          "trace": "decode",
+          "category": "ep_combine",
+          "first_start_us": 8090,
+          "event_count": 235,
+          "median_duration_us": 18,
+          "p95_duration_us": 21,
+          "summed_duration_us": 5138,
+          "union_duration_us": 5138,
+          "direct_overlap_us": 0,
+          "overlap_pct_of_category_union": 0.0,
+          "streams": [
+            7,
+            16
+          ],
+          "relationship": "no direct GPU-kernel overlap"
+        },
+        {
+          "trace": "decode",
+          "category": "ep_dispatch",
+          "first_start_us": 6234,
+          "event_count": 235,
+          "median_duration_us": 37,
+          "p95_duration_us": 82,
+          "summed_duration_us": 11921,
+          "union_duration_us": 11921,
+          "direct_overlap_us": 1,
+          "overlap_pct_of_category_union": 0.008,
+          "streams": [
+            7,
+            16
+          ],
+          "relationship": "directly overlaps GPU compute"
+        },
+        {
+          "trace": "decode",
+          "category": "expert_compute",
+          "first_start_us": 7958,
+          "event_count": 236,
+          "median_duration_us": 56.5,
+          "p95_duration_us": 81,
+          "summed_duration_us": 13599,
+          "union_duration_us": 13599,
+          "direct_overlap_us": 1,
+          "overlap_pct_of_category_union": 0.007,
+          "streams": [
+            7
+          ],
+          "relationship": "overlaps EP kernels"
+        },
+        {
+          "trace": "decode",
+          "category": "other_gpu_kernel",
+          "first_start_us": 0,
+          "event_count": 781,
+          "median_duration_us": 2,
+          "p95_duration_us": 8,
+          "summed_duration_us": 3645,
+          "union_duration_us": 3645,
+          "direct_overlap_us": 0,
+          "overlap_pct_of_category_union": 0.0,
+          "streams": [
+            7,
+            13
+          ],
+          "relationship": "no direct EP-kernel overlap"
+        },
+        {
+          "trace": "decode",
+          "category": "routing_and_elementwise",
+          "first_start_us": 1840,
+          "event_count": 719,
+          "median_duration_us": 4,
+          "p95_duration_us": 8,
+          "summed_duration_us": 3310,
+          "union_duration_us": 3310,
+          "direct_overlap_us": 0,
+          "overlap_pct_of_category_union": 0.0,
+          "streams": [
+            7
+          ],
+          "relationship": "no direct EP-kernel overlap"
+        }
+      ],
+      "decode_adjacent_pair_observations": {
+        "dispatch_ll": {
+          "event_count": 235,
+          "pair_count": 117,
+          "unpaired_event_count": 1,
+          "pairing_rule": "chronological adjacent pairs; descriptive only",
+          "first_call_duration_us_median": 17,
+          "between_calls_us_median": 105,
+          "between_calls_us_p95": 107,
+          "second_call_duration_us_median": 67,
+          "second_call_duration_us_p95": 83,
+          "second_call_duration_us_max": 1603
+        },
+        "combine_ll": {
+          "event_count": 235,
+          "pair_count": 117,
+          "unpaired_event_count": 1,
+          "pairing_rule": "chronological adjacent pairs; descriptive only",
+          "first_call_duration_us_median": 20,
+          "between_calls_us_median": 352,
+          "between_calls_us_p95": 355,
+          "second_call_duration_us_median": 17,
+          "second_call_duration_us_p95": 17,
+          "second_call_duration_us_max": 356
+        },
+        "interpretation_limit": "Adjacent-call pairing exposes the repeated two-call shape but does not prove network completion or isolate pure wait time without DeepEP correlation markers."
+      }
+    }
+  ]
+}

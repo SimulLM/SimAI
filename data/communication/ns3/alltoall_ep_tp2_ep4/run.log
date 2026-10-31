@@ -1,0 +1,95 @@
+maxRtt=160 maxBdp=48000
+Running Simulation.
+The final active chunks per dimension 1 after allocating to queues is: 1
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+total nodes: 9
+Success in opening workload file
+model_parallel_NPU_group is 2
+checkpoints layers are: 
+layers initiating fwd_in_bckwd are: 
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 1total nodes in ring: 2
+ring of node 0, id: 0 dimension: local total nodes in ring: 4 index in ring: 0 offset: 2total nodes in ring: 4
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 1total nodes in ring: 2
+ring of node 0, id: 0 dimension: local total nodes in ring: 4 index in ring: 0 offset: 2total nodes in ring: 4
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 1total nodes in ring: 2
+ring of node 0, id: 0 dimension: local total nodes in ring: 4 index in ring: 0 offset: 2total nodes in ring: 4
+ring of node 0, id: 0 dimension: local total nodes in ring: 2 index in ring: 0 offset: 1total nodes in ring: 2
+ring of node 0, id: 0 dimension: local total nodes in ring: 4 index in ring: 0 offset: 2total nodes in ring: 4
+pp_commize:0
+id: alltoall_ep_test , depen: -1 , wg_comp_time: 1
+type: HYBRID_TRANSFORMER_FWD_IN_BCKWD ,num passes: 1 ,lines: 1 compute scale: 1 ,comm scale: 1
+stat path: ./ncclFlowModel_ ,total rows: 1 ,stat row: 0
+CSV path and filename: ./ncclFlowModel_detailed_9.csv
+CSV path and filename: ./ncclFlowModel_EndToEnd.csv
+simulator run 
+chunk size is: 16777216 , size is: 16777216 , layer_num is: 0 , node: 0
+info: all-to-all forward pass collective issued for layer: alltoall_ep_test, involved dimensions:  1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+***** info: fwd pass comm collective for layer: alltoall_ep_test is finished************
+info: no input grad collective for layer: alltoall_ep_test
+info: no weight grad collective for layer: alltoall_ep_test
+pass: 0 finished at time: 45089
+workload stats for the job scheduled at NPU offset: 0
+*******************
+Layer id: alltoall_ep_test
+Total collectives issued for this layer: 1
+*************************  Workload stats  ************************* alltoall_ep_test
+id: alltoall_ep_test ,Total cycles spent on fwd pass compute: 1
+id: alltoall_ep_test ,Total cycles spent on weight grad compute: 1
+id: alltoall_ep_test ,Total cycles spent on input grad compute: 1
+id: alltoall_ep_test ,Total cycles spent idle waiting for fwd finish: 45084
+id: alltoall_ep_test ,Total cycles spent idle waiting for weight grad finish: 0
+id: alltoall_ep_test ,Total cycles spent idle waiting for input grad finish: 0
+id: alltoall_ep_test ,Total cycles spent on fwd pass comm: 45084
+id: alltoall_ep_test ,Total cycles spent on weight grad comm: 0
+id: alltoall_ep_test ,Total cycles spent on input grad comm: 0
+*************************
+all passes finished at time: 45090, id of first layer: alltoall_ep_test
+path to create csvs is: ./ncclFlowModel_
+success in openning file
+*****
+Time to exit: Sat Sep  5 22:04:50 2026
+all-reduce Collective implementation: NcclFlowModel
+reduce-scatter Collective implementation: NcclFlowModel
+all-gather Collective implementation: NcclFlowModel
+all-to-all Collective implementation: NcclFlowModel
+Collective optimization: baseline
+Total sim duration: 0:0 hours
+Total streams injected: 1
+Total streams finished: 1
+Percentage of finished streams: 100 %
+*****
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 0 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 0 is 12582912
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 1 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 1 is 12582912
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 2 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 2 is 12582912
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 3 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 3 is 12582912
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 4 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 4 is 12582912
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 5 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 5 is 12582912
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 6 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 6 is 12582912
+sim_finish on sent,  Thread id: 135103647078208
+All data sent from node 7 is 12582912
+sim_finish on received,  Thread id: 135103647078208
+All data received by node 7 is 12582912

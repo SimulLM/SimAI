@@ -1,0 +1,4 @@
+File name, Expose DP comm, Expose DP_EP comm, Expose TP comm, Expose_EP_comm, Expose_PP_comm, bubble time, total comp, total exposed comm, Total time
+alltoall-ep-minimal-, 0 (0.00%), 0 (0.00%), 0 (0.00%), 3030 (100.00%), 0 (0.00%), 0 (0.00%), 0 (0.00%), 3030 (100.00%), 3030
+layer_name,Analytical_test,fwd compute,wg compute,ig compute,fwd exposed comm,wg exposed comm,ig exposed comm,fwd total comm,algbw,busbw,wg total comm,algbw,busbw,ig total comm,algbw,busbw
+alltoall_ep_test,Analytical_test,0,0,0,3030,0,0,3030,5.16,4.51,0,-nan,0.00,0,-nan,0.00

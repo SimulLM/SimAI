@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "source": {
+    "path": "example/workload_analytical.txt",
+    "raw_sha256": "25b4458383fc584034203c39dd99db61995f4cde8caed50cd930c3fa2b5770aa",
+    "normalized_lf_sha256": "8c2e255aa7397d8c5c7e01daa04d4b3c97a6b015a27bd425770ef8e7e5cbe0a1"
+  },
+  "format": {
+    "run_type": "HYBRID_TRANSFORMER_FWD_IN_BCKWD",
+    "header_parameters": {
+      "model_parallel_NPU_group": 2,
+      "ep": 16,
+      "pp": 12,
+      "vpp": 8,
+      "ga": 24,
+      "all_gpus": 9216,
+      "checkpoints": 0,
+      "checkpoint_initiates": 0,
+      "pp_comm": 50331648
+    },
+    "columns": [
+      "name",
+      "dependency",
+      "forward_compute_time",
+      "forward_comm_type",
+      "forward_comm_size",
+      "input_gradient_compute_time",
+      "input_gradient_comm_type",
+      "input_gradient_comm_size",
+      "weight_gradient_compute_time",
+      "weight_gradient_comm_type",
+      "weight_gradient_comm_size",
+      "weight_update_time"
+    ],
+    "declared_record_count": 1789,
+    "actual_record_count": 1789,
+    "valid_record_count": 1789
+  },
+  "data_quality": {
+    "status": "pass",
+    "checks": {
+      "declared_count_matches_actual": true,
+      "all_records_have_12_fields": true,
+      "all_numeric_fields_parse": true,
+      "numeric_values_are_nonnegative_except_dependency": true,
+      "all_communication_types_are_known": true,
+      "none_communication_has_zero_size": true
+    },
+    "field_count_errors": [],
+    "numeric_parse_errors": [],
+    "negative_value_errors": [],
+    "unknown_comm_types": [],
+    "none_with_nonzero_size": [],
+    "zero_size_non_none_communication": [
+      {
+        "phase": "input_gradient",
+        "comm_type": "REDUCESCATTER",
+        "operation_count": 216
+      }
+    ]
+  },
+  "summary": {
+    "by_phase_and_comm_type": [
+      {
+        "phase": "forward",
+        "comm_type": "ALLGATHER",
+        "operation_count": 600,
+        "declared_bytes": 49828331520,
+        "declared_gib": 46.40625
+      },
+      {
+        "phase": "forward",
+        "comm_type": "ALLREDUCE",
+        "operation_count": 31,
+        "declared_bytes": 1208008720,
+        "declared_gib": 1.125046
+      },
+      {
+        "phase": "forward",
+        "comm_type": "ALLTOALL",
+        "operation_count": 384,
+        "declared_bytes": 9663676416,
+        "declared_gib": 9.0
+      },
+      {
+        "phase": "forward",
+        "comm_type": "ALLTOALL_EP",
+        "operation_count": 384,
+        "declared_bytes": 38654705664,
+        "declared_gib": 36.0
+      },
+      {
+        "phase": "forward",
+        "comm_type": "NONE",
+        "operation_count": 6,
+        "declared_bytes": 0,
+        "declared_gib": 0.0
+      },
+      {
+        "phase": "forward",
+        "comm_type": "REDUCESCATTER",
+        "operation_count": 384,
+        "declared_bytes": 48318382080,
+        "declared_gib": 45.0
+      },
+      {
+        "phase": "input_gradient",
+        "comm_type": "ALLGATHER",
+        "operation_count": 576,
+        "declared_bytes": 48620371968,
+        "declared_gib": 45.28125
+      },
+      {
+        "phase": "input_gradient",
+        "comm_type": "ALLREDUCE",
+        "operation_count": 1,
+        "declared_bytes": 50331648,
+        "declared_gib": 0.046875
+      },
+      {
+        "phase": "input_gradient",
+        "comm_type": "ALLTOALL",
+        "operation_count": 384,
+        "declared_bytes": 9663676416,
+        "declared_gib": 9.0
+      },
+      {
+        "phase": "input_gradient",
+        "comm_type": "ALLTOALL_EP",
+        "operation_count": 384,
+        "declared_bytes": 38654705664,
+        "declared_gib": 36.0
+      },
+      {
+        "phase": "input_gradient",
+        "comm_type": "NONE",
+        "operation_count": 36,
+        "declared_bytes": 0,
+        "declared_gib": 0.0
+      },
+      {
+        "phase": "input_gradient",
+        "comm_type": "REDUCESCATTER",
+        "operation_count": 408,
+        "declared_bytes": 38654705664,
+        "declared_gib": 36.0
+      },
+      {
+        "phase": "weight_gradient",
+        "comm_type": "ALLGATHER",
+        "operation_count": 1,
+        "declared_bytes": 2807758848,
+        "declared_gib": 2.614929
+      },
+      {
+        "phase": "weight_gradient",
+        "comm_type": "ALLGATHER_DP_EP",
+        "operation_count": 1,
+        "declared_bytes": 19327352832,
+        "declared_gib": 18.0
+      },
+      {
+        "phase": "weight_gradient",
+        "comm_type": "NONE",
+        "operation_count": 1785,
+        "declared_bytes": 0,
+        "declared_gib": 0.0
+      },
+      {
+        "phase": "weight_gradient",
+        "comm_type": "REDUCESCATTER",
+        "operation_count": 1,
+        "declared_bytes": 5615517696,
+        "declared_gib": 5.229858
+      },
+      {
+        "phase": "weight_gradient",
+        "comm_type": "REDUCESCATTER_DP_EP",
+        "operation_count": 1,
+        "declared_bytes": 38654705664,
+        "declared_gib": 36.0
+      }
+    ],
+    "alltoall": {
+      "by_type": [
+        {
+          "comm_type": "ALLTOALL",
+          "operation_count": 768,
+          "declared_bytes": 19327352832,
+          "declared_gib": 18.0
+        },
+        {
+          "comm_type": "ALLTOALL_EP",
+          "operation_count": 768,
+          "declared_bytes": 77309411328,
+          "declared_gib": 72.0
+        }
+      ],
+      "by_phase_type_and_layer": [
+        {
+          "phase": "forward",
+          "comm_type": "ALLTOALL",
+          "layer_name": "mlp_moelayer",
+          "operation_count": 384,
+          "message_sizes_bytes": [
+            25165824
+          ],
+          "declared_bytes": 9663676416,
+          "declared_gib": 9.0
+        },
+        {
+          "phase": "forward",
+          "comm_type": "ALLTOALL_EP",
+          "layer_name": "mlp_moelayer",
+          "operation_count": 384,
+          "message_sizes_bytes": [
+            100663296
+          ],
+          "declared_bytes": 38654705664,
+          "declared_gib": 36.0
+        },
+        {
+          "phase": "input_gradient",
+          "comm_type": "ALLTOALL",
+          "layer_name": "mlp_moelayer",
+          "operation_count": 384,
+          "message_sizes_bytes": [
+            25165824
+          ],
+          "declared_bytes": 9663676416,
+          "declared_gib": 9.0
+        },
+        {
+          "phase": "input_gradient",
+          "comm_type": "ALLTOALL_EP",
+          "layer_name": "mlp_moelayer",
+          "operation_count": 384,
+          "message_sizes_bytes": [
+            100663296
+          ],
+          "declared_bytes": 38654705664,
+          "declared_gib": 36.0
+        }
+      ],
+      "combined_declared_bytes": 96636764160,
+      "combined_declared_gib": 90.0,
+      "alltoall_ep_to_alltoall_byte_ratio": 4.0
+    },
+    "distinct_layer_names": 18,
+    "top_layer_names": [
+      {
+        "name": "mlp_moelayer",
+        "record_count": 1344
+      },
+      {
+        "name": "attention_column",
+        "record_count": 192
+      },
+      {
+        "name": "attention_row",
+        "record_count": 192
+      },
+      {
+        "name": "embedding_layer",
+        "record_count": 24
+      },
+      {
+        "name": "final_column",
+        "record_count": 24
+      },
+      {
+        "name": "grad_gather",
+        "record_count": 1
+      },
+      {
+        "name": "grad_param_comm",
+        "record_count": 1
+      },
+      {
+        "name": "grad_param_compute",
+        "record_count": 1
+      },
+      {
+        "name": "embedding_grads",
+        "record_count": 1
+      },
+      {
+        "name": "moe_grad_norm1",
+        "record_count": 1
+      },
+      {
+        "name": "moe_grad_norm2",
+        "record_count": 1
+      },
+      {
+        "name": "cross_entropy1",
+        "record_count": 1
+      },
+      {
+        "name": "cross_entropy2",
+        "record_count": 1
+      },
+      {
+        "name": "cross_entropy3",
+        "record_count": 1
+      },
+      {
+        "name": "optimizer1",
+        "record_count": 1
+      }
+    ],
+    "compute_time_value_counts": [
+      {
+        "value": 0,
+        "occurrence_count": 21
+      },
+      {
+        "value": 1,
+        "occurrence_count": 3689
+      },
+      {
+        "value": 100,
+        "occurrence_count": 1789
+      },
+      {
+        "value": 622731,
+        "occurrence_count": 24
+      },
+      {
+        "value": 875420,
+        "occurrence_count": 863
+      },
+      {
+        "value": 1750840,
+        "occurrence_count": 384
+      },
+      {
+        "value": 7956367,
+        "occurrence_count": 384
+      },
+      {
+        "value": 15091072,
+        "occurrence_count": 1
+      },
+      {
+        "value": 29700224,
+        "occurrence_count": 1
+      }
+    ]
+  },
+  "metric_note": "declared_bytes sums the comm_size operands stored in the workload records; it is not measured link traffic, per-rank traffic, or fabric-wide bytes."
+}

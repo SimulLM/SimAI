@@ -1,0 +1,54 @@
+maxRtt=160 maxBdp=48000
+Running Simulation.
+The final active chunks per dimension 1 after allocating to queues is: 1
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+ring of node 0, id: 0 dimension: local total nodes in ring: 9 index in ring: 0 offset: 1total nodes in ring: 9
+total nodes: 9
+Success in opening workload file
+model_parallel_NPU_group is 1
+checkpoints layers are: 
+layers initiating fwd_in_bckwd are: 
+pp_commize:0
+id: alltoall_ep_test , depen: -1 , wg_comp_time: 1
+type: HYBRID_TRANSFORMER_FWD_IN_BCKWD ,num passes: 1 ,lines: 1 compute scale: 1 ,comm scale: 1
+stat path: ./ncclFlowModel_ ,total rows: 1 ,stat row: 0
+CSV path and filename: ./ncclFlowModel_detailed_9.csv
+CSV path and filename: ./ncclFlowModel_EndToEnd.csv
+simulator run 
+chunk size is: 16777216 , size is: 16777216 , layer_num is: 0 , node: 0
+info: all dims disabled, no forward pass collective for layer: alltoall_ep_test
+info: no input grad collective for layer: alltoall_ep_test
+info: no weight grad collective for layer: alltoall_ep_test
+pass: 0 finished at time: 5
+workload stats for the job scheduled at NPU offset: 0
+*******************
+Layer id: alltoall_ep_test
+Total collectives issued for this layer: 0
+*************************  Workload stats  ************************* alltoall_ep_test
+id: alltoall_ep_test ,Total cycles spent on fwd pass compute: 1
+id: alltoall_ep_test ,Total cycles spent on weight grad compute: 1
+id: alltoall_ep_test ,Total cycles spent on input grad compute: 1
+id: alltoall_ep_test ,Total cycles spent idle waiting for fwd finish: 0
+id: alltoall_ep_test ,Total cycles spent idle waiting for weight grad finish: 0
+id: alltoall_ep_test ,Total cycles spent idle waiting for input grad finish: 0
+id: alltoall_ep_test ,Total cycles spent on fwd pass comm: 0
+id: alltoall_ep_test ,Total cycles spent on weight grad comm: 0
+id: alltoall_ep_test ,Total cycles spent on input grad comm: 0
+*************************
+all passes finished at time: 6, id of first layer: alltoall_ep_test
+path to create csvs is: ./ncclFlowModel_
+success in openning file
+*****
+Time to exit: Sat Sep  5 22:02:41 2026
+all-reduce Collective implementation: NcclFlowModel
+reduce-scatter Collective implementation: NcclFlowModel
+all-gather Collective implementation: NcclFlowModel
+all-to-all Collective implementation: NcclFlowModel
+Collective optimization: baseline
+Total sim duration: 0:0 hours
+Total streams injected: 0
+Total streams finished: 0
+Percentage of finished streams: -nan %
+*****
