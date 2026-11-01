@@ -26,3 +26,7 @@ astra-sim-alibabacloud/inputs/topo/Rail_Opti_SingleToR_*
 *.swp
 *.swo
 *~
+
+# Phase-1 local tooling dependencies and test caches
+/.cache/
+/.pytest_cache/
