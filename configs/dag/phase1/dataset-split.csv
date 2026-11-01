@@ -1,0 +1,8 @@
+group_id,split,reason
+micro_allreduce,excluded,ns3 historical run missing verified unit and matching old run identity
+alltoall_tp8,excluded,analytical/ns3 hardware topology and input identities not proven equal
+alltoall_tp2_ep4,excluded,EP group membership must match; no verified matching prediction
+deepseek_prefill,excluded,raw trace absent; derived statistics require fractional timestamp reparse
+deepseek_decode,excluded,raw trace absent; GPU kernels do not measure RDMA or request E2E
+pd,excluded,configuration test only; no KV transfer reference
+moe,excluded,synthetic assignments only; no measured latency

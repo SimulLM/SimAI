@@ -1,0 +1,5 @@
+config_id,model,backend,hardware,tp,pp,ep,contract_supported,old_path_runnable,reference_pairable,accuracy_eligible,reason
+coarse_stage,,vidur,,,,,true,not_run,false,false,generic coarse contract; runtime environment and model profiles not verified
+simai_tp,,simai_simulation;simai_analytical,,,1,1,true,not_run,false,false,TP cost adapters exist; local SimAI binaries absent
+aicb_special,deepseek-671B;qwen3-moe-235B;qwen3-next-80B,aicb,,,1,,true,not_run,false,false,controlled AST probe only; known unit defect and TP omission
+pd_moe_extensions,,,,,,,reserved_only,not_run,false,false,protocol reservations; no DAG runtime support claimed
