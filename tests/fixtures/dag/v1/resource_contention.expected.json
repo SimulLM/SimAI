@@ -1,0 +1,123 @@
+{
+  "scenarios": [
+    {
+      "name": "shared",
+      "capacities": {
+        "gpu:0": {
+          "amount": 1,
+          "unit": "permits"
+        },
+        "nic:0": {
+          "amount": 1,
+          "unit": "permits"
+        }
+      },
+      "schedule_s": {
+        "T1": [
+          0.0,
+          9.999999999999999e-06
+        ],
+        "T2": [
+          9.999999999999999e-06,
+          1.4e-05
+        ],
+        "T3": [
+          1.4e-05,
+          2.2e-05
+        ],
+        "terminal": [
+          2.2e-05,
+          2.2e-05
+        ]
+      },
+      "makespan_s": 2.2e-05
+    },
+    {
+      "name": "independent",
+      "capacities": {
+        "gpu:0": {
+          "amount": 1,
+          "unit": "permits"
+        },
+        "nic:0": {
+          "amount": 1,
+          "unit": "permits"
+        }
+      },
+      "schedule_s": {
+        "T1": [
+          0.0,
+          9.999999999999999e-06
+        ],
+        "T2": [
+          0.0,
+          4e-06
+        ],
+        "T3": [
+          9.999999999999999e-06,
+          1.8e-05
+        ],
+        "terminal": [
+          1.8e-05,
+          1.8e-05
+        ]
+      },
+      "makespan_s": 1.8e-05,
+      "demands_override": {
+        "T2": [
+          {
+            "resource_id": "nic:0",
+            "amount": 1,
+            "unit": "permits"
+          }
+        ]
+      }
+    },
+    {
+      "name": "comm_occupies_compute",
+      "capacities": {
+        "gpu:0": {
+          "amount": 1,
+          "unit": "permits"
+        },
+        "nic:0": {
+          "amount": 1,
+          "unit": "permits"
+        }
+      },
+      "schedule_s": {
+        "T1": [
+          0.0,
+          9.999999999999999e-06
+        ],
+        "T2": [
+          9.999999999999999e-06,
+          1.4e-05
+        ],
+        "T3": [
+          1.4e-05,
+          2.2e-05
+        ],
+        "terminal": [
+          2.2e-05,
+          2.2e-05
+        ]
+      },
+      "makespan_s": 2.2e-05,
+      "demands_override": {
+        "T2": [
+          {
+            "resource_id": "nic:0",
+            "amount": 1,
+            "unit": "permits"
+          },
+          {
+            "resource_id": "gpu:0",
+            "amount": 1,
+            "unit": "permits"
+          }
+        ]
+      }
+    }
+  ]
+}

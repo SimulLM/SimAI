@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "graph_id": "resource_contention",
+  "context": {
+    "batch_id": "batch0",
+    "iteration_id": 0,
+    "replica_id": "replica0",
+    "stage_id": 0,
+    "request_ids": [
+      "request0"
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "T1",
+      "kind": "compute",
+      "placement": {
+        "device_ids": [
+          "gpu:0"
+        ],
+        "comm_group": null
+      },
+      "demands": [
+        {
+          "resource_id": "gpu:0",
+          "amount": 1,
+          "unit": "permits"
+        }
+      ],
+      "cost": {
+        "duration_s": 9.999999999999999e-06,
+        "source": "hand_calculated",
+        "raw_value": 10,
+        "raw_unit": "us",
+        "conversion_to_s": 1e-06,
+        "evidence": "docs/dag/phase1/execution-contract.md",
+        "includes": [
+          "compute"
+        ],
+        "unknown_components": []
+      }
+    },
+    {
+      "task_id": "T2",
+      "kind": "compute",
+      "placement": {
+        "device_ids": [
+          "gpu:0"
+        ],
+        "comm_group": null
+      },
+      "demands": [
+        {
+          "resource_id": "gpu:0",
+          "amount": 1,
+          "unit": "permits"
+        }
+      ],
+      "cost": {
+        "duration_s": 4e-06,
+        "source": "hand_calculated",
+        "raw_value": 4,
+        "raw_unit": "us",
+        "conversion_to_s": 1e-06,
+        "evidence": "docs/dag/phase1/execution-contract.md",
+        "includes": [
+          "compute"
+        ],
+        "unknown_components": []
+      }
+    },
+    {
+      "task_id": "T3",
+      "kind": "compute",
+      "placement": {
+        "device_ids": [
+          "gpu:0"
+        ],
+        "comm_group": null
+      },
+      "demands": [
+        {
+          "resource_id": "gpu:0",
+          "amount": 1,
+          "unit": "permits"
+        }
+      ],
+      "cost": {
+        "duration_s": 8e-06,
+        "source": "hand_calculated",
+        "raw_value": 8,
+        "raw_unit": "us",
+        "conversion_to_s": 1e-06,
+        "evidence": "docs/dag/phase1/execution-contract.md",
+        "includes": [
+          "compute"
+        ],
+        "unknown_components": []
+      }
+    },
+    {
+      "task_id": "terminal",
+      "kind": "sync",
+      "placement": {
+        "device_ids": [],
+        "comm_group": null
+      },
+      "demands": [],
+      "cost": {
+        "duration_s": 0.0,
+        "source": "hand_calculated",
+        "raw_value": 0,
+        "raw_unit": "us",
+        "conversion_to_s": 1e-06,
+        "evidence": "docs/dag/phase1/execution-contract.md",
+        "includes": [
+          "sync"
+        ],
+        "unknown_components": []
+      }
+    }
+  ],
+  "edges": [
+    [
+      "T1",
+      "T3"
+    ],
+    [
+      "T2",
+      "T3"
+    ],
+    [
+      "T3",
+      "terminal"
+    ]
+  ],
+  "terminal_task_id": "terminal"
+}

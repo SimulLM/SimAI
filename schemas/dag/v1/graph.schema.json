@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:simai:dag:graph:1.0",
+  "title": "SimAI DAG fragment v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "graph_id", "context", "tasks", "edges", "terminal_task_id"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "graph_id": {"$ref": "#/$defs/id"},
+    "context": {
+      "type": "object", "additionalProperties": false,
+      "required": ["batch_id", "iteration_id", "replica_id", "stage_id", "request_ids"],
+      "properties": {
+        "batch_id": {"$ref": "#/$defs/id"},
+        "iteration_id": {"type": "integer", "minimum": 0},
+        "replica_id": {"$ref": "#/$defs/id"},
+        "stage_id": {"type": "integer", "minimum": 0},
+        "request_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+      }
+    },
+    "tasks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/task"}},
+    "edges": {"type": "array", "uniqueItems": true, "items": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {"$ref": "#/$defs/id"}
+    }},
+    "terminal_task_id": {"$ref": "#/$defs/id"}
+  },
+  "$defs": {
+    "id": {"type": "string", "minLength": 1},
+    "number": {"type": "number", "minimum": 0},
+    "cost": {
+      "type": "object", "additionalProperties": false,
+      "required": ["duration_s", "source", "raw_value", "raw_unit", "conversion_to_s", "evidence", "includes", "unknown_components"],
+      "properties": {
+        "duration_s": {"$ref": "#/$defs/number"},
+        "source": {"$ref": "#/$defs/id"},
+        "raw_value": {"$ref": "#/$defs/number"},
+        "raw_unit": {"enum": ["s", "ms", "us", "ns"]},
+        "conversion_to_s": {"type": "number", "exclusiveMinimum": 0},
+        "evidence": {"$ref": "#/$defs/id"},
+        "includes": {"type": "array", "uniqueItems": true, "items": {"enum": ["compute", "tp", "pp", "ep", "cpu", "pd", "sync"]}},
+        "unknown_components": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+      }
+    },
+    "demand": {
+      "type": "object", "additionalProperties": false,
+      "required": ["resource_id", "amount", "unit"],
+      "properties": {
+        "resource_id": {"$ref": "#/$defs/id"},
+        "amount": {"type": "integer", "minimum": 1},
+        "unit": {"enum": ["permits", "bytes"]}
+      }
+    },
+    "task": {
+      "type": "object", "additionalProperties": false,
+      "required": ["task_id", "kind", "placement", "demands", "cost"],
+      "properties": {
+        "task_id": {"$ref": "#/$defs/id"},
+        "kind": {"enum": ["coarse", "compute", "comm", "sync"]},
+        "placement": {
+          "type": "object", "additionalProperties": false,
+          "required": ["device_ids", "comm_group"],
+          "properties": {
+            "device_ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+            "comm_group": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/id"}]}
+          }
+        },
+        "demands": {"type": "array", "items": {"$ref": "#/$defs/demand"}},
+        "cost": {"$ref": "#/$defs/cost"},
+        "metadata": {"type": "object"}
+      }
+    }
+  }
+}

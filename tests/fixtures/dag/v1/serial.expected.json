@@ -1,0 +1,36 @@
+{
+  "scenarios": [
+    {
+      "name": "serial",
+      "capacities": {
+        "gpu:0": {
+          "amount": 1,
+          "unit": "permits"
+        },
+        "nic:0": {
+          "amount": 1,
+          "unit": "permits"
+        }
+      },
+      "schedule_s": {
+        "T1": [
+          0.0,
+          3e-06
+        ],
+        "T2": [
+          3e-06,
+          8e-06
+        ],
+        "T3": [
+          8e-06,
+          9.999999999999999e-06
+        ],
+        "terminal": [
+          9.999999999999999e-06,
+          9.999999999999999e-06
+        ]
+      },
+      "makespan_s": 9.999999999999999e-06
+    }
+  ]
+}
