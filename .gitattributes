@@ -1,0 +1,2 @@
+# Baseline manifests hash original bytes. Do not convert archived line endings.
+baseline-data/** -text
