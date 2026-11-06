@@ -12,6 +12,9 @@ TIMELINE_FIELDS = (
     "cost_source", "raw_value", "raw_unit", "conversion_to_s", "cost_evidence", "failure",
 )
 EVENT_FIELDS = ("time_s", "insertion_sequence", "kind", "graph_id", "task_id")
+RESOURCE_TIMELINE_FIELDS = (
+    "resource_id", "unit", "amount", "graph_id", "task_id", "start_at_s", "end_at_s",
+)
 
 
 def write_json(path, data):
@@ -87,5 +90,18 @@ def write_results(output, runner, *, error=None):
     rows, summary = snapshot(runner, error=error)
     write_csv(output / "timeline.csv", TIMELINE_FIELDS, rows)
     write_csv(output / "events.csv", EVENT_FIELDS, runner.events)
+    # Import lazily: the default phase-2 path remains independent of capacity code.
+    from .resources import CapacityResourceManager, resource_timeline
+    manager = getattr(runner.executor, "_resources", None)
+    intervals = resource_timeline(runner.executor)
+    write_csv(output / "resource_timeline.csv", RESOURCE_TIMELINE_FIELDS, [
+        dict(resource_id=item.resource_id, unit=item.unit, amount=item.amount,
+             graph_id=item.owner[0], task_id=item.owner[1], start_at_s=item.start_s,
+             end_at_s=item.end_s)
+        for item in intervals
+    ])
+    if isinstance(manager, CapacityResourceManager):
+        summary["resource_capacity_validated"] = True
+        summary["resource_capacity"] = manager.usage_snapshot()
     write_json(output / "summary.json", summary)
     return summary
