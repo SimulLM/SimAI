@@ -814,6 +814,10 @@ class ClusterConfig:
 
 @dataclass
 class SimulationConfig(ABC):
+    execution_mode: str = field(
+        default="legacy",
+        metadata={"help": "Execution path: legacy or dag_coarse."},
+    )
     seed: int = field(
         default=42,
         metadata={"help": "Seed for the random number generator."},
@@ -844,6 +848,8 @@ class SimulationConfig(ABC):
     )
 
     def __post_init__(self):
+        if self.execution_mode not in ("legacy", "dag_coarse"):
+            raise ValueError("execution_mode must be legacy or dag_coarse")
         self.write_config_to_file()
 
     @classmethod

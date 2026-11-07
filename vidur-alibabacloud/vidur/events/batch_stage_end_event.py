@@ -39,6 +39,14 @@ class BatchStageEndEvent(BaseEvent):
         from vidur.events.batch_stage_arrival_event import BatchStageArrivalEvent
         from vidur.events.replica_stage_schedule_event import ReplicaStageScheduleEvent
 
+        for record in reversed(getattr(scheduler, "stage_execution_records", ())):
+            if record["batch_stage_id"] == self._batch_stage.id:
+                if record["completion_count"]:
+                    raise RuntimeError("duplicate BatchStageEnd")
+                record["end_at_s"] = self.time
+                record["completion_count"] += 1
+                break
+
         scheduler.get_replica_stage_scheduler(
             self._replica_id, self._stage_id
         ).on_stage_end()

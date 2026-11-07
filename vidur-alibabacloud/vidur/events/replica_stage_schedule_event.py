@@ -47,6 +47,19 @@ class ReplicaStageScheduleEvent(BaseEvent):
 
         self._is_last_stage = stage_scheduler.is_last_stage
 
+        records = getattr(scheduler, "stage_execution_records", None)
+        if records is not None:
+            records.append({"batch_stage_id": self._batch_stage.id,
+                            "batch_id": self._batch.id, "replica_id": self._replica_id,
+                            "stage_id": self._stage_id, "request_ids": self._batch.request_ids,
+                            "num_tokens": list(self._batch.num_tokens), "start_at_s": self.time,
+                            "predicted_duration_s": self._batch_stage.execution_time,
+                            "end_at_s": None, "completion_count": 0})
+        adapter = getattr(scheduler, "dag_adapter", None)
+        if adapter is not None:
+            return adapter.submit_stage(self.time, self._replica_id, self._stage_id,
+                                        self._is_last_stage, self._batch, self._batch_stage)
+
         logger.debug(f"time={self._time} Event {self._id} of type {self._event_type} "
             f"Generates 1 BatchStageEndEvent replica_id={self._replica_id} stage_id={self._stage_id} "
             f"batch_stage={self._batch_stage}")

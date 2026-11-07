@@ -1,0 +1,12 @@
+pytest>=8
+jsonschema>=4
+numpy
+pandas
+scipy
+scikit-learn
+fasteners
+wandb
+ddsketch
+plotly_express
+networkx
+matplotlib

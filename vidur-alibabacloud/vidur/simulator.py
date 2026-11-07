@@ -1,6 +1,8 @@
 import atexit
 import heapq
 import json
+import math
+from pathlib import Path
 from typing import List
 
 from vidur.config import SimulationConfig
@@ -53,6 +55,17 @@ class Simulator:
             self._cluster.replicas,
         )
 
+        self._scheduler.stage_execution_records = []
+        self._scheduler.dag_adapter = None
+        self._failure = None
+        if config.execution_mode == "dag_coarse":
+            from vidur.dag.host import CoarseDagAdapter
+            self._scheduler.dag_adapter = CoarseDagAdapter(
+                (replica_id, stage_id)
+                for replica_id, replica in self._scheduler._replica_schedulers.items()
+                for stage_id in replica._replica_stage_schedulers
+            )
+
         self._init_event_queue()
         atexit.register(self._write_output)
 
@@ -65,6 +78,13 @@ class Simulator:
         return self._metric_store
 
     def run(self) -> None:
+        try:
+            self._run()
+        except Exception as exc:
+            self._failure = f"{type(exc).__name__}: {exc}"
+            raise
+
+    def _run(self) -> None:
         logger.info(
             f"Starting simulation with cluster: {self._cluster} and {len(self._event_queue)} requests"
         )
@@ -96,6 +116,12 @@ class Simulator:
             new_events = event.handle_event(self._scheduler, self._metric_store)
             self._add_events(new_events)
 
+            adapter = self._scheduler.dag_adapter
+            if adapter is not None:
+                adapter.now = self._time
+                adapter.pending_event_count = len(self._event_queue)
+                adapter.queue_peak = max(adapter.queue_peak, len(self._event_queue))
+
             if self._config.metrics_config.write_json_trace:
                 self._event_trace.append(event.to_dict())
 
@@ -106,6 +132,11 @@ class Simulator:
 
         # print(f"> Debug: self._scheduler.is_empty()={self._scheduler.is_empty()} self._terminate={self._terminate}")
         assert self._scheduler.is_empty() or self._terminate
+        if not self._terminate and any(not request.completed for request in self._requests):
+            raise RuntimeError("host queue exhausted with unfinished requests")
+
+        if self._scheduler.dag_adapter is not None and not self._terminate:
+            self._scheduler.dag_adapter.assert_completed()
 
         logger.info(f"Simulation ended at: {self._time}s")
         
@@ -120,6 +151,20 @@ class Simulator:
     def _write_output(self) -> None:
         logger.info("Writing output")
 
+        output = Path(self._config.metrics_config.output_dir)
+        with (output / "execution-summary.json").open("w", encoding="utf-8") as stream:
+            json.dump({"execution_mode": self._config.execution_mode,
+                       "status": "failed" if self._failure else ("truncated" if self._terminate else "completed"),
+                       "error": self._failure, "final_time_s": self._time,
+                       "requests": [request.to_dict() for request in self._requests],
+                       "stages": self._scheduler.stage_execution_records}, stream, indent=2, allow_nan=False)
+        if self._scheduler.dag_adapter is not None:
+            from vidur.dag.trace import write_results
+            adapter = self._scheduler.dag_adapter
+            adapter.now = self._time
+            adapter.pending_event_count = len(self._event_queue)
+            write_results(output, adapter, error=self._failure or ("time limit reached" if self._terminate else None))
+
         self._metric_store.plot()
         logger.info("Metrics written")
 
@@ -131,7 +176,14 @@ class Simulator:
             self._write_chrome_trace()
             logger.info("Chrome event trace written")
 
+    def write_output(self) -> None:
+        # Original CLI must propagate output failures instead of hiding them in atexit.
+        atexit.unregister(self._write_output)
+        self._write_output()
+
     def _add_event(self, event: BaseEvent) -> None:
+        if not math.isfinite(event.time) or event.time < self._time:
+            raise ValueError("event must have finite time at or after Simulator time")
         # 将事件按照优先级加入队列
         # Add event to queue according to priority
         heapq.heappush(self._event_queue, (event._priority_number, event))
@@ -142,6 +194,7 @@ class Simulator:
 
     def _init_event_queue(self) -> None:
         requests = self._request_generator.generate()
+        self._requests = requests
 
         # 生成请求，把请求加入到时间队列中
         # Generate requests and add them to the time queue
@@ -158,9 +211,14 @@ class Simulator:
             self._terminate = True
 
     def _write_event_trace(self) -> None:
+        def encode_collection(value):
+            if isinstance(value, set):
+                return sorted(value)
+            raise TypeError(f"unsupported trace value: {type(value).__name__}")
+
         trace_file = f"{self._config.metrics_config.output_dir}/event_trace.json"
         with open(trace_file, "w") as f:
-            json.dump(self._event_trace, f)
+            json.dump(self._event_trace, f, default=encode_collection)
 
     def _write_chrome_trace(self) -> None:
         trace_file = f"{self._config.metrics_config.output_dir}/chrome_trace.json"

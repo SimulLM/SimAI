@@ -9,7 +9,10 @@ def main() -> None:
     set_seeds(config.seed)
 
     simulator = Simulator(config)
-    simulator.run()
+    try:
+        simulator.run()
+    finally:
+        simulator.write_output()
 
 
 if __name__ == "__main__":
