@@ -67,3 +67,14 @@ decode_time_execution_plus_preemption_normalized（沿用旧指标定义，不�
 原非 PD 请求指标中的 decode_arrived_at、pd_p2p_comm_size 等可能沿用 inf/空值哨兵，
 不作为本阶段数值验收指标；不据此声称 PD 完成。原运行生成的 AICB lookup/log 属缓存，
 已增加定向忽略规则，不提交验收时产生的缓存。
+
+
+本机验收将依赖隔离安装在 `.cache/phase4-deps`，没有修改全局 Python 环境。使用这份
+现成环境复现时，在项目根目录先设置：
+
+```powershell
+$env:PYTHONPATH = "$PWD\.cache\phase4-deps;$PWD\vidur-alibabacloud;$PWD"
+python scripts/dag_phase4/main.py --output results/dag/phase4/<new_run_id>
+```
+
+manifest 按 sys.path 顺序记录实际选中的依赖版本，避免全局同名包覆盖隔离目录中的版本。

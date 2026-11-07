@@ -82,3 +82,19 @@ def test_metadata_errors_preserve_failure_report(monkeypatch, failure_call):
     assert report["status"] == "failed" and manifest["exit_code"] == 1
     assert "injected metadata error" in error["traceback"]
     assert "operation-error.json" in manifest["artifact_sha256"]
+
+
+def test_dependency_versions_follow_effective_import_order(monkeypatch):
+    from types import SimpleNamespace
+    from scripts.dag_phase4 import main as acceptance
+    relative = Path("results/dag/phase4") / ("test-dependencies-" + uuid.uuid4().hex)
+    # Duplicate distributions are yielded in search order; the global copy is last.
+    distributions = [SimpleNamespace(metadata={"Name": "numpy"}, version="isolated"),
+                     SimpleNamespace(metadata={"Name": "numpy"}, version="global")]
+    monkeypatch.setattr(acceptance.importlib.metadata, "distributions", lambda: distributions)
+    monkeypatch.setattr(acceptance.importlib.metadata, "version", lambda _: "isolated")
+    monkeypatch.setattr(acceptance, "run_comparisons", lambda _: [{"passed": True}])
+    monkeypatch.setattr(acceptance, "run_host_probes", lambda _: [{"passed": True}])
+    assert acceptance.main(["--output", str(relative)]) == 0
+    manifest = json.loads((ROOT / relative / "run-manifest.json").read_text(encoding="utf-8"))
+    assert manifest["dependencies"] == {"numpy": "isolated"}

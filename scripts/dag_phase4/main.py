@@ -313,7 +313,10 @@ def main(argv=None):
         manifest["sources_changed_during_run"] = manifest["source_sha256"] != manifest.get("source_sha256_at_start")
         if manifest["sources_changed_during_run"]:
             record_error(RuntimeError("source files changed during acceptance"))
-        manifest["dependencies"] = {d.metadata["Name"]: d.version for d in importlib.metadata.distributions()}
+        # Resolve each name in sys.path order; a later global installation must not
+        # overwrite the version selected from an isolated dependency directory.
+        manifest["dependencies"] = {d.metadata["Name"]: importlib.metadata.version(d.metadata["Name"])
+                                    for d in importlib.metadata.distributions()}
         for field, command in (("git_head", ["rev-parse", "HEAD"]), ("git_status", ["status", "--short"]),
                                ("git_diff", ["diff", "--binary"]), ("git_staged_diff", ["diff", "--cached", "--binary"])):
             result = subprocess.run(["git", "-c", f"safe.directory={ROOT.as_posix()}", *command], cwd=ROOT,
