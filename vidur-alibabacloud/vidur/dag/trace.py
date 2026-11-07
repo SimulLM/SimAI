@@ -10,6 +10,7 @@ TIMELINE_FIELDS = (
     "start_at_s", "end_at_s", "scheduled_finish_at_s", "duration_s", "resource_wait_s",
     "remaining_predecessors", "completion_count", "resource_mode", "demands", "placement",
     "cost_source", "raw_value", "raw_unit", "conversion_to_s", "cost_evidence", "failure",
+    "resource_released_at_s",
 )
 EVENT_FIELDS = ("time_s", "insertion_sequence", "kind", "graph_id", "task_id")
 RESOURCE_TIMELINE_FIELDS = (
@@ -53,6 +54,7 @@ def snapshot(runner, *, error=None):
                 cost_source=spec.cost.source, raw_value=spec.cost.raw_value, raw_unit=spec.cost.raw_unit,
                 conversion_to_s=spec.cost.conversion_to_s, cost_evidence=spec.cost.evidence,
                 failure=task.failure,
+                resource_released_at_s=task.resource_released_at,
             ))
             if task.state not in (TaskState.COMPLETED, TaskState.FAILED):
                 unfinished.append(dict(task_id=tid, state=task.state.value,
@@ -101,7 +103,35 @@ def write_results(output, runner, *, error=None):
         for item in intervals
     ])
     if isinstance(manager, CapacityResourceManager):
-        summary["resource_capacity_validated"] = True
         summary["resource_capacity"] = manager.usage_snapshot()
+        # A manager type alone is not validation. Check the observed half-open
+        # intervals independently, as well as confirmed cleanup of task leases.
+        errors = []
+        for resource_id, resource in summary["resource_capacity"].items():
+            if not 0 <= resource["used"] <= resource["capacity"]:
+                errors.append(f"invalid final usage: {resource_id}")
+            events = []
+            for item in intervals:
+                if item.resource_id != resource_id:
+                    continue
+                if item.unit != resource["unit"] or item.end_s < item.start_s:
+                    errors.append(f"invalid interval: {item.owner}")
+                if item.start_s < item.end_s:
+                    events.extend(((item.start_s, item.amount), (item.end_s, -item.amount)))
+            used = 0
+            for _, change in sorted(events):  # releases precede acquires at the same time
+                used += change
+                if not 0 <= used <= resource["capacity"]:
+                    errors.append(f"interval capacity violation: {resource_id}")
+        for graph in runner.executor.graphs.values():
+            if graph.cleanup_errors:
+                errors.extend(graph.cleanup_errors)
+            for task in graph.tasks.values():
+                if task.lease is not None:
+                    errors.append(f"unreleased lease: {task.spec.task_id}")
+                if task.start_at is not None and task.spec.demands and task.resource_released_at is None:
+                    errors.append(f"unconfirmed resource interval: {task.spec.task_id}")
+        summary["resource_capacity_check_errors"] = errors
+        summary["resource_capacity_validated"] = summary["status"] == "passed" and not errors
     write_json(output / "summary.json", summary)
     return summary

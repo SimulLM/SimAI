@@ -25,7 +25,7 @@ class ResourceCapacity:
 
 @dataclass(frozen=True)
 class ResourceInterval:
-    """One completed task-resource occupancy interval, expressed in seconds."""
+    """One task-resource occupancy interval with confirmed release, in seconds."""
 
     resource_id: str
     unit: str
@@ -130,6 +130,13 @@ class CapacityResourceManager:
 
     def _wakeups(self) -> tuple[Owner, ...]:
         return tuple(self._waiters)
+
+    def cancel_waiters(self, owners: tuple[Owner, ...]) -> None:
+        """Forget cancelled owners without releasing any lease or reservation."""
+        if not isinstance(owners, tuple) or any(not self._valid_owner(owner) for owner in owners):
+            raise ValueError("owners must be a tuple of valid owners")
+        for owner in owners:
+            self._waiters.pop(owner, None)
 
     def _release_lease(self, lease: Lease) -> tuple[Owner, ...]:
         stored = self._leases.get(lease.lease_id)
@@ -247,15 +254,15 @@ class CapacityResourceManager:
 
 
 def resource_timeline(executor) -> tuple[ResourceInterval, ...]:
-    """Build a deterministic resource timeline from completed executor tasks."""
+    """Report intervals ending at confirmed lease release, including failed tasks."""
     intervals = []
     for graph_id, graph in sorted(executor.graphs.items()):
         for task_id, task in sorted(graph.tasks.items(), key=lambda item: item[1].sequence):
-            if task.start_at is None or task.end_at is None:
+            if task.start_at is None or task.resource_released_at is None:
                 continue
             for demand in task.spec.demands:
                 intervals.append(ResourceInterval(
                     demand.resource_id, demand.unit, demand.amount, (graph_id, task_id),
-                    task.start_at, task.end_at,
+                    task.start_at, task.resource_released_at,
                 ))
     return tuple(intervals)

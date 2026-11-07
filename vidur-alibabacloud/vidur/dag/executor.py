@@ -145,6 +145,7 @@ class DagExecutor:
             raise RuntimeError("lease release already attempted")
         task.release_attempted = True
         wakeups = self._resources.release(task.lease, now)
+        task.resource_released_at = now
         # A successful release clears ownership even if its wakeup payload is invalid.
         task.lease = None
         if not isinstance(wakeups, tuple):
@@ -216,6 +217,12 @@ class DagExecutor:
         graph.finished_at = now
         failed.state = TaskState.FAILED
         failed.failure = reason
+        cancel_waiters = getattr(self._resources, "cancel_waiters", None)
+        if callable(cancel_waiters):
+            try:
+                cancel_waiters(tuple((owner[0], task.spec.task_id) for task in graph.tasks.values()))
+            except Exception as exc:
+                graph.cleanup_errors.append(f"waiter cancellation failed: {exc}")
         for task in graph.tasks.values():
             self._ready.pop((owner[0], task.spec.task_id), None)
             if task.state == TaskState.RUNNING:

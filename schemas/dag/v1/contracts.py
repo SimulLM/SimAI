@@ -143,6 +143,11 @@ class ResourceManager(Protocol):
     def release(self, lease: Lease, now: float) -> Wakeups: ...
 
 
+class WaiterCancellation(Protocol):
+    """Optional resource-manager extension; existing managers remain compatible."""
+    def cancel_waiters(self, owners: tuple[Owner, ...]) -> None: ...
+
+
 class KVCapacity(Protocol):
     def reserve(self, owner: Owner, resource_id: str,
                 storage_bytes: int) -> Reservation | None: ...

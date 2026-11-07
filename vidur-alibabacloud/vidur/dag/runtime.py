@@ -14,6 +14,7 @@ class TaskRuntime:
     ready_at: float | None = None
     start_at: float | None = None
     end_at: float | None = None
+    resource_released_at: float | None = None
     scheduled_finish_at: float | None = None
     lease: Lease | None = None
     release_attempted: bool = False

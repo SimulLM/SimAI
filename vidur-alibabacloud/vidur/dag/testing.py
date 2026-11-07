@@ -27,3 +27,6 @@ class DependencyOnlyResources:
         del self.active[lease.owner]
         self.releases.append(lease.owner)
         return ()
+
+    def cancel_waiters(self, owners):
+        self.blocked.difference_update(owners)
