@@ -39,6 +39,8 @@ class BatchStage(BaseEntity):
         self._model_execution_time = model_execution_time
 
         self._scheduled_at = None
+        self._submitted_at = None
+        self._resource_wait_s = None
         self._completed_at = None
         self._scheduled = False
 
@@ -83,12 +85,21 @@ class BatchStage(BaseEntity):
     def on_schedule(
         self,
         time: float,
+        *,
+        submitted_at: float = None,
     ) -> None:
+        if self._scheduled:
+            raise RuntimeError("BatchStage execution already started")
+        submitted_at = time if submitted_at is None else submitted_at
+        if submitted_at > time:
+            raise ValueError("BatchStage cannot start before submission")
+        self._submitted_at = submitted_at
+        self._resource_wait_s = time - submitted_at
         self._scheduled_at = time
         self._scheduled = True
 
         for request in self._requests:
-            request.on_batch_stage_schedule(time)
+            request.on_batch_stage_schedule(time, resource_wait_s=self._resource_wait_s)
 
     def on_stage_end(
         self,
@@ -112,6 +123,8 @@ class BatchStage(BaseEntity):
             "execution_time": self._execution_time,
             "model_execution_time": self._model_execution_time,
             "scheduled_at": self._scheduled_at,
+            "submitted_at": self._submitted_at,
+            "resource_wait_s": self._resource_wait_s,
             "completed_at": self._completed_at,
             "replica_id": self._replica_id,
             "batch_id": self._batch_id,

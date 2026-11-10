@@ -43,13 +43,15 @@ class CoarseDagAdapter:
         self.pending_event_count = 0
         self._sequence = count()
         self._outbox = []
+        self._stage_starts = {}
 
     @staticmethod
     def resource_id(replica_id, stage_id):
         # A compatibility Stage permit, not a claim about physical GPU overlap.
         return f"stage:{replica_id}:{stage_id}"
 
-    def submit_stage(self, now, replica_id, stage_id, is_last_stage, batch, batch_stage):
+    def submit_stage(self, now, replica_id, stage_id, is_last_stage, batch, batch_stage,
+                     *, on_stage_start=None):
         if self.failure:
             raise RuntimeError(self.failure)
         from vidur.events.batch_stage_end_event import BatchStageEndEvent
@@ -72,6 +74,8 @@ class CoarseDagAdapter:
         # equal-time ordering identity. It is NOT queued until terminal callback.
         end = BatchStageEndEvent(now + cost.duration_s, replica_id, stage_id, is_last_stage, batch, batch_stage)
         self.stage_ends[graph_id] = end
+        if on_stage_start is not None:
+            self._stage_starts[graph_id] = on_stage_start
 
         def on_terminal(completed_graph_id, finished_at):
             end._time = finished_at
@@ -83,7 +87,16 @@ class CoarseDagAdapter:
         return self._wrap(handle.initial_events)
 
     def _wrap(self, intents):
-        return [DagHostEvent(self, intent) for intent in intents]
+        events = []
+        for intent in intents:
+            if intent.kind == "task_complete" and intent.owner[1] == "coarse":
+                start = self._stage_starts.pop(intent.owner[0], None)
+                if start is not None:
+                    # dispatch creates completion intents at the actual start.
+                    # Use its clock, avoiding finish-duration float cancellation.
+                    start(self.executor.now)
+            events.append(DagHostEvent(self, intent))
+        return events
 
     def handle(self, intent):
         if self.failure:
@@ -111,6 +124,7 @@ class CoarseDagAdapter:
         self.failure = self.failure or str(reason)
         self.now = now
         self._outbox = []
+        self._stage_starts.clear()
         self.executor.abort(now, self.failure)
 
     def assert_completed(self):

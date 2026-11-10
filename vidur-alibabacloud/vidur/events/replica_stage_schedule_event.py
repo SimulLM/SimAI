@@ -44,7 +44,8 @@ class ReplicaStageScheduleEvent(BaseEvent):
         record = {"batch_stage_id": self._batch_stage.id,
                   "batch_id": self._batch.id, "replica_id": self._replica_id,
                   "stage_id": self._stage_id, "request_ids": self._batch.request_ids,
-                  "num_tokens": list(self._batch.num_tokens), "start_at_s": self.time,
+                  "num_tokens": list(self._batch.num_tokens), "submitted_at_s": self.time,
+                  "start_at_s": None, "resource_wait_s": None,
                   "predicted_duration_s": None, "end_at_s": None, "completion_count": 0}
         try:
             finite_nonnegative(self._batch_stage.execution_time)
@@ -58,21 +59,21 @@ class ReplicaStageScheduleEvent(BaseEvent):
         if records is not None:
             records.append(record)
 
-        self._batch_stage.on_schedule(self.time)
-        metrics_store.on_replica_stage_schedule(
-            self.time,
-            self._replica_id,
-            self._stage_id,
-            self._batch_stage,
-            execution_time,
-        )
+        def on_stage_start(start_at):
+            self._batch_stage.on_schedule(start_at, submitted_at=self.time)
+            record.update(start_at_s=start_at, resource_wait_s=start_at - self.time)
+            metrics_store.on_replica_stage_schedule(
+                start_at, self._replica_id, self._stage_id, self._batch_stage, execution_time)
 
         self._is_last_stage = stage_scheduler.is_last_stage
 
         adapter = getattr(scheduler, "dag_adapter", None)
         if adapter is not None:
             return adapter.submit_stage(self.time, self._replica_id, self._stage_id,
-                                        self._is_last_stage, self._batch, self._batch_stage)
+                                        self._is_last_stage, self._batch, self._batch_stage,
+                                        on_stage_start=on_stage_start)
+
+        on_stage_start(self.time)
 
         logger.debug(f"time={self._time} Event {self._id} of type {self._event_type} "
             f"Generates 1 BatchStageEndEvent replica_id={self._replica_id} stage_id={self._stage_id} "

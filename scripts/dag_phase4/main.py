@@ -194,7 +194,55 @@ def run_comparisons(output):
     write_csv(output / "request-comparison.csv", request_rows)
     write_csv(output / "stage-comparison.csv", stage_rows)
     write_csv(output / "metrics-comparison.csv", metric_rows)
+    delay_check = run_resource_delay_integration(output, profiles)
+    write_json(output / "resource-delay-integration.json", delay_check)
+    if not delay_check["passed"]:
+        raise RuntimeError("resource-delay original CLI integration failed")
     return checks
+
+
+def run_resource_delay_integration(output, profiles):
+    """Complete real prefill/decode and StageEnd after controlled contention."""
+    baseline_path, = (output / "single" / "dag_coarse").glob("*/execution-summary.json")
+    baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+    folder = output / "resource-delay-integration"
+    command = cli_command("dag_coarse", folder, profiles, output / "single" / "requests.csv")
+    command[1:3] = [str(ROOT / "scripts/dag_phase4/inject_resource_delay.py")]
+    delayed, run_folder = run_cli(command, folder)
+    summary = json.loads((run_folder / "summary.json").read_text(encoding="utf-8"))
+    old_request, = baseline["requests"]
+    new_request, = delayed["requests"]
+    stages = delayed["stages"]
+    coarse = []
+    with (run_folder / "timeline.csv").open(encoding="utf-8") as stream:
+        coarse = [row for row in csv.DictReader(stream) if row["kind"] == "coarse"]
+    checks = {
+        "request_completed": delayed["status"] == "completed" and new_request["completed"],
+        "tokens_unchanged": new_request["num_processed_tokens"] == old_request["num_processed_tokens"],
+        "execution_cost_unchanged": compare(new_request["execution_time"], old_request["execution_time"])
+            and compare(new_request["model_execution_time"], old_request["model_execution_time"]),
+        "completion_delayed_by_10ms": compare(new_request["completed_at"], old_request["completed_at"] + 0.01),
+        "request_wait_recorded_once": compare(new_request["stage_resource_wait_time_s"], 0.01),
+        "first_start_after_release": stages[0]["submitted_at_s"] == 0 and stages[0]["start_at_s"] == 0.01,
+        "stage_wait_recorded_once": compare(sum(row["resource_wait_s"] for row in stages), 0.01),
+        "stage_service_intervals": all(compare(row["end_at_s"], row["start_at_s"] + row["predicted_duration_s"])
+                                       and row["completion_count"] == 1 for row in stages),
+        "stage_costs_unchanged": compare([row["predicted_duration_s"] for row in baseline["stages"]],
+                                         [row["predicted_duration_s"] for row in stages]),
+        "dag_wait_matches_business": len(coarse) == len(stages) and all(
+            compare(float(row["start_at_s"]), stage["start_at_s"])
+            and compare(float(row["resource_wait_s"]), stage["resource_wait_s"])
+            for row, stage in zip(coarse, stages)),
+        "callbacks_once": all(graph["terminal_callback_count"] == 1 for graph in summary["graphs"]),
+        "capacity_validated": summary["resource_capacity_validated"],
+        "resources_and_queue_clear": summary["pending_event_count"] == 0
+            and all(resource["used"] == 0 for resource in summary["resource_capacity"].values()),
+    }
+    return {"passed": all(checks.values()), "checks": checks, "delay_s": 0.01,
+            "baseline_completed_at_s": old_request["completed_at"],
+            "delayed_completed_at_s": new_request["completed_at"],
+            "execution_time_s": new_request["execution_time"],
+            "resource_wait_s": new_request["stage_resource_wait_time_s"]}
 
 
 def run_host_probes(output):
@@ -303,6 +351,9 @@ def main(argv=None):
         if eligible:
             report.update(accuracy_status="not_evaluated", accuracy_blocker="Reference pairs require separate three-way evaluation")
         report["checks"] = run_comparisons(output)
+        delay_report = output / "resource-delay-integration.json"
+        if delay_report.exists():
+            report["resource_delay_integration"] = json.loads(delay_report.read_text(encoding="utf-8"))
         report["host_probes"] = run_host_probes(output)
         code = 0 if all(item["passed"] for item in report["checks"] + report["host_probes"]) else 1
         report["status"] = "passed" if code == 0 else "failed"

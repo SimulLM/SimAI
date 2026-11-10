@@ -91,3 +91,14 @@ manifest 按 sys.path 顺序记录实际选中的依赖版本，避免全局同�
   JSON 使用同目录临时文件与原子替换，诊断中的非有限数值显式转为文本；各输出区段独立尝试保存。
   输出错误记录在 output-errors.json 并传播；若执行与输出同时失败，保留执行异常为主异常。
 - tests/dag/test_phase4_boundaries.py 覆盖真实 Simulator 的截断、多图/等待者收尾、NaN/Inf/负耗时与报告故障。
+
+资源等待接入：Stage 记录区分 submitted_at_s、实际 start_at_s、resource_wait_s 和 end_at_s。
+等待期间 start_at_s/resource_wait_s 为 null；许可授予时从 executor 的实际 dispatch 时钟同步启动
+BatchStage、请求及指标，不通过完成时间倒推起点。BatchStage 原有完成等式保持有效，预测执行费用不含等待。
+请求的 stage_resource_wait_time_s 单独累计已开始 Stage 的资源等待；它可能与旧 preempted_time
+中的后续轮次等待重叠，不能将两者直接相加。未开始/截断时的等待见 DAG timeline。
+
+正式验收额外运行 resource-delay-integration 原 CLI：占用首个 Stage 许可 10ms，再执行真实 StageEnd
+和全部 prefill/decode 至请求完成。resource-delay-integration.json 保存请求完成时间增量、执行费用不变、
+等待计数、Stage 服务区间、terminal 一次、资源和队列清空等检查；原三项探针保留为 adapter 层验证。
+tests/dag/test_phase4_resource_wait.py 还覆盖后续 Stage 等待、等待时中止/截断，以及零时长 Stage。

@@ -53,6 +53,7 @@ class Request(BaseEntity):
         self._model_execution_time = 0
         self._scheduling_delay = 0
         self._preempted_time = 0
+        self._stage_resource_wait_time_s = 0
         self._completed_at = 0
         self._prefill_completed_at = 0
         self._latest_stage_scheduled_at = 0
@@ -315,7 +316,12 @@ class Request(BaseEntity):
     def on_batch_stage_schedule(
         self,
         time: float,
+        *,
+        resource_wait_s: float = 0,
     ) -> None:
+        # A separate cumulative diagnostic, not an addition to execution_time.
+        # Later-iteration waits may already appear in legacy preempted_time.
+        self._stage_resource_wait_time_s += resource_wait_s
         self._latest_stage_scheduled_at = time
         if self._latest_stage_completed_at == 0:
             self._preempted_time = 0
@@ -344,6 +350,7 @@ class Request(BaseEntity):
             "scheduled_at": self._scheduled_at,
             "scheduling_delay": self._scheduling_delay,
             "preempted_time": self._preempted_time,
+            "stage_resource_wait_time_s": self._stage_resource_wait_time_s,
             "completed_at": self._completed_at,
             "num_prefill_tokens": self._num_prefill_tokens,
             "num_decode_tokens": self._num_decode_tokens,

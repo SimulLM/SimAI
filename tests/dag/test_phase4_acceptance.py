@@ -22,6 +22,8 @@ def test_original_cli_legacy_and_dag_complete_identical_requests():
     manifest = json.loads((output / "run-manifest.json").read_text(encoding="utf-8"))
     assert report["status"] == "passed" and len(report["checks"]) == 5
     assert all(all(check["checks"].values()) for check in report["checks"])
+    assert report["resource_delay_integration"]["passed"]
+    assert all(report["resource_delay_integration"]["checks"].values())
     assert report["profile_nature"] == "synthetic" and report["accuracy_status"] == "blocked"
     assert not manifest["sources_changed_during_run"] and manifest["exit_code"] == 0
     for name, digest in manifest["artifact_sha256"].items():
