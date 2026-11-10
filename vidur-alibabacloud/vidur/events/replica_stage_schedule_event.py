@@ -1,5 +1,7 @@
 from typing import List
 
+from schemas.dag.v1.io import finite_nonnegative
+
 from vidur.events import BaseEvent
 from vidur.logger import init_logger
 from vidur.metrics import MetricsStore
@@ -36,6 +38,26 @@ class ReplicaStageScheduleEvent(BaseEvent):
         if not (self._batch and self._batch_stage):
             return []
 
+        # Validate before metrics or business state consume predictor output. Keep
+        # rejected input explicitly diagnostic, never in the numeric cost field.
+        records = getattr(scheduler, "stage_execution_records", None)
+        record = {"batch_stage_id": self._batch_stage.id,
+                  "batch_id": self._batch.id, "replica_id": self._replica_id,
+                  "stage_id": self._stage_id, "request_ids": self._batch.request_ids,
+                  "num_tokens": list(self._batch.num_tokens), "start_at_s": self.time,
+                  "predicted_duration_s": None, "end_at_s": None, "completion_count": 0}
+        try:
+            finite_nonnegative(self._batch_stage.execution_time)
+        except ValueError as exc:
+            record.update(invalid_predicted_duration=repr(self._batch_stage.execution_time),
+                          validation_error=str(exc))
+            if records is not None:
+                records.append(record)
+            raise ValueError(f"invalid Stage execution time: {exc}") from exc
+        record["predicted_duration_s"] = self._batch_stage.execution_time
+        if records is not None:
+            records.append(record)
+
         self._batch_stage.on_schedule(self.time)
         metrics_store.on_replica_stage_schedule(
             self.time,
@@ -47,14 +69,6 @@ class ReplicaStageScheduleEvent(BaseEvent):
 
         self._is_last_stage = stage_scheduler.is_last_stage
 
-        records = getattr(scheduler, "stage_execution_records", None)
-        if records is not None:
-            records.append({"batch_stage_id": self._batch_stage.id,
-                            "batch_id": self._batch.id, "replica_id": self._replica_id,
-                            "stage_id": self._stage_id, "request_ids": self._batch.request_ids,
-                            "num_tokens": list(self._batch.num_tokens), "start_at_s": self.time,
-                            "predicted_duration_s": self._batch_stage.execution_time,
-                            "end_at_s": None, "completion_count": 0})
         adapter = getattr(scheduler, "dag_adapter", None)
         if adapter is not None:
             return adapter.submit_stage(self.time, self._replica_id, self._stage_id,

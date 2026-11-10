@@ -246,6 +246,29 @@ class DagExecutor:
         self._now = now
         return self._fail_graph((graph_id, task_id), now, str(reason))
 
+    def abort(self, now, reason):
+        """End all unfinished graphs without dispatch or callbacks; safe to repeat.
+
+        Failed releases remain visible in cleanup_errors and are never retried.
+        Already scheduled completion events become stale via the FAILED state.
+        """
+        now = self._check_now(now)
+        self._now = now
+        for graph_id, graph in self._graphs.items():
+            if graph.state == "COMPLETED":
+                continue
+            if graph.state == "ACTIVE":
+                task_id = next(tid for tid, task in graph.tasks.items()
+                               if task.state != TaskState.COMPLETED)
+                self._fail_graph((graph_id, task_id), now, str(reason))
+            for task in graph.tasks.values():
+                if task.resource_wait_started_at is not None:
+                    task.resource_wait_s += graph.finished_at - task.resource_wait_started_at
+                    task.resource_wait_started_at = None
+                if task.state in (TaskState.PENDING, TaskState.READY):
+                    task.state = TaskState.FAILED
+                    task.failure = graph.failure
+
     def append(self, patch: GraphAppend, now):
         now = self._check_now(now)
         if not isinstance(patch, GraphAppend) or not isinstance(patch.graph_id, str):

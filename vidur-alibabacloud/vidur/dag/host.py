@@ -50,6 +50,8 @@ class CoarseDagAdapter:
         return f"stage:{replica_id}:{stage_id}"
 
     def submit_stage(self, now, replica_id, stage_id, is_last_stage, batch, batch_stage):
+        if self.failure:
+            raise RuntimeError(self.failure)
         from vidur.events.batch_stage_end_event import BatchStageEndEvent
         sequence = next(self._sequence)
         graph_id = f"replica{replica_id}/stage{stage_id}/batch{batch.id}/iteration{sequence}"
@@ -85,7 +87,7 @@ class CoarseDagAdapter:
 
     def handle(self, intent):
         if self.failure:
-            raise RuntimeError(self.failure)
+            return []  # Completion events queued before a host abort are stale.
         self.now = intent.time_s
         self.events.append({"time_s": intent.time_s, "insertion_sequence": len(self.events),
                             "kind": intent.kind, "graph_id": intent.owner[0], "task_id": intent.owner[1]})
@@ -102,9 +104,14 @@ class CoarseDagAdapter:
             self._outbox = []
             return events
         except Exception as exc:
-            self.failure = str(exc)
-            self._outbox = []
+            self.abort(intent.time_s, str(exc))
             raise
+
+    def abort(self, now, reason):
+        self.failure = self.failure or str(reason)
+        self.now = now
+        self._outbox = []
+        self.executor.abort(now, self.failure)
 
     def assert_completed(self):
         if any(graph.state != "COMPLETED" for graph in self.executor.graphs.values()):

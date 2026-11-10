@@ -12,6 +12,7 @@ from vidur.logger import init_logger
 from vidur.metrics import MetricsStore
 from vidur.request_generator import RequestGeneratorRegistry
 from vidur.scheduler import BaseGlobalScheduler, GlobalSchedulerRegistry
+from vidur.utils.diagnostics import add_exception_note, diagnostic_value, write_json_atomic
 
 logger = init_logger(__name__)
 
@@ -82,6 +83,15 @@ class Simulator:
             self._run()
         except Exception as exc:
             self._failure = f"{type(exc).__name__}: {exc}"
+            adapter = getattr(getattr(self, "_scheduler", None), "dag_adapter", None)
+            if adapter is not None:
+                try:
+                    adapter.abort(self._time, self._failure)
+                except Exception as cleanup_error:
+                    add_exception_note(exc, f"DAG abort failed: {cleanup_error}")
+                # No pending business completion may run after global failure.
+                self._event_queue.clear()
+                adapter.pending_event_count = 0
             raise
 
     def _run(self) -> None:
@@ -97,10 +107,13 @@ class Simulator:
             
             # 弹出优先级最高的事件
             # Pop the highest priority event
-            _, event = heapq.heappop(self._event_queue)
+            _, event = self._event_queue[0]
             # 设置系统时间为事件发生的时间
             # Set system time to the event occurrence time
             self._set_time(event._time)
+            if self._terminate:
+                break  # Leave the unprocessed event queued in both modes.
+            heapq.heappop(self._event_queue)
             if tmp_pre_debug_time == 0 and event._time > tmp_pre_debug_time:
                 tmp_pre_debug_time = event._time
             elif tmp_pre_debug_time > 0 and tmp_pre_debug_time > event._time:
@@ -152,29 +165,50 @@ class Simulator:
         logger.info("Writing output")
 
         output = Path(self._config.metrics_config.output_dir)
-        with (output / "execution-summary.json").open("w", encoding="utf-8") as stream:
-            json.dump({"execution_mode": self._config.execution_mode,
-                       "status": "failed" if self._failure else ("truncated" if self._terminate else "completed"),
-                       "error": self._failure, "final_time_s": self._time,
-                       "requests": [request.to_dict() for request in self._requests],
-                       "stages": self._scheduler.stage_execution_records}, stream, indent=2, allow_nan=False)
+        errors = []
+
+        def attempt(name, action):
+            try:
+                action()
+            except Exception as exc:
+                errors.append((name, exc))
+
+        def execution_summary():
+            write_json_atomic(output / "execution-summary.json", diagnostic_value({
+                "execution_mode": self._config.execution_mode,
+                "status": "failed" if self._failure else ("truncated" if self._terminate else "completed"),
+                "error": self._failure, "final_time_s": self._time,
+                "requests": [request.to_dict() for request in self._requests],
+                "stages": self._scheduler.stage_execution_records}))
+
+        attempt("execution_summary", execution_summary)
         if self._scheduler.dag_adapter is not None:
             from vidur.dag.trace import write_results
             adapter = self._scheduler.dag_adapter
             adapter.now = self._time
             adapter.pending_event_count = len(self._event_queue)
-            write_results(output, adapter, error=self._failure or ("time limit reached" if self._terminate else None))
+            attempt("dag_results", lambda: write_results(
+                output, adapter, error=self._failure or ("time limit reached" if self._terminate else None)))
 
-        self._metric_store.plot()
-        logger.info("Metrics written")
+        attempt("metrics", self._metric_store.plot)
 
         if self._config.metrics_config.write_json_trace:
-            self._write_event_trace()
-            logger.info("Json event trace written")
+            attempt("event_trace", self._write_event_trace)
 
         if self._config.metrics_config.enable_chrome_trace:
-            self._write_chrome_trace()
-            logger.info("Chrome event trace written")
+            attempt("chrome_trace", self._write_chrome_trace)
+
+        if errors:
+            try:
+                write_json_atomic(output / "output-errors.json", {
+                    "execution_error": self._failure,
+                    "output_errors": [{"section": name, "error": f"{type(exc).__name__}: {exc}"}
+                                      for name, exc in errors]})
+            except Exception as exc:
+                add_exception_note(errors[0][1], f"Cannot save output-errors.json: {exc}")
+            add_exception_note(errors[0][1], "Failed output sections: " + ", ".join(name for name, _ in errors))
+            raise errors[0][1]
+        logger.info("Outputs written")
 
     def write_output(self) -> None:
         # Original CLI must propagate output failures instead of hiding them in atexit.
@@ -203,8 +237,8 @@ class Simulator:
             self._add_event(RequestArrivalEvent(request.arrived_at, request))
 
     def _set_time(self, time: float) -> None:
-        self._time = time
-        if self._time > self._time_limit:
+        self._time = min(time, self._time_limit)
+        if time > self._time_limit:
             logger.info(
                 f"Time limit reached: {self._time_limit}s terminating the simulation."
             )
@@ -216,14 +250,13 @@ class Simulator:
                 return sorted(value)
             raise TypeError(f"unsupported trace value: {type(value).__name__}")
 
-        trace_file = f"{self._config.metrics_config.output_dir}/event_trace.json"
-        with open(trace_file, "w") as f:
-            json.dump(self._event_trace, f, default=encode_collection)
+        trace_file = Path(self._config.metrics_config.output_dir) / "event_trace.json"
+        data = json.loads(json.dumps(self._event_trace, default=encode_collection))
+        write_json_atomic(trace_file, diagnostic_value(data))
 
     def _write_chrome_trace(self) -> None:
         trace_file = f"{self._config.metrics_config.output_dir}/chrome_trace.json"
 
         chrome_trace = {"traceEvents": self._event_chrome_trace}
 
-        with open(trace_file, "w") as f:
-            json.dump(chrome_trace, f)
+        write_json_atomic(trace_file, diagnostic_value(chrome_trace))

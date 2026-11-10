@@ -78,3 +78,16 @@ python scripts/dag_phase4/main.py --output results/dag/phase4/<new_run_id>
 ```
 
 manifest 按 sys.path 顺序记录实际选中的依赖版本，避免全局同名包覆盖隔离目录中的版本。
+
+## 边界审查修复
+
+- 两模式采用相同时间上限语义：处理所有时间不超过上限的事件（包含同时间的 terminal/StageEnd），
+  超限事件保留在队列中，最终时间停在上限，状态为 truncated。相比历史行为，不再额外处理第一个超限事件。
+  截断快照可以包含活动任务及其许可，不表示任务完成或资源泄漏。
+- DAG/宿主运行异常触发全局 abort：全部未完成图终止为 FAILED，取消资源等待者、释放运行租约，
+  不触发成功回调；完成图保留原结果。清理可重复调用，已失败的释放不重试、错误保留在 cleanup_errors。
+  异常后的宿主队列清空，陈旧 DAG 完成事件被忽略，新 Stage 提交被拒绝。
+- 原 Stage 耗时在指标和 Stage 记录消费前检查有限非负性。非法值使用独立诊断字段保存，不写入正常数值字段。
+  JSON 使用同目录临时文件与原子替换，诊断中的非有限数值显式转为文本；各输出区段独立尝试保存。
+  输出错误记录在 output-errors.json 并传播；若执行与输出同时失败，保留执行异常为主异常。
+- tests/dag/test_phase4_boundaries.py 覆盖真实 Simulator 的截断、多图/等待者收尾、NaN/Inf/负耗时与报告故障。

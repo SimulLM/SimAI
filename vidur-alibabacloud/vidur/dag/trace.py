@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from schemas.dag.v1.contracts import TaskState
+from vidur.utils.diagnostics import write_json_atomic
 
 TIMELINE_FIELDS = (
     "graph_id", "task_id", "kind", "submission_sequence", "state", "ready_at_s",
@@ -19,8 +20,7 @@ RESOURCE_TIMELINE_FIELDS = (
 
 
 def write_json(path, data):
-    Path(path).write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
-                          encoding="utf-8")
+    write_json_atomic(path, data)
 
 
 def write_csv(path, fields, rows):
