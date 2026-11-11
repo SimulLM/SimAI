@@ -730,6 +730,18 @@ class BaseExecutionTimePredictorConfig(BasePolyConfig):
         default="../astra-sim-alibabacloud/inputs/config/SimAI.conf",
         metadata={"help": "Path to the simai config file."},
     )
+    simai_analytical_nvlink_gbps: float = field(
+        default=0.0,
+        metadata={"help": "Explicit analytical NVLink bandwidth in GB/s. Zero uses backend defaults."},
+    )
+    simai_analytical_nic_gbps: float = field(
+        default=0.0,
+        metadata={"help": "Explicit analytical NIC bandwidth in GB/s. Zero uses backend defaults."},
+    )
+    simai_analytical_nics_per_server: int = field(
+        default=0,
+        metadata={"help": "Explicit analytical NIC count per server. Zero uses backend defaults."},
+    )
     aicb_force_bs1: bool = field(
         default=False,
         metadata={"help": "AICB fallback switch: force bs=1 for CSV generation. "
