@@ -40,6 +40,10 @@ class DagExecutor:
         # identity while copying runtime data, without traversing the host object.
         return deepcopy(self._graphs, {id(g.callback): g.callback for g in self._graphs.values()})
 
+    def graph_snapshot(self, graph_id):
+        graph = self._graphs[graph_id]
+        return deepcopy(graph, {id(graph.callback): graph.callback})
+
     def _check_now(self, now):
         if self._in_callback:
             raise RuntimeError("terminal callback cannot reenter the executor")

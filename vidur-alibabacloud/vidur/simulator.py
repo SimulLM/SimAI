@@ -59,13 +59,36 @@ class Simulator:
         self._scheduler.stage_execution_records = []
         self._scheduler.dag_adapter = None
         self._failure = None
-        if config.execution_mode == "dag_coarse":
+        if config.execution_mode in ("dag_coarse", "dag_expanded"):
             from vidur.dag.host import CoarseDagAdapter
-            self._scheduler.dag_adapter = CoarseDagAdapter(
+            stage_keys = tuple(
                 (replica_id, stage_id)
                 for replica_id, replica in self._scheduler._replica_schedulers.items()
                 for stage_id in replica._replica_stage_schedulers
             )
+            if config.execution_mode == "dag_expanded":
+                from schemas.dag.v1.io import read_json
+                from vidur.dag.expanded import ExpandedDagAdapter
+                replica = config.cluster_config.replica_config
+                if replica.pd_node_ratio < 1:
+                    raise ValueError("dag_expanded currently requires a non-PD cluster")
+                settings = read_json(config.dag_resource_config) if config.dag_resource_config else {}
+                if isinstance(settings, dict) and "tp_cost_calibration" in settings:
+                    from hashlib import sha256
+                    predictor = config.execution_time_predictor_config
+                    calibration = settings["tp_cost_calibration"]
+                    for key, input_path in (
+                        ("topology_sha256", predictor.simai_simulation_topo),
+                        ("config_sha256", predictor.simai_simulation_config),
+                    ):
+                        if sha256(Path(input_path).read_bytes()).hexdigest() != calibration.get(key):
+                            raise ValueError(f"TP calibration does not match {key}")
+                self._scheduler.dag_adapter = ExpandedDagAdapter(
+                    stage_keys, replica.tensor_parallel_size, config.execution_time_predictor_config.backend,
+                    replica.model_name, settings,
+                )
+            else:
+                self._scheduler.dag_adapter = CoarseDagAdapter(stage_keys)
 
         self._init_event_queue()
         atexit.register(self._write_output)
@@ -189,6 +212,9 @@ class Simulator:
             adapter.pending_event_count = len(self._event_queue)
             attempt("dag_results", lambda: write_results(
                 output, adapter, error=self._failure or ("time limit reached" if self._terminate else None)))
+            if self._config.execution_mode == "dag_expanded":
+                from vidur.dag.expanded_trace import write_expanded_results
+                attempt("expanded_results", lambda: write_expanded_results(output, adapter.executor))
 
         attempt("metrics", self._metric_store.plot)
 

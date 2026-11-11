@@ -71,7 +71,8 @@ class ReplicaStageScheduleEvent(BaseEvent):
         if adapter is not None:
             return adapter.submit_stage(self.time, self._replica_id, self._stage_id,
                                         self._is_last_stage, self._batch, self._batch_stage,
-                                        on_stage_start=on_stage_start)
+                                        on_stage_start=on_stage_start,
+                                        execution_time=execution_time, record=record)
 
         on_stage_start(self.time)
 

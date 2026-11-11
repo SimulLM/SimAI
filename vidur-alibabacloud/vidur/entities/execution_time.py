@@ -1202,6 +1202,16 @@ class ExecutionTime(BaseEntity):
     def num_layers(self) -> int:
         return self._num_layers_per_pipeline_stage
 
+    def expanded_aicb_profile(self):
+        """Expose native layer timings and phase from the prediction snapshot."""
+        if self._aicb_data is None:
+            self._aicb_data = self._load_aicb_data()
+        return self._aicb_data, self._replica_config.phase, self._replica_config.expert_model_parallel_size
+
+    def collective_payload_bytes(self, rounded_tokens):
+        """Payload represented by the existing TP and PP prediction features."""
+        return self._model_config.embedding_dim * rounded_tokens * 2
+
     @property
     def mlp_layer_up_proj_execution_time(self) -> float:
         return self._mlp_layer_up_proj_execution_time

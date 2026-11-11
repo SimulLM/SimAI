@@ -43,6 +43,7 @@ class BatchStage(BaseEntity):
         self._resource_wait_s = None
         self._completed_at = None
         self._scheduled = False
+        self._expanded_end_at = None
 
     @property
     def num_tokens(self) -> List[int]:
@@ -101,13 +102,21 @@ class BatchStage(BaseEntity):
         for request in self._requests:
             request.on_batch_stage_schedule(time, resource_wait_s=self._resource_wait_s)
 
+    def settle_expanded_execution(self, time: float, model_service_time: float) -> None:
+        if not self._scheduled or self._expanded_end_at is not None or time < self._scheduled_at:
+            raise RuntimeError("invalid expanded Stage completion")
+        self._expanded_end_at = time
+        self._execution_time = time - self._scheduled_at
+        self._model_execution_time = model_service_time
+
     def on_stage_end(
         self,
         time: float,
     ) -> None:
-        assert (
-            time == self._scheduled_at + self._execution_time
-        ), f"{time} != {self._scheduled_at} + {self._execution_time}"
+        expected = self._expanded_end_at
+        if expected is None:
+            expected = self._scheduled_at + self._execution_time
+        assert time == expected, f"{time} != {expected}"
 
         self._completed_at = time
 

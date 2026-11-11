@@ -828,7 +828,11 @@ class ClusterConfig:
 class SimulationConfig(ABC):
     execution_mode: str = field(
         default="legacy",
-        metadata={"help": "Execution path: legacy or dag_coarse."},
+        metadata={"help": "Execution path: legacy, dag_coarse, or dag_expanded."},
+    )
+    dag_resource_config: str = field(
+        default="",
+        metadata={"help": "Optional expanded DAG endpoint, GPU occupancy, and EP mapping JSON."},
     )
     seed: int = field(
         default=42,
@@ -860,8 +864,8 @@ class SimulationConfig(ABC):
     )
 
     def __post_init__(self):
-        if self.execution_mode not in ("legacy", "dag_coarse"):
-            raise ValueError("execution_mode must be legacy or dag_coarse")
+        if self.execution_mode not in ("legacy", "dag_coarse", "dag_expanded"):
+            raise ValueError("execution_mode must be legacy, dag_coarse, or dag_expanded")
         self.write_config_to_file()
 
     @classmethod

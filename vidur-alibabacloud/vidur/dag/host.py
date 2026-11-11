@@ -31,8 +31,9 @@ class DagHostEvent(BaseEvent):
 
 
 class CoarseDagAdapter:
-    def __init__(self, stage_keys):
+    def __init__(self, stage_keys, *, resources=()):
         capacities = {self.resource_id(*key): ResourceCapacity(1, "permits") for key in stage_keys}
+        capacities.update({key: ResourceCapacity(1, "permits") for key in resources})
         self.executor = DagExecutor(CapacityResourceManager(capacities),
                                     resource_units={key: "permits" for key in capacities})
         self.stage_ends = {}
@@ -44,6 +45,7 @@ class CoarseDagAdapter:
         self._sequence = count()
         self._outbox = []
         self._stage_starts = {}
+        self._stage_finishes = {}
 
     @staticmethod
     def resource_id(replica_id, stage_id):
@@ -51,14 +53,10 @@ class CoarseDagAdapter:
         return f"stage:{replica_id}:{stage_id}"
 
     def submit_stage(self, now, replica_id, stage_id, is_last_stage, batch, batch_stage,
-                     *, on_stage_start=None):
+                     *, on_stage_start=None, execution_time=None, record=None):
         if self.failure:
             raise RuntimeError(self.failure)
-        from vidur.events.batch_stage_end_event import BatchStageEndEvent
-        sequence = next(self._sequence)
-        graph_id = f"replica{replica_id}/stage{stage_id}/batch{batch.id}/iteration{sequence}"
-        context = GraphContext(str(batch.id), sequence, str(replica_id), stage_id,
-                               tuple(str(request.id) for request in batch.requests))
+        graph_id, context = self._identity(replica_id, stage_id, batch)
         resource = self.resource_id(replica_id, stage_id)
         cost = CostEstimate(batch_stage.execution_time, "legacy_execution_time.total_time",
                             batch_stage.execution_time, "s", 1.0,
@@ -70,14 +68,35 @@ class CoarseDagAdapter:
             TaskSpec("coarse", "coarse", Placement(), (ResourceDemand(resource, 1, "permits"),), cost),
             TaskSpec("terminal", "sync", Placement(), (), terminal),
         ), (("coarse", "terminal"),), "terminal")
+        return self._submit(fragment, now, replica_id, stage_id, is_last_stage,
+                            batch, batch_stage, on_stage_start)
+
+    def _identity(self, replica_id, stage_id, batch):
+        sequence = next(self._sequence)
+        return (f"replica{replica_id}/stage{stage_id}/batch{batch.id}/iteration{sequence}",
+                GraphContext(str(batch.id), sequence, str(replica_id), stage_id,
+                             tuple(str(request.id) for request in batch.requests)))
+
+    def _submit(self, fragment, now, replica_id, stage_id, is_last_stage, batch,
+                batch_stage, on_stage_start, on_stage_finish=None):
+        if self.failure:
+            raise RuntimeError(self.failure)
+        from vidur.events.batch_stage_end_event import BatchStageEndEvent
+        graph_id = fragment.graph_id
         # Allocate exactly where legacy allocates its end event, preserving its
         # equal-time ordering identity. It is NOT queued until terminal callback.
-        end = BatchStageEndEvent(now + cost.duration_s, replica_id, stage_id, is_last_stage, batch, batch_stage)
+        end = BatchStageEndEvent(now + batch_stage.execution_time, replica_id, stage_id,
+                                 is_last_stage, batch, batch_stage)
         self.stage_ends[graph_id] = end
         if on_stage_start is not None:
             self._stage_starts[graph_id] = on_stage_start
+        if on_stage_finish is not None:
+            self._stage_finishes[graph_id] = on_stage_finish
 
         def on_terminal(completed_graph_id, finished_at):
+            finish = self._stage_finishes.pop(completed_graph_id, None)
+            if finish is not None:
+                finish(finished_at)
             end._time = finished_at
             end._priority_number = end._get_priority_number()
             self._outbox.append(end)
@@ -89,7 +108,7 @@ class CoarseDagAdapter:
     def _wrap(self, intents):
         events = []
         for intent in intents:
-            if intent.kind == "task_complete" and intent.owner[1] == "coarse":
+            if intent.kind == "task_complete":
                 start = self._stage_starts.pop(intent.owner[0], None)
                 if start is not None:
                     # dispatch creates completion intents at the actual start.
@@ -125,6 +144,7 @@ class CoarseDagAdapter:
         self.now = now
         self._outbox = []
         self._stage_starts.clear()
+        self._stage_finishes.clear()
         self.executor.abort(now, self.failure)
 
     def assert_completed(self):
