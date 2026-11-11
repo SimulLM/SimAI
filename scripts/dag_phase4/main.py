@@ -28,13 +28,13 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def synthetic_profiles(folder):
+def synthetic_profiles(folder, *, tp_sizes=(1, 2), network_devices=None):
     """Small deterministic CI training data, explicitly NOT hardware measurements."""
     folder.mkdir()
     compute, attention, network, cpu = [], [], [], []
     operators = ("attn_pre_proj", "attn_post_proj", "mlp_up_proj", "mlp_down_proj",
                  "mlp_act", "input_layernorm", "post_attention_layernorm", "add")
-    for tp in (1, 2):
+    for tp in tp_sizes:
         for tokens in (1, 2, 4, 8, 16, 32, 64):
             row = dict(n_head=32, n_kv_head=32, n_embd=4096, n_expanded_embd=11008,
                        use_gated_mlp=True, vocab_size=32768, num_tensor_parallel_workers=tp,
@@ -49,7 +49,7 @@ def synthetic_profiles(folder):
                                          "time_stats.attn_prefill.median": 0.003 + tokens * 0.0001,
                                          "time_stats.attn_decode.median": 0.004 + tokens * 0.0001}))
             for collective in ("send_recv", "all_reduce"):
-                network.append(dict(collective=collective, num_workers=tp, devices_per_node=2,
+                network.append(dict(collective=collective, num_workers=tp, devices_per_node=network_devices or 2,
                                     size=tokens * 4096 * 2,
                                     **{"time_stats.send_recv.median": 0.005 + tokens * 0.0001,
                                        "time_stats.all_reduce.median": 0.006 + tokens * 0.0001}))
@@ -126,17 +126,20 @@ def compare(left, right, field=""):
     return type(left) is type(right) and left == right
 
 
-def run_comparisons(output):
-    profiles = output / "synthetic-profiles"
-    synthetic_profiles(profiles)
-    checks, request_rows, stage_rows, metric_rows = [], [], [], []
-    for name, pp, replicas, tp, requests in (
+SCENARIOS = (
         ("single", 1, 1, 1, [(0, 8, 4)]),
         ("batching", 1, 1, 1, [(0, 8, 4), (0, 12, 3), (0.001, 5, 2)]),
         ("pipeline", 2, 1, 1, [(0, 8, 4), (0, 12, 3), (0.001, 5, 2)]),
         ("replicas", 1, 2, 1, [(0, 8, 4), (0, 12, 3), (0.001, 5, 2)]),
         ("tensor_parallel", 1, 1, 2, [(0, 8, 4), (0, 12, 3)]),
-    ):
+)
+
+
+def run_comparisons(output):
+    profiles = output / "synthetic-profiles"
+    synthetic_profiles(profiles)
+    checks, request_rows, stage_rows, metric_rows = [], [], [], []
+    for name, pp, replicas, tp, requests in SCENARIOS:
         folder = output / name
         folder.mkdir()
         trace = folder / "requests.csv"

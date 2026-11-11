@@ -1,0 +1,4 @@
+pair_id,reference_record,old_record,status,reason,group_id,same_cost_record,revised_cost_record,attribution,rerun
+micro_allreduce,,,blocked,ns-3 historical collective interval needs verified units and matched old run,micro_allreduce,,,,"Reproduce baseline-data/communication/ns3/micro_allreduce with verified input/topology and a per-collective interval"
+alltoall_tp8,,,blocked,analytical and ns-3 topology and workload identities unverified,alltoall_tp8,,,,"Reproduce baseline-data/communication/ns3/alltoall_tp8 with identical input and topology on old and reference backends"
+alltoall_tp2_ep4,,,blocked,EP rank membership and matching old prediction unverified,alltoall_tp2_ep4,,,,"Reproduce baseline-data/communication/ns3/alltoall_ep_tp2_ep4 with both explicit EP groups and identical topology"

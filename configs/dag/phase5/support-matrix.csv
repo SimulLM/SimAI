@@ -1,0 +1,4 @@
+config_id,backend,model,tp,pp,ep,scope,reference_status
+dense_vidur,vidur,meta-llama/Llama-2-7b-hf,1 or 2,1 or 2,none,original CLI synthetic single and batched inference,blocked
+simai_tp,simai_simulation;simai_analytical,dense,2 or more,1 or more,none,cost adapter wired pending real binary and input verification,blocked
+aicb_ep,aicb,deepseek-671B;qwen3-moe-235B;qwen3-next-80B,1,1,explicit group,synthetic prefill and decode Stage host probes; native backend integration pending verified profiles,blocked
