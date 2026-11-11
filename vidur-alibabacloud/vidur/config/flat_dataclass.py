@@ -111,10 +111,13 @@ def create_from_cli_args(cls) -> Any:
             action = BooleanOptionalAction
 
         arg_params = {
-            "type": field_type,
             "action": action,
             "help": help_text,
         }
+        # BooleanOptionalAction supplies its own values and does not accept type
+        # on Python 3.14+. Other actions still need their type conversion.
+        if action is not BooleanOptionalAction:
+            arg_params["type"] = field_type
 
         # handle cases with default and default factory args
         if field.default is not MISSING:

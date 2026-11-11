@@ -7,6 +7,11 @@ Stage 忙状态与原 StageEnd 的业务职责。算子、TP/PP/EP 分项图在�
 ## 原入口与模式
 
 原入口仍为 `python -m vidur.main`，增加 `--execution_mode legacy|dag_coarse`，默认 legacy。
+Python 最低版本为 3.10（与 setup.py 的 `python_requires` 一致）；本次修复在
+Python 3.14.5 上重新验收。其他版本尚未逐版本运行验收矩阵。
+布尔参数支持 `--<字段名>` / `--no-<字段名>`，不接收字符串布尔值；
+例如 `--metrics_config_enable_chrome_trace` / `--no-metrics_config_enable_chrome_trace`。
+注册 BooleanOptionalAction 时不传 `type`，普通参数保留类型转换。
 在项目根目录运行时，将 `vidur-alibabacloud` 加入 PYTHONPATH；其余原 CLI 参数保持有效。
 推理依赖安装到虚拟环境：
 
@@ -102,3 +107,18 @@ BatchStage、请求及指标，不通过完成时间倒推起点。BatchStage �
 和全部 prefill/decode 至请求完成。resource-delay-integration.json 保存请求完成时间增量、执行费用不变、
 等待计数、Stage 服务区间、terminal 一次、资源和队列清空等检查；原三项探针保留为 adapter 层验证。
 tests/dag/test_phase4_resource_wait.py 还覆盖后续 Stage 等待、等待时中止/截断，以及零时长 Stage。
+
+## 2026-11-11 CLI 兼容性修复复验
+
+Python 3.14.5 下完整套件首次运行 180 passed、1 failed；唯一失败是轻量导入测试
+覆盖 PYTHONPATH，丢失隔离依赖目录而无法导入 jsonschema。保留父进程依赖路径后，
+该测试定向重跑 1 passed。新增 6 项原 CLI 回归全部通过，原先四项 CLI 阻塞均解除。
+未在该测试环境修正后再次重复全套运行。
+
+验收证据目录为 `results/dag/phase4/test-evidence-46ebf679a071444a93369fa060b66642/`：
+acceptance-report.json 状态 passed，五组旧/新对照、三项宿主探针和 10ms 资源等待集成
+均通过；资源等待 0.01s，完成时间从 0.01204775111111111s 增至
+0.022047751111111114s，执行费用保持不变。精度对照仍为 blocked，以上仅证明功能兼容性。
+
+隔离依赖仍位于 `.cache/phase4-deps`。运行测试时设置
+`$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'`，避免本机无关全局 pytest 插件参与。

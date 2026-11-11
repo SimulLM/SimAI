@@ -109,7 +109,8 @@ def test_trace_is_deterministic_at_nonzero_submission(graph_factory, tmp_path):
 
 
 def test_lightweight_import_has_no_inference_dependencies():
-    env = dict(os.environ, PYTHONPATH=os.pathsep.join((str(ROOT), str(ROOT/"vidur-alibabacloud"))))
+    env = dict(os.environ, PYTHONPATH=os.pathsep.join((
+        str(ROOT), str(ROOT/"vidur-alibabacloud"), os.environ.get("PYTHONPATH", ""))))
     result = subprocess.run([sys.executable, "-c",
         "from vidur.dag.executor import DagExecutor; import sys; "
         "assert not {'torch','numpy','pandas','vidur.entities','vidur.simulator'} & sys.modules.keys()"],
