@@ -14,6 +14,16 @@ import time
 ROOT = Path(__file__).resolve().parents[2]
 SIZES = {"calibration": 16 * 1024**2, "validation": 64 * 1024**2}
 TOPOLOGY = "Rail_Opti_SingleToR_8g_8gps_200Gbps_H20"
+ANALYTICAL_PRICING = {
+    "simai_analytical_nvlink_gbps": 300.0,
+    "simai_analytical_nic_gbps": 25.0,
+    "simai_analytical_nics_per_server": 8,
+}
+ANALYTICAL_FLAGS = {
+    "-nv": ANALYTICAL_PRICING["simai_analytical_nvlink_gbps"],
+    "-nic": ANALYTICAL_PRICING["simai_analytical_nic_gbps"],
+    "-n_p_s": ANALYTICAL_PRICING["simai_analytical_nics_per_server"],
+}
 
 
 def digest(path):
@@ -45,6 +55,7 @@ def prepare(output, sizes=None):
     save_json(output / "frozen-inputs.json", {
         "topology_command": command, "dtype": "fp16", "rank_group": list(range(8)), "payload_bytes": sizes,
         "analytical_model": {"nvlink_GBps": 300, "nic_GBps": 25, "gpus_per_server": 8},
+        "analytical_pricing": ANALYTICAL_PRICING,
         "sha256": {p.name: digest(p) for p in output.iterdir() if p.is_file()},
     })
 
@@ -88,8 +99,9 @@ def run(inputs, binaries, backend, case, output):
         (output / "results").mkdir()
         ratio = output / "astra-sim-alibabacloud/inputs/ratio"
         shutil.copytree(ROOT / "astra-sim-alibabacloud/inputs/ratio", ratio)
-        command = [str(executable), "-w", str(workload), "-g", "8", "-g_p_s", "8",
-                   "-nv", "300", "-nic", "25", "-n_p_s", "8", "-r", "collective-"]
+        command = [str(executable), "-w", str(workload), "-g", "8", "-g_p_s", "8", "-r", "collective-"]
+        for flag, value in ANALYTICAL_FLAGS.items():
+            command.extend((flag, str(value)))
         result_file = output / "results/collective-EndToEnd.csv"
     save_json(output / "command.json", {"argv": command, "binary_sha256": digest(executable),
                                       "environment": {key: env[key] for key in ("AS_SEND_LAT", "AS_NVLS_ENABLE")}})

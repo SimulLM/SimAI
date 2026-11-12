@@ -9,7 +9,7 @@ from pathlib import Path
 import shutil
 import sys
 
-from collective import ROOT, SIZES, TOPOLOGY, collective_times, digest, save_json
+from collective import ANALYTICAL_FLAGS, ANALYTICAL_PRICING, ROOT, SIZES, TOPOLOGY, collective_times, digest, save_json
 
 sys.path.insert(0, str(ROOT))
 from scripts.dag_phase4.main import cli_command, run_cli, synthetic_profiles, write_csv
@@ -57,9 +57,7 @@ def run(inputs, binaries, case, backend, mode, output, calibration=None):
         PREFIX + "simai_dir": backend_dir,
         PREFIX + "simai_simulation_topo": inputs / TOPOLOGY,
         PREFIX + "simai_simulation_config": inputs / "SimAI.conf",
-        PREFIX + "simai_analytical_nvlink_gbps": 300,
-        PREFIX + "simai_analytical_nic_gbps": 25,
-        PREFIX + "simai_analytical_nics_per_server": 8,
+        **{PREFIX + key: value for key, value in ANALYTICAL_PRICING.items()},
         PREFIX + "nccl_cpu_launch_overhead_ms": 0,
         PREFIX + "nccl_cpu_skew_overhead_per_device_ms": 0,
     }.items():
@@ -82,7 +80,7 @@ def run(inputs, binaries, case, backend, mode, output, calibration=None):
     stem = "analytical_EndToEnd_" if backend == "simai_analytical" else "ncclFlowModel_EndToEnd_"
     key = f"{generated[0].stem.removeprefix('allreduce_')}_{inputs / TOPOLOGY}_{inputs / 'SimAI.conf'}"
     if backend == "simai_analytical":
-        key += f"_8_{ {'-nv': 300.0, '-nic': 25.0, '-n_p_s': 8} }"
+        key += f"_8_{ANALYTICAL_FLAGS}"
     backend_result = backend_dir / (stem + hashlib.md5(key.encode()).hexdigest() + ".csv")
     [backend_us] = collective_times(backend_result)
     value = backend_us * 1e-6

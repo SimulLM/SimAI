@@ -2,6 +2,7 @@ import atexit
 import heapq
 import json
 import math
+from hashlib import sha256
 from pathlib import Path
 from typing import List
 
@@ -17,9 +18,44 @@ from vidur.utils.diagnostics import add_exception_note, diagnostic_value, write_
 logger = init_logger(__name__)
 
 
+def _load_expanded_settings(config: SimulationConfig) -> dict:
+    from schemas.dag.v1.io import read_json
+
+    settings = read_json(config.dag_resource_config) if config.dag_resource_config else {}
+    if not isinstance(settings, dict) or "tp_cost_calibration" not in settings:
+        return settings
+
+    calibration = settings["tp_cost_calibration"]
+    if not isinstance(calibration, dict):
+        raise ValueError("tp_cost_calibration must be an object")
+    predictor = config.execution_time_predictor_config
+    pricing = calibration.get("analytical_pricing")
+    if not isinstance(pricing, dict):
+        raise ValueError("TP calibration requires frozen analytical_pricing; regenerate the calibration")
+    for key in (
+        "simai_analytical_nvlink_gbps",
+        "simai_analytical_nic_gbps",
+        "simai_analytical_nics_per_server",
+    ):
+        if key not in pricing:
+            raise ValueError(f"TP calibration analytical_pricing is missing {key}")
+        frozen = pricing[key]
+        current = getattr(predictor, key)
+        if type(frozen) not in (int, float) or frozen != current:
+            raise ValueError(f"TP calibration does not match {key}: frozen={frozen!r}, current={current!r}")
+    for key, input_path in (
+        ("topology_sha256", predictor.simai_simulation_topo),
+        ("config_sha256", predictor.simai_simulation_config),
+    ):
+        if sha256(Path(input_path).read_bytes()).hexdigest() != calibration.get(key):
+            raise ValueError(f"TP calibration does not match {key}")
+    return settings
+
+
 class Simulator:
     def __init__(self, config: SimulationConfig) -> None:
         self._config: SimulationConfig = config
+        expanded_settings = _load_expanded_settings(config) if config.execution_mode == "dag_expanded" else {}
 
         self._time = 0
         self._terminate = False
@@ -67,25 +103,13 @@ class Simulator:
                 for stage_id in replica._replica_stage_schedulers
             )
             if config.execution_mode == "dag_expanded":
-                from schemas.dag.v1.io import read_json
                 from vidur.dag.expanded import ExpandedDagAdapter
                 replica = config.cluster_config.replica_config
                 if replica.pd_node_ratio < 1:
                     raise ValueError("dag_expanded currently requires a non-PD cluster")
-                settings = read_json(config.dag_resource_config) if config.dag_resource_config else {}
-                if isinstance(settings, dict) and "tp_cost_calibration" in settings:
-                    from hashlib import sha256
-                    predictor = config.execution_time_predictor_config
-                    calibration = settings["tp_cost_calibration"]
-                    for key, input_path in (
-                        ("topology_sha256", predictor.simai_simulation_topo),
-                        ("config_sha256", predictor.simai_simulation_config),
-                    ):
-                        if sha256(Path(input_path).read_bytes()).hexdigest() != calibration.get(key):
-                            raise ValueError(f"TP calibration does not match {key}")
                 self._scheduler.dag_adapter = ExpandedDagAdapter(
                     stage_keys, replica.tensor_parallel_size, config.execution_time_predictor_config.backend,
-                    replica.model_name, settings,
+                    replica.model_name, expanded_settings,
                 )
             else:
                 self._scheduler.dag_adapter = CoarseDagAdapter(stage_keys)

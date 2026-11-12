@@ -5,7 +5,7 @@ import shutil
 import subprocess
 import time
 
-from collective import ROOT, SIZES, TOPOLOGY, digest, prepare, run, save_json
+from collective import ANALYTICAL_PRICING, ROOT, SIZES, TOPOLOGY, digest, prepare, run, save_json
 from collective_cli import MODEL, run as run_cli_collective, write_csv
 
 
@@ -101,6 +101,7 @@ def evaluate_collectives(output, binaries, refine_from=None):
                 "model": MODEL, "tp": 8, "pp": 1, **parameters,
                 "evidence": project_relative(reference / "collective.json"),
                 "topology_sha256": digest(inputs / TOPOLOGY), "config_sha256": digest(inputs / "SimAI.conf"),
+                "analytical_pricing": ANALYTICAL_PRICING,
             }})
             save_json(output / "parameter-freeze.json", {"calibration_sha256": digest(config),
                                                          "validation_input_sha256": digest(inputs / "validation.txt")})
