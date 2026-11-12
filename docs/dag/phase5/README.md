@@ -102,7 +102,9 @@ python scripts/dag_phase5/main.py --wsl-build .cache/phase5-wsl-build-new \
 ns-3 为模拟参考。读取单次 forward collective service 的 `fwd total comm`（微秒），
 并将原 CLI 的两个 SimAI 后端与实际 DAG TP 节点时间线核对。Analytical 的 H20 网络参数由
 显式 CLI 选项传入，实验把 CPU launch/skew 置零以对齐通信口径。校准配置只在
-对应 analytical 模型、TP/PP、拓扑和配置哈希下生效。所有配对记录和配置增量归入正式运行
+对应 analytical 模型、TP/PP、拓扑和配置哈希下生效，并核对冻结的 NVLink 带宽、NIC 带宽
+及每服务器 NIC 数。缺少 `analytical_pricing` 的旧校准文件须通过验收脚本重新生成。
+所有配对记录和配置增量归入正式运行
 的 `collective-evidence/`，并由阶段一的严格配对规则复核。
 
 若初轮比例模型在 64 MiB 验证退化，保留该轮目录并使用 `--refine-from <初轮目录>`。
