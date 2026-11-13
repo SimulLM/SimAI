@@ -104,7 +104,9 @@ def evaluate(output, overlay=None):
     status = "blocked" if not validation or any(r["status"] == "rejected" for r in rows) else (
         "passed" if improved else "not_improved"
     )
-    summary = dict(status=status, samples=sum(len(s) for s in aggregates.values()),
+    summary = dict(status=status, scope="phase5_validation_metrics",
+                   validation_metrics=sorted({row["metric"] for row in validation}),
+                   samples=sum(len(s) for s in aggregates.values()),
                    blocked_samples=len(blockers), primary_metric_status=baseline["primary_metric_status"],
                    hardware_accuracy_claim=False, aggregates=summaries)
     write_csv(output / "accuracy-comparison.csv", list(rows[0]), rows)

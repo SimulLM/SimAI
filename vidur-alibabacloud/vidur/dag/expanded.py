@@ -221,8 +221,6 @@ class ExpandedDagAdapter(CoarseDagAdapter):
                                         self.backend, is_last_stage, payload_bytes=payload,
                                         tp_calibration=self.tp_calibration).build(context)
         service = fsum(task.cost.duration_s for task in fragment.tasks)
-        model_service = fsum(task.cost.duration_s for task in fragment.tasks
-                             if not task.task_id.startswith("cpu."))
         uncalibrated_service = fsum(
             task.metadata.get("uncalibrated_raw_value", task.cost.raw_value) * task.cost.conversion_to_s
             for task in fragment.tasks
@@ -237,11 +235,15 @@ class ExpandedDagAdapter(CoarseDagAdapter):
         def finish(time):
             graph = self.executor.graph_snapshot(graph_id)
             elapsed = time - batch_stage.scheduled_at
+            model_service = fsum(task.cost.duration_s for task in graph.fragment.tasks
+                                 if not task.task_id.startswith("cpu."))
             batch_stage.settle_expanded_execution(time, model_service)
             if record is not None:
+                final_service = fsum(task.cost.duration_s for task in graph.fragment.tasks)
                 internal_wait = fsum(task.resource_wait_s for task in graph.tasks.values()
                                      if task.spec.task_id != fragment.tasks[0].task_id)
-                record.update(actual_service_interval_s=elapsed, graph_resource_wait_s=internal_wait)
+                record.update(expanded_service_s=final_service, actual_service_interval_s=elapsed,
+                              graph_resource_wait_s=internal_wait)
 
         return self._submit(fragment, now, replica_id, stage_id, is_last_stage, batch, batch_stage,
                             on_stage_start, finish)

@@ -27,8 +27,8 @@ python scripts/dag_phase5/main.py --output results/dag/phase5/20261111-phase5-ac
   逻辑消息大小。CPU 前后开销按原字段分配。DAG 费用账本采用 Stage 预测原值，Stage 原聚合值
   用于对账。实际服务区间包含图内资源等待，启动前等待独立记录。旧 MetricsStore 的分项仍
   是预测口径，`timeline.csv` 和 `cost-breakdown.csv` 提供实际执行与冻结费用的逐任务对应。
-- SimAI ns-3 和 analytical 使用现有 TP 适配器，PP 使用原 send/recv 预测器。本地未发现可运行
-  二进制，当前完成适配代码并保留待验证状态。AICB 特殊模型只接 PP=1、TP=1 和显式 EP 组，
+- SimAI ns-3 和 analytical 使用现有 TP 适配器，PP 使用原 send/recv 预测器。两个 TP 后端
+  已在 WSL 经原 Vidur CLI 实跑。AICB 特殊模型只接 PP=1、TP=1 和显式 EP 组，
   读取层画像 ns 并转换一次。聚合 EP 使用画像的 `comm_size` 和配置的阶段带宽。源画像只提供
   聚合通信，输出一个 EP 节点，dispatch/combine 由独立费用证据和后续扩图提供。AICB 的
   合成探针记录旧总值与修订结果，真实画像运行待补证。支持边界见
@@ -40,9 +40,21 @@ python scripts/dag_phase5/main.py --output results/dag/phase5/20261111-phase5-ac
 `ResourceManager.try_acquire/release`、`KVCapacity` 与 terminal callback
 `(graph_id, now_s) -> EventIntents` 沿用 [v1 契约](../phase1/execution-contract.md)。
 一个 batch iteration 在一个 Stage 上对应一个 fragment，任务身份为 `(graph_id, task_id)`。
-任务费用随 fragment 冻结，`demands` 决定资源占用。MoE 可在 PENDING 屏障保护下追加
-已知费用的 dispatch、expert、combine 并汇入同一个 terminal。PD 在消费该 terminal 后
-通过 KV 协议管理存储字节，传输费用使用独立的 wire bytes。
+任务费用随 fragment 冻结，`demands` 决定资源占用。PD 在消费该 terminal 后通过 KV 协议
+管理存储字节，传输费用使用独立的 wire bytes。
+
+第七阶段的动态 MoE 路径需要在初始构图时为每个待展开的 MoE 层建立路由节点和零费用 join，
+建立 `route → join → 下一层` 的依赖。该层的 Expert 计算和 EP 通信费用归动态子图，
+初始图省去该层的 `moe.compute` 和 `moe.ep`。独立的计算分项继续由各自节点计费。
+路由结果就绪后，宿主须在向执行器交付 route 完成事件之前调用 `append`，此时 join
+仍由 route 保持在 `PENDING`。一次追加加入 `route → dispatch → expert → combine → join`
+的依赖及任务，确保每个有效 Expert 分支汇入 join。宿主将 `append` 返回的事件意图纳入
+同一个事件队列，再交付 route 完成。每层仅追加一次。追加校验失败走宿主失败处理。
+路由、通信矩阵、放置和动态子图由第七阶段实现。
+
+Stage 完成时按最终图结算。`expanded_service_s` 是所有任务的冻结费用之和，
+`model_execution_time` 汇总任务 ID 无 `cpu.` 前缀的分项并回写请求。CPU 任务须使用
+`cpu.` 前缀。并行分项的费用可相加，Stage 实际服务区间由首次启动到 terminal 的时钟差给出。
 
 通信任务的 metadata 包含 `op`、`layer`、`source`、`components`、`communication_type`
 （`tp`、`pp` 或 `ep`）、`group`、`endpoints`、`payload_bytes`、`topology`、
@@ -74,7 +86,8 @@ python scripts/dag_phase5/main.py --output results/dag/phase5/20261111-phase5-ac
 calibration/validation 分组。每个新增合格配对填写 `same_cost_record`、
 `revised_cost_record` 和 `attribution`。用 `scripts/dag_phase1/import_results.py`
 导入实际结果，按四个记录保存参考值、旧预测、同费用展开和修订费用预测。当前七项候选
-仍有阻塞，优先补 microAllReduce、TP8 AllToAll、TP2/EP4 AllToAll 的匹配记录。
+仍有阻塞。新的 WSL 运行已单独补齐 TP8 AllReduce 的校准和验证样本。历史 microAllReduce
+配对以及 TP8 AllToAll、TP2/EP4 AllToAll 仍保留各自的阻塞记录。
 恢复失败的历史运行需用同一 workload 和拓扑重跑旧后端及独立参考，并使用已核验单位的
 单次 collective 区间。合成验收记录仅用于功能证据。
 
@@ -85,6 +98,11 @@ calibration/validation 分组。每个新增合格配对填写 `same_cost_record
 pytest 日志与 JUnit、验收报告和运行 manifest。秒值使用 `_s` 后缀，Chrome trace 使用微秒。
 同名 ZIP 单独交接，排除 `pytest-tmp/` 和 `predictor-cache/`。交接时同时提供代码版本、
 运行命令、验收结果和遗留问题。
+
+第五阶段的 `accuracy_status` 只表示本阶段验证指标的判定，范围和指标名分别记录在
+`accuracy_scope` 和 `accuracy_validation_metrics`。当前 WSL 验收通过的指标是
+`tp_allreduce_forward`，参考值来自 ns-3 模拟。请求级 `primary_metric_status` 仍为
+`pending`。第八阶段须按阶段一协议先冻结请求级主指标，再以其独立验证集判断整体精度。
 
 ## WSL 后端复验
 

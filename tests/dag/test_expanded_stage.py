@@ -6,12 +6,12 @@ from types import SimpleNamespace
 
 import pytest
 
-from schemas.dag.v1.contracts import GraphContext, Placement, ResourceDemand
+from schemas.dag.v1.contracts import GraphAppend, GraphContext, Placement, ResourceDemand
 from vidur.dag.expanded import ATTENTION, CPU_POST, CPU_PRE, MLP, ExpandedDagAdapter, ExpandedStageBuilder
 from vidur.dag.expanded_trace import write_expanded_results
 from vidur.dag.runner import DagRunner
 from vidur.dag.trace import write_results
-from vidur.entities import Request
+from vidur.entities import BatchStage, Request
 from vidur.events.replica_stage_schedule_event import ReplicaStageScheduleEvent
 from vidur.scheduler.replica_stage_scheduler.replica_stage_schduler import ReplicaStageScheduler
 
@@ -33,6 +33,34 @@ def snapshot(**overrides):
     values.update(num_layers=1, total_time=0, model_time=0)
     values.update(overrides)
     return SimpleNamespace(**values)
+
+
+def test_appended_expert_is_charged_at_stage_end():
+    adapter = ExpandedDagAdapter([(0, 0)], 1, "vidur", "dense", {})
+    request = Request(0, 8, 4)
+    request.on_batch_schedule(0)
+    batch = SimpleNamespace(id=1, requests=[request])
+    stage = BatchStage(1, 0, 0, 1e-3, 1e-3, [request], [8])
+    record = {}
+    events = adapter.submit_stage(
+        0, 0, 0, True, batch, stage, on_stage_start=stage.on_schedule,
+        execution_time=snapshot(attention_pre_proj_time=1, total_time=1e-3), record=record,
+    )
+    graph_id = record["graph_id"]
+    compute = adapter.executor.graph_snapshot(graph_id).tasks["layer0.attention.compute"].spec
+    expert = replace(compute, task_id="expert", cost=replace(compute.cost, duration_s=2e-3, raw_value=2))
+    patch = GraphAppend(graph_id, (expert,), ((compute.task_id, expert.task_id), (expert.task_id, "terminal")))
+    events.extend(adapter._wrap(adapter.executor.append(patch, 0)))
+    end, = drain(events)
+    stage.on_stage_end(end.time)
+
+    graph = adapter.executor.graph_snapshot(graph_id)
+    assert sum(task.cost.duration_s for task in graph.fragment.tasks) == pytest.approx(3e-3)
+    assert graph.callback_count == 1
+    assert stage.execution_time == pytest.approx(3e-3)
+    assert stage.model_execution_time == pytest.approx(3e-3)
+    assert request.model_execution_time == pytest.approx(3e-3)
+    assert record["expanded_service_s"] == pytest.approx(3e-3)
 
 
 def ep_probe(phase="prefill"):
