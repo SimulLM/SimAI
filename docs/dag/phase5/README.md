@@ -69,9 +69,19 @@ python scripts/dag_phase5/main.py --output results/dag/phase5/20261111-phase5-ac
 同一个事件队列，再交付 route 完成。每层仅追加一次。追加校验失败走宿主失败处理。
 路由、通信矩阵、放置和动态子图由第七阶段实现。
 
+执行器要求图仍为 `ACTIVE`，且 terminal 仍为 `PENDING`。新增依赖边若指向图中已有节点，
+该节点也必须为 `PENDING`。目标若已进入 `READY` 或 `RUNNING`，执行器会拒绝整个追加。
+因此，join 应在初始图中成为 route 的后继，并作为动态分支接入下一层的汇合点。
+
 Stage 完成时按最终图结算。`expanded_service_s` 是所有任务的冻结费用之和，
 `model_execution_time` 汇总任务 ID 无 `cpu.` 前缀的分项并回写请求。CPU 任务须使用
 `cpu.` 前缀。并行分项的费用可相加，Stage 实际服务区间由首次启动到 terminal 的时钟差给出。
+
+terminal 回调更新 Stage 结算值，随后 StageEnd 将实际耗时和模型执行时间累加到请求指标。
+同一 GPU 上原有 1 ms 计算、再追加 2 ms Expert 的回归用例中，Stage 费用、实际耗时以及
+Stage 和请求的模型执行时间均为 3 ms，terminal 回调一次。旧 `MetricsStore` 的算子分项
+仍采用预测器口径。验收动态任务时，用 `timeline.csv` 核对执行顺序、耗时和等待，
+用 `cost-breakdown.csv` 核对逐任务的冻结费用。
 
 通信任务的 metadata 包含 `op`、`layer`、`source`、`components`、`communication_type`
 （`tp`、`pp` 或 `ep`）、`group`、`endpoints`、`payload_bytes`、`topology`、
@@ -129,6 +139,7 @@ pytest 日志与 JUnit、验收报告和运行 manifest。秒值使用 `_s` 后�
 
 ```bash
 git switch --detach aaacab19a2904948f4270cd988b8ce0091b21849
+git submodule update --init --recursive
 python -m pip install -r scripts/dag_phase4/requirements.txt
 bash scripts/dag_phase5/build_wsl.sh .cache/phase5-wsl-build-new
 export PYTHONPATH="$PWD/vidur-alibabacloud:$PWD"
