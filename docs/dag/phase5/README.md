@@ -1,6 +1,21 @@
 # 第五阶段 · 拆分计算与通信任务
 
-正式验收版本、复验命令、MoE 接入约定和证据包索引见 [验收交接](HANDOFF.md)。
+正式验收对应 `dev-v5` 提交 `aaacab19a2904948f4270cd988b8ce0091b21849`，包含归档字节修复
+`6833e47`。验收在结算修复提交前启动，运行 manifest 记录了启动时的 HEAD 和工作区差异。
+WSL 验收退出码为 0，193 项测试通过。32 MiB TP8 AllReduce 相对 ns-3 的误差从 35.25%
+降至 2.32%。[下载第五阶段交付包](artifacts/20261113-phase5-delivery.zip)
+
+解开外层 ZIP，将内部两份 ZIP 分别解压到仓库的 `results/dag/phase5/`。
+外层包的 `SHA256SUMS` 可用于校验两份内部 ZIP。
+
+- 正式验收目录 `20261113-phase5-handoff-01/` 中，
+  `collective-evidence/data-pairs.csv` 和 `collective-evidence/calibration.json` 提供
+  WSL 配对与冻结校准。`accuracy-comparison.csv` 和 `accuracy-summary.json` 提供误差报告。
+  `acceptance-report.json` 和 `run-manifest.json` 提供验收状态与产物哈希。
+- 复验输入 ZIP 解出 `20261112-phase5-wsl-acceptance-01/`，包含 `--refine-from`
+  读取的三份首轮 64 MiB 验证记录。
+
+## 功能回归
 
 从项目根目录运行。使用阶段四的 Python 3.10+ 推理环境及
 `scripts/dag_phase4/requirements.txt`。本地 Python 3.14.5 可使用阶段四的隔离依赖。
@@ -98,27 +113,32 @@ calibration/validation 分组。每个新增合格配对填写 `same_cost_record
 原指标、配置、任务／资源时间线、Chrome trace、`cost-breakdown.csv`、`overlap.csv`
 和 `graphs/stage-*.graph.json`。顶层保存三份功能对照、精度逐样本与汇总、阻塞清单、
 pytest 日志与 JUnit、验收报告和运行 manifest。秒值使用 `_s` 后缀，Chrome trace 使用微秒。
-同名 ZIP 单独交接，排除 `pytest-tmp/` 和 `predictor-cache/`。交接时同时提供代码版本、
-运行命令、验收结果和遗留问题。
+正式验收 ZIP 排除 `pytest-tmp/` 和 `predictor-cache/`。
 
 第五阶段的 `accuracy_status` 只表示本阶段验证指标的判定，范围和指标名分别记录在
 `accuracy_scope` 和 `accuracy_validation_metrics`。当前 WSL 验收通过的指标是
 `tp_allreduce_forward`，参考值来自 ns-3 模拟。请求级 `primary_metric_status` 仍为
-`pending`。第八阶段须按阶段一协议先冻结请求级主指标，再以其独立验证集判断整体精度。
+`pending`。历史通信候选、AllToAll、真实 AICB 画像和请求级 E2E 的证据缺口见正式验收目录
+中的 `blockers.json`。第八阶段须按阶段一协议先冻结请求级主指标，再以其独立验证集判断整体精度。
 
 ## WSL 后端复验
 
-在 Ubuntu 22.04 的项目目录执行。构建使用顶层 HEAD 与锁定的子模块 Git 归档，输出二进制、
-编译日志和哈希。验收使用 WSL 内安装了阶段四 requirements 的 Python 虚拟环境。
+在 Ubuntu 22.04 的项目目录解压交付包、激活 Python 虚拟环境，再按以下命令复跑正式验收。
+构建使用顶层 HEAD 与锁定的子模块 Git 归档，输出二进制、编译日志和哈希。
+构建和验收输出目录均使用新名称。
 
 ```bash
+git switch --detach aaacab19a2904948f4270cd988b8ce0091b21849
+python -m pip install -r scripts/dag_phase4/requirements.txt
 bash scripts/dag_phase5/build_wsl.sh .cache/phase5-wsl-build-new
 export PYTHONPATH="$PWD/vidur-alibabacloud:$PWD"
 python scripts/dag_phase5/main.py --wsl-build .cache/phase5-wsl-build-new \
-  --output results/dag/phase5/20261112-phase5-wsl-acceptance-01
+  --refine-from results/dag/phase5/20261112-phase5-wsl-acceptance-01 \
+  --output results/dag/phase5/20261113-phase5-handoff-02
 ```
 
-复验先跑原双 collective 冒烟，再冻结 8 卡 H20、TP8、FP16 的 16 MiB 校准与 64 MiB 验证输入。
+复验先跑原双 collective 冒烟，再冻结 8 卡 H20、TP8、FP16 的 16 MiB 校准输入。
+首轮验证使用 64 MiB，正式验收的复验使用 32 MiB。
 ns-3 为模拟参考。读取单次 forward collective service 的 `fwd total comm`（微秒），
 并将原 CLI 的两个 SimAI 后端与实际 DAG TP 节点时间线核对。Analytical 的 H20 网络参数由
 显式 CLI 选项传入，实验把 CPU launch/skew 置零以对齐通信口径。校准配置只在
@@ -127,7 +147,8 @@ ns-3 为模拟参考。读取单次 forward collective service 的 `fwd total co
 所有配对记录和配置增量归入正式运行
 的 `collective-evidence/`，并由阶段一的严格配对规则复核。
 
-若初轮比例模型在 64 MiB 验证退化，保留该轮目录并使用 `--refine-from <初轮目录>`。
+从头重跑首轮时，省略 `--refine-from` 并指定新的验收输出目录。若初轮比例模型在 64 MiB
+验证退化，保留该轮目录并使用 `--refine-from <初轮目录>`。
 修订保留 analytical 的带宽项，仅从原 16 MiB 校准样本估计固定偏差，参数冻结后使用此前
 未执行的 32 MiB 验证输入。原 64 MiB 结果以失败诊断保存在 `prior-validation.json`。
 旧预测、同费用及修订路径共同使用整数 payload 序列化修复和相同的显式网络配置。
