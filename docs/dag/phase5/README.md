@@ -1,5 +1,7 @@
 # 第五阶段 · 拆分计算与通信任务
 
+正式验收版本、复验命令、MoE 接入约定和证据包索引见 [验收交接](HANDOFF.md)。
+
 从项目根目录运行。使用阶段四的 Python 3.10+ 推理环境及
 `scripts/dag_phase4/requirements.txt`。本地 Python 3.14.5 可使用阶段四的隔离依赖。
 
