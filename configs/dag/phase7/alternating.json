@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "group": "experts",
+  "experts": {"e0": "gpu:0:0:0", "e1": "gpu:0:0:0", "e2": "gpu:1:0:0", "e3": "gpu:1:0:0"},
+  "routing": {"top_k": 2, "patterns": ["balanced", "hotspot"], "seed": 0},
+  "cost": {
+    "mode": "synthetic",
+    "evidence": "Synthetic structural MoE fixture only; no measured model or GPU latency",
+    "route_s": 0.000001,
+    "up_s_per_assignment": 0.000002,
+    "down_s_per_assignment": 0.000002,
+    "dispatch_bytes_per_assignment": 8192,
+    "combine_bytes_per_assignment": 8192,
+    "latency_s": 0.000001
+  }
+}

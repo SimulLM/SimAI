@@ -211,23 +211,29 @@ class ExpandedDagAdapter(CoarseDagAdapter):
             raise ValueError("expanded MoE requires AICB layer and EP cost evidence")
         super().__init__(stage_keys, resources=self.placement.resources)
 
-    def submit_stage(self, now, replica_id, stage_id, is_last_stage, batch, batch_stage,
-                     *, on_stage_start=None, execution_time=None, record=None):
-        graph_id, context = self._identity(replica_id, stage_id, batch)
+    def _build_fragment(self, graph_id, context, execution_time, is_last_stage, batch):
         payload = None
         if self.backend != "aicb" and (self.placement.tp > 1 or not is_last_stage):
             payload = execution_time.collective_payload_bytes(batch._total_num_tokens_rounded)
-        fragment = ExpandedStageBuilder(graph_id, execution_time, self.placement,
-                                        self.backend, is_last_stage, payload_bytes=payload,
-                                        tp_calibration=self.tp_calibration).build(context)
+        return ExpandedStageBuilder(graph_id, execution_time, self.placement,
+                                    self.backend, is_last_stage, payload_bytes=payload,
+                                    tp_calibration=self.tp_calibration).build(context)
+
+    def _validate_initial_service(self, uncalibrated_service, batch_stage):
+        if self.backend != "aicb" and not isclose(
+                uncalibrated_service, batch_stage.execution_time, rel_tol=1e-12, abs_tol=1e-15):
+            raise ValueError(f"expanded Stage cost mismatch: {uncalibrated_service} vs {batch_stage.execution_time}")
+
+    def submit_stage(self, now, replica_id, stage_id, is_last_stage, batch, batch_stage,
+                     *, on_stage_start=None, execution_time=None, record=None):
+        graph_id, context = self._identity(replica_id, stage_id, batch)
+        fragment = self._build_fragment(graph_id, context, execution_time, is_last_stage, batch)
         service = fsum(task.cost.duration_s for task in fragment.tasks)
         uncalibrated_service = fsum(
             task.metadata.get("uncalibrated_raw_value", task.cost.raw_value) * task.cost.conversion_to_s
             for task in fragment.tasks
         )
-        if self.backend != "aicb" and not isclose(
-                uncalibrated_service, batch_stage.execution_time, rel_tol=1e-12, abs_tol=1e-15):
-            raise ValueError(f"expanded Stage cost mismatch: {uncalibrated_service} vs {batch_stage.execution_time}")
+        self._validate_initial_service(uncalibrated_service, batch_stage)
         if record is not None:
             record.update(graph_id=graph_id, expanded_service_s=service,
                           actual_service_interval_s=None, graph_resource_wait_s=None)

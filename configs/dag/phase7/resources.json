@@ -1,0 +1,11 @@
+{
+  "endpoints": {"gpu:0:0:0": "shared-ep-nic", "gpu:1:0:0": "shared-ep-nic"},
+  "independent_comm": [],
+  "ep_groups": {
+    "experts": {
+      "members": ["gpu:0:0:0", "gpu:1:0:0"],
+      "bandwidth_bytes_per_s": {"prefill": 1000000000, "decode": 1000000000},
+      "evidence": "Synthetic phase-7 logical link, not a hardware measurement"
+    }
+  }
+}

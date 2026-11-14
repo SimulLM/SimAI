@@ -107,9 +107,15 @@ class Simulator:
                 replica = config.cluster_config.replica_config
                 if replica.pd_node_ratio < 1:
                     raise ValueError("dag_expanded currently requires a non-PD cluster")
-                self._scheduler.dag_adapter = ExpandedDagAdapter(
+                adapter_type, extra = ExpandedDagAdapter, {}
+                if config.dag_moe_config:
+                    from vidur.dag.moe import load_config
+                    from vidur.dag.moe_host import DynamicMoeDagAdapter
+                    adapter_type = DynamicMoeDagAdapter
+                    extra = dict(moe=load_config(config.dag_moe_config), device=replica.device)
+                self._scheduler.dag_adapter = adapter_type(
                     stage_keys, replica.tensor_parallel_size, config.execution_time_predictor_config.backend,
-                    replica.model_name, expanded_settings,
+                    replica.model_name, expanded_settings, **extra,
                 )
             else:
                 self._scheduler.dag_adapter = CoarseDagAdapter(stage_keys)
@@ -239,6 +245,8 @@ class Simulator:
             if self._config.execution_mode == "dag_expanded":
                 from vidur.dag.expanded_trace import write_expanded_results
                 attempt("expanded_results", lambda: write_expanded_results(output, adapter.executor))
+                if self._config.dag_moe_config:
+                    attempt("moe_results", lambda: adapter.write_moe_results(output))
 
         attempt("metrics", self._metric_store.plot)
 

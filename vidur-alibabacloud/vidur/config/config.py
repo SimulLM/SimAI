@@ -834,6 +834,10 @@ class SimulationConfig(ABC):
         default="",
         metadata={"help": "Optional expanded DAG endpoint, GPU occupancy, and EP mapping JSON."},
     )
+    dag_moe_config: str = field(
+        default="",
+        metadata={"help": "Optional per-iteration MoE routing and expert cost JSON; requires dag_expanded."},
+    )
     seed: int = field(
         default=42,
         metadata={"help": "Seed for the random number generator."},
@@ -866,6 +870,8 @@ class SimulationConfig(ABC):
     def __post_init__(self):
         if self.execution_mode not in ("legacy", "dag_coarse", "dag_expanded"):
             raise ValueError("execution_mode must be legacy, dag_coarse, or dag_expanded")
+        if self.dag_moe_config and self.execution_mode != "dag_expanded":
+            raise ValueError("dag_moe_config requires execution_mode=dag_expanded")
         self.write_config_to_file()
 
     @classmethod
