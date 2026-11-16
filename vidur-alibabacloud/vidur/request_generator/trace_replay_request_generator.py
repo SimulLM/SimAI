@@ -82,9 +82,9 @@ class TraceReplayRequestGenerator(BaseRequestGenerator):
 
         for _, row in self.trace_df.iterrows():
             request = Request(
-                arrived_at=row["arrived_at"],
-                num_prefill_tokens=row["num_prefill_tokens"],
-                num_decode_tokens=row["num_decode_tokens"],
+                arrived_at=float(row["arrived_at"]),
+                num_prefill_tokens=int(row["num_prefill_tokens"]),
+                num_decode_tokens=int(row["num_decode_tokens"]),
             )
 
             requests.append(request)

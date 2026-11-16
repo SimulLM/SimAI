@@ -1,5 +1,6 @@
 """Audit the submitted cost snapshot and observed compute/communication overlap."""
 import json
+from hashlib import sha256
 
 from vidur.dag.serialization import graph_to_dict
 from vidur.dag.trace import write_csv, write_json
@@ -29,7 +30,9 @@ def write_expanded_results(output, executor):
     costs, intervals = [], []
     for gid, graph in executor.graphs.items():
         context = graph.fragment.context
-        write_json(graph_dir / f"stage-{context.iteration_id:06d}.graph.json", graph_to_dict(graph.fragment))
+        name = ("pd-" + sha256(gid.encode()).hexdigest()[:16] if gid.startswith("pd/")
+                else f"stage-{context.iteration_id:06d}")
+        write_json(graph_dir / f"{name}.graph.json", graph_to_dict(graph.fragment))
         for task in graph.tasks.values():
             spec = task.spec
             cost = spec.cost

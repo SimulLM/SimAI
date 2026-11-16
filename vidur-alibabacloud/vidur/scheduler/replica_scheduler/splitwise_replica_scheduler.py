@@ -200,6 +200,10 @@ class SplitwiseReplicaScheduler(BaseReplicaScheduler):  # Define SplitwiseReplic
     
     # fth 260122 这边释放资源； 进入decode的逻辑 写在handle_event里面，用于生成新的event， 这边不生成event； 
     def on_batch_end(self, batch: Batch) -> None:  # Called when a batch finishes execution
+        pd = getattr(self, "pd_coordinator", None)
+        if pd is not None:
+            pd.on_batch_end(self, batch)
+            return
         self._num_running_batches -= 1  # Decrement running batch count
         
         # 判断是否是pd 分离
@@ -272,6 +276,9 @@ class SplitwiseReplicaScheduler(BaseReplicaScheduler):  # Define SplitwiseReplic
 
     # Implement get next batch using orca approach.
     def _get_next_batch(self) -> Batch:
+        pd = getattr(self, "pd_coordinator", None)
+        if pd is not None:
+            return pd.next_batch(self)
         
         """
         选择要运行的任务批次。

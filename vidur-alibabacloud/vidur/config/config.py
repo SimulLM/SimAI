@@ -838,6 +838,10 @@ class SimulationConfig(ABC):
         default="",
         metadata={"help": "Optional per-iteration MoE routing and expert cost JSON; requires dag_expanded."},
     )
+    dag_pd_config: str = field(
+        default="",
+        metadata={"help": "Explicit KV capacity/layout and transfer cost JSON for expanded Splitwise PD."},
+    )
     seed: int = field(
         default=42,
         metadata={"help": "Seed for the random number generator."},
@@ -872,6 +876,8 @@ class SimulationConfig(ABC):
             raise ValueError("execution_mode must be legacy, dag_coarse, or dag_expanded")
         if self.dag_moe_config and self.execution_mode != "dag_expanded":
             raise ValueError("dag_moe_config requires execution_mode=dag_expanded")
+        if self.dag_pd_config and (self.execution_mode != "dag_expanded" or self.dag_moe_config):
+            raise ValueError("dag_pd_config requires dag_expanded; PD+MoE is not yet supported")
         self.write_config_to_file()
 
     @classmethod

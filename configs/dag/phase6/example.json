@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "storage_dtype": "float16",
+  "capacity_bytes_per_shard": 134217728,
+  "bandwidth_bytes_per_s": 1000000000,
+  "latency_s": 0.001,
+  "occupies_gpu": true,
+  "evidence": "Synthetic functional example; replace with matched measured or estimated link evidence"
+}

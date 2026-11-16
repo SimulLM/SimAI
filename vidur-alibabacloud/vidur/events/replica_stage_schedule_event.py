@@ -60,6 +60,9 @@ class ReplicaStageScheduleEvent(BaseEvent):
             records.append(record)
 
         def on_stage_start(start_at):
+            pd = getattr(scheduler, "pd_coordinator", None)
+            if pd is not None and self._stage_id == 0:
+                pd.on_stage_start(self._batch, self._replica_id, start_at)
             self._batch_stage.on_schedule(start_at, submitted_at=self.time)
             record.update(start_at_s=start_at, resource_wait_s=start_at - self.time)
             metrics_store.on_replica_stage_schedule(

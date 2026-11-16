@@ -33,12 +33,17 @@ class BatchEndEvent(BaseEvent):
         # > batch completion triggers the next one
         self._batch.on_batch_end(self.time)
         replica_scheduler = scheduler.get_replica_scheduler(self._replica_id)
+        pd = getattr(scheduler, "pd_coordinator", None)
+        if pd is not None:
+            pd.now = self.time
         replica_scheduler.on_batch_end(self._batch)
 
         memory_usage_percent = replica_scheduler.memory_usage_percent
         metrics_store.on_batch_end(
             self.time, self._batch, self._replica_id, memory_usage_percent
         )
+        if pd is not None:
+            return pd.notifications(self.time)
 
         
         

@@ -19,8 +19,9 @@ class DagHostEvent(BaseEvent):
         # Reserve the legacy StageEnd's position among equal-time host events.
         # Internal completion/zero-duration terminal events occupy that position
         # until the real StageEnd becomes eligible; no premature end is queued.
-        end = adapter.stage_ends[intent.owner[0]]
-        self._priority_number = (self.time, end.id, None, self.id)
+        gid = intent.owner[0]
+        anchor = adapter.stage_ends[gid].id if gid in adapter.stage_ends else adapter.graph_anchors[gid]
+        self._priority_number = (self.time, anchor, None, self.id)
 
     def handle_event(self, scheduler, metrics_store):
         return self.adapter.handle(replace(self.intent, time_s=self.time))
@@ -37,6 +38,7 @@ class CoarseDagAdapter:
         self.executor = DagExecutor(CapacityResourceManager(capacities),
                                     resource_units={key: "permits" for key in capacities})
         self.stage_ends = {}
+        self.graph_anchors = {}
         self.events = []
         self.now = 0.0
         self.failure = None

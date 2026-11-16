@@ -301,7 +301,7 @@ class Request(BaseEntity):
             self._completed_at = time
             self._completed = True
             self.decode_time = self._completed_at - self.prefill_completed_at
-            assert self.decode_time > 0 and self.decode_time < float("inf"), "decode_time must be positive and finite"
+            assert self.decode_time >= 0 and self.decode_time < float("inf"), "decode_time must be nonnegative and finite"
             
             
             logger.debug(f"Request {self._id} completed at {self._completed_at}")

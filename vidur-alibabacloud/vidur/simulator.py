@@ -55,6 +55,9 @@ def _load_expanded_settings(config: SimulationConfig) -> dict:
 class Simulator:
     def __init__(self, config: SimulationConfig) -> None:
         self._config: SimulationConfig = config
+        if config.dag_pd_config:
+            from vidur.dag.pd import validate_simulation_config
+            validate_simulation_config(config)
         expanded_settings = _load_expanded_settings(config) if config.execution_mode == "dag_expanded" else {}
 
         self._time = 0
@@ -105,7 +108,7 @@ class Simulator:
             if config.execution_mode == "dag_expanded":
                 from vidur.dag.expanded import ExpandedDagAdapter
                 replica = config.cluster_config.replica_config
-                if replica.pd_node_ratio < 1:
+                if replica.pd_node_ratio < 1 and not config.dag_pd_config:
                     raise ValueError("dag_expanded currently requires a non-PD cluster")
                 adapter_type, extra = ExpandedDagAdapter, {}
                 if config.dag_moe_config:
@@ -119,6 +122,16 @@ class Simulator:
                 )
             else:
                 self._scheduler.dag_adapter = CoarseDagAdapter(stage_keys)
+
+        self._scheduler.pd_coordinator = None
+        if config.dag_pd_config:
+            from vidur.dag.pd import PDConfig
+            from vidur.dag.pd_host import PDCoordinator
+            if self._scheduler.__class__.__name__ != "SplitwiseGlobalScheduler":
+                raise ValueError("DAG PD requires the Splitwise global scheduler")
+            self._scheduler.pd_coordinator = PDCoordinator(
+                self._scheduler, self._scheduler.dag_adapter, PDConfig.load(config.dag_pd_config),
+                config.request_generator_config.max_tokens)
 
         self._init_event_queue()
         atexit.register(self._write_output)
@@ -145,6 +158,9 @@ class Simulator:
                 # No pending business completion may run after global failure.
                 self._event_queue.clear()
                 adapter.pending_event_count = 0
+            pd = getattr(getattr(self, "_scheduler", None), "pd_coordinator", None)
+            if pd is not None:
+                pd.abort(self._time, self._failure)
             raise
 
     def _run(self) -> None:
@@ -197,6 +213,9 @@ class Simulator:
                     self._event_chrome_trace.append(chrome_trace)
 
         # print(f"> Debug: self._scheduler.is_empty()={self._scheduler.is_empty()} self._terminate={self._terminate}")
+        pd = getattr(self._scheduler, "pd_coordinator", None)
+        if pd is not None and not self._terminate:
+            pd.assert_completed()
         assert self._scheduler.is_empty() or self._terminate
         if not self._terminate and any(not request.completed for request in self._requests):
             raise RuntimeError("host queue exhausted with unfinished requests")
@@ -235,6 +254,9 @@ class Simulator:
                 "stages": self._scheduler.stage_execution_records}))
 
         attempt("execution_summary", execution_summary)
+        pd = getattr(self._scheduler, "pd_coordinator", None)
+        if pd is not None:
+            attempt("pd_results", lambda: pd.write_results(output))
         if self._scheduler.dag_adapter is not None:
             from vidur.dag.trace import write_results
             adapter = self._scheduler.dag_adapter
