@@ -22,21 +22,38 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
         if tp != 1 or any(stage != 0 for _, stage in stage_keys):
             raise ValueError("dynamic MoE currently requires TP=1 and PP=1")
         super().__init__(stage_keys, tp, backend, model, settings)
-        self.moe = moe if isinstance(moe, MoeConfig) else MoeConfig(moe)
-        group = self.placement.ep_groups.get(self.moe.group)
-        if group is None or set(group["members"]) != set(self.moe.experts.values()):
-            raise ValueError("dynamic MoE requires an explicit EP group with an expert on every member")
-        if set(group["members"]) != set(self.placement.endpoints):
-            raise ValueError("phase-7 currently supports one EP group covering all configured GPUs")
-        if backend != "aicb" and self.moe.cost.mode != "synthetic":
-            raise ValueError("dense-to-MoE replacement is a synthetic structural fixture only")
-        if self.moe.cost.mode == "profile":
-            actual = dict(model=model, device=device, tp=tp, pp=1, ep=len(group["members"]))
-            if any(self.moe.scope.get(k) != v for k, v in actual.items()):
-                raise ValueError("expert profile scope does not match runtime model/device/TP/PP/EP")
+        configs = moe if isinstance(moe, tuple) else (moe,)
+        self.moes = tuple(m if isinstance(m, MoeConfig) else MoeConfig(m) for m in configs)
+        if not self.moes or len({m.group for m in self.moes}) != len(self.moes):
+            raise ValueError("MoE groups must be nonempty and uniquely named")
+        self.moe = self.moes[0]  # Compatibility for existing single-group callers.
+        self.moe_by_device = {}
+        for config in self.moes:
+            group = self.placement.ep_groups.get(config.group)
+            if group is None or set(group["members"]) != set(config.experts.values()):
+                raise ValueError("dynamic MoE requires an explicit EP group with an expert on every member")
+            if set(group["members"]).intersection(self.moe_by_device):
+                raise ValueError("MoE groups cannot overlap")
+            self.moe_by_device.update((gpu, config) for gpu in group["members"])
+            if backend != "aicb" and config.cost.mode != "synthetic":
+                raise ValueError("dense-to-MoE replacement is a synthetic structural fixture only")
+            if config.cost.mode == "profile":
+                actual = dict(model=model, device=device, tp=tp, pp=1, ep=len(group["members"]))
+                if any(config.scope.get(k) != v for k, v in actual.items()):
+                    raise ValueError("expert profile scope does not match runtime model/device/TP/PP/EP")
+        if set(self.moe_by_device) != set(self.placement.endpoints):
+            raise ValueError("MoE groups must cover all configured GPUs exactly once")
         self._iterations = Counter()
         self._pending_routes = {}
         self.rounds = []
+
+    def validate_pd_groups(self, replica_roles):
+        """EP membership stays within a P or D domain; PD moves KV between them."""
+        roles = {gpu: replica_roles[replica] for (replica, _), devices in self.placement.devices.items()
+                 for gpu in devices}
+        for config in self.moes:
+            if len({roles[gpu] for gpu in config.experts.values()}) != 1:
+                raise ValueError("joint PD+MoE EP groups must stay within Prefill or Decode replicas")
 
     def _validate_initial_service(self, uncalibrated_service, batch_stage):
         # The removed aggregate is replaced, not added to the final dynamic cost.
@@ -68,8 +85,9 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
         if self.backend == "aicb" and not active_layers:
             raise ValueError("AICB profile contains no active MoE layer to expand")
         origin, = self.placement.devices[context.replica_id, context.stage_id]
+        moe = self.moe_by_device[origin]
         tokens = {d: int(token_count) if d == origin else 0
-                  for d in sorted(set(self.moe.experts.values()))}
+                  for d in sorted(set(moe.experts.values()))}
         replacements, tasks = {}, []
         for task in original.tasks:
             op = task.metadata["op"]
@@ -81,14 +99,14 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
                 prefix = f"layer{layer}.moe"
                 route_id, join_id = prefix + ".route", prefix + ".join"
                 metadata = dict(op="moe.route", layer=layer, iteration=iteration, phase=phase,
-                                cost_mode=self.moe.cost.mode, structural_fixture=self.backend != "aicb")
+                                group=moe.group, cost_mode=moe.cost.mode, structural_fixture=self.backend != "aicb")
                 tasks.append(self._task(route_id, "compute", (origin,), (origin,),
-                                        self.moe.cost.routing(), metadata))
+                                        moe.cost.routing(), metadata))
                 tasks.append(self._task(join_id, "sync", (), (),
-                                        self.moe.cost.estimate(0, "moe_join", "sync"),
+                                        moe.cost.estimate(0, "moe_join", "sync"),
                                         dict(op="moe.join", layer=layer, iteration=iteration)))
                 replacements[task.task_id] = (route_id, join_id)
-                self._pending_routes[graph_id, route_id] = (iteration, layer, phase, tokens, join_id)
+                self._pending_routes[graph_id, route_id] = (iteration, layer, phase, tokens, join_id, moe)
             else:
                 tasks.append(task)
                 replacements[task.task_id] = (task.task_id,)
@@ -100,26 +118,26 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
         return replace(original, tasks=tuple(tasks), edges=edges)
 
     def _expand(self, graph_id, route_id, pending):
-        iteration, layer, phase, tokens, join_id = pending
-        routing = self.moe.routing_result(tokens, iteration=iteration, layer=layer, phase=phase)
+        iteration, layer, phase, tokens, join_id, moe = pending
+        routing = moe.routing_result(tokens, iteration=iteration, layer=layer, phase=phase)
         digest = routing.digest
-        matrix = routing.matrix(self.moe.experts)
+        matrix = routing.matrix(moe.experts)
         prefix = route_id.removesuffix(".route")
-        bandwidth = self.placement.ep_groups[self.moe.group]["bandwidth_bytes_per_s"][phase]
+        bandwidth = self.placement.ep_groups[moe.group]["bandwidth_bytes_per_s"][phase]
         tasks, edges = [], set()
         dispatch, combine = {}, {}
 
         def transfer(source, target, count, direction):
-            payload = count * (self.moe.cost.dispatch_bytes if direction == "dispatch" else self.moe.cost.combine_bytes)
+            payload = count * (moe.cost.dispatch_bytes if direction == "dispatch" else moe.cost.combine_bytes)
             task_id = f"{prefix}.{direction}.{source}>{target}"
             metadata = dict(op="moe." + direction, layer=layer, iteration=iteration, phase=phase,
                             routing_digest=digest, source_device=source, destination_device=target,
                             assignments=count, payload_bytes=payload, bandwidth_bytes_per_s=bandwidth,
-                            bandwidth_evidence=self.placement.ep_groups[self.moe.group]["evidence"])
+                            bandwidth_evidence=self.placement.ep_groups[moe.group]["evidence"])
             placement, resources = self.placement.communication(
-                "ep", self.moe.group, (source, target), metadata)
+                "ep", moe.group, (source, target), metadata)
             tasks.append(self._task(task_id, "comm", placement.device_ids, resources,
-                                    self.moe.cost.transfer(payload, bandwidth), metadata, self.moe.group))
+                                    moe.cost.transfer(payload, bandwidth), metadata, moe.group))
             return task_id
 
         for source, row in matrix.items():
@@ -135,19 +153,19 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
         expert_sources = defaultdict(set)
         for assignment in routing.assignments:
             expert_sources[assignment.expert].add(assignment.source)
-        for expert in sorted(self.moe.experts):
+        for expert in sorted(moe.experts):
             count = counts[expert]
             if not count:
                 continue  # No-load experts do not consume an artificial minimum cost.
-            device = self.moe.experts[expert]
+            device = moe.experts[expert]
             ids = {op: f"{prefix}.expert.{expert}.{op}" for op in ("up", "down")}
             down_ids[expert] = ids["down"]
             for op, task_id in ids.items():
-                cost = self.moe.cost.expert(expert, phase, count, op)
+                cost = moe.cost.expert(expert, phase, count, op)
                 tasks.append(self._task(task_id, "compute", (device,), (device,), cost,
                                         dict(op="expert." + op, expert=expert, assignments=count,
                                              routing_digest=digest, layer=layer, iteration=iteration,
-                                             phase=phase, cost_mode=self.moe.cost.mode)))
+                                             phase=phase, group=moe.group, cost_mode=moe.cost.mode)))
             edges.add((route_id, ids["up"]))
             edges.add((ids["up"], ids["down"]))
             for source in expert_sources[expert]:
@@ -159,8 +177,10 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
         return GraphAppend(graph_id, tuple(tasks), tuple(sorted(edges))), dict(
             graph_id=graph_id, route_task_id=route_id, join_task_id=join_id,
             routing_digest=digest, routing=routing.to_dict(), matrix=matrix,
-            expert_counts={e: counts[e] for e in sorted(self.moe.experts)},
-            expert_down_tasks=down_ids, cost_mode=self.moe.cost.mode,
+            expert_counts={e: counts[e] for e in sorted(moe.experts)},
+            expert_down_tasks=down_ids, cost_mode=moe.cost.mode, group=moe.group,
+            expert_devices=dict(moe.experts), dispatch_bytes_per_assignment=moe.cost.dispatch_bytes,
+            combine_bytes_per_assignment=moe.cost.combine_bytes,
             structural_fixture=self.backend != "aicb")
 
     def handle(self, intent):
@@ -188,25 +208,26 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
     def write_moe_results(self, output):
         output = Path(output)
         loads, matrices, rounds = [], [], []
+        graphs = self.executor.graphs
         for record in self.rounds:
-            graph = self.executor.graph_snapshot(record["graph_id"])
+            graph = graphs[record["graph_id"]]
             routing = record["routing"]
-            identity = dict(graph_id=record["graph_id"], iteration=routing["iteration"],
+            identity = dict(graph_id=record["graph_id"], group=record["group"], iteration=routing["iteration"],
                             layer=routing["layer"], phase=routing["phase"],
                             strategy=routing["strategy"], routing_digest=record["routing_digest"])
             for expert, count in record["expert_counts"].items():
                 task_id = record["expert_down_tasks"].get(expert)
                 down = graph.tasks[task_id] if task_id else None
                 up = graph.tasks[task_id.removesuffix(".down") + ".up"] if task_id else None
-                loads.append(dict(**identity, expert=expert, device=self.moe.experts[expert], assignments=count,
+                loads.append(dict(**identity, expert=expert, device=record["expert_devices"][expert], assignments=count,
                                   up_start_s=up.start_at if up else None, down_end_s=down.end_at if down else None,
                                   compute_service_s=up.spec.cost.duration_s + down.spec.cost.duration_s if up else 0,
                                   resource_wait_s=up.resource_wait_s + down.resource_wait_s if up else 0))
             for source, row in record["matrix"].items():
                 for target, count in row.items():
                     matrices.append(dict(**identity, source=source, destination=target, assignments=count,
-                                         dispatch_wire_bytes=count * self.moe.cost.dispatch_bytes if source != target else 0,
-                                         combine_wire_bytes=count * self.moe.cost.combine_bytes if source != target else 0))
+                                         dispatch_wire_bytes=count * record["dispatch_bytes_per_assignment"] if source != target else 0,
+                                         combine_wire_bytes=count * record["combine_bytes_per_assignment"] if source != target else 0))
             ends = [graph.tasks[t].end_at for t in record["expert_down_tasks"].values()]
             finished = [t for t in ends if t is not None]
             route_task, join = graph.tasks[record["route_task_id"]], graph.tasks[record["join_task_id"]]
@@ -215,7 +236,7 @@ class DynamicMoeDagAdapter(ExpandedDagAdapter):
                                route_end_s=route_task.end_at, join_end_s=join.end_at,
                                expert_tail_span_s=max(finished) - min(finished) if finished else None))
         chrome_events = []
-        for gid, graph in self.executor.graphs.items():
+        for gid, graph in graphs.items():
             for task in graph.tasks.values():
                 if task.start_at is None or task.end_at is None:
                     continue

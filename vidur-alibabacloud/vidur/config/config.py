@@ -876,8 +876,8 @@ class SimulationConfig(ABC):
             raise ValueError("execution_mode must be legacy, dag_coarse, or dag_expanded")
         if self.dag_moe_config and self.execution_mode != "dag_expanded":
             raise ValueError("dag_moe_config requires execution_mode=dag_expanded")
-        if self.dag_pd_config and (self.execution_mode != "dag_expanded" or self.dag_moe_config):
-            raise ValueError("dag_pd_config requires dag_expanded; PD+MoE is not yet supported")
+        if self.dag_pd_config and self.execution_mode != "dag_expanded":
+            raise ValueError("dag_pd_config requires dag_expanded")
         self.write_config_to_file()
 
     @classmethod

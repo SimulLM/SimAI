@@ -222,7 +222,7 @@ class PDCoordinator:
         m = self.migrations[rid]
         if m.state != "TRANSFERRING":
             raise RuntimeError("duplicate or stale PD receive commit")
-        graphs = [self.adapter.executor.graphs[gid] for gid in m.graph_ids]
+        graphs = [self.adapter.executor.graph_snapshot(gid) for gid in m.graph_ids]
         if any(graph.state != "COMPLETED" for graph in graphs):
             raise RuntimeError("cannot commit KV before every transfer completes")
         self.tx.commit(rid, m.destination_handles, "destination", now)
@@ -276,11 +276,12 @@ class PDCoordinator:
         from vidur.dag.expanded_trace import write_csv
         output = Path(output)
         rows = []
+        graphs = self.adapter.executor.graphs
         for rid, m in self.migrations.items():
             row = {key: value for key, value in asdict(m).items()
                    if key not in ("source_handles", "destination_handles", "pins")}
             row.update(source_reservations=len(m.source_handles), destination_reservations=len(m.destination_handles), pins=len(m.pins))
-            transfer_tasks = ([t for gid in m.graph_ids for t in self.adapter.executor.graphs[gid].tasks.values()
+            transfer_tasks = ([t for gid in m.graph_ids for t in graphs[gid].tasks.values()
                                if t.spec.kind == "comm"] if m.graph_id else [])
             starts = [t.start_at for t in transfer_tasks if t.start_at is not None]
             ends = [t.end_at for t in transfer_tasks if t.end_at is not None]

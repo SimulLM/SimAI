@@ -129,6 +129,10 @@ class Simulator:
             from vidur.dag.pd_host import PDCoordinator
             if self._scheduler.__class__.__name__ != "SplitwiseGlobalScheduler":
                 raise ValueError("DAG PD requires the Splitwise global scheduler")
+            if config.dag_moe_config:
+                self._scheduler.dag_adapter.validate_pd_groups({
+                    str(rid): rs.replica.replica_type
+                    for rid, rs in self._scheduler._replica_schedulers.items()})
             self._scheduler.pd_coordinator = PDCoordinator(
                 self._scheduler, self._scheduler.dag_adapter, PDConfig.load(config.dag_pd_config),
                 config.request_generator_config.max_tokens)

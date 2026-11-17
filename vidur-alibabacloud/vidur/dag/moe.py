@@ -264,4 +264,10 @@ class MoeCosts:
 
 def load_config(path):
     path = Path(path)
-    return MoeConfig(read_json(path), base_dir=path.resolve().parent)
+    data = read_json(path)
+    if isinstance(data, dict) and "groups" in data:
+        fields(data, ("schema_version", "groups"), "MoE groups")
+        if data.get("schema_version") != "1.0" or not isinstance(data["groups"], list) or not data["groups"]:
+            raise ValueError("MoE groups requires version 1.0 and a nonempty configuration list")
+        return tuple(MoeConfig(group, base_dir=path.resolve().parent) for group in data["groups"])
+    return MoeConfig(data, base_dir=path.resolve().parent)

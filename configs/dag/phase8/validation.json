@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "primary_metric": "request_e2e",
+  "reference_nature": "simulated",
+  "required_scenarios": ["dense", "pd", "moe", "joint"],
+  "parameter_freeze": null,
+  "samples": []
+}
