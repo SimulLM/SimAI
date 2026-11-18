@@ -1,0 +1,28 @@
+{
+  "source": {
+    "kind": "archived_simulation_evidence",
+    "archive": "20261118-phase8-simulated-reference.zip",
+    "sha256": "c34df830d3319e122b44358d4f8f1dc98d729d8cb3305b5427778bdb51891d7c"
+  },
+  "script_sha256": "8626090f066061fb972a042ab24ee7b73ddb9b4a363a6314167cf8174886bf6d",
+  "evidence_files_verified": 101,
+  "validation_samples": 3,
+  "hardware_accuracy_claim": false,
+  "simulation_rerun": false,
+  "artifact_sha256": {
+    "metric-summary.csv": "fd7bee12e94a2be4881cae3402003fea607c207f5cce39d795abdd233c7642c9",
+    "per-sample-errors.csv": "d0b4dafad5fbb50d3e79b6c2350e7dfb53858de306fa55ee6bb574af338b9ae4",
+    "report.html": "a66632a9251d45fc38239e01b02fb12cc71254789f829a86cdedc1a31f8545b9",
+    "report.md": "1733b407c63e402097b119082ff0fee2e78f6cb15275e3c79acdd73cbd13183c",
+    "version-comparison.pdf": "be489968a0c47ae1f4aa6e232a6bff75933ec90953fd0c0ff9576fded5651732",
+    "version-comparison.png": "1683c5bcfd343e084b82c856afcefa180302cd6e036934dde27c1f356c212861",
+    "version-comparison.svg": "dd8b72291e712b28abe44b0b79663dbdec7b052305f496d84417f6e1ef5da8af"
+  },
+  "generated_command": "python scripts/dag_phase8/compare_versions.py --output results/dag/phase8/20261118-version-comparison-04",
+  "published_artifact_sha256": {
+    "figures/version-comparison.png": "1683c5bcfd343e084b82c856afcefa180302cd6e036934dde27c1f356c212861",
+    "figures/version-comparison.svg": "dd8b72291e712b28abe44b0b79663dbdec7b052305f496d84417f6e1ef5da8af",
+    "figures/version-comparison.pdf": "be489968a0c47ae1f4aa6e232a6bff75933ec90953fd0c0ff9576fded5651732",
+    "artifacts/version-comparison.html": "a66632a9251d45fc38239e01b02fb12cc71254789f829a86cdedc1a31f8545b9"
+  }
+}

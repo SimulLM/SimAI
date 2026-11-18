@@ -55,6 +55,9 @@ $env:WANDB_MODE = 'disabled'
 
 ## 精度和参考数据
 
+查看[原生与改进版误差对照](MODEL_ERROR_COMPARISON.md)可直接阅读版本定义、图表和逐样本结果，
+并用`python scripts/dag_phase8/compare_versions.py`从已提交证据重新生成展示，无需GPU或重新编译仿真器。
+
 新增 [CPU 模拟参考实验](SIMULATED_REFERENCE.md)：在固定合成计算画像与调度器的条件下，
 使用新生成的 ns-3 通信结果，对 TP8 稠密请求进行旧路径、同费用 DAG、校准费用 DAG 对照。
 该实验独立声明有限范围；结果不能替代 PD/MoE/联合场景或真实硬件精度验证。
