@@ -55,6 +55,9 @@ $env:WANDB_MODE = 'disabled'
 
 ## 精度和参考数据
 
+新增[同费用DAG机制贡献实验](DAG_MECHANISM_COMPARISON.md)：原生与DAG保持费用相同，
+在共享PP通信端点场景中对照独立FCFS排队参考，单独检验资源等待建模的贡献，完全不使用通信校准。
+
 查看[原生与改进版误差对照](MODEL_ERROR_COMPARISON.md)可直接阅读版本定义、图表和逐样本结果，
 并用`python scripts/dag_phase8/compare_versions.py`从已提交证据重新生成展示，无需GPU或重新编译仿真器。
 

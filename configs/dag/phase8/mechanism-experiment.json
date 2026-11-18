@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "scope": "same_cost_pp_shared_endpoint_fcfs_reference",
+  "model": "meta-llama/Llama-2-7b-hf",
+  "tp": 1,
+  "pp": 2,
+  "dtype": "fp16",
+  "decode_tokens": 1,
+  "primary_metric": "request_e2e_mean_relative_error",
+  "network_profile": {"latency_s": 0.000020, "bandwidth_bytes_per_s": 1250000000},
+  "reference": "Independent Decimal FCFS queue, one nonpreemptive communication permit per endpoint; GPU/CPU costs fixed",
+  "calibration": "none",
+  "cases": [
+    {"name": "single-control", "role": "control", "endpoint": "shared", "tokens": [16], "arrival_gap_s": 0.000001},
+    {"name": "private-control", "role": "control", "endpoint": "private", "tokens": [16,16,16,16], "arrival_gap_s": 0.000001},
+    {"name": "gapped-control", "role": "control", "endpoint": "shared", "tokens": [16,16,16,16], "arrival_gap_s": 0.010},
+    {"name": "shared-two", "role": "validation", "endpoint": "shared", "tokens": [16,16], "arrival_gap_s": 0.000001},
+    {"name": "shared-four", "role": "validation", "endpoint": "shared", "tokens": [16,16,16,16], "arrival_gap_s": 0.000001},
+    {"name": "shared-eight", "role": "validation", "endpoint": "shared", "tokens": [16,16,16,16,16,16,16,16], "arrival_gap_s": 0.000001},
+    {"name": "mixed-shared", "role": "validation", "endpoint": "shared", "tokens": [8,16,32,48], "arrival_gap_s": 0.000001}
+  ],
+  "limitations": [
+    "Independent queueing-model consistency benchmark, not GPU or packet-level network accuracy",
+    "Synthetic compute and network profiles, shared unchanged across all paths",
+    "One full Prefill request per replica; Decode=1 finishes after Prefill's first generated token",
+    "A serialized endpoint permit is assumed; fluid bandwidth sharing is outside scope",
+    "No fitted parameters, TP calibration, PD, dynamic MoE, or new scheduling policy"
+  ]
+}

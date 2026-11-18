@@ -1,0 +1,22 @@
+{
+  "source": {
+    "kind": "local_simulation_evidence",
+    "path": "results/dag/phase8/20261119-dag-mechanism-01",
+    "manifest_sha256": "c9d6ac6efd8ccd51b43a98fc6704f404b1b8a350aefd4909043cebbfe0a61371"
+  },
+  "calibration_used": false,
+  "script_sha256": "5e7f3dfebd272baf2a2b06a5a272109f42843a62626ab2b5b59d23a1b64e2815",
+  "artifact_sha256": {
+    "dag-mechanism.pdf": "78c4158a3b85eb8cdd4457c67b4875aaddae0e2f8f7506b589a8ea9503c5c7fd",
+    "dag-mechanism.png": "e00e24a3d72a56b5c4e39cb4aa3365a5010e83accce4dbab29956207053e4be6",
+    "dag-mechanism.svg": "48771024668a921e43f07c068c57dd7a9932bfaffc5b005ba9b0fae576e5e278",
+    "report.html": "66a4b0833bf632f1d15dd578a46a2a6e15078206979835519cbc6d6b69fb9287",
+    "report.md": "2c5960033c279ba760d5c557d3a63260eca8f0b5dc7ff427cd77638ca0e4e20f"
+  },
+  "published_artifact_sha256": {
+    "figures/dag-mechanism.png": "e00e24a3d72a56b5c4e39cb4aa3365a5010e83accce4dbab29956207053e4be6",
+    "figures/dag-mechanism.svg": "48771024668a921e43f07c068c57dd7a9932bfaffc5b005ba9b0fae576e5e278",
+    "figures/dag-mechanism.pdf": "78c4158a3b85eb8cdd4457c67b4875aaddae0e2f8f7506b589a8ea9503c5c7fd",
+    "artifacts/dag-mechanism.html": "66a4b0833bf632f1d15dd578a46a2a6e15078206979835519cbc6d6b69fb9287"
+  }
+}

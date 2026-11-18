@@ -4,3 +4,5 @@ baseline-data/** -text
 # Published comparison assets retain the exact bytes recorded by their manifest.
 docs/dag/phase8/artifacts/version-comparison.html text eol=lf
 docs/dag/phase8/figures/version-comparison.svg text eol=lf
+docs/dag/phase8/artifacts/dag-mechanism.html text eol=lf
+docs/dag/phase8/figures/dag-mechanism.svg text eol=lf
