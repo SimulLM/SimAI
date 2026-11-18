@@ -62,8 +62,10 @@ def test_verified_simulation_reference_can_score_without_hardware_claim(tmp_path
     report = evaluate(tmp_path / "out", path)
     assert report["status"] == "passed" and report["validation_samples"] == 1
     assert report["old_mean_relative_error"] == .5
+    assert report["same_cost_mean_relative_error"] == .5
     assert report["revised_mean_relative_error"] == pytest.approx(.1)
     assert not report["hardware_accuracy_claim"]
+    assert report["blockers"] is None
 
 
 def test_regression_report_does_not_claim_improvement(tmp_path):

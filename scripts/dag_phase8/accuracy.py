@@ -129,6 +129,7 @@ def evaluate(output, dataset_path):
     coverage = {by_id[row["pair_id"]]["scenario"] for row in primary}
     missing = sorted(set(dataset["required_scenarios"]) - coverage)
     old = fsum(float(row["relative_error"]) for row in primary) / len(primary) if primary else None
+    same = fsum(float(row["same_cost_relative_error"]) for row in primary) / len(primary) if primary else None
     new = fsum(float(row["revised_cost_relative_error"]) for row in primary) / len(primary) if primary else None
     passed = old is not None and ((old == new == 0) or old - new > 1e-12)
     status = "rejected" if rejected else ("blocked_missing_matched_reference" if missing or not freeze
@@ -136,10 +137,11 @@ def evaluate(output, dataset_path):
     report = dict(status=status, primary_metric="request_e2e_mean_relative_error",
         reference_nature=dataset["reference_nature"], primary_metric_status="pending" if missing or not freeze else "frozen",
         validation_samples=len(primary), missing_scenarios=missing, rejected_samples=len(rejected),
-        old_mean_relative_error=old, revised_mean_relative_error=new,
+        old_mean_relative_error=old, same_cost_mean_relative_error=same, revised_mean_relative_error=new,
         outcomes={outcome: sum(row["outcome"] == outcome for row in primary) for outcome in ("improved", "tied", "regressed")},
         hardware_accuracy_claim=status == "passed" and dataset["reference_nature"] == "measured",
         parameter_freeze_sha256=digest(project_path(dataset["parameter_freeze"]["path"])) if freeze else None,
-        blockers="Matched request-level reference, baseline and new predictions are required; synthetic functional runs are excluded.")
+        blockers=(None if status == "passed" else
+                  "Matched request-level reference, baseline and new predictions are required; synthetic functional runs are excluded."))
     write_json(output / "accuracy-summary.json", report)
     return report

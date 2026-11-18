@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "scope": "controlled_dense_tp8_ns3_communication_reference",
+  "primary_metric": "request_e2e_mean_relative_error",
+  "reference_mode": "legacy",
+  "reference_backend": "simai_simulation",
+  "model": "meta-llama/Llama-2-7b-hf",
+  "tp": 8,
+  "pp": 1,
+  "ep": 1,
+  "dtype": "fp16",
+  "compute_reference": "Shared synthetic compute profiles; compute accuracy is not evaluated",
+  "calibration_rule": "nonnegative calibration request E2E residual divided by its TP task count; one fixed offset per collective",
+  "samples": [
+    {"id": "calibration", "split": "calibration", "prefill_tokens": 2048, "decode_tokens": 2},
+    {"id": "validation-small", "split": "validation", "prefill_tokens": 3072, "decode_tokens": 2},
+    {"id": "validation-medium", "split": "validation", "prefill_tokens": 5120, "decode_tokens": 4},
+    {"id": "validation-large", "split": "validation", "prefill_tokens": 6144, "decode_tokens": 8}
+  ],
+  "limitations": [
+    "Single request per run; no batching or contention accuracy claim",
+    "Synthetic compute profiles are shared by every path; they are not hardware measurements",
+    "Reference and predictions share the request scheduler; this isolates communication cost calibration",
+    "All samples share the Decode communication payload; only Prefill payloads and request workloads are held out",
+    "Does not validate PD, dynamic MoE, their combination, or real GPU accuracy"
+  ]
+}

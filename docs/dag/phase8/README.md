@@ -55,6 +55,10 @@ $env:WANDB_MODE = 'disabled'
 
 ## 精度和参考数据
 
+新增 [CPU 模拟参考实验](SIMULATED_REFERENCE.md)：在固定合成计算画像与调度器的条件下，
+使用新生成的 ns-3 通信结果，对 TP8 稠密请求进行旧路径、同费用 DAG、校准费用 DAG 对照。
+该实验独立声明有限范围；结果不能替代 PD/MoE/联合场景或真实硬件精度验证。
+
 默认 `configs/dag/phase8/validation.json` 的 samples 为空，明确输出精度阻塞。
 不会把合成请求、合成 Expert 费用或手算图当作真实硬件参考。
 阶段五 TP8 通信历史结果单列为 `historical-component-evidence.json`；
@@ -78,7 +82,8 @@ $env:WANDB_MODE = 'disabled'
 
 逐样本保留旧误差、相同费用 DAG 误差、修订费用 DAG 误差、时序差异及费用差异，
 并报告改善、持平、退化数量。只有必需场景齐全且独立验证主指标改善时才标通过；
-对 simulated 参考只能声称相对该参考模型的改善。当前没有这些匹配样本，项目总体验收仍待补证。
+对 simulated 参考只能声称相对该参考模型的改善。新增受控 dense 实验已有匹配样本，
+但尚未覆盖默认四类场景，项目总体验收仍待补证；具体结果与限制见上述模拟参考实验说明。
 
 ## 开销与输出
 
