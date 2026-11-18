@@ -1,0 +1,27 @@
+{
+  "source": {
+    "kind": "local_simulation_evidence",
+    "path": "results/dag/phase8/20261119-dag-mechanism-expanded-01",
+    "manifest_sha256": "ad415a867fcb0bdbf63f60c0fb8eb99c135e0722645fdad95b8eb5e1b98bc986"
+  },
+  "script_sha256": "cfad17fe72b883d17abff121459ceb249c880a271ab5659ac9c1ac3f26fc6ed7",
+  "artifact_sha256": {
+    "dag-mechanism-expanded.pdf": "2bbdd89fea44194abe3409eff7a0b7f40ab9f8e90f17a8287ab5e3c327fdb941",
+    "dag-mechanism-expanded.png": "0b1c01c93777efe0cf4d54ecf4626703e69f641bb93db32d193f563da5f27278",
+    "dag-mechanism-expanded.svg": "82218507b40127af4cd186721e6102d687533051d378b0f4f35f49549a0b4bc8",
+    "dag-mechanism-policy.pdf": "1d753d3d2c68a9483237b13ad91b94eccbbee739c4a51c34a0a82e83ecd1ed35",
+    "dag-mechanism-policy.png": "1644d8a672f1028a8765cc51814fbd8a43cc171e71634be341dc3a0552cf79c6",
+    "dag-mechanism-policy.svg": "3b8f1f523d535a2c8d98f68bfc23c0923873a17bef9ca5eef0c4c93992da574a",
+    "report.html": "cbb3f2a31f192c6f621aeb92d554f8349a4128eddc454e1688c6e1b7d5f50338",
+    "report.md": "c8a584d0acfbc0651daa230165eeb412a1e4d1d2c632b0c62177f5f029cfbaaf"
+  },
+  "published_artifact_sha256": {
+    "figures/dag-mechanism-expanded.png": "0b1c01c93777efe0cf4d54ecf4626703e69f641bb93db32d193f563da5f27278",
+    "figures/dag-mechanism-expanded.svg": "82218507b40127af4cd186721e6102d687533051d378b0f4f35f49549a0b4bc8",
+    "figures/dag-mechanism-expanded.pdf": "2bbdd89fea44194abe3409eff7a0b7f40ab9f8e90f17a8287ab5e3c327fdb941",
+    "figures/dag-mechanism-policy.png": "1644d8a672f1028a8765cc51814fbd8a43cc171e71634be341dc3a0552cf79c6",
+    "figures/dag-mechanism-policy.svg": "3b8f1f523d535a2c8d98f68bfc23c0923873a17bef9ca5eef0c4c93992da574a",
+    "figures/dag-mechanism-policy.pdf": "1d753d3d2c68a9483237b13ad91b94eccbbee739c4a51c34a0a82e83ecd1ed35",
+    "artifacts/dag-mechanism-expanded.html": "cbb3f2a31f192c6f621aeb92d554f8349a4128eddc454e1688c6e1b7d5f50338"
+  }
+}

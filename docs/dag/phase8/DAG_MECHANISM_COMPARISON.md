@@ -1,6 +1,8 @@
 # 同费用下的 DAG 机制贡献：共享通信端点争用
 
 本实验补充“DAG机制本身有什么作用”的证据，与已有的通信费用校准实验分开。
+本页保留首轮7组结果；后续[311请求扩展实验](DAG_MECHANISM_EXPANDED.md)包含更复杂顺序和退化样本，
+应结合阅读，不能把首轮一致性结论扩大到所有混合负载。
 比较原生 `legacy` 与 `dag_expanded`：**同一请求、同一费用表、同一资源配置，零额外校准**。
 只检查共享通信端点的等待是否进入请求完成时间。
 
@@ -14,6 +16,8 @@
 | 原生基线 | 原CLI的 `legacy` 模式 | 聚合Stage费用推进请求；保留原实现，不人为修改其预测值 |
 | DAG改进路径 | 原CLI的 `dag_expanded` 模式 | 使用同样的任务服务耗时，同时申请/释放共享端点许可 |
 | 独立参考 | [`queue_reference.py`](../../../scripts/dag_phase8/queue_reference.py) | 仅接受冻结的请求配置和费用表，用Decimal计算FCFS端点排队；不导入SimAI或DAG |
+
+两条被测路径的backend均为`vidur`，共用合成画像和原预测器；与TP8 analytical/ns-3校准实验分开。
 
 本轮没有使用此前的81.654μs补偿，也没有拟合新的scale、offset或带宽参数。
 `--dag_resource_config` 指向同一个文件；原生路径保持原有行为，不执行端点许可约束。

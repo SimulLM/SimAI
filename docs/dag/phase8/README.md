@@ -55,6 +55,9 @@ $env:WANDB_MODE = 'disabled'
 
 ## 精度和参考数据
 
+进一步的[311请求扩展实验](DAG_MECHANISM_EXPANDED.md)覆盖规模、到达、长度和顺序。
+FCFS主参考下平均误差13.84%→5.23%，但保留21个退化请求和更大的最坏误差，单独解释调度策略敏感性。
+
 新增[同费用DAG机制贡献实验](DAG_MECHANISM_COMPARISON.md)：原生与DAG保持费用相同，
 在共享PP通信端点场景中对照独立FCFS排队参考，单独检验资源等待建模的贡献，完全不使用通信校准。
 
