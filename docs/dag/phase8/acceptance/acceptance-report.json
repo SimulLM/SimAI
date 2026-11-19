@@ -1,0 +1,548 @@
+{
+  "schema_version": "1.0",
+  "run_id": "20261119-phase8-independent-acceptance-01",
+  "review_branch": "dev8-v8-acceptance",
+  "tested_commit": "c759601e9f295240bde2efd8f4f6ee53fc4a0cdb",
+  "reviewer": "Codex automated acceptance",
+  "created_at": "2026-11-19T18:10:05.064482+08:00",
+  "overall_project_acceptance": "pending",
+  "available_scope_acceptance": "passed_with_limitations",
+  "sections": {
+    "historical_evidence_integrity": {
+      "status": "passed",
+      "archives": 5,
+      "internal_hashes_checked": 63492,
+      "source_hashes_checked": 2201
+    },
+    "full_regression": {
+      "status": "passed",
+      "result": {
+        "exit_code": 0,
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "313",
+        "time": "311.554",
+        "timestamp": "2026-11-19T17:51:33.158209+08:00",
+        "hostname": "HelloComputer"
+      }
+    },
+    "joint_functionality": {
+      "status": "passed",
+      "cases": [
+        {
+          "passed": true,
+          "checks": {
+            "requests_completed": true,
+            "terminal_once": true,
+            "stage_end_once": true,
+            "capacities_valid": true,
+            "queue_empty": true,
+            "dependencies": true,
+            "kv_capacity_history": true,
+            "kv_handles_released": true,
+            "both_ep_domains": true,
+            "conservation": true,
+            "gpu_nic_wait_observed": true,
+            "final_service_settlement": true,
+            "zero_legacy_mlp_charge": true,
+            "decode_after_kv_ready": true,
+            "source_retained": true,
+            "route_consistent": true,
+            "phase_placement": true,
+            "transfer_cost": true,
+            "commit_capacity_unchanged": true
+          },
+          "request_count": 1,
+          "task_count": 760,
+          "event_count": 789,
+          "dag_event_count": 760,
+          "event_queue_peak": 5,
+          "graph_count": 3,
+          "routing_count": 64,
+          "maximum_capacity_wait_s": 0,
+          "communication_wait_observed": false,
+          "simulated_final_time_s": 0.014592327111111147,
+          "name": "scale-small",
+          "output": "scale-small\\cli\\2026-11-19_17-45-55-706863",
+          "wall_time_s": 27.326551700010896,
+          "peak_rss_bytes": 212037632,
+          "memory_measurement": "process RSS sampled every 50ms, includes Windows peak_wset when available",
+          "memory_samples": 431,
+          "includes": "CLI import, predictor, simulation, metrics and exports",
+          "error": null
+        },
+        {
+          "passed": true,
+          "checks": {
+            "requests_completed": true,
+            "terminal_once": true,
+            "stage_end_once": true,
+            "capacities_valid": true,
+            "queue_empty": true,
+            "dependencies": true,
+            "kv_capacity_history": true,
+            "kv_handles_released": true,
+            "both_ep_domains": true,
+            "conservation": true,
+            "gpu_nic_wait_observed": true,
+            "final_service_settlement": true,
+            "zero_legacy_mlp_charge": true,
+            "decode_after_kv_ready": true,
+            "source_retained": true,
+            "route_consistent": true,
+            "phase_placement": true,
+            "transfer_cost": true,
+            "commit_capacity_unchanged": true,
+            "communication_contention_observed": true
+          },
+          "request_count": 2,
+          "task_count": 1520,
+          "event_count": 1578,
+          "dag_event_count": 1520,
+          "event_queue_peak": 7,
+          "graph_count": 6,
+          "routing_count": 128,
+          "maximum_capacity_wait_s": 0,
+          "communication_wait_observed": true,
+          "simulated_final_time_s": 0.02856915866666654,
+          "name": "scale-medium",
+          "output": "scale-medium\\cli\\2026-11-19_17-46-23-964619",
+          "wall_time_s": 41.1155186999822,
+          "peak_rss_bytes": 219705344,
+          "memory_measurement": "process RSS sampled every 50ms, includes Windows peak_wset when available",
+          "memory_samples": 630,
+          "includes": "CLI import, predictor, simulation, metrics and exports",
+          "error": null
+        },
+        {
+          "passed": true,
+          "checks": {
+            "requests_completed": true,
+            "terminal_once": true,
+            "stage_end_once": true,
+            "capacities_valid": true,
+            "queue_empty": true,
+            "dependencies": true,
+            "kv_capacity_history": true,
+            "kv_handles_released": true,
+            "both_ep_domains": true,
+            "conservation": true,
+            "gpu_nic_wait_observed": true,
+            "final_service_settlement": true,
+            "zero_legacy_mlp_charge": true,
+            "decode_after_kv_ready": true,
+            "source_retained": true,
+            "route_consistent": true,
+            "phase_placement": true,
+            "transfer_cost": true,
+            "commit_capacity_unchanged": true,
+            "communication_contention_observed": true
+          },
+          "request_count": 4,
+          "task_count": 2688,
+          "event_count": 2802,
+          "dag_event_count": 2688,
+          "event_queue_peak": 7,
+          "graph_count": 12,
+          "routing_count": 256,
+          "maximum_capacity_wait_s": 0.010258740000000113,
+          "communication_wait_observed": true,
+          "simulated_final_time_s": 0.04975903955555604,
+          "name": "scale-large",
+          "output": "scale-large\\cli\\2026-11-19_17-47-05-836136",
+          "wall_time_s": 61.76768420008011,
+          "peak_rss_bytes": 232714240,
+          "memory_measurement": "process RSS sampled every 50ms, includes Windows peak_wset when available",
+          "memory_samples": 926,
+          "includes": "CLI import, predictor, simulation, metrics and exports",
+          "error": null
+        },
+        {
+          "passed": true,
+          "checks": {
+            "requests_completed": true,
+            "terminal_once": true,
+            "stage_end_once": true,
+            "capacities_valid": true,
+            "queue_empty": true,
+            "dependencies": true,
+            "kv_capacity_history": true,
+            "kv_handles_released": true,
+            "both_ep_domains": true,
+            "conservation": true,
+            "gpu_nic_wait_observed": true,
+            "final_service_settlement": true,
+            "zero_legacy_mlp_charge": true,
+            "decode_after_kv_ready": true,
+            "source_retained": true,
+            "route_consistent": true,
+            "phase_placement": true,
+            "transfer_cost": true,
+            "commit_capacity_unchanged": true,
+            "communication_contention_observed": true,
+            "backpressure_observed": true
+          },
+          "request_count": 4,
+          "task_count": 9864,
+          "event_count": 10218,
+          "dag_event_count": 9864,
+          "event_queue_peak": 7,
+          "graph_count": 36,
+          "routing_count": 1024,
+          "maximum_capacity_wait_s": 0.0336898048888928,
+          "communication_wait_observed": true,
+          "simulated_final_time_s": 0.09541611200000553,
+          "name": "joint-backpressure",
+          "output": "joint-backpressure\\cli\\2026-11-19_17-48-08-584117",
+          "wall_time_s": 206.53053660003934,
+          "peak_rss_bytes": 304046080,
+          "memory_measurement": "process RSS sampled every 50ms, includes Windows peak_wset when available",
+          "memory_samples": 3026,
+          "includes": "CLI import, predictor, simulation, metrics and exports",
+          "error": null
+        }
+      ]
+    },
+    "scale_overhead": {
+      "status": "passed",
+      "file": "full/scale-overhead.csv"
+    },
+    "same_cost_mechanism": {
+      "status": "passed",
+      "request_evaluations": 466,
+      "cases": 38,
+      "relative_to_submission": {
+        "improved": 108,
+        "tied": 358,
+        "regressed": 0
+      },
+      "primary_reference": "Independent Decimal FCFS queue; synthetic fixed compute/communication costs; zero fit parameters"
+    },
+    "controlled_dense_accuracy": {
+      "status": "passed",
+      "reference_nature": "simulated",
+      "validation_samples": 3,
+      "old_mean_relative_error": 0.5103433034012862,
+      "same_cost_mean_relative_error": 0.5103433034012853,
+      "revised_mean_relative_error": 0.02483251350535665,
+      "outcomes": {
+        "improved": 3,
+        "tied": 0,
+        "regressed": 0
+      },
+      "attribution": "Communication cost calibration",
+      "independently_recomputed_metrics": {
+        "request_e2e": {
+          "samples": 3,
+          "mean_relative_error": {
+            "old": 0.5103433034012862,
+            "same_cost": 0.5103433034012853,
+            "revised_cost": 0.02483251350535665
+          },
+          "outcomes": {
+            "improved": 3,
+            "tied": 0,
+            "regressed": 0
+          }
+        },
+        "ttft": {
+          "samples": 3,
+          "mean_relative_error": {
+            "old": 0.3146262600380759,
+            "same_cost": 0.31462626003807465,
+            "revised_cost": 0.056461256284534335
+          },
+          "outcomes": {
+            "improved": 3,
+            "tied": 0,
+            "regressed": 0
+          }
+        },
+        "tpot": {
+          "samples": 3,
+          "mean_relative_error": {
+            "old": 0.727462025662201,
+            "same_cost": 0.7274620256622003,
+            "revised_cost": 0.11217588858504386
+          },
+          "outcomes": {
+            "improved": 3,
+            "tied": 0,
+            "regressed": 0
+          }
+        }
+      }
+    },
+    "dense_cost_provenance": {
+      "status": "passed",
+      "evidence": "dense-cost-source-audit.json",
+      "raw_collectives_checked": 10,
+      "executed_tp_tasks_checked": 2048
+    },
+    "fresh_environment_replay": {
+      "status": "passed",
+      "report": "formal-recheck/reproduction-report.json"
+    },
+    "independent_artifact_invariants": {
+      "passed": true,
+      "cli_outputs": 94,
+      "graphs": 2016,
+      "tasks": 132396
+    },
+    "tested_source_unchanged": {
+      "status": "passed",
+      "tracked_files": 669,
+      "changed": []
+    },
+    "wsl_checkout_diagnostic": {
+      "status": "needs_review",
+      "raw_status": "preserved separately, not byte-clean",
+      "diagnostic": {
+        ".": {
+          "argv": [
+            "git",
+            "-c",
+            "core.filemode=false",
+            "-C",
+            "/mnt/g/github/SimAI",
+            "diff",
+            "--ignore-cr-at-eol",
+            "--ignore-submodules=all",
+            "--quiet",
+            "HEAD",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "interpretation": "No tracked content difference after explicitly ignoring CR-at-EOL and filemode; raw WSL status remains preserved."
+        },
+        "SimCCL": {
+          "argv": [
+            "git",
+            "-c",
+            "core.filemode=false",
+            "-C",
+            "/mnt/g/github/SimAI/SimCCL",
+            "diff",
+            "--ignore-cr-at-eol",
+            "--ignore-submodules=all",
+            "--quiet",
+            "HEAD",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "interpretation": "No tracked content difference after explicitly ignoring CR-at-EOL and filemode; raw WSL status remains preserved."
+        },
+        "aicb": {
+          "argv": [
+            "git",
+            "-c",
+            "core.filemode=false",
+            "-C",
+            "/mnt/g/github/SimAI/aicb",
+            "diff",
+            "--ignore-cr-at-eol",
+            "--ignore-submodules=all",
+            "--quiet",
+            "HEAD",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "interpretation": "No tracked content difference after explicitly ignoring CR-at-EOL and filemode; raw WSL status remains preserved."
+        },
+        "ns-3-alibabacloud": {
+          "argv": [
+            "git",
+            "-c",
+            "core.filemode=false",
+            "-C",
+            "/mnt/g/github/SimAI/ns-3-alibabacloud",
+            "diff",
+            "--ignore-cr-at-eol",
+            "--ignore-submodules=all",
+            "--quiet",
+            "HEAD",
+            "--"
+          ],
+          "exit_code": null,
+          "error": "timeout after 180 seconds"
+        }
+      },
+      "backend_source": "Locked Git archives, not uncommitted WSL worktree files"
+    },
+    "full_scope_accuracy": {
+      "status": "blocked",
+      "official_dataset": "configs/dag/phase8/validation.json",
+      "required_scenarios": [
+        "dense",
+        "pd",
+        "moe",
+        "joint"
+      ],
+      "reason": "Official dataset is empty. Controlled dense samples do not cover PD/MoE/joint."
+    },
+    "hardware_accuracy": {
+      "status": "not_validated",
+      "reason": "CPU simulation/queue references; no matching GPU request measurements."
+    },
+    "independent_person_signoff": {
+      "status": "pending_external_signoff",
+      "reason": "Executed by Codex automated reviewer; no natural-person signature claimed."
+    }
+  },
+  "evidence_type": "New runs distinguished from historical archive verification",
+  "formal_entry_exit_code": 2,
+  "hardware_accuracy_claim": false,
+  "formal_entry_evidence": "formal-recheck/acceptance-report.json",
+  "initial_formal_entry": {
+    "exit_code": 1,
+    "regression": {
+      "exit_code": 1,
+      "name": "pytest",
+      "errors": "0",
+      "failures": "1",
+      "skipped": "0",
+      "tests": "313",
+      "time": "342.255",
+      "timestamp": "2026-11-19T17:37:32.829976+08:00",
+      "hostname": "HelloComputer"
+    },
+    "evidence": "full/acceptance-report.json",
+    "disposition": "Retained failure. Windows path length diagnosed by short-path test; complete formal entry rerun at a shorter output path without code changes."
+  },
+  "source_identity_note": "Acceptance documents are added after the tested commit. Product sources/configurations/tests remain unchanged.",
+  "operation_results": {
+    "check-env-a": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 1.6816024780273438
+    },
+    "check-env-b": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 1.5120313167572021
+    },
+    "create-env-b": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 12.815080642700195
+    },
+    "expanded-comparison": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 2.829235792160034
+    },
+    "expanded-fcfs": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 626.2797293663025
+    },
+    "expanded-submission": {
+      "exit_code": 2,
+      "error": null,
+      "wall_time_s": 680.151428937912
+    },
+    "freeze-env-a": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 3.4456374645233154
+    },
+    "freeze-env-b": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 2.3536388874053955
+    },
+    "full-acceptance": {
+      "exit_code": 1,
+      "error": null,
+      "wall_time_s": 797.3690407276154
+    },
+    "full-short-path-recheck": {
+      "exit_code": 2,
+      "error": null,
+      "wall_time_s": 714.9397044181824
+    },
+    "holdout-comparison": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 1.6267294883728027
+    },
+    "holdout-fcfs": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 257.45900774002075
+    },
+    "holdout-submission": {
+      "exit_code": 2,
+      "error": null,
+      "wall_time_s": 262.76145458221436
+    },
+    "install-env-a": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 603.118106842041
+    },
+    "install-env-b": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 224.44647240638733
+    },
+    "machine-description": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 0.9029903411865234
+    },
+    "original-comparison": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 1.2270584106445312
+    },
+    "original-fcfs": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 203.97459077835083
+    },
+    "original-submission": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 200.19655060768127
+    },
+    "prepare-dense": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 1.0064129829406738
+    },
+    "score-dense": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 240.8075816631317
+    },
+    "short-path-diagnostic": {
+      "exit_code": 0,
+      "error": null,
+      "wall_time_s": 3.1364359855651855
+    }
+  },
+  "artifact": "artifacts/20261119-phase8-independent-acceptance-01.zip",
+  "auditor_tool_provenance": {
+    "tested_review_py_sha256": "56a87dafb4afb99939d9b7e16e083eb0c97482644ac3622767c6ec178c4b2ff2",
+    "tested_snapshot": "review-tools/review-before-encoding-fix.py",
+    "final_review_py_sha256": "191c6ca76b28d39810166db9403b0587418b602f9fcbf32d489c563ab69edf46",
+    "change": "Post-run explicit UTF-8 checkpoint decoding only"
+  },
+  "audit_tool_notes": [
+    "Auditor checkpoint originally read UTF-8 identity JSON using Windows default GBK. Fixed only the new auditor helper after formal runs; original helper and error record retained. Product code/tests/configurations unchanged.",
+    "Raw WSL Git status includes checkout differences; see explicit EOL/filemode diagnostic. Normalization is not a raw hash match. Backends were built from locked Git archives."
+  ],
+  "known_execution_issues": [
+    "Initial sandbox DNS failure; retried authorized installation succeeded in both clean environments.",
+    "Initial complete regression: 312 passed, one Windows 261-character evidence path failed. Short-path diagnostic passed; complete formal acceptance rerun preserved separately.",
+    "Windows sandbox cannot fully inspect submodule Git metadata; WSL submodule identities and build-input logs retained.",
+    "WSL root/SimCCL/aicb content diagnostics passed ignoring EOL/filemode; ns-3 working-tree diagnostic timed out after 180s. Raw status retained. Reference binary was built from the locked ns-3 Git archive, not this working tree.",
+    "WSL shell status side-files were empty; not treated as backend success evidence. Complete generated manifests/raw outputs and dense validation independently checked."
+  ]
+}

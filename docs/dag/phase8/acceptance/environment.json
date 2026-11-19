@@ -1,0 +1,371 @@
+{
+  "base_python": "D:/Environment/Python312/python.exe",
+  "version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+    "logical_cpus": 16,
+    "physical_cpus": 8,
+    "total_memory_bytes": 16420249600,
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "prefix": "G:\\github\\SimAI\\.cache\\phase8-acceptance-20261119\\env-a",
+    "base_prefix": "D:\\Environment\\Python312"
+  },
+  "platform": "Windows-11-10.0.26200-SP0",
+  "venvs": {
+    "env-a": {
+      "path": "G:\\github\\SimAI\\.cache\\phase8-acceptance-20261119\\env-a",
+      "configuration": "home = D:\\Environment\\Python312\ninclude-system-site-packages = false\nversion = 3.12.10\nexecutable = D:\\Environment\\Python312\\python.exe\ncommand = D:\\Environment\\Python312\\python.exe -m venv G:\\github\\SimAI\\.cache\\phase8-acceptance-20261119\\env-a\n",
+      "pip_freeze": "annotated-types==0.8.0\nanyio==4.16.0\nattrs==26.1.0\ncertifi==2026.10.23\ncharset-normalizer==3.5.2\nclick==8.5.1\ncloudpickle==3.1.3\ncolorama==0.4.6\ncontourpy==1.4.0\ncwevals==0.0.1b1\ncycler==0.12.1\nddsketch==3.0.1\ndistro==1.9.0\nfasteners==0.20\nfonttools==4.68.0\nformulaic==1.2.2\ngoogleapis-common-protos==1.76.0\nh11==0.16.0\nhttpcore==1.0.9\nhttpx==0.28.1\nidna==3.20\niniconfig==2.3.1\ninterface_meta==2.0.1\njoblib==1.6.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nkiwisolver==1.5.1\nmatplotlib==3.10.8\nnarwhals==2.29.0\nnetworkx==3.6.1\nnumpy==2.5.4\nopentelemetry-api==1.45.2\nopentelemetry-exporter-http-transport==0.66b2\nopentelemetry-exporter-otlp-common==0.66b2\nopentelemetry-exporter-otlp-proto-common==1.45.2\nopentelemetry-exporter-otlp-proto-http==1.45.2\nopentelemetry-proto==1.45.2\nopentelemetry-sdk==1.45.2\nopentelemetry-semantic-conventions==0.66b2\npackaging==26.3\npandas==3.1.1\npatsy==1.0.3\npillow==13.0.0\npip==25.0.1\nplatformdirs==4.14.7\nplotly==7.1.0\nplotly-express==0.4.1\npluggy==1.7.0\nprotobuf==7.36.2\npsutil==7.2.2\npydantic==2.14.3\npydantic_core==2.50.4\nPygments==2.21.0\npyparsing==3.3.3\npytest==9.1.1\npython-dateutil==4.0.0\nPyYAML==6.0.3\nreferencing==0.37.0\nrequests==2.34.2\nrpds-py==2026.9.1\nscikit-learn==1.9.0\nscipy==1.18.1\nsix==1.17.0\nsniffio==1.3.1\nstatsmodels==0.15.0\nthreadpoolctl==3.8.0\ntyping-inspection==0.4.5\ntyping_extensions==4.16.0\ntzdata==2026.6\nurllib3==2.8.0\nwandb==0.31.0\nwrapt==2.5.2\nxxhash==4.1.0\n",
+      "pip_check": {
+        "exit_code": 0,
+        "error": null,
+        "wall_time_s": 1.6816024780273438
+      }
+    },
+    "env-b": {
+      "path": "G:\\github\\SimAI\\.cache\\phase8-acceptance-20261119\\env-b",
+      "configuration": "home = D:\\Environment\\Python312\ninclude-system-site-packages = false\nversion = 3.12.10\nexecutable = D:\\Environment\\Python312\\python.exe\ncommand = D:\\Environment\\Python312\\python.exe -m venv G:\\github\\SimAI\\.cache\\phase8-acceptance-20261119\\env-b\n",
+      "pip_freeze": "annotated-types==0.8.0\nanyio==4.16.0\nattrs==26.1.0\ncertifi==2026.10.23\ncharset-normalizer==3.5.2\nclick==8.5.1\ncloudpickle==3.1.3\ncolorama==0.4.6\ncontourpy==1.4.0\ncwevals==0.0.1b1\ncycler==0.12.1\nddsketch==3.0.1\ndistro==1.9.0\nfasteners==0.20\nfonttools==4.68.0\nformulaic==1.2.2\ngoogleapis-common-protos==1.76.0\nh11==0.16.0\nhttpcore==1.0.9\nhttpx==0.28.1\nidna==3.20\niniconfig==2.3.1\ninterface_meta==2.0.1\njoblib==1.6.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nkiwisolver==1.5.1\nmatplotlib==3.10.8\nnarwhals==2.29.0\nnetworkx==3.6.1\nnumpy==2.5.4\nopentelemetry-api==1.45.2\nopentelemetry-exporter-http-transport==0.66b2\nopentelemetry-exporter-otlp-common==0.66b2\nopentelemetry-exporter-otlp-proto-common==1.45.2\nopentelemetry-exporter-otlp-proto-http==1.45.2\nopentelemetry-proto==1.45.2\nopentelemetry-sdk==1.45.2\nopentelemetry-semantic-conventions==0.66b2\npackaging==26.3\npandas==3.1.1\npatsy==1.0.3\npillow==13.0.0\npip==25.0.1\nplatformdirs==4.14.7\nplotly==7.1.0\nplotly-express==0.4.1\npluggy==1.7.0\nprotobuf==7.36.2\npsutil==7.2.2\npydantic==2.14.3\npydantic_core==2.50.4\nPygments==2.21.0\npyparsing==3.3.3\npytest==9.1.1\npython-dateutil==4.0.0\nPyYAML==6.0.3\nreferencing==0.37.0\nrequests==2.34.2\nrpds-py==2026.9.1\nscikit-learn==1.9.0\nscipy==1.18.1\nsix==1.17.0\nsniffio==1.3.1\nstatsmodels==0.15.0\nthreadpoolctl==3.8.0\ntyping-inspection==0.4.5\ntyping_extensions==4.16.0\ntzdata==2026.6\nurllib3==2.8.0\nwandb==0.31.0\nwrapt==2.5.2\nxxhash==4.1.0\n",
+      "pip_check": {
+        "exit_code": 0,
+        "error": null,
+        "wall_time_s": 1.5120313167572021
+      }
+    }
+  },
+  "wsl": {
+    "distribution": "Ubuntu-22.04",
+    "repository": "/mnt/g/github/SimAI",
+    "log": "build/wsl-environment.log",
+    "build_inputs_log": "build/build-inputs.log",
+    "git_identity": {
+      ".": {
+        "head": "c759601e9f295240bde2efd8f4f6ee53fc4a0cdb",
+        "raw_status_exit_code": 0,
+        "raw_status_lines": 483
+      },
+      "SimCCL": {
+        "head": "fd7cd57d16f9bd42e3ccb70911c977e18ec294b9",
+        "raw_status_exit_code": 0,
+        "raw_status_lines": 46
+      },
+      "aicb": {
+        "head": "23eec3c48ca2d2d93dd888a4c7b22ab4421e782f",
+        "raw_status_exit_code": 0,
+        "raw_status_lines": 86
+      },
+      "ns-3-alibabacloud": {
+        "head": "3e0c7c1bfbbe9f77890ddcf5e5b9c79fc6dd7437",
+        "raw_status_exit_code": 0,
+        "raw_status_lines": 3480
+      }
+    },
+    "raw_git_identity_evidence": "wsl-git-identity.json",
+    "text_diff_diagnostic": {
+      ".": {
+        "argv": [
+          "git",
+          "-c",
+          "core.filemode=false",
+          "-C",
+          "/mnt/g/github/SimAI",
+          "diff",
+          "--ignore-cr-at-eol",
+          "--ignore-submodules=all",
+          "--quiet",
+          "HEAD",
+          "--"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "interpretation": "No tracked content difference after explicitly ignoring CR-at-EOL and filemode; raw WSL status remains preserved."
+      },
+      "SimCCL": {
+        "argv": [
+          "git",
+          "-c",
+          "core.filemode=false",
+          "-C",
+          "/mnt/g/github/SimAI/SimCCL",
+          "diff",
+          "--ignore-cr-at-eol",
+          "--ignore-submodules=all",
+          "--quiet",
+          "HEAD",
+          "--"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "interpretation": "No tracked content difference after explicitly ignoring CR-at-EOL and filemode; raw WSL status remains preserved."
+      },
+      "aicb": {
+        "argv": [
+          "git",
+          "-c",
+          "core.filemode=false",
+          "-C",
+          "/mnt/g/github/SimAI/aicb",
+          "diff",
+          "--ignore-cr-at-eol",
+          "--ignore-submodules=all",
+          "--quiet",
+          "HEAD",
+          "--"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "interpretation": "No tracked content difference after explicitly ignoring CR-at-EOL and filemode; raw WSL status remains preserved."
+      },
+      "ns-3-alibabacloud": {
+        "argv": [
+          "git",
+          "-c",
+          "core.filemode=false",
+          "-C",
+          "/mnt/g/github/SimAI/ns-3-alibabacloud",
+          "diff",
+          "--ignore-cr-at-eol",
+          "--ignore-submodules=all",
+          "--quiet",
+          "HEAD",
+          "--"
+        ],
+        "exit_code": null,
+        "error": "timeout after 180 seconds"
+      }
+    },
+    "build_status": "analytical=0\nns3=0\n",
+    "binary_sha256": "c92b3b40454c06f31029b10b49fece405b5dda93f91f3c0d259960579e6180d6  SimAI_analytical\n8d1c8e9c9bf413aadb8929e2694c9ad2bb6044aefd69cf4bb9be14416227c0fd  SimAI_simulator\n"
+  },
+  "fresh_reference": {
+    "reference_nature": "simulated",
+    "fresh_execution": true,
+    "hardware_accuracy_claim": false,
+    "binaries_sha256": {
+      "SimAI_analytical": "c92b3b40454c06f31029b10b49fece405b5dda93f91f3c0d259960579e6180d6",
+      "SimAI_simulator": "8d1c8e9c9bf413aadb8929e2694c9ad2bb6044aefd69cf4bb9be14416227c0fd"
+    },
+    "frozen_inputs_sha256": "b018b2ccef3ac1e3c961a8979b1e5a941fce33075239e1ab88157151fe60a468",
+    "build_evidence_sha256": {
+      "build-inputs.log": "6212386f309eca1753510f948cf50074f2fe491ee0d65a755a075ab19005bef5",
+      "analytical-build.log": "ebf573f3c39412b34c728c40f8606481ff781d3e589d36dae8e1cf59cf1d162e",
+      "ns3-build.log": "0923f0acabf00a79cc6281fd85c958b5f588aa4833165d77a47d0513d849983f",
+      "build-status.txt": "8b1d42fb02a9983fb559eb9b62f457eba07d7124d6633ea6634facbd81b225dc",
+      "binaries.sha256": "c2cad94052387734eccfc10d38c030ae86975a845ddde130b21119b8ad46d590"
+    },
+    "library_directory": "/root/.cache/simai-phase8-builds/build-qO8rzMm7/astra-sim-alibabacloud/extern/network_backend/ns3-interface/simulation/build/lib",
+    "library_sha256": {
+      "libns3.36.1-antenna-debug.so": "48ac1061b6aa81a5b1c287d10ab8728293f02e8fdd1af22279e20f0126bcf991",
+      "libns3.36.1-aodv-debug.so": "0a771e30d2bb2fec309b1b95bdfea8342b6e8c939649aa7959208d062b7115cf",
+      "libns3.36.1-applications-debug.so": "cb00a8420ad6482a7fcf84919e48604f33870e807a4ecda69dbf0b1e5d19bc5c",
+      "libns3.36.1-bridge-debug.so": "cba07282dac70a8a6d2ee9b754e459b300b9b5561558271b708424460c9a2db3",
+      "libns3.36.1-buildings-debug.so": "3e8485761f3296c1eae9181b694809d24280db5888564540c2000b4a0ef55eca",
+      "libns3.36.1-config-store-debug.so": "bbe1859c55b922152ebf9773918430c6bad436e7ee463e5775986b260777eff6",
+      "libns3.36.1-core-debug.so": "661a23c6d4f9047cc74c7f51758af3f1602cb47b410fccd9bccd81ae534c1019",
+      "libns3.36.1-csma-debug.so": "ecba5da3a7262d09f94a0ec12ef870b699fa50d3177b1ae9ea338e7bf14da020",
+      "libns3.36.1-csma-layout-debug.so": "b11d464e1b8e72f9a62d39e4b976c8c0bea07e332810a68e0972edf355902815",
+      "libns3.36.1-dsdv-debug.so": "3d5b78700efb803bb6e0072fd7c31eefcb8150b430dcb3d2be1ee3f99e4aca1a",
+      "libns3.36.1-dsr-debug.so": "2a92f939417e08fec212d95702ab21769b7c79076fbd04bacbcc5dc53f857211",
+      "libns3.36.1-energy-debug.so": "38d48564b8e1c09ac448865393312c15a35ab9cd8c882d8ce64b3de81b3726d0",
+      "libns3.36.1-fd-net-device-debug.so": "6028ab5ce3b1e3283458d61eacf390d4f651d1625d037514c3f1fcf8235e7ce8",
+      "libns3.36.1-flow-monitor-debug.so": "7524374f500c56d6d704f639f1619d0c1bedd4187d4b535c13ab16e072b735ec",
+      "libns3.36.1-internet-apps-debug.so": "eef10968c9787f5eb6c93ec6fef2a3bd9f73e106f79a9d69551dfca9fe59d18f",
+      "libns3.36.1-internet-debug.so": "4a37ca4b8d63a2c435bd02577c0d0a04956d74147a517fc00cf34eaa72f58f5e",
+      "libns3.36.1-lr-wpan-debug.so": "5219a1930b0f50a6aad46450a99476b4c740cc4b28f10afae8cd9011b7c92ae5",
+      "libns3.36.1-lte-debug.so": "3a83ef19ab0735b0f89f659dfc7f8c8205334718481a6165a011855f44a9e345",
+      "libns3.36.1-mesh-debug.so": "bb713e9691d7d36fdc87185cd2d9a8498709c33481efff1b29831f704ae77208",
+      "libns3.36.1-mobility-debug.so": "1b3cfc0f41e560692d0e188dc0904a44ca16013672f805bb8c060da9cdb6bb50",
+      "libns3.36.1-mtp-debug.so": "c3a7e395b6d483faedfdc0cce76020bcce6f635f469d45345dd88c8a795bd793",
+      "libns3.36.1-netanim-debug.so": "4379f9815d48589674162d7efd719e85721ee2198b08705245e7fbeed536e8d2",
+      "libns3.36.1-network-debug.so": "cb6648398520b2316563551b40e77fff57b34c0f92ba150064b49355f1875741",
+      "libns3.36.1-nix-vector-routing-debug.so": "ff2cd952f429ffc2f18a687f67d02a4711a9c52ac5e0c9b480187edccab9f3fe",
+      "libns3.36.1-olsr-debug.so": "77b6c80e11a884d83f227f188799781a9012187b6c0f16ae5f60031ef7c22067",
+      "libns3.36.1-point-to-point-debug.so": "d7c41726a41d7f02f6ed0d7f126e272f545b66f4f13d916069dfc16bd1c44e43",
+      "libns3.36.1-point-to-point-layout-debug.so": "2cfcb56b835df7e6fc74f2268e5f1199318c0c8141d748664c6b1038823bc789",
+      "libns3.36.1-propagation-debug.so": "8cb1f36a05fae45b4c5c0c9bf13e86a1d5ff0d4958ae5babad6d8f3f4bf1ccbf",
+      "libns3.36.1-sixlowpan-debug.so": "6528eb3408965983d45fb157bba57425d3572dd5128caec8bd69aea85421f672",
+      "libns3.36.1-spectrum-debug.so": "d6627cbf2a57b59170fc0b7e66201c9bdc36e9f60dd4825135d4e3981a081b09",
+      "libns3.36.1-stats-debug.so": "794848cd24852d5a9ae4655994b192b65ebfb0644758925d59d5faf3190267b0",
+      "libns3.36.1-tap-bridge-debug.so": "8b044e4cb61967af391c9136a82ff0ef48c2dbfdcd376f49c1c5ce5c69b42a52",
+      "libns3.36.1-topology-read-debug.so": "cecadb5902791fce7ff2ec91a539cfcb33a3b6cb9306d7cbe694bf1912a9251d",
+      "libns3.36.1-traffic-control-debug.so": "3956b67ccc57f3dd44926832630a015aff84dd7a6f93796d02bb6893db533d0a",
+      "libns3.36.1-uan-debug.so": "42652b8bbb44a1774bb33503a6e2b67ac22266012049298e222f517b3ed97265",
+      "libns3.36.1-virtual-net-device-debug.so": "f3b3f246a9c4506f6f7704dfd7a873c3039e7e634861aeabd63f0c45ee05d667",
+      "libns3.36.1-wave-debug.so": "c711005cf3a6ebfde728beafe8afb32ac65f7832684e77ad1bae172a586f694c",
+      "libns3.36.1-wifi-debug.so": "fc75897c08fe4f7407a1dfa8892638ebd8022cc72448f871abd43a6ccbc2e822",
+      "libns3.36.1-wimax-debug.so": "2a2f0cfb342d2ad141f3961733273fa7e062f87fd67fe499f141edc7c04f9e33"
+    },
+    "records": [
+      {
+        "case": "calibration",
+        "backend": "analytical",
+        "payload_bytes": 16777216,
+        "collective_sha256": "3a26bfd709a8bd6d8e0706892b225ca64308d424ddad6d9d65ace8414659ff77"
+      },
+      {
+        "case": "calibration",
+        "backend": "ns3",
+        "payload_bytes": 16777216,
+        "collective_sha256": "a1cd5940e68b8e46b75fdb87c6ca679aae9b456596dfa83ca2455c9408466aec"
+      },
+      {
+        "case": "validation-small",
+        "backend": "analytical",
+        "payload_bytes": 25165824,
+        "collective_sha256": "7ad907565c856a947150396caf3f9de85c3194b0fd5dee6aa5999a9bddc4229e"
+      },
+      {
+        "case": "validation-small",
+        "backend": "ns3",
+        "payload_bytes": 25165824,
+        "collective_sha256": "76f16237b4acad85bbf7a46b7d98475517eb752224ac76b31eb572f103e8d9c8"
+      },
+      {
+        "case": "validation-medium",
+        "backend": "analytical",
+        "payload_bytes": 41943040,
+        "collective_sha256": "0865408e2b55a617b4ca26227110ce490974c73f9c1e6ef39a96a4da0837612b"
+      },
+      {
+        "case": "validation-medium",
+        "backend": "ns3",
+        "payload_bytes": 41943040,
+        "collective_sha256": "5e72a139d9db049554c3139b3c655228569e12294e156b75f919765ef68d985c"
+      },
+      {
+        "case": "validation-large",
+        "backend": "analytical",
+        "payload_bytes": 50331648,
+        "collective_sha256": "1d414c974014b2652a5230279b99c3a1353ae0ffcba4aa22ee7900516e86caae"
+      },
+      {
+        "case": "validation-large",
+        "backend": "ns3",
+        "payload_bytes": 50331648,
+        "collective_sha256": "89aaeeb0c03b666f9eaa9a26238c53f42bc234b16d161d38807fae26d48389b1"
+      },
+      {
+        "case": "decode",
+        "backend": "analytical",
+        "payload_bytes": 65536,
+        "collective_sha256": "fc908d6af1240c9751d039401bebae6d42fe60992a44b07e2116696fe522306b"
+      },
+      {
+        "case": "decode",
+        "backend": "ns3",
+        "payload_bytes": 65536,
+        "collective_sha256": "e769f17595dde11b9bcace4576a2cf575d52973ce420e5ba2efc4d291b64a9ec"
+      }
+    ],
+    "artifact_sha256": {
+      "calibration/analytical/astra-sim-alibabacloud/inputs/ratio/ata_ratio.csv": "5a34e91195d7306494139dcd5e2687d59e808a1a26f7a983e7245bc9ea18813d",
+      "calibration/analytical/astra-sim-alibabacloud/inputs/ratio/nic_ratio.csv": "570530be97827c7be61fbc0da5c22166737063a0fef7827b4c0b7d673d66a9e1",
+      "calibration/analytical/astra-sim-alibabacloud/inputs/ratio/nvlink_ratio.csv": "97a4c942d99092263c109e85b3dc61aeb72c258102627bebfea15782f47267ed",
+      "calibration/analytical/collective.json": "3a26bfd709a8bd6d8e0706892b225ca64308d424ddad6d9d65ace8414659ff77",
+      "calibration/analytical/command.json": "bc0e3866261ec538aa52bb1e688f71f4b2bd7ce1e3bd3be9608146e4c7a692ec",
+      "calibration/analytical/process-result.json": "ded87d2fb90725df428f870f608752dd280d99a74ba7f9bf6ca220374f4b9344",
+      "calibration/analytical/process.log": "9d127986f4fb1d8e24894bb879c2a4351fbdd3078917abd2a3b6096f07fd7542",
+      "calibration/analytical/results/collective-EndToEnd.csv": "373d1c78906de9f5e66e472a94be10503869c75dfb692ef497893e2ef97b8101",
+      "calibration/analytical/simccl.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "calibration/ns3/collective.json": "a1cd5940e68b8e46b75fdb87c6ca679aae9b456596dfa83ca2455c9408466aec",
+      "calibration/ns3/command.json": "afc1a32af1ed9a86474ced06808c7031d929c4a7911e33e1bc5afbcd1ddb15a8",
+      "calibration/ns3/llama_hpn7_fct.txt": "ad490cadc6c3c3ab3e666642f501be41e0c334df0a98eb611571f2e4a2a874e1",
+      "calibration/ns3/llama_hpn7_mix.tr": "2425b18763c35c02e78ae2fa255235254526d04b8810956c7b807d2f5bc47ce1",
+      "calibration/ns3/llama_hpn7_pfc.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "calibration/ns3/ncclFlowModel_EndToEnd.csv": "038853f6523feef9e0c8881ed895b4e7dc57734ccdcf440732ea18607041a440",
+      "calibration/ns3/ncclFlowModel_detailed_9.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "calibration/ns3/ncclFlowModel_detailed_flows.csv": "2255a6a877f146a5e41b49ebfa9c3251243ee5ef125983fd27eb95143dd11d79",
+      "calibration/ns3/ncclFlowModel_test1_dimension_utilization_0.csv": "d7836a7a63cd1190eb5f468689b1b86e501cbb4cadf712d543d5886ad3939e05",
+      "calibration/ns3/process-result.json": "63d4526027356a3bd8d4ac70050fc207143eb5e1af9e96ca8b27c7c6fe3509c5",
+      "calibration/ns3/process.log": "d143e948f9ef134c11cf02ce60bbf1f428793db7818b146eab49d5e5a3005b8b",
+      "calibration/ns3/send.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decode/analytical/astra-sim-alibabacloud/inputs/ratio/ata_ratio.csv": "5a34e91195d7306494139dcd5e2687d59e808a1a26f7a983e7245bc9ea18813d",
+      "decode/analytical/astra-sim-alibabacloud/inputs/ratio/nic_ratio.csv": "570530be97827c7be61fbc0da5c22166737063a0fef7827b4c0b7d673d66a9e1",
+      "decode/analytical/astra-sim-alibabacloud/inputs/ratio/nvlink_ratio.csv": "97a4c942d99092263c109e85b3dc61aeb72c258102627bebfea15782f47267ed",
+      "decode/analytical/collective.json": "fc908d6af1240c9751d039401bebae6d42fe60992a44b07e2116696fe522306b",
+      "decode/analytical/command.json": "5d92c7b55c03641a0e451322b073c91c67269be9b20a532846948db72fb46be8",
+      "decode/analytical/process-result.json": "c22fb10506194e034d39c0f30b27c3362daf2390a6cf9e3e48850a98a441a8c4",
+      "decode/analytical/process.log": "8d96041fbab39c09dfdbd7e43d7f6138a932d42b0939204cbf9c4ff661b9914b",
+      "decode/analytical/results/collective-EndToEnd.csv": "12656078884cd18b9cd48355337b53bffb9d71fe8963c55c99778a9901911fb2",
+      "decode/analytical/simccl.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decode/ns3/collective.json": "e769f17595dde11b9bcace4576a2cf575d52973ce420e5ba2efc4d291b64a9ec",
+      "decode/ns3/command.json": "a0022ea1e154d37722d9fd8c8f9cc8db4f254dd2104e19c85c6a0af93c8a9029",
+      "decode/ns3/llama_hpn7_fct.txt": "4b78a853ed133033959ee19e1c9059bc201b9687e37e4e70087e0ebe1a608cbc",
+      "decode/ns3/llama_hpn7_mix.tr": "2425b18763c35c02e78ae2fa255235254526d04b8810956c7b807d2f5bc47ce1",
+      "decode/ns3/llama_hpn7_pfc.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decode/ns3/ncclFlowModel_EndToEnd.csv": "00bf81e3d649a6ddb6767748367531aadf64fbec9461f79c1102e40b502f2ed6",
+      "decode/ns3/ncclFlowModel_detailed_9.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decode/ns3/ncclFlowModel_detailed_flows.csv": "1eeaf639df587a3d601e4e0c76bb8599fdebe7e02639ac0aa1a7ae92b27135d3",
+      "decode/ns3/ncclFlowModel_test1_dimension_utilization_0.csv": "2f30be0099e4256deb311307272eb096d77fe2d5ed5230651035122ac03a76ec",
+      "decode/ns3/process-result.json": "1699368a74c4f8797718faa87f388ab20f7972ead81b9f6c50f4a2c858be137d",
+      "decode/ns3/process.log": "60fa97cdc165e394b007b615efd83d652a88589202fb11f2525790c58a5c67aa",
+      "decode/ns3/send.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-large/analytical/astra-sim-alibabacloud/inputs/ratio/ata_ratio.csv": "5a34e91195d7306494139dcd5e2687d59e808a1a26f7a983e7245bc9ea18813d",
+      "validation-large/analytical/astra-sim-alibabacloud/inputs/ratio/nic_ratio.csv": "570530be97827c7be61fbc0da5c22166737063a0fef7827b4c0b7d673d66a9e1",
+      "validation-large/analytical/astra-sim-alibabacloud/inputs/ratio/nvlink_ratio.csv": "97a4c942d99092263c109e85b3dc61aeb72c258102627bebfea15782f47267ed",
+      "validation-large/analytical/collective.json": "1d414c974014b2652a5230279b99c3a1353ae0ffcba4aa22ee7900516e86caae",
+      "validation-large/analytical/command.json": "9da5e5a301ad83c1f429dcbf956c8dcdd7c5bb0572be63ce42937d688ab5e444",
+      "validation-large/analytical/process-result.json": "0ae9a1cdd902e08e50eec4ac6ff7c8e265ccc0fe5051a3d0df33a1fc164d707f",
+      "validation-large/analytical/process.log": "e7eb6e062451e83e0ce43a4811eae02bdb468bfe02785afef7868af55e5cf6a5",
+      "validation-large/analytical/results/collective-EndToEnd.csv": "3150e389f9c971cdd4eb967cf272f47f930e9a0c092c48c28aa2497e37ffd785",
+      "validation-large/analytical/simccl.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-large/ns3/collective.json": "89aaeeb0c03b666f9eaa9a26238c53f42bc234b16d161d38807fae26d48389b1",
+      "validation-large/ns3/command.json": "a2367b593e0eef5f6747e98ae5ce49b86ef1d8ffe8c9169300374016ca6f8518",
+      "validation-large/ns3/llama_hpn7_fct.txt": "c974d02c7f2053698dba4d1837726dae4b9dd970a3398a57c0db89004243e4a2",
+      "validation-large/ns3/llama_hpn7_mix.tr": "2425b18763c35c02e78ae2fa255235254526d04b8810956c7b807d2f5bc47ce1",
+      "validation-large/ns3/llama_hpn7_pfc.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-large/ns3/ncclFlowModel_EndToEnd.csv": "d595cd8f0ea3d92bc537974b83128632482c25c418cde384fd811b1d5d76b07f",
+      "validation-large/ns3/ncclFlowModel_detailed_9.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-large/ns3/ncclFlowModel_detailed_flows.csv": "0b163351209a0adca3053fd8605b7ad1b84fa693e5c30eb1bd2138fcd40bed8c",
+      "validation-large/ns3/ncclFlowModel_test1_dimension_utilization_0.csv": "4858afb6f020b486bceb3f9e0c191beae2c2ecba8343b7ccc6e3a3e6e7b6d1c9",
+      "validation-large/ns3/process-result.json": "aa5d5ad9d9badbbfd232dc5d91fea3a88d9042a75722cd5db7be6c4ca0c8f828",
+      "validation-large/ns3/process.log": "ddb4722c019d60e191edeb474079e08b144cd9dc8484282bf44baa7b5bc3d2e9",
+      "validation-large/ns3/send.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-medium/analytical/astra-sim-alibabacloud/inputs/ratio/ata_ratio.csv": "5a34e91195d7306494139dcd5e2687d59e808a1a26f7a983e7245bc9ea18813d",
+      "validation-medium/analytical/astra-sim-alibabacloud/inputs/ratio/nic_ratio.csv": "570530be97827c7be61fbc0da5c22166737063a0fef7827b4c0b7d673d66a9e1",
+      "validation-medium/analytical/astra-sim-alibabacloud/inputs/ratio/nvlink_ratio.csv": "97a4c942d99092263c109e85b3dc61aeb72c258102627bebfea15782f47267ed",
+      "validation-medium/analytical/collective.json": "0865408e2b55a617b4ca26227110ce490974c73f9c1e6ef39a96a4da0837612b",
+      "validation-medium/analytical/command.json": "145850d68fee185a510ce97840f63f4c1e98e03baf99f6fc9ad0665349a9e85e",
+      "validation-medium/analytical/process-result.json": "eb35f11407e0fb65b1ad43ae1d891c82b4500f63b62eb98a969e8606b7300564",
+      "validation-medium/analytical/process.log": "eee37765372dd3bfe46267a508488f59fbcdca6470b4dd71339deceffe4774e3",
+      "validation-medium/analytical/results/collective-EndToEnd.csv": "fc8a0ce8897ba7f9d715d09ca8418df7763549080f7eac3b56544f8c5c35ec7c",
+      "validation-medium/analytical/simccl.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-medium/ns3/collective.json": "5e72a139d9db049554c3139b3c655228569e12294e156b75f919765ef68d985c",
+      "validation-medium/ns3/command.json": "6ab3d5a3cb824311d1e0db49a048c1208a2ce0f25c0f3e1cecdf1aade59b7bfa",
+      "validation-medium/ns3/llama_hpn7_fct.txt": "c055e5e132f3897de24b59d1a8e534fb6ead350c890722500bccbc47109d3593",
+      "validation-medium/ns3/llama_hpn7_mix.tr": "2425b18763c35c02e78ae2fa255235254526d04b8810956c7b807d2f5bc47ce1",
+      "validation-medium/ns3/llama_hpn7_pfc.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-medium/ns3/ncclFlowModel_EndToEnd.csv": "73b7a15b3779b1da8337277da6439f3ee19aa60563eb9a5936ee177390d1ad1d",
+      "validation-medium/ns3/ncclFlowModel_detailed_9.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-medium/ns3/ncclFlowModel_detailed_flows.csv": "fb809fec2ab90906043873f2edbbaabe0c1990ab30e1b1f215a58dcae93dd53d",
+      "validation-medium/ns3/ncclFlowModel_test1_dimension_utilization_0.csv": "c64401072ffd5578c3d3061be9d336781c54caeb4f35382b6572eba2c96b6a03",
+      "validation-medium/ns3/process-result.json": "809c5a52e45b3db4d33c38fc9a1e0b9ab7cddb1665421858083a66d4442081dc",
+      "validation-medium/ns3/process.log": "c1e19f19ac8304c4faac61f4efadb03432f0575d98826ea1ede145dfd91bd750",
+      "validation-medium/ns3/send.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-small/analytical/astra-sim-alibabacloud/inputs/ratio/ata_ratio.csv": "5a34e91195d7306494139dcd5e2687d59e808a1a26f7a983e7245bc9ea18813d",
+      "validation-small/analytical/astra-sim-alibabacloud/inputs/ratio/nic_ratio.csv": "570530be97827c7be61fbc0da5c22166737063a0fef7827b4c0b7d673d66a9e1",
+      "validation-small/analytical/astra-sim-alibabacloud/inputs/ratio/nvlink_ratio.csv": "97a4c942d99092263c109e85b3dc61aeb72c258102627bebfea15782f47267ed",
+      "validation-small/analytical/collective.json": "7ad907565c856a947150396caf3f9de85c3194b0fd5dee6aa5999a9bddc4229e",
+      "validation-small/analytical/command.json": "5c345c43528a28579e7fca2317b4141a766e10d0a1cc54141a4ae1912dd1805a",
+      "validation-small/analytical/process-result.json": "18947b799b83911d7c2c5388ef7fba04f68de0e7b70f4784e3dae13a4c63e6c6",
+      "validation-small/analytical/process.log": "b1a0dbe3621687b853857748eef0d1a2f55ff6178eb8ec76d06cfac19a412754",
+      "validation-small/analytical/results/collective-EndToEnd.csv": "e12dc461fc47fefb31717709f25c1e931cc7aeab046e87e43cc82c7c73470576",
+      "validation-small/analytical/simccl.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-small/ns3/collective.json": "76f16237b4acad85bbf7a46b7d98475517eb752224ac76b31eb572f103e8d9c8",
+      "validation-small/ns3/command.json": "3ff4fc487cc548ed172ece2e39550810c69914922a5a8c38a0e9544b99d680c4",
+      "validation-small/ns3/llama_hpn7_fct.txt": "78b6bbff3090228dd58ed0738785fac234bb6650fc1254cabdb8231dba1145af",
+      "validation-small/ns3/llama_hpn7_mix.tr": "2425b18763c35c02e78ae2fa255235254526d04b8810956c7b807d2f5bc47ce1",
+      "validation-small/ns3/llama_hpn7_pfc.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-small/ns3/ncclFlowModel_EndToEnd.csv": "70160862cdfc34dcad58f68d346d5e26334103b0b6830e9cf7486a8c2e26c931",
+      "validation-small/ns3/ncclFlowModel_detailed_9.csv": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "validation-small/ns3/ncclFlowModel_detailed_flows.csv": "98f8c28ce9a973476ecce7123c4a9ff567c9efb8303cd3c8d4cbecd55cb80956",
+      "validation-small/ns3/ncclFlowModel_test1_dimension_utilization_0.csv": "86587368aedc303a8f0533b9b8b436f15e5a717bd3c283cf7a5572b7abc87b30",
+      "validation-small/ns3/process-result.json": "85298010925476ed43bd1b0c48032b43884c0666a8cced26956dcb60371d028a",
+      "validation-small/ns3/process.log": "e4fc741503b8f760e2da2ba81db0f0904b747f2d0af82cdf8a0ba4ccccde128e",
+      "validation-small/ns3/send.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "timing_note": "Three scale runs and backpressure completed before concurrent mechanism runs. Mechanism runs overlapped with regression/replay and each other; their wall times are not isolated performance benchmarks."
+}
