@@ -1,0 +1,30 @@
+{
+  "inputs": {
+    "expanded": {
+      "path": "results\\dag\\phase8\\20261119-fcfs-expanded-comparison-01",
+      "manifest_sha256": "221ea0a189737c99c916fc674894dd2b9ffc3d3e6fb5bbf2342f1aa48c7e72f4"
+    },
+    "original": {
+      "path": "results\\dag\\phase8\\20261119-fcfs-original-comparison-01",
+      "manifest_sha256": "bba8a8eac539207dd9420edfe433b1d8187af34f3131955ea95e41447dee1a83"
+    },
+    "holdout": {
+      "path": "results\\dag\\phase8\\20261119-fcfs-holdout-comparison-01",
+      "manifest_sha256": "422bb5627e4d3afca36ecde09f7858a84492b6438bc75bf0fa37b8e517970208"
+    }
+  },
+  "source_sha256": "2cecb98d844b12c363fc0952d43bc11c187e504b4fae5a4d8a300b8b2819c52f",
+  "artifact_sha256": {
+    "dag-fcfs-fix.html": "ce9ed5ec198d67e78c9aa337df1fa772f62b2d927cc841c6b4812a54adba1aa0",
+    "dag-fcfs-fix.pdf": "9010a556236a739ce8221619555ba39a7aa4194fe3d23c7b5d96abc8eb55b10b",
+    "dag-fcfs-fix.png": "683876df57852bc0315d906a41e727f8ffb1ede7a3bbfb472c396b91ec1037d2",
+    "dag-fcfs-fix.svg": "fd2de89852fd1db5eb4ec34dc2187b52fba9da1d6fb68b8fdc2709263a99ac93",
+    "report.md": "926d06a1d5e26f69f246038f84dec18fa1e8894f5533496a457373c299c0d122"
+  },
+  "published_artifact_sha256": {
+    "docs/dag/phase8/figures/dag-fcfs-fix.png": "683876df57852bc0315d906a41e727f8ffb1ede7a3bbfb472c396b91ec1037d2",
+    "docs/dag/phase8/figures/dag-fcfs-fix.svg": "fd2de89852fd1db5eb4ec34dc2187b52fba9da1d6fb68b8fdc2709263a99ac93",
+    "docs/dag/phase8/figures/dag-fcfs-fix.pdf": "9010a556236a739ce8221619555ba39a7aa4194fe3d23c7b5d96abc8eb55b10b",
+    "docs/dag/phase8/artifacts/dag-fcfs-fix.html": "ce9ed5ec198d67e78c9aa337df1fa772f62b2d927cc841c6b4812a54adba1aa0"
+  }
+}

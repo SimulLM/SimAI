@@ -39,12 +39,13 @@ class ReplicaScheduler:
         self.replica._allocated_kv_cache_memory -= self.replica._kv_cache_allocation_map.pop(request.id)
 
 
-def setup(*, capacity=64, tp=1, pp=1, shared=True, occupies=False):
+def setup(*, capacity=64, tp=1, pp=1, shared=True, occupies=False, ready_queue_policy="submission"):
     replicas = {rid: ReplicaScheduler(rid, tp, pp) for rid in (0, 1)}
     scheduler = NS(_replica_schedulers=replicas, get_replica_scheduler=replicas.__getitem__)
     endpoints = {f"gpu:{r}:{s}:{rank}": "shared" for r in (0, 1) for s in range(pp) for rank in range(tp)}
     host = ExpandedDagAdapter([(r, s) for r in (0, 1) for s in range(pp)], tp,
-                              "vidur", "synthetic", dict(endpoints=endpoints) if shared else {})
+                              "vidur", "synthetic", dict(ready_queue_policy=ready_queue_policy,
+                                                         **(dict(endpoints=endpoints) if shared else {})))
     config = PDConfig("float16", capacity, 4, 0, occupies, "synthetic 4 bytes/s")
     pd = PDCoordinator(scheduler, host, config, 8)
     scheduler.pd_coordinator = pd
@@ -75,8 +76,10 @@ def drain_transfer(events):
             heapq.heappush(queue, (event._priority_number, event))
 
 
-def test_transfer_gates_decode_and_retains_source():
-    pd, host, rs = setup()
+@pytest.mark.parametrize("policy", ["submission", "fcfs"])
+def test_transfer_gates_decode_and_retains_source(policy):
+    pd, host, rs = setup(ready_queue_policy=policy)
+    assert host.executor.ready_queue_policy == policy
     request = prefill(pd, rs)
     m = pd.migrations[str(request.id)]
     assert m.pins and rs[0]._allocation_map
@@ -97,8 +100,9 @@ def test_transfer_gates_decode_and_retains_source():
     assert all(v["used"] == 0 for v in pd.manager.usage_snapshot().values())
 
 
-def test_destination_capacity_backpressure_and_wakeup():
-    pd, host, rs = setup(capacity=32)
+@pytest.mark.parametrize("policy", ["submission", "fcfs"])
+def test_destination_capacity_backpressure_and_wakeup(policy):
+    pd, host, rs = setup(capacity=32, ready_queue_policy=policy)
     a = prefill(pd, rs)
     drain_transfer(pd.retry(1))
     b = prefill(pd, rs, at=4)

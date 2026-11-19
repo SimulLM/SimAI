@@ -34,8 +34,11 @@ class StagePlacement:
             for replica, stage in stage_keys
         }
         devices = {device for stage in self.devices.values() for device in stage}
-        if set(settings) - {"endpoints", "independent_comm", "ep_groups", "tp_cost_calibration"}:
+        if set(settings) - {"endpoints", "independent_comm", "ep_groups", "tp_cost_calibration", "ready_queue_policy"}:
             raise ValueError("unknown expanded DAG resource configuration field")
+        self.ready_queue_policy = settings.get("ready_queue_policy", "submission")
+        if self.ready_queue_policy not in ("submission", "fcfs"):
+            raise ValueError("ready_queue_policy must be submission or fcfs")
         endpoints = settings.get("endpoints", {})
         if (not isinstance(endpoints, dict) or set(endpoints) - devices or
                 any(not isinstance(v, str) or not v for v in endpoints.values())):
@@ -209,7 +212,8 @@ class ExpandedDagAdapter(CoarseDagAdapter):
             raise ValueError(f"unsupported expanded backend: {backend}")
         elif model in AICB_MODELS:
             raise ValueError("expanded MoE requires AICB layer and EP cost evidence")
-        super().__init__(stage_keys, resources=self.placement.resources)
+        super().__init__(stage_keys, resources=self.placement.resources,
+                         ready_queue_policy=self.placement.ready_queue_policy)
 
     def _build_fragment(self, graph_id, context, execution_time, is_last_stage, batch):
         payload = None

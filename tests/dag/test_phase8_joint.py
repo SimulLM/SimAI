@@ -29,8 +29,9 @@ def joint_configs():
     return configs, dict(ep_groups=groups, endpoints={f"gpu:{i}:0:0": "shared" for i in range(4)})
 
 
-def make_host(configs=None):
+def make_host(configs=None, *, ready_queue_policy="submission"):
     data, resources = joint_configs()
+    resources["ready_queue_policy"] = ready_queue_policy
     return DynamicMoeDagAdapter([(i, 0) for i in range(4)], 1, "vidur", "dense", resources,
                                 tuple(configs or data))
 
@@ -54,14 +55,16 @@ def test_joint_ep_groups_cannot_cross_prefill_decode_boundary():
         host.validate_pd_groups({str(i): "P" if i % 2 == 0 else "D" for i in range(4)})
 
 
-def test_transfer_then_dynamic_decode_and_final_kv_cleanup(tmp_path):
+@pytest.mark.parametrize("policy", ["submission", "fcfs"])
+def test_transfer_then_dynamic_decode_and_final_kv_cleanup(tmp_path, policy):
     from vidur.entities.replica import ReplicaType
     replicas = {rid: ReplicaScheduler(rid, 1, 1) for rid in range(4)}
     for rid, rs in replicas.items():
         rs.replica.replica_type = ReplicaType.PREFILL if rid < 2 else ReplicaType.DECODE
     scheduler = NS(_replica_schedulers=replicas, get_replica_scheduler=replicas.__getitem__)
-    host = make_host()
+    host = make_host(ready_queue_policy=policy)
     pd = PDCoordinator(scheduler, host, PDConfig("float16", 64, 4, 0, True, "synthetic"), 8)
+    assert host.executor.ready_queue_policy == policy
     scheduler.pd_coordinator = pd
     request = prefill(pd, replicas)
     # The helper chooses destination 1; put the request on an actual D rank.

@@ -79,6 +79,7 @@ def snapshot(runner, *, error=None):
     summary = dict(
         status="passed" if success else "failed", error=error,
         final_time_s=runner.now, resource_mode=runner.executor.resource_mode,
+        ready_queue_policy=runner.executor.ready_queue_policy,
         resource_capacity_validated=False, hardware_accuracy_claim=False,
         event_count=len(runner.events), event_queue_peak=runner.queue_peak,
         pending_event_count=runner.pending_event_count,

@@ -13,7 +13,11 @@ from .testing import DependencyOnlyResources
 
 
 class DagExecutor:
-    def __init__(self, resource_manager=None, *, resource_units=None, dependency_only=False):
+    def __init__(self, resource_manager=None, *, resource_units=None, dependency_only=False,
+                 ready_queue_policy="submission"):
+        if ready_queue_policy not in ("submission", "fcfs"):
+            raise ValueError("ready_queue_policy must be submission or fcfs")
+        self.ready_queue_policy = ready_queue_policy
         if dependency_only and resource_manager is not None:
             raise ValueError("dependency_only cannot be combined with an injected resource manager")
         self._resources = DependencyOnlyResources() if dependency_only else resource_manager
@@ -24,7 +28,7 @@ class DagExecutor:
                for key, unit in self._resource_units.items()):
             raise ValueError("invalid resource unit registry")
         self._graphs = {}
-        self._ready = {}  # owner -> stable submission sequence, including resource waiters
+        self._ready = {}  # owner -> stable ordering key, including resource waiters
         self._sequence = 0
         self._now = 0.0
         self._in_callback = False
@@ -67,7 +71,12 @@ class DagExecutor:
             raise RuntimeError("illegal READY transition")
         task.state = TaskState.READY
         task.ready_at = now
-        self._ready[(graph_id, task.spec.task_id)] = task.sequence
+        # Keep the original readiness time across failed resource acquisitions.
+        # Submission sequence breaks equal-time ties deterministically; no task
+        # can preempt a running lease. This is a work-conserving ready queue,
+        # not head-of-line blocking across unrelated resources.
+        self._ready[(graph_id, task.spec.task_id)] = (
+            (now, task.sequence) if self.ready_queue_policy == "fcfs" else task.sequence)
 
     def submit(self, fragment: GraphFragment, now, terminal_callback):
         now = self._check_now(now)

@@ -84,10 +84,13 @@ def verify_cost(cost):
         raise ValueError("component sum differs from aggregate predictor service")
 
 
-def prepare(output, specification=SPEC):
+def prepare(output, specification=SPEC, *, ready_queue_policy="submission"):
+    if ready_queue_policy not in ("submission", "fcfs"):
+        raise ValueError("ready_queue_policy must be submission or fcfs")
     output.mkdir(parents=True, exist_ok=False)
     spec = read(specification)
     validate_spec(spec)
+    spec["execution_ready_queue_policy"] = ready_queue_policy
     save(output / "experiment.json", spec)
     profiles = output / "profiles"
     synthetic_profiles(profiles)
@@ -108,7 +111,8 @@ def prepare(output, specification=SPEC):
             num_decode_tokens=1) for i, tokens in enumerate(case["tokens"])])
         endpoints = {f"gpu:{i}:{stage}:0": "fabric" if case["endpoint"] == "shared" else f"nic:{i}"
                      for i in range(len(case["tokens"])) for stage in (0, 1)}
-        save(folder / "resources.json", dict(endpoints=endpoints, independent_comm=[]))
+        save(folder / "resources.json", dict(endpoints=endpoints, independent_comm=[],
+                                             ready_queue_policy=ready_queue_policy))
     # Cost-only observations are from isolated requests: no DAG import, no
     # reference use of any probe start/end times or request completion metrics.
     probe = output / "cost-probe"
@@ -214,6 +218,8 @@ def run_case(output, case):
             raise ValueError("CLI did not complete every request")
         if mode == "dag_expanded":
             summary = read(native / "summary.json")
+            if summary["ready_queue_policy"] != read(folder / "resources.json").get("ready_queue_policy", "submission"):
+                raise ValueError("executed ready queue policy differs from frozen configuration")
             if not summary["resource_capacity_validated"] or summary["pending_event_count"] != 0:
                 raise ValueError("DAG resource/queue checks failed")
             if any(v["used"] != 0 for v in summary["resource_capacity"].values()):
@@ -317,6 +323,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--spec", type=Path, default=SPEC, help="Project-local frozen experiment specification")
+    parser.add_argument("--ready-queue-policy", choices=("submission", "fcfs"), default="submission",
+                        help="Resource-ready ordering, frozen before validation (default preserves old behavior)")
     parser.add_argument("--prepare-only", action="store_true", help="freeze inputs, probe costs and generate independent references")
     parser.add_argument("--run-prepared", action="store_true", help="run an already prepared experiment")
     args = parser.parse_args(argv)
@@ -330,7 +338,7 @@ def main(argv=None):
         specification = (ROOT / args.spec).resolve()
         if not specification.is_relative_to(ROOT):
             parser.error("specification must be inside the project")
-        spec = prepare(output, specification)
+        spec = prepare(output, specification, ready_queue_policy=args.ready_queue_policy)
     else:
         spec = read(output / "experiment.json")
     if args.prepare_only:
@@ -358,6 +366,7 @@ def main(argv=None):
     status = ("failed" if not functional else "not_improved" if legacy-dag<=1e-12 else
               "passed" if all(c["passed"] for c in cases) else "improved_with_reference_differences")
     report = dict(status=status, scope=spec["scope"], reference_type="independent_decimal_fcfs_queue",
+        ready_queue_policy=spec.get("execution_ready_queue_policy", "submission"),
         primary_metric=spec["primary_metric"], validation_requests=len(validation), control_requests=len(rows)-len(validation),
         legacy_mean_relative_error=legacy, dag_mean_relative_error=dag,
         functional_status="passed" if functional else "failed",

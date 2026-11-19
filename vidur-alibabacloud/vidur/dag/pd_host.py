@@ -61,7 +61,8 @@ class PDCoordinator:
         if adapter.executor.graphs:
             raise RuntimeError("PD resources must be initialized before submitting any graph")
         self.manager = CapacityResourceManager(capacities)
-        adapter.executor = DagExecutor(self.manager, resource_units={key: value.unit for key, value in capacities.items()})
+        adapter.executor = DagExecutor(self.manager, resource_units={key: value.unit for key, value in capacities.items()},
+                                       ready_queue_policy=adapter.executor.ready_queue_policy)
         self.tx = KVTransactions(self.manager, first)
 
     def _ledger_allocate(self, rs, request, amount):

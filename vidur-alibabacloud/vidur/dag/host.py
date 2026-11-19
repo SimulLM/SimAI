@@ -32,11 +32,12 @@ class DagHostEvent(BaseEvent):
 
 
 class CoarseDagAdapter:
-    def __init__(self, stage_keys, *, resources=()):
+    def __init__(self, stage_keys, *, resources=(), ready_queue_policy="submission"):
         capacities = {self.resource_id(*key): ResourceCapacity(1, "permits") for key in stage_keys}
         capacities.update({key: ResourceCapacity(1, "permits") for key in resources})
         self.executor = DagExecutor(CapacityResourceManager(capacities),
-                                    resource_units={key: "permits" for key in capacities})
+                                    resource_units={key: "permits" for key in capacities},
+                                    ready_queue_policy=ready_queue_policy)
         self.stage_ends = {}
         self.graph_anchors = {}
         self.events = []
