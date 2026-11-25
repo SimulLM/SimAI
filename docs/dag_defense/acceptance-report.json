@@ -1,0 +1,48 @@
+{
+  "status": "blocked",
+  "scope": {
+    "host": "autodl-container-2f4d44ab00-ec0d47fc",
+    "gpu": "2x NVIDIA H800 PCIe 80GB",
+    "model_source": "NousResearch/Llama-2-7b-hf",
+    "model_revision": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d",
+    "dtype": "float16",
+    "deployment": "single-host TP1 1P1D; GPU0 prefill, GPU1 decode",
+    "service": "vLLM 0.8.5 V0 PyNcclConnector",
+    "branch": "dev-finalize source; evidence branch dev-h800-pd-measurement"
+  },
+  "completed": {
+    "model_integrity": "passed_on_server_prior_to_this_report",
+    "hardware_and_nccl": "passed; SYS topology and SHM/direct/direct service path recorded",
+    "environment": "passed_for_diagnostic_service; torch 2.6.0+cu124, NCCL 2.21.5, transformers 4.51.3",
+    "real_pd_smoke": "passed; streaming and non-streaming diagnostics, KVReady and Decode completion",
+    "concurrent_kv_mapping": "diagnostic_passed; four unique 2048-token requests with sampled K/V/hidden checks",
+    "compute_profile": "diagnostic_passed; 35 target shapes, >=10 warmups and >=30 samples",
+    "host_profile": "diagnostic_passed; 68 target event/phase/shape combinations, >=10 warmups and >=30 samples",
+    "kv_profile": "diagnostic_passed; 512/1024/2048 each 10 warmups and 30 samples",
+    "request_calibration_collection": "passed_collection; 192 successful requests, 3 repeats x serial/concurrent2 x 32",
+    "same_fee_synthetic_check": "passed_functional_check; baseline and DAG agree under explicit TP1/PP1 zero-latency compatibility mode",
+    "dag_regression": "passed; 351 tests",
+    "focused_pd_regression": "passed; 41 tests"
+  },
+  "blocked": {
+    "shared_cost_mapping": "actual vLLM fused/overlapped operations do not yet have a validated one-to-one mapping to baseline/DAG predictor fields; RoPE and model-boundary work need explicit accounting",
+    "parameter_freeze": "not created; candidate bandwidth is provisional and calibration completion times were not used to fit it",
+    "formal_validation": "not started; 0 of 960 requests",
+    "baseline_dag_replay": "not started; no valid frozen shared cost and no actual-arrival replay set",
+    "final_archive": "partial diagnostics and calibration archived; formal run manifest and final comparison absent"
+  },
+  "counts": {
+    "formal_validation_runs": 0,
+    "formal_validation_requests": 0,
+    "calibration_requests": 192,
+    "diagnostic_pd_requests": "single and four-request waves documented"
+  },
+  "evidence": {
+    "handoff": "/root/autodl-tmp/dag-handoff/01-environment.md",
+    "compatibility": "docs/dag_defense/environment/compatibility-20261126.json",
+    "calibration": "docs/dag_defense/calibration-20261126/",
+    "diagnostics": "docs/dag_defense/environment/diagnostics/",
+    "tests": "docs/dag_defense/environment/diagnostics/pd-same-cost-20261126/"
+  },
+  "validity": "Do not report a DAG accuracy improvement. The remaining blockers are semantic cost alignment and freeze prerequisites, not a missing GPU smoke."
+}
