@@ -1,0 +1,15 @@
+{
+  "token_lengths": [
+    512,
+    1024,
+    2048
+  ],
+  "warmups": 10,
+  "measured": 30,
+  "shape": "key/value [32,tokens,32,128], hidden [tokens,4096]",
+  "dtype": "float16",
+  "buffer_bytes": 8589934592,
+  "measurement": "CPU monotonic_ns around SimpleBuffer insert or drop_select followed by device-wide synchronize; serial with gloo barriers; integrity samples after timed region",
+  "clock": "CLOCK_MONOTONIC",
+  "note": "Not cache installation, batch concurrency or E2E; inputs synthetic, measured costs real"
+}

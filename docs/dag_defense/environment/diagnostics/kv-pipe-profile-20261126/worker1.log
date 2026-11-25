@@ -1,0 +1,5 @@
+INFO 11-26 02:50:50 [__init__.py:239] Automatically detected platform cuda.
+INFO 11-26 02:50:52 [pynccl_pipe.py:111] Selecting device: cuda
+INFO 11-26 02:50:52 [utils.py:1055] Found nccl from library libnccl.so.2
+INFO 11-26 02:50:52 [pynccl.py:69] vLLM is using nccl==2.21.5
+INFO 11-26 02:50:53 [pynccl_pipe.py:111] Selecting device: cpu
