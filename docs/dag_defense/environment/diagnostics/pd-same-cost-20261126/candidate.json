@@ -1,0 +1,42 @@
+{
+  "status": "provisional_not_frozen",
+  "nature": "independent synthetic-tensor GPU microbenchmark; no validation completion times",
+  "source": "/root/autodl-tmp/dag-handoff/runs/kv-pipe-profile-20261126/rank1.csv",
+  "source_sha256": "e09e684c2e58c932270366393569039e60e1403de9fd874e397cbf3095a4b807",
+  "method": "least squares through origin over all 90 receiver samples using legacy billed bytes=(tokens+1)*524288; round to integer Gi-bits/s to match baseline",
+  "continuous_bandwidth_bytes_per_s": 34288741253.542526,
+  "baseline_pd_p2p_comm_bandwidth_gibits_per_s": 255,
+  "dag_bandwidth_bytes_per_s": 34225520640.0,
+  "dag_latency_s": 0,
+  "dag_legacy_prefill_billing_extra_token": true,
+  "by_length": [
+    {
+      "tokens": 512,
+      "samples": 30,
+      "observed_median_s": 0.0084292405,
+      "predicted_s": 0.007858455882352941,
+      "relative_error": -0.06771483357807381
+    },
+    {
+      "tokens": 1024,
+      "samples": 30,
+      "observed_median_s": 0.0157658605,
+      "predicted_s": 0.0157015931372549,
+      "relative_error": -0.004076362514123326
+    },
+    {
+      "tokens": 2048,
+      "samples": 30,
+      "observed_median_s": 0.0310824105,
+      "predicted_s": 0.03138786764705882,
+      "relative_error": 0.009827331347381247
+    }
+  ],
+  "limitations": [
+    "serial PyNccl SimpleBuffer wall time includes lookup and producer wait",
+    "does not include destination KV installation or full service frontend",
+    "concurrent contention and CPU/GPU overlap not captured",
+    "legacy billed bytes are a comparison cost basis, not physical tensor bytes",
+    "no accuracy or calibration acceptance claim"
+  ]
+}

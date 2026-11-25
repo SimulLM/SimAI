@@ -1,0 +1,360 @@
+........................................................................ [ 20%]
+........................................................................ [ 41%]
+........................................................................ [ 61%]
+..................................FFFFFFFF.............................. [ 82%]
+.............................................................            [100%]
+=================================== FAILURES ===================================
+_____ test_verified_simulation_reference_can_score_without_hardware_claim ______
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_verified_simulation_refer0')
+
+    def test_verified_simulation_reference_can_score_without_hardware_claim(tmp_path):
+>       path, _ = fixture_dataset(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_verified_simulation_refer0/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_verified_simulation_refer0/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+______________ test_regression_report_does_not_claim_improvement _______________
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_regression_report_does_no0')
+
+    def test_regression_report_does_not_claim_improvement(tmp_path):
+>       path, _ = fixture_dataset(tmp_path, revised=2)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_regression_report_does_no0/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_regression_report_does_no0/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+_____________ test_freeze_or_cost_identity_cannot_be_changed[leak] _____________
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c0')
+mutation = 'leak'
+
+    @pytest.mark.parametrize("mutation", ["leak", "hash", "scope", "cost"])
+    def test_freeze_or_cost_identity_cannot_be_changed(tmp_path, mutation):
+>       _, data = fixture_dataset(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c0/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c0/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+_____________ test_freeze_or_cost_identity_cannot_be_changed[hash] _____________
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c1')
+mutation = 'hash'
+
+    @pytest.mark.parametrize("mutation", ["leak", "hash", "scope", "cost"])
+    def test_freeze_or_cost_identity_cannot_be_changed(tmp_path, mutation):
+>       _, data = fixture_dataset(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c1/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c1/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+____________ test_freeze_or_cost_identity_cannot_be_changed[scope] _____________
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c2')
+mutation = 'scope'
+
+    @pytest.mark.parametrize("mutation", ["leak", "hash", "scope", "cost"])
+    def test_freeze_or_cost_identity_cannot_be_changed(tmp_path, mutation):
+>       _, data = fixture_dataset(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c2/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c2/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+_____________ test_freeze_or_cost_identity_cannot_be_changed[cost] _____________
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c3')
+mutation = 'cost'
+
+    @pytest.mark.parametrize("mutation", ["leak", "hash", "scope", "cost"])
+    def test_freeze_or_cost_identity_cannot_be_changed(tmp_path, mutation):
+>       _, data = fixture_dataset(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c3/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_freeze_or_cost_identity_c3/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+___________ test_synthetic_reference_rejected_even_with_valid_hashes ___________
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_synthetic_reference_rejec0')
+
+    def test_synthetic_reference_rejected_even_with_valid_hashes(tmp_path):
+>       path, data = fixture_dataset(tmp_path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_synthetic_reference_rejec0/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_synthetic_reference_rejec0/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+_________ test_identical_reference_evidence_cannot_leak_between_splits _________
+
+tmp_path = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_identical_reference_evide0')
+
+    def test_identical_reference_evidence_cannot_leak_between_splits(tmp_path):
+>       path, data = fixture_dataset(tmp_path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/dag/test_phase8_accuracy.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/dag/test_phase8_accuracy.py:24: in fixture_dataset
+    evidence=[dict(path=evidence.relative_to(ROOT).as_posix(), sha256=sha256(evidence.read_bytes()).hexdigest())])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_identical_reference_evide0/calibration.txt')
+other = PosixPath('/root/autodl-tmp/SimAI-handoff'), walk_up = False
+_deprecated = ()
+
+    def relative_to(self, other, /, *_deprecated, walk_up=False):
+        """Return the relative path to another path identified by the passed
+        arguments.  If the operation is not possible (because this is not
+        related to the other path), raise ValueError.
+    
+        The *walk_up* parameter controls whether `..` may be used to resolve
+        the path.
+        """
+        if _deprecated:
+            msg = ("support for supplying more than one positional argument "
+                   "to pathlib.PurePath.relative_to() is deprecated and "
+                   "scheduled for removal in Python {remove}")
+            warnings._deprecated("pathlib.PurePath.relative_to(*args)", msg,
+                                 remove=(3, 14))
+        other = self.with_segments(other, *_deprecated)
+        for step, path in enumerate([other] + list(other.parents)):
+            if self.is_relative_to(path):
+                break
+            elif not walk_up:
+>               raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+E               ValueError: '/root/autodl-tmp/dag-handoff/runs/full-dag-regression-20261126-tmp/test_identical_reference_evide0/calibration.txt' is not in the subpath of '/root/autodl-tmp/SimAI-handoff'
+
+/root/miniconda3/lib/python3.12/pathlib.py:682: ValueError
+=========================== short test summary info ============================
+FAILED tests/dag/test_phase8_accuracy.py::test_verified_simulation_reference_can_score_without_hardware_claim
+FAILED tests/dag/test_phase8_accuracy.py::test_regression_report_does_not_claim_improvement
+FAILED tests/dag/test_phase8_accuracy.py::test_freeze_or_cost_identity_cannot_be_changed[leak]
+FAILED tests/dag/test_phase8_accuracy.py::test_freeze_or_cost_identity_cannot_be_changed[hash]
+FAILED tests/dag/test_phase8_accuracy.py::test_freeze_or_cost_identity_cannot_be_changed[scope]
+FAILED tests/dag/test_phase8_accuracy.py::test_freeze_or_cost_identity_cannot_be_changed[cost]
+FAILED tests/dag/test_phase8_accuracy.py::test_synthetic_reference_rejected_even_with_valid_hashes
+FAILED tests/dag/test_phase8_accuracy.py::test_identical_reference_evidence_cannot_leak_between_splits
+8 failed, 341 passed in 69.81s (0:01:09)

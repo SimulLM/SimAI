@@ -48,6 +48,8 @@ class PDCoordinator:
             layout = KVLayout(replica.num_layers, replica.num_kv_heads, replica.attention_head_dim,
                 replica._replica_config.tensor_parallel_size, replica.num_pipeline_stages,
                 config.storage_dtype, rs._config.block_size)
+            if config.legacy_prefill_billing_extra_token and (layout.tp != 1 or layout.pp != 1):
+                raise ValueError("legacy fee parity is supported only for TP1 PP1")
             if first is not None and layout != first:
                 raise ValueError("PD currently requires homogeneous P/D KV layouts")
             first = layout
@@ -197,17 +199,26 @@ class PDCoordinator:
         events = []
         for stage, gid in enumerate(m.graph_ids):
             tasks = []
-            duration = self.config.latency_s + m.wire_bytes / self.config.bandwidth_bytes_per_s
+            # Keep physical KV bytes distinct from the optional comparison fee.
+            # The original SimAI baseline charges for prefill tokens plus one.
+            billing_bytes = m.wire_bytes + (
+                layout.bytes_per_token_per_shard
+                if self.config.legacy_prefill_billing_extra_token else 0
+            )
+            duration = self.config.latency_s + billing_bytes / self.config.bandwidth_bytes_per_s
             for index, (source, destination) in enumerate(zip(sources[stage*tp:(stage+1)*tp], destinations[stage*tp:(stage+1)*tp])):
                 endpoints = sorted({self.adapter.placement.endpoints[gpu] for gpu in (source, destination)})
                 resources = sorted(set(endpoints + ([source, destination] if self.config.occupies_gpu else [])))
                 metadata = dict(op="pd.transfer", communication_type="pd", payload_bytes=m.wire_bytes,
-                    wire_bytes=m.wire_bytes, storage_bytes=m.storage_bytes, source=source, destination=destination,
+                    wire_bytes=m.wire_bytes, billing_bytes=billing_bytes,
+                    billing_basis=("legacy_prefill_plus_one" if self.config.legacy_prefill_billing_extra_token else "valid_kv_tokens"),
+                    storage_bytes=m.storage_bytes, source=source, destination=destination,
                     endpoints=endpoints, occupies_gpu=self.config.occupies_gpu, bandwidth_bytes_per_s=self.config.bandwidth_bytes_per_s,
                     latency_s=self.config.latency_s, evidence=self.config.evidence)
                 tasks.append(TaskSpec(f"transfer.{index}", "comm", Placement((source, destination), gid),
                     tuple(ResourceDemand(resource, 1, "permits") for resource in resources),
-                    CostEstimate(duration, "pd.latency_plus_wire_over_bandwidth", duration, "s", 1,
+                    CostEstimate(duration, ("pd.latency_plus_billing_over_bandwidth" if self.config.legacy_prefill_billing_extra_token
+                                            else "pd.latency_plus_wire_over_bandwidth"), duration, "s", 1,
                                  self.config.evidence, ("pd",)), metadata))
             tasks.append(TaskSpec("terminal", "sync", Placement(), (),
                 CostEstimate(0, "pd.join", 0, "s", 1, "all KV shards received", ("sync",))))

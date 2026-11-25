@@ -1,0 +1,14 @@
+ea0af9eee75b2ed4124c46ce985aec813a2b356e949cb998b37ddfe0a626a203  ./README.md
+7c1088b535605732e1b79c5e98f2ec9cc83a13f8b421f6a4cf6bedc0a73fedcf  ./candidate.json
+3c0f419fac0900e77fb78d82f5bd83af3739736ab7b77dd66dc04d8f7b6b5d88  ./full-regression-before-guards.log
+4c4b51bfa0b85e1fca80de61ba4377f98252a27994fd70e99ed4cb362f0bd964  ./full-regression-final.log
+a0763dd4122c2cea95ce8392baf3bfb48ff957da516b5fe70f398bd28a273105  ./full-regression-initial-failure.log
+800e359522a51a472ec7ab1b4f43297e1ee443df1a15e25b01f922196c6f0eee  ./parity-initial-failure.log
+8be18c957991b1d19086ee14a87e48be13616be10dd7574d7d3e3ef91fa422d0  ./parity-v3-raw.tar.gz
+280f28f334bdd55485078e78104b16c2bd9b1aa3f652e99f9c9490ba4a10c5d8  ./parity-v3.log
+c4d89d59458256c486cf6df265cf01368b8511dfe41c83ab0b4d872e7b1e9d8c  ./parity-v4-raw.tar.gz
+23a0a66e82d3a816f45040191d9c5f275c28bf27c23e09ad549b5fdf39717bcb  ./parity-v4.log
+97639c43d291bec71bf652eaba3a0e4cb63a380a87787287965f0eaaa348f578  ./pd-regression-v1.log
+76899cfc0ebd92fcb11874347fe079d89fc84daabe4df22066976caa909e33d6  ./pd-regression-v2.log
+9c1fc3152af7f9a4d083b1173f8ed423b14d8e3c45b4de0fbd6b540753f63efb  ./result-candidate-bandwidth.json
+19c46b00dbaf953649ee1a9e653537a47a332232cfbdf424de6fc0b320baf15f  ./result.json

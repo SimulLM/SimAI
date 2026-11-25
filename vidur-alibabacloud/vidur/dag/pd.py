@@ -12,13 +12,26 @@ class PDConfig:
     latency_s: float
     occupies_gpu: bool
     evidence: str
+    legacy_prefill_billing_extra_token: bool = False
 
     @classmethod
     def from_dict(cls, data):
         fields = {"schema_version", "storage_dtype", "capacity_bytes_per_shard", "bandwidth_bytes_per_s",
                   "latency_s", "occupies_gpu", "evidence"}
-        if not isinstance(data, dict) or set(data) != fields or data["schema_version"] != "1.0":
-            raise ValueError("PD configuration requires exactly the v1 fields")
+        if not isinstance(data, dict):
+            raise ValueError("PD configuration must be an object")
+        version = data.get("schema_version")
+        if version == "1.0":
+            expected = fields
+        elif version == "1.1":
+            expected = fields | {"legacy_prefill_billing_extra_token"}
+        else:
+            raise ValueError("unsupported PD configuration version")
+        if set(data) != expected:
+            raise ValueError("PD configuration fields do not match its version")
+        extra_token = data.get("legacy_prefill_billing_extra_token", False)
+        if type(extra_token) is not bool:
+            raise ValueError("legacy_prefill_billing_extra_token must be boolean")
         if data["storage_dtype"] not in DTYPES:
             raise ValueError("unsupported storage dtype; wire dtype must equal storage dtype")
         capacity = positive_int(data["capacity_bytes_per_shard"], "capacity_bytes_per_shard")
@@ -27,8 +40,11 @@ class PDConfig:
             raise ValueError("PD bandwidth must be positive and occupies_gpu must be boolean")
         if not isinstance(data["evidence"], str) or not data["evidence"].strip():
             raise ValueError("PD cost evidence is required")
-        return cls(data["storage_dtype"], capacity, bandwidth, finite_nonnegative(data["latency_s"]),
-                   data["occupies_gpu"], data["evidence"])
+        latency = finite_nonnegative(data["latency_s"])
+        if extra_token and latency != 0:
+            raise ValueError("legacy fee parity requires zero fixed latency")
+        return cls(data["storage_dtype"], capacity, bandwidth, latency,
+                   data["occupies_gpu"], data["evidence"], extra_token)
 
     @classmethod
     def load(cls, path):

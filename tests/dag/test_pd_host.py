@@ -39,14 +39,14 @@ class ReplicaScheduler:
         self.replica._allocated_kv_cache_memory -= self.replica._kv_cache_allocation_map.pop(request.id)
 
 
-def setup(*, capacity=64, tp=1, pp=1, shared=True, occupies=False, ready_queue_policy="submission"):
+def setup(*, capacity=64, tp=1, pp=1, shared=True, occupies=False, ready_queue_policy="submission", legacy_billing=False):
     replicas = {rid: ReplicaScheduler(rid, tp, pp) for rid in (0, 1)}
     scheduler = NS(_replica_schedulers=replicas, get_replica_scheduler=replicas.__getitem__)
     endpoints = {f"gpu:{r}:{s}:{rank}": "shared" for r in (0, 1) for s in range(pp) for rank in range(tp)}
     host = ExpandedDagAdapter([(r, s) for r in (0, 1) for s in range(pp)], tp,
                               "vidur", "synthetic", dict(ready_queue_policy=ready_queue_policy,
                                                          **(dict(endpoints=endpoints) if shared else {})))
-    config = PDConfig("float16", capacity, 4, 0, occupies, "synthetic 4 bytes/s")
+    config = PDConfig("float16", capacity, 4, 0, occupies, "synthetic 4 bytes/s", legacy_billing)
     pd = PDCoordinator(scheduler, host, config, 8)
     scheduler.pd_coordinator = pd
     return pd, host, replicas
@@ -245,3 +245,27 @@ def test_real_simulator_cutoff_or_abort_preserves_pd_semantics(tmp_path, failure
         assert pd.migrations[str(request.id)].pins and not pd.failure
         adapter.abort(1.5, "test cleanup")
         pd.abort(1.5, "test cleanup")
+
+
+def test_legacy_billing_matches_baseline_without_changing_wire_bytes():
+    from dataclasses import replace
+    pd, host, rs = setup()
+    pd.config = replace(pd.config, legacy_prefill_billing_extra_token=True)
+    request = prefill(pd, rs)
+    migration = pd.migrations[str(request.id)]
+    assert migration.wire_bytes == 8  # two input tokens, four KV bytes each
+    events = pd.retry(1)
+    task = host.executor.graphs[migration.graph_id].tasks["transfer.0"].spec
+    assert task.metadata["wire_bytes"] == 8
+    assert task.metadata["billing_bytes"] == 12  # baseline charges three tokens
+    assert task.metadata["billing_basis"] == "legacy_prefill_plus_one"
+    assert task.cost.duration_s == 12 / 4
+    drain_transfer(events)
+    assert migration.kv_ready_at_s == 4  # starts at 1, baseline cost is 3 s
+    pd.abort(4, "test cleanup")
+
+
+@pytest.mark.parametrize("tp,pp", [(2, 1), (1, 2)])
+def test_legacy_billing_rejects_unverified_parallel_layouts(tp, pp):
+    with pytest.raises(ValueError, match="TP1 PP1"):
+        setup(tp=tp, pp=pp, legacy_billing=True)

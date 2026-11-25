@@ -57,3 +57,19 @@ def test_unsupported_simulation_config_rejected(field, value):
     setattr(replica, field, value)
     with pytest.raises(ValueError):
         validate_simulation_config(NS(cluster_config=cluster))
+
+
+def test_versioned_legacy_billing_option_is_explicit():
+    old = config()
+    assert PDConfig.from_dict(old).legacy_prefill_billing_extra_token is False
+    new = dict(old, schema_version="1.1", legacy_prefill_billing_extra_token=True)
+    assert PDConfig.from_dict(new).legacy_prefill_billing_extra_token is True
+    new["legacy_prefill_billing_extra_token"] = False
+    assert PDConfig.from_dict(new).legacy_prefill_billing_extra_token is False
+    for value in (1, "true", None):
+        with pytest.raises(ValueError):
+            PDConfig.from_dict(dict(new, legacy_prefill_billing_extra_token=value))
+    with pytest.raises(ValueError):
+        PDConfig.from_dict(dict(old, legacy_prefill_billing_extra_token=True))
+    with pytest.raises(ValueError, match="zero fixed latency"):
+        PDConfig.from_dict(dict(new, legacy_prefill_billing_extra_token=True, latency_s=0.001))

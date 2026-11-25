@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "nature": "synthetic functional fee parity; not hardware accuracy",
+  "baseline_commit": "cef83f9ddd96540e3e9f48934f11335d52d54fce",
+  "bandwidth_bytes_per_s": 107374182400.0,
+  "results": [
+    {
+      "input_tokens": 8,
+      "physical_kv_bytes": 4194304,
+      "billed_bytes": 4718592,
+      "baseline_seconds": 4.39453125e-05,
+      "dag_seconds": 4.394531249999993e-05
+    },
+    {
+      "input_tokens": 16,
+      "physical_kv_bytes": 8388608,
+      "billed_bytes": 8912896,
+      "baseline_seconds": 8.30078125e-05,
+      "dag_seconds": 8.300781249999997e-05
+    },
+    {
+      "input_tokens": 32,
+      "physical_kv_bytes": 16777216,
+      "billed_bytes": 17301504,
+      "baseline_seconds": 0.0001611328125,
+      "dag_seconds": 0.00016113281250000003
+    }
+  ]
+}

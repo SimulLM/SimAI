@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/verify_same_cost_pd.py", line 41, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/verify_same_cost_pd.py", line 22, in main
+    dag=case/'dag';cmd=pd_command(dag,profiles,trace,config);execute(cmd,ROOT,dag)
+                                                             ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/verify_same_cost_pd.py", line 14, in execute
+    if result.returncode or 'Traceback' in log or 'Exception ignored' in log:raise RuntimeError(f'simulation failed: {out}')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: simulation failed: /root/autodl-tmp/dag-handoff/runs/pd-same-cost-synthetic-20261126/n32/dag

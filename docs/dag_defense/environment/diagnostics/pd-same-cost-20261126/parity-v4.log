@@ -1,0 +1,23 @@
+[
+  {
+    "input_tokens": 8,
+    "physical_kv_bytes": 4194304,
+    "billed_bytes": 4718592,
+    "baseline_seconds": 0.00013786764705882353,
+    "dag_seconds": 0.00013786764705882347
+  },
+  {
+    "input_tokens": 16,
+    "physical_kv_bytes": 8388608,
+    "billed_bytes": 8912896,
+    "baseline_seconds": 0.00026041666666666666,
+    "dag_seconds": 0.0002604166666666666
+  },
+  {
+    "input_tokens": 32,
+    "physical_kv_bytes": 16777216,
+    "billed_bytes": 17301504,
+    "baseline_seconds": 0.000505514705882353,
+    "dag_seconds": 0.0005055147058823533
+  }
+]
