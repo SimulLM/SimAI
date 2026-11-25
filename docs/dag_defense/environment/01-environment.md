@@ -1,3 +1,15 @@
+# Current status update — 2026-11-26 02:22 CST
+
+The historical snapshot below is superseded where it conflicts with this update. Current environment: `/root/autodl-tmp/venvs/vllm-0.8.5` has vLLM 0.8.5, torch 2.6.0+cu124, CUDA runtime 12.4, NCCL 2.21.5, transformers 4.51.3, tokenizers 0.21.1, huggingface-hub 0.34.6; `pip check` passes. Transformers 5.24.1 failed at serving startup and was replaced; see `transformers-fix.txt` in the repository.
+
+The two model shards and other manifest files were checked on this server. One real 1P1D diagnostic completed HTTP 200 with 6 input and 8 output tokens, with adjacent producer KV-send and consumer KV-receive log messages. See repository `diagnostics/observed-proxy.md` and raw evidence; request-level connector instrumentation, KVReady GPU completion, batch mapping and service transport path remain unresolved. The server uses FP16, TP1, disables prefix caching and chunked prefill, and the diagnostic request explicitly sets temperature 0, seed 0, ignore EOS, and min/max output 8. Source model files remain unmodified; `--generation-config vllm` avoids the out-of-range source generation PAD, but effective runtime PAD still needs explicit verification.
+
+A separate NCCL send/recv diagnostic on the new server exited successfully and verified data; NCCL logs reported SHM/direct/direct for that test. This does not establish the service connector transport or represent final KV costs. Raw diagnostic and limitations are in `diagnostics/nccl-p2p-20261126/` in the GitHub worktree.
+
+Formal gates remain open: exact service/simulator compatibility and RoPE cost, GPU/event instrumentation and request/batch mapping, reproducible lifecycle, real KV-layout costs, independent compute profiles, calibration and freeze. The baseline worktree exists but its submodules are not initialized. No formal validation has been run. Current data volume has 123 GiB free. GitHub branch `dev-h800-pd-measurement` contains incremental evidence; no model weights or credentials are committed.
+
+## Historical snapshot (superseded)
+
 # Environment status 2026-11-26
 
 Host autodl-container-2f4d44ab00-ec0d47fc; 2 H800 PCIe. Data /root/autodl-tmp. Model /root/autodl-tmp/models/Llama-2-7b-hf, NousResearch/Llama-2-7b-hf revision 8efe6c9b93655b934e27bd9981e3ec13e55aee9d. All files previously checked against SHA256SUMS. SimAI archive extracted to /root/autodl-tmp/SimAI, dev-finalize 63b9a8d05fe02ef3d04ab9a6ceb9153885173b0a. Plan /root/autodl-tmp/hardware-measurement-plan.md SHA256 fa07ea208b3c9852aeb7a935daf82ca0f8bcdf7c9a7b3d7c99eb2e224f263282.
