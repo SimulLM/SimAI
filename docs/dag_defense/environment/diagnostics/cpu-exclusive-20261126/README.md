@@ -1,0 +1,3 @@
+# Synchronized sampler boundary diagnostic
+
+This diagnostic repeats the vLLM host profiling matrix while synchronizing CUDA immediately before and after `Sampler.forward`. It separates a sampler call's host/GPU wait from the no-synchronization host hook, but adds synchronization and must not be used as a performance result. All 68 target shapes have at least 30 qualified samples after ten warmups; 987 profiling requests succeeded. Comparing this run to the no-sync sampler data demonstrates that the host sampler boundary includes variable GPU wait and cannot be assigned directly to the simulator's CPU sampler field. Keep this evidence separate from formal E2E and cost files.

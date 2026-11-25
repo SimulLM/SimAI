@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "matrix": "3 repeats x serial/concurrent2 x 32 requests",
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "fee_fitting": "not performed",
+  "summaries": [
+    {
+      "repeat": 0,
+      "mode": "concurrent2",
+      "requests": 32,
+      "e2e_median_s": 0.866970724,
+      "e2e_p95_s": 0.888679753,
+      "ttft_median_s": 0.0675926,
+      "max_s": 0.897747876
+    },
+    {
+      "repeat": 0,
+      "mode": "serial",
+      "requests": 32,
+      "e2e_median_s": 0.842659271,
+      "e2e_p95_s": 0.859615399,
+      "ttft_median_s": 0.043074494,
+      "max_s": 0.974822195
+    },
+    {
+      "repeat": 1,
+      "mode": "concurrent2",
+      "requests": 32,
+      "e2e_median_s": 0.8706781729999999,
+      "e2e_p95_s": 0.883646886,
+      "ttft_median_s": 0.068229874,
+      "max_s": 0.921329075
+    },
+    {
+      "repeat": 1,
+      "mode": "serial",
+      "requests": 32,
+      "e2e_median_s": 0.8379196074999999,
+      "e2e_p95_s": 0.85105354,
+      "ttft_median_s": 0.042292853000000005,
+      "max_s": 0.856156304
+    },
+    {
+      "repeat": 2,
+      "mode": "concurrent2",
+      "requests": 32,
+      "e2e_median_s": 0.86547909,
+      "e2e_p95_s": 0.874468978,
+      "ttft_median_s": 0.0680509135,
+      "max_s": 0.874685479
+    },
+    {
+      "repeat": 2,
+      "mode": "serial",
+      "requests": 32,
+      "e2e_median_s": 0.841627864,
+      "e2e_p95_s": 0.851614972,
+      "ttft_median_s": 0.042544737,
+      "max_s": 0.864856271
+    }
+  ]
+}

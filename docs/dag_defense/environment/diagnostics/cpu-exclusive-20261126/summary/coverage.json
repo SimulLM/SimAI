@@ -1,0 +1,10 @@
+{
+  "requests": 987,
+  "unmapped_events": 1,
+  "mixed_events": 0,
+  "missing_or_repeated_memberships": 0,
+  "profiled_events": 3620,
+  "qualified_shapes": 68,
+  "partial_shapes": 0,
+  "method": "host monotonic timing with CUDA synchronization immediately before and after sampler, diagnostic only"
+}

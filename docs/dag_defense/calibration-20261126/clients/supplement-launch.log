@@ -1,0 +1,19 @@
+finished 0 serial
+finished 1 serial
+finished 2 serial
+Traceback (most recent call last):
+  File "/root/autodl-tmp/dag-handoff/scripts/calibration-serial-supplement.py", line 36, in <module>
+    asyncio.run(main())
+  File "/root/miniconda3/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/dag-handoff/scripts/calibration-serial-supplement.py", line 34, in main
+    assert len(rows)==3*16*3 and all(x.get('status')==200 and x.get('done') and x.get('usage',{}).get('prompt_tokens')==512 and x['usage']['completion_tokens']==64 and x['token_counts'][-1]==64 for x in rows)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

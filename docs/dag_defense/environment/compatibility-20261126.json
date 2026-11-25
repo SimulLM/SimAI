@@ -17,7 +17,8 @@
     "cpu_profile": "docs/dag_defense/environment/diagnostics/cpu-profile-20261126/",
     "kv_profile": "docs/dag_defense/environment/diagnostics/kv-pipe-profile-20261126/",
     "fee_parity": "/root/autodl-tmp/dag-handoff/runs/pd-same-cost-synthetic-v4-20261126/result.json",
-    "concurrent_kv_mapping": "docs/dag_defense/environment/diagnostics/pd-kv-mapping-v3-20261126/"
+    "concurrent_kv_mapping": "docs/dag_defense/environment/diagnostics/pd-kv-mapping-v3-20261126/",
+    "request_calibration": "docs/dag_defense/calibration-20261126/"
   },
   "items": [
     {
@@ -42,7 +43,7 @@
       "name": "model_boundary_and_sampling",
       "status": "blocked",
       "finding": "Embedding, final norm and output head were independently measured but predictor has no explicit fields. Producer samples once before sending hidden states; consumer samples its first token again from received hidden states.",
-      "remaining": "Account for per-step and first-token work without multiplying it by 32 layers or double-counting sampler host time."
+      "remaining": "Account for per-step and first-token work without multiplying it by 32 layers or double-counting sampler host time; synchronized sampler data confirms host/GPU overlap."
     },
     {
       "name": "cpu_and_ipc",
@@ -65,7 +66,7 @@
     {
       "name": "formal_inputs_costs_and_freeze",
       "status": "blocked",
-      "finding": "Profiling and functional smoke are complete only for their stated shapes; no calibration, parameter freeze or validation has occurred.",
+      "finding": "Request-level calibration matrix 512/64 has been collected: 3 repeats x 32 serial + 32 concurrent2, all 192 requests successful. It remains a calibration artifact only; no fee fitting or parameter freeze has been performed.",
       "remaining": "Produce shared independently profiled cost files and calibration, resolve compatibility items, freeze all inputs and rules, then begin the 30 validation runs."
     }
   ]
