@@ -1,0 +1,10 @@
+{
+  "requests": 1210,
+  "unmapped_events": 9,
+  "mixed_events": 0,
+  "missing_or_repeated_memberships": 0,
+  "profiled_events": 4104,
+  "qualified_shapes": 68,
+  "partial_shapes": 0,
+  "method": "host monotonic timing with no added CUDA synchronization, file writes after timed call"
+}

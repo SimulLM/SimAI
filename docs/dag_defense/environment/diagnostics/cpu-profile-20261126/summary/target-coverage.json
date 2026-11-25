@@ -1,0 +1,550 @@
+{
+  "target_shapes": 68,
+  "passed_shapes": 68,
+  "shapes": [
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 31,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 39,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 74,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 68,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 40,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "schedule",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 31,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 39,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 74,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 68,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 40,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "prepare_inputs",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 31,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 39,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 74,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 68,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 40,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "sampler_host_call",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 31,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 39,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 74,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 68,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 65,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 40,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 30,
+      "passed": true
+    },
+    {
+      "event": "process_model_outputs",
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "eligible_samples": 30,
+      "passed": true
+    }
+  ]
+}
