@@ -55,13 +55,16 @@ class Evidence:
             self.identity = dict(kind="archived_simulation_evidence", archive=archive.name, sha256=actual)
         else:
             run_dir = Path(run_dir).resolve()
-            if not run_dir.is_relative_to(ROOT / "results/dag/phase8") or run_dir == ROOT / "results/dag/phase8":
-                raise ValueError("run directory must be below results/dag/phase8")
+            # Use this reader's project root (also its isolated-test boundary),
+            # rather than another module's process-global root.
+            roots = (ROOT / "results/dag/phase8", ROOT / "results/dag/finalize")
+            if not any(run_dir != root and run_dir.is_relative_to(root) for root in roots):
+                raise ValueError("run directory must be below results/dag/phase8 or results/dag/finalize")
             self.prefix = run_dir.relative_to(ROOT).as_posix()
             manifest_bytes = (run_dir / "run-manifest.json").read_bytes()
             self.identity = dict(kind="local_simulation_evidence", path=self.prefix,
                                  manifest_sha256=sha256(manifest_bytes).hexdigest())
-        if not self.prefix.startswith("results/dag/phase8/"):
+        if not self.prefix.startswith(("results/dag/phase8/", "results/dag/finalize/")):
             raise ValueError("unexpected experiment result path")
         self.manifest = json.loads(manifest_bytes)
 

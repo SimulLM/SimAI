@@ -1,0 +1,35 @@
+{
+  "repository": "https://github.com/deepseek-ai/profile-data",
+  "commit": "449602428a1b023acb8a505d4f34fef536535db6",
+  "files": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/deepseek-ai/profile-data/449602428a1b023acb8a505d4f34fef536535db6/README.md",
+      "sha256": "c6e52994ad28a0ce2d717e036c9e0bb61ae3bf2905300981b025db3000503b4e",
+      "bytes": 2308
+    },
+    "prefill.json": {
+      "url": "https://raw.githubusercontent.com/deepseek-ai/profile-data/449602428a1b023acb8a505d4f34fef536535db6/prefill.json",
+      "sha256": "1078dd96ba9d28e23ca0a5e50107024850cc7a9722ac4b0a4ca35d960738dc79",
+      "bytes": 17464381
+    },
+    "decode.json": {
+      "url": "https://raw.githubusercontent.com/deepseek-ai/profile-data/449602428a1b023acb8a505d4f34fef536535db6/decode.json",
+      "sha256": "6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62",
+      "bytes": 4660769
+    }
+  },
+  "unit": "us",
+  "unit_evidence": "https://perfetto.dev/docs/getting-started/other-formats#chrome-json-format",
+  "scopes": {
+    "prefill": {
+      "tp": 1,
+      "ep": 32
+    },
+    "decode": {
+      "tp": 1,
+      "ep": 128
+    }
+  },
+  "routing": "artificially balanced per upstream README",
+  "group_policy": "one entire trace per group, no kernel-wise split"
+}

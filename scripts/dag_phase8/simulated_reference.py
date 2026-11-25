@@ -41,9 +41,9 @@ def option(command, name, value):
         command.extend((name, str(value)))
 
 
-def prepare_experiment(output):
+def prepare_experiment(output, specification_path=EXPERIMENT):
     output.mkdir(parents=True, exist_ok=False)
-    specification = read(EXPERIMENT)
+    specification = read(specification_path)
     write_json(output / "experiment.json", specification)
     sizes = {s["id"]: s["prefill_tokens"] * 4096 * 2 for s in specification["samples"]}
     # The original predictor rounds single-token Decode batches to eight tokens.
@@ -54,7 +54,7 @@ def prepare_experiment(output):
     files.add(output / "experiment.json")
     write_json(output / "experiment-freeze.json", dict(
         status="prepared_before_reference_generation", primary_metric=specification["primary_metric"],
-        input_sha256=hashes(output, files), specification_sha256=digest(EXPERIMENT)))
+        input_sha256=hashes(output, files), specification_sha256=digest(specification_path)))
 
 
 def validate_backend(output, backend):
@@ -197,14 +197,14 @@ def write_record(output, sample, role, prediction, cost_hash, freeze_hash=None):
     return relative(path)
 
 
-def run_experiment(output, backend):
+def run_experiment(output, backend, frozen_calibration=None):
     started = time.perf_counter()
     if (output / "simulation-report.json").exists() or (output / "runs").exists():
         raise ValueError("refusing to overwrite an executed experiment")
     backend_manifest = validate_backend(output, backend)
     specification = read(output / "experiment.json")
     source_files = {p for name in ("schemas/dag", "vidur-alibabacloud/vidur", "scripts/dag_phase1",
-                                 "scripts/dag_phase4", "scripts/dag_phase5", "scripts/dag_phase8")
+                                 "scripts/dag_phase4", "scripts/dag_phase5", "scripts/dag_phase8", "scripts/dag_finalize")
                     for p in (ROOT / name).rglob("*") if p.is_file()
                     and p.suffix in (".py", ".json", ".sh", ".txt") and "__pycache__" not in p.parts}
     source_hashes = hashes(ROOT, source_files)
@@ -222,6 +222,8 @@ def run_experiment(output, backend):
                           config_sha256=digest(output / "inputs/SimAI.conf"), calibration=None,
                           backend_binaries_sha256=backend_manifest["binaries_sha256"]))
     calibration = output / "calibration.json"
+    existing_calibration = read(frozen_calibration) if frozen_calibration is not None else None
+    existing_calibration_sha256 = digest(frozen_calibration) if frozen_calibration is not None else None
     freeze = output / "parameter-freeze.json"
     samples, rows = [], []
     for sample in specification["samples"]:
@@ -234,9 +236,14 @@ def run_experiment(output, backend):
                    digest(output / "reference-definition.json") if role == "reference" else digest(base))
                    for role, prediction in predictions.items()}
         if sample["split"] == "calibration":
-            offset = max(0, (predictions["reference"]["e2e_s"] - predictions["old"]["e2e_s"]) /
-                         predictions["same_cost"]["tp_task_count"])
-            write_json(calibration, dict(tp_cost_calibration=dict(model=specification["model"], tp=8, pp=1,
+            offset = (existing_calibration["tp_cost_calibration"]["offset_s"] if existing_calibration is not None else
+                      max(0, (predictions["reference"]["e2e_s"] - predictions["old"]["e2e_s"]) /
+                          predictions["same_cost"]["tp_task_count"]))
+            if existing_calibration is not None:
+                if digest(calibration) != existing_calibration_sha256:
+                    raise ValueError("frozen calibration bytes changed")
+            else:
+                write_json(calibration, dict(tp_cost_calibration=dict(model=specification["model"], tp=8, pp=1,
                 offset_s=offset, evidence=records["reference_record"],
                 topology_sha256=digest(output / "inputs" / TOPOLOGY), config_sha256=digest(output / "inputs/SimAI.conf"),
                 analytical_pricing=ANALYTICAL_PRICING)))
@@ -256,6 +263,7 @@ def run_experiment(output, backend):
                 validation_input_sha256=input_hashes,
                 scenarios=dict(dense=dict(scope=scope, cost_config_sha256=digest(output / "revised-cost.json"))),
                 calibration_sha256=digest(calibration), reference_definition_sha256=digest(output / "reference-definition.json"),
+                calibration_origin=("frozen_previous_run" if existing_calibration is not None else "this_calibration_request"),
                 validation_scope="held-out request inputs and Prefill payloads; shared fixed Decode communication cost"))
             frozen_hash = digest(freeze)
         if digest(freeze) != frozen_hash or digest(calibration) != read(freeze)["calibration_sha256"]:
@@ -264,7 +272,8 @@ def run_experiment(output, backend):
         records["revised_cost_record"] = write_record(output, sample, "revised_cost", revised,
                                                        digest(output / "revised-cost.json"), frozen_hash)
         samples.append(dict(pair_id="dense_ns3_" + name, group_id="dense_tp8_" + name, split=sample["split"], scenario="dense",
-                            attribution="Fixed per-collective offset fitted only on calibration request; same-cost timing unchanged", **records))
+                            attribution=("Previously frozen offset reused without refit; same-cost timing unchanged" if existing_calibration is not None else
+                                         "Fixed per-collective offset fitted only on calibration request; same-cost timing unchanged"), **records))
         row = dict(sample=name, split=sample["split"], prefill_tokens=sample["prefill_tokens"], decode_tokens=sample["decode_tokens"],
                    reference_s=predictions["reference"]["e2e_s"], old_s=predictions["old"]["e2e_s"],
                    same_cost_s=predictions["same_cost"]["e2e_s"], revised_cost_s=revised["e2e_s"])
@@ -291,6 +300,7 @@ def run_experiment(output, backend):
         old_mean_relative_error=result["old_mean_relative_error"], same_cost_mean_relative_error=result["same_cost_mean_relative_error"],
         revised_mean_relative_error=result["revised_mean_relative_error"],
         outcomes=result["outcomes"], offset_per_collective_s=read(calibration)["tp_cost_calibration"]["offset_s"],
+        calibration_refitted=existing_calibration is None,
         validation_dataset=relative(dataset), limitations=specification["limitations"], wall_time_s=time.perf_counter() - started)
     write_json(output / "simulation-report.json", report)
     git = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
@@ -311,8 +321,11 @@ def main():
     action.add_argument("--backend-evidence", type=Path)
     args = parser.parse_args()
     output = (ROOT / args.output).resolve()
-    if output == ROOT / "results/dag/phase8" or not output.is_relative_to(ROOT / "results/dag/phase8"):
-        parser.error("output must be a new directory below results/dag/phase8")
+    from scripts.dag_finalize.common import result_path
+    try:
+        output = result_path(output)
+    except ValueError as exc:
+        parser.error(str(exc))
     if args.prepare:
         prepare_experiment(output)
         return 0

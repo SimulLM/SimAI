@@ -17,7 +17,8 @@ def rows(path):
         return list(csv.DictReader(stream))
 
 
-def command(destination, profiles, trace):
+def command(destination, profiles, trace, config_dir=None):
+    config_dir = config_dir or ROOT / "configs/dag/phase8"
     cmd = cli_command("dag_expanded", destination, profiles, trace, replicas=4)
     for option in ("--sarathi_scheduler_config_chunk_size", "--sarathi_scheduler_config_batch_size_cap"):
         index = cmd.index(option)
@@ -25,9 +26,9 @@ def command(destination, profiles, trace):
     cmd[cmd.index("--replica_scheduler_config_type") + 1] = "split_wise"
     cmd += ["--global_scheduler_config_type", "split_wise", "--replica_config_pd_node_ratio", "0.5",
             "--split_wise_replica_scheduler_config_batch_size_cap", "4",
-            "--dag_pd_config", str(ROOT / "configs/dag/phase8/pd.json"),
-            "--dag_moe_config", str(ROOT / "configs/dag/phase8/moe.json"),
-            "--dag_resource_config", str(ROOT / "configs/dag/phase8/resources.json")]
+            "--dag_pd_config", str(config_dir / "pd.json"),
+            "--dag_moe_config", str(config_dir / "moe.json"),
+            "--dag_resource_config", str(config_dir / "resources.json")]
     return [sys.executable, str(ROOT / "scripts/dag_phase8/profile_cli.py"),
             "--performance-output", str(destination / "performance.json"), *cmd[3:]]
 
@@ -114,12 +115,12 @@ def check_artifacts(folder, expected_requests, *, require_backpressure=False):
                 simulated_final_time_s=execution["final_time_s"])
 
 
-def run_case(output, profiles, name, requests, *, require_backpressure=False):
+def run_case(output, profiles, name, requests, *, require_backpressure=False, config_dir=None):
     folder = output / name
     folder.mkdir()
     trace = folder / "requests.csv"
     write_csv(trace, [dict(arrived_at=t, num_prefill_tokens=p, num_decode_tokens=d) for t, p, d in requests])
-    _, result = run_cli(command(folder / "cli", profiles, trace), folder / "cli")
+    _, result = run_cli(command(folder / "cli", profiles, trace, config_dir), folder / "cli")
     report = check_artifacts(result, requests, require_backpressure=require_backpressure)
     report.update(name=name, output=str(result.relative_to(output)), **read(folder / "cli/performance.json"))
     write_json(folder / "checks.json", report)

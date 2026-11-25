@@ -168,8 +168,11 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve()
-    if output == ROOT/"results/dag/phase8" or not output.is_relative_to(ROOT/"results/dag/phase8"):
-        parser.error("output must be a new directory below results/dag/phase8")
+    from scripts.dag_finalize.common import result_path
+    try:
+        output = result_path(output)
+    except ValueError as exc:
+        parser.error(str(exc))
     before = Evidence(archive=args.before_archive, run_dir=args.before_run)
     after = Evidence(run_dir=args.after_run)
     try:

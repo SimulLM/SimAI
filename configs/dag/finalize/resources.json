@@ -1,0 +1,8 @@
+{
+  "endpoints": {"gpu:0:0:0": "fabric", "gpu:1:0:0": "fabric", "gpu:2:0:0": "fabric", "gpu:3:0:0": "fabric"},
+  "independent_comm": [],
+  "ep_groups": {
+    "prefill": {"members": ["gpu:0:0:0", "gpu:1:0:0"], "bandwidth_bytes_per_s": {"prefill": 1000000000, "decode": 1000000000}, "evidence": "Synthetic shared NIC acceptance fixture"},
+    "decode": {"members": ["gpu:2:0:0", "gpu:3:0:0"], "bandwidth_bytes_per_s": {"prefill": 1000000000, "decode": 1000000000}, "evidence": "Synthetic shared NIC acceptance fixture"}
+  }
+}

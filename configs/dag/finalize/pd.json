@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0", "storage_dtype": "float16", "capacity_bytes_per_shard": 33554432,
+  "bandwidth_bytes_per_s": 1000000000, "latency_s": 0.001, "occupies_gpu": true,
+  "evidence": "Synthetic joint capacity/backpressure test; not measured hardware"
+}

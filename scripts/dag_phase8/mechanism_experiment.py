@@ -40,7 +40,7 @@ def option(command, name, value):
 
 
 def source_hashes():
-    paths = {p for name in ("schemas/dag", "vidur-alibabacloud/vidur", "scripts/dag_phase4", "scripts/dag_phase8")
+    paths = {p for name in ("schemas/dag", "vidur-alibabacloud/vidur", "scripts/dag_phase4", "scripts/dag_phase8", "scripts/dag_finalize", "configs/dag/finalize")
              for p in (ROOT / name).rglob("*") if p.is_file() and p.suffix in (".py", ".json") and "__pycache__" not in p.parts}
     paths.add(SPEC)
     paths.update((ROOT / "configs/dag/phase8").glob("*.json"))
@@ -331,8 +331,11 @@ def main(argv=None):
     if args.prepare_only and args.run_prepared:
         parser.error("choose only one preparation option")
     output = (ROOT / args.output).resolve()
-    if output == ROOT / "results/dag/phase8" or not output.is_relative_to(ROOT / "results/dag/phase8"):
-        parser.error("output must be below results/dag/phase8")
+    from scripts.dag_finalize.common import result_path
+    try:
+        output = result_path(output)
+    except ValueError as exc:
+        parser.error(str(exc))
     started = time.perf_counter()
     if not args.run_prepared:
         specification = (ROOT / args.spec).resolve()

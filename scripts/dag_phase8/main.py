@@ -25,7 +25,7 @@ def source_hashes():
     folders = ("schemas/dag", "vidur-alibabacloud/vidur", "configs/dag", "scripts/dag_phase1",
                "scripts/dag_phase2", "scripts/dag_phase3", "scripts/dag_phase4", "scripts/dag_phase5",
                "scripts/dag_phase6", "scripts/dag_phase7", "scripts/dag_phase8", "tests/dag",
-               "tests/fixtures/dag", "docs/dag/phase8")
+               "tests/fixtures/dag", "docs/dag/phase8", "scripts/dag_finalize", "configs/dag/finalize")
     files = {p for folder in folders for p in (ROOT / folder).rglob("*") if p.is_file()
              and p.suffix in (".py", ".json", ".csv", ".txt", ".md") and "__pycache__" not in p.parts}
     files.update((ROOT / "tests/test_dag_phase1_contracts.py", ROOT / "baseline-data/manifest.json",
@@ -47,9 +47,13 @@ def input_hashes(dataset):
     return hashes(ROOT, files)
 
 
-def regression(output):
+def regression(output, pytest_basetemp=None):
+    from scripts.dag_finalize.common import allocate_pytest_temp
+    temporary = allocate_pytest_temp(pytest_basetemp)
+    write_json(output / "pytest-temp.json", dict(path=str(temporary), owned=True,
+        policy="exclusive new project-cache directory, independent of result path"))
     command = [sys.executable, "-m", "pytest", "tests/test_dag_phase1_contracts.py", "tests/dag", "-q",
-               "-p", "no:cacheprovider", "--basetemp", str(output / "pytest-tmp"),
+               "-p", "no:cacheprovider", "--basetemp", str(temporary),
                "--junitxml", str(output / "pytest.xml")]
     write_json(output / "pytest-command.json", command)
     with (output / "pytest.log").open("w", encoding="utf-8") as stream:
@@ -93,7 +97,14 @@ def main(argv=None):
     parser.add_argument("--validation-data", type=Path, default=ROOT / "configs/dag/phase8/validation.json")
     parser.add_argument("--repro-python", type=Path, help="Python from a separate clean virtual environment")
     parser.add_argument("--smoke", action="store_true", help="single joint CLI replay; not full acceptance")
+    parser.add_argument("--pytest-basetemp", type=Path, help="New directory below project .cache; defaults to a short exclusive path")
     args = parser.parse_args(argv)
+    if args.pytest_basetemp is not None:
+        from scripts.dag_finalize.common import validate_pytest_temp
+        try:
+            validate_pytest_temp(args.pytest_basetemp)
+        except (ValueError, OSError) as exc:
+            parser.error(str(exc))
     output = (ROOT / args.output).resolve()
     dataset = (ROOT / args.validation_data).resolve()
     if not output.is_relative_to(ROOT / "results/dag/phase8") or output == ROOT / "results/dag/phase8":
@@ -140,7 +151,7 @@ def main(argv=None):
             print("Measuring export snapshot overhead", flush=True)
             measure(output)
             print("Running complete phase 1-8 regression", flush=True)
-            report["regression"] = regression(output)
+            report["regression"] = regression(output, args.pytest_basetemp)
             if args.repro_python:
                 print("Replaying in a separate clean environment", flush=True)
                 report["reproduction_status"] = replay(output, args.repro_python, dataset, report["joint_cases"][0])["status"]
