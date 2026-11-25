@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "requests": [
+    {
+      "index": 0,
+      "input_sha256": "97f4e1e044cfc408d74eb48924399f39dcc2351250b87f7ad828718519727826",
+      "prefill_backend_id": "cmpl-a54b3a6fc5504712a37dd9688fee1577-0",
+      "decode_backend_id": "cmpl-fa0226ef2ce243a98cc1e1d119d5b7d8-0",
+      "insert_ns": 1788566530966496,
+      "match_ns": 1788566829375677,
+      "kv_ready_ns": 1788566866852298,
+      "key_sample_sha256": "9dad612d73527b5814065ab1b2f6385481dca57a718fddfd449a3c34d557bb68",
+      "value_sample_sha256": "5a1cc8ae42a5c484ce0a1bb8dc34ae4453b4b04d04b612c5c4af7b8083852fcb",
+      "hidden_sample_sha256": "d29dd434fcb2993d672ce304547254a95bb96955e80e1162bc66847294b6a4d1"
+    },
+    {
+      "index": 1,
+      "input_sha256": "da0df523797423c4e53fc43ed8c253328658827dce91c1ec37b0e68c5f98fec6",
+      "prefill_backend_id": "cmpl-11ff16ef6adf4bcb9ac87847b885e536-0",
+      "decode_backend_id": "cmpl-0e15e8cb92e548f799dd746332e8f67d-0",
+      "insert_ns": 1788566539945348,
+      "match_ns": 1788566865049618,
+      "kv_ready_ns": 1788566866852298,
+      "key_sample_sha256": "d7d0c66b062f8234aa9b04038a1503e4c72d6689dfb9db78af84d4ca32be9a03",
+      "value_sample_sha256": "82dca7e32a855aa9746b45570c7a9e91e36c80e8ad1680314224b3cb23ed3fb5",
+      "hidden_sample_sha256": "33dfe56183336528ba25e0676d12f611d0f5d9eb968a992d2ec9b03a633e6392"
+    },
+    {
+      "index": 2,
+      "input_sha256": "72968c0c2c66aea4435d78506e898a1b9aeec3165b1fdcbdf0437071f9fc66bd",
+      "prefill_backend_id": "cmpl-809c30ac01904af1a7ef5fbb8229f9de-0",
+      "decode_backend_id": "cmpl-bcd2a4fdf9494c9590e41106799ba8c1-0",
+      "insert_ns": 1788566701462949,
+      "match_ns": 1788566904281536,
+      "kv_ready_ns": 1788566938807767,
+      "key_sample_sha256": "c0c36e448a9f780ee25c51d0335a92e1d55a9b077de143f8e0ff54637521f82c",
+      "value_sample_sha256": "e168c7caf6cef6d51d95c0a8578d67d22103eae6bb8e2d90a9bbd6dd1f3a6862",
+      "hidden_sample_sha256": "13a9fa4b27d3831169b6137d853c4ec39b84049a8a7f7cda31251d9793779cbf"
+    },
+    {
+      "index": 3,
+      "input_sha256": "3d32dcb1d7b13bac1b5e1e9ce833fef21b6fb3e628057809805e45d3615adb6b",
+      "prefill_backend_id": "cmpl-63c77cbe1e5c402eb7da9574b2f8e374-0",
+      "decode_backend_id": "cmpl-a4aa8a3c20c64de1b99cd1f779ecbd3b-0",
+      "insert_ns": 1788566709900532,
+      "match_ns": 1788566937008885,
+      "kv_ready_ns": 1788566938807767,
+      "key_sample_sha256": "1c638e7f0da1568c14e432f7b9f7428b0069adbf7980cf9c17d2fab9fd6f04ee",
+      "value_sample_sha256": "e2e02b8ae9694b89282c12043114083e4ccbd174fe1ce1356edb733101ea7f61",
+      "hidden_sample_sha256": "f27b128d9cdc076bf1329b386675db4a61665d8422031068faa769693dcd4939"
+    }
+  ],
+  "notes": "SHA256 covers token IDs and selected K/V/hidden slices, not complete tensors. Synchronizing diagnostic only."
+}

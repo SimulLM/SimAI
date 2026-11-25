@@ -16,7 +16,8 @@
     "model_boundary_profile": "docs/dag_defense/environment/diagnostics/compute-extra-20261126/",
     "cpu_profile": "docs/dag_defense/environment/diagnostics/cpu-profile-20261126/",
     "kv_profile": "docs/dag_defense/environment/diagnostics/kv-pipe-profile-20261126/",
-    "fee_parity": "/root/autodl-tmp/dag-handoff/runs/pd-same-cost-synthetic-v4-20261126/result.json"
+    "fee_parity": "/root/autodl-tmp/dag-handoff/runs/pd-same-cost-synthetic-v4-20261126/result.json",
+    "concurrent_kv_mapping": "docs/dag_defense/environment/diagnostics/pd-kv-mapping-v3-20261126/"
   },
   "items": [
     {
@@ -51,9 +52,9 @@
     },
     {
       "name": "request_batch_and_transfer_identity",
-      "status": "blocked",
-      "finding": "Router and backend IDs mapped for single and four concurrent requests; KV transfer insertion events identify batches but not each tensor within a batch. SimpleBuffer matches token prefixes.",
-      "remaining": "Prove per-request tensor association for concurrent unique inputs and reject ambiguous matches."
+      "status": "diagnostic_passed",
+      "finding": "Four unique equal-length 2048-token requests were mapped through producer and consumer batches using token SHA256; selected K, V and hidden slices matched between source and target, with distinct sample hashes per request and GPU-synchronized KVReady.",
+      "remaining": "Full-tensor hashes and arbitrary shared-prefix/mixed-length workloads were not tested. Formal run requires low-overhead request/batch trace and the frozen input set must avoid ambiguous prefix matches."
     },
     {
       "name": "arrival_completion_and_token_semantics",
