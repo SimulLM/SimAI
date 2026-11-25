@@ -11,3 +11,6 @@ docs/dag/phase8/figures/dag-mechanism-expanded.svg text eol=lf
 docs/dag/phase8/figures/dag-mechanism-policy.svg text eol=lf
 docs/dag/phase8/artifacts/dag-fcfs-fix.html text eol=lf
 docs/dag/phase8/figures/dag-fcfs-fix.svg text eol=lf
+
+# Preserve exact bytes of experiment evidence and checksum manifests.
+docs/dag_defense/environment/diagnostics/** -text

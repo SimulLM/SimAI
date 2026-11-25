@@ -1,0 +1,1 @@
+{"id":"cmpl-9766130d50db4300a3900724e039b2c0","object":"text_completion","created":1795633070,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" a city","logprobs":null,"finish_reason":"length","stop_reason":null,"prompt_logprobs":null}],"usage":{"prompt_tokens":6,"total_tokens":8,"completion_tokens":2,"prompt_tokens_details":null}}

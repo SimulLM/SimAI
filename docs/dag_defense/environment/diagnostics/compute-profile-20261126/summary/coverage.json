@@ -1,0 +1,13 @@
+{
+  "requests": 2900,
+  "matched_requests": 2900,
+  "unmapped_steps": 2,
+  "mixed_steps": 0,
+  "missing_or_repeated_phase_requests": 0,
+  "samples_recorded": 2861,
+  "eligible_shape_count": 47,
+  "partial_shape_count": 0,
+  "rope_theta": 10000.0,
+  "rope_scaling": null,
+  "method": "diagnostic eager, selected layer 16, CUDA events, synchronization after each model step"
+}

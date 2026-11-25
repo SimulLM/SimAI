@@ -1,0 +1,2 @@
+completed n=512 batch=2 waves=40 requests=80
+completed n=512 batch=4 waves=40 requests=240
