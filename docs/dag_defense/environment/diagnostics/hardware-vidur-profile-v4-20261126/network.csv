@@ -1,0 +1,2 @@
+collective,num_workers,devices_per_node,size,time_stats.send_recv.median,time_stats.all_reduce.median
+send_recv,1,2,1,0.0,0.0

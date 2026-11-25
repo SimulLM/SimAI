@@ -290,6 +290,14 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
 
     def _get_compute_df_with_derived_features(self, df: pd.DataFrame) -> pd.DataFrame:
         df_with_derived_features = df.copy()
+        if "phase" in df_with_derived_features.columns:
+            df_with_derived_features["phase_code"] = (
+                df_with_derived_features["phase"].map({"prefill": 0, "decode": 1}).astype(int)
+            )
+        if "input_tokens" in df_with_derived_features.columns:
+            df_with_derived_features["input_tokens"] = df_with_derived_features[
+                "input_tokens"
+            ].astype(int)
         return df_with_derived_features
 
     def _get_attention_df_with_derived_features(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -559,6 +567,12 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         compute_df = self._load_compute_df(self._compute_input_file)
         # print(f"> Debug: self._compute_input_file={self._compute_input_file}, compute_df={compute_df}")
         compute_df = self._get_compute_df_with_derived_features(compute_df)
+        self._compute_profile_has_context = "input_tokens" in compute_df.columns
+        compute_feature_cols = (
+            ["phase_code", "num_tokens", "input_tokens"]
+            if self._compute_profile_has_context
+            else ["num_tokens"]
+        )
         # print(f"> Debug: self._compute_input_file={self._compute_input_file}, compute_df={compute_df}")
 
         models = {}
@@ -581,7 +595,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             models[model_name] = self._train_model(
                 model_name=model_name,
                 df=compute_df,
-                feature_cols=["num_tokens"],
+                feature_cols=compute_feature_cols,
                 target_col=f"time_stats.{model_name}.median",
             )
 
@@ -823,6 +837,12 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
 
     def _predict_for_compute_models(self) -> Dict[str, Any]:
         predictions = {}
+
+        # Context-aware compute profiles are queried directly from the fitted
+        # estimators in _get_compute_prediction; precomputing a legacy
+        # num_tokens-only grid would drop phase/context feature columns.
+        if getattr(self, "_compute_profile_has_context", False):
+            return predictions
 
         model_names = [
             "attn_pre_proj",
@@ -1263,34 +1283,51 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
 
     # 线性层和激活层直接用total_num_tokens预测
     # Predict directly with total_num_tokens for the linear layer and activation layer.
+    def _get_compute_prediction(self, name: str, batch: Batch) -> float:
+        if not getattr(self, "_compute_profile_has_context", False):
+            return self._predictions[name][(batch._total_num_tokens_rounded,)]
+        phase = 0 if batch.num_prefill_tokens > 0 else 1
+        if phase == 0:
+            context = round(batch.num_prefill_tokens / batch.size)
+        else:
+            context = round(
+                sum(r.num_processed_prefill_tokens for r in batch.requests) / batch.size
+            )
+        x = pd.DataFrame(
+            [{
+                "phase_code": phase,
+                "num_tokens": batch._total_num_tokens_rounded,
+                "input_tokens": max(1, context),
+            }]
+        )
+        return float(self._models[name].predict(x)[0])
+
     def _get_attention_layer_pre_proj_execution_time(self, batch: Batch) -> float:
-        return self._predictions["attn_pre_proj"][(batch._total_num_tokens_rounded,)]
+        return self._get_compute_prediction("attn_pre_proj", batch)
 
     def _get_attention_layer_post_proj_execution_time(self, batch: Batch) -> float:
-        return self._predictions["attn_post_proj"][(batch._total_num_tokens_rounded,)]
+        return self._get_compute_prediction("attn_post_proj", batch)
 
     def _get_mlp_layer_up_proj_execution_time(self, batch: Batch) -> float:
-        return self._predictions["mlp_up_proj"][(batch._total_num_tokens_rounded,)]
+        return self._get_compute_prediction("mlp_up_proj", batch)
 
     def _get_mlp_layer_down_proj_execution_time(self, batch: Batch) -> float:
-        return self._predictions["mlp_down_proj"][(batch._total_num_tokens_rounded,)]
+        return self._get_compute_prediction("mlp_down_proj", batch)
 
     def _get_mlp_layer_act_execution_time(self, batch: Batch) -> float:
-        return self._predictions["mlp_act"][(batch._total_num_tokens_rounded,)]
+        return self._get_compute_prediction("mlp_act", batch)
 
     def _get_attn_norm_layer_act_execution_time(self, batch: Batch) -> float:
-        return self._predictions["input_layernorm"][(batch._total_num_tokens_rounded,)]
+        return self._get_compute_prediction("input_layernorm", batch)
 
     def _get_mlp_norm_layer_act_execution_time(self, batch: Batch) -> float:
         if not self._model_config.post_attn_norm:
             return 0
 
-        return self._predictions["post_attention_layernorm"][
-            (batch._total_num_tokens_rounded,)
-        ]
+        return self._get_compute_prediction("post_attention_layernorm", batch)
 
     def _get_add_layer_act_execution_time(self, batch: Batch) -> float:
-        return self._predictions["add"][(batch._total_num_tokens_rounded,)]
+        return self._get_compute_prediction("add", batch)
 
     # profiling得到是单个allreduce在bytes上的时间
     # 模型训练得到的是(num_token -> 单次allreduce time)的映射 
@@ -1314,14 +1351,17 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             raise e
 
     def _get_attention_rope_execution_time(self, batch: Batch) -> float:
-        return 0
-        # return self._predictions["attn_rope"][(batch._total_num_tokens_rounded,)]
+        if "attn_rope" not in self._models:
+            return 0
+        return self._get_compute_prediction("attn_rope", batch)
 
     def _get_attention_kv_cache_save_execution_time(self, batch: Batch) -> float:
         # don't use round up to the nearest multiple of 8 here, because we want to
         # predict the execution time for the exact number of tokens
         num_tokens = sum(batch.num_tokens)
 
+        if "attn_kv_cache_save" not in self._predictions:
+            return 0
         return self._predictions["attn_kv_cache_save"][(num_tokens,)]
 
     def _get_attention_decode_execution_time(self, batch: Batch) -> float:

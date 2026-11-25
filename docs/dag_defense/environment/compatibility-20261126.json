@@ -19,7 +19,8 @@
     "fee_parity": "/root/autodl-tmp/dag-handoff/runs/pd-same-cost-synthetic-v4-20261126/result.json",
     "concurrent_kv_mapping": "docs/dag_defense/environment/diagnostics/pd-kv-mapping-v3-20261126/",
     "request_calibration": "docs/dag_defense/calibration-20261126/",
-    "arrival_replay": "docs/dag_defense/environment/diagnostics/arrival-replay-v2-20261126/"
+    "arrival_replay": "docs/dag_defense/environment/diagnostics/arrival-replay-v2-20261126/",
+    "hardware_profile_v4": "docs/dag_defense/environment/diagnostics/hardware-vidur-profile-v4-20261126/"
   },
   "items": [
     {
@@ -38,7 +39,7 @@
       "name": "fused_norm_and_attention",
       "status": "blocked",
       "finding": "Actual vLLM uses fused residual/RMSNorm and a combined attention/KV interval; predictor expects separate add, norm, attention and cache fields. Batched prefill uses sqrt(sum(length^2)) in predictor.",
-      "remaining": "Define and validate mapping and interpolation, particularly multi-request prefill; record approximation limits."
+      "remaining": "Fused operation mapping is explicit and context-aware profile smoke passes, but common server-arrival replay still overpredicts; validate overlap and service boundary before freeze."
     },
     {
       "name": "model_boundary_and_sampling",

@@ -1,0 +1,7 @@
+{
+  "status": "diagnostic_profile_smoke_completed",
+  "formal_validation": false,
+  "profile": "/root/autodl-tmp/dag-handoff/runs/hardware-vidur-profile-v4-20261126",
+  "dag_exit": 0,
+  "baseline_exit": 0
+}
