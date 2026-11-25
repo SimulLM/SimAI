@@ -567,6 +567,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         compute_df = self._load_compute_df(self._compute_input_file)
         # print(f"> Debug: self._compute_input_file={self._compute_input_file}, compute_df={compute_df}")
         compute_df = self._get_compute_df_with_derived_features(compute_df)
+        self._compute_profile_df = compute_df.copy()
         self._compute_profile_has_context = "input_tokens" in compute_df.columns
         compute_feature_cols = (
             ["phase_code", "num_tokens", "input_tokens"]
@@ -657,6 +658,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         cpu_overhead_df = self._get_cpu_overhead_df_with_derived_features(
             cpu_overhead_df
         )
+        self._cpu_profile_df = cpu_overhead_df.copy()
         self._cpu_profile_has_phase = "phase_code" in cpu_overhead_df.columns
         self._cpu_profile_has_context = "input_tokens" in cpu_overhead_df.columns
         if self._cpu_profile_has_context:
@@ -684,6 +686,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
     def _train_attention_layer_models(self) -> Dict[str, BaseEstimator]:
         attention_df = self._load_attention_df(self._attention_input_file)
         attention_df = self._get_attention_df_with_derived_features(attention_df)
+        self._attention_profile_df = attention_df.copy()
         prefill_df = attention_df[~attention_df["is_decode"]]
         decode_df = attention_df[attention_df["is_decode"]]
 
@@ -1284,23 +1287,24 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
     # 线性层和激活层直接用total_num_tokens预测
     # Predict directly with total_num_tokens for the linear layer and activation layer.
     def _get_compute_prediction(self, name: str, batch: Batch) -> float:
-        if not getattr(self, "_compute_profile_has_context", False):
-            return self._predictions[name][(batch._total_num_tokens_rounded,)]
-        phase = 0 if batch.num_prefill_tokens > 0 else 1
-        if phase == 0:
-            context = round(batch.num_prefill_tokens / batch.size)
-        else:
-            context = round(
-                sum(r.num_processed_prefill_tokens for r in batch.requests) / batch.size
-            )
-        x = pd.DataFrame(
-            [{
-                "phase_code": phase,
-                "num_tokens": batch._total_num_tokens_rounded,
-                "input_tokens": max(1, context),
-            }]
-        )
-        return float(self._models[name].predict(x)[0])
+        if getattr(self, "_compute_profile_has_context", False):
+            phase = 0 if batch.num_prefill_tokens > 0 else 1
+            context = (round(batch.num_prefill_tokens / batch.size) if phase == 0 else
+                       round(sum(r.num_processed_prefill_tokens for r in batch.requests) / batch.size))
+            total = int(batch._total_num_tokens_rounded)
+            actual_total = int(batch.total_num_tokens)
+            column = f"time_stats.{name}.median"
+            df = getattr(self, "_compute_profile_df", None)
+            if df is not None and column in df.columns:
+                direct = df[(df["phase_code"] == phase) &
+                            (df["input_tokens"] == context) &
+                            (df["num_tokens"].isin((actual_total, total)))]
+                if not direct.empty:
+                    return float(direct[column].median())
+            x = pd.DataFrame([{"phase_code": phase, "num_tokens": total,
+                               "input_tokens": max(1, context)}])
+            return float(self._models[name].predict(x)[0])
+        return self._predictions[name][(batch._total_num_tokens_rounded,)]
 
     def _get_attention_layer_pre_proj_execution_time(self, batch: Batch) -> float:
         return self._get_compute_prediction("attn_pre_proj", batch)
@@ -1371,6 +1375,13 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         ) = self._get_batch_decode_attention_params(batch)
         if decode_batch_size == 0:
             return 0
+        df = getattr(self, "_attention_profile_df", None)
+        if df is not None:
+            direct = df[(df["is_decode"]) & (df["batch_size"] == decode_batch_size) &
+                        (df["kv_cache_size"] == decode_avg_kv_cache_size)]
+            if not direct.empty:
+                return float(direct["time_stats.attn_decode.median"].median()) * (
+                    1 + self._attention_decode_batching_overhead_fraction * int(decode_batch_size > 1))
         # TODO(tianhao909): add decode output logging
         # TODO(tianhao909): 添加 decode 输出日志
         return self._predictions["attn_decode"][
@@ -1392,6 +1403,13 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
 
         agg_kv_cache_size = sum(kv_cache_sizes)
         agg_prefill_chunk_size = sum([x**2 for x in prefill_chunk_sizes]) ** 0.5
+        df = getattr(self, "_attention_profile_df", None)
+        if df is not None:
+            direct = df[(~df["is_decode"]) & (df["kv_cache_size"] == agg_kv_cache_size) &
+                        (df["prefill_chunk_size_squared"] == round(agg_prefill_chunk_size) ** 2)]
+            if not direct.empty:
+                return float(direct["time_stats.attn_prefill.median"].median()) * (
+                    1 + self._attention_prefill_batching_overhead_fraction * int(len(prefill_params) > 1))
 
         return self._predictions["attn_prefill"][
             (agg_kv_cache_size, round(agg_prefill_chunk_size) ** 2)
@@ -1412,6 +1430,15 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
 
         if getattr(self, "_cpu_profile_has_context", False):
             phase = 0 if batch.num_prefill_tokens > 0 else 1
+            context = (round(batch.num_prefill_tokens / batch.size) if phase == 0 else
+                       round(sum(r.num_processed_prefill_tokens for r in batch.requests) / batch.size))
+            df = getattr(self, "_cpu_profile_df", None)
+            target = "ray_comm_time_mean" if name == "ray_comm_time" else f"{name}_median"
+            if df is not None and target in df.columns:
+                direct = df[(df["phase_code"] == phase) & (df["batch_size"] == batch.size) &
+                            (df["input_tokens"] == context)]
+                if not direct.empty:
+                    return float(direct[target].median())
             if phase == 0:
                 context = round(batch.num_prefill_tokens / batch.size)
             else:

@@ -1,0 +1,91 @@
+{
+  "status": "candidate_hardware_profile_v6_aggregate_step_corrected",
+  "model": "NousResearch/Llama-2-7b-hf",
+  "revision": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d",
+  "dtype": "float16",
+  "hardware": "NVIDIA H800 PCIe; GPU0/GPU1; TP1",
+  "mapping_contract": {
+    "version": "v1",
+    "rope_policy": "merge_into_attn_pre_proj",
+    "attention_policy": "combined_interval_to_phase_attention",
+    "kv_save_policy": "zero_when_combined_attention_includes_kv",
+    "boundary_policy": "synchronized_sampler_cpu_only",
+    "residual_policy": "fused_norm_bucket_and_zero_add"
+  },
+  "source_files": [
+    "/root/autodl-tmp/dag-handoff/runs/compute-profile-summary-20261126/samples.csv",
+    "/root/autodl-tmp/dag-handoff/runs/compute-profile-summary-20261126/samples.csv",
+    "/root/autodl-tmp/dag-handoff/runs/cpu-profile-summary-v2-20261126/samples.csv",
+    "/root/autodl-tmp/dag-handoff/runs/cpu-exclusive-summary-20261126/summary.csv"
+  ],
+  "source_sha256": {
+    "/root/autodl-tmp/dag-handoff/runs/compute-profile-summary-20261126/samples.csv": "0da517d984a0a5ef7b2f86029ae00417baad5f50d2bac140f9f4a4c7b66bda39",
+    "/root/autodl-tmp/dag-handoff/runs/cpu-profile-summary-v2-20261126/samples.csv": "e2dcc39178eecc0177e2bc3b6752d3ffb320a2de02e00ce32fb35ab95b752994"
+  },
+  "files": {
+    "compute.csv": "0d34e5f58230d9589c211f5e16b0452c3c040ceeeb861e403c8d2bddd06f4624",
+    "attention.csv": "3b0018d574468fb2741e5723733ba426475db39848e76da77e3d7036c5b3781e",
+    "cpu.csv": "cb5d964a2af3edfff0d0289e848ad4520fae5304c462375a7d178c9f3c761a55",
+    "network.csv": "51b107cda87c210f7bb411430464327abd00935e3266288f9e07b1def55d416b"
+  },
+  "coverage": {
+    "compute_rows": 47,
+    "attention_rows": 47,
+    "cpu_rows": 17
+  },
+  "limitations": [
+    "diagnostic CUDA-event synchronization perturbs timing",
+    "combined attention includes FlashAttention/KV work; cache-save is zero to avoid double count",
+    "sampler_host_call is an inclusive boundary bucket and is not pure CPU time",
+    "router/frontend/IPC and non-KV PD payloads are outside this profile",
+    "sampler values use a separate synchronized diagnostic; synchronization changes execution and is diagnostic only"
+  ],
+  "aggregate_step_evidence": "/root/autodl-tmp/dag-handoff/runs/compute-total-default-v2-20261126/compute-events-52902.jsonl",
+  "aggregate_step_policy": "scale per-phase/context/batch compute and attention rows to independent outer CUDA-event model_step median; no request completion times",
+  "aggregate_step_scales": {
+    "decode:512:1": 9.855551719665527,
+    "decode:512:2": 10.47873592376709,
+    "decode:512:4": 11.318687915802002,
+    "decode:513:1": 9.710192203521729,
+    "decode:513:2": 10.312560081481934,
+    "decode:513:4": 11.129712104797363,
+    "decode:575:1": 10.072815895080566,
+    "decode:575:2": 10.57473611831665,
+    "decode:575:4": 11.368319988250732,
+    "decode:576:1": 9.998816013336182,
+    "decode:576:2": 10.420912265777588,
+    "decode:576:4": 11.120880126953125,
+    "decode:638:1": 10.204975605010986,
+    "decode:638:2": 10.881279945373535,
+    "decode:638:4": 11.740368366241455,
+    "decode:639:1": 10.113359928131104,
+    "decode:639:2": 10.675071716308594,
+    "decode:639:4": 11.42199993133545,
+    "decode:1024:1": 10.707120418548584,
+    "decode:1024:2": 11.477231979370117,
+    "decode:1024:4": 12.727824211120605,
+    "decode:1025:1": 10.490911960601807,
+    "decode:1025:2": 11.294320106506348,
+    "decode:1025:4": 12.051551818847656,
+    "decode:2048:1": 11.637871742248535,
+    "decode:2048:2": 13.13046407699585,
+    "decode:2048:4": 14.831200122833252,
+    "decode:2049:1": 11.37828779220581,
+    "decode:2049:2": 12.486176013946533,
+    "decode:2049:4": 14.259024143218994,
+    "prefill:512:1": 22.669487953186035,
+    "prefill:512:2": 36.43320083618164,
+    "prefill:512:4": 70.99774551391602,
+    "prefill:575:1": 26.077856063842773,
+    "prefill:575:2": 40.677310943603516,
+    "prefill:575:4": 80.20155334472656,
+    "prefill:638:1": 26.670239448547363,
+    "prefill:638:2": 46.02449607849121,
+    "prefill:638:4": 89.116943359375,
+    "prefill:1024:1": 37.576255798339844,
+    "prefill:1024:2": 74.27566528320312,
+    "prefill:1024:4": 153.37667846679688,
+    "prefill:2048:1": 77.29289627075195,
+    "prefill:2048:2": 172.90379333496094
+  }
+}
