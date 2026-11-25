@@ -18,7 +18,8 @@
     "kv_profile": "docs/dag_defense/environment/diagnostics/kv-pipe-profile-20261126/",
     "fee_parity": "/root/autodl-tmp/dag-handoff/runs/pd-same-cost-synthetic-v4-20261126/result.json",
     "concurrent_kv_mapping": "docs/dag_defense/environment/diagnostics/pd-kv-mapping-v3-20261126/",
-    "request_calibration": "docs/dag_defense/calibration-20261126/"
+    "request_calibration": "docs/dag_defense/calibration-20261126/",
+    "arrival_replay": "docs/dag_defense/environment/diagnostics/arrival-replay-v2-20261126/"
   },
   "items": [
     {
@@ -60,8 +61,8 @@
     {
       "name": "arrival_completion_and_token_semantics",
       "status": "blocked",
-      "finding": "Router records arrival before body parse, complete after yielded backend SSE, and first token from continuous token usage. Simulator completion boundary and router overhead are not yet aligned.",
-      "remaining": "Build replay from actual server arrivals and verify client/server token timing and incomplete stream handling."
+      "finding": "Calibration server-arrival replay is now executable for 32 serial requests with both simulators; actual server completion and arrival events are paired by request ID.",
+      "remaining": "Predicted medians overestimate the service metric by about 37% for both versions; align inclusive CPU/model-boundary and router/service completion semantics before freeze."
     },
     {
       "name": "formal_inputs_costs_and_freeze",

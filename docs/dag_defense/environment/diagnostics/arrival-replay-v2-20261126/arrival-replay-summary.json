@@ -1,0 +1,21 @@
+{
+  "request_count": 32,
+  "metric": "server_complete-server_arrival_s",
+  "source": "calibration server_arrival/server_complete CLOCK_MONOTONIC",
+  "results": {
+    "dag": {
+      "actual_median_s": 0.841792883,
+      "predicted_median_s": 1.1584884924209518,
+      "mean_relative_error": 0.3673019505633181,
+      "median_relative_error": 0.37593762369724976,
+      "max_abs_relative_error": 0.40199578632624444
+    },
+    "baseline": {
+      "actual_median_s": 0.841792883,
+      "predicted_median_s": 1.154015199538975,
+      "mean_relative_error": 0.3617239558286533,
+      "median_relative_error": 0.37004793159619076,
+      "max_abs_relative_error": 0.3899691658020155
+    }
+  }
+}
