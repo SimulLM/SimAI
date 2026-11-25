@@ -1,0 +1,5 @@
+# Observed 1P1D diagnostic request
+
+On the two-H800 server, diagnostic proxy request b62114ec5fe44b73beee412953700ab3 mapped to prefill backend cmpl-a00d0c1316e14d1e901ba7dc84610c4d and decode backend cmpl-1e61b1f3d08442caa3468fd0cf3ff1a8. The backend excerpts show KV send and successful KV receipt near these requests, and the response reports HTTP 200, 6 prompt tokens, 8 generated tokens, and length termination. Sampling was temperature 0, seed 0, ignore EOS, min/max output length 8. This is a functional diagnostic, not the formal validation workload.
+
+The proxy uses CLOCK_MONOTONIC for API boundary timestamps. These do not establish GPU completion, KV-ready time, batch membership, payload size, or physical NCCL transport. The connector messages do not themselves include the request ID; the correspondence is supported by adjacent backend log records in this single diagnostic request, rather than an instrumented connector-level request mapping. Further instrumentation and transport evidence remain required. The proxy is diagnostic only, has fixed local paths and does not support streaming.

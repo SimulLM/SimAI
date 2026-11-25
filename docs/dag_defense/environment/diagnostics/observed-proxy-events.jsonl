@@ -1,0 +1,5 @@
+{"request_id": "b62114ec5fe44b73beee412953700ab3", "event": "server_arrival", "timestamp_ns": 1782922291810925, "clock_id": "CLOCK_MONOTONIC", "pid": 10331}
+{"request_id": "b62114ec5fe44b73beee412953700ab3", "event": "prefill_request_send", "timestamp_ns": 1782922292028863, "clock_id": "CLOCK_MONOTONIC", "pid": 10331}
+{"request_id": "b62114ec5fe44b73beee412953700ab3", "event": "prefill_response", "timestamp_ns": 1782922312711561, "clock_id": "CLOCK_MONOTONIC", "pid": 10331, "status": 200, "backend_request_id": "cmpl-a00d0c1316e14d1e901ba7dc84610c4d"}
+{"request_id": "b62114ec5fe44b73beee412953700ab3", "event": "decode_request_send", "timestamp_ns": 1782922312794638, "clock_id": "CLOCK_MONOTONIC", "pid": 10331}
+{"request_id": "b62114ec5fe44b73beee412953700ab3", "event": "server_complete", "timestamp_ns": 1782922395073223, "clock_id": "CLOCK_MONOTONIC", "pid": 10331, "status": 200, "backend_request_id": "cmpl-1e61b1f3d08442caa3468fd0cf3ff1a8"}
