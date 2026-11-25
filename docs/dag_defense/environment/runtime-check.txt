@@ -1,0 +1,7 @@
+transformers 5.24.1 rope {'rope_theta': 10000.0, 'rope_type': 'default'} rope_theta MISSING rope_scaling {'rope_theta': 10000.0, 'rope_type': 'default'}
+tokenizer LlamaTokenizer pad 0 unk 0
+INFO 11-26 01:22:47 [importing.py:53] Triton module has been replaced with a placeholder.
+INFO 11-26 01:22:48 [__init__.py:239] Automatically detected platform cuda.
+LLM import OK
+gpu 0 NVIDIA H800 PCIe sum 1047552 peer True
+gpu 1 NVIDIA H800 PCIe sum 1047552 peer True

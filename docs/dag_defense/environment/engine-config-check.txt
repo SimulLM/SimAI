@@ -1,0 +1,6 @@
+INFO 11-26 01:23:17 [__init__.py:239] Automatically detected platform cuda.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+INFO 11-26 01:23:26 [config.py:717] This model supports multiple tasks: {'reward', 'embed', 'generate', 'classify', 'score'}. Defaulting to 'generate'.
+INFO 11-26 01:23:26 [config.py:2003] Chunked prefill is enabled with max_num_batched_tokens=2048.
+WARNING 11-26 01:23:26 [cuda.py:93] To see benefits of async output processing, enable CUDA graph. Since, enforce-eager is enabled, async output processor cannot be used
+engine config OK torch.float16 4096
