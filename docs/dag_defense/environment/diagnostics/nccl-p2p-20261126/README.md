@@ -1,0 +1,5 @@
+# Independent NCCL send/receive check
+
+On 2026-11-26 on the new two-H800 PCIe server, torch 2.6.0+cu124 and NCCL 2.21.5 performed rank 0 GPU -> rank 1 GPU sends. For each of 256, 512 and 1024 MiB, 10 warmups preceded 30 recorded iterations; rank 1 verified the final full payload and the process exited 0. NCCL logs show SHM/direct/direct channels; GPU topology reports SYS. This is an independent torch.distributed diagnostic, not proof of the service connector's actual channel or a measurement of its KV layout and chunks. Both PD servers were resident but idle during the diagnostic.
+
+The CSVs contain per-rank CPU monotonic elapsed time around send/recv followed by CUDA synchronization, with a barrier before each sample; they include API and scheduling effects, not pure GPU event durations. Rank 1 medians were 7.24, 14.41 and 28.71 ms, respectively (payload divided by elapsed: approximately 37.07, 37.25 and 37.39 GB/s). Results are illustrative, not frozen simulator costs. The script and exact original NCCL output are retained; reruns should use a new output directory to avoid overwriting these files.
