@@ -1,0 +1,35 @@
+[
+  {
+    "event": "client_send",
+    "timestamp_ns": 1783831396639956,
+    "clock_id": "CLOCK_MONOTONIC",
+    "port": 18100
+  },
+  {
+    "event": "client_complete",
+    "timestamp_ns": 1783831427366470,
+    "clock_id": "CLOCK_MONOTONIC",
+    "port": 18100,
+    "status": 200
+  },
+  {
+    "event": "client_send",
+    "timestamp_ns": 1783831427634179,
+    "clock_id": "CLOCK_MONOTONIC",
+    "port": 18200
+  },
+  {
+    "event": "client_complete",
+    "timestamp_ns": 1783831705594193,
+    "clock_id": "CLOCK_MONOTONIC",
+    "port": 18200,
+    "status": 200
+  },
+  {
+    "event": "request_mapping",
+    "timestamp_ns": 1783831705894464,
+    "clock_id": "CLOCK_MONOTONIC",
+    "prefill_id": "cmpl-2ed742b22715452f97e53fe06d06f753",
+    "decode_id": "cmpl-a985252bae984772ad25174d035b626f"
+  }
+]

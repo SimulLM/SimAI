@@ -1,0 +1,22 @@
+{
+  "id": "cmpl-2ed742b22715452f97e53fe06d06f753",
+  "object": "text_completion",
+  "created": 1795631507,
+  "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+  "choices": [
+    {
+      "index": 0,
+      "text": " a",
+      "logprobs": null,
+      "finish_reason": "length",
+      "stop_reason": null,
+      "prompt_logprobs": null
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 6,
+    "total_tokens": 7,
+    "completion_tokens": 1,
+    "prompt_tokens_details": null
+  }
+}

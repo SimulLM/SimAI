@@ -1,0 +1,5 @@
+# Service KV transport diagnostic
+
+This repeats the preceding synchronous, eager, single-request diagnostic using the archived scripts with a fresh PD_RUN_DIR and per-process NCCL_DEBUG_FILE. The client exited 0, the verifier passed, and the server exit 143 records intentional SIGTERM after the request. See client-events.json for the two API IDs and the worker JSONL files for their batch IDs, GPU-synchronized milestones, tensor sizes, and decode steps.
+
+NCCL logs from the service's own PyNccl connector identify communicator rank 0 -> rank 1 as SHM/direct/direct; reverse direction was also SHM/direct/direct. In this diagnostic GPU0 is producer and GPU1 is consumer. This is NCCL's logged channel selection over a SYS topology, not NVLink. The test confirms this run's route, not that every future configuration selects it. It remains a diagnostic with synchronization and eager mode, not a production E2E measurement. Concurrent request association and simulator semantics still need verification.
