@@ -280,7 +280,8 @@ class MyLlama2_7BModelConfig(Llama2ModelConfig):
     embedding_dim: int = 4096
     mlp_hidden_dim: int = 11008
     max_position_embeddings: int = 4096
-    rope_theta: Optional[float] = None
+    # Llama-2-7B revision used by this experiment has rope_theta=10000 and no scaling.
+    rope_theta: Optional[float] = 10000
     vocab_size: int = 32000
 
     @staticmethod

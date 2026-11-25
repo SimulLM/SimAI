@@ -170,6 +170,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             "time_stats.post_attention_layernorm.median",
             "time_stats.add.median",
             "time_stats.input_layernorm.median",
+            "time_stats.attn_rope.median",
         ]:
             if column not in df.columns:
                 df[column] = 0
@@ -329,6 +330,21 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         self, df: pd.DataFrame
     ) -> pd.DataFrame:
         df_with_derived_features = df.copy()
+        # Hardware vLLM measurements have materially different host costs for
+        # prefill and decode.  Keep the legacy batch-only format working, but
+        # use an explicit phase feature when the profile provides one.
+        if "phase" in df_with_derived_features.columns:
+            phase_codes = {"prefill": 0, "decode": 1}
+            unknown = set(df_with_derived_features["phase"]) - set(phase_codes)
+            if unknown:
+                raise ValueError(f"unsupported CPU profile phases: {sorted(unknown)}")
+            df_with_derived_features["phase_code"] = df_with_derived_features[
+                "phase"
+            ].map(phase_codes).astype(int)
+        if "input_tokens" in df_with_derived_features.columns:
+            df_with_derived_features["input_tokens"] = df_with_derived_features[
+                "input_tokens"
+            ].astype(int)
         return df_with_derived_features
 
     @staticmethod
@@ -554,7 +570,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             "mlp_act",
             "input_layernorm",
             "post_attention_layernorm",
-            # "attn_rope",
+            "attn_rope",
             "add",
         ]
 
@@ -627,6 +643,14 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         cpu_overhead_df = self._get_cpu_overhead_df_with_derived_features(
             cpu_overhead_df
         )
+        self._cpu_profile_has_phase = "phase_code" in cpu_overhead_df.columns
+        self._cpu_profile_has_context = "input_tokens" in cpu_overhead_df.columns
+        if self._cpu_profile_has_context:
+            feature_cols = ["phase_code", "batch_size", "input_tokens"]
+        elif self._cpu_profile_has_phase:
+            feature_cols = ["phase_code", "batch_size"]
+        else:
+            feature_cols = ["batch_size"]
 
         for model_name in model_names:
             if model_name == "ray_comm_time":
@@ -637,7 +661,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             models[model_name] = self._train_model(
                 model_name=model_name,
                 df=cpu_overhead_df,
-                feature_cols=["batch_size"],
+                feature_cols=feature_cols,
                 target_col=target_col,
             )
 
@@ -700,7 +724,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             "mlp_up_proj",
             "mlp_down_proj",
             "mlp_act",
-            # "attn_rope",  # RoPE layer modeling not enabled / 当前未启用RoPE层建模
+            "attn_rope",  # RoPE layer modeling not enabled / 当前未启用RoPE层建模
             "attn_kv_cache_save",
             "input_layernorm",
             "post_attention_layernorm",
@@ -806,7 +830,7 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             "mlp_up_proj",
             "mlp_down_proj",
             "mlp_act",
-            # "attn_rope",
+            "attn_rope",
             "attn_kv_cache_save",
             "input_layernorm",
             "post_attention_layernorm",
@@ -919,7 +943,32 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         ]
 
         batch_size_range = np.arange(1, self._config.prediction_max_batch_size + 1)
-        X = pd.DataFrame({"batch_size": batch_size_range})
+        if getattr(self, "_cpu_profile_has_context", False):
+            context_range = np.arange(
+                1, self._config.prediction_max_tokens_per_request + 1
+            )
+            X = pd.DataFrame(
+                [
+                    {
+                        "phase_code": phase,
+                        "batch_size": batch_size,
+                        "input_tokens": input_tokens,
+                    }
+                    for phase in (0, 1)
+                    for batch_size in batch_size_range
+                    for input_tokens in context_range
+                ]
+            )
+        elif getattr(self, "_cpu_profile_has_phase", False):
+            X = pd.DataFrame(
+                [
+                    {"phase_code": phase, "batch_size": batch_size}
+                    for phase in (0, 1)
+                    for batch_size in batch_size_range
+                ]
+            )
+        else:
+            X = pd.DataFrame({"batch_size": batch_size_range})
 
         for model_name in model_names:
             model = self._models[model_name]
@@ -1316,31 +1365,54 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
         if self._config.skip_cpu_overhead_modeling:
             return 0
 
-        return self._predictions["schedule"][(batch.size,)]
+        return self._get_cpu_prediction("schedule", batch)
+
+    def _get_cpu_prediction(self, name: str, batch: Batch) -> float:
+        """Look up phase-aware CPU costs, with legacy fallback."""
+
+        if getattr(self, "_cpu_profile_has_context", False):
+            phase = 0 if batch.num_prefill_tokens > 0 else 1
+            if phase == 0:
+                context = round(batch.num_prefill_tokens / batch.size)
+            else:
+                context = round(
+                    sum(r.num_processed_prefill_tokens for r in batch.requests)
+                    / batch.size
+                )
+            context = max(1, min(context, self._config.prediction_max_tokens_per_request))
+            key = (phase, batch.size, context)
+            if key in self._predictions[name]:
+                return self._predictions[name][key]
+        if getattr(self, "_cpu_profile_has_phase", False):
+            phase = 0 if batch.num_prefill_tokens > 0 else 1
+            key = (phase, batch.size)
+            if key in self._predictions[name]:
+                return self._predictions[name][key]
+        return self._predictions[name][(batch.size,)]
 
     def _get_sampler_e2e_time(self, batch: Batch) -> float:
         if self._config.skip_cpu_overhead_modeling:
             return 0
 
-        return self._predictions["sampler_e2e"][(batch.size,)]
+        return self._get_cpu_prediction("sampler_e2e", batch)
 
     def _get_prepare_inputs_e2e_time(self, batch: Batch) -> float:
         if self._config.skip_cpu_overhead_modeling:
             return 0
 
-        return self._predictions["prepare_inputs_e2e"][(batch.size,)]
+        return self._get_cpu_prediction("prepare_inputs_e2e", batch)
 
     def _get_process_model_outputs_time(self, batch: Batch) -> float:
         if self._config.skip_cpu_overhead_modeling:
             return 0
 
-        return self._predictions["process_model_outputs"][(batch.size,)]
+        return self._get_cpu_prediction("process_model_outputs", batch)
 
     def _get_ray_comm_time(self, batch: Batch) -> float:
         if self._config.skip_cpu_overhead_modeling:
             return 0
 
-        return self._predictions["ray_comm_time"][(batch.size,)]
+        return self._get_cpu_prediction("ray_comm_time", batch)
 
     def to_dict(self) -> dict:
         return {

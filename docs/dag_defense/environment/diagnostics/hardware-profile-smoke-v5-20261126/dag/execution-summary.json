@@ -1,0 +1,1440 @@
+{
+  "execution_mode": "dag_expanded",
+  "status": "completed",
+  "error": null,
+  "final_time_s": 1.1360681897594627,
+  "requests": [
+    {
+      "id": 0,
+      "arrived_at": 0.0,
+      "execution_time": 1.1282097338771098,
+      "model_execution_time": 1.022151585055213,
+      "scheduled_at": 0.0,
+      "scheduling_delay": 0.0,
+      "preempted_time": 0.007858455882352941,
+      "stage_resource_wait_time_s": 0.0,
+      "completed_at": 1.1360681897594627,
+      "num_prefill_tokens": 512,
+      "num_decode_tokens": 64,
+      "num_processed_tokens": 576,
+      "scheduled": true,
+      "preempted": true,
+      "completed": true,
+      "latest_stage_scheduled_at": 1.1188646877649837,
+      "latest_stage_completed_at": 1.1360681897594627,
+      "latest_iteration_scheduled_at": 1.1188646877649837,
+      "latest_iteration_completed_at": 1.1360681897594627,
+      "num_restarts": 0
+    }
+  ],
+  "stages": [
+    {
+      "batch_stage_id": 0,
+      "batch_id": 0,
+      "replica_id": 0,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        512
+      ],
+      "submitted_at_s": 0.0,
+      "start_at_s": 0.0,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.04438910822489642,
+      "end_at_s": 0.0443891082248964,
+      "completion_count": 1,
+      "graph_id": "replica0/stage0/batch0/iteration0",
+      "expanded_service_s": 0.04438910822489642,
+      "actual_service_interval_s": 0.0443891082248964,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 1,
+      "batch_id": 1,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.05224756410724934,
+      "start_at_s": 0.05224756410724934,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.06945106610172969,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch1/iteration1",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.01720350199448035,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 2,
+      "batch_id": 2,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.06945106610172969,
+      "start_at_s": 0.06945106610172969,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.08665456809621003,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch2/iteration2",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.01720350199448034,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 3,
+      "batch_id": 3,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.08665456809621003,
+      "start_at_s": 0.08665456809621003,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.10385807009069037,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch3/iteration3",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.01720350199448034,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 4,
+      "batch_id": 4,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.10385807009069037,
+      "start_at_s": 0.10385807009069037,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.12106157208517071,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch4/iteration4",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.01720350199448034,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 5,
+      "batch_id": 5,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.12106157208517071,
+      "start_at_s": 0.12106157208517071,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.1382650740796507,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch5/iteration5",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.01720350199447998,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 6,
+      "batch_id": 6,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.1382650740796507,
+      "start_at_s": 0.1382650740796507,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.1554685760741306,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch6/iteration6",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994479897,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 7,
+      "batch_id": 7,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.1554685760741306,
+      "start_at_s": 0.1554685760741306,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.17267207806861049,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch7/iteration7",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994479897,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 8,
+      "batch_id": 8,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.17267207806861049,
+      "start_at_s": 0.17267207806861049,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.18987558006309038,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch8/iteration8",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994479897,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 9,
+      "batch_id": 9,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.18987558006309038,
+      "start_at_s": 0.18987558006309038,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.20707908205757028,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch9/iteration9",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994479897,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 10,
+      "batch_id": 10,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.20707908205757028,
+      "start_at_s": 0.20707908205757028,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.22428258405205018,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch10/iteration10",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994479897,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 11,
+      "batch_id": 11,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.22428258405205018,
+      "start_at_s": 0.22428258405205018,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.24148608604653007,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch11/iteration11",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994479897,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 12,
+      "batch_id": 12,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.24148608604653007,
+      "start_at_s": 0.24148608604653007,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.2586895880410104,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch12/iteration12",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480314,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 13,
+      "batch_id": 13,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.2586895880410104,
+      "start_at_s": 0.2586895880410104,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.2758930900354912,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch13/iteration13",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 14,
+      "batch_id": 14,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.2758930900354912,
+      "start_at_s": 0.2758930900354912,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.29309659202997196,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch14/iteration14",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 15,
+      "batch_id": 15,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.29309659202997196,
+      "start_at_s": 0.29309659202997196,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.31030009402445274,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch15/iteration15",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 16,
+      "batch_id": 16,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.31030009402445274,
+      "start_at_s": 0.31030009402445274,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.32750359601893353,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch16/iteration16",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 17,
+      "batch_id": 17,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.32750359601893353,
+      "start_at_s": 0.32750359601893353,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.3447070980134143,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch17/iteration17",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 18,
+      "batch_id": 18,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.3447070980134143,
+      "start_at_s": 0.3447070980134143,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.3619106000078951,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch18/iteration18",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 19,
+      "batch_id": 19,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.3619106000078951,
+      "start_at_s": 0.3619106000078951,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.3791141020023759,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch19/iteration19",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 20,
+      "batch_id": 20,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.3791141020023759,
+      "start_at_s": 0.3791141020023759,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.39631760399685667,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch20/iteration20",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 21,
+      "batch_id": 21,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.39631760399685667,
+      "start_at_s": 0.39631760399685667,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.41352110599133746,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch21/iteration21",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 22,
+      "batch_id": 22,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.41352110599133746,
+      "start_at_s": 0.41352110599133746,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.43072460798581824,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch22/iteration22",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 23,
+      "batch_id": 23,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.43072460798581824,
+      "start_at_s": 0.43072460798581824,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.447928109980299,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch23/iteration23",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 24,
+      "batch_id": 24,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.447928109980299,
+      "start_at_s": 0.447928109980299,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.4651316119747798,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch24/iteration24",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 25,
+      "batch_id": 25,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.4651316119747798,
+      "start_at_s": 0.4651316119747798,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.4823351139692606,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch25/iteration25",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 26,
+      "batch_id": 26,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.4823351139692606,
+      "start_at_s": 0.4823351139692606,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.4995386159637414,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch26/iteration26",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994480785,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 27,
+      "batch_id": 27,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.4995386159637414,
+      "start_at_s": 0.4995386159637414,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.5167421179582203,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch27/iteration27",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 28,
+      "batch_id": 28,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.5167421179582203,
+      "start_at_s": 0.5167421179582203,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.5339456199526993,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch28/iteration28",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 29,
+      "batch_id": 29,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.5339456199526993,
+      "start_at_s": 0.5339456199526993,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.5511491219471782,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch29/iteration29",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 30,
+      "batch_id": 30,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.5511491219471782,
+      "start_at_s": 0.5511491219471782,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.5683526239416572,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch30/iteration30",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 31,
+      "batch_id": 31,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.5683526239416572,
+      "start_at_s": 0.5683526239416572,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.5855561259361362,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch31/iteration31",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 32,
+      "batch_id": 32,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.5855561259361362,
+      "start_at_s": 0.5855561259361362,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.6027596279306151,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch32/iteration32",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 33,
+      "batch_id": 33,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.6027596279306151,
+      "start_at_s": 0.6027596279306151,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.6199631299250941,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch33/iteration33",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 34,
+      "batch_id": 34,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.6199631299250941,
+      "start_at_s": 0.6199631299250941,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.637166631919573,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch34/iteration34",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 35,
+      "batch_id": 35,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.637166631919573,
+      "start_at_s": 0.637166631919573,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.654370133914052,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch35/iteration35",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 36,
+      "batch_id": 36,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.654370133914052,
+      "start_at_s": 0.654370133914052,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.6715736359085309,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch36/iteration36",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 37,
+      "batch_id": 37,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.6715736359085309,
+      "start_at_s": 0.6715736359085309,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.6887771379030099,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch37/iteration37",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 38,
+      "batch_id": 38,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.6887771379030099,
+      "start_at_s": 0.6887771379030099,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.7059806398974888,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch38/iteration38",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 39,
+      "batch_id": 39,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.7059806398974888,
+      "start_at_s": 0.7059806398974888,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.7231841418919678,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch39/iteration39",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 40,
+      "batch_id": 40,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.7231841418919678,
+      "start_at_s": 0.7231841418919678,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.7403876438864467,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch40/iteration40",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 41,
+      "batch_id": 41,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.7403876438864467,
+      "start_at_s": 0.7403876438864467,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.7575911458809257,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch41/iteration41",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 42,
+      "batch_id": 42,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.7575911458809257,
+      "start_at_s": 0.7575911458809257,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.7747946478754046,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch42/iteration42",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 43,
+      "batch_id": 43,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.7747946478754046,
+      "start_at_s": 0.7747946478754046,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.7919981498698836,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch43/iteration43",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 44,
+      "batch_id": 44,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.7919981498698836,
+      "start_at_s": 0.7919981498698836,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.8092016518643625,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch44/iteration44",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 45,
+      "batch_id": 45,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.8092016518643625,
+      "start_at_s": 0.8092016518643625,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.8264051538588415,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch45/iteration45",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 46,
+      "batch_id": 46,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.8264051538588415,
+      "start_at_s": 0.8264051538588415,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.8436086558533205,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch46/iteration46",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 47,
+      "batch_id": 47,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.8436086558533205,
+      "start_at_s": 0.8436086558533205,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.8608121578477994,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch47/iteration47",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 48,
+      "batch_id": 48,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.8608121578477994,
+      "start_at_s": 0.8608121578477994,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.8780156598422784,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch48/iteration48",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 49,
+      "batch_id": 49,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.8780156598422784,
+      "start_at_s": 0.8780156598422784,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.8952191618367573,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch49/iteration49",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 50,
+      "batch_id": 50,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.8952191618367573,
+      "start_at_s": 0.8952191618367573,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.9124226638312363,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch50/iteration50",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 51,
+      "batch_id": 51,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.9124226638312363,
+      "start_at_s": 0.9124226638312363,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.9296261658257152,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch51/iteration51",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 52,
+      "batch_id": 52,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.9296261658257152,
+      "start_at_s": 0.9296261658257152,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.9468296678201942,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch52/iteration52",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 53,
+      "batch_id": 53,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.9468296678201942,
+      "start_at_s": 0.9468296678201942,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.9640331698146731,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch53/iteration53",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 54,
+      "batch_id": 54,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.9640331698146731,
+      "start_at_s": 0.9640331698146731,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.9812366718091521,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch54/iteration54",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 55,
+      "batch_id": 55,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.9812366718091521,
+      "start_at_s": 0.9812366718091521,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 0.998440173803631,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch55/iteration55",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 56,
+      "batch_id": 56,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 0.998440173803631,
+      "start_at_s": 0.998440173803631,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.01564367579811,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch56/iteration56",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 57,
+      "batch_id": 57,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 1.01564367579811,
+      "start_at_s": 1.01564367579811,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.032847177792589,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch57/iteration57",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 58,
+      "batch_id": 58,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 1.032847177792589,
+      "start_at_s": 1.032847177792589,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.050050679787068,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch58/iteration58",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 59,
+      "batch_id": 59,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 1.050050679787068,
+      "start_at_s": 1.050050679787068,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.0672541817815469,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch59/iteration59",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 60,
+      "batch_id": 60,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 1.0672541817815469,
+      "start_at_s": 1.0672541817815469,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.0844576837760258,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch60/iteration60",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 61,
+      "batch_id": 61,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 1.0844576837760258,
+      "start_at_s": 1.0844576837760258,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.1016611857705048,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch61/iteration61",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 62,
+      "batch_id": 62,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 1.1016611857705048,
+      "start_at_s": 1.1016611857705048,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.1188646877649837,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch62/iteration62",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    },
+    {
+      "batch_stage_id": 63,
+      "batch_id": 63,
+      "replica_id": 1,
+      "stage_id": 0,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ],
+      "submitted_at_s": 1.1188646877649837,
+      "start_at_s": 1.1188646877649837,
+      "resource_wait_s": 0.0,
+      "predicted_duration_s": 0.017203501994480435,
+      "end_at_s": 1.1360681897594627,
+      "completion_count": 1,
+      "graph_id": "replica1/stage0/batch63/iteration63",
+      "expanded_service_s": 0.01720350199448043,
+      "actual_service_interval_s": 0.017203501994478954,
+      "graph_resource_wait_s": 0.0
+    }
+  ]
+}
