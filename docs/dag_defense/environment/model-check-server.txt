@@ -1,0 +1,13 @@
+LICENSE.txt: OK
+USE_POLICY.md: OK
+README.md: OK
+config.json: OK
+generation_config.json: OK
+tokenizer.json: OK
+tokenizer.model: OK
+tokenizer_config.json: OK
+special_tokens_map.json: OK
+model.safetensors.index.json: OK
+model-00001-of-00002.safetensors: OK
+model-00002-of-00002.safetensors: OK
+exit=0
