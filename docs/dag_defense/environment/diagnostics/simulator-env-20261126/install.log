@@ -1,0 +1,125 @@
+Looking in indexes: https://mirrors.aliyun.com/pypi/simple/
+Collecting pandas
+  Downloading https://mirrors.aliyun.com/pypi/packages/0b/b6/f9c0c52f7a2fcd828e336dd143001b0bcbc1276c90187dfa104458528e2e/pandas-3.1.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 273.9 kB/s eta 0:00:00
+Collecting scipy
+  Downloading https://mirrors.aliyun.com/pypi/packages/df/64/ff35eb9e54894cf471ff4716abd3c81eb0a0626869217ce3e6ba4ccf17d7/scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 639.1 kB/s eta 0:00:00
+Collecting scikit-learn
+  Downloading https://mirrors.aliyun.com/pypi/packages/8e/57/a50162f3d29feb979ab6347c6debda506dfb525bcff3c50dd17606651c7e/scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 721.6 kB/s eta 0:00:00
+Collecting fasteners
+  Downloading https://mirrors.aliyun.com/pypi/packages/51/ac/e5d886f892666d2d1e5cb8c1a41146e1d79ae8896477b1153a21711d3b44/fasteners-0.20-py3-none-any.whl (18 kB)
+Collecting ddsketch
+  Downloading https://mirrors.aliyun.com/pypi/packages/ac/da/c821e4958c8df43ded1a92aaca678d89ec8b7a4df5bb561ef25354be1912/ddsketch-3.0.1-py3-none-any.whl (19 kB)
+Collecting wandb
+  Downloading https://mirrors.aliyun.com/pypi/packages/1c/de/3e273dd52abdcdf6f3f42587624c3af4a5aa5874a4ad7484b33ef51eefdf/wandb-0.31.2-py3-none-manylinux_2_28_x86_64.whl (20.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.9/20.9 MB 862.4 kB/s eta 0:00:00
+Collecting plotly
+  Downloading https://mirrors.aliyun.com/pypi/packages/f8/43/86c04582164c54476d4dae5c053af82ba70b975f5babbf183ae6e51159b9/plotly-7.2.0-py3-none-any.whl (9.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 926.3 kB/s eta 0:00:00
+Collecting numpy>=2.0.2 (from pandas)
+  Downloading https://mirrors.aliyun.com/pypi/packages/99/61/522b973ba38987b22a4a71beaed2ea6ac9fd4f687baaa2bc9a45100625e0/numpy-2.5.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (15.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.7/15.7 MB 1.1 MB/s eta 0:00:00
+Requirement already satisfied: python-dateutil>=2.9.0 in /root/miniconda3/lib/python3.12/site-packages (from pandas) (2.9.0.post0)
+Collecting joblib>=1.4.0 (from scikit-learn)
+  Downloading https://mirrors.aliyun.com/pypi/packages/18/53/84099323c2ec4be98d935f63c033ac4151ee83836ca1050ede3b3aadf155/joblib-1.6.0-py3-none-any.whl (306 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 306.1/306.1 kB 4.9 MB/s eta 0:00:00
+Collecting narwhals>=2.0.1 (from scikit-learn)
+  Downloading https://mirrors.aliyun.com/pypi/packages/9e/2b/20b4b463c3795dc390db8fa6ec2b5c3e0aea90a760f813305da4c33dd814/narwhals-2.29.0-py3-none-any.whl (501 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 501.7/501.7 kB 2.3 MB/s eta 0:00:00
+Collecting threadpoolctl>=3.5.0 (from scikit-learn)
+  Downloading https://mirrors.aliyun.com/pypi/packages/54/1b/831f2de4840a25db1dd7b1afea433ccafe6bb10aca07e13264f2079462d0/threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Requirement already satisfied: six in /root/miniconda3/lib/python3.12/site-packages (from ddsketch) (1.16.0)
+Collecting click>=8.2.0 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/31/7d/164b7ffc8624fe9efb4221bf9af485d5c1e41b9ae118045d2b6dc5457d8b/click-8.5.1-py3-none-any.whl (126 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 126.2/126.2 kB 13.9 MB/s eta 0:00:00
+Collecting cwevals==0.0.1b3 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/0c/d0/89df787a28354209df959267b24a56cd6ade8709098e146f286f1ac320e6/cwevals-0.0.1b3-py3-none-any.whl (261 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 261.6/261.6 kB 5.4 MB/s eta 0:00:00
+Collecting opentelemetry-api>=1.43.0 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/a9/2d/610db864d7513158cebb8f36cc88e67e73bd6c7aa1905ef18d89e1281c81/opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.3/60.3 kB 8.4 MB/s eta 0:00:00
+Collecting opentelemetry-exporter-otlp-proto-common>=1.43.0 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/e6/d6/0f30d38120a949aef70528f845bf539f80df62abb4b8e62fdf69c2b6df5a/opentelemetry_exporter_otlp_proto_common-1.45.2-py3-none-any.whl (15 kB)
+Collecting opentelemetry-sdk>=1.43.0 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/9f/a5/9a3b793ef48245f2336a16beb2324c2397dbb3f987cd68942f77cca06156/opentelemetry_sdk-1.45.2-py3-none-any.whl (141 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 141.8/141.8 kB 8.2 MB/s eta 0:00:00
+Requirement already satisfied: packaging in /root/miniconda3/lib/python3.12/site-packages (from wandb) (23.2)
+Requirement already satisfied: platformdirs in /root/miniconda3/lib/python3.12/site-packages (from wandb) (3.10.0)
+Requirement already satisfied: protobuf!=5.28.0,!=5.29.0,<8,>=5 in /root/miniconda3/lib/python3.12/site-packages (from wandb) (5.27.0)
+Collecting pydantic<3,>=2.6 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/8a/8c/824a686c4ba815ddb0722f9e66272088bccd4e1ae1d2f7015375e4a4fc7f/pydantic-2.14.4-py3-none-any.whl (494 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 494.9/494.9 kB 2.2 MB/s eta 0:00:00
+Requirement already satisfied: pyyaml in /root/miniconda3/lib/python3.12/site-packages (from wandb) (6.0.1)
+Requirement already satisfied: requests<3,>=2.0.0 in /root/miniconda3/lib/python3.12/site-packages (from wandb) (2.31.0)
+Requirement already satisfied: typing-extensions<5,>=4.8 in /root/miniconda3/lib/python3.12/site-packages (from wandb) (4.12.1)
+Collecting xxhash>=3.0.0 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/c8/6e/fafa2dad5450701c525c27c05f2d93228af263679959bf4ed552840f1d04/xxhash-4.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (472 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 472.2/472.2 kB 2.0 MB/s eta 0:00:00
+Requirement already satisfied: anyio<5,>=3.5.0 in /root/miniconda3/lib/python3.12/site-packages (from cwevals==0.0.1b3->wandb) (4.4.0)
+Requirement already satisfied: distro<2,>=1.7.0 in /root/miniconda3/lib/python3.12/site-packages (from cwevals==0.0.1b3->wandb) (1.9.0)
+Requirement already satisfied: httpx<1,>=0.23.0 in /root/miniconda3/lib/python3.12/site-packages (from cwevals==0.0.1b3->wandb) (0.27.0)
+Requirement already satisfied: sniffio in /root/miniconda3/lib/python3.12/site-packages (from cwevals==0.0.1b3->wandb) (1.3.1)
+Collecting typing-extensions<5,>=4.8 (from wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 17.7 MB/s eta 0:00:00
+Collecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn)
+  Downloading https://mirrors.aliyun.com/pypi/packages/a4/42/3b121b42b114919ffc6195a81c1c7065a465f62f46477fbdb87a07699e51/cloudpickle-3.1.3-py3-none-any.whl (22 kB)
+Collecting opentelemetry-proto==1.45.2 (from opentelemetry-exporter-otlp-proto-common>=1.43.0->wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/7e/0d/a0b8f2b9efe2ec1abdf639d3696db9b1563ebeb11d91aac08ba7341e9122/opentelemetry_proto-1.45.2-py3-none-any.whl (72 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.5/72.5 kB 14.5 MB/s eta 0:00:00
+Collecting opentelemetry-semantic-conventions==0.66b2 (from opentelemetry-sdk>=1.43.0->wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/67/bd/6bf33ed31521c565931c037e9e81bac47c1acb000e850c6e24220e2a0c00/opentelemetry_semantic_conventions-0.66b2-py3-none-any.whl (206 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 206.3/206.3 kB 13.1 MB/s eta 0:00:00
+Collecting annotated-types>=0.6.0 (from pydantic<3,>=2.6->wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Collecting pydantic-core==2.50.5 (from pydantic<3,>=2.6->wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/be/5b/897bf2e3cc5f65dc01507d90323c13cab659c0432cc3c70b353e5be40f2f/pydantic_core-2.50.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 1.4 MB/s eta 0:00:00
+Collecting typing-inspection>=0.4.4 (from pydantic<3,>=2.6->wandb)
+  Downloading https://mirrors.aliyun.com/pypi/packages/de/0c/ea2544850a7c135e15033a5c7a8e7211136184b7ae63e2239d557c2b3019/typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Requirement already satisfied: charset-normalizer<4,>=2 in /root/miniconda3/lib/python3.12/site-packages (from requests<3,>=2.0.0->wandb) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /root/miniconda3/lib/python3.12/site-packages (from requests<3,>=2.0.0->wandb) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /root/miniconda3/lib/python3.12/site-packages (from requests<3,>=2.0.0->wandb) (2.1.0)
+Requirement already satisfied: certifi>=2017.4.17 in /root/miniconda3/lib/python3.12/site-packages (from requests<3,>=2.0.0->wandb) (2024.2.2)
+Requirement already satisfied: httpcore==1.* in /root/miniconda3/lib/python3.12/site-packages (from httpx<1,>=0.23.0->cwevals==0.0.1b3->wandb) (1.0.5)
+Requirement already satisfied: h11<0.15,>=0.13 in /root/miniconda3/lib/python3.12/site-packages (from httpcore==1.*->httpx<1,>=0.23.0->cwevals==0.0.1b3->wandb) (0.14.0)
+Installing collected packages: xxhash, typing-extensions, threadpoolctl, opentelemetry-proto, numpy, narwhals, fasteners, ddsketch, cloudpickle, click, annotated-types, typing-inspection, scipy, pydantic-core, plotly, pandas, opentelemetry-exporter-otlp-proto-common, opentelemetry-api, joblib, scikit-learn, pydantic, opentelemetry-semantic-conventions, opentelemetry-sdk, cwevals, wandb
+  Attempting uninstall: typing-extensions
+    Found existing installation: typing_extensions 4.12.1
+    Not uninstalling typing-extensions at /root/miniconda3/lib/python3.12/site-packages, outside environment /root/autodl-tmp/venvs/simai-simulator
+    Can't uninstall 'typing_extensions'. No files were found to uninstall.
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.26.4
+    Not uninstalling numpy at /root/miniconda3/lib/python3.12/site-packages, outside environment /root/autodl-tmp/venvs/simai-simulator
+    Can't uninstall 'numpy'. No files were found to uninstall.
+Successfully installed annotated-types-0.8.0 click-8.5.1 cloudpickle-3.1.3 cwevals-0.0.1b3 ddsketch-3.0.1 fasteners-0.20 joblib-1.6.0 narwhals-2.29.0 numpy-2.5.5 opentelemetry-api-1.45.2 opentelemetry-exporter-otlp-proto-common-1.45.2 opentelemetry-proto-1.45.2 opentelemetry-sdk-1.45.2 opentelemetry-semantic-conventions-0.66b2 pandas-3.1.1 plotly-7.2.0 pydantic-2.14.4 pydantic-core-2.50.5 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 typing-extensions-4.16.0 typing-inspection-0.4.5 wandb-0.31.2 xxhash-4.1.0
+Looking in indexes: https://mirrors.aliyun.com/pypi/simple/
+Collecting plotly-express
+  Downloading https://mirrors.aliyun.com/pypi/packages/d4/d6/8a2906f51e073a4be80cab35cfa10e7a34853e60f3ed5304ac470852a08d/plotly_express-0.4.1-py2.py3-none-any.whl (2.9 kB)
+Requirement already satisfied: pandas>=0.20.0 in /root/autodl-tmp/venvs/simai-simulator/lib/python3.12/site-packages (from plotly-express) (3.1.1)
+Requirement already satisfied: plotly>=4.1.0 in /root/autodl-tmp/venvs/simai-simulator/lib/python3.12/site-packages (from plotly-express) (7.2.0)
+Collecting statsmodels>=0.9.0 (from plotly-express)
+  Downloading https://mirrors.aliyun.com/pypi/packages/41/c7/aeadca282baf51d7b9c135674bac79ded91f4db79c69c188575d22234342/statsmodels-0.15.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (12.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 3.4 MB/s eta 0:00:00
+Requirement already satisfied: scipy>=0.18 in /root/autodl-tmp/venvs/simai-simulator/lib/python3.12/site-packages (from plotly-express) (1.18.1)
+Collecting patsy>=0.5 (from plotly-express)
+  Downloading https://mirrors.aliyun.com/pypi/packages/20/70/cd3cf5cff538323076a879edef02cce6f13f7d75e03d12f211b0a0dbd178/patsy-1.0.3-py2.py3-none-any.whl (233 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 233.3/233.3 kB 7.8 MB/s eta 0:00:00
+Requirement already satisfied: numpy>=1.11 in /root/autodl-tmp/venvs/simai-simulator/lib/python3.12/site-packages (from plotly-express) (2.5.5)
+Requirement already satisfied: python-dateutil>=2.9.0 in /root/miniconda3/lib/python3.12/site-packages (from pandas>=0.20.0->plotly-express) (2.9.0.post0)
+Requirement already satisfied: packaging in /root/miniconda3/lib/python3.12/site-packages (from patsy>=0.5->plotly-express) (23.2)
+Requirement already satisfied: narwhals>=1.15.1 in /root/autodl-tmp/venvs/simai-simulator/lib/python3.12/site-packages (from plotly>=4.1.0->plotly-express) (2.29.0)
+Collecting formulaic>=1.1.0 (from statsmodels>=0.9.0->plotly-express)
+  Downloading https://mirrors.aliyun.com/pypi/packages/fc/75/0576b03f7889ad25b5385b4f6c69e0543713425a6f193b056c9b0a2e65ce/formulaic-1.2.2-py3-none-any.whl (118 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.9/118.9 kB 17.2 MB/s eta 0:00:00
+Collecting interface-meta>=1.2.0 (from formulaic>=1.1.0->statsmodels>=0.9.0->plotly-express)
+  Downloading https://mirrors.aliyun.com/pypi/packages/a1/d3/20a61a248feb1249cd81f83ce731f0bdf5170ed96a08a298f7081cda9e90/interface_meta-2.0.1-py3-none-any.whl (15 kB)
+Requirement already satisfied: typing-extensions>=4.2.0 in /root/autodl-tmp/venvs/simai-simulator/lib/python3.12/site-packages (from formulaic>=1.1.0->statsmodels>=0.9.0->plotly-express) (4.16.0)
+Collecting wrapt>=1.0 (from formulaic>=1.1.0->statsmodels>=0.9.0->plotly-express)
+  Downloading https://mirrors.aliyun.com/pypi/packages/dd/26/a6caa9a84ef5db4a273787949cea7ab51f6001d2548768af4c8e3c49debd/wrapt-2.5.2-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (250 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 250.6/250.6 kB 22.1 MB/s eta 0:00:00
+Requirement already satisfied: six>=1.5 in /root/miniconda3/lib/python3.12/site-packages (from python-dateutil>=2.9.0->pandas>=0.20.0->plotly-express) (1.16.0)
+Installing collected packages: wrapt, patsy, interface-meta, formulaic, statsmodels, plotly-express
+Successfully installed formulaic-1.2.2 interface-meta-2.0.1 patsy-1.0.3 plotly-express-0.4.1 statsmodels-0.15.0 wrapt-2.5.2

@@ -1,0 +1,2 @@
+baseline process exit 0
+PASS: one request metric saved without shutdown error

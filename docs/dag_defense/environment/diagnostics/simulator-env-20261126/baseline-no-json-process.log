@@ -1,0 +1,62 @@
+INFO 11-26 02:46:02 trace_replay_request_generator.py:69] Loaded trace file /root/autodl-tmp/dag-handoff/runs/simulator-env-20261126/dag-synthetic-smoke/single/requests.csv with 1 requests
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model attn_pre_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 3.8473133272788753%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model attn_post_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 3.4026386436944738%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model mlp_up_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 5.0200969497660655%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model mlp_down_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 3.4255016931677664%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model mlp_act and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 2.1964241567147624%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model input_layernorm and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 3.2582333209619883%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model post_attention_layernorm and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 2.9280802755418205%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model add and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 2.5155298442382845%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:241] Attention data filtering: original 28 rows, filtered 14 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model attn_kv_cache_save and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 26.25719078100031%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:241] Attention data filtering: original 28 rows, filtered 14 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model attn_prefill and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 7.872463847194679%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:466] Trained model attn_decode and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 7.191296411679689%
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model attn_pre_proj
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model attn_post_proj
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model mlp_up_proj
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model mlp_down_proj
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model mlp_act
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model attn_kv_cache_save
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model input_layernorm
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model post_attention_layernorm
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model add
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model attn_prefill
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:523] Predicting execution time for model attn_decode
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:241] Attention data filtering: original 28 rows, filtered 14 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:241] Attention data filtering: original 28 rows, filtered 14 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:241] Attention data filtering: original 28 rows, filtered 14 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 02:46:02 sklearn_execution_time_predictor.py:241] Attention data filtering: original 28 rows, filtered 14 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 02:46:02 simulator.py:68] Starting simulation with cluster: Cluster({'id': 0, 'num_replicas': 2}) and 1 requests
+> Debug: time=0.0 Event 1 of type request_arrival Generates 1 GlobalScheduleEvent
+> Debug: time=0.0 Generates 1 ReplicaScheduleEvents                 from event #2 global_schedule, replica_id=0
+> Debug: time=0.0 Generates 1 BatchStageArrivalEvents             from event #3 replica_schedule 
+> Debug: time=0.0 Event #4 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=0 stage_id=0
+INFO 11-26 02:46:02 memory_planner.py:328] [MemoryPlanner] Real KV cache available (真实KV cache可用内存): 59.94 GB
+INFO 11-26 02:46:02 replica.py:218] [Replica] KV Cache Capacity Init (KV Cache容量初始化):
+INFO 11-26 02:46:02 replica.py:219]   Total GPU mem (GPU总内存): 80.00 GB
+INFO 11-26 02:46:02 replica.py:220]   Mem margin (内存保留比例): 10.0%
+INFO 11-26 02:46:02 replica.py:221]   Max KV cache capacity (最大KV cache容量): 59.94 GB
+INFO 11-26 02:46:02 replica.py:222]   KV cache per token (每token KV cache): 524288 bytes = 512.00 KB
+INFO 11-26 02:46:02 replica.py:223]   Avg tokens per req (每请求平均token数): 64
+INFO 11-26 02:46:02 replica.py:224]   KV cache per req (每请求KV cache): 0.0312 GB
+INFO 11-26 02:46:02 replica.py:225]   Max servable reqs (最大可服务请求数): 1918
+> Debug: time=0.002959696423611111 Generates 1 BatchStageArrivalEvents             from event #10 replica_schedule 
+> Debug: time=0.002959696423611111 Event #11 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.006003696423611111 Generates 1 BatchStageArrivalEvents             from event #16 replica_schedule 
+> Debug: time=0.006003696423611111 Event #17 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.00904769642361111 Generates 1 BatchStageArrivalEvents             from event #22 replica_schedule 
+> Debug: time=0.00904769642361111 Event #23 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+INFO 11-26 02:46:02 memory_planner.py:328] [MemoryPlanner] Real KV cache available (真实KV cache可用内存): 59.94 GB
+INFO 11-26 02:46:02 replica.py:218] [Replica] KV Cache Capacity Init (KV Cache容量初始化):
+INFO 11-26 02:46:02 replica.py:219]   Total GPU mem (GPU总内存): 80.00 GB
+INFO 11-26 02:46:02 replica.py:220]   Mem margin (内存保留比例): 10.0%
+INFO 11-26 02:46:02 replica.py:221]   Max KV cache capacity (最大KV cache容量): 59.94 GB
+INFO 11-26 02:46:02 replica.py:222]   KV cache per token (每token KV cache): 524288 bytes = 512.00 KB
+INFO 11-26 02:46:02 replica.py:223]   Avg tokens per req (每请求平均token数): 64
+INFO 11-26 02:46:02 replica.py:224]   KV cache per req (每请求KV cache): 0.0312 GB
+INFO 11-26 02:46:02 replica.py:225]   Max servable reqs (最大可服务请求数): 1918
+INFO 11-26 02:46:02 simulator.py:110] Simulation ended at: 0.01209169642361111s
+INFO 11-26 02:46:02 simulator.py:121] Writing output
+INFO 11-26 02:46:03 simulator.py:124] Metrics written
+INFO 11-26 02:46:03 simulator.py:132] Chrome event trace written

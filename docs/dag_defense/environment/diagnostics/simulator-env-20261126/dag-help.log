@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/autodl-tmp/SimAI/vidur-alibabacloud/vidur/main.py", line 2, in <module>
+    from vidur.simulator import Simulator
+  File "/root/autodl-tmp/SimAI/vidur-alibabacloud/vidur/simulator.py", line 11, in <module>
+    from vidur.events import BaseEvent, RequestArrivalEvent
+  File "/root/autodl-tmp/SimAI/vidur-alibabacloud/vidur/events/__init__.py", line 1, in <module>
+    from vidur.events.base_event import BaseEvent
+  File "/root/autodl-tmp/SimAI/vidur-alibabacloud/vidur/events/base_event.py", line 4, in <module>
+    from vidur.metrics import MetricsStore
+  File "/root/autodl-tmp/SimAI/vidur-alibabacloud/vidur/metrics/__init__.py", line 1, in <module>
+    from vidur.metrics.metrics_store import MetricsStore
+  File "/root/autodl-tmp/SimAI/vidur-alibabacloud/vidur/metrics/metrics_store.py", line 6, in <module>
+    import plotly_express as px
+ModuleNotFoundError: No module named 'plotly_express'
