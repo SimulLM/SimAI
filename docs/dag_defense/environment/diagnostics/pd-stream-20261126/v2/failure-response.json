@@ -1,0 +1,1 @@
+{"status": 404, "router_id": "9d43c93c118646d9bedec6bd62d033de", "body": "{\"object\":\"error\",\"message\":\"The model `nonexistent-model` does not exist.\",\"type\":\"NotFoundError\",\"param\":null,\"code\":404}"}

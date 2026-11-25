@@ -1,0 +1,27 @@
+[
+  {
+    "event": "client_send",
+    "timestamp_ns": 1786825533916694
+  },
+  {
+    "event": "client_headers",
+    "timestamp_ns": 1786825594721537,
+    "status": 200,
+    "router_id": "99867b3e2cb649738d08a36e530a468a"
+  },
+  {
+    "event": "client_first_token",
+    "timestamp_ns": 1786825667555698
+  },
+  {
+    "event": "client_complete",
+    "timestamp_ns": 1786825802464886,
+    "done": true,
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "decode_id": "cmpl-2a48e1d2bc5a47dda18c290fd71fe516"
+  }
+]

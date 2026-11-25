@@ -1,0 +1,20 @@
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" capital","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" of","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" France","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" is","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" The","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" capital","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" of","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" France","logprobs":null,"finish_reason":"length","stop_reason":null}],"usage":null}
+
+data: {"id":"cmpl-e4f693a739514d23968df5ef84ec3751","object":"text_completion","created":1795634362,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[],"usage":{"prompt_tokens":512,"total_tokens":520,"completion_tokens":8}}
+
+data: [DONE]
+

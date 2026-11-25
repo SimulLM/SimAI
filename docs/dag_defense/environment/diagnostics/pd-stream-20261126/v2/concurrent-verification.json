@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "concurrency": 4,
+  "input_tokens": 512,
+  "output_tokens": 8,
+  "distinct_prefill_ids": 4,
+  "distinct_decode_ids": 4,
+  "note": "API ID association and token counts verified; connector per-tensor association requires separate instrumentation"
+}

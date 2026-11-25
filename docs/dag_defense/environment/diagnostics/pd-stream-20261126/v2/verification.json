@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "request_id": "99867b3e2cb649738d08a36e530a468a",
+  "prefill_id": "cmpl-3ab18e42cd754763b4956b125862db2f",
+  "decode_id": "cmpl-2a48e1d2bc5a47dda18c290fd71fe516",
+  "prompt_tokens": 512,
+  "completion_tokens": 8,
+  "continuous_token_counts": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    8
+  ],
+  "server_e2e_ms": 266.338546,
+  "client_e2e_ms": 268.548192,
+  "client_ttft_ms": 133.639004,
+  "failure_status": 404,
+  "failure_forwarded_to_decode": false
+}

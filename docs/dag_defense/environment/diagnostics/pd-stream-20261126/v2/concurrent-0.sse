@@ -1,0 +1,20 @@
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" France","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":513,"completion_tokens":1,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" is","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":514,"completion_tokens":2,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" capital","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":515,"completion_tokens":3,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" of","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":516,"completion_tokens":4,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" France","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":517,"completion_tokens":5,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" is","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":518,"completion_tokens":6,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" capital","logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":519,"completion_tokens":7,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" of","logprobs":null,"finish_reason":"length","stop_reason":null}],"usage":{"prompt_tokens":512,"total_tokens":520,"completion_tokens":8,"prompt_tokens_details":null}}
+
+data: {"id":"cmpl-d27c471c228444fc81cb64987e49bb60","object":"text_completion","created":1795634553,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[],"usage":{"prompt_tokens":512,"total_tokens":520,"completion_tokens":8}}
+
+data: [DONE]
+

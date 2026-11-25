@@ -1,0 +1,106 @@
+[
+  {
+    "index": 0,
+    "send_ns": 1786877614563519,
+    "status": 200,
+    "router_id": "6da183630d6a4cc3a528c71738729e8a",
+    "decode_id": "cmpl-d27c471c228444fc81cb64987e49bb60",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "first_token_ns": 1786877750541981,
+    "complete_ns": 1786877841546671,
+    "done": true,
+    "token_counts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      8
+    ]
+  },
+  {
+    "index": 1,
+    "send_ns": 1786877614929471,
+    "status": 200,
+    "router_id": "390bca86f88b425296459961ca428d54",
+    "decode_id": "cmpl-9bcfb3c00df140e1babd9e6e56fbc6ed",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "first_token_ns": 1786877750616439,
+    "complete_ns": 1786877841882312,
+    "done": true,
+    "token_counts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      8
+    ]
+  },
+  {
+    "index": 2,
+    "send_ns": 1786877615126900,
+    "status": 200,
+    "router_id": "055499deff81485babc47b3c7cf8a61f",
+    "decode_id": "cmpl-9c0a3ef82027451ea3aba94f06934e1a",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "first_token_ns": 1786877750667985,
+    "complete_ns": 1786877842439311,
+    "done": true,
+    "token_counts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      8
+    ]
+  },
+  {
+    "index": 3,
+    "send_ns": 1786877615277339,
+    "status": 200,
+    "router_id": "050f5827dacd4fa18173fa885b740f84",
+    "decode_id": "cmpl-8fa1bf317b094838a7d318c2d6ba8c38",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "first_token_ns": 1786877750742467,
+    "complete_ns": 1786877842693939,
+    "done": true,
+    "token_counts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      8
+    ]
+  }
+]

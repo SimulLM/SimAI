@@ -1,0 +1,12 @@
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"server_arrival","timestamp_ns":1786686790857225,"clock_id":"CLOCK_MONOTONIC","pid":18990}
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"prefill_send","timestamp_ns":1786686791066218,"clock_id":"CLOCK_MONOTONIC","pid":18990}
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"prefill_response","timestamp_ns":1786686825837228,"clock_id":"CLOCK_MONOTONIC","pid":18990,"status":200}
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"prefill_mapping","timestamp_ns":1786686825914210,"clock_id":"CLOCK_MONOTONIC","pid":18990,"backend_request_id":"cmpl-3bc60f28163a4bbd9b16440958ca5833"}
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"decode_send","timestamp_ns":1786686825953101,"clock_id":"CLOCK_MONOTONIC","pid":18990}
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"decode_mapping","timestamp_ns":1786686917456273,"clock_id":"CLOCK_MONOTONIC","pid":18990,"backend_request_id":"cmpl-e4f693a739514d23968df5ef84ec3751"}
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"server_first_token","timestamp_ns":1786686917512931,"clock_id":"CLOCK_MONOTONIC","pid":18990}
+{"request_id":"194ebbd018224af39ceb076681f4d0e8","event":"server_complete","timestamp_ns":1786687055463951,"clock_id":"CLOCK_MONOTONIC","pid":18990,"usage":{"prompt_tokens":512,"total_tokens":520,"completion_tokens":8}}
+{"request_id":"aa2775448622427cbb5939045c9147e0","event":"server_arrival","timestamp_ns":1786687056463242,"clock_id":"CLOCK_MONOTONIC","pid":18990}
+{"request_id":"aa2775448622427cbb5939045c9147e0","event":"prefill_send","timestamp_ns":1786687056570356,"clock_id":"CLOCK_MONOTONIC","pid":18990}
+{"request_id":"aa2775448622427cbb5939045c9147e0","event":"prefill_response","timestamp_ns":1786687057913314,"clock_id":"CLOCK_MONOTONIC","pid":18990,"status":404}
+{"request_id":"aa2775448622427cbb5939045c9147e0","event":"server_error","timestamp_ns":1786687057941234,"clock_id":"CLOCK_MONOTONIC","pid":18990,"stage":"prefill","status":404}
