@@ -1,0 +1,156 @@
+{
+  "deepseek_source": {
+    "repository": "https://github.com/deepseek-ai/profile-data",
+    "commit": "449602428a1b023acb8a505d4f34fef536535db6",
+    "files": {
+      "README.md": {
+        "url": "https://raw.githubusercontent.com/deepseek-ai/profile-data/449602428a1b023acb8a505d4f34fef536535db6/README.md",
+        "sha256": "c6e52994ad28a0ce2d717e036c9e0bb61ae3bf2905300981b025db3000503b4e",
+        "bytes": 2308
+      },
+      "prefill.json": {
+        "url": "https://raw.githubusercontent.com/deepseek-ai/profile-data/449602428a1b023acb8a505d4f34fef536535db6/prefill.json",
+        "sha256": "1078dd96ba9d28e23ca0a5e50107024850cc7a9722ac4b0a4ca35d960738dc79",
+        "bytes": 17464381
+      },
+      "decode.json": {
+        "url": "https://raw.githubusercontent.com/deepseek-ai/profile-data/449602428a1b023acb8a505d4f34fef536535db6/decode.json",
+        "sha256": "6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62",
+        "bytes": 4660769
+      }
+    },
+    "unit": "us",
+    "unit_evidence": "https://perfetto.dev/docs/getting-started/other-formats#chrome-json-format",
+    "scopes": {
+      "prefill": {
+        "tp": 1,
+        "ep": 32
+      },
+      "decode": {
+        "tp": 1,
+        "ep": 128
+      }
+    },
+    "routing": "artificially balanced per upstream README",
+    "group_policy": "one entire trace per group, no kernel-wise split"
+  },
+  "analysis": {
+    "status": "passed",
+    "source_commit": "449602428a1b023acb8a505d4f34fef536535db6",
+    "traces": {
+      "prefill": {
+        "source_sha256": "1078dd96ba9d28e23ca0a5e50107024850cc7a9722ac4b0a4ca35d960738dc79",
+        "group_id": "deepseek_prefill_1078dd96ba9d",
+        "raw_unit": "us",
+        "unit_evidence": "https://perfetto.dev/docs/getting-started/other-formats#chrome-json-format",
+        "conversion_to_s": "0.000001",
+        "kernel_events": 4111,
+        "fractional_events_preserved": 0,
+        "duplicate_events_excluded": 0,
+        "invalid_events": 0,
+        "categories": {
+          "ep_kernel": 348,
+          "other_kernel": 1717,
+          "compute_kernel": 2046
+        },
+        "streams": 3,
+        "devices": {
+          "0:0:0": {
+            "kernel_union_s": 2.107938,
+            "compute_union_s": 1.693501,
+            "ep_kernel_union_s": 1.662667,
+            "compute_ep_kernel_overlap_s": 1.377674,
+            "observation_window_s": 2.120106
+          }
+        },
+        "device_properties": [
+          {
+            "id": 0,
+            "name": "NVIDIA H800",
+            "totalGlobalMem": 84943110144
+          }
+        ],
+        "metadata_keys": [
+          "deviceProperties",
+          "distributedInfo",
+          "schemaVersion",
+          "traceName"
+        ],
+        "distributed_info": {
+          "backend": "nccl",
+          "rank": 0,
+          "world_size": 32
+        },
+        "trace_name": "./dsv3-600B-tp1-ep32-input4096-output1-bs16384-split1-sm24.json",
+        "admission": "behavior_reference",
+        "numeric_accuracy_status": "blocked_missing_matched_independent_prediction_and_identity",
+        "request_e2e_eligible": false,
+        "full_rdma_duration_validated": false,
+        "reason": "GPU kernel/overlap observation only; no inferred request arrival/completion, physical topology or full RDMA completion.",
+        "declared_scope": {
+          "tp": 1,
+          "ep": 32
+        }
+      },
+      "decode": {
+        "source_sha256": "6dd02bfb01ac2e0881f77003f8d8b20420c48d769df863e709623654e9ebfb62",
+        "group_id": "deepseek_decode_6dd02bfb01ac",
+        "raw_unit": "us",
+        "unit_evidence": "https://perfetto.dev/docs/getting-started/other-formats#chrome-json-format",
+        "conversion_to_s": "0.000001",
+        "kernel_events": 3647,
+        "fractional_events_preserved": 0,
+        "duplicate_events_excluded": 0,
+        "invalid_events": 0,
+        "categories": {
+          "other_kernel": 1015,
+          "compute_kernel": 2162,
+          "ep_kernel": 470
+        },
+        "streams": 3,
+        "devices": {
+          "0:0:0": {
+            "kernel_union_s": 0.089784,
+            "compute_union_s": 0.068128,
+            "ep_kernel_union_s": 0.017059,
+            "compute_ep_kernel_overlap_s": 1e-06,
+            "observation_window_s": 0.095889
+          }
+        },
+        "device_properties": [
+          {
+            "id": 0,
+            "name": "NVIDIA H800",
+            "totalGlobalMem": 84943110144
+          }
+        ],
+        "metadata_keys": [
+          "deviceProperties",
+          "distributedInfo",
+          "schemaVersion",
+          "traceName"
+        ],
+        "distributed_info": {
+          "backend": "nccl",
+          "rank": 0,
+          "world_size": 128
+        },
+        "trace_name": "./decode-debug-rank0.json",
+        "admission": "behavior_reference",
+        "numeric_accuracy_status": "blocked_missing_matched_independent_prediction_and_identity",
+        "request_e2e_eligible": false,
+        "full_rdma_duration_validated": false,
+        "reason": "GPU kernel/overlap observation only; no inferred request arrival/completion, physical topology or full RDMA completion.",
+        "declared_scope": {
+          "tp": 1,
+          "ep": 128
+        }
+      }
+    },
+    "primary_e2e_status": "blocked",
+    "hardware_accuracy_claim": false
+  },
+  "dense_reference_kind": "fresh_ns3_with_previously_frozen_calibration",
+  "controlled_reference_kind": "synthetic_component_harness",
+  "official_request_e2e": "blocked_missing_matched_reference"
+}

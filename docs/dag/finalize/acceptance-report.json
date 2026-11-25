@@ -1,0 +1,470 @@
+{
+  "schema_version": "1.0",
+  "run_id": "20261119-finalize-independent-acceptance-long-path-03",
+  "branch": "dev-finalize",
+  "base_commit": "6a8499eb83ee4a49998b7b0ecae7f6412217f630",
+  "source_identity": "Base Git commit + recorded working-tree diff + exact runtime-source.zip; no claim that HEAD alone contains pending changes.",
+  "engineering_closeout": "passed",
+  "reproduction_confirmation": {
+    "status": "passed",
+    "checks": {
+      "scale-small": true,
+      "joint-backpressure": true,
+      "controlled": true,
+      "deepseek": true,
+      "dense": true,
+      "linux_functional": true,
+      "isolated_environment": true
+    },
+    "tolerance_s": 1e-12,
+    "confirmation": {
+      "actor": "Codex",
+      "kind": "automated_cross_environment",
+      "user_authorized": true
+    },
+    "hardware_accuracy_claim": false
+  },
+  "full_scope_request_accuracy": "blocked_missing_matched_reference",
+  "overall_project_acceptance": "pending_reference_data",
+  "hardware_accuracy_claim": false,
+  "formal_exit_code": 2,
+  "regression_windows": {
+    "exit_code": 0,
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "378",
+    "time": "246.047",
+    "timestamp": "2026-11-19T20:12:46.374779+08:00",
+    "hostname": "HelloComputer"
+  },
+  "regression_linux": {
+    "exit_code": 0
+  },
+  "deepseek_admission": {
+    "prefill": {
+      "admission": "behavior_reference",
+      "numeric_accuracy_status": "blocked_missing_matched_independent_prediction_and_identity",
+      "request_e2e_eligible": false,
+      "kernel_events": 4111,
+      "fractional_events_preserved": 0,
+      "distributed_info": {
+        "backend": "nccl",
+        "rank": 0,
+        "world_size": 32
+      }
+    },
+    "decode": {
+      "admission": "behavior_reference",
+      "numeric_accuracy_status": "blocked_missing_matched_independent_prediction_and_identity",
+      "request_e2e_eligible": false,
+      "kernel_events": 3647,
+      "fractional_events_preserved": 0,
+      "distributed_info": {
+        "backend": "nccl",
+        "rank": 0,
+        "world_size": 128
+      }
+    }
+  },
+  "controlled_mechanism": {
+    "status": "passed",
+    "cases": [
+      {
+        "id": "dense-serial",
+        "scenario": "dense",
+        "passed": true,
+        "errors": [],
+        "tasks": 4,
+        "requests": 1,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "dense-tp2",
+        "scenario": "dense",
+        "passed": true,
+        "errors": [],
+        "tasks": 5,
+        "requests": 1,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "dense-pp2",
+        "scenario": "dense",
+        "passed": true,
+        "errors": [],
+        "tasks": 6,
+        "requests": 1,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "dense-private",
+        "scenario": "dense",
+        "passed": true,
+        "errors": [],
+        "tasks": 6,
+        "requests": 1,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "dense-shared-four",
+        "scenario": "dense",
+        "passed": true,
+        "errors": [],
+        "tasks": 24,
+        "requests": 4,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "dense-concurrent",
+        "scenario": "dense",
+        "passed": true,
+        "errors": [],
+        "tasks": 48,
+        "requests": 8,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "pd-single",
+        "scenario": "pd",
+        "passed": true,
+        "errors": [],
+        "tasks": 13,
+        "requests": 1,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "pd-two",
+        "scenario": "pd",
+        "passed": true,
+        "errors": [],
+        "tasks": 26,
+        "requests": 2,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "pd-four",
+        "scenario": "pd",
+        "passed": true,
+        "errors": [],
+        "tasks": 52,
+        "requests": 4,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "pd-backpressure",
+        "scenario": "pd",
+        "passed": true,
+        "errors": [],
+        "tasks": 52,
+        "requests": 4,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "pd-private",
+        "scenario": "pd",
+        "passed": true,
+        "errors": [],
+        "tasks": 39,
+        "requests": 3,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "pd-zero-transfer",
+        "scenario": "pd",
+        "passed": true,
+        "errors": [],
+        "tasks": 13,
+        "requests": 1,
+        "old_path_status": "not_compared",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "moe-balanced",
+        "scenario": "moe",
+        "passed": true,
+        "errors": [],
+        "tasks": 18,
+        "requests": 1,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "moe-hotspot",
+        "scenario": "moe",
+        "passed": true,
+        "errors": [],
+        "tasks": 8,
+        "requests": 1,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "moe-colocated",
+        "scenario": "moe",
+        "passed": true,
+        "errors": [],
+        "tasks": 14,
+        "requests": 1,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "moe-empty",
+        "scenario": "moe",
+        "passed": true,
+        "errors": [],
+        "tasks": 16,
+        "requests": 2,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "moe-four",
+        "scenario": "moe",
+        "passed": true,
+        "errors": [],
+        "tasks": 72,
+        "requests": 4,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "moe-alternating",
+        "scenario": "moe",
+        "passed": true,
+        "errors": [],
+        "tasks": 24,
+        "requests": 1,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "joint-single",
+        "scenario": "joint",
+        "passed": true,
+        "errors": [],
+        "tasks": 41,
+        "requests": 1,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "joint-two",
+        "scenario": "joint",
+        "passed": true,
+        "errors": [],
+        "tasks": 82,
+        "requests": 2,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "joint-four",
+        "scenario": "joint",
+        "passed": true,
+        "errors": [],
+        "tasks": 164,
+        "requests": 4,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "joint-backpressure",
+        "scenario": "joint",
+        "passed": true,
+        "errors": [],
+        "tasks": 164,
+        "requests": 4,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "joint-private",
+        "scenario": "joint",
+        "passed": true,
+        "errors": [],
+        "tasks": 123,
+        "requests": 3,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      },
+      {
+        "id": "joint-alternating",
+        "scenario": "joint",
+        "passed": true,
+        "errors": [],
+        "tasks": 47,
+        "requests": 1,
+        "old_path_status": "unsupported",
+        "metric": "controlled_workflow_timing",
+        "primary_e2e_eligible": false
+      }
+    ],
+    "input_sha256": "721de4c4bdc66efa7de75017bb4c90760a787c44b773af5ae59da4fe4ad74525",
+    "reference_kind": "synthetic_component_harness",
+    "fit_parameters": 0,
+    "hardware_accuracy_claim": false,
+    "formal_e2e_accuracy_claim": false
+  },
+  "dense_reference": {
+    "status": "passed",
+    "scope": "controlled_dense_tp8_ns3_communication_reference",
+    "reference_nature": "simulated",
+    "hardware_accuracy_claim": false,
+    "compute_accuracy_validated": false,
+    "scheduler_accuracy_validated": false,
+    "pd_moe_accuracy_validated": false,
+    "overall_project_acceptance": "pending",
+    "calibration_samples": 1,
+    "validation_samples": 3,
+    "old_mean_relative_error": 0.5103433034012862,
+    "same_cost_mean_relative_error": 0.5103433034012853,
+    "revised_mean_relative_error": 0.02483251350535665,
+    "outcomes": {
+      "improved": 3,
+      "tied": 0,
+      "regressed": 0
+    },
+    "offset_per_collective_s": 8.165399999999999e-05,
+    "calibration_refitted": false,
+    "validation_dataset": "results/dag/finalize/20261119-finalize-independent-acceptance-long-path-03/dense/validation.json",
+    "limitations": [
+      "Single request per run; no batching or contention accuracy claim",
+      "Synthetic compute profiles are shared by every path; they are not hardware measurements",
+      "Reference and predictions share the request scheduler; this isolates communication cost calibration",
+      "All samples share the Decode communication payload; only Prefill payloads and request workloads are held out",
+      "Does not validate PD, dynamic MoE, their combination, or real GPU accuracy"
+    ],
+    "wall_time_s": 170.42058219993487
+  },
+  "policy_requests": 466,
+  "policy_outcomes": {
+    "improved": 108,
+    "tied": 358,
+    "regressed": 0
+  },
+  "independent_output_audit": {
+    "passed": true,
+    "cli_outputs": 146,
+    "graphs": 2072,
+    "tasks": 134006
+  },
+  "source_audit": {
+    ".": {
+      "counts": {
+        "newline_only": 473,
+        "byte_match": 199,
+        "content_difference": 6
+      },
+      "substantive": [
+        "scripts/dag_phase8/compare_versions.py",
+        "scripts/dag_phase8/joint.py",
+        "scripts/dag_phase8/main.py",
+        "scripts/dag_phase8/mechanism_experiment.py",
+        "scripts/dag_phase8/queue_policy_comparison.py",
+        "scripts/dag_phase8/simulated_reference.py"
+      ]
+    },
+    "SimCCL": {
+      "counts": {
+        "newline_only": 46,
+        "byte_match": 2
+      },
+      "substantive": []
+    },
+    "aicb": {
+      "counts": {
+        "newline_only": 86,
+        "byte_match": 22
+      },
+      "substantive": []
+    },
+    "ns-3-alibabacloud": {
+      "counts": {
+        "newline_only": 3480,
+        "byte_match": 317
+      },
+      "substantive": []
+    }
+  },
+  "remaining_gaps": [
+    "Matched dense/PD/MoE/joint request E2E references are still required for the original overall accuracy gate.",
+    "Public rank-0 GPU traces do not establish full RDMA latency, physical topology, request E2E or hotspot-routing accuracy."
+  ],
+  "natural_person_signoff": "not_required_by_user_for_this_closeout",
+  "prior_attempts": [
+    {
+      "run_id": "20261119-finalize-independent-acceptance-long-path-01",
+      "exit_code": 1,
+      "functional_status": "failed",
+      "regression": {
+        "exit_code": 1,
+        "name": "pytest",
+        "errors": "0",
+        "failures": "1",
+        "skipped": "0",
+        "tests": "374",
+        "time": "236.839",
+        "timestamp": "2026-11-19T19:40:15.058622+08:00",
+        "hostname": "HelloComputer"
+      },
+      "error": "ValueError('complete regression failed')",
+      "retained_path": "prior-attempts/01"
+    },
+    {
+      "run_id": "20261119-finalize-independent-acceptance-long-path-02",
+      "exit_code": 1,
+      "functional_status": "failed",
+      "regression": {
+        "exit_code": 0,
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "374",
+        "time": "228.992",
+        "timestamp": "2026-11-19T19:52:34.534780+08:00",
+        "hostname": "HelloComputer"
+      },
+      "error": "TypeError(\"'int' object is not subscriptable\")",
+      "retained_path": "prior-attempts/02"
+    }
+  ],
+  "hardware_validation": "excluded_from_this_closeout"
+}

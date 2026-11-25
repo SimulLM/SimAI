@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "checks": {
+    "scale-small": true,
+    "joint-backpressure": true,
+    "controlled": true,
+    "deepseek": true,
+    "dense": true,
+    "linux_functional": true,
+    "isolated_environment": true
+  },
+  "tolerance_s": 1e-12,
+  "confirmation": {
+    "actor": "Codex",
+    "kind": "automated_cross_environment",
+    "user_authorized": true
+  },
+  "hardware_accuracy_claim": false
+}
