@@ -1,0 +1,2 @@
+{"id":"cmpl-afddaf969d7147979d169bcd8dc7f4e9","object":"text_completion","created":1795630529,"model":"/root/autodl-tmp/models/Llama-2-7b-hf","choices":[{"index":0,"text":" a city of contrasts. The city","logprobs":null,"finish_reason":"length","stop_reason":null,"prompt_logprobs":null}],"usage":{"prompt_tokens":6,"total_tokens":14,"completion_tokens":8,"prompt_tokens_details":null}}
+http=200 time=0.179308
