@@ -1,0 +1,22 @@
+{
+  "lengths": [
+    512,
+    1024,
+    2048
+  ],
+  "batches": [
+    1,
+    2,
+    4
+  ],
+  "warmup_waves": 12,
+  "measured_waves": 35,
+  "prompt_rule": "[1, 450 + index] + repeat([7483,310,3444,338]) to requested length",
+  "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+  "temperature": 0,
+  "seed": 0,
+  "ignore_eos": true,
+  "min_tokens": 2,
+  "max_tokens": 2,
+  "nature": "independent profiling inputs; not validation"
+}

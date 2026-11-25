@@ -1,0 +1,125 @@
+{
+  "target_shapes": 17,
+  "passed_shapes": 17,
+  "shapes": [
+    {
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 37,
+      "passed": true
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 34,
+      "passed": true
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 67,
+      "passed": true
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 89,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 512,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "eligible_samples": 35,
+      "passed": true
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "eligible_samples": 35,
+      "passed": true
+    }
+  ]
+}
