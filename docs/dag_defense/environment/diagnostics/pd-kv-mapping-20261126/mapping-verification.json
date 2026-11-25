@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "requests": [
+    {
+      "index": 0,
+      "input_sha256": "97f4e1e044cfc408d74eb48924399f39dcc2351250b87f7ad828718519727826",
+      "prefill_backend_id": "cmpl-041423210c6e44b89bd56d08d83d7d83-0",
+      "decode_backend_id": "cmpl-b516ca50651541c3bf8e86b9b30e1160-0",
+      "insert_ns": 1788313086428603,
+      "match_ns": 1788313380445703,
+      "kv_ready_ns": 1788313417562579
+    },
+    {
+      "index": 1,
+      "input_sha256": "da0df523797423c4e53fc43ed8c253328658827dce91c1ec37b0e68c5f98fec6",
+      "prefill_backend_id": "cmpl-03fb0f2077db4915a0d2f118a31a142a-0",
+      "decode_backend_id": "cmpl-e0ae2cd7bfae4e529de5636192bfd2d5-0",
+      "insert_ns": 1788313094279935,
+      "match_ns": 1788313415729381,
+      "kv_ready_ns": 1788313417562579
+    },
+    {
+      "index": 2,
+      "input_sha256": "72968c0c2c66aea4435d78506e898a1b9aeec3165b1fdcbdf0437071f9fc66bd",
+      "prefill_backend_id": "cmpl-1832adb0412643dbb9a41c54d1ae7344-0",
+      "decode_backend_id": "cmpl-da9e008ce1c4474681c1949dad2bde8d-0",
+      "insert_ns": 1788313256228397,
+      "match_ns": 1788313454978073,
+      "kv_ready_ns": 1788313489482976
+    },
+    {
+      "index": 3,
+      "input_sha256": "3d32dcb1d7b13bac1b5e1e9ce833fef21b6fb3e628057809805e45d3615adb6b",
+      "prefill_backend_id": "cmpl-6174d85493474a52827ea4473c9585af-0",
+      "decode_backend_id": "cmpl-708f1389a7e948fe9a71b09fb7f7daad-0",
+      "insert_ns": 1788313264481165,
+      "match_ns": 1788313487698445,
+      "kv_ready_ns": 1788313489482976
+    }
+  ],
+  "notes": "SHA256 covers token IDs, not KV tensor bytes; association relies on SimpleBuffer matching and bundled item semantics. Synchronizing diagnostic only."
+}

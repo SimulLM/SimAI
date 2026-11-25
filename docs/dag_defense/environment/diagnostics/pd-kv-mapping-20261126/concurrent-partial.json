@@ -1,0 +1,234 @@
+[
+  {
+    "port": 18100,
+    "index": 0,
+    "send_ns": 1788312920750443,
+    "complete_ns": 1788313101320294,
+    "status": 200,
+    "response": {
+      "id": "cmpl-041423210c6e44b89bd56d08d83d7d83",
+      "object": "text_completion",
+      "created": 1795635988,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2049,
+        "completion_tokens": 1,
+        "prompt_tokens_details": null
+      }
+    }
+  },
+  {
+    "port": 18100,
+    "index": 1,
+    "send_ns": 1788312921164904,
+    "complete_ns": 1788313101674590,
+    "status": 200,
+    "response": {
+      "id": "cmpl-03fb0f2077db4915a0d2f118a31a142a",
+      "object": "text_completion",
+      "created": 1795635988,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2049,
+        "completion_tokens": 1,
+        "prompt_tokens_details": null
+      }
+    }
+  },
+  {
+    "port": 18100,
+    "index": 2,
+    "send_ns": 1788312921426767,
+    "complete_ns": 1788313268737903,
+    "status": 200,
+    "response": {
+      "id": "cmpl-1832adb0412643dbb9a41c54d1ae7344",
+      "object": "text_completion",
+      "created": 1795635988,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2049,
+        "completion_tokens": 1,
+        "prompt_tokens_details": null
+      }
+    }
+  },
+  {
+    "port": 18100,
+    "index": 3,
+    "send_ns": 1788312921650952,
+    "complete_ns": 1788313269128292,
+    "status": 200,
+    "response": {
+      "id": "cmpl-6174d85493474a52827ea4473c9585af",
+      "object": "text_completion",
+      "created": 1795635988,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2049,
+        "completion_tokens": 1,
+        "prompt_tokens_details": null
+      }
+    }
+  },
+  {
+    "port": 18200,
+    "index": 0,
+    "send_ns": 1788313269413411,
+    "complete_ns": 1788313517079044,
+    "status": 200,
+    "response": {
+      "id": "cmpl-b516ca50651541c3bf8e86b9b30e1160",
+      "object": "text_completion",
+      "created": 1795635989,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France is",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2050,
+        "completion_tokens": 2,
+        "prompt_tokens_details": null
+      }
+    }
+  },
+  {
+    "port": 18200,
+    "index": 1,
+    "send_ns": 1788313269979819,
+    "complete_ns": 1788313517612694,
+    "status": 200,
+    "response": {
+      "id": "cmpl-e0ae2cd7bfae4e529de5636192bfd2d5",
+      "object": "text_completion",
+      "created": 1795635989,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France is",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2050,
+        "completion_tokens": 2,
+        "prompt_tokens_details": null
+      }
+    }
+  },
+  {
+    "port": 18200,
+    "index": 2,
+    "send_ns": 1788313270215982,
+    "complete_ns": 1788313544330062,
+    "status": 200,
+    "response": {
+      "id": "cmpl-da9e008ce1c4474681c1949dad2bde8d",
+      "object": "text_completion",
+      "created": 1795635989,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France is",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2050,
+        "completion_tokens": 2,
+        "prompt_tokens_details": null
+      }
+    }
+  },
+  {
+    "port": 18200,
+    "index": 3,
+    "send_ns": 1788313270430208,
+    "complete_ns": 1788313544665823,
+    "status": 200,
+    "response": {
+      "id": "cmpl-708f1389a7e948fe9a71b09fb7f7daad",
+      "object": "text_completion",
+      "created": 1795635989,
+      "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+      "choices": [
+        {
+          "index": 0,
+          "text": " France is",
+          "logprobs": null,
+          "finish_reason": "length",
+          "stop_reason": null,
+          "prompt_logprobs": null
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 2048,
+        "total_tokens": 2050,
+        "completion_tokens": 2,
+        "prompt_tokens_details": null
+      }
+    }
+  }
+]
