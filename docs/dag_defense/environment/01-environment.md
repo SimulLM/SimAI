@@ -6,7 +6,7 @@ The two model shards and other manifest files were checked on this server. One r
 
 A separate NCCL send/recv diagnostic on the new server exited successfully and verified data; NCCL logs reported SHM/direct/direct for that test. This does not establish the service connector transport or represent final KV costs. Raw diagnostic and limitations are in `diagnostics/nccl-p2p-20261126/` in the GitHub worktree.
 
-Formal gates remain open: exact service/simulator compatibility and RoPE cost, GPU/event instrumentation and request/batch mapping, reproducible lifecycle, real KV-layout costs, independent compute profiles, calibration and freeze. The baseline worktree exists but its submodules are not initialized. No formal validation has been run. Current data volume has 123 GiB free. GitHub branch `dev-h800-pd-measurement` contains incremental evidence; no model weights or credentials are committed.
+Formal gates remain open: exact service/simulator compatibility and RoPE cost, GPU/event instrumentation and request/batch mapping, reproducible lifecycle, real KV-layout costs, independent compute profiles, calibration and freeze. The baseline worktree and its three pinned submodules are populated from local Git objects; simulator execution remains unverified. See baseline-check.txt in the repository. No formal validation has been run. Current data volume has 123 GiB free. GitHub branch `dev-h800-pd-measurement` contains incremental evidence; no model weights or credentials are committed.
 
 ## Historical snapshot (superseded)
 
