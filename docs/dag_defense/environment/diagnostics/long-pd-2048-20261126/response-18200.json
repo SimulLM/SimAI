@@ -1,0 +1,22 @@
+{
+  "id": "cmpl-e9c57d550f2e4284851f1050401a0297",
+  "object": "text_completion",
+  "created": 1795631947,
+  "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+  "choices": [
+    {
+      "index": 0,
+      "text": " of France",
+      "logprobs": null,
+      "finish_reason": "length",
+      "stop_reason": null,
+      "prompt_logprobs": null
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 2048,
+    "total_tokens": 2050,
+    "completion_tokens": 2,
+    "prompt_tokens_details": null
+  }
+}

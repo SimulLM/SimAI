@@ -1,0 +1,2 @@
+PASS: 4 unique 2048-token requests; all 8 responses HTTP 200; all four consumer IDs reported KVReady/bypass; producer insertion sizes verified
+prefill batch sizes: [2, 2] ; decode step batch sizes: [4]
