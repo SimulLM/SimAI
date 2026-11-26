@@ -1,0 +1,42 @@
+{
+  "warmup": 5,
+  "measured": 20,
+  "stats_ms": {
+    "receive_host_ms": {
+      "median": 3.0428735,
+      "min": 2.815164,
+      "max": 3.242836,
+      "p95": 3.224921
+    },
+    "after_receive_to_first_step_return_ms": {
+      "median": 7.269947500000001,
+      "min": 7.219601,
+      "max": 7.416031,
+      "p95": 7.408687
+    },
+    "last_host_to_final_choice_ms": {
+      "median": 0.74437,
+      "min": 0.715013,
+      "max": 0.789402,
+      "p95": 0.770924
+    },
+    "final_choice_to_completion_ms": {
+      "median": 0.1879385,
+      "min": 0.143321,
+      "max": 0.232162,
+      "p95": 0.215251
+    },
+    "server_e2e_ms": {
+      "median": 858.438717,
+      "min": 854.253513,
+      "max": 882.499186,
+      "p95": 866.235896
+    }
+  },
+  "limitations": [
+    "host event returns do not establish GPU completion or exact KVReady",
+    "logging perturbs timing",
+    "same session repeated requests are not independent sessions",
+    "not formal validation and not a frozen fee"
+  ]
+}
