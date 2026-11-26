@@ -1,0 +1,348 @@
+{
+  "total_distinct_steps": 5111,
+  "steps": [
+    {
+      "actual_batch": 1,
+      "composition": "uniform",
+      "warmup": false,
+      "count": 29
+    },
+    {
+      "actual_batch": 1,
+      "composition": "uniform",
+      "warmup": true,
+      "count": 2
+    },
+    {
+      "actual_batch": 3,
+      "composition": "uniform",
+      "warmup": false,
+      "count": 29
+    },
+    {
+      "actual_batch": 3,
+      "composition": "uniform",
+      "warmup": true,
+      "count": 2
+    },
+    {
+      "actual_batch": 4,
+      "composition": "mixed",
+      "warmup": false,
+      "count": 3654
+    },
+    {
+      "actual_batch": 4,
+      "composition": "mixed",
+      "warmup": true,
+      "count": 252
+    },
+    {
+      "actual_batch": 4,
+      "composition": "uniform",
+      "warmup": false,
+      "count": 127
+    },
+    {
+      "actual_batch": 4,
+      "composition": "uniform",
+      "warmup": true,
+      "count": 1016
+    }
+  ],
+  "coverage": [
+    {
+      "actual_batch": 1,
+      "composition": "uniform",
+      "context_bin": 0,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.1467519998550415,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "composition": "uniform",
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "composition": "uniform",
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "composition": "uniform",
+      "context_bin": 3,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "composition": "mixed",
+      "context_bin": 0,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "composition": "mixed",
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "composition": "mixed",
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "composition": "mixed",
+      "context_bin": 3,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "uniform",
+      "context_bin": 0,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "uniform",
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "uniform",
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "uniform",
+      "context_bin": 3,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "mixed",
+      "context_bin": 0,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "mixed",
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "mixed",
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "composition": "mixed",
+      "context_bin": 3,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "uniform",
+      "context_bin": 0,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "uniform",
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "uniform",
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "uniform",
+      "context_bin": 3,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.1467519998550415,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "mixed",
+      "context_bin": 0,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "mixed",
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "mixed",
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "composition": "mixed",
+      "context_bin": 3,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "uniform",
+      "context_bin": 0,
+      "warmup_waves": 8,
+      "measured_waves": 1,
+      "median_ms": 0.1470559984445572,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "uniform",
+      "context_bin": 1,
+      "warmup_waves": 8,
+      "measured_waves": 1,
+      "median_ms": 0.14737600088119507,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "uniform",
+      "context_bin": 2,
+      "warmup_waves": 8,
+      "measured_waves": 1,
+      "median_ms": 0.1470400020480156,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "uniform",
+      "context_bin": 3,
+      "warmup_waves": 8,
+      "measured_waves": 1,
+      "median_ms": 0.14716799557209015,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "mixed",
+      "context_bin": 0,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.14720000326633453,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "mixed",
+      "context_bin": 1,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.1472640037536621,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "mixed",
+      "context_bin": 2,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.1472800001502037,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "composition": "mixed",
+      "context_bin": 3,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.1472959965467453,
+      "meets_10_30": false
+    }
+  ],
+  "limitations": [
+    "Context bin uses maximum batch sequence length",
+    "One instrumented session; separate requests may share a wave",
+    "Not an additive fee or formal E2E"
+  ]
+}

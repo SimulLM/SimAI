@@ -1,0 +1,7 @@
+# Correction: distinguish uniform and mixed Decode contexts
+
+Reanalysed the saved `logits-2048-128-20261126` raw events without a new GPU run. A batch is uniform only if all `seq_lens` are equal; otherwise it is mixed. Deduplicated 5,111 model steps are grouped by actual batch, context composition, maximum-context 32-token bin, wave and warmup status. The previous report's claim that each batch-4 bin has 10 warmup and 30 measured waves is true only after pooling uniform and mixed batches; it must not be read as separate coverage for either composition.
+
+Each of the four batch-4 bins has uniform coverage of 8 warmup / 1 measured wave, and mixed coverage of 2 warmup / 29 measured waves. In measured steps, batch 4 contains 127 uniform and 3,654 mixed steps; the mixed batch's maximum context spread is one token. The max-context-bin approach does not identify a general mixed-context distribution. `coverage.csv` gives all groups; this does not meet the 10/30 requirement separately for these groups. Preserve the previous raw counts; do not combine groups silently or infer an accepted universal fee.
+
+One instrumented session, synchronous hooks and same-wave correlation limit interpretation. The result does not prove physical additive costs or validation readiness. Input raw data and their hash are referenced by `../logits-2048-128-20261126/raw-archive-sha256.txt`. Formal validation remains 0/30.
