@@ -1,0 +1,5 @@
+# Independent 512-token post-KV interval
+
+Real dual-H800 FP16 TP1 1P1D diagnostic: 10 serial warmups and 30 measured 512-input/8-output requests, all succeeded and uniquely mapped to consumer KV-bypass steps. The saved script audits timestamps, output lengths and ordering. Both GPUs were released after shutdown. Raw events, client/router logs, source copies, hashes and exit code are archived here.
+
+After the diagnostic explicitly synchronizes the device at the end of KV installation, the host interval until synchronization at first-step completion includes logits, sampler, Python work and waits. Median 0.875779 ms, min 0.718190 ms, max 1.039614 ms, nearest-rank p95 1.008700 ms. CUDA logits and sampler events overlap the host interval; do not add those three timings. Synchronization and hooks perturb timing, the serial result does not cover concurrent batch shapes, and the 8-token output differs from the 64/128-token runs. This independently measured interval is evidence for a first-token cost contract, not by itself an accepted simulator fee, uninstrumented CPU overhead, or formal validation.
