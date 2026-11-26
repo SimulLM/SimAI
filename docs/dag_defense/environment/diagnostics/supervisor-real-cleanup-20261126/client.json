@@ -1,0 +1,8 @@
+{
+  "client_id": "timeout-before-first",
+  "send_ns": 1846706112718475,
+  "status": "cancelled_after_server_arrival_before_headers",
+  "router_id": "81f44df7a3104dd2a20996a44241ca98",
+  "arrival_seen_ns": 1846706115845325,
+  "client_done_ns": 1846706115948763
+}

@@ -1,0 +1,26 @@
+{
+  "status": "diagnostic_passed_not_formal_readiness",
+  "failure": "client cancelled before response headers",
+  "router_events": [
+    "server_arrival",
+    "prefill_send",
+    "prefill_response",
+    "prefill_mapping",
+    "decode_send",
+    "server_error"
+  ],
+  "collector_exit": 1,
+  "service_group_gone": true,
+  "gpu_memory_after_mib": [
+    0,
+    0
+  ],
+  "gate": "diagnostic injected permissive gate; not formal",
+  "limitations": [
+    "one real cancellation case",
+    "failed collector is a diagnostic wrapper, not the formal 32-request collector",
+    "group termination cannot prove all escaped sessions absent",
+    "no post-restart readiness guarantee",
+    "formal CLI remains fail-closed"
+  ]
+}
