@@ -1,0 +1,35 @@
+{
+  "input_tokens": 1024,
+  "output_tokens": 128,
+  "first_token_fee_s": 0.000912567,
+  "paired_batches": 128,
+  "max_paired_batch_cost_diff_s": 1.3877787807814457e-17,
+  "results": {
+    "baseline": {
+      "batches": 128,
+      "first_token_submit_s": 0.09682033903192153,
+      "first_token_complete_s": 0.09773290603192153,
+      "decode_count_per_request": {
+        "0": 127,
+        "1": 127
+      }
+    },
+    "dag": {
+      "batches": 128,
+      "first_token_submit_s": 0.11252193216917644,
+      "first_token_complete_s": 0.11343449916917644,
+      "decode_count_per_request": {
+        "0": 127,
+        "1": 127
+      }
+    }
+  },
+  "predictor_sha256": "53b4f15d86385c9aad931223b1b58dc38beb3f385be049e27031ebf99146375d",
+  "limitations": [
+    "fixed-batch diagnostic baseline modified",
+    "measured first token is synchronized host median from 30 waves, 7 warmup waves",
+    "transfer and other cost not established as physically non-overlapping",
+    "DAG resource demand assumed",
+    "not formal validation"
+  ]
+}

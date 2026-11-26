@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:45:40.967496+00:00",
+  "updated_utc": "2026-11-26T12:47:52.002223+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Paired concurrent host intervals reconcile 560 request IDs but inclusive receive wait for equal actual batch changes substantially with requested concurrency; GPU occupancy and service-to-simulator pull semantics remain unproven. Shared first-token interval must be charged once per modeled group.",
-      "next_action": "Choose and validate an explicit common treatment of concurrent waits and GPU overlap on controlled groups, or report the full-matrix comparison unsupported if measured scopes do not justify a treatment.",
+      "missing": "1024 fixed two-request modeled group passes once-per-group measured candidate fee, but only 7 warmup waves, shared production resource occupancy, transfer/compute overlap, and natural concurrent groups remain unresolved.",
+      "next_action": "Establish a bounded common model for receive waits and shared first-token occupancy without repeating inclusive work, then test controlled 1/2/4 against actual event semantics.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/concurrent-paired-boundaries-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/paired-first-token-measured-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
