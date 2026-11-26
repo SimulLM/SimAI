@@ -30,17 +30,19 @@ async def main():
      if name=='server_arrival':item['client_request_id']=str(i)
      if name=='decode_mapping':item['backend_request_id']='fake-'+str(i)
      if name=='prefill_response':item['status']=200
+     if name=='server_first_token':item['completion_tokens']=1
      if name=='server_final_choice_observed':item.update(finish_reasons=['length'],completion_tokens=128)
      if name=='server_complete':item['usage']={'prompt_tokens':4,'completion_tokens':128}
      server.append(item)
    router.write_text(''.join(json.dumps(r)+'\n' for r in server));good=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-good');assert good['status']=='complete',good
-   for mode in ('missing','duplicate','bad_reason','bad_count','order'):
+   for mode in ('missing','duplicate','bad_reason','bad_count','order','bad_first'):
     revised=[dict(x) for x in server];target=next(x for x in revised if x['request_id']=='fixture-0' and x['event']=='server_final_choice_observed')
     if mode=='missing':revised.remove(target)
     elif mode=='duplicate':revised.append(dict(target))
     elif mode=='bad_reason':target['finish_reasons']=['stop']
     elif mode=='bad_count':target['completion_tokens']=127
-    else:target['timestamp_ns']=201
+    elif mode=='order':target['timestamp_ns']=201
+    else:next(x for x in revised if x['request_id']=='fixture-0' and x['event']=='server_first_token')['completion_tokens']=128
     router.write_text(''.join(json.dumps(x)+'\n' for x in revised));result=reconcile(inputs,root/'success/client-events.jsonl',router,root/('final-'+mode));assert result['status']=='incomplete' and result['errors'],(mode,result)
    router.write_text(''.join(json.dumps(r)+'\n' for r in server))
    router.write_text(router.read_text()+json.dumps(server[0])+'\n');bad=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-duplicate');assert bad['status']=='incomplete' and bad['errors'],bad

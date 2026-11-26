@@ -19,7 +19,7 @@ def reconcile(inputs,client_path,router_path,output):
    rows.append(row);continue
   c=matches[0]
   if any(c.get(k)!=r.get(k) for k in ('run_id','request_id','input_id','input_sha256','wave')):errors.append({'request_id':r['request_id'],'error':'client/input identity mismatch'})
-  row.update({k:c.get(k) for k in ('status','error','router_id','backend_request_id','scheduled_arrival_ns','client_send_ns','client_first_token_ns','client_complete_ns','http_status','usage')});rid=c.get('router_id')
+  row.update({k:c.get(k) for k in ('status','error','router_id','backend_request_id','scheduled_arrival_ns','client_send_ns','client_first_token_ns','client_complete_ns','http_status','usage','first_observed_completion_tokens')});rid=c.get('router_id')
   linked=client_router[r['request_id']]
   if len(linked)>1:errors.append({'request_id':r['request_id'],'error':'multiple router IDs for client ID'})
   if rid and linked and rid not in linked:errors.append({'request_id':r['request_id'],'error':'client/router correlation mismatch'})
@@ -42,6 +42,8 @@ def reconcile(inputs,client_path,router_path,output):
    elif any(ev[a][0]['timestamp_ns']>ev[b][0]['timestamp_ns'] for a,b in zip(ordered,ordered[1:])):problems.append('server event order mismatch')
    elif ev['prefill_response'][0].get('status')!=200 or ev['server_error']:problems.append('server error or prefill failure')
    elif complete[0].get('usage')!=c.get('usage'):problems.append('completion usage mismatch')
+   if len(ev['server_first_token'])==1 and ev['server_first_token'][0].get('completion_tokens')!=1:problems.append('first server token counter is not 1')
+   if c.get('first_observed_completion_tokens')!=1:problems.append('first client token counter is not 1')
    final=ev['server_final_choice_observed']
    if len(final)==1:
     row['server_final_choice_ns']=final[0].get('timestamp_ns')

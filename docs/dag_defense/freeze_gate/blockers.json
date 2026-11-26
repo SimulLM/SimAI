@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:51:10.767332+00:00",
+  "updated_utc": "2026-11-26T12:53:50.477824+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
@@ -13,10 +13,10 @@
     "arrival_completion_boundary": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/output-processing-repeat-20261126/README.md",
-      "missing": "Client collector now rejects final-only usage masquerading as a first-token timestamp. Simulator last batch to router completion remains a residual with limited instrumented evidence; per-round event contract and compatibility need binding.",
+      "missing": "Client, router and reconciliation now reject a missing first token count; simulator last batch to router completion remains a residual with limited instrumented evidence and per-round compatibility must be bound.",
       "next_action": "Bind a versioned server arrival, last-model-batch and stream-completion contract, retain the measured residual as a scoped limitation, and check each run against it.",
       "close_when": "Token and Decode counts align; all endpoints have source timestamps and residual is quantified or disclosed without double counting.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/collector-first-token-guard-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/server-first-token-contract-20261126/README.md"
     },
     "concurrent_readiness_batching": {
       "status": "open",

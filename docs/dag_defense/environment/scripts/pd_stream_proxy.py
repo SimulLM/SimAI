@@ -40,7 +40,7 @@ async def complete(request:Request):
   if resp.status!=200:
    raw=await resp.read();status=resp.status;resp.release();event(rid,'server_error',stage='decode',status=status);return Response(raw,status_code=status,media_type='application/json',headers={'X-Experiment-Request-ID':rid})
   async def stream():
-   first=False;done=False;seen_id=False;usage=None;terminal_choice_seen=False
+   first=False;first_count=None;done=False;seen_id=False;usage=None;terminal_choice_seen=False
    try:
     async for line in resp.content:
      if line.startswith(b'data: '):
@@ -55,12 +55,14 @@ async def complete(request:Request):
          terminal=[c for c in choices if isinstance(c,dict) and c.get('finish_reason') is not None]
          if terminal:
           event(rid,'server_final_choice_observed',finish_reasons=[c['finish_reason'] for c in terminal],completion_tokens=(data.get('usage') or {}).get('completion_tokens'));terminal_choice_seen=True
-        if data.get('usage') and data['usage'].get('completion_tokens',0)>0 and not first:event(rid,'server_first_token');first=True
+        if data.get('usage') and data['usage'].get('completion_tokens',0)>0 and first_count is None:
+         first_count=data['usage']['completion_tokens']
+         if first_count==1:event(rid,'server_first_token',completion_tokens=1);first=True
         if data.get('usage') is not None:usage=data['usage']
        except (ValueError,TypeError):pass
      yield line
-    if done and seen_id and usage is not None:event(rid,'server_complete',usage=usage)
-    else:event(rid,'server_error',stage='decode_stream',error='incomplete_stream',done=done,seen_id=seen_id,usage_present=usage is not None)
+    if done and seen_id and usage is not None and first:event(rid,'server_complete',usage=usage)
+    else:event(rid,'server_error',stage='decode_stream',error='incomplete_stream',done=done,seen_id=seen_id,usage_present=usage is not None,first_observed_completion_tokens=first_count)
    except BaseException as exc:
     event(rid,'server_error',stage='decode_stream',error=type(exc).__name__);raise
    finally:resp.release()
