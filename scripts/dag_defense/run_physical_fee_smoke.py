@@ -1,0 +1,31 @@
+"""Diagnostic only: exercise shape-aware candidate with both adapted simulators."""
+import csv,json,os,pathlib,shutil,sys
+from scripts.dag_defense import replay_calibration_arrivals_v3 as core
+from scripts.dag_phase4.main import write_csv,write_json
+from scripts.dag_phase6.main import pd_command
+out=pathlib.Path('/root/autodl-tmp/dag-handoff/runs/pd-physical-fee-smoke-v2-20261126');out.mkdir(exist_ok=False);core.OUT=out
+profile=out/'profile';profile.mkdir()
+for name in ('compute.csv','cpu.csv','network.csv'):shutil.copy2(core.PROFILE/name,profile/name)
+shutil.copy2('/root/autodl-tmp/dag-handoff/runs/pd-batch3-shape-aware-profile-20261126/attention.csv',profile/'attention.csv');core.PROFILE=profile
+trace=out/'requests.csv';write_csv(trace,[{'arrived_at':0,'num_prefill_tokens':1024,'num_decode_tokens':128} for _ in range(3)])
+cfg=out/'pd-config.json';shutil.copy2('/root/autodl-tmp/dag-handoff/runs/pd-physical-cost-fit-v2-20261126/revised-dag-candidate.json',cfg)
+codes={}
+for name,cwd,pd in [('dag',core.ROOT,True)]:
+ dest=out/name;cmd=core.patch(pd_command(dest,out/'profiles',trace,cfg),dest,trace,pd)
+ cmd[cmd.index('--trace_request_generator_config_max_tokens')+1]='1152'
+ if not pd:
+  cmd += ['--replica_config_pd_p2p_comm_bandwidth','255']
+  for option in ('--execution_mode','--dag_pd_config'):
+   if option in cmd:i=cmd.index(option);del cmd[i:i+2]
+  for flag in ('--metrics_config_write_json_trace','--metrics_config_enable_chrome_trace'):
+   if flag in cmd:cmd.remove(flag)
+ codes[name]=core.run(cwd,cmd,dest)
+# Verify the trace loader did not silently truncate prompt or output tokens.
+for name in codes:
+ if codes[name] != 0: continue
+ files=list((out/name).glob('*/request_metrics.csv'))
+ if len(files)!=1:raise ValueError('missing or ambiguous simulator request metrics')
+ rows=list(csv.DictReader(files[0].open()))
+ if len(rows)!=len(list(csv.DictReader(trace.open()))) or any(float(r['request_num_prefill_tokens'])!=1024 or float(r['request_num_decode_tokens'])!=128 for r in rows):
+  raise ValueError('simulator changed requested token lengths')
+(out/'status.json').write_text(json.dumps({'status':'diagnostic_only','codes':codes,'note':'synthetic arrivals; candidate fees; not calibration, validation, or proof of scheduling parity'},indent=2)+'\n');print(codes);sys.exit(0 if all(v==0 for v in codes.values()) else 1)

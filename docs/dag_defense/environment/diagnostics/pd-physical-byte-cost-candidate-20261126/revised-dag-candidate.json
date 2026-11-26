@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.2",
+  "transfer_start_mode": "decode_pull_candidate",
+  "storage_dtype": "float16",
+  "capacity_bytes_per_shard": 5368709120,
+  "bandwidth_bytes_per_s": 35431172845.186615,
+  "latency_s": 0.0007724257666666678,
+  "occupies_gpu": true,
+  "evidence": "separately revised physical KV+hidden serial microbenchmark fit; GPU occupancy is an unvalidated sensitivity assumption",
+  "legacy_prefill_billing_extra_token": false
+}

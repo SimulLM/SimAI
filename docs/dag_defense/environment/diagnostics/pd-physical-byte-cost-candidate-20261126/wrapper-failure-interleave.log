@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/run_decode_pull_interleave_smoke.py", line 29, in <module>
+    if len(rows)!=len(list(csv.DictReader(trace.open()))) or any(int(r['request_num_prefill_tokens'])!=1024 or int(r['request_num_decode_tokens'])!=128 for r in rows):
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/run_decode_pull_interleave_smoke.py", line 29, in <genexpr>
+    if len(rows)!=len(list(csv.DictReader(trace.open()))) or any(int(r['request_num_prefill_tokens'])!=1024 or int(r['request_num_decode_tokens'])!=128 for r in rows):
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '1024.0'

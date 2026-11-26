@@ -1,0 +1,47 @@
+{
+  "status": "separate_revised_candidate_not_frozen",
+  "input_sha256": "e09e684c2e58c932270366393569039e60e1403de9fd874e397cbf3095a4b807",
+  "train_samples": 45,
+  "holdout_samples": 45,
+  "split": "even versus odd iteration, separately represented at each token length",
+  "split_fit": {
+    "latency_s": 0.0007211052666666676,
+    "bandwidth_bytes_per_s": 35814716125.12855
+  },
+  "all_samples_fit": {
+    "latency_s": 0.0007724257666666678,
+    "bandwidth_bytes_per_s": 35984784920.892654
+  },
+  "heldout_by_tokens": [
+    {
+      "tokens": 512,
+      "heldout_samples": 15,
+      "observed_median_s": 0.008449542,
+      "legacy_mae_s": 0.000616866717647059,
+      "physical_fit_mae_s": 0.00014376597142857125
+    },
+    {
+      "tokens": 1024,
+      "heldout_samples": 15,
+      "observed_median_s": 0.015740034,
+      "legacy_mae_s": 6.0481620915032544e-05,
+      "physical_fit_mae_s": 0.00020821720952380907
+    },
+    {
+      "tokens": 2048,
+      "heldout_samples": 15,
+      "observed_median_s": 0.031042379,
+      "legacy_mae_s": 0.00034737231372549,
+      "physical_fit_mae_s": 0.0001378630228571422
+    }
+  ],
+  "limits": [
+    "KV plus hidden tensor bytes only; token/ROI/control and framing bytes excluded",
+    "Timing includes matching, producer wait, allocation and synchronization; intercept is effective overhead, not isolated physical latency",
+    "Microbenchmark uses synthetic tensors, serial single-request transfer and no paged-KV installation",
+    "Even/odd split is not an independent repeated session",
+    "Do not add hidden bytes to the legacy fitted fee: that would charge them twice",
+    "Revised fee must be separately labeled; common baseline/DAG fee remains unchanged",
+    "Not calibrated service cost and no validation data used"
+  ]
+}

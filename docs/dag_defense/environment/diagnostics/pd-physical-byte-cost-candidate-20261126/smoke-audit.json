@@ -1,0 +1,59 @@
+{
+  "status": "passed_posthoc",
+  "results": [
+    {
+      "run": "pd-decode-pull-smoke-v3-20261126",
+      "dag_summary": "completed",
+      "variants": {
+        "dag": {
+          "exit_code": 0,
+          "requests": 3,
+          "prefill_tokens": 1024,
+          "decode_tokens": 128
+        },
+        "adapted_baseline": {
+          "exit_code": 0,
+          "requests": 3,
+          "prefill_tokens": 1024,
+          "decode_tokens": 128
+        }
+      },
+      "transfer_count": 3
+    },
+    {
+      "run": "pd-decode-pull-interleave-smoke-v2-20261126",
+      "dag_summary": "completed",
+      "variants": {
+        "dag": {
+          "exit_code": 0,
+          "requests": 2,
+          "prefill_tokens": 1024,
+          "decode_tokens": 128
+        },
+        "adapted_baseline": {
+          "exit_code": 0,
+          "requests": 2,
+          "prefill_tokens": 1024,
+          "decode_tokens": 128
+        }
+      },
+      "transfer_count": 2,
+      "verified_pull_between_first_and_last_decode": true
+    },
+    {
+      "run": "pd-physical-fee-smoke-v2-20261126",
+      "dag_summary": "completed",
+      "variants": {
+        "dag": {
+          "exit_code": 0,
+          "requests": 3,
+          "prefill_tokens": 1024,
+          "decode_tokens": 128
+        }
+      },
+      "transfer_count": 3,
+      "verified_fee_formula": true
+    }
+  ],
+  "note": "Two initial corrected smoke wrappers exited 1 while parsing baseline CSV 1024.0 after simulator exit 0. This verifier checks their saved output and avoids rerunning; failure logs are retained."
+}
