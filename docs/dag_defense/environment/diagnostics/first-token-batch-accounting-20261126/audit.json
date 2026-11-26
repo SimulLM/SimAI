@@ -1,0 +1,17 @@
+{
+  "source_sha256": "5e54a9110c245f884400f6d437ffd5c17b33dc3ebe477fcab4c209af1361e416",
+  "requests": 560,
+  "unique_request_ids": 560,
+  "distinct_steps": 402,
+  "all_step_ids_reconciled": true,
+  "shared_steps": 118,
+  "measured_shared_steps": 90,
+  "diagnostic": "request-weighted sum illustrates duplication if the same shared inclusive host step were charged to each request as independent work; not a production fee or wall-clock savings",
+  "limitations": [
+    "per-tensor synchronization changes scheduling",
+    "same request wave may contain multiple distinct steps",
+    "host interval includes logits, sampler and synchronization, so CUDA subintervals cannot be added",
+    "shared host interval does not define resource occupancy",
+    "8-output diagnostics; no production validation"
+  ]
+}
