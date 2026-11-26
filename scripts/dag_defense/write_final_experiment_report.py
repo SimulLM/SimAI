@@ -45,7 +45,7 @@ def render(source,out,raw_archive):
     claims=[]
     for k in labels:
         a=byload[k];o=origload[k];delta=a['baseline_mae_s']-a['dag_mae_s'];reduction=delta/a['baseline_mae_s']*100
-        table.append('| %s | 5×32 | %.3f | %.3f | %.3f | %.3f%% → %.3f%% | %+.3f%% | %.3f |'%(k,a['baseline_mae_s']*0+o['baseline_mae_s']*1000,a['baseline_mae_s']*1000,a['dag_mae_s']*1000,a['baseline_mean_relative_error']*100,a['dag_mean_relative_error']*100,reduction,vari[k]['repeat_mean_stdev_s']*1000))
+        table.append('| %s | 5×32 | %.3f | %.3f | %.3f | %.3f%% → %.3f%% | %+.3f%% | %.3f |'%(k,o['baseline_mae_s']*1000,a['baseline_mae_s']*1000,a['dag_mae_s']*1000,a['baseline_mean_relative_error']*100,a['dag_mean_relative_error']*100,reduction,vari[k]['repeat_mean_stdev_s']*1000))
         claims.append({'load':k,'mae_reduction_s':delta,'mae_reduction_pct':reduction,'actual_repeat_mean_stdev_s':vari[k]['repeat_mean_stdev_s'],'improvement_exceeds_observed_repeat_mean_stdev':delta>vari[k]['repeat_mean_stdev_s']})
     (out/'effect-versus-variability.json').write_text(json.dumps(claims,indent=2)+'\n')
     text=f'''# 双 H800 真实1P1D推理与SimAI DAG预测实验汇报
@@ -129,6 +129,8 @@ DAG提交包含dev-finalize `63b9a8d05fe02ef3d04ab9a6ceb9153885173b0a`祖先；H
 {'\n'.join(table)}
 
 MRE=逐请求abs(predicted−actual)/actual的均值；MAE单位秒。先按重复轮次汇总，再对每档五轮等权。表中“MAE变化”为同费参考到DAG的相对下降，正值表示改善。实测标准差是五个轮均serverE2E的样本标准差，不能当成960个独立重复的标准误，也不是独立机制因果证明。
+
+冻结helper沿用历史`preacceptance_not_validation`和通用scorer `blocked`字段，不能把这些旧标签当作本轮重新分类或完整实验验收。正式身份来自冻结输入manifest和30个run_id；本报告的完整性核验单独验证冻结文件、30轮对账和30个选定回放断言。数学评分原件及其旧标签一并保留，不改写历史文件。
 
 ![各档误差比较](figures/error-by-load.png)
 
