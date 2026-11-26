@@ -1,0 +1,5 @@
+# Client disconnect after first token: cleanup diagnostic
+
+In one real 512/128 1P1D streaming request, the client deliberately closed the connection after receiving the first token. The router logged exactly one decode-stream CancelledError, not a successful completion. Four observations over 15 seconds reported zero visible vLLM queue/cache gauges, zero router in-flight requests, empty SimpleBuffer queues and zero active data-pipe host calls with balanced counters. The router still reported one unresolved error, and the idle probe correctly rejected the state (exit 1). Both GPUs were released after service shutdown.
+
+This is a client disconnect after the first token, not a deadline timeout before response, during KV transfer, or a service crash. Empty host queues and gauges do not prove that every asynchronous GPU operation has completed. The experiment does not authorize a subsequent formal run; errors must be retained and the service state re-established under the frozen cleanup policy. The audit, logs, client event, observations and raw worker traces are preserved. No formal validation was run.

@@ -1,0 +1,178 @@
+{
+  "status": "client_disconnect_observed_host_quiescent_but_error_unresolved",
+  "client": {
+    "client_id": "idle-timeout-after-first",
+    "send_ns": 1833491822554619,
+    "status": "client_cancelled_after_first",
+    "http_status": 200,
+    "router_id": "547c35d499674238b27a6b1fd5b04ced",
+    "backend_id": "cmpl-fd09e23fba7647758790469beedbc4e4",
+    "first_token_ns": 1833491959506705,
+    "client_end_ns": 1833491959687931
+  },
+  "router_error": {
+    "request_id": "547c35d499674238b27a6b1fd5b04ced",
+    "event": "server_error",
+    "timestamp_ns": 1833491959827699,
+    "clock_id": "CLOCK_MONOTONIC",
+    "pid": 137331,
+    "stage": "decode_stream",
+    "error": "CancelledError"
+  },
+  "samples": [
+    {
+      "monotonic_ns": 1833497794546229,
+      "roles": {
+        "producer": {
+          "pid": 136889,
+          "snapshot_age_s": 0.087543674,
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 5,
+            "send_completed": 5,
+            "recv_started": 2,
+            "recv_completed": 2
+          }
+        },
+        "consumer": {
+          "pid": 136882,
+          "snapshot_age_s": 0.067839126,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          },
+          "pipe_counts": {
+            "send_started": 2,
+            "send_completed": 2,
+            "recv_started": 5,
+            "recv_completed": 5
+          }
+        }
+      }
+    },
+    {
+      "monotonic_ns": 1833502844950535,
+      "roles": {
+        "producer": {
+          "pid": 136889,
+          "snapshot_age_s": 0.132617061,
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 5,
+            "send_completed": 5,
+            "recv_started": 2,
+            "recv_completed": 2
+          }
+        },
+        "consumer": {
+          "pid": 136882,
+          "snapshot_age_s": 0.114338355,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          },
+          "pipe_counts": {
+            "send_started": 2,
+            "send_completed": 2,
+            "recv_started": 5,
+            "recv_completed": 5
+          }
+        }
+      }
+    },
+    {
+      "monotonic_ns": 1833507858505850,
+      "roles": {
+        "producer": {
+          "pid": 136889,
+          "snapshot_age_s": 0.14079746,
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 5,
+            "send_completed": 5,
+            "recv_started": 2,
+            "recv_completed": 2
+          }
+        },
+        "consumer": {
+          "pid": 136882,
+          "snapshot_age_s": 0.123334275,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          },
+          "pipe_counts": {
+            "send_started": 2,
+            "send_completed": 2,
+            "recv_started": 5,
+            "recv_completed": 5
+          }
+        }
+      }
+    },
+    {
+      "monotonic_ns": 1833512872049267,
+      "roles": {
+        "producer": {
+          "pid": 136889,
+          "snapshot_age_s": 0.149076254,
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 5,
+            "send_completed": 5,
+            "recv_started": 2,
+            "recv_completed": 2
+          }
+        },
+        "consumer": {
+          "pid": 136882,
+          "snapshot_age_s": 0.131961201,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          },
+          "pipe_counts": {
+            "send_started": 2,
+            "send_completed": 2,
+            "recv_started": 5,
+            "recv_completed": 5
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Client cancellation occurred after first token, not before Prefill or during KV transfer",
+    "Host observations and zero gauges do not prove GPU work complete",
+    "Router error remains unresolved; readiness probe correctly rejects the state",
+    "Crash and other timeout paths are untested; not formal validation"
+  ]
+}
