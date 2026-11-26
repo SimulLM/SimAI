@@ -1,0 +1,21 @@
+{
+  "waves": 40,
+  "requests": 160,
+  "observed_patterns": {
+    "(0, 0, 9, 9)": 4720
+  },
+  "qualified_bins": 8,
+  "bins": 8,
+  "sources": {
+    "compute-events-159550.jsonl": "959ca7f55aac229ec0f756bd6f53fa4f2d9998b120189fa9902edac4ea549391",
+    "waves.jsonl": "415eafd660a072f6c896e1cbb5d66be456dd7eb0841e6c482ca690e90f9ad3d4"
+  },
+  "limitations": [
+    "controlled single GPU, not PD end to end",
+    "CUDA synchronization perturbation",
+    "exact pattern only; cannot extrapolate to other spans",
+    "same service session",
+    "whole forward excludes CPU logits sampler KV router",
+    "not frozen"
+  ]
+}

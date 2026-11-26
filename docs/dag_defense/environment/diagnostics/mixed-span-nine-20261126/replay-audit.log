@@ -1,0 +1,22 @@
+{
+  "baseline_batches": 138,
+  "dag_batches": 130,
+  "paired_batches": 4,
+  "paired_forward_costs_equal": true,
+  "patterns": {
+    "baseline": {
+      "(0, 0)": 18,
+      "(0, 0, 9, 9)": 118
+    },
+    "dag": {
+      "(0, 0)": 2,
+      "(0, 0, 1, 1)": 126
+    }
+  },
+  "limitations": [
+    "adapted baseline not pristine",
+    "synthetic trace",
+    "first-token fee omitted",
+    "not full E2E or validation"
+  ]
+}

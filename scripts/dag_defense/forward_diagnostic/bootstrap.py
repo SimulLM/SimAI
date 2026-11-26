@@ -8,7 +8,7 @@ from lookup import ForwardLookup,CoverageError
 from vidur.execution_time_predictor.base_execution_time_predictor import BaseExecutionTimePredictor
 from vidur.entities.execution_time import ExecutionTime
 from schemas.dag.v1.contracts import CostEstimate,GraphFragment
-lookup=ForwardLookup(os.environ['FORWARD_PREFILL_CSV'],os.environ['FORWARD_DECODE_CSV'])
+lookup=ForwardLookup(os.environ['FORWARD_PREFILL_CSV'],os.environ['FORWARD_DECODE_CSV'],os.environ.get('FORWARD_PATTERN_CSV'))
 mode=os.environ['FORWARD_DIAG_MODE'];trace=os.environ['FORWARD_DIAG_TRACE']
 if mode not in ('baseline','dag'):raise ValueError('invalid FORWARD_DIAG_MODE')
 orig_get=BaseExecutionTimePredictor.get_execution_time;orig_model=ExecutionTime.model_time.fget
