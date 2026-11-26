@@ -1,0 +1,769 @@
+{
+  "status": "same_input_instrumented_diagnostic",
+  "input_sha256": "03248787c445a346991d4df45d6475702b8a28a9727599ef049158e4ab13a630",
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "router": {
+    "router_id": "8612119424fe4fb68b61b416b8ebd1f7",
+    "arrival_ns": 1830303333544308,
+    "clock_id": "CLOCK_MONOTONIC",
+    "prefill_submit_ns": 1830303333713221,
+    "prefill_status": 200,
+    "prefill_done_ns": 1830303363918656,
+    "prefill_id": "cmpl-c3aef1c0913846528a17949e57b8713b",
+    "decode_submit_ns": 1830303363960460,
+    "decode_status": 200,
+    "decode_done_ns": 1830304378646806,
+    "decode_id": "cmpl-9f51f383dc01466e8b41d831829a3136",
+    "router_complete_ns": 1830304378935707
+  },
+  "producer_model_steps": 1,
+  "consumer_kv_bypass_prompt_steps": 1,
+  "consumer_subsequent_decode_steps": 63,
+  "producer_first_step": {
+    "event": "model_step",
+    "pid": 127363,
+    "host_start_ns": 1830303337608466,
+    "host_after_sync_ns": 1830303361786633,
+    "clock_id": "CLOCK_MONOTONIC",
+    "groups": [
+      {
+        "request_id": "cmpl-c3aef1c0913846528a17949e57b8713b-0",
+        "is_prompt": true
+      }
+    ],
+    "request_ids_to_seq_ids": {
+      "cmpl-c3aef1c0913846528a17949e57b8713b-0": [
+        1
+      ]
+    },
+    "seq_lens": [
+      512
+    ],
+    "query_lens": [
+      512
+    ],
+    "step_gpu_ms": 24.04185676574707,
+    "gpu_event_ms": {
+      "attn_rope": 0.015456000342965126,
+      "input_layernorm": 0.011231999844312668,
+      "attn_pre_proj": 0.13065600395202637,
+      "attention_combined": 0.036159999668598175,
+      "attn_post_proj": 0.0530879981815815,
+      "post_attention_layernorm": 0.011935999616980553,
+      "mlp_up_proj": 0.23603199422359467,
+      "mlp_act": 0.029055999591946602,
+      "mlp_down_proj": 0.14035199582576752,
+      "full_model_forward": 21.746015548706055,
+      "send_kv_caches_and_hidden_states_gpu": 1.7905280590057373,
+      "logits_gpu": 0.1661120057106018,
+      "sampler_gpu": 0.1627199947834015
+    },
+    "host_intervals": {
+      "send_kv_caches_and_hidden_states": [
+        1830303352049666,
+        1830303354099011
+      ],
+      "logits": [
+        1830303354108911,
+        1830303354309716
+      ],
+      "sampler": [
+        1830303354318848,
+        1830303361671367
+      ]
+    }
+  },
+  "consumer_first_step": {
+    "event": "model_step",
+    "pid": 127368,
+    "host_start_ns": 1830303368019053,
+    "host_after_sync_ns": 1830303379793717,
+    "clock_id": "CLOCK_MONOTONIC",
+    "groups": [
+      {
+        "request_id": "cmpl-9f51f383dc01466e8b41d831829a3136-0",
+        "is_prompt": true
+      }
+    ],
+    "request_ids_to_seq_ids": {
+      "cmpl-9f51f383dc01466e8b41d831829a3136-0": [
+        1
+      ]
+    },
+    "seq_lens": [
+      512
+    ],
+    "query_lens": [
+      512
+    ],
+    "step_gpu_ms": 11.70742416381836,
+    "gpu_event_ms": {
+      "recv_kv_caches_and_hidden_states_gpu": 10.697312355041504,
+      "logits_gpu": 0.3747200071811676,
+      "sampler_gpu": 0.4747839868068695
+    },
+    "host_intervals": {
+      "recv_kv_caches_and_hidden_states": [
+        1830303368133607,
+        1830303372160098
+      ],
+      "kv_bypass": true,
+      "kv_ready_bound_ns": [
+        1830303371904156,
+        1830303378857589
+      ],
+      "kv_ready_sync_ns": [
+        1830303372165852,
+        1830303378857589
+      ],
+      "logits": [
+        1830303378874063,
+        1830303379170143
+      ],
+      "sampler": [
+        1830303379179845,
+        1830303379744677
+      ]
+    }
+  },
+  "consumer_subsequent_steps": [
+    {
+      "host_start_ns": 1830303381000431,
+      "host_after_sync_ns": 1830303396566727,
+      "seq_lens": [
+        513
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303397699925,
+      "host_after_sync_ns": 1830303412770697,
+      "seq_lens": [
+        514
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303413878784,
+      "host_after_sync_ns": 1830303428797432,
+      "seq_lens": [
+        515
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303429855758,
+      "host_after_sync_ns": 1830303444616796,
+      "seq_lens": [
+        516
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303445610541,
+      "host_after_sync_ns": 1830303460236212,
+      "seq_lens": [
+        517
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303461221258,
+      "host_after_sync_ns": 1830303475831615,
+      "seq_lens": [
+        518
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303476782002,
+      "host_after_sync_ns": 1830303491382684,
+      "seq_lens": [
+        519
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303492350147,
+      "host_after_sync_ns": 1830303506736125,
+      "seq_lens": [
+        520
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303507655530,
+      "host_after_sync_ns": 1830303522005481,
+      "seq_lens": [
+        521
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303522921319,
+      "host_after_sync_ns": 1830303537273165,
+      "seq_lens": [
+        522
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303538168618,
+      "host_after_sync_ns": 1830303552473337,
+      "seq_lens": [
+        523
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303553357873,
+      "host_after_sync_ns": 1830303567690768,
+      "seq_lens": [
+        524
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303568593390,
+      "host_after_sync_ns": 1830303582979355,
+      "seq_lens": [
+        525
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303583883169,
+      "host_after_sync_ns": 1830303598600233,
+      "seq_lens": [
+        526
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303599507948,
+      "host_after_sync_ns": 1830303613894075,
+      "seq_lens": [
+        527
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303614789348,
+      "host_after_sync_ns": 1830303629138261,
+      "seq_lens": [
+        528
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303630041441,
+      "host_after_sync_ns": 1830303644637899,
+      "seq_lens": [
+        529
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303645609011,
+      "host_after_sync_ns": 1830303660361444,
+      "seq_lens": [
+        530
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303661483737,
+      "host_after_sync_ns": 1830303676747035,
+      "seq_lens": [
+        531
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303677954214,
+      "host_after_sync_ns": 1830303692967311,
+      "seq_lens": [
+        532
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303694203750,
+      "host_after_sync_ns": 1830303709287478,
+      "seq_lens": [
+        533
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303710519073,
+      "host_after_sync_ns": 1830303725638890,
+      "seq_lens": [
+        534
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303726875929,
+      "host_after_sync_ns": 1830303741786747,
+      "seq_lens": [
+        535
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303742978834,
+      "host_after_sync_ns": 1830303757807159,
+      "seq_lens": [
+        536
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303758976338,
+      "host_after_sync_ns": 1830303773732568,
+      "seq_lens": [
+        537
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303774872981,
+      "host_after_sync_ns": 1830303789735585,
+      "seq_lens": [
+        538
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303790872251,
+      "host_after_sync_ns": 1830303805583093,
+      "seq_lens": [
+        539
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303806709723,
+      "host_after_sync_ns": 1830303821402773,
+      "seq_lens": [
+        540
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303822482125,
+      "host_after_sync_ns": 1830303837097861,
+      "seq_lens": [
+        541
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303838109729,
+      "host_after_sync_ns": 1830303852574236,
+      "seq_lens": [
+        542
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303853527770,
+      "host_after_sync_ns": 1830303868007961,
+      "seq_lens": [
+        543
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303868943143,
+      "host_after_sync_ns": 1830303883318750,
+      "seq_lens": [
+        544
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303884258792,
+      "host_after_sync_ns": 1830303898629220,
+      "seq_lens": [
+        545
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303899547841,
+      "host_after_sync_ns": 1830303914004808,
+      "seq_lens": [
+        546
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303914908336,
+      "host_after_sync_ns": 1830303929268916,
+      "seq_lens": [
+        547
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303930160310,
+      "host_after_sync_ns": 1830303945038072,
+      "seq_lens": [
+        548
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303945946317,
+      "host_after_sync_ns": 1830303960298463,
+      "seq_lens": [
+        549
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303961207619,
+      "host_after_sync_ns": 1830303975686962,
+      "seq_lens": [
+        550
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303976611809,
+      "host_after_sync_ns": 1830303991030040,
+      "seq_lens": [
+        551
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830303991941735,
+      "host_after_sync_ns": 1830304006602742,
+      "seq_lens": [
+        552
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304007558342,
+      "host_after_sync_ns": 1830304022599334,
+      "seq_lens": [
+        553
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304023751876,
+      "host_after_sync_ns": 1830304038828751,
+      "seq_lens": [
+        554
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304040040579,
+      "host_after_sync_ns": 1830304055139544,
+      "seq_lens": [
+        555
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304056325764,
+      "host_after_sync_ns": 1830304072411550,
+      "seq_lens": [
+        556
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304073650531,
+      "host_after_sync_ns": 1830304092697403,
+      "seq_lens": [
+        557
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304093960553,
+      "host_after_sync_ns": 1830304109146516,
+      "seq_lens": [
+        558
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304110340765,
+      "host_after_sync_ns": 1830304125185037,
+      "seq_lens": [
+        559
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304126314208,
+      "host_after_sync_ns": 1830304141209677,
+      "seq_lens": [
+        560
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304142340271,
+      "host_after_sync_ns": 1830304157509008,
+      "seq_lens": [
+        561
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304158631729,
+      "host_after_sync_ns": 1830304173347976,
+      "seq_lens": [
+        562
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304174420481,
+      "host_after_sync_ns": 1830304189016887,
+      "seq_lens": [
+        563
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304190066805,
+      "host_after_sync_ns": 1830304204738930,
+      "seq_lens": [
+        564
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304205816161,
+      "host_after_sync_ns": 1830304220532344,
+      "seq_lens": [
+        565
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304221467770,
+      "host_after_sync_ns": 1830304235935743,
+      "seq_lens": [
+        566
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304236866986,
+      "host_after_sync_ns": 1830304253800749,
+      "seq_lens": [
+        567
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304254739367,
+      "host_after_sync_ns": 1830304269173958,
+      "seq_lens": [
+        568
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304270087980,
+      "host_after_sync_ns": 1830304284496651,
+      "seq_lens": [
+        569
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304285405913,
+      "host_after_sync_ns": 1830304299876216,
+      "seq_lens": [
+        570
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304300787892,
+      "host_after_sync_ns": 1830304315205086,
+      "seq_lens": [
+        571
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304316100107,
+      "host_after_sync_ns": 1830304330573360,
+      "seq_lens": [
+        572
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304331475982,
+      "host_after_sync_ns": 1830304345880995,
+      "seq_lens": [
+        573
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304346792724,
+      "host_after_sync_ns": 1830304361273322,
+      "seq_lens": [
+        574
+      ],
+      "query_lens": [
+        1
+      ]
+    },
+    {
+      "host_start_ns": 1830304362195085,
+      "host_after_sync_ns": 1830304376754834,
+      "seq_lens": [
+        575
+      ],
+      "query_lens": [
+        1
+      ]
+    }
+  ],
+  "limitations": [
+    "Separate repeated request, not the original calibration request",
+    "Device synchronizations and hooks perturb timing; cannot compare as production E2E",
+    "KVReady is an interval bounded by receive and post-install synchronize, not exact timestamp",
+    "Non-stream diagnostic router completion follows full backend response read, before its own response is sent",
+    "Sampling occurs at both endpoints but no sampled-token identity equivalence is established"
+  ]
+}
