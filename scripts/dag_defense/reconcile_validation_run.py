@@ -2,18 +2,29 @@
 import argparse,collections,json,pathlib,sys
 
 def reconcile(inputs,client_path,router_path,output):
- requests=[json.loads(x) for x in inputs.read_text().splitlines()];clients=collections.defaultdict(list);events=collections.defaultdict(lambda:collections.defaultdict(list))
+ requests=[json.loads(x) for x in inputs.read_text().splitlines()];clients=collections.defaultdict(list);events=collections.defaultdict(lambda:collections.defaultdict(list));client_router=collections.defaultdict(set)
  for line in client_path.read_text().splitlines():
   x=json.loads(line);clients[x['request_id']].append(x)
  for line in router_path.read_text().splitlines():
   x=json.loads(line);events[x['request_id']][x['event']].append(x)
+  if x['event']=='server_arrival' and x.get('client_request_id'):client_router[x['client_request_id']].add(x['request_id'])
  rows=[];errors=[];seen_router=set()
  for r in requests:
   matches=clients[r['request_id']];row={'run_id':r['run_id'],'request_id':r['request_id'],'input_id':r['input_id'],'input_sha256':r['input_sha256'],'wave':r['wave'],'status':'missing_client','error':'','server_arrival_ns':None,'server_complete_ns':None,'server_e2e_s':None}
-  if len(matches)!=1:row['error']='expected exactly one client record';errors.append({'request_id':r['request_id'],'error':row['error']});rows.append(row);continue
+  if len(matches)!=1:
+   row['error']='expected exactly one client record';errors.append({'request_id':r['request_id'],'error':row['error']})
+   linked=client_router[r['request_id']]
+   if len(linked)==1:
+    recovered=next(iter(linked));row['router_id']=recovered;row['router_id_recovered_from_client_id']=True;row['server_events']=[event for values in events[recovered].values() for event in values]
+   rows.append(row);continue
   c=matches[0]
   if any(c.get(k)!=r.get(k) for k in ('run_id','request_id','input_id','input_sha256','wave')):errors.append({'request_id':r['request_id'],'error':'client/input identity mismatch'})
   row.update({k:c.get(k) for k in ('status','error','router_id','backend_request_id','scheduled_arrival_ns','client_send_ns','client_first_token_ns','client_complete_ns','http_status','usage')});rid=c.get('router_id')
+  linked=client_router[r['request_id']]
+  if len(linked)>1:errors.append({'request_id':r['request_id'],'error':'multiple router IDs for client ID'})
+  if rid and linked and rid not in linked:errors.append({'request_id':r['request_id'],'error':'client/router correlation mismatch'})
+  if not rid and len(linked)==1:
+   rid=next(iter(linked));row['router_id']=rid;row['router_id_recovered_from_client_id']=True
   if not rid:
    if c['status']=='success':errors.append({'request_id':r['request_id'],'error':'missing router ID'})
    rows.append(row);continue
@@ -21,6 +32,7 @@ def reconcile(inputs,client_path,router_path,output):
   seen_router.add(rid);ev=events[rid];arrival=ev['server_arrival'];complete=ev['server_complete'];mapping=ev['decode_mapping']
   if len(arrival)==1:row['server_arrival_ns']=arrival[0]['timestamp_ns']
   if len(complete)==1:row['server_complete_ns']=complete[0]['timestamp_ns']
+  row['server_events']=[event for values in ev.values() for event in values]
   if row['server_arrival_ns'] is not None and row['server_complete_ns'] is not None:row['server_e2e_s']=(row['server_complete_ns']-row['server_arrival_ns'])/1e9
   if c['status']=='success':
    problems=[]
@@ -37,6 +49,8 @@ def reconcile(inputs,client_path,router_path,output):
   rows.append(row)
  expected={r['request_id'] for r in requests}
  if len(expected)!=len(requests):errors.append({'error':'duplicate input request IDs'})
+ unexpected_correlations=set(client_router)-expected
+ if unexpected_correlations:errors.append({'error':'unexpected router client IDs','ids':sorted(unexpected_correlations)})
  extra=set(clients)-expected
  if extra:errors.append({'error':'unexpected client IDs','ids':sorted(extra)})
  output.mkdir(parents=True,exist_ok=False)

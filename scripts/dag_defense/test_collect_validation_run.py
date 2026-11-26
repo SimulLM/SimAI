@@ -5,7 +5,7 @@ from collect_validation_run import run_case,preflight
 from reconcile_validation_run import reconcile
 async def main():
  async def handle(req):
-  body=await req.json();i=body['prompt'][1];mode=body['model']
+  body=await req.json();i=body['prompt'][1];mode=body['model'];assert req.headers['X-Experiment-Client-ID']==str(i)
   if mode=='fail' and i==1:return web.Response(status=503,text='injected failure')
   if mode=='timeout' and i==2:await asyncio.sleep(.35)
   usage={'prompt_tokens':4,'completion_tokens':128};payload='data: '+json.dumps({'id':'fake-'+str(i),'usage':usage})+'\n\ndata: [DONE]\n\n'
@@ -21,6 +21,7 @@ async def main():
    for i in range(32):
     for name,t in [('server_arrival',100),('prefill_send',110),('prefill_response',120),('prefill_mapping',130),('decode_send',140),('decode_mapping',150),('server_first_token',160),('server_complete',200)]:
      item={'request_id':'fixture-'+str(i),'event':name,'timestamp_ns':t,'clock_id':'CLOCK_MONOTONIC'}
+     if name=='server_arrival':item['client_request_id']=str(i)
      if name=='decode_mapping':item['backend_request_id']='fake-'+str(i)
      if name=='prefill_response':item['status']=200
      if name=='server_complete':item['usage']={'prompt_tokens':4,'completion_tokens':128}
@@ -28,7 +29,8 @@ async def main():
    router.write_text(''.join(json.dumps(r)+'\n' for r in server));good=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-good');assert good['status']=='complete',good
    router.write_text(router.read_text()+json.dumps(server[0])+'\n');bad=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-duplicate');assert bad['status']=='incomplete' and bad['errors'],bad
    partial=reconcile(inputs,root/'timeout/client-events.jsonl',router,root/'reconciled-timeout');assert partial['status']=='incomplete' and partial['status_counts']['not_submitted']==28,partial
-   truncated=root/'truncated.jsonl';truncated.write_text('\n'.join((root/'success/client-events.jsonl').read_text().splitlines()[:3])+'\n');interrupted=reconcile(inputs,truncated,router,root/'reconciled-interrupted');assert interrupted['status']=='incomplete' and interrupted['status_counts']['missing_client']==29,interrupted
+   truncated=root/'truncated.jsonl';truncated.write_text('\n'.join((root/'success/client-events.jsonl').read_text().splitlines()[:3])+'\n');interrupted=reconcile(inputs,truncated,router,root/'reconciled-interrupted');assert interrupted['status']=='incomplete' and interrupted['status_counts']['missing_client']==29,interrupted;interrupted_rows=[json.loads(x) for x in (root/'reconciled-interrupted/requests.jsonl').read_text().splitlines()];assert all(x.get('server_events') and x.get('router_id_recovered_from_client_id') for x in interrupted_rows if x['status']=='missing_client')
+   recovered_client=root/'recover-client.jsonl';rc=[json.loads(x) for x in (root/'timeout/client-events.jsonl').read_text().splitlines()];timed=next(x for x in rc if x['status']=='timeout');assert not timed.get('router_id');recovered_client.write_text(''.join(json.dumps(x)+'\n' for x in rc));recovered=reconcile(inputs,recovered_client,router,root/'recovered');resultrows=[json.loads(x) for x in (root/'recovered/requests.jsonl').read_text().splitlines()];row=next(x for x in resultrows if x['request_id']==timed['request_id']);assert row['router_id_recovered_from_client_id'] and row['router_id']=='fixture-'+timed['request_id'] and row['server_events'] and row['status']=='timeout' and recovered['status']=='incomplete'
    inputfile=root/'verified-input.jsonl';checked=[]
    for i in range(32):
     ids=[1,4,5,6];digest=hashlib.sha256((json.dumps(ids,separators=(',',':'))+'\n').encode()).hexdigest();checked.append({'request_id':str(i),'run_id':'checked','input_id':str(i),'input_ids':ids,'input_sha256':digest,'wave':i//2})

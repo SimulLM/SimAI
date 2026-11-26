@@ -1,5 +1,5 @@
 """Local 1P1D streaming diagnostic router; monotonic API boundary events."""
-import json,os,time,uuid
+import json,os,re,time,uuid
 from contextlib import asynccontextmanager
 import aiohttp
 from fastapi import FastAPI,Request
@@ -19,7 +19,10 @@ async def lifespan(app):
 app=FastAPI(lifespan=lifespan)
 @app.post('/v1/completions')
 async def complete(request:Request):
- rid=uuid.uuid4().hex; event(rid,'server_arrival')
+ rid=uuid.uuid4().hex; client_id=request.headers.get('X-Experiment-Client-ID')
+ if client_id is not None and not re.fullmatch(r'[A-Za-z0-9_-]{1,128}',client_id):
+  return JSONResponse({'error':'invalid client request ID'},status_code=400)
+ event(rid,'server_arrival',client_request_id=client_id)
  try:
   body=await request.json()
   if body.get('stream') is not True:

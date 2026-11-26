@@ -29,7 +29,7 @@ async def run_case(spec,rows,output,url,model,timeout_s):
   row={'run_id':r['run_id'],'request_id':r['request_id'],'input_id':r['input_id'],'input_sha256':r['input_sha256'],'wave':r['wave'],'scheduled_arrival_ns':scheduled,'client_send_ns':time.monotonic_ns(),'status':'failed'}
   try:
    body={'model':model,'prompt':r['input_ids'],'temperature':0,'top_p':1,'seed':0,'ignore_eos':True,'stream':True,'max_tokens':128,'min_tokens':128}
-   async with session.post(url,json=body) as resp:
+   async with session.post(url,json=body,headers={'X-Experiment-Client-ID':r['request_id']}) as resp:
     row['http_status']=resp.status;row['router_id']=resp.headers.get('X-Experiment-Request-ID');row['client_headers_ns']=time.monotonic_ns();done=False;usage=None;backend=None;first=None
     if resp.status!=200:row['error']='HTTP '+str(resp.status)+' '+(await resp.text())[:512]
     else:
