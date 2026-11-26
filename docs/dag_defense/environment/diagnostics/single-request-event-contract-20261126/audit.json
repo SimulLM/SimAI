@@ -1,0 +1,142 @@
+{
+  "real_router_id": "b6a60d6e15954834a94e9ae8b4e36b7a",
+  "actual_clock_id": "CLOCK_MONOTONIC",
+  "actual": [
+    {
+      "event": "router_arrival",
+      "timestamp_ns": 1837970386029536,
+      "scope": "server monotonic origin"
+    },
+    {
+      "event": "prefill_send",
+      "timestamp_ns": 1837970386128470,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "prefill_worker_start",
+      "timestamp_ns": 1837970389095786,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "producer_send_start",
+      "timestamp_ns": 1837970401245787,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "producer_send_return",
+      "timestamp_ns": 1837970402625127,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "prefill_worker_return",
+      "timestamp_ns": 1837970412630976,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "prefill_response",
+      "timestamp_ns": 1837970413971759,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "decode_send",
+      "timestamp_ns": 1837970414045870,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "decode_worker_start",
+      "timestamp_ns": 1837970416848208,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "receive_start",
+      "timestamp_ns": 1837970416955991,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "receive_return",
+      "timestamp_ns": 1837970419771155,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "first_step_return",
+      "timestamp_ns": 1837970427030365,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "router_first",
+      "timestamp_ns": 1837970427792437,
+      "scope": "host observation; send/receive return not GPU completion"
+    },
+    {
+      "event": "last_step_return",
+      "timestamp_ns": 1837971240684793,
+      "scope": "host observation; server completion is stream end"
+    },
+    {
+      "event": "final_choice",
+      "timestamp_ns": 1837971241420718,
+      "scope": "host observation; server completion is stream end"
+    },
+    {
+      "event": "server_complete",
+      "timestamp_ns": 1837971241608570,
+      "scope": "host observation; server completion is stream end"
+    }
+  ],
+  "simulation": [
+    {
+      "event": "arrival",
+      "time_s": 0.0
+    },
+    {
+      "event": "prefill_end",
+      "time_s": 0.023397013351301198
+    },
+    {
+      "event": "transfer_start",
+      "time_s": 0.023397013351301198
+    },
+    {
+      "event": "kv_ready",
+      "time_s": 0.03595472067511072
+    },
+    {
+      "event": "consumer_first_token_start",
+      "time_s": 0.03595472067511072
+    },
+    {
+      "event": "consumer_first_token_end",
+      "time_s": 0.03683049967511072
+    },
+    {
+      "event": "first_decode_start",
+      "time_s": 0.03683049967511072
+    },
+    {
+      "event": "last_batch_complete",
+      "time_s": 0.9392067062981574
+    }
+  ],
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "real_consumer_steps": 64,
+  "simulation_subsequent_decode_batches": 63,
+  "actual_server_e2e_s": 0.855579034,
+  "simulation_last_batch_elapsed_s": 0.9392067062981574,
+  "simulation_is_adapted_candidate_not_pristine": true,
+  "source_sha256": {
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/serial-prefix-comparison-20261126/requests.csv": "d3994accb7872c95d9ec9ff8b9eed4ba29def2d1b55351fb1862159dd86ebdf4",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/first-last-output-boundary-20261126/paired.csv": "aefdd19e13ec40868dbd2220368b5ba6ec69109afaef606545cfa2db253b3e66",
+    "/root/autodl-tmp/dag-handoff/runs/whole-forward-replay-20261126/dag/2026-11-26_17-00-40-247300/request_metrics.csv": "697280352c7547e6cab59a041220984c4beeaf4284624b827b1f38cd9928f370",
+    "/root/autodl-tmp/dag-handoff/runs/whole-forward-replay-20261126/dag/2026-11-26_17-00-40-247300/pd-transfers.csv": "2095f2d699fc41e687c2455a8e90d77878573f8424e6eb2af353e7b9f8841b78",
+    "/root/autodl-tmp/dag-handoff/runs/whole-forward-replay-20261126/dag/2026-11-26_17-00-40-247300/timeline.csv": "55cdff1755ba3742cd3b857c141abc14b102a1c644bd0acf0bf2e50303b087e4",
+    "/root/autodl-tmp/dag-handoff/runs/whole-forward-replay-20261126/dag/2026-11-26_17-00-40-247300/chrome_trace.json": "ad017e7e75b8be138b92fdedc121016bd34c518c29384bd0b4dfa523ff8b9bcb"
+  },
+  "limitations": [
+    "distinct observations in real and simulated host clock domains; do not subtract absolute clocks",
+    "real worker events do not prove exact GPU KVReady",
+    "router streaming completion is not simulator last model batch completion",
+    "the same candidate input/profile is a diagnostic, not frozen or formal validation",
+    "host receive start and simulated transfer start have different meanings"
+  ]
+}

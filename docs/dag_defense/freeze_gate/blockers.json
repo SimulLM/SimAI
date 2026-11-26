@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:56:12.047061+00:00",
+  "updated_utc": "2026-11-26T12:57:49.343765+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
@@ -13,10 +13,10 @@
     "arrival_completion_boundary": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/output-processing-repeat-20261126/README.md",
-      "missing": "Actual dual-GPU router first-token count guard passed one warmup and one measured request; the simulator last-batch to router completion residual and per-round compatibility remain open.",
-      "next_action": "Bind a versioned server arrival, last-model-batch and stream-completion contract, retain the measured residual as a scoped limitation, and check each run against it.",
+      "missing": "Single-request actual and candidate simulator event timestamps are joined and token counts agree. Real Decode starts before receive while the candidate starts transfer at prefill end; last model batch and router stream completion remain different scopes.",
+      "next_action": "Specify how the common comparison treats the router completion residual and real pull ordering, with separately evidenced non-overlapping costs or an explicitly scoped limitation.",
       "close_when": "Token and Decode counts align; all endpoints have source timestamps and residual is quantified or disclosed without double counting.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/server-first-token-real-smoke-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/single-request-event-contract-20261126/README.md"
     },
     "concurrent_readiness_batching": {
       "status": "open",
