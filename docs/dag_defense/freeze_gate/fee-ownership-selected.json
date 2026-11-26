@@ -1,0 +1,71 @@
+{
+  "version": "composite-fees-v1",
+  "missing_fee_keys_count": 6,
+  "historical_missing_keys": [
+    [
+      "attention_prefill_equivalent_chunk",
+      2896
+    ],
+    [
+      "attention_decode_context",
+      3,
+      2112
+    ],
+    [
+      "attention_decode_context",
+      3,
+      2176
+    ],
+    [
+      "attention_decode_context",
+      1,
+      2176
+    ],
+    [
+      "attention_decode_context",
+      2,
+      2176
+    ],
+    [
+      "attention_decode_context",
+      4,
+      2176
+    ]
+  ],
+  "key_count_correction": "Earlier statement seven was incorrect; version prefixes are deduplicated.",
+  "measurement_policy": "Whole worker envelopes use real batches (phase,input length,actual batch,actual mean context); attention equivalent length is never used as a whole-model shape.",
+  "stages": {
+    "producer_prefill": "prepare through synchronized execute_model, including forward, head and sampling; engine schedule/output measured separately.",
+    "kv_consumer_first_token": "receiver entry through synchronized consumer bypass step return; includes KV transport receive/install, consumer head/sampling; charged once per request instead of legacy bandwidth; no second first-token/head/sampler task.",
+    "consumer_decode": "127 later Decode rounds for output=128, using actual formed batches; excludes token1."
+  },
+  "deletions": [
+    "old layer/norm/RoPE/add/embedding/head charges replaced by worker envelope",
+    "old sampler/prepare CPU charges replaced by worker envelope",
+    "old KV-only bandwidth and installation subfees replaced by receiver envelope",
+    "separate consumer first-token/head/sampler removed because included in receiver"
+  ],
+  "resources": {
+    "status": "待验证近似",
+    "worker": "entire synchronized host/device interval occupies GPU, including internal host wait",
+    "receiver": "per-request serialized envelope occupies existing source/destination GPU and endpoint resources",
+    "schedule_output": "existing per-replica CPU resources; disjoint measured intervals"
+  },
+  "acceptance_checks": [
+    "fee domain and nonoverlapping source intervals",
+    "one receiver per request; no extra first-token/head/sampler",
+    "one worker envelope per model batch; no old subfees",
+    "causal readiness and token rounds",
+    "exclusive resource intervals and wait arithmetic",
+    "actual and predicted cross-wave backlog",
+    "score boundaries and all failures retained"
+  ],
+  "not_gates": [
+    "DAG improvement",
+    "small error",
+    "batch equality",
+    "zero predicted backlog"
+  ],
+  "pristine_reference": "cef83f9ddd96540e3e9f48934f11335d52d54fce unchanged; fee-adapted reference separately labelled",
+  "no_scheduler_or_readiness_change": true
+}
