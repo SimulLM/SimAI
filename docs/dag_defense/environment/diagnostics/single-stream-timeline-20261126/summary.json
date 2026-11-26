@@ -1,0 +1,19 @@
+{
+  "status": "streaming_host_timeline_observed",
+  "router_id": "d83a0bb1ce8b4190b657d649c1e999a7",
+  "producer_worker_id": "cmpl-dd4f3d7f14a6450b9b0fa8d303aa49dd-0",
+  "consumer_worker_id": "cmpl-9e7efe6cbce34cb18cbf9a1e844289e2-0",
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "producer_steps": 1,
+  "consumer_steps": 64,
+  "kv_bypass": true,
+  "server_e2e_s": 0.880765463,
+  "client_e2e_s": 0.881616625,
+  "limitations": [
+    "Host events and worker return do not prove GPU operation completion or exact KVReady",
+    "This is an instrumented repeated request, not the original calibration record",
+    "No network transfer start/end timestamps, queue cause attribution, or quantified instrumentation overhead",
+    "Not validation or a frozen fee"
+  ]
+}
