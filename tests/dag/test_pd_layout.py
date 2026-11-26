@@ -73,3 +73,14 @@ def test_versioned_legacy_billing_option_is_explicit():
         PDConfig.from_dict(dict(old, legacy_prefill_billing_extra_token=True))
     with pytest.raises(ValueError, match="zero fixed latency"):
         PDConfig.from_dict(dict(new, legacy_prefill_billing_extra_token=True, latency_s=0.001))
+
+def test_decode_pull_candidate_is_opt_in_and_strict():
+    old = config()
+    assert PDConfig.from_dict(old).transfer_start_mode == 'push'
+    candidate = dict(old, schema_version='1.2', legacy_prefill_billing_extra_token=False, transfer_start_mode='decode_pull_candidate')
+    assert PDConfig.from_dict(candidate).transfer_start_mode == 'decode_pull_candidate'
+    for bad in ('unknown', None, True):
+        with pytest.raises(ValueError):
+            PDConfig.from_dict(dict(candidate, transfer_start_mode=bad))
+    with pytest.raises(ValueError):
+        PDConfig.from_dict(dict(old, transfer_start_mode='decode_pull_candidate'))

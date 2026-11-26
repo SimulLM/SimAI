@@ -13,6 +13,7 @@ class PDConfig:
     occupies_gpu: bool
     evidence: str
     legacy_prefill_billing_extra_token: bool = False
+    transfer_start_mode: str = "push"
 
     @classmethod
     def from_dict(cls, data):
@@ -25,6 +26,8 @@ class PDConfig:
             expected = fields
         elif version == "1.1":
             expected = fields | {"legacy_prefill_billing_extra_token"}
+        elif version == "1.2":
+            expected = fields | {"legacy_prefill_billing_extra_token", "transfer_start_mode"}
         else:
             raise ValueError("unsupported PD configuration version")
         if set(data) != expected:
@@ -32,6 +35,9 @@ class PDConfig:
         extra_token = data.get("legacy_prefill_billing_extra_token", False)
         if type(extra_token) is not bool:
             raise ValueError("legacy_prefill_billing_extra_token must be boolean")
+        transfer_mode = data.get("transfer_start_mode", "push")
+        if transfer_mode not in ("push", "decode_pull_candidate"):
+            raise ValueError("unsupported PD transfer start mode")
         if data["storage_dtype"] not in DTYPES:
             raise ValueError("unsupported storage dtype; wire dtype must equal storage dtype")
         capacity = positive_int(data["capacity_bytes_per_shard"], "capacity_bytes_per_shard")
@@ -44,7 +50,7 @@ class PDConfig:
         if extra_token and latency != 0:
             raise ValueError("legacy fee parity requires zero fixed latency")
         return cls(data["storage_dtype"], capacity, bandwidth, latency,
-                   data["occupies_gpu"], data["evidence"], extra_token)
+                   data["occupies_gpu"], data["evidence"], extra_token, transfer_mode)
 
     @classmethod
     def load(cls, path):

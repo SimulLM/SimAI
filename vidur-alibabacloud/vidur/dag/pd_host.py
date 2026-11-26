@@ -38,6 +38,7 @@ class PDCoordinator:
         self.migrations, self.requests = {}, {}
         self.waiting = {}  # Insertion order is stable across capacity retries.
         self.layouts = {}
+        self.pull_groups = {}  # destination -> ordered migrations held by a receive step
         capacities = {key: ResourceCapacity(value["capacity"], value["unit"])
                       for key, value in adapter.executor._resources.usage_snapshot().items()}
         first = None
@@ -48,6 +49,8 @@ class PDCoordinator:
             layout = KVLayout(replica.num_layers, replica.num_kv_heads, replica.attention_head_dim,
                 replica._replica_config.tensor_parallel_size, replica.num_pipeline_stages,
                 config.storage_dtype, rs._config.block_size)
+            if config.transfer_start_mode == "decode_pull_candidate" and (layout.tp != 1 or layout.pp != 1):
+                raise ValueError("candidate decode pull currently supports TP1 PP1 only")
             if config.legacy_prefill_billing_extra_token and (layout.tp != 1 or layout.pp != 1):
                 raise ValueError("legacy fee parity is supported only for TP1 PP1")
             if first is not None and layout != first:
@@ -92,6 +95,8 @@ class PDCoordinator:
             raise RuntimeError(self.failure)
         selected, tokens = [], []
         is_prefill = rs.replica.replica_type == ReplicaType.PREFILL
+        if not is_prefill and rs.replica_id in self.pull_groups:
+            return None  # Decode worker is busy pulling this receive batch.
         for request in tuple(rs._preempted_requests) + tuple(rs._request_queue):
             if request.completed or request in selected:
                 continue
@@ -164,6 +169,8 @@ class PDCoordinator:
                     for rid in sorted(self.scheduler._replica_schedulers)]
 
     def retry(self, now):
+        if self.config.transfer_start_mode == "decode_pull_candidate":
+            return self._retry_decode_pull(now)
         events = []
         for rid in tuple(self.waiting):
             m, request = self.migrations[rid], self.requests[rid]
@@ -178,6 +185,45 @@ class PDCoordinator:
             m.destination_reserved_at_s, m.state = now, "TRANSFERRING"
             del self.waiting[rid]
             events.extend(self._submit_transfer(m, now))
+        return events
+
+    def _retry_decode_pull(self, now):
+        """Candidate: a free Decode worker selects a batch and pulls KVs serially.
+
+        No host launch, cache installation or sampling cost is inferred here. This
+        is an opt-in scheduling diagnostic, not a validated vLLM timing model.
+        """
+        events = []
+        destinations = dict.fromkeys(self.migrations[rid].destination for rid in self.waiting)
+        for destination in destinations:
+            rs = self.scheduler.get_replica_scheduler(destination)
+            if destination in self.pull_groups or rs._num_running_batches or rs._request_queue or rs._preempted_requests:
+                continue
+            selected, prefill_tokens = [], 0
+            limit = min(rs._max_batch_size, rs._max_micro_batch_size)
+            for rid in tuple(self.waiting):
+                m, request = self.migrations[rid], self.requests[rid]
+                if m.destination != destination or len(selected) >= limit:
+                    continue
+                if prefill_tokens + request.num_prefill_tokens > rs._config.max_tokens_in_batch:
+                    break
+                if not rs.can_allocate(rs._max_blocks_per_sequence):
+                    break
+                handles = self.tx.reserve(rid, destination, m.storage_bytes, "destination", now)
+                if handles is None:
+                    break
+                m.destination_handles = handles
+                self._ledger_allocate(rs, request, m.storage_bytes)
+                m.destination_reserved_at_s, m.state = now, "PULL_QUEUED"
+                del self.waiting[rid]
+                selected.append(rid)
+                prefill_tokens += request.num_prefill_tokens
+            if selected:
+                self.pull_groups[destination] = selected
+                self.tx.record(now, "pull_batch_selected", ",".join(selected))
+                first = self.migrations[selected[0]]
+                first.state = "TRANSFERRING"
+                events.extend(self._submit_transfer(first, now))
         return events
 
     def _submit_transfer(self, m, now):
@@ -245,12 +291,24 @@ class PDCoordinator:
         m.kv_ready_at_s, m.state = now, "KV_READY"
         request.decode_arrived_at = now
         destination = self.scheduler.get_replica_scheduler(m.destination)
-        if request not in destination._request_queue:
+        if self.config.transfer_start_mode == "push" and request not in destination._request_queue:
             destination._request_queue.append(request)
         request.pd_p2p_comm_size = m.wire_bytes * len(self.layouts[m.source].shards(m.source))
         request.pd_p2p_comm_bandwidth = self.config.bandwidth_bytes_per_s
         request.pd_p2p_comm_time = now - m.prefill_completed_at_s
         self.tx.record(now, "kv_ready", rid)
+        if self.config.transfer_start_mode == "decode_pull_candidate":
+            group = self.pull_groups[m.destination]
+            next_rid = next((item for item in group if self.migrations[item].state == "PULL_QUEUED"), None)
+            if next_rid is not None:
+                following = self.migrations[next_rid]
+                following.state = "TRANSFERRING"
+                return self._submit_transfer(following, now)
+            for item in group:
+                queued = self.requests[item]
+                if queued not in destination._request_queue:
+                    destination._request_queue.append(queued)
+            del self.pull_groups[m.destination]
         return self.notifications(now)
 
     def abort(self, now, reason):
@@ -258,6 +316,7 @@ class PDCoordinator:
             return
         self.failure = str(reason)
         self.waiting.clear()
+        self.pull_groups.clear()
         for rid, m in self.migrations.items():
             if m.state == "COMPLETED":
                 continue
@@ -277,7 +336,7 @@ class PDCoordinator:
             self.manager.cancel_waiters(((f"pd:{rid}", "source"), (f"pd:{rid}", "destination")))
 
     def assert_completed(self):
-        if self.waiting or any(m.state != "COMPLETED" for m in self.migrations.values()):
+        if self.waiting or self.pull_groups or any(m.state != "COMPLETED" for m in self.migrations.values()):
             raise RuntimeError("PD stopped with unfinished migrations or capacity waiters")
         if any(m.source_handles or m.destination_handles or m.pins for m in self.migrations.values()):
             raise RuntimeError("PD completed with retained KV handles")

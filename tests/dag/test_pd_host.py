@@ -269,3 +269,44 @@ def test_legacy_billing_matches_baseline_without_changing_wire_bytes():
 def test_legacy_billing_rejects_unverified_parallel_layouts(tp, pp):
     with pytest.raises(ValueError, match="TP1 PP1"):
         setup(tp=tp, pp=pp, legacy_billing=True)
+
+def test_candidate_pull_waits_for_decode_then_serializes_group_and_gates_batch():
+    from dataclasses import replace
+    pd, host, rs = setup(capacity=128)
+    pd.config = replace(pd.config, transfer_start_mode='decode_pull_candidate')
+    a, b = prefill(pd, rs), prefill(pd, rs)
+    # Decode is executing; neither request can initiate a pull yet.
+    assert pd.retry(1) == []
+    assert len(pd.waiting) == 2
+    rs[1]._num_running_batches = 0
+    events = pd.retry(2)
+    assert len(pd.pull_groups[1]) == 2
+    assert pd.next_batch(rs[1]) is None
+    ma, mb = (pd.migrations[str(r.id)] for r in (a, b))
+    assert ma.state == 'TRANSFERRING' and mb.state == 'PULL_QUEUED'
+    drain_transfer(events)
+    assert ma.kv_ready_at_s == 4 and mb.kv_ready_at_s == 6
+    assert not pd.pull_groups and len(rs[1]._request_queue) == 2
+    pd.now = 6
+    assert {x.id for x in pd.next_batch(rs[1]).requests} == {a.id, b.id}
+    pd.abort(6, 'cleanup')
+    assert all(x['used'] == 0 for x in pd.manager.usage_snapshot().values())
+
+
+def test_candidate_pull_respects_prefill_token_budget_and_ready_priority():
+    from dataclasses import replace
+    pd, host, rs = setup(capacity=128)
+    pd.config = replace(pd.config, transfer_start_mode='decode_pull_candidate')
+    a, b = prefill(pd, rs), prefill(pd, rs)
+    rs[1]._num_running_batches = 0
+    rs[1]._config.max_tokens_in_batch = 2
+    rs[1]._preempted_requests.append(a)
+    assert pd.retry(1) == []
+    rs[1]._preempted_requests.clear()
+    events = pd.retry(1)
+    assert len(pd.pull_groups[1]) == 1 and str(b.id) in pd.waiting
+    drain_transfer(events)
+    assert len(rs[1]._request_queue) == 1
+    # A ready request takes priority over another receive batch.
+    assert pd.retry(3) == []
+    pd.abort(3, 'cleanup')

@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "scope": "synthetic arrivals and candidate costs; not validation or proof of common batch fees",
+  "matched_flags": {
+    "--replica_config_pd_p2p_comm_bandwidth": "255",
+    "--random_forrest_execution_time_predictor_config_attention_input_file": "/root/autodl-tmp/dag-handoff/runs/pd-decode-pull-smoke-v2-20261126/profile/attention.csv",
+    "--random_forrest_execution_time_predictor_config_compute_input_file": "/root/autodl-tmp/dag-handoff/runs/pd-decode-pull-smoke-v2-20261126/profile/compute.csv",
+    "--random_forrest_execution_time_predictor_config_cpu_overhead_input_file": "/root/autodl-tmp/dag-handoff/runs/pd-decode-pull-smoke-v2-20261126/profile/cpu.csv",
+    "--random_forrest_execution_time_predictor_config_send_recv_input_file": "/root/autodl-tmp/dag-handoff/runs/pd-decode-pull-smoke-v2-20261126/profile/network.csv"
+  },
+  "groups": 1,
+  "migrations": [
+    {
+      "request_id": "0",
+      "prefill_completed_at_s": 0.04037473999411016,
+      "transfer_started_at_s": 0.04037473999411016,
+      "transfer_completed_at_s": 0.04725280371960036,
+      "kv_ready_at_s": 0.04725280371960036,
+      "first_decode_start_s": 0.06100893117058076
+    },
+    {
+      "request_id": "1",
+      "prefill_completed_at_s": 0.04037473999411016,
+      "transfer_started_at_s": 0.04725280371960036,
+      "transfer_completed_at_s": 0.05413086744509056,
+      "kv_ready_at_s": 0.05413086744509056,
+      "first_decode_start_s": 0.06100893117058076
+    },
+    {
+      "request_id": "2",
+      "prefill_completed_at_s": 0.04037473999411016,
+      "transfer_started_at_s": 0.05413086744509056,
+      "transfer_completed_at_s": 0.06100893117058076,
+      "kv_ready_at_s": 0.06100893117058076,
+      "first_decode_start_s": 0.06100893117058076
+    }
+  ]
+}
