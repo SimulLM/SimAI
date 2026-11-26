@@ -1,0 +1,10 @@
+{
+  "parent_exit": 1,
+  "status": "interrupted",
+  "service_group_gone": true,
+  "collector_group_gone": true,
+  "gpu_memory_mib": [
+    0,
+    0
+  ]
+}

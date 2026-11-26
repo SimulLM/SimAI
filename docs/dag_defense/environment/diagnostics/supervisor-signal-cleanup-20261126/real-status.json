@@ -1,0 +1,25 @@
+{
+  "status": "interrupted",
+  "launcher_pid": 166787,
+  "collector_pid": 167496,
+  "gate": {
+    "ready": true,
+    "status": "diagnostic_injected_gate_NOT_FORMAL"
+  },
+  "collector_exit": null,
+  "restart_required": true,
+  "error": "SupervisorSignal: received signal 15",
+  "collector_cleanup": {
+    "leader_exit": -15,
+    "group_gone": true,
+    "forced": false
+  },
+  "service_cleanup": {
+    "leader_exit": 143,
+    "group_gone": true,
+    "forced": false
+  },
+  "service_group_gone": true,
+  "collector_group_gone": true,
+  "finished_monotonic_ns": 1846906464143589
+}

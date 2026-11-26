@@ -24,6 +24,9 @@ def stop_group(proc,grace_s):
  except subprocess.TimeoutExpired:pass
  return {'leader_exit':proc.poll(),'group_gone':not group_exists(proc.pid),'forced':True}
 
+class SupervisorSignal(BaseException):
+ def __init__(self,signum):self.signum=signum;super().__init__('received signal '+str(signum))
+
 def supervise(output,launcher_cmd,ready_path,collector_cmd,gate,*,env=None,startup_timeout_s=400,collector_timeout_s=3600,grace_s=15):
  """Start isolated service group, gate, collect at most one run, then stop group.
 
@@ -32,7 +35,10 @@ def supervise(output,launcher_cmd,ready_path,collector_cmd,gate,*,env=None,start
  output=pathlib.Path(output);output.mkdir(parents=True,exist_ok=False);ready_path=pathlib.Path(ready_path)
  if ready_path.exists():raise ValueError('refusing stale service ready file')
  status={'status':'starting','launcher_pid':None,'collector_pid':None,'gate':None,'collector_exit':None,'restart_required':True};write_status(output/'status.json',status)
- service=None;collector=None
+ service=None;collector=None;old_handlers={}
+ def interrupt(signum,frame):raise SupervisorSignal(signum)
+ for signum in (signal.SIGTERM,signal.SIGINT):
+  old_handlers[signum]=signal.getsignal(signum);signal.signal(signum,interrupt)
  try:
   with (output/'service-supervisor.log').open('w') as log:
    service=subprocess.Popen(launcher_cmd,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True);status['launcher_pid']=service.pid;write_status(output/'status.json',status)
@@ -55,14 +61,16 @@ def supervise(output,launcher_cmd,ready_path,collector_cmd,gate,*,env=None,start
     if service.poll() is not None:raise RuntimeError('service exited at collector completion')
     status['status']='client_collection_complete_reconciliation_required';return 0
  except BaseException as exc:
-  status['status']='supervisor_error';status['error']=type(exc).__name__+': '+str(exc)[:300]
-  if isinstance(exc,(KeyboardInterrupt,SystemExit)):raise
+  status['status']='interrupted' if isinstance(exc,SupervisorSignal) else 'supervisor_error';status['error']=type(exc).__name__+': '+str(exc)[:300]
+  if isinstance(exc,(SupervisorSignal,KeyboardInterrupt,SystemExit)):raise
   return 1
  finally:
+  for signum in old_handlers:signal.signal(signum,signal.SIG_IGN)
   if collector is not None:status['collector_cleanup']=stop_group(collector,grace_s)
   if service is not None:status['service_cleanup']=stop_group(service,grace_s)
-  status['service_group_gone']=service is None or status['service_cleanup']['group_gone'];status['finished_monotonic_ns']=time.monotonic_ns();write_status(output/'status.json',status)
-  if not status['service_group_gone']:raise RuntimeError('service process group did not terminate; manual cleanup required')
+  status['service_group_gone']=service is None or status['service_cleanup']['group_gone'];status['collector_group_gone']=collector is None or status['collector_cleanup']['group_gone'];status['finished_monotonic_ns']=time.monotonic_ns();write_status(output/'status.json',status)
+  for signum,handler in old_handlers.items():signal.signal(signum,handler)
+  if not status['service_group_gone'] or not status['collector_group_gone']:raise RuntimeError('process group did not terminate; manual cleanup required')
 
 def fail_closed_readiness():
  return {'ready':False,'status':'blocked','reason':'Formal connector idle, fenced admission, worker identity and cleanup gate is not yet integrated; existing metrics-only probe cannot certify readiness.'}

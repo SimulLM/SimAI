@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "signals": {
+    "SIGTERM": {
+      "returncode": 1,
+      "status": "interrupted",
+      "service_group_gone": true,
+      "collector_group_gone": true
+    },
+    "SIGINT": {
+      "returncode": 1,
+      "status": "interrupted",
+      "service_group_gone": true,
+      "collector_group_gone": true
+    }
+  },
+  "scope": "synthetic processes, no GPU"
+}
