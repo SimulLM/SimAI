@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:36:23.407668+00:00",
+  "updated_utc": "2026-11-26T12:42:31.636089+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Later qualified single-GPU profiles cover uniform 1024 batch 4 and 2048 batch 2 in old traces; eight 1024 batch-2 mixed bins and exact 2048 batch-4 patterns remain missing in those traces. Concurrent receive/first-token and CPU/GPU overlap remain unproven.",
-      "next_action": "Inspect independent 1024 mixed batch-2 and 2048 mixed-pattern profiles for exact qualifying coverage; define a justified scoped interpolation or targeted profile and rerun final shared fees.",
+      "missing": "Independent single-GPU mixed 1024 batch-2 and 2048 span-8 coverage collected; synthetic 2048 four-request forward-only replay completed, but concurrent receive/first-token, CPU/GPU overlap and common production fee remain unproven.",
+      "next_action": "Map existing concurrent receive and first-token intervals into one shared non-overlapping fee for both simulators, then replay controlled 1/2/4 cases and reject unsupported shapes.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/observed-shape-supplement-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/mixed-targeted-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",

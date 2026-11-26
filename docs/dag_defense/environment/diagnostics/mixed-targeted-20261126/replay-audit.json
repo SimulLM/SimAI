@@ -1,0 +1,24 @@
+{
+  "counts": {
+    "baseline": 138,
+    "dag": 130
+  },
+  "paired": 4,
+  "forward_costs_equal_for_paired_only": true,
+  "patterns": {
+    "baseline": {
+      "(0.0, 0.0)": 18,
+      "(0.0, 0.0, 9.0, 9.0)": 118
+    },
+    "dag": {
+      "(0, 0)": 2,
+      "(0, 0, 1, 1)": 126
+    }
+  },
+  "limitations": [
+    "synthetic replay",
+    "adapted baseline",
+    "concurrent first token fee omitted",
+    "not full E2E or formal validation"
+  ]
+}
