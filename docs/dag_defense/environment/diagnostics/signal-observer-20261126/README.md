@@ -1,0 +1,7 @@
+# Signal-pipe idle observation
+
+An independent real 1P1D diagnostic sent four concurrent 512/8 warmup requests, synchronized the two actual worker CUDA contexts, and sampled host state four times over 15 seconds. The client run and launcher exited 0, both worker synchronizations completed, and both GPUs were released. The conservative existing idle probe returned 2 (`gauges_zero_connector_unverified`), not an acceptance. Instrumentation adds a thread and wrappers and is not formal E2E.
+
+Across all four observations, producer signal pipe had zero buffered bytes, zero active sends and one active receive, with receive started/completed counters stable at 5/4. Consumer signal pipe had zero buffered bytes, no active calls and stable send started/completed counts 4/4. The nearest worker snapshots were less than 0.5 s old. Source inspection of vLLM 0.8.5 `SimpleBuffer.drop_select_handler` shows a loop waiting on `signal_pipe.recv_tensor`; this is consistent with an idle listener, but a persistent receive count alone does not prove no pending transfer. Data pipe and host buffer gauges must be considered separately, snapshots are non-atomic, and worker synchronization covers prior work only in that worker context. Timeouts, crashes, no-new-request fencing and formal service identity remain unresolved.
+
+The modified observer is diagnostic only and must not be treated as a production idle certification. `run.sh`, `sitecustomize.py`, worker synchronization, probe samples and raw archive are preserved; the archive hash is recorded. Formal validation remains 0/30.
