@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:24:30.428985+00:00",
+  "updated_utc": "2026-11-26T12:27:24.024632+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
       "missing": "Common cost mapping for reachable concurrent shapes and exclusive assignment of receive/install, first token, forward, sampling, CPU and waits.",
       "next_action": "Build a traceable common cost and task ownership ledger for actual validation shapes; reject missing shapes.",
-      "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations."
+      "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
+      "latest_progress": "docs/dag_defense/environment/diagnostics/common-cost-serial-1024-2048-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",

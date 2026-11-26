@@ -1,0 +1,30 @@
+{
+  "1024": {
+    "baseline": "predictor-adapted and serial first-token modified",
+    "prefill": 1,
+    "decode": 127,
+    "receive_tasks": 1,
+    "consumer_first_token_tasks": 1,
+    "receive_s": 0.0205336,
+    "post_sync_s": 0.000773865,
+    "max_metric_difference_s": 3.3661962106634746e-13,
+    "graph_counts": {
+      "prefill": 1,
+      "decode": 127
+    }
+  },
+  "2048": {
+    "baseline": "predictor-adapted and serial first-token modified",
+    "prefill": 1,
+    "decode": 127,
+    "receive_tasks": 1,
+    "consumer_first_token_tasks": 1,
+    "receive_s": 0.036356543000000005,
+    "post_sync_s": 0.000815027,
+    "max_metric_difference_s": 3.5083047578154947e-14,
+    "graph_counts": {
+      "prefill": 1,
+      "decode": 127
+    }
+  }
+}
