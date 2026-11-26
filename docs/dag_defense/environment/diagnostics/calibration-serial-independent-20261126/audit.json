@@ -1,0 +1,34 @@
+{
+  "status": "serial_repeats_recorded",
+  "summary": [
+    {
+      "repeat": 0,
+      "measured": 32,
+      "median_server_e2e_ms": 1033.7618745,
+      "server_launch_separate": true,
+      "resource_after": "0, 0 MiB, 0 %\n1, 0 MiB, 0 %"
+    },
+    {
+      "repeat": 1,
+      "measured": 32,
+      "median_server_e2e_ms": 899.1771315000001,
+      "server_launch_separate": true,
+      "resource_after": "0, 0 MiB, 0 %\n1, 0 MiB, 0 %"
+    },
+    {
+      "repeat": 2,
+      "measured": 32,
+      "median_server_e2e_ms": 862.39782,
+      "server_launch_separate": true,
+      "resource_after": "0, 0 MiB, 0 %\n1, 0 MiB, 0 %"
+    }
+  ],
+  "errors": [],
+  "unique_input_hashes": 108,
+  "limitations": [
+    "Service restart and sequential completion support no prior request backlog; no direct proof of internal KV clearing after warmup",
+    "server completion is router stream completion and not GPU completion",
+    "only serial calibration; concurrent calibration provenance and fee compatibility remain separate",
+    "no validation completion times used to fit fees"
+  ]
+}

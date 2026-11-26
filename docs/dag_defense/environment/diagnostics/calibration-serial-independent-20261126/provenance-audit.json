@@ -1,0 +1,108 @@
+{
+  "status": "provenance_checked_not_final_calibration",
+  "source_counts": {
+    "main": 144,
+    "supplement": 48,
+    "merged": 192
+  },
+  "merged_sources": {
+    "main": 144,
+    "supplement": 48
+  },
+  "input_hash_unique": 52,
+  "errors": [],
+  "wave_checks": [
+    {
+      "source": "main",
+      "repeat": 0,
+      "mode": "concurrent2",
+      "waves": 16,
+      "requests": 32,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.060184
+    },
+    {
+      "source": "main",
+      "repeat": 0,
+      "mode": "serial",
+      "waves": 16,
+      "requests": 16,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.080592
+    },
+    {
+      "source": "main",
+      "repeat": 1,
+      "mode": "concurrent2",
+      "waves": 16,
+      "requests": 32,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.060279
+    },
+    {
+      "source": "main",
+      "repeat": 1,
+      "mode": "serial",
+      "waves": 16,
+      "requests": 16,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.056123
+    },
+    {
+      "source": "main",
+      "repeat": 2,
+      "mode": "concurrent2",
+      "waves": 16,
+      "requests": 32,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.054462
+    },
+    {
+      "source": "main",
+      "repeat": 2,
+      "mode": "serial",
+      "waves": 16,
+      "requests": 16,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.057851
+    },
+    {
+      "source": "supplement",
+      "repeat": 0,
+      "mode": "serial",
+      "waves": 16,
+      "requests": 16,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.069564
+    },
+    {
+      "source": "supplement",
+      "repeat": 1,
+      "mode": "serial",
+      "waves": 16,
+      "requests": 16,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.061761
+    },
+    {
+      "source": "supplement",
+      "repeat": 2,
+      "mode": "serial",
+      "waves": 16,
+      "requests": 16,
+      "overlapping_adjacent_waves": 0,
+      "minimum_gap_ms": 0.069963
+    }
+  ],
+  "source_hashes": {
+    "main": "4c0dad665b6251ea21cf1b0440dc5dbdd8151f77c5d758783f2a64cdb7537113",
+    "supplement": "873bddee96b8188ae808b9a53c0791ef33d14f5b72ad95bf87d4a00658f66ea8",
+    "merged": "73a94a2e18b756f736b62c85bf9f5241d8f1701e195b94f2bdf49b577050d6e8"
+  },
+  "limits": [
+    "Serial repeats are assembled from main indices 0-15 and a later supplement 16-31; they are not 32 consecutive requests in one independent repeat. Do not claim they satisfy the plan independent-repeat requirement without new runs.",
+    "Non-overlapping client waves do not prove server KV cleanup, empty queues, or GPU idle at repeat start.",
+    "Input hashes are reconstructed from script and checked, but some inputs repeat across modes/repeats; no claim of independent contents.",
+    "Supplement script writes requests.json then fails its unrelated 144-row assertion; recovered requests must be independently audited."
+  ]
+}
