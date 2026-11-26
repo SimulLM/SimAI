@@ -1,0 +1,6 @@
+{
+  "intercept_s": 0.0042129778761904775,
+  "per_input_token_s": 1.5727422116815474e-05,
+  "source": "paired 512 serial medians; slope only encodes fixed point; no extrapolation",
+  "formal_validation": false
+}

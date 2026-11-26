@@ -1,0 +1,15 @@
+{
+  "status": "single_request_equal_fee_sensitivity_only",
+  "receiver_fee_s": 0.012265418,
+  "dag_e2e_s": 1.0576751328717189,
+  "adapted_baseline_e2e_s": 1.0576751328717533,
+  "transfer_tasks": 1,
+  "consumer_first_token_tasks": 1,
+  "later_decode_batches": 63,
+  "limitations": [
+    "Fit includes synchronization and waits; not a production fee",
+    "Baseline and DAG both adapted for this diagnostic, pristine baseline kept separately",
+    "Only single request; no concurrent resource equivalence or output boundary closure",
+    "No validation duration used to set parameters"
+  ]
+}

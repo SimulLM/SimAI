@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.5",
+  "transfer_start_mode": "decode_pull_candidate",
+  "storage_dtype": "float16",
+  "capacity_bytes_per_shard": 5368709120,
+  "bandwidth_bytes_per_s": 33335914564.11924,
+  "latency_s": 0.0042129778761904775,
+  "occupies_gpu": true,
+  "evidence": "paired serial 512 receive/install and post-sync medians; diagnostic only",
+  "legacy_prefill_billing_extra_token": false,
+  "decode_dispatch_delay_s": 0.0,
+  "pull_wait_source_batch": false,
+  "consumer_first_token_host_s": 0.00073054
+}
