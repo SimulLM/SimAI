@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.2",
+  "transfer_start_mode": "decode_pull_candidate",
+  "storage_dtype": "float16",
+  "capacity_bytes_per_shard": 5368709120,
+  "bandwidth_bytes_per_s": 34225520640.0,
+  "latency_s": 0,
+  "occupies_gpu": true,
+  "evidence": "instrumented real-wave scheduling diagnostic; not frozen",
+  "legacy_prefill_billing_extra_token": true
+}

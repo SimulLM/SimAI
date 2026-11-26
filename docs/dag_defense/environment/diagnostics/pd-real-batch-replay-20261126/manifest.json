@@ -1,0 +1,6 @@
+{
+  "status": "diagnostic_not_frozen",
+  "source_sha256": "87cbf076735bc1f7ffcd1e1bf2d5cacee190a19f1fa0e88602aea9d97260b2bc",
+  "selection": "wave 10 of 30 measured; six requested shapes; instrumented 8-output request traces",
+  "formal_validation": false
+}
