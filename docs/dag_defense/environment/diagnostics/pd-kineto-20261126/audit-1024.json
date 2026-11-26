@@ -1,0 +1,32 @@
+{
+  "requests": 104,
+  "status_counts": {
+    "200": 104
+  },
+  "trace_events": 231729,
+  "gpu0_kernel_events": 15612,
+  "gpu0_nccl_kernels": 371,
+  "gpu0_non_nccl_kernels": 15241,
+  "nccl_context_stream_counts": {
+    "(1, 7)": 371
+  },
+  "non_nccl_context_stream_counts": {
+    "(1, 7)": 15241
+  },
+  "overlap_pairs": 0,
+  "distinct_nccl_kernels_with_overlap": 0,
+  "distinct_compute_kernels_with_overlap": 0,
+  "merged_overlap_interval_count": 0,
+  "union_overlap_us": 0,
+  "max_pair_overlap_us": 0,
+  "different_stream_pairs": 0,
+  "top_compute_names": [],
+  "trace_time_unit": "microseconds (Chrome trace)",
+  "limits": [
+    "Kineto instrumentation perturbs execution; not formal E2E or calibrated cost",
+    "CUDA kernel intervals from profiler may include scheduling/residency gaps; timestamp overlap does not quantify simultaneous SM use or establish a safe constant occupancy fraction",
+    "Captures one producer process and one diagnostic 2048/8 workload; does not establish behavior for all load shapes",
+    "CUDA profiler timeline itself is relative trace time; no claim of exact monotonic host clock conversion",
+    "NCCL kernels are classified by name, no individual request or tensor payload mapping"
+  ]
+}
