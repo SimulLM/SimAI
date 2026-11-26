@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/dag-handoff/scripts/pd-mapped-forward-client.py", line 4, in <module>
+    p=argparse.ArgumentParser(); p.add_argument('--run-dir',required=True); p.add_argument('--warmups',type=int,default=10); p.add_argument('--samples',type=int,default=30); p.add_argument('--lengths',type=int,nargs='+',default=[512,1024,2048]); p.add_argument('--batches',type=int,nargs='+',default=[1,2,4]); p.add_argument('--timeout',type=int,default=45); p.add_argument('--out-tokens',type=int,default=2); a=p.parse_args(); out=Path(a.run_dir); out.mkdir(parents=True,exist_ok=False)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/pathlib.py", line 1311, in mkdir
+    os.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/root/autodl-tmp/dag-handoff/runs/pd-accounting-smoke-20261126/coverage'

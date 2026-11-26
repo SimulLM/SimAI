@@ -1,0 +1,186 @@
+{
+  "requests": 280,
+  "status_counts": {
+    "200": 280
+  },
+  "event_match_counts": [
+    {
+      "requested_batch": 1,
+      "warmup": false,
+      "first_steps": 1,
+      "decode_steps": 63,
+      "valid": true,
+      "n": 30
+    },
+    {
+      "requested_batch": 1,
+      "warmup": true,
+      "first_steps": 1,
+      "decode_steps": 63,
+      "valid": true,
+      "n": 10
+    },
+    {
+      "requested_batch": 2,
+      "warmup": false,
+      "first_steps": 1,
+      "decode_steps": 63,
+      "valid": true,
+      "n": 60
+    },
+    {
+      "requested_batch": 2,
+      "warmup": true,
+      "first_steps": 1,
+      "decode_steps": 63,
+      "valid": true,
+      "n": 20
+    },
+    {
+      "requested_batch": 4,
+      "warmup": false,
+      "first_steps": 1,
+      "decode_steps": 63,
+      "valid": true,
+      "n": 120
+    },
+    {
+      "requested_batch": 4,
+      "warmup": true,
+      "first_steps": 1,
+      "decode_steps": 63,
+      "valid": true,
+      "n": 40
+    }
+  ],
+  "first_step_gpu_medians_ms": [
+    {
+      "requested_batch": 1,
+      "actual_batch": 1,
+      "metric": "logits_gpu",
+      "n_request_observations": 30,
+      "median_ms": 0.1557919979095459
+    },
+    {
+      "requested_batch": 1,
+      "actual_batch": 1,
+      "metric": "sampler_gpu",
+      "n_request_observations": 30,
+      "median_ms": 0.24927999824285507
+    },
+    {
+      "requested_batch": 1,
+      "actual_batch": 1,
+      "metric": "step_gpu_ms",
+      "n_request_observations": 30,
+      "median_ms": 10.917232036590576
+    },
+    {
+      "requested_batch": 2,
+      "actual_batch": 1,
+      "metric": "logits_gpu",
+      "n_request_observations": 2,
+      "median_ms": 0.15584000200033188
+    },
+    {
+      "requested_batch": 2,
+      "actual_batch": 1,
+      "metric": "sampler_gpu",
+      "n_request_observations": 2,
+      "median_ms": 0.26892799139022827
+    },
+    {
+      "requested_batch": 2,
+      "actual_batch": 1,
+      "metric": "step_gpu_ms",
+      "n_request_observations": 2,
+      "median_ms": 10.369760036468506
+    },
+    {
+      "requested_batch": 2,
+      "actual_batch": 2,
+      "metric": "logits_gpu",
+      "n_request_observations": 58,
+      "median_ms": 0.15593600273132324
+    },
+    {
+      "requested_batch": 2,
+      "actual_batch": 2,
+      "metric": "sampler_gpu",
+      "n_request_observations": 58,
+      "median_ms": 0.26214399933815
+    },
+    {
+      "requested_batch": 2,
+      "actual_batch": 2,
+      "metric": "step_gpu_ms",
+      "n_request_observations": 58,
+      "median_ms": 19.434303283691406
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 1,
+      "metric": "logits_gpu",
+      "n_request_observations": 10,
+      "median_ms": 0.15612799674272537
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 1,
+      "metric": "sampler_gpu",
+      "n_request_observations": 10,
+      "median_ms": 0.258432000875473
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 1,
+      "metric": "step_gpu_ms",
+      "n_request_observations": 10,
+      "median_ms": 11.179952144622803
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 3,
+      "metric": "logits_gpu",
+      "n_request_observations": 30,
+      "median_ms": 0.15857599675655365
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 3,
+      "metric": "sampler_gpu",
+      "n_request_observations": 30,
+      "median_ms": 0.2731360048055649
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 3,
+      "metric": "step_gpu_ms",
+      "n_request_observations": 30,
+      "median_ms": 27.293903350830078
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 4,
+      "metric": "logits_gpu",
+      "n_request_observations": 80,
+      "median_ms": 0.15865600109100342
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 4,
+      "metric": "sampler_gpu",
+      "n_request_observations": 80,
+      "median_ms": 0.2736000120639801
+    },
+    {
+      "requested_batch": 4,
+      "actual_batch": 4,
+      "metric": "step_gpu_ms",
+      "n_request_observations": 80,
+      "median_ms": 36.94561576843262
+    }
+  ],
+  "unmatched_or_invalid": [],
+  "limitations": "Per-request observations share batch events; GPU event timings include asynchronous gaps; first-step total includes receive wait; no additive CPU/GPU or frozen cost claim."
+}
