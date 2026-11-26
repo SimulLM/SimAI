@@ -1,0 +1,125 @@
+{
+  "original": {
+    "requests": 2,
+    "decode_batches": 63,
+    "early_memberships": [],
+    "first_batches": [
+      {
+        "start_ms": 50.71358682332406,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 68.30736546636076,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 85.90114410939748,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 103.49492275243418,
+        "ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "corrected": {
+    "requests": 2,
+    "decode_batches": 63,
+    "early_memberships": [],
+    "first_batches": [
+      {
+        "start_ms": 50.71358682332406,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 68.30736546636076,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 85.90114410939748,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 103.49492275243418,
+        "ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "dag": {
+    "requests": 2,
+    "decode_batches": 63,
+    "early_memberships": [],
+    "first_batches": [
+      {
+        "start_ms": 58.57204270567701,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 76.16582134871365,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 93.75959999175029,
+        "ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 111.35337863478694,
+        "ids": [
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "original_vs_dag": {
+    "dag_batches": 64,
+    "baseline_batches": 64,
+    "matched": 64,
+    "dag_match_fraction": 1.0,
+    "baseline_match_fraction": 1.0,
+    "max_task_cost_difference_s": 2.0816681711721685e-17,
+    "first_positional_divergence": null
+  },
+  "corrected_vs_dag": {
+    "dag_batches": 64,
+    "baseline_batches": 64,
+    "matched": 64,
+    "dag_match_fraction": 1.0,
+    "baseline_match_fraction": 1.0,
+    "max_task_cost_difference_s": 2.0816681711721685e-17,
+    "first_positional_divergence": null
+  }
+}
