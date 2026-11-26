@@ -1,0 +1,7 @@
+# Eager 1P1D model forward diagnostic
+
+These 3,300 successful short requests use vLLM 0.8.5 V0 `--enforce-eager`, 8 GiB KV buffer and GPU memory utilization 0.75, matching the existing calibration's key runtime settings. The profiling router uses a different nonstream boundary and diagnostic synchronization, so it is not an E2E calibration. Consumer steps join by request ID; producer steps currently associate by a unique non-overlapping wave interval. Forward CUDA events exclude the connector's receive/send calls, logits and sampler. Raw events and request responses are retained compressed.
+
+The audit excludes startup, warmups and host syncs after client completion; 29 of the 34 requested reachable length/batch shapes have at least ten warmup and thirty measured forward events. Several wave-4 batches did not form as batch 4 in the two-token diagnostic, so a separate longer-output wave-4 supplement is underway. Passing shape coverage does not settle CPU, KV, output boundary, interpolation or same-cost accounting. Formal validation remains blocked and no parameter freeze exists.
+
+An independent 28-request eager 512/64 ID-mapped diagnostic observed one consumer KV-bypass prefill and 63 decode invocations per request, with no host post-step synchronization after client receipt. This is consistent with the simulator counting one token at prefill and 63 decode iterations, subject to the real consumer's first-token sampling and router costs being separately accounted for.

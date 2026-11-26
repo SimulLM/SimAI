@@ -1,0 +1,46 @@
+{
+  "status": "blocked",
+  "client_requests": 3300,
+  "client_waves": 1320,
+  "pids": {
+    "prefill": "80973",
+    "decode": "80978"
+  },
+  "required_points": 34,
+  "passed_points": 29,
+  "missing": [
+    [
+      "producer_prefill",
+      512,
+      4
+    ],
+    [
+      "consumer_decode",
+      512,
+      4
+    ],
+    [
+      "consumer_decode",
+      575,
+      4
+    ],
+    [
+      "consumer_decode",
+      2048,
+      4
+    ],
+    [
+      "consumer_decode",
+      2175,
+      4
+    ]
+  ],
+  "rejected_events": {
+    "outside_profile_windows": 791
+  },
+  "limitations": [
+    "consumer ID join is direct, producer association only by non-overlapping wave time",
+    "CUDA event forward excludes KV transfer, logits and sampler; GPU stream timing and synchronization can perturb execution",
+    "shape coverage does not prove cost/boundary compatibility or formal validation"
+  ]
+}
