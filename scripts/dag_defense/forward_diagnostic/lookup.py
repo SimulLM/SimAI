@@ -30,7 +30,7 @@ class ForwardLookup:
    key=(length,batch);table=self.prefill
   elif phase=='decode':
    if any(t!=1 for t in tokens) or any(c<=length or c>length+127 for c in contexts):raise CoverageError('unsupported decode step or context')
-   if max(contexts)-min(contexts)>1:raise CoverageError('mixed context span > 1 unsupported')
+   if max(contexts)-min(contexts)>1:raise CoverageError(f'mixed context span > 1 unsupported: inputs={input_lengths}, contexts={contexts}, tokens={tokens}')
    key=(length,batch,((sum(contexts)//batch+15)//16)*16,int(max(contexts)!=min(contexts)));table=self.decode
   else:raise CoverageError('mixed or unknown phase')
   if key not in table:raise CoverageError(f'unmeasured {phase} shape {key}')

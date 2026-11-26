@@ -1,0 +1,9 @@
+{
+  "baseline": "failed on contexts [2058,2058,2049,2049] after 11 forward batches",
+  "dag": "completed 130 forward batches",
+  "paired": 3,
+  "baseline_batches_before_failure": 11,
+  "dag_batches": 130,
+  "matched_costs_equal": true,
+  "note": "synthetic trace; adapted baseline; incomplete comparison; first-token fee omitted; no formal validation"
+}

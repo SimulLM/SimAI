@@ -1,0 +1,22 @@
+{
+  "status": "independent_single_gpu_diagnostic",
+  "waves": 80,
+  "requests": 200,
+  "eligible": 16,
+  "expected_cells": 16,
+  "discarded": {
+    "other": 81
+  },
+  "sources": {
+    "compute-events-158427.jsonl": "6ead724b66ae7154ef891eb94e6e902b70e89dee44c4badaae0ea9d39ecf820a",
+    "waves.jsonl": "2f7e15b6cf18d9898f0a538b3d8d96139d5ca7ad5aeb6084e91c55ad343bf053"
+  },
+  "limitations": [
+    "single GPU offline vLLM, not PD E2E or proof of same workload distribution",
+    "GPU synchronization and hooks perturb timing and can include GPU gaps",
+    "forward excludes logits sampler CPU connector and router",
+    "wave observations share one service session",
+    "targeted uniform batch 2 or 3 only; other shapes remain uncovered",
+    "not frozen and no validation data used"
+  ]
+}
