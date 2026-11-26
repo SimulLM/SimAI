@@ -1,0 +1,25 @@
+{
+  "simultaneous2": {
+    "baseline_batches": 64,
+    "dag_batches": 64,
+    "matched_batches": 64,
+    "max_matched_batch_cost_diff_s": 2.0816681711721685e-17,
+    "same_first_token_fee_s": 0.0015,
+    "baseline_first_token_start_s": 0.05071358682332405,
+    "dag_first_token_start_s": 0.058572042705677015,
+    "decode_steps_per_request": 63,
+    "baseline_modified_fixed_batch": true
+  },
+  "simultaneous4": {
+    "baseline_batches": 64,
+    "dag_batches": 64,
+    "matched_batches": 64,
+    "max_matched_batch_cost_diff_s": 1.3877787807814457e-17,
+    "same_first_token_fee_s": 0.002,
+    "baseline_first_token_start_s": 0.08857303474867681,
+    "dag_first_token_start_s": 0.11214840239573562,
+    "decode_steps_per_request": 63,
+    "baseline_modified_fixed_batch": true
+  },
+  "predictor_sha256": "53b4f15d86385c9aad931223b1b58dc38beb3f385be049e27031ebf99146375d"
+}
