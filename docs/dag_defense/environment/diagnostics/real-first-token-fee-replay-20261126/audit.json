@@ -1,0 +1,42 @@
+{
+  "status": "diagnostic_only",
+  "input_tokens": 1024,
+  "output_tokens": 8,
+  "requests": 4,
+  "real_first_token_groups": [
+    [
+      0
+    ],
+    [
+      1,
+      2,
+      3
+    ]
+  ],
+  "dag_first_token_groups": [
+    [
+      0
+    ],
+    [
+      1,
+      2,
+      3
+    ]
+  ],
+  "paired_groups": 2,
+  "real_group_count": 2,
+  "dag_group_count": 2,
+  "decode_steps_per_request": 7,
+  "fees_s": {
+    "1024:1": 0.000765594,
+    "1024:3": 0.0007040415
+  },
+  "limitations": [
+    "same instrumented capture supplies arrivals and fee samples; not holdout",
+    "DAG-only; no same-fee baseline",
+    "synchronized host first-token interval is not proven equivalent to GPU occupancy or additive",
+    "communication and compute fees are candidate models; not certified by this audit",
+    "real service and DAG timings differ; group match does not prove timing parity",
+    "not formal validation"
+  ]
+}
