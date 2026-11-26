@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:32:28.646164+00:00",
+  "updated_utc": "2026-11-26T13:37:51.620260+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Both 1024 and 2048 controlled groups use shared first-token candidate table but may select different group shapes; pristine first-token accounting, transfer/CPU overlap and supported natural shape coverage remain unproven.",
+      "missing": "Shared first-token per-group fees and modeled slot exclusivity agree on four 2048 synthetic cases, but pristine first-token stage is absent and transfer/CPU overlap, natural shapes and real first-token occupancy remain unproven.",
       "next_action": "Map pristine and DAG fee ownership and supported natural shapes, then independently justify or disclose timing/resource approximations without fitting validation.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-2048-shared-fees-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/dynamic-2048-first-token-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
@@ -21,10 +21,10 @@
     "concurrent_readiness_batching": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/early-batch-minimal-20261126/README.md",
-      "missing": "2048 1/2/4 pristine, fixed baseline and DAG replayed. DAG and fixed have no modeled early Decode; pristine has one early membership in staggered two and four in simultaneous four. Fixed and DAG use different first-token grouping; natural full-run distribution and final fee contract remain unverified.",
-      "next_action": "Complete common first-token/transfer fee ownership and verify natural request batching with that fixed contract; retain pristine, fixed diagnostic and DAG separately.",
+      "missing": "2048 1/2/4 dynamically grouped diagnostic baseline and DAG match group members and paired model batches with no modeled early Decode; this is not the pristine original or a natural 32-request full workload. Queue priority and resource semantics remain unverified.",
+      "next_action": "Replay independent calibration arrival sequences through the dynamic fee contract and report actual batch shapes, first differences, unsupported fees and pristine separately.",
       "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-2048-three-way-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/dynamic-2048-first-token-20261126/README.md"
     },
     "freeze_and_preflight": {
       "status": "open",
