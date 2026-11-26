@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:47:52.002223+00:00",
+  "updated_utc": "2026-11-26T12:51:10.767332+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
@@ -13,10 +13,10 @@
     "arrival_completion_boundary": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/output-processing-repeat-20261126/README.md",
-      "missing": "Versioned mapping and per-round router/client boundaries; existing synchronized tail measurements cover one diagnostic session and cannot be blindly added to costs.",
-      "next_action": "Write the timestamp and completion contract using observed events and measured tail without duplicate charges.",
+      "missing": "Client collector now rejects final-only usage masquerading as a first-token timestamp. Simulator last batch to router completion remains a residual with limited instrumented evidence; per-round event contract and compatibility need binding.",
+      "next_action": "Bind a versioned server arrival, last-model-batch and stream-completion contract, retain the measured residual as a scoped limitation, and check each run against it.",
       "close_when": "Token and Decode counts align; all endpoints have source timestamps and residual is quantified or disclosed without double counting.",
-      "latest_progress": "docs/dag_defense/freeze_gate/fee-and-event-evidence.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/collector-first-token-guard-20261126/README.md"
     },
     "concurrent_readiness_batching": {
       "status": "open",

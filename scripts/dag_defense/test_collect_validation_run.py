@@ -10,19 +10,19 @@ async def main():
   assert req.headers['X-Experiment-Client-ID']==str(i)
   if mode=='fail' and i==1:return web.Response(status=503,text='injected failure')
   if mode=='timeout' and i==2:await asyncio.sleep(.35)
-  usage={'prompt_tokens':4,'completion_tokens':128};payload='data: '+json.dumps({'id':'fake-'+str(i),'usage':usage})+'\n\ndata: [DONE]\n\n'
+  usage={'prompt_tokens':4,'completion_tokens':128};first={'id':'fake-'+str(i),'usage':{'prompt_tokens':4,'completion_tokens':1}};payload=('' if mode=='final-only' else 'data: '+json.dumps(first)+'\n\n')+'data: '+json.dumps({'id':'fake-'+str(i),'usage':usage})+'\n\ndata: [DONE]\n\n'
   return web.Response(text=payload,content_type='text/event-stream',headers={'X-Experiment-Request-ID':'fixture-'+str(i)})
  app=web.Application();app.router.add_post('/v1/completions',handle);runner=web.AppRunner(app);await runner.setup();site=web.TCPSite(runner,'127.0.0.1',0);await site.start();port=site._server.sockets[0].getsockname()[1]
  try:
   with tempfile.TemporaryDirectory() as td:
    root=pathlib.Path(td);rows=[{'run_id':'fixture','request_id':str(i),'input_id':'input'+str(i),'input_sha256':'fixture','wave':i//2,'input_ids':[1,i]} for i in range(32)];spec={'run_id':'fixture','input_tokens':4,'concurrency':2,'requests':32};results={}
-   for mode,expected in [('success',{'success':32,'failed':0,'timeout':0,'not_submitted':0}),('fail',{'success':1,'failed':1,'timeout':0,'not_submitted':30}),('timeout',{'success':3,'failed':0,'timeout':1,'not_submitted':28})]:
+   for mode,expected in [('success',{'success':32,'failed':0,'timeout':0,'not_submitted':0}),('fail',{'success':1,'failed':1,'timeout':0,'not_submitted':30}),('timeout',{'success':3,'failed':0,'timeout':1,'not_submitted':28}),('final-only',{'success':0,'failed':2,'timeout':0,'not_submitted':30})]:
     summary=await run_case(spec,rows,root/mode,f'http://127.0.0.1:{port}/v1/completions',mode,.15)
     assert summary['status']==('client_collection_complete' if mode=='success' else 'incomplete_restart_required')
     marker=root/mode/'restart-required.jsonl';assert marker.exists()==(mode!='success')
     if mode!='success':
-     evidence=json.loads(marker.read_text());assert evidence['wave']==(0 if mode=='fail' else 1) and 'service must be stopped' in evidence['reason']
-    records=[json.loads(x) for x in (root/mode/'client-events.jsonl').read_text().splitlines()];counts={k:sum(x['status']==k for x in records) for k in expected};assert counts==expected,(mode,counts);assert len({x['request_id'] for x in records})==32;events=[json.loads(x) for x in (root/mode/'wave-events.jsonl').read_text().splitlines()];assert all(events[2*i]['event']=='scheduled' and events[2*i+1]['event']=='complete' for i in range(len(events)//2));results[mode]={'counts':counts,'waves_sent':len(events)//2}
+     evidence=json.loads(marker.read_text());assert evidence['wave']==(1 if mode=='timeout' else 0) and 'service must be stopped' in evidence['reason']
+    records=[json.loads(x) for x in (root/mode/'client-events.jsonl').read_text().splitlines()];assert all(r.get('first_observed_completion_tokens')==1 for r in records if r['status']=='success');assert all(r.get('client_first_token_ns') is None for r in records if mode=='final-only' and r['status']=='failed');counts={k:sum(x['status']==k for x in records) for k in expected};assert counts==expected,(mode,counts);assert len({x['request_id'] for x in records})==32;events=[json.loads(x) for x in (root/mode/'wave-events.jsonl').read_text().splitlines()];assert all(events[2*i]['event']=='scheduled' and events[2*i+1]['event']=='complete' for i in range(len(events)//2));results[mode]={'counts':counts,'waves_sent':len(events)//2}
    inputs=root/'fixture-input.jsonl';inputs.write_text(''.join(json.dumps(r)+'\n' for r in rows));router=root/'fixture-router.jsonl';server=[]
    for i in range(32):
     for name,t in [('server_arrival',100),('prefill_send',110),('prefill_response',120),('prefill_mapping',130),('decode_send',140),('decode_mapping',150),('server_first_token',160),('server_final_choice_observed',190),('server_complete',200)]:

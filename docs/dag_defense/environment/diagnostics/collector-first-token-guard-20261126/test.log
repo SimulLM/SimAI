@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "fixture_results": {
+    "success": {
+      "counts": {
+        "success": 32,
+        "failed": 0,
+        "timeout": 0,
+        "not_submitted": 0
+      },
+      "waves_sent": 16
+    },
+    "fail": {
+      "counts": {
+        "success": 1,
+        "failed": 1,
+        "timeout": 0,
+        "not_submitted": 30
+      },
+      "waves_sent": 1
+    },
+    "timeout": {
+      "counts": {
+        "success": 3,
+        "failed": 0,
+        "timeout": 1,
+        "not_submitted": 28
+      },
+      "waves_sent": 2
+    },
+    "final-only": {
+      "counts": {
+        "success": 0,
+        "failed": 2,
+        "timeout": 0,
+        "not_submitted": 30
+      },
+      "waves_sent": 1
+    }
+  },
+  "server_reconciliation_good_and_incomplete_cases": true,
+  "missing_freeze_and_changed_artifact_rejected": true,
+  "scope": "synthetic local service; not real validation"
+}

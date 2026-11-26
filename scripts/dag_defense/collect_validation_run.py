@@ -44,7 +44,7 @@ async def run_case(spec,rows,output,url,model,timeout_s):
   try:
    body={'model':model,'prompt':r['input_ids'],'temperature':0,'top_p':1,'seed':0,'ignore_eos':True,'stream':True,'max_tokens':128,'min_tokens':128}
    async with session.post(url,json=body,headers={'X-Experiment-Client-ID':r['request_id']}) as resp:
-    row['http_status']=resp.status;row['router_id']=resp.headers.get('X-Experiment-Request-ID');row['client_headers_ns']=time.monotonic_ns();done=False;usage=None;backend=None;first=None
+    row['http_status']=resp.status;row['router_id']=resp.headers.get('X-Experiment-Request-ID');row['client_headers_ns']=time.monotonic_ns();done=False;usage=None;backend=None;first=None;first_count=None
     if resp.status!=200:row['error']='HTTP '+str(resp.status)+' '+(await resp.text())[:512]
     else:
      async for line in resp.content:
@@ -55,10 +55,12 @@ async def run_case(spec,rows,output,url,model,timeout_s):
       obj=json.loads(value);backend=obj.get('id',backend)
       if obj.get('usage') is not None:
        usage=obj['usage']
-       if first is None and usage.get('completion_tokens',0)>0:first=stamp
-     row.update(done=done,usage=usage,backend_request_id=backend,client_first_token_ns=first)
+       if first_count is None and usage.get('completion_tokens',0)>0:
+        first_count=usage['completion_tokens']
+        if first_count==1:first=stamp
+     row.update(done=done,usage=usage,backend_request_id=backend,client_first_token_ns=first,first_observed_completion_tokens=first_count)
      if done and first is not None and row['router_id'] and usage and usage.get('prompt_tokens')==spec['input_tokens'] and usage.get('completion_tokens')==128:row['status']='success'
-     else:row['error']='incomplete stream, ID, first token, or token count'
+     else:row['error']='incomplete stream, ID, first-token count (must be 1), or final token count'
   except asyncio.TimeoutError:row.update(status='timeout',error='client deadline exceeded')
   except Exception as exc:row.update(status='failed',error=type(exc).__name__+': '+str(exc)[:512])
   finally:row['client_complete_ns']=time.monotonic_ns();await write_record(path,row)
