@@ -1,0 +1,7 @@
+# PD model-forward CUDA-event diagnostic
+
+This diagnostic brackets the vLLM model executable with CUDA events: producer full-model forward and consumer CUDA Graph decode forward. The boundary excludes the connector receive/send calls, logits and sampler, avoiding the known overlap of the prior outer execute_model timing. Stream waits and the instrumentation's synchronization can still perturb timings. This is independent profiling, not validation E2E.
+
+Initial collection issued 840 requests; supplement issued 1260. All client requests returned HTTP 200 with the requested input count and two output tokens. Client waves have unique non-overlapping CLOCK_MONOTONIC windows. The audit associates event times with waves, not stable request IDs, excludes ambiguous or post-response events, and reports actual batch sizes. Each collection uses its own warmup waves; their results are not pooled silently. See each `coverage.csv` and `summary.json`. Producer prefill batch 4 at 2048 tokens is not reachable with the current maximum batched tokens of 4096; wave 4 splits. Actual batch-3 coverage needs an additional profile.
+
+The two modes intentionally use separate GPUs; consumer prefill bypasses model forward when KV is received. The raw events are gzipped without modification; profiling execution and logs remain in the corresponding `dag-handoff/runs/pd-forward-*` directories. CPU, router/IPC, KV transfer and model-boundary costs still need an independently justified non-overlap accounting contract before costs can be frozen.
