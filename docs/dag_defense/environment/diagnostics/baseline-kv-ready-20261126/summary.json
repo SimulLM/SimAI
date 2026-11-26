@@ -1,0 +1,211 @@
+{
+  "original": {
+    "requests": 32,
+    "decode_batches": 993,
+    "premature_batch_memberships": 16,
+    "affected_requests": 16,
+    "max_early_ms": 7.578724634589307,
+    "first_batches": [
+      {
+        "start_ms": 31.119426494675228,
+        "request_ids": [
+          0
+        ]
+      },
+      {
+        "start_ms": 48.04043858369206,
+        "request_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 65.63421722672877,
+        "request_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 83.22799586976548,
+        "request_ids": [
+          0,
+          1
+        ]
+      }
+    ],
+    "mean_absolute_error_ms": 153.84490871066865,
+    "violations": [
+      {
+        "request_id": 1,
+        "start_s": 0.04804043858369206,
+        "modeled_ready_s": 0.05438039710699751,
+        "early_ms": 6.339958523305454
+      },
+      {
+        "request_id": 3,
+        "start_s": 1.537103714583692,
+        "modeled_ready_s": 1.5434436731069976,
+        "early_ms": 6.339958523305489
+      },
+      {
+        "request_id": 5,
+        "start_s": 2.9528655575836917,
+        "modeled_ready_s": 2.959205516106997,
+        "early_ms": 6.339958523305267
+      },
+      {
+        "request_id": 7,
+        "start_s": 4.112353281583692,
+        "modeled_ready_s": 4.118693240106998,
+        "early_ms": 6.339958523305711
+      },
+      {
+        "request_id": 8,
+        "start_s": 5.20316755745198,
+        "modeled_ready_s": 5.2068611954946755,
+        "early_ms": 3.693638042695291
+      },
+      {
+        "request_id": 11,
+        "start_s": 6.361665881676336,
+        "modeled_ready_s": 6.367277076106998,
+        "early_ms": 5.6111944306618255
+      },
+      {
+        "request_id": 13,
+        "start_s": 7.726989432583692,
+        "modeled_ready_s": 7.733329391106998,
+        "early_ms": 6.339958523305711
+      },
+      {
+        "request_id": 15,
+        "start_s": 9.01214020258369,
+        "modeled_ready_s": 9.018480161106996,
+        "early_ms": 6.339958523305711
+      },
+      {
+        "request_id": 17,
+        "start_s": 10.17002994258369,
+        "modeled_ready_s": 10.176369901106996,
+        "early_ms": 6.339958523305711
+      },
+      {
+        "request_id": 19,
+        "start_s": 11.226933588257587,
+        "modeled_ready_s": 11.229897835106996,
+        "early_ms": 2.9642468494088803
+      },
+      {
+        "request_id": 20,
+        "start_s": 12.14346600993055,
+        "modeled_ready_s": 12.148985118494675,
+        "early_ms": 5.519108564124409
+      },
+      {
+        "request_id": 22,
+        "start_s": 13.081283079860086,
+        "modeled_ready_s": 13.088861804494675,
+        "early_ms": 7.578724634589307
+      },
+      {
+        "request_id": 25,
+        "start_s": 14.30488370958369,
+        "modeled_ready_s": 14.311223668106996,
+        "early_ms": 6.339958523305711
+      },
+      {
+        "request_id": 27,
+        "start_s": 15.326599797971515,
+        "modeled_ready_s": 15.326620578106997,
+        "early_ms": 0.02078013548256763
+      },
+      {
+        "request_id": 29,
+        "start_s": 16.473755285583692,
+        "modeled_ready_s": 16.480095244106998,
+        "early_ms": 6.339958523305711
+      },
+      {
+        "request_id": 31,
+        "start_s": 18.200361085583694,
+        "modeled_ready_s": 18.206701044107,
+        "early_ms": 6.339958523305711
+      }
+    ]
+  },
+  "corrected": {
+    "requests": 32,
+    "decode_batches": 1002,
+    "premature_batch_memberships": 0,
+    "affected_requests": 0,
+    "max_early_ms": 0,
+    "first_batches": [
+      {
+        "start_ms": 31.119426494675228,
+        "request_ids": [
+          0
+        ]
+      },
+      {
+        "start_ms": 48.04043858369206,
+        "request_ids": [
+          0
+        ]
+      },
+      {
+        "start_ms": 64.96145067270889,
+        "request_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 82.5552293157456,
+        "request_ids": [
+          0,
+          1
+        ]
+      }
+    ],
+    "mean_absolute_error_ms": 155.25450849670955,
+    "violations": []
+  },
+  "dag": {
+    "requests": 32,
+    "decode_batches": 995,
+    "premature_batch_memberships": 0,
+    "affected_requests": 0,
+    "max_early_ms": 0,
+    "first_batches": [
+      {
+        "start_ms": 31.11942649467521,
+        "request_ids": [
+          0
+        ]
+      },
+      {
+        "start_ms": 48.04043858369197,
+        "request_ids": [
+          0
+        ]
+      },
+      {
+        "start_ms": 72.81990655506165,
+        "request_ids": [
+          0,
+          1
+        ]
+      },
+      {
+        "start_ms": 90.41368519809829,
+        "request_ids": [
+          0,
+          1
+        ]
+      }
+    ],
+    "mean_absolute_error_ms": 159.1342052629776,
+    "violations": []
+  }
+}
