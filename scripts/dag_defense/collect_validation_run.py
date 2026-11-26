@@ -32,6 +32,10 @@ def preflight(freeze_file,manifest_file,run_id):
  return freeze,manifest,spec,rows
 async def run_case(spec,rows,output,url,model,timeout_s):
  output.mkdir(parents=True,exist_ok=False);origin=time.monotonic_ns();(output/'run-spec.json').write_text(json.dumps({'spec':spec,'clock_id':'CLOCK_MONOTONIC','origin_ns':origin,'url':url,'model':model,'timeout_s':timeout_s,'sampling':{'temperature':0,'top_p':1,'seed':0,'ignore_eos':True,'min_tokens':128,'max_tokens':128}},indent=2)+'\n');path=output/'client-events.jsonl'
+ append_lock=asyncio.Lock()
+ async def write_record(path,row):
+  async with append_lock:
+   await asyncio.to_thread(append,path,row)
  async def one(session,r,scheduled):
   row={'run_id':r['run_id'],'request_id':r['request_id'],'input_id':r['input_id'],'input_sha256':r['input_sha256'],'wave':r['wave'],'scheduled_arrival_ns':scheduled,'client_send_ns':time.monotonic_ns(),'status':'failed'}
   try:
@@ -54,14 +58,16 @@ async def run_case(spec,rows,output,url,model,timeout_s):
      else:row['error']='incomplete stream, ID, first token, or token count'
   except asyncio.TimeoutError:row.update(status='timeout',error='client deadline exceeded')
   except Exception as exc:row.update(status='failed',error=type(exc).__name__+': '+str(exc)[:512])
-  finally:row['client_complete_ns']=time.monotonic_ns();append(path,row)
+  finally:row['client_complete_ns']=time.monotonic_ns();await write_record(path,row)
   return row
  async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=timeout_s)) as session:
   for w in range((len(rows)+spec['concurrency']-1)//spec['concurrency']):
-   batch=[r for r in rows if r['wave']==w];scheduled=time.monotonic_ns();append(output/'wave-events.jsonl',{'wave':w,'event':'scheduled','timestamp_ns':scheduled,'request_count':len(batch)});result=await asyncio.gather(*(one(session,r,scheduled) for r in batch));append(output/'wave-events.jsonl',{'wave':w,'event':'complete','timestamp_ns':time.monotonic_ns(),'status_counts':{s:sum(x['status']==s for x in result) for s in ('success','failed','timeout')}})
+   batch=[r for r in rows if r['wave']==w];scheduled=time.monotonic_ns();await write_record(output/'wave-events.jsonl',{'wave':w,'event':'scheduled','timestamp_ns':scheduled,'request_count':len(batch)});result=await asyncio.gather(*(one(session,r,scheduled) for r in batch),return_exceptions=True);errors=[x for x in result if isinstance(x,BaseException)];
+   if errors:raise errors[0]
+   await write_record(output/'wave-events.jsonl',{'wave':w,'event':'complete','timestamp_ns':time.monotonic_ns(),'status_counts':{s:sum(x['status']==s for x in result) for s in ('success','failed','timeout')}})
    if any(x['status']!='success' for x in result):
     for r in rows:
-     if r['wave']>w:append(path,{'run_id':r['run_id'],'request_id':r['request_id'],'input_id':r['input_id'],'input_sha256':r['input_sha256'],'wave':r['wave'],'status':'not_submitted','error':'earlier wave failed or timed out; server idle is unverified'})
+     if r['wave']>w:await write_record(path,{'run_id':r['run_id'],'request_id':r['request_id'],'input_id':r['input_id'],'input_sha256':r['input_sha256'],'wave':r['wave'],'status':'not_submitted','error':'earlier wave failed or timed out; server idle is unverified'})
     break
  (output/'client-complete.json').write_text(json.dumps({'finished_ns':time.monotonic_ns(),'requested':len(rows),'note':'client collection ended; server events, idle and validity must be verified separately'},indent=2)+'\n')
 if __name__=='__main__':
