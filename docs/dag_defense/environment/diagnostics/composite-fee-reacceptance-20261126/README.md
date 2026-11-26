@@ -51,3 +51,5 @@ worker同步host/device整段占用一个GPU permit，其中GPU可能空闲；KV
 费用原件：`/root/autodl-tmp/dag-handoff/runs/composite-fees-20261126-01`；KV补测：`receiver-composite-fees-20261126-01`；成功重放：`preaccept-composite-replay-20261126-02`。
 
 费用域、物理组件独占清单和区间重叠负例检查已通过。Windows与服务环境的整套pytest调用分别因缺aiohttp、缺pytest未执行，已保留该失败；没有为此安装依赖。实际新费用negative tests在本机和服务器直接执行通过，真实重放的所有验收断言已执行。
+
+随后在Windows排除需要aiohttp的collector测试，单独执行费用负例与validation矩阵测试，结果 **4 passed**。已有冻结运行未因此改变。
