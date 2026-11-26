@@ -1,0 +1,282 @@
+{
+  "status": "cpu_prediction_replay",
+  "freeze_sha256": "0641087e94dec29ba93172d74454e1f5a90c71fc2ed6f5fce278a7741c7b2313",
+  "formal": true,
+  "planned_rounds": 30,
+  "planned_requests": 960,
+  "completed_rounds": 30,
+  "completed_requests": 960,
+  "attempts": [
+    {
+      "run_id": "validation-00-in1024-wave1-rep4",
+      "input_tokens": 1024,
+      "concurrency": 1,
+      "repeat": 4,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32,
+      "prediction_exit": 1
+    },
+    {
+      "run_id": "validation-01-in1024-wave1-rep0",
+      "input_tokens": 1024,
+      "concurrency": 1,
+      "repeat": 0,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-02-in2048-wave1-rep3",
+      "input_tokens": 2048,
+      "concurrency": 1,
+      "repeat": 3,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-03-in2048-wave4-rep2",
+      "input_tokens": 2048,
+      "concurrency": 4,
+      "repeat": 2,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-04-in2048-wave4-rep4",
+      "input_tokens": 2048,
+      "concurrency": 4,
+      "repeat": 4,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-05-in2048-wave1-rep2",
+      "input_tokens": 2048,
+      "concurrency": 1,
+      "repeat": 2,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-06-in1024-wave2-rep0",
+      "input_tokens": 1024,
+      "concurrency": 2,
+      "repeat": 0,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-07-in2048-wave1-rep1",
+      "input_tokens": 2048,
+      "concurrency": 1,
+      "repeat": 1,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-08-in1024-wave2-rep1",
+      "input_tokens": 1024,
+      "concurrency": 2,
+      "repeat": 1,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-09-in2048-wave4-rep1",
+      "input_tokens": 2048,
+      "concurrency": 4,
+      "repeat": 1,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-10-in2048-wave2-rep2",
+      "input_tokens": 2048,
+      "concurrency": 2,
+      "repeat": 2,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-11-in2048-wave4-rep3",
+      "input_tokens": 2048,
+      "concurrency": 4,
+      "repeat": 3,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-12-in2048-wave2-rep4",
+      "input_tokens": 2048,
+      "concurrency": 2,
+      "repeat": 4,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-13-in1024-wave4-rep2",
+      "input_tokens": 1024,
+      "concurrency": 4,
+      "repeat": 2,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-14-in1024-wave2-rep3",
+      "input_tokens": 1024,
+      "concurrency": 2,
+      "repeat": 3,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-15-in2048-wave4-rep0",
+      "input_tokens": 2048,
+      "concurrency": 4,
+      "repeat": 0,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-16-in1024-wave4-rep1",
+      "input_tokens": 1024,
+      "concurrency": 4,
+      "repeat": 1,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-17-in1024-wave4-rep3",
+      "input_tokens": 1024,
+      "concurrency": 4,
+      "repeat": 3,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-18-in1024-wave1-rep3",
+      "input_tokens": 1024,
+      "concurrency": 1,
+      "repeat": 3,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-19-in2048-wave2-rep3",
+      "input_tokens": 2048,
+      "concurrency": 2,
+      "repeat": 3,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-20-in1024-wave2-rep2",
+      "input_tokens": 1024,
+      "concurrency": 2,
+      "repeat": 2,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-21-in2048-wave2-rep0",
+      "input_tokens": 2048,
+      "concurrency": 2,
+      "repeat": 0,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-22-in1024-wave4-rep0",
+      "input_tokens": 1024,
+      "concurrency": 4,
+      "repeat": 0,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-23-in1024-wave2-rep4",
+      "input_tokens": 1024,
+      "concurrency": 2,
+      "repeat": 4,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-24-in1024-wave1-rep2",
+      "input_tokens": 1024,
+      "concurrency": 1,
+      "repeat": 2,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-25-in2048-wave2-rep1",
+      "input_tokens": 2048,
+      "concurrency": 2,
+      "repeat": 1,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-26-in2048-wave1-rep4",
+      "input_tokens": 2048,
+      "concurrency": 1,
+      "repeat": 4,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-27-in1024-wave1-rep1",
+      "input_tokens": 1024,
+      "concurrency": 1,
+      "repeat": 1,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-28-in1024-wave4-rep4",
+      "input_tokens": 1024,
+      "concurrency": 4,
+      "repeat": 4,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-29-in2048-wave1-rep0",
+      "input_tokens": 2048,
+      "concurrency": 1,
+      "repeat": 0,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    }
+  ]
+}
