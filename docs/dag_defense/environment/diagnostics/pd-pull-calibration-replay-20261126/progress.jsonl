@@ -1,0 +1,12 @@
+{"case": "serial-0", "simulator": "adapted_baseline", "exit_code": 0, "error": "", "finished_unix_s": 1795670834.2110002}
+{"case": "serial-0", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795671021.4403946}
+{"case": "serial-1", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795671031.6668258}
+{"case": "serial-1", "simulator": "adapted_baseline", "exit_code": 0, "error": "", "finished_unix_s": 1795671042.781509}
+{"case": "serial-2", "simulator": "adapted_baseline", "exit_code": 0, "error": "", "finished_unix_s": 1795671063.9206848}
+{"case": "concurrent-0", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795671180.481973}
+{"case": "concurrent-0", "simulator": "adapted_baseline", "exit_code": 0, "error": "", "finished_unix_s": 1795671195.116194}
+{"case": "serial-2", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795671237.8244283}
+{"case": "concurrent-1", "simulator": "adapted_baseline", "exit_code": 0, "error": "", "finished_unix_s": 1795671251.805076}
+{"case": "concurrent-1", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795671297.8557565}
+{"case": "concurrent-2", "simulator": "adapted_baseline", "exit_code": 0, "error": "", "finished_unix_s": 1795671312.8383186}
+{"case": "concurrent-2", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795671370.7563143}

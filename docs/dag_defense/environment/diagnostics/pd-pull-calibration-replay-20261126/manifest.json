@@ -1,0 +1,63 @@
+{
+  "status": "diagnostic_not_frozen",
+  "cases": [
+    {
+      "case": "serial-0",
+      "trace_sha256": "cef11f4589d23fb97de5e453df4a2acb84d455d34e3d10af3924963e1629bb6d",
+      "request_map_sha256": "9509ed0559d45f265f488152557b7d2ecaf832a2ab0e5329934b401f0a7a7162",
+      "requests": 32
+    },
+    {
+      "case": "serial-1",
+      "trace_sha256": "72621fc2be6ff10ab52cb63f13a1f4d829059d881f703a049a6e86264d30ea6c",
+      "request_map_sha256": "25cbf11677a9113e2eaae928ae12df9f0b29ab4fbdb8e924f0db5ea76d35912d",
+      "requests": 32
+    },
+    {
+      "case": "serial-2",
+      "trace_sha256": "932fcd52e9589944b61a488df741bfa32f2ce58cc9bc6aba022e0810f44f72cb",
+      "request_map_sha256": "83aeef410d0b47db8b6df459d98f222b8812d1a4abb26465f646ba5097d37626",
+      "requests": 32
+    },
+    {
+      "case": "concurrent-0",
+      "trace_sha256": "1e2d85d61402c41b4899aacabf1929dd78c4ea2c6066264bb17c41f28ba4a508",
+      "request_map_sha256": "0171696184e8d2fd82586e57e8d253d00fc737243c18595f196565b652e36699",
+      "requests": 32
+    },
+    {
+      "case": "concurrent-1",
+      "trace_sha256": "26e70ff708816bcedced6485e9fc3a9a9a07bdd5d4d9ba6f1195431d8c5559e9",
+      "request_map_sha256": "3608c0e4c1bc2d276b1823ccc37f8cd426e7725ab34c643774103df8a0411f6c",
+      "requests": 32
+    },
+    {
+      "case": "concurrent-2",
+      "trace_sha256": "96f54025ac9a404475bad3649d9b6b0e78a9b1d68f486e0f18c53567949c3a62",
+      "request_map_sha256": "e8ff41b63b4e0629a66fdd099bc89a67ec25efbf029ce2f8a48c1b6763dad45f",
+      "requests": 32
+    }
+  ],
+  "source_hashes": {
+    "/root/autodl-tmp/dag-handoff/runs/calibration-serial-independent-20261126/client-0/requests.jsonl": "5d827d2c86c6ca499e1802293271b282aad164d83391a94679a5077b5fd5c3d9",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-serial-independent-20261126/server-0/router-events.jsonl": "17c6c92ca2ba6ccfddae521d1521d427c3ccef97228747e53fcc71a336f6c322",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-serial-independent-20261126/client-1/requests.jsonl": "d884f23d830164ad45ecc844ce37f7a8738c909104487bdacae46d86c4cd65b8",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-serial-independent-20261126/server-1/router-events.jsonl": "6d4df35b096bda2f4805a5cbb1becbf8e7582adc14d48aec53c2056ee17a63d6",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-serial-independent-20261126/client-2/requests.jsonl": "2eb915dac02177966a1eb239eecf5dff3b9ffea860beb4b41a3c76d77568d192",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-serial-independent-20261126/server-2/router-events.jsonl": "4b2208966d4103264e147ac894cb21ed84f9ec30285075b04b59b90a6cf54544",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-concurrent-independent-20261126/client-0/requests.jsonl": "a5029bec7cdd0f3e45f96e29a7d099041f236d29547c60e1f3be9ce9e1eed25e",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-concurrent-independent-20261126/server-0/router-events.jsonl": "91cc58c77872c0d3d6201e3281d5eab842fb9e5551f7f036ae963984dbe5ae5c",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-concurrent-independent-20261126/client-1/requests.jsonl": "1f3f02825ee32d182412acf60075de64caa356b09e2ce7402c7d3b08d1147a0c",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-concurrent-independent-20261126/server-1/router-events.jsonl": "94a8c1f9cbd2a400319bab65a2ce9f2d96a851ae35a0d75f3fdddea69415b150",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-concurrent-independent-20261126/client-2/requests.jsonl": "1213f0efec981ed39889cf9ef5c0aa587599de570f4b4c6bb3574e15b89e63bf",
+    "/root/autodl-tmp/dag-handoff/runs/calibration-concurrent-independent-20261126/server-2/router-events.jsonl": "2c314c7264e79aeafd1c72764394c8b1413d121d7e79698db386c5e862bad638"
+  },
+  "profile_hashes": {
+    "compute.csv": "f9be52c0a0d30aeee08ccd586d5d5d8f9e23874b0c96548ac767caccf7a35b11",
+    "cpu.csv": "cb5d964a2af3edfff0d0289e848ad4520fae5304c462375a7d178c9f3c761a55",
+    "network.csv": "51b107cda87c210f7bb411430464327abd00935e3266288f9e07b1def55d416b",
+    "attention.csv": "cefc861f14a4cdf5609b6416e57d2ac11e9e4aab7ca68c388961414d6185c663"
+  },
+  "pd_config_sha256": "c6112d33050b8faa393f333eac79a7f9d2cc66b815b1a8e3abe735ad6d9f64a2",
+  "note": "Actual router arrival replay; calibration only; candidate costs and boundary semantics unverified. Adapted baseline, not untouched original."
+}
