@@ -1,0 +1,28 @@
+{
+  "checked_utc": "2026-11-26T17:20:52.813530+00:00",
+  "release": "https://github.com/SimulLM/SimAI/releases/tag/dev-formal-predictions-20261127",
+  "detailed_parts_uploaded": 7,
+  "detailed_parts_total": 10,
+  "remaining": [
+    {
+      "name": "formal-predictions-part-07.tar.gz",
+      "bytes": 57331024
+    },
+    {
+      "name": "formal-predictions-part-09.tar.gz",
+      "bytes": 70785407
+    },
+    {
+      "name": "formal-predictions-part-10.tar.gz",
+      "bytes": 63676563
+    }
+  ],
+  "remaining_bytes": 191792994,
+  "support_package": {
+    "sha256": "147b48004ec819cc68206fe3c892785ecc8fd38b8cf2f90d4cd4fb62bd4564d9",
+    "asset_url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/final-support-and-summary-20261127.tar.gz",
+    "bytes": 7568984
+  },
+  "report_commit": "d70bd28",
+  "local_core_backup_verified": true
+}
