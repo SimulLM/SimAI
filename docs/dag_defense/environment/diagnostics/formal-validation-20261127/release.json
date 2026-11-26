@@ -1,0 +1,9 @@
+{
+  "release": "https://github.com/SimulLM/SimAI/releases/tag/dev-formal-raw-30rounds-20261127",
+  "asset": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-raw-30rounds-20261127/formal-raw-30rounds-20261127.tar.gz",
+  "sha256": "d82eaeb8a27d22fea05c4e558381ab13726e1778cc3ce09df9532fcfbc09f966",
+  "bytes": 7129951,
+  "verified_rounds": 30,
+  "verified_success_requests": 960,
+  "scoring_complete": false
+}
