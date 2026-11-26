@@ -1,0 +1,53 @@
+{
+  "graphs": {
+    "decode": 63,
+    "prefill": 1,
+    "transfer": 1,
+    "first_token": 1
+  },
+  "task_count": 355,
+  "costs": [
+    {
+      "phase": "decode",
+      "task_id": "cpu.finish",
+      "sum_s": 0.03561330149999999
+    },
+    {
+      "phase": "decode",
+      "task_id": "cpu.prepare",
+      "sum_s": 0.028606441500000024
+    },
+    {
+      "phase": "decode",
+      "task_id": "whole_forward",
+      "sum_s": 0.8381564636230471
+    },
+    {
+      "phase": "first_token",
+      "task_id": "consumer.first_token",
+      "sum_s": 0.000875779
+    },
+    {
+      "phase": "prefill",
+      "task_id": "cpu.finish",
+      "sum_s": 0.000505253
+    },
+    {
+      "phase": "prefill",
+      "task_id": "cpu.prepare",
+      "sum_s": 0.0006294885
+    },
+    {
+      "phase": "transfer",
+      "task_id": "transfer.0",
+      "sum_s": 0.012557707323809522
+    }
+  ],
+  "scope": "single 512/64 diagnostic replay; structural nonduplication only",
+  "limitations": [
+    "measurement scopes and GPU/host overlap not fully proven",
+    "sync receive and first-token fees perturb execution",
+    "not applicable to concurrent shape or pristine original",
+    "not a freeze or accuracy claim"
+  ]
+}

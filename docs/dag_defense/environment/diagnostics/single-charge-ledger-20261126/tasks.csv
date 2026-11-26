@@ -1,0 +1,356 @@
+graph,phase,task_id,duration_s,cost_source,components
+stage-000001.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000001.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000001.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000001.graph.json,decode,whole_forward,0.013359213632250589,serial-full-forward-diagnostic,{}
+stage-000002.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000002.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000002.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000002.graph.json,decode,whole_forward,0.013357434832860554,serial-full-forward-diagnostic,{}
+stage-000003.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000003.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000003.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000003.graph.json,decode,whole_forward,0.013355656033470517,serial-full-forward-diagnostic,{}
+stage-000004.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000004.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000004.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000004.graph.json,decode,whole_forward,0.013353877234080483,serial-full-forward-diagnostic,{}
+stage-000005.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000005.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000005.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000005.graph.json,decode,whole_forward,0.013352098434690445,serial-full-forward-diagnostic,{}
+stage-000006.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000006.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000006.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000006.graph.json,decode,whole_forward,0.013350319635300409,serial-full-forward-diagnostic,{}
+stage-000007.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000007.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000007.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000007.graph.json,decode,whole_forward,0.013348540835910375,serial-full-forward-diagnostic,{}
+stage-000008.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000008.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000008.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000008.graph.json,decode,whole_forward,0.013346762036520337,serial-full-forward-diagnostic,{}
+stage-000009.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000009.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000009.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000009.graph.json,decode,whole_forward,0.013344983237130303,serial-full-forward-diagnostic,{}
+stage-000010.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000010.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000010.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000010.graph.json,decode,whole_forward,0.013343204437740265,serial-full-forward-diagnostic,{}
+stage-000011.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000011.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000011.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000011.graph.json,decode,whole_forward,0.013341425638350229,serial-full-forward-diagnostic,{}
+stage-000012.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000012.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000012.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000012.graph.json,decode,whole_forward,0.013339646838960195,serial-full-forward-diagnostic,{}
+stage-000013.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000013.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000013.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000013.graph.json,decode,whole_forward,0.013337868039570157,serial-full-forward-diagnostic,{}
+stage-000014.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000014.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000014.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000014.graph.json,decode,whole_forward,0.013336089240180123,serial-full-forward-diagnostic,{}
+stage-000015.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000015.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000015.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000015.graph.json,decode,whole_forward,0.013334310440790085,serial-full-forward-diagnostic,{}
+stage-000016.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000016.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000016.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000016.graph.json,decode,whole_forward,0.01333253164140005,serial-full-forward-diagnostic,{}
+stage-000017.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000017.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000017.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000017.graph.json,decode,whole_forward,0.013330752842010015,serial-full-forward-diagnostic,{}
+stage-000018.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000018.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000018.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000018.graph.json,decode,whole_forward,0.013328974042619977,serial-full-forward-diagnostic,{}
+stage-000019.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000019.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000019.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000019.graph.json,decode,whole_forward,0.013327195243229943,serial-full-forward-diagnostic,{}
+stage-000020.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000020.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000020.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000020.graph.json,decode,whole_forward,0.013325416443839905,serial-full-forward-diagnostic,{}
+stage-000021.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000021.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000021.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000021.graph.json,decode,whole_forward,0.01332363764444987,serial-full-forward-diagnostic,{}
+stage-000022.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000022.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000022.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000022.graph.json,decode,whole_forward,0.013321858845059835,serial-full-forward-diagnostic,{}
+stage-000023.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000023.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000023.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000023.graph.json,decode,whole_forward,0.013320080045669798,serial-full-forward-diagnostic,{}
+stage-000024.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000024.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000024.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000024.graph.json,decode,whole_forward,0.013318301246279763,serial-full-forward-diagnostic,{}
+stage-000025.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000025.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000025.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000025.graph.json,decode,whole_forward,0.013316522446889726,serial-full-forward-diagnostic,{}
+stage-000026.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000026.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000026.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000026.graph.json,decode,whole_forward,0.01331474364749969,serial-full-forward-diagnostic,{}
+stage-000027.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000027.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000027.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000027.graph.json,decode,whole_forward,0.013312964848109655,serial-full-forward-diagnostic,{}
+stage-000028.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000028.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000028.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000028.graph.json,decode,whole_forward,0.013311186048719618,serial-full-forward-diagnostic,{}
+stage-000029.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000029.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000029.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000029.graph.json,decode,whole_forward,0.013309407249329584,serial-full-forward-diagnostic,{}
+stage-000030.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000030.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000030.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000030.graph.json,decode,whole_forward,0.013307628449939546,serial-full-forward-diagnostic,{}
+stage-000031.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000031.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000031.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000031.graph.json,decode,whole_forward,0.01330584965054951,serial-full-forward-diagnostic,{}
+stage-000032.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000032.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000032.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000032.graph.json,decode,whole_forward,0.013304070851159476,serial-full-forward-diagnostic,{}
+stage-000033.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000033.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000033.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000033.graph.json,decode,whole_forward,0.013302292051769438,serial-full-forward-diagnostic,{}
+stage-000034.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000034.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000034.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000034.graph.json,decode,whole_forward,0.013300513252379402,serial-full-forward-diagnostic,{}
+stage-000035.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000035.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000035.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000035.graph.json,decode,whole_forward,0.013298734452989366,serial-full-forward-diagnostic,{}
+stage-000036.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000036.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000036.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000036.graph.json,decode,whole_forward,0.01329695565359933,serial-full-forward-diagnostic,{}
+stage-000037.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000037.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000037.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000037.graph.json,decode,whole_forward,0.013295176854209296,serial-full-forward-diagnostic,{}
+stage-000038.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000038.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000038.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000038.graph.json,decode,whole_forward,0.013293398054819258,serial-full-forward-diagnostic,{}
+stage-000039.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000039.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000039.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000039.graph.json,decode,whole_forward,0.013291619255429222,serial-full-forward-diagnostic,{}
+stage-000040.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000040.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000040.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000040.graph.json,decode,whole_forward,0.013289840456039186,serial-full-forward-diagnostic,{}
+stage-000041.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000041.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000041.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000041.graph.json,decode,whole_forward,0.01328806165664915,serial-full-forward-diagnostic,{}
+stage-000042.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000042.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000042.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000042.graph.json,decode,whole_forward,0.013286282857259116,serial-full-forward-diagnostic,{}
+stage-000043.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000043.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000043.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000043.graph.json,decode,whole_forward,0.013284504057869078,serial-full-forward-diagnostic,{}
+stage-000044.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000044.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000044.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000044.graph.json,decode,whole_forward,0.013282725258479042,serial-full-forward-diagnostic,{}
+stage-000045.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000045.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000045.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000045.graph.json,decode,whole_forward,0.013280946459089006,serial-full-forward-diagnostic,{}
+stage-000046.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000046.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000046.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000046.graph.json,decode,whole_forward,0.01327916765969897,serial-full-forward-diagnostic,{}
+stage-000047.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000047.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000047.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000047.graph.json,decode,whole_forward,0.013277388860308936,serial-full-forward-diagnostic,{}
+stage-000048.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000048.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000048.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000048.graph.json,decode,whole_forward,0.013275610060918899,serial-full-forward-diagnostic,{}
+stage-000049.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000049.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000049.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000049.graph.json,decode,whole_forward,0.013273831261528863,serial-full-forward-diagnostic,{}
+stage-000050.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000050.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000050.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000050.graph.json,decode,whole_forward,0.013272052462138827,serial-full-forward-diagnostic,{}
+stage-000051.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000051.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000051.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000051.graph.json,decode,whole_forward,0.01327027366274879,serial-full-forward-diagnostic,{}
+stage-000052.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000052.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000052.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000052.graph.json,decode,whole_forward,0.013268494863358756,serial-full-forward-diagnostic,{}
+stage-000053.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000053.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000053.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000053.graph.json,decode,whole_forward,0.013266716063968719,serial-full-forward-diagnostic,{}
+stage-000054.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000054.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000054.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000054.graph.json,decode,whole_forward,0.013264937264578683,serial-full-forward-diagnostic,{}
+stage-000055.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000055.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000055.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000055.graph.json,decode,whole_forward,0.013263158465188647,serial-full-forward-diagnostic,{}
+stage-000056.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000056.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000056.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000056.graph.json,decode,whole_forward,0.013261379665798611,serial-full-forward-diagnostic,{}
+stage-000057.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000057.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000057.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000057.graph.json,decode,whole_forward,0.013259600866408577,serial-full-forward-diagnostic,{}
+stage-000058.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000058.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000058.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000058.graph.json,decode,whole_forward,0.013257822067018539,serial-full-forward-diagnostic,{}
+stage-000059.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000059.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000059.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000059.graph.json,decode,whole_forward,0.013256043267628503,serial-full-forward-diagnostic,{}
+stage-000060.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000060.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000060.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000060.graph.json,decode,whole_forward,0.013254264468238467,serial-full-forward-diagnostic,{}
+stage-000061.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000061.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000061.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000061.graph.json,decode,whole_forward,0.013252485668848431,serial-full-forward-diagnostic,{}
+stage-000062.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000062.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000062.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000062.graph.json,decode,whole_forward,0.013250706869458397,serial-full-forward-diagnostic,{}
+stage-000063.graph.json,decode,cpu.finish,0.0005652905,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.1465845, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.418706}"
+stage-000063.graph.json,decode,cpu.prepare,0.00045407050000000006,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.353706, ""schedule_time"": 0.1003645}"
+stage-000063.graph.json,decode,terminal,0.0,vidur.ExecutionTime,{}
+stage-000063.graph.json,decode,whole_forward,0.01324892807006836,serial-full-forward-diagnostic,{}
+pd-595d010001ac9ea1.graph.json,first_token,consumer.first_token,0.000875779,pd.consumer_first_token_host_interval,{}
+pd-595d010001ac9ea1.graph.json,first_token,terminal,0,pd.first_token_join,{}
+stage-000000.graph.json,prefill,cpu.finish,0.000505253,vidur.ExecutionTime,"{""process_model_outputs_time"": 0.083458, ""ray_comm_time"": 0.0, ""sampler_e2e_time"": 0.421795}"
+stage-000000.graph.json,prefill,cpu.prepare,0.0006294885,vidur.ExecutionTime,"{""prepare_inputs_e2e_time"": 0.495095, ""schedule_time"": 0.1343935}"
+stage-000000.graph.json,prefill,layer0.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer0.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer0.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer1.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer1.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer1.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer10.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer10.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer10.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer11.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer11.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer11.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer12.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer12.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer12.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer13.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer13.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer13.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer14.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer14.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer14.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer15.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer15.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer15.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer16.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer16.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer16.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer17.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer17.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer17.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer18.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer18.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer18.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer19.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer19.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer19.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer2.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer2.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer2.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer20.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer20.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer20.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer21.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer21.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer21.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer22.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer22.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer22.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer23.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer23.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer23.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer24.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer24.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer24.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer25.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer25.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer25.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer26.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer26.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer26.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer27.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer27.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer27.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer28.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer28.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer28.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer29.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer29.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer29.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer3.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer3.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer3.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer30.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer30.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer30.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer31.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer31.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer31.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer4.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer4.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer4.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer5.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer5.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer5.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer6.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer6.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer6.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer7.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer7.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer7.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer8.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer8.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer8.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,layer9.attention.compute,0.00028014399483799936,vidur.ExecutionTime,"{""attention_decode_execution_time"": 0, ""attention_kv_cache_save_execution_time"": 0, ""attention_post_proj_time"": 0.05820799991488457, ""attention_pre_proj_time"": 0.1471839975565672, ""attention_prefill_execution_time"": 0.06327999755740166, ""attention_rope_execution_time"": 0.0, ""attn_norm_time"": 0.011471999809145927}"
+stage-000000.graph.json,prefill,layer9.mlp.compute,0.00041555200051516297,vidur.ExecutionTime,"{""mlp_layer_act_execution_time"": 0.02932799980044365, ""mlp_layer_down_proj_execution_time"": 0.13675200194120407, ""mlp_layer_up_proj_execution_time"": 0.23766399919986725, ""mlp_norm_time"": 0.011807999573647976}"
+stage-000000.graph.json,prefill,layer9.residual_add,0.0,vidur.ExecutionTime,"{""add_time"": 0.0}"
+stage-000000.graph.json,prefill,terminal,0.0,vidur.ExecutionTime,{}
+pd-1254034454b5265e.graph.json,transfer,terminal,0,pd.join,{}
+pd-1254034454b5265e.graph.json,transfer,transfer.0,0.012557707323809522,pd.latency_plus_wire_over_bandwidth,{}
