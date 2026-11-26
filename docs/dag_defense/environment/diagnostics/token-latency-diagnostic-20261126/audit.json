@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "requests": 20,
+  "measured": 16,
+  "issues": [],
+  "resource_samples": 44,
+  "cgroup_throttle_delta": {
+    "nr_periods": 253,
+    "nr_throttled": 0,
+    "throttled_usec": 0
+  },
+  "median_server_e2e_ms": 1218.6091150000002,
+  "median_token_gap_ms": 13.293235,
+  "largest_token_gap_ms": 32.480887,
+  "gaps_over_20ms": 458,
+  "gaps_over_50ms": 0,
+  "gaps_over_100ms": 0,
+  "limits": [
+    "single serial diagnostic, not three-repeat calibration or validation",
+    "client timestamps include router, event loop and transport; gaps need not be GPU decode durations",
+    "cgroup counters are shared and 0.5 s sampled, not per-process or per-request causality",
+    "first and last GPU telemetry samples do not isolate transient events"
+  ]
+}

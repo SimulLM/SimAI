@@ -1,0 +1,7 @@
+# Decode token interval diagnostic
+
+Separate serial diagnostic on real vLLM 0.8.5 eager 1P1D FP16 TP1, 512 input/64 output: four warmup and 16 measured requests. Client records the arrival timestamp associated with each streamed usage token count 1–64. All 20 requests completed with expected lengths and matching decode IDs; both GPUs released. The router and client timestamping add overhead; this is not formal E2E, not a three-repeat calibration, and client inter-token arrival time is not a GPU kernel duration.
+
+Across 1008 measured inter-token intervals, 458 exceed 20 ms, none exceed 50 ms, maximum 32.481 ms. Per-request medians show values near 13 ms or 26 ms and some mixed sequences; slow end-to-end requests arise from many increased intervals rather than a single >50 ms gap in this run. The median server E2E was 1218.609 ms. Cgroup CPU stat sampled approximately every 0.5 s shows zero change in throttling count and throttled time during this diagnostic, not proof against other CPU contention. Sampled GPU1 SM clock was 1755 MHz in all 44 samples and GPU0 was 1755 in 38, 1740 in six; this is not causal proof and short events can be missed. Timing and resource samples are host-level; cannot infer whether the ~26 ms pattern comes from GPU execution, CPU scheduling, router or streaming. Preserve raw token timestamps, inputs, telemetry and logs; no outliers removed.
+
+Formal validation remains 0/30; fee overlap, service/simulator ordering and calibration variability remain unresolved. The diagnostic adds no cost fitted from validation data.
