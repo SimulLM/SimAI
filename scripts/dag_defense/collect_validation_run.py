@@ -19,9 +19,16 @@ def preflight(freeze_file,manifest_file,run_id):
  if p.parent!=manifest_file.parent.resolve() or sha(p)!=spec['sha256']:raise ValueError('input file path or digest mismatch')
  rows=[json.loads(x) for x in p.read_text().splitlines()]
  if len(rows)!=32 or spec['requests']!=32:raise ValueError('expected 32 inputs')
+ if spec.get('concurrency') not in (1,2,4) or 32 % spec['concurrency'] or spec.get('output_tokens')!=128:raise ValueError('invalid concurrency or output length')
+ seen_requests=set();seen_inputs=set();seen_hashes=set()
  for i,r in enumerate(rows):
   raw=(json.dumps(r['input_ids'],separators=(',',':'),ensure_ascii=True)+'\n').encode()
-  if hashlib.sha256(raw).hexdigest()!=r['input_sha256'] or len(r['input_ids'])!=spec['input_tokens'] or r['wave']!=i//spec['concurrency']:raise ValueError('input row integrity mismatch')
+  if (r.get('run_id')!=run_id or not r.get('request_id') or not r.get('input_id')
+      or r['request_id'] in seen_requests or r['input_id'] in seen_inputs or r['input_sha256'] in seen_hashes
+      or hashlib.sha256(raw).hexdigest()!=r['input_sha256'] or len(r['input_ids'])!=spec['input_tokens']
+      or r['wave']!=i//spec['concurrency'] or r.get('index_in_wave')!=i%spec['concurrency']):
+   raise ValueError('input row identity, wave or digest mismatch')
+  seen_requests.add(r['request_id']);seen_inputs.add(r['input_id']);seen_hashes.add(r['input_sha256'])
  return freeze,manifest,spec,rows
 async def run_case(spec,rows,output,url,model,timeout_s):
  output.mkdir(parents=True,exist_ok=False);origin=time.monotonic_ns();(output/'run-spec.json').write_text(json.dumps({'spec':spec,'clock_id':'CLOCK_MONOTONIC','origin_ns':origin,'url':url,'model':model,'timeout_s':timeout_s,'sampling':{'temperature':0,'top_p':1,'seed':0,'ignore_eos':True,'min_tokens':128,'max_tokens':128}},indent=2)+'\n');path=output/'client-events.jsonl'
