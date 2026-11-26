@@ -1,0 +1,135 @@
+{
+  "scope": "modelled resource occupancy; entire host/device envelope occupancy is an unvalidated approximation",
+  "top_waits": [
+    {
+      "waiting_graph": "pd/29/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.0627977440000187,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch1023/iteration1023",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.0627977440000187
+        }
+      ]
+    },
+    {
+      "waiting_graph": "pd/1/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.06279774399999999,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch15/iteration15",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.06279774399999999
+        }
+      ]
+    },
+    {
+      "waiting_graph": "pd/5/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.0627977439999996,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch159/iteration159",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.0627977439999996
+        }
+      ]
+    },
+    {
+      "waiting_graph": "pd/9/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.06279774399999916,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch303/iteration303",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.06279774399999916
+        }
+      ]
+    },
+    {
+      "waiting_graph": "pd/13/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.06279774399999916,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch447/iteration447",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.06279774399999916
+        }
+      ]
+    },
+    {
+      "waiting_graph": "pd/17/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.0627977439999956,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch591/iteration591",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.0627977439999956
+        }
+      ]
+    },
+    {
+      "waiting_graph": "pd/21/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.0627977439999956,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch735/iteration735",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.0627977439999956
+        }
+      ]
+    },
+    {
+      "waiting_graph": "pd/25/stage0/migration0",
+      "waiting_task": "transfer.0",
+      "wait_s": 0.0627977439999956,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "replica0/stage0/batch879/iteration879",
+          "blocking_task": "layer0.attention.compute",
+          "overlap_s": 0.0627977439999956
+        }
+      ]
+    },
+    {
+      "waiting_graph": "replica0/stage0/batch577/iteration577",
+      "waiting_task": "layer0.attention.compute",
+      "wait_s": 0.036639363500000854,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "pd/16/stage0/migration0",
+          "blocking_task": "transfer.0",
+          "overlap_s": 0.036639363500000854
+        }
+      ]
+    },
+    {
+      "waiting_graph": "replica0/stage0/batch721/iteration721",
+      "waiting_task": "layer0.attention.compute",
+      "wait_s": 0.036639363500000854,
+      "blockers": [
+        {
+          "resource": "gpu:0:0:0",
+          "blocking_graph": "pd/20/stage0/migration0",
+          "blocking_task": "transfer.0",
+          "overlap_s": 0.036639363500000854
+        }
+      ]
+    }
+  ]
+}

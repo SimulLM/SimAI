@@ -1,0 +1,55 @@
+{
+  "status": "starting",
+  "freeze_sha256": "0641087e94dec29ba93172d74454e1f5a90c71fc2ed6f5fce278a7741c7b2313",
+  "formal": true,
+  "planned_rounds": 30,
+  "planned_requests": 960,
+  "completed_rounds": 4,
+  "completed_requests": 128,
+  "attempts": [
+    {
+      "run_id": "validation-00-in1024-wave1-rep4",
+      "input_tokens": 1024,
+      "concurrency": 1,
+      "repeat": 4,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-01-in1024-wave1-rep0",
+      "input_tokens": 1024,
+      "concurrency": 1,
+      "repeat": 0,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-02-in2048-wave1-rep3",
+      "input_tokens": 2048,
+      "concurrency": 1,
+      "repeat": 3,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-03-in2048-wave4-rep2",
+      "input_tokens": 2048,
+      "concurrency": 4,
+      "repeat": 2,
+      "status": "data_complete",
+      "attempt": 1,
+      "requests": 32
+    },
+    {
+      "run_id": "validation-04-in2048-wave4-rep4",
+      "input_tokens": 2048,
+      "concurrency": 4,
+      "repeat": 4,
+      "status": "collecting",
+      "attempt": 1
+    }
+  ]
+}
