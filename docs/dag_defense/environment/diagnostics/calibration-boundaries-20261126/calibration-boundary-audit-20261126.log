@@ -1,0 +1,40 @@
+{
+  "status": "observed_existing_calibration_boundary_only",
+  "requests": 192,
+  "mapped": 192,
+  "missing": [],
+  "errors": [],
+  "summary": [
+    {
+      "mode": "serial",
+      "requests": 96,
+      "server_e2e_ms_median": 840.321068,
+      "prefill_response_ms_median": 27.99288,
+      "router_to_decode_submit_ms_median": 0.073201,
+      "decode_to_first_token_ms_median": 14.0151515,
+      "first_token_to_complete_ms_median": 797.3709249999999,
+      "client_e2e_ms_median": 840.8910915
+    },
+    {
+      "mode": "concurrent2",
+      "requests": 96,
+      "server_e2e_ms_median": 866.975013,
+      "prefill_response_ms_median": 43.656503,
+      "router_to_decode_submit_ms_median": 0.065264,
+      "decode_to_first_token_ms_median": 23.6374465,
+      "first_token_to_complete_ms_median": 799.850265,
+      "client_e2e_ms_median": 867.6359649999999
+    }
+  ],
+  "source_sha256": {
+    "requests": "73a94a2e18b756f736b62c85bf9f5241d8f1701e195b94f2bdf49b577050d6e8",
+    "router_events": "22fbef75262969672120a31aea489b36f09915325ab05bf1728ee7fec3873010"
+  },
+  "limitations": [
+    "This is existing calibration, not validation; no fee is fitted to these end-to-end times",
+    "Router events are host service boundaries, not GPU KVReady or GPU execution completion",
+    "Calibration mode is eager with 8GiB KV buffer and gpu utilization 0.75; traces may include profiler-independent router processing",
+    "All three serial repeats include separately collected supplement requests; verify per-repeat idle and input provenance before treating as final calibration",
+    "Decode response mapping and first token are stream processing timestamps; no attribution to individual GPU or CPU components"
+  ]
+}
