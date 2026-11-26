@@ -1,0 +1,22 @@
+{
+  "request_id": "056d3df6215849d4add0d535f76fe995",
+  "backend_id": "cmpl-a2c2bfdf933c46948a73a544554c6824-0",
+  "consumer_steps": 64,
+  "process_intervals": 64,
+  "last_step_return_ns": 1841789172240180,
+  "last_process_start_ns": 1841789172342062,
+  "last_process_return_ns": 1841789172581949,
+  "router_final_choice_ns": 1841789173170113,
+  "router_complete_ns": 1841789173406508,
+  "last_process_duration_ms": 0.239887,
+  "last_process_return_to_final_choice_ms": 0.588164,
+  "final_choice_to_complete_ms": 0.236395,
+  "median_process_duration_ms": 0.1224315,
+  "limitations": [
+    "one measured request, one session",
+    "host API return does not prove GPU completion",
+    "file event logging perturbs timing",
+    "process output may be accounted by simulator CPU profile, but scope parity not proved",
+    "not a pure router fee, validation, or freeze"
+  ]
+}
