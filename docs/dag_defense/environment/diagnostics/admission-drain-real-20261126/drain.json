@@ -1,0 +1,17 @@
+{
+  "status": "drained_asgi_only",
+  "observations": [
+    {
+      "fenced": true,
+      "active": 0,
+      "accepted": 4,
+      "finished": 4,
+      "timestamp_ns": 1847124708246681
+    }
+  ],
+  "limitations": [
+    "does not establish backend/connector idle or cancellation cleanup",
+    "one router process only",
+    "formal readiness is not granted"
+  ]
+}

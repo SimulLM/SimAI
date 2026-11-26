@@ -1,0 +1,33 @@
+{
+  "status": "completed",
+  "nonce": "ad64bd4482d5467b8ef5185155cf6c08",
+  "clock_id": "CLOCK_MONOTONIC",
+  "workers": [
+    {
+      "schema": 1,
+      "role": "consumer",
+      "pid": 168029,
+      "nonce": "ad64bd4482d5467b8ef5185155cf6c08",
+      "start_ns": 1847130737708954,
+      "device": "cuda:0",
+      "status": "completed",
+      "end_ns": 1847130737865065
+    },
+    {
+      "schema": 1,
+      "role": "producer",
+      "pid": 168032,
+      "nonce": "ad64bd4482d5467b8ef5185155cf6c08",
+      "start_ns": 1847130831898729,
+      "device": "cuda:0",
+      "status": "completed",
+      "end_ns": 1847130832068024
+    }
+  ],
+  "limitations": [
+    "Synchronization only covers each responding worker process CUDA context and previously submitted work",
+    "Host queue, in-flight request, pipe and live PID ownership must be independently verified before and after",
+    "No new requests may be issued during synchronization and observation",
+    "Observer thread itself changes process behavior; no formal readiness certification"
+  ]
+}
