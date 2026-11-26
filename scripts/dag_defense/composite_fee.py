@@ -17,7 +17,7 @@ class CompositeFees:
             rr.sort(key=lambda r:r['context']);require(len({r['context'] for r in rr})==len(rr),'duplicate fee key '+str(k))
         require(self.data['ownership']=={'worker':['prepare','embedding','layers','rope','kv_cache_write','output_head','sampler','worker_host_wait'],
                                        'schedule':['engine_schedule'], 'output':['engine_output_processing'],
-                                       'receiver':['kv_transport_receive','kv_install','consumer_bypass_head_sampler']},'physical component ownership differs')
+                                       'receiver':['consumer_bypass_prepare','kv_transport_receive','kv_install','consumer_bypass_head_sampler']},'physical component ownership differs')
         components=[x for rr in self.data['ownership'].values() for x in rr]
         require(len(components)==len(set(components)),'duplicate physical fee ownership')
     def get(self,phase,n,contexts,tokens):
@@ -66,21 +66,22 @@ def build(samples,receiver_csv,out):
         require(len(warm)==10 and len(measured)==30,'receiver coverage '+str(n))
         values=[]
         for r in rr:
-            ts=[int(r[k]) for k in ('receive_start_ns','receive_return_ns','install_sync_ns','step_return_ns')]
+            require(r.get('after_device_sync')=='True','receiver first-token final sync not evidenced')
+            ts=[int(r[k]) for k in ('consumer_prepare_start_ns','receive_start_ns','receive_return_ns','install_sync_ns','step_return_ns')]
             require(ts==sorted(ts),'receiver intervals reversed')
             if r['warmup']=='False':values.append((ts[-1]-ts[0])/1e9)
         receiver[str(n)]={'duration_s':statistics.median(values),'warmup_waves':10,'measured_waves':30,'min_s':min(values),'max_s':max(values),
-                          'unit_of_work':'one request, batch1 inclusive receive/install/bypass first token','concurrency_assumption':'per-request serial envelope; no shared consumer-first-token batch saving modelled'}
+                          'unit_of_work':'one request, batch1 inclusive consumer prepare/receive/install/bypass first token, ending after device sync','concurrency_assumption':'per-request serial envelope; no shared consumer-first-token batch saving modelled'}
     data={'schema':'composite-fees-v1','worker':worker,'receiver':receiver,
-          'ownership':{'worker':['prepare','embedding','layers','rope','kv_cache_write','output_head','sampler','worker_host_wait'],'schedule':['engine_schedule'],'output':['engine_output_processing'],'receiver':['kv_transport_receive','kv_install','consumer_bypass_head_sampler']},
+          'ownership':{'worker':['prepare','embedding','layers','rope','kv_cache_write','output_head','sampler','worker_host_wait'],'schedule':['engine_schedule'],'output':['engine_output_processing'],'receiver':['consumer_bypass_prepare','kv_transport_receive','kv_install','consumer_bypass_head_sampler']},
           'sources':[{'path':str(p),'sha256':sha(p)} for p in (samples,receiver_csv)],'disjoint_microbenchmark_intervals_checked':interval_count,
           'replacement':'Worker replaces layer, norm, RoPE, embedding/head, sampler and prepare fees; receiver replaces legacy bandwidth, install and first-token subfees. No enclosing interval plus subinterval addition.',
           'stages':{'1_producer_prefill':'One worker envelope per actual Prefill batch, with producer head and sampler; schedule/output CPU scopes once. Producer token is discarded by the router.',
-                    '2_kv_and_consumer_token1':'One receiver envelope per request. Includes KV receive/install and consumer bypass head/sampler. No extra consumer first-token, head or sampler fee is charged.',
+                    '2_kv_and_consumer_token1':'One receiver envelope per request. Includes consumer prepare, KV receive/install and consumer bypass head/sampler, ends after device sync. No extra consumer first-token, prepare, head or sampler fee is charged.',
                     '3_consumer_tokens2_to128':'Exactly 127 normal Decode rounds per request; worker envelope for the actual formed batch, plus its schedule/output CPU scopes. Does not charge token1 again.'},
           'resource_assumptions':{'validation_status':'待验证近似 / unvalidated approximation', 'worker':'one opaque GPU permit for the entire synchronized host/device envelope; GPU can be idle inside this envelope','engine_cpu':'existing per-replica CPU prepare/finish resources; schedule/output disjoint in profiling','receiver':'existing transfer task holds source GPU, destination GPU and endpoints; serial per-request envelope; occupancy is an unvalidated approximation','internal_overlap':'none inside a composite; host/device overlap within the measurement counted once','between_batches':'existing scheduler and DAG resources unchanged'},
           'context_rule':'Linear interpolation of uniform measured worker envelopes by actual mean context, separately by phase, input length and actual batch. No extrapolation. Mixed-context vector reduced to mean is a modelling approximation.',
-          'limitations':['Synchronous offline profiling perturbs overlap; fee is an inclusive service envelope, not isolated kernel time.','Receiver measured serial with eight-output requests; used only through first token, independent of later output length.','Per-request receiver assumption omits shared first-token batch savings and may overestimate concurrent cost.','Consumer prepare before receive, router/routing/IPC/stream tail outside measured envelopes remain unmodelled residuals; no E2E-derived correction.']}
+          'limitations':['Synchronous offline profiling perturbs overlap; fee is an inclusive service envelope, not isolated kernel time.','Receiver measured serial with eight-output requests; used only through first token, independent of later output length.','Per-request receiver assumption omits shared first-token batch savings and may overestimate concurrent cost.','Consumer bypass engine schedule/output, router/routing/IPC/stream tail outside measured envelopes remain unmodelled residuals; no E2E-derived correction.']}
     out.write_text(json.dumps(data,indent=2)+'\n');CompositeFees(out);return data
 
 if __name__=='__main__':

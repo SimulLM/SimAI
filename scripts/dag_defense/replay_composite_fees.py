@@ -1,7 +1,7 @@
 """Fee-only replay of retained real requests, including backlog/resource audit."""
 import argparse,collections,csv,hashlib,json,os,pathlib,subprocess,sys
 from composite_fee import CompositeFees,require,sha
-from run_preacceptance import score_and_audit,csvrows,writecsv,dump
+from run_preacceptance import score_and_audit,csvrows,writecsv,dump,replay
 
 ROOT=pathlib.Path('/root/autodl-tmp');REPO=ROOT/'SimAI-handoff'
 
@@ -99,7 +99,19 @@ def run(actual,fees_path,out):
     require(not audit['paired_batches']['count'] or audit['paired_batches']['max_fee_difference_s']<1e-9,'matched batch fees differ')
     require(all(sha(pathlib.Path(p))==h for p,h in frozen.items()),'source/input changed during replay')
     # Preserve the untouched original as a third prediction column.
-    original={r['request_id']:r for r in csvrows(actual/'prediction-retry-01/baseline-predictions.csv')}
+    pristine=actual/'prediction-retry-01/baseline-predictions.csv'
+    if pristine.exists():original={r['request_id']:r for r in csvrows(pristine)}
+    else:
+        # Run the untouched original with its original predictor and fee files;
+        # it remains an explicit third reference, never the shared-fee adapter.
+        mp=replay(out,ROOT,'baseline',actual/'trace.csv') if not (out/'baseline').exists() else None
+        # The primary pair uses baseline as an internal legacy parser key. Use a
+        # separate output parent for the pristine command to preserve identities.
+        if mp is None:
+            parent=out/'pristine-reference';parent.mkdir();mp=replay(parent,ROOT,'baseline',actual/'trace.csv')
+        mm={int(float(r['Request Id'])):r for r in csvrows(mp)};rr=[json.loads(x) for x in (actual/'reconciled/requests.jsonl').read_text().splitlines()]
+        require(len(mm)==len(rr)==32,'incomplete pristine reference')
+        original={r['request_id']:{'predicted_e2e_s':float(mm[i]['completed_at'])-float(mm[i]['arrived_at'])} for i,r in enumerate(rr)}
     scored=csvrows(out/'scores.csv');full=[]
     for r in scored:
         r={k.replace('baseline','fee_adapted_reference'):v for k,v in r.items()};r['pristine_original_s']=original[r['request_id']]['predicted_e2e_s'];full.append(r)

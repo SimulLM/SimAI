@@ -123,6 +123,8 @@ def actual_fee_domain(root,metrics):
 
 def score_and_audit(out,root,reconciled,metrics):
     actual=[json.loads(x) for x in reconciled.read_text().splitlines()];pred={};audit={};batchsets={};events_by_mode={}
+    prompt_tokens=actual[0]['usage']['prompt_tokens']
+    require(all(r['usage']['prompt_tokens']==prompt_tokens and r['usage']['completion_tokens']==128 for r in actual),'mixed/clipped actual tokens')
     for mode,mp in metrics.items():
         rr=csvrows(mp);require(len(rr)==32,'prediction rows !=32 '+mode)
         mi={int(float(r['Request Id'])):r for r in rr};require(set(mi)==set(range(32)),'prediction IDs '+mode)
@@ -137,7 +139,7 @@ def score_and_audit(out,root,reconciled,metrics):
             key=(e['pid'],tuple(sorted(ids)),tuple((i,history[i]) for i in sorted(ids)),tuple(sorted(zip(ids,a['num_tokens']))))
             require(key not in keys,'duplicate batch charge '+mode);keys[key]=e
             for rid,n in zip(ids,a['num_tokens']):
-                require(int(n)==(2048 if e['pid']==0 else 1),'wrong per-step token amount')
+                require(int(n)==(prompt_tokens if e['pid']==0 else 1),'wrong per-step token amount')
                 require(e['ts']/1e6+1e-9>=float(mi[rid]['arrived_at']),'executed before request arrival '+mode)
                 if e['pid']==1 and e['ts']/1e6+1e-9<float(mi[rid]['decode_arrived_at']):
                     early.append({'request_id':rid,'batch_id':a['batch_id'],'start_s':e['ts']/1e6,'ready_s':float(mi[rid]['decode_arrived_at'])})
@@ -145,7 +147,7 @@ def score_and_audit(out,root,reconciled,metrics):
         require(all(history[i]==127 and prefill[i]==1 for i in range(32)),'token or Decode rounds mismatch '+mode)
         predictions=[]
         for i,a in enumerate(actual):
-            m=mi[i];require(int(float(m['request_num_prefill_tokens']))==2048 and int(float(m['request_num_decode_tokens']))==128,'clipped model tokens')
+            m=mi[i];require(int(float(m['request_num_prefill_tokens']))==prompt_tokens and int(float(m['request_num_decode_tokens']))==128,'clipped model tokens')
             predictions.append({'request_id':a['request_id'],'input_id':a['input_id'],'predicted_e2e_s':float(m['completed_at'])-float(m['arrived_at'])})
         writecsv(out/(mode+'-predictions.csv'),predictions)
         audit[mode]={'batches':len(keys),'early_events':early,'early_is_gate':mode=='dag','token_counts_passed':True};batchsets[mode]=keys;events_by_mode[mode]=events

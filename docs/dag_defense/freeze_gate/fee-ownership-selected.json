@@ -36,7 +36,7 @@
   "measurement_policy": "Whole worker envelopes use real batches (phase,input length,actual batch,actual mean context); attention equivalent length is never used as a whole-model shape.",
   "stages": {
     "producer_prefill": "prepare through synchronized execute_model, including forward, head and sampling; engine schedule/output measured separately.",
-    "kv_consumer_first_token": "receiver entry through synchronized consumer bypass step return; includes KV transport receive/install, consumer head/sampling; charged once per request instead of legacy bandwidth; no second first-token/head/sampler task.",
+    "kv_consumer_first_token": "Consumer prepare after sync through KV receive/install and first-token execute followed by device sync; charged once per request, with no extra first-token/prepare/head/sampler fee.",
     "consumer_decode": "127 later Decode rounds for output=128, using actual formed batches; excludes token1."
   },
   "deletions": [
@@ -67,5 +67,6 @@
     "zero predicted backlog"
   ],
   "pristine_reference": "cef83f9ddd96540e3e9f48934f11335d52d54fce unchanged; fee-adapted reference separately labelled",
-  "no_scheduler_or_readiness_change": true
+  "no_scheduler_or_readiness_change": true,
+  "receiver_source": "receiver-composite-fees-20261126-01: 1024 and 2048, 10 warmups + 30 measured per length; older host-only end CSV excluded"
 }
