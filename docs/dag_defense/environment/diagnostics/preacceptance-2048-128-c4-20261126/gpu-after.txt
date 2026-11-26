@@ -1,0 +1,3 @@
+name, uuid, memory.used [MiB], utilization.gpu [%]
+NVIDIA H800 PCIe, GPU-6a82e02c-388a-2044-141e-d9ba86b3f201, 0 MiB, 0 %
+NVIDIA H800 PCIe, GPU-2269d925-3345-06c6-0c8b-5332760d64bc, 0 MiB, 0 %

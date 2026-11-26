@@ -1,0 +1,5 @@
+{
+  "kind": "preacceptance_not_validation",
+  "retry_of": "/root/autodl-tmp/dag-handoff/runs/preaccept-2048-128-c4-20261126-2231",
+  "prior_attempt_result_sha256": "9678566d26516856068bcc3145359d4c3da816db356e8a36b8c940ff75647463"
+}

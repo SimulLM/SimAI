@@ -1,0 +1,218 @@
+{
+  "status": "failed",
+  "kind": "preacceptance_not_validation",
+  "formal_rounds_added": 0,
+  "requests": 32,
+  "assertions": [
+    {
+      "assertion": "32_successful_2048_128_requests",
+      "status": "passed"
+    },
+    {
+      "assertion": "real_router_arrival_replayed_both_versions",
+      "status": "passed"
+    },
+    {
+      "assertion": "PD_host_events_and_128_consumer_steps",
+      "status": "passed"
+    },
+    {
+      "assertion": "score_boundary_explicit_no_correction",
+      "status": "passed",
+      "limitation": "Router stream completion includes unmodeled host tail; host-return is not GPU completion."
+    },
+    {
+      "assertion": "DAG_no_early_decode",
+      "status": "passed",
+      "events": []
+    },
+    {
+      "assertion": "unique_completed_no_early_DAG_tasks",
+      "status": "passed"
+    },
+    {
+      "assertion": "paired_batch_fee_parity",
+      "status": "passed",
+      "paired": {
+        "count": 621,
+        "baseline_fraction": 0.5869565217391305,
+        "dag_fraction": 0.5903041825095057,
+        "max_fee_difference_s": 2.7755575615628914e-17,
+        "not_a_pairing_threshold": true
+      }
+    },
+    {
+      "assertion": "actual_reachable_fee_domain",
+      "status": "failed",
+      "gaps": [
+        {
+          "key": [
+            "baseline",
+            "attention_decode_context",
+            1,
+            2176,
+            512.0,
+            2174.0
+          ],
+          "batch_count": 4
+        },
+        {
+          "key": [
+            "baseline",
+            "attention_decode_context",
+            2,
+            2176,
+            512.0,
+            2174.0
+          ],
+          "batch_count": 8
+        },
+        {
+          "key": [
+            "baseline",
+            "attention_decode_context",
+            3,
+            2112,
+            1040.0,
+            1152.0
+          ],
+          "batch_count": 12
+        },
+        {
+          "key": [
+            "baseline",
+            "attention_decode_context",
+            3,
+            2176,
+            1040.0,
+            1152.0
+          ],
+          "batch_count": 14
+        },
+        {
+          "key": [
+            "baseline",
+            "attention_decode_context",
+            4,
+            2176,
+            512.0,
+            2174.0
+          ],
+          "batch_count": 495
+        },
+        {
+          "key": [
+            "baseline",
+            "attention_prefill_equivalent_chunk",
+            2896,
+            512.0,
+            2174.0
+          ],
+          "batch_count": 8
+        },
+        {
+          "key": [
+            "dag",
+            "attention_decode_context",
+            1,
+            2176,
+            512.0,
+            2174.0
+          ],
+          "batch_count": 4
+        },
+        {
+          "key": [
+            "dag",
+            "attention_decode_context",
+            3,
+            2112,
+            1040.0,
+            1152.0
+          ],
+          "batch_count": 4
+        },
+        {
+          "key": [
+            "dag",
+            "attention_decode_context",
+            3,
+            2176,
+            1040.0,
+            1152.0
+          ],
+          "batch_count": 8
+        },
+        {
+          "key": [
+            "dag",
+            "attention_decode_context",
+            4,
+            2176,
+            512.0,
+            2174.0
+          ],
+          "batch_count": 504
+        },
+        {
+          "key": [
+            "dag",
+            "attention_prefill_equivalent_chunk",
+            2896,
+            512.0,
+            2174.0
+          ],
+          "batch_count": 8
+        }
+      ]
+    },
+    {
+      "assertion": "exclusive_physical_fee_ownership",
+      "status": "failed",
+      "missing": [
+        "Consumer KV-bypass token-1 work has no exclusive common fee mapping.",
+        "Producer logits/output-head scope is not established in the layer profile.",
+        "KV installation is not separated from inclusive receive/wait.",
+        "Synchronized sampler CPU interval overlaps GPU work/wait; exclusion is not established."
+      ],
+      "evidence": "docs/dag_defense/environment/diagnostics/pristine-dag-fee-contract-20261126/README.md"
+    }
+  ],
+  "score": {
+    "kind": "preacceptance_not_validation",
+    "requests": 32,
+    "baseline_mae_s": 0.19955966379035406,
+    "dag_mae_s": 0.7379531736855186,
+    "baseline_mean_relative_error": 0.08788096317970465,
+    "dag_mean_relative_error": 0.3249162003894921,
+    "boundary": {
+      "actual": "router stream completion minus router arrival",
+      "prediction": "last modeled batch end minus same actual router arrival",
+      "correction_s": 0,
+      "residual": "Unmodeled router/host tail stays in error; not subtracted or fitted."
+    }
+  },
+  "pristine_original_observation": {
+    "early_events": 53,
+    "first": [
+      {
+        "request_id": 1,
+        "batch_id": 9,
+        "start_s": 0.21435023162849087,
+        "ready_s": 0.24434214086454764
+      }
+    ],
+    "policy": "Unchanged reference retained. No readiness patch relabelled as baseline."
+  },
+  "attempts": [
+    "/root/autodl-tmp/dag-handoff/runs/preaccept-2048-128-c4-20261126-2231",
+    "/root/autodl-tmp/dag-handoff/runs/preaccept-2048-128-c4-20261126-2236",
+    "/root/autodl-tmp/dag-handoff/runs/preaccept-2048-128-c4-20261126-2236/prediction-retry-01"
+  ],
+  "not_gates": [
+    "prediction error",
+    "batch equality",
+    "DAG improvement"
+  ],
+  "no_new_gpu_run_for_prediction_retry": true
+}

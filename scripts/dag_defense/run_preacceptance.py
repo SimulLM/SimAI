@@ -3,7 +3,7 @@
 Not validation. No E2E-based fitting or diagnostic variant selection. Never overwrites
 an attempt, and always stops its own service process group before CPU replay.
 """
-import argparse,asyncio,collections,csv,hashlib,json,os,pathlib,random,signal,statistics,subprocess,sys,time,urllib.request
+import argparse,asyncio,collections,csv,hashlib,json,math,os,pathlib,random,signal,statistics,subprocess,sys,time,urllib.request
 from collect_validation_run import run_case
 from reconcile_validation_run import reconcile
 from export_validation_requests import export
@@ -75,12 +75,16 @@ def replay(out,root,mode,trace):
     cmd=read(root/'dag-handoff/runs/pristine-real-arrival-20261126/concurrent-0'/mode/'command.json')
     dest=out/mode;dest.mkdir()
     options={'--trace_request_generator_config_trace_file':str(trace),'--trace_request_generator_config_max_tokens':'2176',
+             '--random_forrest_execution_time_predictor_config_prediction_max_prefill_chunk_size':'4096',
              '--metrics_config_output_dir':str(dest),'--metrics_config_cache_dir':str(dest/'cache'),
              '--random_forrest_execution_time_predictor_config_simai_dir':str(dest)}
     for i,x in enumerate(cmd):
         if x in options:cmd[i+1]=options[x]
     # Preserve source and cost selection; request only the existing trace exporter.
-    for flag in ('--metrics_config_write_json_trace','--metrics_config_enable_chrome_trace'):
+    # Original event_trace JSON contains sets; Chrome trace is sufficient and
+    # avoids that unrelated exporter failure. Apply the logging choice equally.
+    cmd=[x for x in cmd if x!='--metrics_config_write_json_trace']
+    for flag in ('--metrics_config_enable_chrome_trace',):
         if flag not in cmd:cmd.append(flag)
     dump(dest/'command.json',cmd)
     env=dict(os.environ,PYTHONPATH=str(repo/'vidur-alibabacloud')+':'+str(repo),WANDB_MODE='disabled',PYTHONDONTWRITEBYTECODE='1')
@@ -91,11 +95,40 @@ def replay(out,root,mode,trace):
     mm=list(dest.glob('2026*/request_metrics.csv'));require(len(mm)==1,'missing/ambiguous metrics '+mode)
     return mm[0]
 
+def actual_fee_domain(root,metrics):
+    profile=root/'dag-handoff/runs/pd-pull-calibration-replay-20261126/profile'
+    aa=csvrows(profile/'attention.csv');cc=csvrows(profile/'compute.csv');cpu=csvrows(profile/'cpu.csv')
+    gaps=collections.Counter();seen=collections.Counter()
+    def bounds(mode,key,target,values):
+        values=[float(v) for v in values];seen[(mode,*key,target)]+=1
+        if not values or not min(values)<=target<=max(values):
+            gaps[(mode,*key,target,min(values) if values else None,max(values) if values else None)]+=1
+    for mode,mp in metrics.items():
+        events=read(mp.parent/'chrome_trace.json')['traceEvents'];history=collections.Counter()
+        for e in sorted(events,key=lambda e:e.get('ts',0)):
+            if e.get('ph')!='X' or e.get('pid') not in (0,1) or not e.get('args',{}).get('request_ids'):continue
+            a=e['args'];ids=a['request_ids'];tokens=a['num_tokens']
+            bounds(mode,('compute_num_tokens',),sum(tokens),[r['num_tokens'] for r in cc])
+            bounds(mode,('cpu_batch_size',),len(ids),[r['batch_size'] for r in cpu])
+            if e['pid']==0:
+                target=round(math.sqrt(sum(int(n)**2 for n in tokens)))
+                bounds(mode,('attention_prefill_equivalent_chunk',),target,[r['prefill_chunk_size'] for r in aa if int(r['kv_cache_size'])==0])
+            else:
+                target=math.ceil(int(sum(2049+history[i] for i in ids)/len(ids))/64)*64
+                bounds(mode,('attention_decode_context',len(ids)),target,[r['kv_cache_size'] for r in aa if int(r['batch_size'])==len(ids) and int(r['prefill_chunk_size'])==0])
+                history.update(ids)
+    return {'profile_sha256':{p.name:sha(p) for p in profile.glob('*.csv')},
+            'reachable_keys':len(seen),'gaps':[{'key':list(k),'batch_count':v} for k,v in sorted(gaps.items(),key=lambda x:str(x[0]))],
+            'semantics':'Actual selected primary batches only. Regressor output outside measured feature bounds is retained as extrapolation, and fails fee coverage. No exact-bin requirement or error threshold.'}
+
 def score_and_audit(out,root,reconciled,metrics):
     actual=[json.loads(x) for x in reconciled.read_text().splitlines()];pred={};audit={};batchsets={};events_by_mode={}
     for mode,mp in metrics.items():
         rr=csvrows(mp);require(len(rr)==32,'prediction rows !=32 '+mode)
         mi={int(float(r['Request Id'])):r for r in rr};require(set(mi)==set(range(32)),'prediction IDs '+mode)
+        origin=min(a['server_arrival_ns'] for a in actual)
+        for i,a in enumerate(actual):
+            require(abs(float(mi[i]['arrived_at'])-(a['server_arrival_ns']-origin)/1e9)<1e-9,'prediction is not actual-arrival replay '+mode+'/'+str(i))
         pred[mode]=mi;events=read(mp.parent/'chrome_trace.json')['traceEvents']
         events=sorted((e for e in events if e.get('ph')=='X' and e.get('pid') in (0,1) and e.get('args',{}).get('request_ids')),key=lambda e:e['ts'])
         history=collections.Counter();prefill=collections.Counter();keys={};early=[]
@@ -197,9 +230,7 @@ def main():
         check('DAG_no_decode_before_modeled_KV_ready',lambda:require(not audit['dag']['early_events'],'EARLY_DECODE '+str(audit['dag']['early_events'][:3])))
         check('unique_completed_DAG_tasks',lambda:require(audit['task_ledger']['duplicate_keys']==0 and not audit['task_ledger']['invalid_or_early_tasks'],'duplicate/incomplete/early task'))
         check('paired_batch_fee_parity',lambda:require(not audit['paired_batches']['count'] or audit['paired_batches']['max_fee_difference_s']<1e-9,'matched fees differ'))
-        # Use only this selected primary profile; no revised-candidate gap tables.
-        from formal_preflight import coverage
-        cov=coverage(root/'dag-handoff/runs/pd-pull-calibration-replay-20261126/profile');dump(out/'fee-domain.json',cov)
+        cov=actual_fee_domain(root,metrics);dump(out/'fee-domain.json',cov)
         check('reachable_fee_domain',lambda:require(not cov['gaps'],'FEE_DOMAIN_GAPS '+json.dumps(cov['gaps'])))
         fee=repo/'docs/dag_defense/environment/diagnostics/pristine-dag-fee-contract-20261126/README.md'
         check('physical_fee_nonoverlap_contract',lambda:require('**Missing from original**' not in fee.read_text(),'FEE_SCOPE_UNRESOLVED: consumer bypass-first-token, producer head, KV install and sampler/GPU overlap lack common exclusive mapping; '+str(fee)))

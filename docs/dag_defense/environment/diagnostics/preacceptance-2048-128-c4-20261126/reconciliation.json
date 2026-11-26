@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "request_count": 32,
+  "status_counts": {
+    "success": 32
+  },
+  "errors": [],
+  "clock_id": "CLOCK_MONOTONIC",
+  "metric": "server_complete_ns - server_arrival_ns",
+  "final_choice_required": true,
+  "limitations": [
+    "router completion is stream completion, not GPU completion",
+    "separate pre-run idle evidence and frozen configuration verification remain required",
+    "incomplete or failed rows must be retained; no missing server timestamp is fabricated"
+  ]
+}

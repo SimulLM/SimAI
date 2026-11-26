@@ -1,0 +1,71 @@
+[
+  {
+    "timestamp_ns": 1855873639573396,
+    "router": {
+      "status": "observed",
+      "inflight": 0,
+      "unresolved_errors": 0,
+      "request_ids": 4
+    },
+    "producer": {
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_swapped": null,
+      "vllm:gpu_cache_usage_perc": 0.0,
+      "vllm:cpu_cache_usage_perc": null
+    },
+    "consumer": {
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_swapped": null,
+      "vllm:gpu_cache_usage_perc": 0.0,
+      "vllm:cpu_cache_usage_perc": null
+    }
+  },
+  {
+    "timestamp_ns": 1855875692934174,
+    "router": {
+      "status": "observed",
+      "inflight": 0,
+      "unresolved_errors": 0,
+      "request_ids": 4
+    },
+    "producer": {
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_swapped": null,
+      "vllm:gpu_cache_usage_perc": 0.0,
+      "vllm:cpu_cache_usage_perc": null
+    },
+    "consumer": {
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_swapped": null,
+      "vllm:gpu_cache_usage_perc": 0.0,
+      "vllm:cpu_cache_usage_perc": null
+    }
+  },
+  {
+    "timestamp_ns": 1855877709443165,
+    "router": {
+      "status": "observed",
+      "inflight": 0,
+      "unresolved_errors": 0,
+      "request_ids": 4
+    },
+    "producer": {
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_swapped": null,
+      "vllm:gpu_cache_usage_perc": 0.0,
+      "vllm:cpu_cache_usage_perc": null
+    },
+    "consumer": {
+      "vllm:num_requests_running": 0.0,
+      "vllm:num_requests_waiting": 0.0,
+      "vllm:num_requests_swapped": null,
+      "vllm:gpu_cache_usage_perc": 0.0,
+      "vllm:cpu_cache_usage_perc": null
+    }
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "kind": "preacceptance_candidate_not_formal_freeze",
+  "original": {
+    "head": "cef83f9ddd96540e3e9f48934f11335d52d54fce",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "dag_fee_provider_only": {
+    "head": "b3ce1b661d39510192652457ce1266ebfa417b1b",
+    "diff_sha256": "bc7a92840b014ddc0de18b24910c3e25f87aa526d0bef16c12bc395cbb3614f5"
+  },
+  "service": {
+    "head": "fa053e7ae81157a596cc9dfb406102b5e04d237f",
+    "diff_sha256": "1ea84d0df399a4d8ed2293e124f6c2ac5b2d444c9078029adc1c5964543aa4e1"
+  },
+  "files": {
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/scripts/start-pd-light-events.sh": "21af4f8bfa9ea4d6e793d62872684a4f47274a825aea6fdf80ab8caff57c365c",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/scripts/pd_stream_proxy.py": "6bdee2a1c8804853ab3a9496fd6ef91e83217b4677087794ee3a25aef6ccaf32",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/scripts/pd-light-events/sitecustomize.py": "b55c7ff70a378b2abc873602ea211dc3699b6bd719441d6a10d5e4022bd61dc5",
+    "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/run_preacceptance.py": "fc4fd6bed74e868d5468955f4265f36a344d66f0e9b685f13a4343a0e2f3672d",
+    "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/collect_validation_run.py": "14a2ecb331e5f3da5efbd0955522fba230b0f14f0aba8018f4ce956f13eca4a0"
+  },
+  "no_parameter_fitting": true
+}

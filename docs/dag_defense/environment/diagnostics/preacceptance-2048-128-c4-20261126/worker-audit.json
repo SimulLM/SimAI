@@ -1,0 +1,264 @@
+{
+  "requests": [
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r0",
+      "producer_id": "cmpl-77a49058877d41299af7a94a1924bed4-0",
+      "consumer_id": "cmpl-9a7ada8a9fd14bf5bc04f868d6fb1a36-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855878103747322
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r1",
+      "producer_id": "cmpl-220830deb1bf489b9c5d6646acd7d588-0",
+      "consumer_id": "cmpl-fc9997ef2c1f47ea85b74a7241e1a13f-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855878103747322
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r2",
+      "producer_id": "cmpl-8ea4c88045504239b98c8d7ecb7352ed-0",
+      "consumer_id": "cmpl-dc46cc77f05d4265a1983d41d5d41687-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855878172930046
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r3",
+      "producer_id": "cmpl-bd628cfe59ae42ac98bd1c53dabe67dd-0",
+      "consumer_id": "cmpl-6d82113571074d04b9d9f64db1b7439f-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855878172930046
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r4",
+      "producer_id": "cmpl-f201f0fe206d4c42ad76fa8672805533-0",
+      "consumer_id": "cmpl-7b89428bf851478d8e8ae4355e65e297-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855880261261963
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r5",
+      "producer_id": "cmpl-eeb9e94756e642a0a0e68d3bada4e6e1-0",
+      "consumer_id": "cmpl-e3efc6886c594658891763e3e31302cc-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855880416229984
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r6",
+      "producer_id": "cmpl-a0165a8142e242fb9ea0bb3089b5e042-0",
+      "consumer_id": "cmpl-0f22c53832e14ed694e8ca4ff7f07b04-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855880416229984
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r7",
+      "producer_id": "cmpl-e4dd81cbaea548dd9fc63cc9b4bb6b44-0",
+      "consumer_id": "cmpl-e56dba72f3644b9dbfa3d0e0e6f91c83-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855880451574909
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r8",
+      "producer_id": "cmpl-f3fc980243244fc990561586ab7ff9b5-0",
+      "consumer_id": "cmpl-b3318c4b72d942c79f5d48a887bf59c5-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855882529779976
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r9",
+      "producer_id": "cmpl-6ac156c767674a718a6f69eded5314c9-0",
+      "consumer_id": "cmpl-bf4f34e6742d4226afbe08a0cb6d9326-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855882680730549
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r10",
+      "producer_id": "cmpl-56ea02a817554e35a4bef3389abcf917-0",
+      "consumer_id": "cmpl-debecaaa0125430391acebbf83406201-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855882680730549
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r11",
+      "producer_id": "cmpl-8cf26f0144cd4da281ea34518520ffed-0",
+      "consumer_id": "cmpl-bc486efe479841898f028d70f76aaa31-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855882716202042
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r12",
+      "producer_id": "cmpl-9b4f70eeb6044e26929fe9143dcb8b96-0",
+      "consumer_id": "cmpl-a1d0dc628d654e30bf4b63ecf5bdee04-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855884792074689
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r13",
+      "producer_id": "cmpl-9641e1e39d5949028264e801d10cb293-0",
+      "consumer_id": "cmpl-ec19fa8bacfc447c8c9b3a0c4e257a45-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855884945024108
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r14",
+      "producer_id": "cmpl-f097e3f3ca0e4d1eaff9a04873be97bd-0",
+      "consumer_id": "cmpl-7c1ed1da96544154bf2923270dbd0268-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855884945024108
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r15",
+      "producer_id": "cmpl-94b32b69b7124258921cd742db4c7e05-0",
+      "consumer_id": "cmpl-8d242433782a4e8db17ad3c10a892338-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855884980309447
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r16",
+      "producer_id": "cmpl-ced70b6f884c414f8f71fe6d703196b1-0",
+      "consumer_id": "cmpl-34a4f0e843ea40fc89a78c04e99a4cc5-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855887058365973
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r17",
+      "producer_id": "cmpl-7e2bc051ccc04fd998b5cdf75e72adda-0",
+      "consumer_id": "cmpl-b774605547d74dbaa33c28de9728a33d-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855887213547922
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r18",
+      "producer_id": "cmpl-36f49ae37c3e4bb3922db4e6c9365f30-0",
+      "consumer_id": "cmpl-c09e5d95b2824036a0106188a033d75c-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855887213547922
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r19",
+      "producer_id": "cmpl-44133803e8ee4bc3a10847421fe55c52-0",
+      "consumer_id": "cmpl-3f948af219df42cb97517859ee1daf14-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855887248851389
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r20",
+      "producer_id": "cmpl-c78c11223cd64958b0801b3c879cb845-0",
+      "consumer_id": "cmpl-0be661a0aeba41b192bfdc3d1d0b7e03-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855889334367708
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r21",
+      "producer_id": "cmpl-28c0857e4bda4af8ae7b5cf15780cd61-0",
+      "consumer_id": "cmpl-923376216f5b4ba69474ce8440cf2611-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855889485547169
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r22",
+      "producer_id": "cmpl-8bb6837dd5cf4504a710ca4a4c6c80d4-0",
+      "consumer_id": "cmpl-70b7f10a9087477381b17a55fe01c038-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855889485547169
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r23",
+      "producer_id": "cmpl-eed6bfc9098c4a0c9ba2bee6b5e0a662-0",
+      "consumer_id": "cmpl-70602012e18e4951bab94b691e10d2cd-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855889520948064
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r24",
+      "producer_id": "cmpl-846a8ee3af984a23aad388cfa0e2bcaf-0",
+      "consumer_id": "cmpl-772d60659d2b46abb7a1bc98c30c8856-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855891632700016
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r25",
+      "producer_id": "cmpl-9f4d850836c344dda298dca2a6b2f35b-0",
+      "consumer_id": "cmpl-f030e2b58ddd44fcbd48202ea3497e58-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855891782741511
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r26",
+      "producer_id": "cmpl-288aaef8dd754049b0ace7de98c7d519-0",
+      "consumer_id": "cmpl-107ef30ca7a34f31afaf4b6783766e14-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855891782741511
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r27",
+      "producer_id": "cmpl-299db93aa19b41b3abd6ec665a4a967a-0",
+      "consumer_id": "cmpl-df469e052c774b06bb39c8ac9dfdae5f-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855891818066589
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r28",
+      "producer_id": "cmpl-0126aa6992f74233aab1ae2aad04823a-0",
+      "consumer_id": "cmpl-b4c1e870d9fc448693407687d5316824-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855893927940775
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r29",
+      "producer_id": "cmpl-33380eeb53b94991ac1a98c804a90724-0",
+      "consumer_id": "cmpl-3719b8b150034c91815a1f850c418d02-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855894079425029
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r30",
+      "producer_id": "cmpl-7bd08b710e3a4e11982f31889d4300c9-0",
+      "consumer_id": "cmpl-d9b7da39dd89475396b9926ebc47657c-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855894079425029
+    },
+    {
+      "request_id": "preaccept-2048-128-c4-20261126-2236-r31",
+      "producer_id": "cmpl-1bf7cddc31984a409223f141cae38c05-0",
+      "consumer_id": "cmpl-cd8a11f19a4647d2ad8e47192fae0bbe-0",
+      "consumer_steps": 128,
+      "kv_bypass": true,
+      "kv_recv_host_return_ns": 1855894114852356
+    }
+  ],
+  "limitations": [
+    "Host API return is not exact GPU KVReady.",
+    "Consumer bypass step emits token 1; following 127 steps generate tokens 2..128. Producer token is not sent to client."
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "profile_sha256": {
+    "compute.csv": "f9be52c0a0d30aeee08ccd586d5d5d8f9e23874b0c96548ac767caccf7a35b11",
+    "cpu.csv": "cb5d964a2af3edfff0d0289e848ad4520fae5304c462375a7d178c9f3c761a55",
+    "network.csv": "51b107cda87c210f7bb411430464327abd00935e3266288f9e07b1def55d416b",
+    "attention.csv": "cefc861f14a4cdf5609b6416e57d2ac11e9e4aab7ca68c388961414d6185c663"
+  },
+  "reachable_keys": 36,
+  "gaps": [
+    {
+      "key": [
+        "baseline",
+        "attention_decode_context",
+        1,
+        2176,
+        512.0,
+        2174.0
+      ],
+      "batch_count": 4
+    },
+    {
+      "key": [
+        "baseline",
+        "attention_decode_context",
+        2,
+        2176,
+        512.0,
+        2174.0
+      ],
+      "batch_count": 8
+    },
+    {
+      "key": [
+        "baseline",
+        "attention_decode_context",
+        3,
+        2112,
+        1040.0,
+        1152.0
+      ],
+      "batch_count": 12
+    },
+    {
+      "key": [
+        "baseline",
+        "attention_decode_context",
+        3,
+        2176,
+        1040.0,
+        1152.0
+      ],
+      "batch_count": 14
+    },
+    {
+      "key": [
+        "baseline",
+        "attention_decode_context",
+        4,
+        2176,
+        512.0,
+        2174.0
+      ],
+      "batch_count": 495
+    },
+    {
+      "key": [
+        "baseline",
+        "attention_prefill_equivalent_chunk",
+        2896,
+        512.0,
+        2174.0
+      ],
+      "batch_count": 8
+    },
+    {
+      "key": [
+        "dag",
+        "attention_decode_context",
+        1,
+        2176,
+        512.0,
+        2174.0
+      ],
+      "batch_count": 4
+    },
+    {
+      "key": [
+        "dag",
+        "attention_decode_context",
+        3,
+        2112,
+        1040.0,
+        1152.0
+      ],
+      "batch_count": 4
+    },
+    {
+      "key": [
+        "dag",
+        "attention_decode_context",
+        3,
+        2176,
+        1040.0,
+        1152.0
+      ],
+      "batch_count": 8
+    },
+    {
+      "key": [
+        "dag",
+        "attention_decode_context",
+        4,
+        2176,
+        512.0,
+        2174.0
+      ],
+      "batch_count": 504
+    },
+    {
+      "key": [
+        "dag",
+        "attention_prefill_equivalent_chunk",
+        2896,
+        512.0,
+        2174.0
+      ],
+      "batch_count": 8
+    }
+  ],
+  "semantics": "Actual selected primary batches only. Regressor output outside measured feature bounds is retained as extrapolation, and fails fee coverage. No exact-bin requirement or error threshold."
+}

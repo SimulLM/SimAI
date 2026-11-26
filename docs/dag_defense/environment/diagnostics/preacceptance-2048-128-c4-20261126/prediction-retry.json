@@ -1,0 +1,7 @@
+{
+  "retry_of": "/root/autodl-tmp/dag-handoff/runs/preaccept-2048-128-c4-20261126-2236/baseline",
+  "reason": "attn_prefill key (0,8386816) outside generated range; expand same table range from 2048 to 4096 for both; profile hashes unchanged; disable event JSON exporter with set serialization bug; retain Chrome",
+  "actual_inputs_sha256": "ad22a6e9af3c9064992713531c2ed568ecc2e6f004e702985833731d654a3246",
+  "actual_trace_sha256": "dbee591fdcf07289e8550181c5f043b2212338c1d0383c0cfdaa4756cb623618",
+  "runner_sha256": "c6ec68238f01c45a5ceab3ad870d7838d8d93116ef603ef7a4092dd96b06d6f0"
+}

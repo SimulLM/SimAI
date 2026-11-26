@@ -1,49 +1,56 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "updated_utc": "2026-11-26T13:59:26.521599+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
-      "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Pristine and DAG common profile hashes and 2048 four-request transfer base fees verified, with distinct reported KV-byte semantics. Pristine lacks consumer first-token task; KV-install, CPU/GPU overlap and router tail are not proven common/non-overlapping.",
-      "next_action": "Implement or explicitly resolve the pristine consumer first-token and KV-install omissions under the required original/DAG comparison, keeping adapted variants separately labelled.",
-      "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/pristine-dag-fee-contract-20261126/README.md"
+      "evidence": "docs/dag_defense/environment/diagnostics/preacceptance-2048-128-c4-20261126/final-acceptance.json",
+      "failure_assertion": "actual_reachable_fee_domain && exclusive_physical_fee_ownership",
+      "missing": "Actual primary batches require Prefill equivalent chunk 2896; Decode batch 3 context 2112/2176; batch 1/2/4 rounded context 2176. Selected profile supports chunk <=2174 and batch3 context only 1040..1152. Consumer bypass token1, producer output head, KV install, sampler/GPU overlap have no exclusive common mapping. Runtime unique task IDs and 621 paired fees pass; this does not establish full physical nonoverlap.",
+      "next_action": "Replace only the shared fee-provider inputs/mapping using the retained independent measurements for the listed reachable keys and assign exclusive physical ownership; replay this same 32-request actual trace in a new prediction-attempt directory. Do not rerun GPU E2E or add scheduler variants.",
+      "close_when": "Both versions have a reproducible fee for every reached lookup within a documented measured/interpolated domain; every physical component has one exclusive owner or an explicit justified omission; runtime ledger and matched-fee checks pass. Accuracy and pairing rate are not gates."
     },
     "arrival_completion_boundary": {
-      "status": "open",
-      "evidence": "docs/dag_defense/environment/diagnostics/output-processing-repeat-20261126/README.md",
-      "missing": "Single-request actual and candidate simulator event timestamps are joined and token counts agree. Real Decode starts before receive while the candidate starts transfer at prefill end; last model batch and router stream completion remain different scopes.",
-      "next_action": "Specify how the common comparison treats the router completion residual and real pull ordering, with separately evidenced non-overlapping costs or an explicitly scoped limitation.",
-      "close_when": "Token and Decode counts align; all endpoints have source timestamps and residual is quantified or disclosed without double counting.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/single-request-event-contract-20261126/README.md"
+      "status": "closed",
+      "evidence": "docs/dag_defense/environment/diagnostics/preacceptance-2048-128-c4-20261126/score-summary.json",
+      "failure_assertion": "actual arrival differs from router CLOCK_MONOTONIC or scoring uses an undeclared/fitted completion correction",
+      "missing": "None for this preacceptance scoring contract. Model-end prediction versus router-stream-complete truth is explicitly a residual limitation; it is not silently equated to GPU completion.",
+      "next_action": "Freeze this boundary and zero-correction rule without changing it based on observed errors.",
+      "close_when": "Actual server timestamps and 32 IDs/token totals reconcile; both replays consume actual arrivals; actual=router complete-arrival, prediction=modeled complete-arrival, no fitted tail correction.",
+      "closure_evidence": "32/32 reconcile and score; real consumer has one bypass token1 step plus 127 decode steps; simulated Prefill contributes token1 and has 127 subsequent Decode rounds."
     },
     "concurrent_readiness_batching": {
-      "status": "open",
-      "evidence": "docs/dag_defense/environment/diagnostics/early-batch-minimal-20261126/README.md",
-      "missing": "The first divergence on one real-arrival calibration replay is traced to request 8 readiness and first-token timing relative to request 7 Decode; earlier resource/scheduler differences mean the ultimate single cause is not isolated. Final common fee and physical readiness remain unverified.",
-      "next_action": "Complete the common fee and timing contract, then retain natural batch differences and their first-event explanation in the preflight evidence.",
-      "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/calibration-first-divergence-20261126/README.md"
+      "status": "closed",
+      "evidence": "docs/dag_defense/environment/diagnostics/preacceptance-2048-128-c4-20261126/simulation-audit.json",
+      "failure_assertion": "DAG Decode start < its modeled decode arrival, repeated/missing token, or incomplete/repeated DAG task",
+      "missing": "None observed on this workload. Original reference retains 53 premature membership events; those are disclosed original defects, not repaired or silently excluded. Physical KVReady precision remains a host-event limitation tied to fee ownership.",
+      "next_action": "Keep current scheduling/readiness source unchanged; recheck same assertions after fee-only repair.",
+      "close_when": "DAG early events=0; all 32 have one Prefill and 127 Decode rounds; task duplicate/incomplete/early counts=0. Report pairing without a minimum fraction.",
+      "closure_evidence": "621 pairs: 58.695652% baseline and 59.030442% DAG; max matched fee delta 2.78e-17 seconds; no batch equality requirement."
     },
     "freeze_and_preflight": {
       "status": "open",
-      "evidence": "docs/dag_defense/environment/diagnostics/inflight-admission-drain-20261126/README.md",
-      "missing": "Frozen artifact manifest, scoring rules and integrated conservative per-round idle/failure procedure.",
-      "next_action": "After the other gates close, bind exact hashes, service configuration, input, scoring and restart/idle evidence in a freeze manifest.",
-      "close_when": "All required evidence and immutable hashes validate, service is idle per documented checks, and failures abort and retain retry lineage."
+      "evidence": "docs/dag_defense/freeze_gate/preacceptance-entry.md",
+      "failure_assertion": "formal fee gate unresolved OR frozen manifest absent OR formal round runner lacks live idle integration",
+      "missing": "Fee validity remains failed. No parameter-freeze.json. supervise_validation.py formal CLI is still fail-closed; this preacceptance entry ran successfully but is not a frozen formal runner.",
+      "next_action": "After the fee-only repair passes this same preacceptance, bind exact source/overlay/profile/service/input/scoring hashes and reuse the proven conservative start/warm/idle/collect/stop path for formal rounds.",
+      "close_when": "One formal command verifies frozen hashes, fresh-service idle evidence and abort/retain/restart policy before collecting; candidate validity passes first, with no requirement for prior 30-round results."
     }
   },
   "reportable_limitations": [
-    "H800 PCIe SYS link; no NVLink assumed",
-    "profile instrumentation and timing variability",
-    "natural batching may differ",
-    "measured router-tail residual with quantified scope",
+    "H800 PCIe SYS interconnect, no NVLink assumed",
+    "Host worker events are not exact GPU-completion or physical KVReady timestamps",
+    "Natural batches differ",
+    "Modeled batch end versus router stream completion residual is retained in score, without fitted correction",
+    "Original reference has premature batch membership",
+    "Selected regressors omit phase/context dimensions and mixed-context vectors",
     "DAG may be worse or unchanged"
   ],
   "not_gates": [
-    "near-zero prediction error",
+    "small prediction error",
+    "identical batches",
     "DAG improvement",
-    "automatic reopening after cancellation"
-  ]
+    "automatic reopening after failure"
+  ],
+  "updated_local": "2026-11-26 Asia/Shanghai"
 }
