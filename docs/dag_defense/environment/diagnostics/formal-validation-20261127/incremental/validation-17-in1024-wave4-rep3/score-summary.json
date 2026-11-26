@@ -1,0 +1,14 @@
+{
+  "kind": "preacceptance_not_validation",
+  "requests": 32,
+  "baseline_mae_s": 0.24914054971875293,
+  "dag_mae_s": 0.16812720021874175,
+  "baseline_mean_relative_error": 0.12792153025083566,
+  "dag_mean_relative_error": 0.08627506063951981,
+  "boundary": {
+    "actual": "router stream completion minus router arrival",
+    "prediction": "last modeled batch end minus same actual router arrival",
+    "correction_s": 0,
+    "residual": "Unmodeled router/host tail stays in error; not subtracted or fitted."
+  }
+}
