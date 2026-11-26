@@ -1,0 +1,16 @@
+{
+  "status": "incomplete_single_request_alignment",
+  "original_server_e2e_s": 0.867700261,
+  "diagnostic_input_sha256": "03248787c445a346991d4df45d6475702b8a28a9727599ef049158e4ab13a630",
+  "producer_steps": 1,
+  "consumer_first_steps": 1,
+  "later_decode_steps": 63,
+  "missing": [
+    "Original calibration has no worker or GPU KVReady timestamps",
+    "Detailed repeat has inserted synchronization and is non-stream; it is not the original E2E",
+    "Transfer start/end GPU events and routing/queue causes for this same request not established",
+    "Consumer first-token candidate cost and concurrent scheduling are not validated",
+    "Streaming router and simulator completion boundaries differ"
+  ],
+  "note": "Rows are separate runs and separate clock origins; do not subtract timestamps across runs."
+}

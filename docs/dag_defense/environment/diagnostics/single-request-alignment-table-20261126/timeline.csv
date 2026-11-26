@@ -1,0 +1,34 @@
+run,event,clock_or_type,raw_timestamp_or_s,relative_s,meaning
+original_calibration,server_arrival,CLOCK_MONOTONIC ns,1818510180734341,0.0,router host event; response completion is stream forwarding boundary
+original_calibration,prefill_send,CLOCK_MONOTONIC ns,1818510180839530,0.000105189,router host event; response completion is stream forwarding boundary
+original_calibration,prefill_response,CLOCK_MONOTONIC ns,1818510209246258,0.028511917,router host event; response completion is stream forwarding boundary
+original_calibration,prefill_mapping,CLOCK_MONOTONIC ns,1818510209303804,0.028569463,router host event; response completion is stream forwarding boundary
+original_calibration,decode_send,CLOCK_MONOTONIC ns,1818510209332395,0.028598054,router host event; response completion is stream forwarding boundary
+original_calibration,decode_mapping,CLOCK_MONOTONIC ns,1818510224273385,0.043539044,router host event; response completion is stream forwarding boundary
+original_calibration,server_first_token,CLOCK_MONOTONIC ns,1818510224313730,0.043579389,router host event; response completion is stream forwarding boundary
+original_calibration,server_complete,CLOCK_MONOTONIC ns,1818511048434602,0.867700261,router host event; response completion is stream forwarding boundary
+same_input_instrumented_repeat,arrival,CLOCK_MONOTONIC ns,1830303333544308,0.0,diagnostic non-stream router host arrival
+same_input_instrumented_repeat,prefill_submit,CLOCK_MONOTONIC ns,1830303333713221,0.000168913,router sends producer request
+same_input_instrumented_repeat,producer_step_start,CLOCK_MONOTONIC ns,1830303337608466,0.004064158,host start; not GPU start
+same_input_instrumented_repeat,producer_send_api_start,CLOCK_MONOTONIC ns,1830303352049666,0.018505358,host call; not NCCL transfer start
+same_input_instrumented_repeat,producer_send_api_return,CLOCK_MONOTONIC ns,1830303354099011,0.020554703,host return; not transfer completion
+same_input_instrumented_repeat,producer_step_after_sync,CLOCK_MONOTONIC ns,1830303361786633,0.028242325,device-wide synchronization completed
+same_input_instrumented_repeat,producer_response_read,CLOCK_MONOTONIC ns,1830303363918656,0.030374348,response received by diagnostic router
+same_input_instrumented_repeat,consumer_submit,CLOCK_MONOTONIC ns,1830303363960460,0.030416152,router sends consumer request
+same_input_instrumented_repeat,consumer_step_start,CLOCK_MONOTONIC ns,1830303368019053,0.034474745,host start; not GPU start
+same_input_instrumented_repeat,consumer_receive_api_start,CLOCK_MONOTONIC ns,1830303368133607,0.034589299,host call
+same_input_instrumented_repeat,kv_ready_lower_bound,CLOCK_MONOTONIC ns,1830303371904156,0.038359848,last cache install API start; lower bound for serial batch
+same_input_instrumented_repeat,consumer_receive_api_return,CLOCK_MONOTONIC ns,1830303372160098,0.03861579,"host return, not GPU KVReady"
+same_input_instrumented_repeat,kv_ready_upper_bound,CLOCK_MONOTONIC ns,1830303378857589,0.045313281,post-install device sync completed; upper bound
+same_input_instrumented_repeat,consumer_first_step_after_sync,CLOCK_MONOTONIC ns,1830303379793717,0.046249409,includes consumer logits and sampler
+same_input_instrumented_repeat,consumer_last_step_after_sync,CLOCK_MONOTONIC ns,1830304376754834,1.043210526,last modeled output step synchronization
+same_input_instrumented_repeat,consumer_response_read,CLOCK_MONOTONIC ns,1830304378646806,1.045102498,non-stream backend response read
+same_input_instrumented_repeat,router_complete,CLOCK_MONOTONIC ns,1830304378935707,1.045391399,before diagnostic router sends response
+dag_single_request_candidate,arrival,simulation seconds,0,0,simulated time origin
+dag_single_request_candidate,prefill_complete,simulation seconds,0.023397013351301198,0.023397013351301198,modeled producer prefill end
+dag_single_request_candidate,transfer_start,simulation seconds,0.023397013351301198,0.023397013351301198,modeled transfer start
+dag_single_request_candidate,kv_ready,simulation seconds,0.03125546923365414,0.03125546923365414,modeled transfer completion
+dag_single_request_candidate,consumer_first_token_start,simulation seconds,0.03125546923365414,0.03125546923365414,"diagnostic task, synchronized host interval approximation"
+dag_single_request_candidate,consumer_first_token_end,simulation seconds,0.03213124823365414,0.03213124823365414,diagnostic task completion
+dag_single_request_candidate,subsequent_decode_start,simulation seconds,0.03213124823365414,0.03213124823365414,first of 63 later Decode batches
+dag_single_request_candidate,request_complete,simulation seconds,1.0534134097540713,1.0534134097540713,"modeled completion, excludes router stream end"
