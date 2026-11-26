@@ -1,0 +1,22 @@
+{
+  "status": "independent_instrumented_diagnostic",
+  "warmup": 10,
+  "measured": 30,
+  "median_s": 0.0055387335,
+  "min_s": 0.004749023,
+  "max_s": 0.007046085,
+  "p95_nearest_rank_s": 0.006934878,
+  "source_hashes": {
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/client/requests.jsonl": "15f1a2667badc0cab63dd394e0d3a251ba9d7d0bc5b31753b7e95046ae278782",
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/router-events.jsonl": "2ccb36d1afd2705e17441a8c1caa026ff424fef4d8f39d0df667963706859c0f",
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/compute-events-123580.jsonl": "c9639f297ae794e78887a49b8a33705717fc6b073eb2b3dcb8b47507fc9362eb",
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/compute-events-123663.jsonl": "f289c231685457638be56152ab0ebb07b5ebeb212d3b40d45bab50d1838d1ed9"
+  },
+  "limitations": [
+    "Single request at a time; 8 output tokens",
+    "Host interval includes router processing, consumer scheduling and instrumentation",
+    "Producer after-sync is an upper host boundary, not exact GPU Prefill completion",
+    "Not a standalone CPU cost or proven general concurrent dispatch delay",
+    "No validation or cost freeze"
+  ]
+}

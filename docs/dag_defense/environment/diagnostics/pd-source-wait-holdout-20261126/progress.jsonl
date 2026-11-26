@@ -1,0 +1,12 @@
+{"case": "in1024-c1", "role": "adapted_baseline", "exit": 0}
+{"case": "in1024-c1", "role": "dag", "exit": 0}
+{"case": "in1024-c2", "role": "dag", "exit": 0}
+{"case": "in1024-c2", "role": "adapted_baseline", "exit": 0}
+{"case": "in1024-c4", "role": "adapted_baseline", "exit": 0}
+{"case": "in1024-c4", "role": "dag", "exit": 0}
+{"case": "in2048-c1", "role": "dag", "exit": 0}
+{"case": "in2048-c1", "role": "adapted_baseline", "exit": 0}
+{"case": "in2048-c2", "role": "adapted_baseline", "exit": 0}
+{"case": "in2048-c2", "role": "dag", "exit": 0}
+{"case": "in2048-c4", "role": "adapted_baseline", "exit": 0}
+{"case": "in2048-c4", "role": "dag", "exit": 0}
