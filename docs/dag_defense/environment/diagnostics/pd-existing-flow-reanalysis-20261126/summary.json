@@ -1,0 +1,181 @@
+{
+  "scope": "Existing instrumented 8-output-token diagnostic, not uninstrumented E2E or exact transfer GPU time",
+  "warmup_excluded": true,
+  "total_requests": 420,
+  "groups": [
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 1,
+      "requests": 30,
+      "submit_to_kv_step_ms": {
+        "median": 3.008962,
+        "p95": 3.433977,
+        "min": 2.906708,
+        "max": 3.451288
+      },
+      "kv_step_to_recv_ms": {
+        "median": 0.07212199999999999,
+        "p95": 0.08196,
+        "min": 0.069415,
+        "max": 0.083925
+      },
+      "recv_host_ms": {
+        "median": 2.5383895,
+        "p95": 3.137201,
+        "min": 2.379325,
+        "max": 3.159904
+      },
+      "recv_return_to_step_sync_ms": {
+        "median": 15.283527,
+        "p95": 15.417449,
+        "min": 15.10621,
+        "max": 15.467781
+      }
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 2,
+      "requests": 60,
+      "submit_to_kv_step_ms": {
+        "median": 4.790789999999999,
+        "p95": 6.927389,
+        "min": 3.206829,
+        "max": 16.946188
+      },
+      "kv_step_to_recv_ms": {
+        "median": 0.075266,
+        "p95": 0.114924,
+        "min": 0.06642,
+        "max": 0.137751
+      },
+      "recv_host_ms": {
+        "median": 19.839969,
+        "p95": 21.972122,
+        "min": 2.330451,
+        "max": 39.630453
+      },
+      "recv_return_to_step_sync_ms": {
+        "median": 15.243608,
+        "p95": 15.411758,
+        "min": 13.652649,
+        "max": 15.554153
+      }
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 4,
+      "requests": 120,
+      "submit_to_kv_step_ms": {
+        "median": 9.0565955,
+        "p95": 11.352771,
+        "min": 2.759622,
+        "max": 12.87436
+      },
+      "kv_step_to_recv_ms": {
+        "median": 0.07208149999999999,
+        "p95": 0.080102,
+        "min": 0.068592,
+        "max": 0.100487
+      },
+      "recv_host_ms": {
+        "median": 35.1367975,
+        "p95": 113.355379,
+        "min": 34.32614,
+        "max": 114.313784
+      },
+      "recv_return_to_step_sync_ms": {
+        "median": 15.299828999999999,
+        "p95": 16.884535,
+        "min": 15.172718,
+        "max": 17.586116
+      }
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 1,
+      "requests": 30,
+      "submit_to_kv_step_ms": {
+        "median": 4.528402,
+        "p95": 5.26779,
+        "min": 4.097643,
+        "max": 7.828058
+      },
+      "kv_step_to_recv_ms": {
+        "median": 0.0764115,
+        "p95": 0.096661,
+        "min": 0.071786,
+        "max": 0.104235
+      },
+      "recv_host_ms": {
+        "median": 3.0941535,
+        "p95": 3.486104,
+        "min": 2.772026,
+        "max": 3.515599
+      },
+      "recv_return_to_step_sync_ms": {
+        "median": 31.249004,
+        "p95": 31.862218,
+        "min": 30.774755,
+        "max": 32.31261
+      }
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 2,
+      "requests": 60,
+      "submit_to_kv_step_ms": {
+        "median": 7.948722999999999,
+        "p95": 22.67033,
+        "min": 3.948048,
+        "max": 24.702041
+      },
+      "kv_step_to_recv_ms": {
+        "median": 0.073338,
+        "p95": 0.115157,
+        "min": 0.065225,
+        "max": 0.154259
+      },
+      "recv_host_ms": {
+        "median": 36.244876,
+        "p95": 83.034322,
+        "min": 2.423038,
+        "max": 83.634186
+      },
+      "recv_return_to_step_sync_ms": {
+        "median": 31.014726500000002,
+        "p95": 32.742463,
+        "min": 30.444307,
+        "max": 33.767716
+      }
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 4,
+      "requests": 120,
+      "submit_to_kv_step_ms": {
+        "median": 15.292129,
+        "p95": 66.955642,
+        "min": 3.972974,
+        "max": 68.052865
+      },
+      "kv_step_to_recv_ms": {
+        "median": 0.077551,
+        "p95": 0.094206,
+        "min": 0.07124,
+        "max": 0.100716
+      },
+      "recv_host_ms": {
+        "median": 100.583421,
+        "p95": 158.773022,
+        "min": 2.217864,
+        "max": 160.631812
+      },
+      "recv_return_to_step_sync_ms": {
+        "median": 30.6309325,
+        "p95": 32.873834,
+        "min": 30.330218,
+        "max": 34.143529
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# Reanalysis of existing instrumented host boundaries
+
+Reuses `../pd-flow-boundary-20261126/derived-boundaries.csv`; no new GPU runs. Excludes warmup, leaving 420 request records, grouped by prompt size and requested concurrency. These are request-weighted, not independent batch samples; requests may share a model step. `summary.json` records medians and nearest-index p95s for host intervals. The receive API contains waiting and cache installation, while the following synchronization is only an upper bound on readiness and includes other work. Neither interval is an isolated transfer or GPU service cost.
+
+For requested concurrency 1 versus 4, 1024-token receive-host medians were 2.54 versus 35.14 ms and 2048-token medians 3.09 versus 100.58 ms. Instrumentation, batch grouping, and shared steps confound attribution. These observations support retaining the scheduling discrepancy as unresolved; they cannot establish a causal breakdown, justify adjusting bandwidth, or validate simulator parity. This is not calibration or formal validation.
