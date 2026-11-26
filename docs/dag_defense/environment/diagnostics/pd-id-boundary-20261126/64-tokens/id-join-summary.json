@@ -1,0 +1,381 @@
+{
+  "status": "diagnostic_passed",
+  "request_count": 35,
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "clock": "CLOCK_MONOTONIC",
+  "id_mapping": "consumer ModelInputForGPU.request_ids_to_seq_ids joined to client response backend id with -0 suffix",
+  "patterns": [
+    {
+      "consumer_prefill_bypass_calls": 1,
+      "decode_calls": 64,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0,
+      "requests": 35
+    }
+  ],
+  "post_client_host_sync_ms": {
+    "median": 6.629681,
+    "min": 3.123442,
+    "max": 7.374412
+  },
+  "limitations": [
+    "The last host sync ends after client receipt, but CUDA event duration is not a host-anchored GPU completion timestamp.",
+    "Diagnostic synchronization can perturb timing.",
+    "Nonstream client and diagnostic router are not formal E2E.",
+    "Sampling and request IDs are diagnostic evidence; this is not the formal streaming router."
+  ],
+  "formal_validation": false,
+  "records": [
+    {
+      "decode_request_id": "cmpl-4f4634042448465f965d3ad416c7da89-0",
+      "wave_batch": 1,
+      "wave": 0,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808270026510612,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-a374f65a83504e3fa06fd8f9bae43792-0",
+      "wave_batch": 1,
+      "wave": 1,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808270729452891,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-3dfcfe4f3234401ebb413988d9fffaec-0",
+      "wave_batch": 1,
+      "wave": 2,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808271432376071,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-9c05e4cdd40942ffa0dbf750ce699f4d-0",
+      "wave_batch": 1,
+      "wave": 3,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808272154129771,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-d89c43815ce346aebd203b16668c10cd-0",
+      "wave_batch": 1,
+      "wave": 4,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808272863852673,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-7226e5077b4f473c9c38879d6d79ebc0-0",
+      "wave_batch": 2,
+      "wave": 0,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808273637572305,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-4b2cbf2256c648d2bf57b69f849cd767-0",
+      "wave_batch": 2,
+      "wave": 0,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808273637817853,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-ea4acf5f785048438726f22e7f1617e8-0",
+      "wave_batch": 2,
+      "wave": 1,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808274420747545,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-516a26d2a0394a4182978dcb09dfd12c-0",
+      "wave_batch": 2,
+      "wave": 1,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808274421036087,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-8a57d5319a4842edb58b2b74867e42b9-0",
+      "wave_batch": 2,
+      "wave": 2,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808275188048103,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-3a82876ccfdd4fda8fe7e66d13c188b9-0",
+      "wave_batch": 2,
+      "wave": 2,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808275191503288,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-fe5cf34e02d145859b5df0f80581d178-0",
+      "wave_batch": 2,
+      "wave": 3,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808275945919649,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-e361f007412941f6b5a97ba524e0fac0-0",
+      "wave_batch": 2,
+      "wave": 3,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808275946173745,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-00e7200c77cd43a99ba561ab35ecbc7c-0",
+      "wave_batch": 2,
+      "wave": 4,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808276698210846,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-9afb2e8142484631a9bad90b9233f575-0",
+      "wave_batch": 2,
+      "wave": 4,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808276698457382,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-6c45c44c45754022848f4151d5ad7ea0-0",
+      "wave_batch": 4,
+      "wave": 0,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808277540857118,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-d3c0f3ef6d5045cabb055ff3d4aed5c2-0",
+      "wave_batch": 4,
+      "wave": 0,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808277541209348,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-cf50e50d16664cf9aa375ed2c8ea986e-0",
+      "wave_batch": 4,
+      "wave": 0,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808277541331952,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-7a2426b59ab14eb9b82c5aedbb971d8c-0",
+      "wave_batch": 4,
+      "wave": 0,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808277541507205,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-3411d2b2f6d946529f3330b442b9049a-0",
+      "wave_batch": 4,
+      "wave": 1,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808278386770211,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-45f9417e2ada490e81da80a9e334de4e-0",
+      "wave_batch": 4,
+      "wave": 1,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808278387045332,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-2040b4c9152546369ffc1e0cd38af50a-0",
+      "wave_batch": 4,
+      "wave": 1,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808278387175463,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-400421d432e74e58af7d64bffd779238-0",
+      "wave_batch": 4,
+      "wave": 1,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808278387320194,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-6d2105152b774ca8b478d4fd8afddbbd-0",
+      "wave_batch": 4,
+      "wave": 2,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808279256450047,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-d225d6a738dc4e3190bbc14351eb3406-0",
+      "wave_batch": 4,
+      "wave": 2,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808279256846823,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-49c902fc1231479e8b11fc2e977a0197-0",
+      "wave_batch": 4,
+      "wave": 2,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808279256991064,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-2a4bbe30e9a14510afa75a43c44a3d45-0",
+      "wave_batch": 4,
+      "wave": 2,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808279257209343,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-aa24d30132ed40d4b60ff19eda8c99d4-0",
+      "wave_batch": 4,
+      "wave": 3,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808280146825169,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-f427a5b4e5c1431d9b7a756a0e32a7e4-0",
+      "wave_batch": 4,
+      "wave": 3,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808280147116890,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-eff1b01e8e5a48deb2bafd0a060dfeaf-0",
+      "wave_batch": 4,
+      "wave": 3,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808280147279293,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-77e89a59010c48e1a34f0c686dcf45c5-0",
+      "wave_batch": 4,
+      "wave": 3,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808280147418693,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-4924b8c6430842b8b78c1ee4e6fe0c8b-0",
+      "wave_batch": 4,
+      "wave": 4,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808280999452226,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-a6ec8b9c513b4198aa378dd5f4733f6b-0",
+      "wave_batch": 4,
+      "wave": 4,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808280999855397,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-64d0d57e57ae452b975812667c056d08-0",
+      "wave_batch": 4,
+      "wave": 4,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808281000070649,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    },
+    {
+      "decode_request_id": "cmpl-5240e96f4ada46948c0521c46a4dcb92-0",
+      "wave_batch": 4,
+      "wave": 4,
+      "prefill_calls": 1,
+      "decode_calls": 64,
+      "client_complete_ns": 1808281000266385,
+      "host_sync_after_client": 1,
+      "step_starts_after_client": 0
+    }
+  ]
+}
