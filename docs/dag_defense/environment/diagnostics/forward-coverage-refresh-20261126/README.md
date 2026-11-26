@@ -1,0 +1,7 @@
+# Refresh strict full-forward coverage
+
+The earlier whole-forward inventory used the original plus requested 2/4 supplement but omitted the later batch-3 supplement. This merge incorporates only independently qualified rows (at least 10 warmup and 30 measured waves), preserving uniform/mixed distinction and selecting the original on duplicate keys rather than pooling. It adds 9 strict rows, giving 59 covered and 53 missing of 112 applicable Decode input/batch/context/composition cells, plus 16 single-sequence mixed cells that are not applicable. Six Prefill cells are covered and two exceed the 4096 token cap. Full row-level inventory and source hashes are retained. Missing cells are potential shapes, not proof that validation will reach them.
+
+The separate composition-pooled 1024 batch-3 candidates are intentionally excluded from this strict inventory; each individual stratum remains below threshold. Rows still describe synchronized full forward, not an implemented common cost model; they do not cover logits, sampling, KV, CPU, first-token or router. Mixed-context semantics and actual reachable shape coverage remain open. Do not zero-fill, silently extrapolate or treat these data as frozen; no validation data were used.
+
+Reproduce `python merge.py`, then run `scripts/dag_defense/build_forward_cost_coverage.py` with the producer profile and resulting strict table, using a new output directory. The run-level paths in `summary.json` refer to the server copy.

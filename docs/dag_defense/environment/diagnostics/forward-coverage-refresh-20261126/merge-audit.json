@@ -1,0 +1,74 @@
+{
+  "original_points": 50,
+  "added": [
+    [
+      "2048",
+      "2",
+      "2176",
+      "0"
+    ],
+    [
+      "2048",
+      "3",
+      "2064",
+      "1"
+    ],
+    [
+      "2048",
+      "3",
+      "2080",
+      "1"
+    ],
+    [
+      "2048",
+      "3",
+      "2096",
+      "1"
+    ],
+    [
+      "2048",
+      "3",
+      "2112",
+      "1"
+    ],
+    [
+      "2048",
+      "3",
+      "2128",
+      "1"
+    ],
+    [
+      "2048",
+      "3",
+      "2144",
+      "1"
+    ],
+    [
+      "2048",
+      "3",
+      "2160",
+      "1"
+    ],
+    [
+      "2048",
+      "3",
+      "2176",
+      "1"
+    ]
+  ],
+  "overlap_uses_original": [
+    [
+      "2048",
+      "1",
+      "2064",
+      "0"
+    ]
+  ],
+  "source_sha256": {
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pd-context-bins-20261126/pd-context-bin-combined-20261126/forward-context-bins.csv": "d2e0db4134e3d10f21269e21219883b408ce0d688eebbaa7e8d80ebe8520f065",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pd-context-batch3-20261126/forward-context-bins.csv": "a227d4a5d52af884e707f77a028eea4eb89db5c933b25cba68b814d4f6619833",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pd-eager-profile-20261126/candidate/forward-cost.csv": "eff42e531a3917771c19c6c0829d9f3ab208b3bbdf751213c536981026913e15"
+  },
+  "not_included": "pooled composition-specific 1024 batch3 candidates are kept separate",
+  "frozen": false
+}

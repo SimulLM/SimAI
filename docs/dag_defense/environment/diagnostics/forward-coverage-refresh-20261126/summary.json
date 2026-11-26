@@ -1,0 +1,21 @@
+{
+  "status": "candidate_whole_forward_coverage_incomplete",
+  "rows": 136,
+  "prefill_covered": 6,
+  "prefill_missing": 0,
+  "prefill_unreachable": 2,
+  "decode_covered": 59,
+  "decode_missing": 53,
+  "decode_not_applicable": 16,
+  "source_sha256": {
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pd-eager-profile-20261126/candidate/forward-cost.csv": "eff42e531a3917771c19c6c0829d9f3ab208b3bbdf751213c536981026913e15",
+    "/root/autodl-tmp/dag-handoff/runs/forward-coverage-refresh-20261126/strict-forward-context-bins.csv": "72831803d8b11c835fda8d06bd56967df0eed02311b3d1ea84152f193f17143d"
+  },
+  "limitations": [
+    "Uniform and mixed shapes are kept separate; not all are necessarily reached by the chosen workload",
+    "Round-up bins are observed summaries, not exact context interpolation",
+    "Whole-forward events exclude KV, logits, sampler, CPU and router and may include stream gaps",
+    "No 512-token decode context-bin table; single-request calibration needs separate coverage",
+    "Candidate is not a simulator implementation, frozen fee, or formal validation"
+  ]
+}
