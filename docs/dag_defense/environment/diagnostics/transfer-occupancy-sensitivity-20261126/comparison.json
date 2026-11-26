@@ -1,0 +1,156 @@
+{
+  "runs": {
+    "baseline": {
+      "request_complete_ms": {
+        "0": 232.11206188823576,
+        "1": 370.9309764029145,
+        "2": 370.9309764029145,
+        "3": 454.1884102016389
+      },
+      "prefill": [
+        {
+          "ids": [
+            0
+          ],
+          "start_ms": 0.0,
+          "end_ms": 83.05344342296281
+        },
+        {
+          "ids": [
+            1,
+            2
+          ],
+          "start_ms": 83.05344342296281,
+          "end_ms": 212.9542732174888
+        },
+        {
+          "ids": [
+            3
+          ],
+          "start_ms": 212.9542732174888,
+          "end_ms": 296.00771664045163
+        }
+      ]
+    },
+    "gpu_true": {
+      "request_complete_ms": {
+        "0": 232.1120618882366,
+        "1": 466.65494081145914,
+        "2": 466.65494081145914,
+        "3": 549.912374610179
+      },
+      "prefill": [
+        {
+          "ids": [
+            0
+          ],
+          "start_ms": 0.0,
+          "end_ms": 83.05344342296279
+        },
+        {
+          "ids": [
+            1,
+            2
+          ],
+          "start_ms": 83.05344342296279,
+          "end_ms": 243.34429108677048
+        },
+        {
+          "ids": [
+            3
+          ],
+          "start_ms": 243.3442910867705,
+          "end_ms": 388.5415611244671
+        }
+      ]
+    },
+    "gpu_false": {
+      "request_complete_ms": {
+        "0": 298.22283015738014,
+        "1": 443.9452757130647,
+        "2": 443.9452757130647,
+        "3": 460.5967624728097
+      },
+      "prefill": [
+        {
+          "ids": [
+            0
+          ],
+          "start_ms": 0.0,
+          "end_ms": 83.05344342296279
+        },
+        {
+          "ids": [
+            1,
+            2
+          ],
+          "start_ms": 83.05344342296279,
+          "end_ms": 212.95427321748923
+        },
+        {
+          "ids": [
+            3
+          ],
+          "start_ms": 212.95427321748923,
+          "end_ms": 296.0077166404517
+        }
+      ]
+    }
+  },
+  "gpu_true_prefill_waits": [
+    {
+      "graph": "replica0/stage0/batch1/iteration1",
+      "task": "layer0.attention.compute",
+      "ready_ms": 84.05129320074056,
+      "start_ms": 114.4413110700216,
+      "wait_ms": 30.390017869281042,
+      "demands": [
+        {
+          "amount": 1,
+          "resource_id": "gpu:0:0:0",
+          "unit": "permits"
+        }
+      ]
+    },
+    {
+      "graph": "replica0/stage0/batch9/iteration9",
+      "task": "layer0.attention.compute",
+      "ready_ms": 243.97619976615363,
+      "start_ms": 274.73215873382935,
+      "wait_ms": 30.755958967675717,
+      "demands": [
+        {
+          "amount": 1,
+          "resource_id": "gpu:0:0:0",
+          "unit": "permits"
+        }
+      ]
+    },
+    {
+      "graph": "replica0/stage0/batch9/iteration9",
+      "task": "layer1.attention.compute",
+      "ready_ms": 277.2903699789784,
+      "start_ms": 308.6782376260372,
+      "wait_ms": 31.38786764705881,
+      "demands": [
+        {
+          "amount": 1,
+          "resource_id": "gpu:0:0:0",
+          "unit": "permits"
+        }
+      ]
+    }
+  ],
+  "config_diff": [
+    "occupies_gpu",
+    "evidence"
+  ],
+  "trace_sha256": "d2ddfe51d34467d4a0eecae7018e95d8e98963c2d7e487c30617ed698ec7e0fa",
+  "first_token_fee_sha256": "52778e0e7ca0e14e620bc3e1254290539261e819eb0751d4800ff0e138b41102",
+  "limitations": [
+    "one instrumented 2048/8 real-arrival wave",
+    "both configurations are hypotheses, not bounds on physical execution",
+    "fixed-group modified baseline",
+    "cost ownership and timing boundary remain open"
+  ]
+}

@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:06:57.884152+00:00",
+  "updated_utc": "2026-11-26T13:11:14.866765+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Fixed real-wave group comparison now excludes modeled first-token/Decode slot overlap, with 22/22 paired batch fees; pristine still lacks first-token stage and transfer/resource scheduling plus physical CPU/GPU overlap are unresolved.",
-      "next_action": "Use the observed transfer and slot waits to determine the first remaining timing divergence on the fixed wave, then bound the resource approximation before natural scheduling comparison.",
+      "missing": "First fixed-wave divergence is caused by DAG transfer occupying source GPU, an unverified physical hypothesis. Removing occupancy aligns Prefill but changes Decode batches (10/22 vs 10/17 paired); no general shared resource treatment or pristine first-token stage exists.",
+      "next_action": "Define a common fee and resource contract from measured scopes, retaining both transfer-occupancy assumptions as sensitivity and identifying the pristine baseline limitation before natural 1/2/4 checks.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/fixed-groups-resource-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/transfer-occupancy-sensitivity-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",

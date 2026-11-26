@@ -1,0 +1,13 @@
+import csv,json,pathlib,hashlib,collections
+root=pathlib.Path('/root/autodl-tmp/dag-handoff/runs');new=root/'first-token-transfer-occupancy-20261126';old=root/'real-first-token-2048-replay-20261126';baseline=root/'fixed-groups-resource-20261126/baseline';o=pathlib.Path(__file__).parent
+true=json.loads((root/'pd-pull-calibration-replay-20261126/pd-config.json').read_text());false=json.loads((new/'pd-config.json').read_text());assert true['occupies_gpu'] is True and false['occupies_gpu'] is False
+for k in set(true)|set(false):
+ if k not in ('occupies_gpu','evidence'):assert true[k]==false[k]
+assert (new/'trace.csv').read_bytes()==(old/'trace.csv').read_bytes() and (new/'fee.json').read_bytes()==(old/'fee.json').read_bytes()
+for folder in (old/'dag',new/'dag',baseline):assert (folder/'exit').read_text().strip()=='0'
+runs={}
+for name,folder in [('baseline',baseline),('gpu_true',old/'dag'),('gpu_false',new/'dag')]:
+ d=next(folder.glob('2026*'));r=list(csv.DictReader((d/'request_metrics.csv').open()));e=json.loads((d/'chrome_trace.json').read_text())['traceEvents'];p=[x for x in e if x.get('pid')==0 and x.get('ph')=='X' and x.get('args',{}).get('request_ids')];prefill=[{'ids':x['args']['request_ids'],'start_ms':x['ts']/1000,'end_ms':(x['ts']+x['dur'])/1000} for x in sorted(p,key=lambda x:x['ts'])];runs[name]={'request_complete_ms':{str(int(x['Request Id'])):float(x['completed_at'])*1000 for x in r},'prefill':prefill}
+assert [x['ids'] for x in runs['baseline']['prefill']]==[x['ids'] for x in runs['gpu_true']['prefill']]==[x['ids'] for x in runs['gpu_false']['prefill']]
+for a,b in zip(runs['baseline']['prefill'],runs['gpu_false']['prefill']):assert abs(a['start_ms']-b['start_ms'])<1e-8 and abs(a['end_ms']-b['end_ms'])<1e-8
+true_dir=next((old/'dag').glob('2026*'));rows=list(csv.DictReader((true_dir/'timeline.csv').open()));waits=[x for x in rows if x['graph_id'].startswith('replica0/') and float(x['resource_wait_s'])>1e-8];res={'runs':runs,'gpu_true_prefill_waits':[{'graph':x['graph_id'],'task':x['task_id'],'ready_ms':float(x['ready_at_s'])*1000,'start_ms':float(x['start_at_s'])*1000,'wait_ms':float(x['resource_wait_s'])*1000,'demands':json.loads(x['demands'])} for x in waits],'config_diff':['occupies_gpu','evidence'],'trace_sha256':hashlib.sha256((new/'trace.csv').read_bytes()).hexdigest(),'first_token_fee_sha256':hashlib.sha256((new/'fee.json').read_bytes()).hexdigest(),'limitations':['one instrumented 2048/8 real-arrival wave','both configurations are hypotheses, not bounds on physical execution','fixed-group modified baseline','cost ownership and timing boundary remain open']};(o/'comparison.json').write_text(json.dumps(res,indent=2)+'\n');print(json.dumps(res,indent=2))
