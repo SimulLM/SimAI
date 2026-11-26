@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "requests": [
+    {
+      "stage": "warmup",
+      "router_id": "a2a7f6a5f9904ae6aa56649dce903328",
+      "backend_id": "cmpl-470560775d994a63921493b5837c96a5",
+      "ordered_events": [
+        "server_arrival",
+        "prefill_send",
+        "prefill_response",
+        "prefill_mapping",
+        "decode_send",
+        "decode_mapping",
+        "server_first_token",
+        "server_final_choice_observed",
+        "server_complete"
+      ]
+    },
+    {
+      "stage": "measured",
+      "router_id": "9593703773334d5986cf82e3152a46bc",
+      "backend_id": "cmpl-976a03a15fa54e16887f54cfbd063fe8",
+      "ordered_events": [
+        "server_arrival",
+        "prefill_send",
+        "prefill_response",
+        "prefill_mapping",
+        "decode_send",
+        "decode_mapping",
+        "server_first_token",
+        "server_final_choice_observed",
+        "server_complete"
+      ]
+    }
+  ],
+  "limitations": [
+    "launcher binding smoke only; no GPU KV events, idle gate, freeze or formal validation"
+  ]
+}

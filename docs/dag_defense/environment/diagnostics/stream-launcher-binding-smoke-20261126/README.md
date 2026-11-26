@@ -1,0 +1,3 @@
+# Real stream launcher binding smoke
+
+After correcting the versioned stream launcher, it started real vLLM 0.8.5 1P1D on both H800s and served one warmup and one measured 512-input/64-output request, greedy with ignore-EOS, fixed min/max output. Both completed with HTTP 200 and 512/64 usage; the audit verified ordered router events, client and decode request IDs, length finish reason and final completion. Launcher/client exit 0 and both GPUs showed 0 MiB after cleanup. Full raw client/service/router logs, audit and commands are in the separately hashed archive on the data disk. This confirms launcher and router correlation, not a fresh GPU KV event check, a formal idle gate, a cost validation, or formal validation.
