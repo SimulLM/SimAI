@@ -60,3 +60,5 @@ DAG 本轮预测退化，结果保留。配对比例、误差与改善方向均�
 原件包：`/root/autodl-tmp/dag-handoff/preacceptance-2048-128-c4-20261126-evidence.tar.gz`
 
 SHA256：`91cf35b0eb069112864be6b6d235d39c2e3c628a74ea1e02c9c9eb73073159e6`。包内 `FINAL-SHA256SUMS` 覆盖实测、预测、费用输入及脚本快照；`result.json` 是首次失败状态，最新验收以 `final-acceptance.json` 为准，保留两者避免改写尝试历史。
+
+证据已回传 Windows，并校验归档 SHA256 及内部 1510 个文件。完整原始证据发布于 [本次预验收 Release](https://github.com/SimulLM/SimAI/releases/tag/dev-preaccept-2048-c4-20261126)。使用已有 Git Credential Manager HTTPS 认证，未创建新 token，未撤销已有认证。

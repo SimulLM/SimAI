@@ -1,0 +1,8 @@
+{
+  "release": "https://github.com/SimulLM/SimAI/releases/tag/dev-preaccept-2048-c4-20261126",
+  "asset": "https://github.com/SimulLM/SimAI/releases/download/dev-preaccept-2048-c4-20261126/preacceptance-2048-128-c4-20261126-evidence.tar.gz",
+  "bytes": 15546265,
+  "sha256": "91cf35b0eb069112864be6b6d235d39c2e3c628a74ea1e02c9c9eb73073159e6",
+  "inner_files_verified": 1510,
+  "authentication": "existing Git credential manager HTTPS credential; no new login or credential recorded"
+}
