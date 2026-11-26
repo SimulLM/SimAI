@@ -1,0 +1,7 @@
+# Repeated serial Decode iteration comparison
+
+This is a diagnostic comparison of 20 real serial 512/64 measured requests in `light-serial-512-20261126` with the one same-input, whole-forward sensitivity DAG replay in `whole-forward-replay-20261126`. First consumer host return and simulated first-token task end are separate zero origins; no absolute timestamps are subtracted between runs. All 20 requests contain 64 consumer host steps; the first is the KV-bypass step and the following 63 are Decode. Both traces are instrumented, and the simulated costs are unfrozen candidates.
+
+The simulated cumulative interval exceeds the real consumer host-return-to-host-return median by 1.259 ms at Decode 1, 22.360 ms at 16, 44.460 ms at 32, and 85.941 ms at 63 (individual request range at 63: 62.149–90.914 ms). Full per-iteration medians and ranges are in `by-iteration.csv`; 1,260 per-request rows are under `/root/autodl-tmp/dag-handoff/runs/serial-step-comparison-20261126/per-request-iterations.csv`.
+
+This demonstrates an accumulated discrepancy in the existing diagnostic traces, not a proof of which cost field is wrong: host return does not equal GPU completion and includes inter-step scheduling, while simulation task end includes its own CPU and compute cost definitions. The same 20 measured requests share one service session and one input. These data are not a validation set, do not justify subtracting a constant, and do not resolve output, transfer or concurrent batch semantics. Neither total nor iteration completion times were used to change a cost.
