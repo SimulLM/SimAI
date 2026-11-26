@@ -1,0 +1,59 @@
+{
+  "status": "host_boundary_diagnostic",
+  "groups": [
+    {
+      "length": 512,
+      "measured": 30,
+      "metrics": {
+        "host_return_to_server_complete_ms": {
+          "median_ms": 1.002652,
+          "p95_ms": 1.247047,
+          "max_ms": 1.291865
+        },
+        "server_to_client_complete_ms": {
+          "median_ms": 0.1264405,
+          "p95_ms": 0.178119,
+          "max_ms": 0.213183
+        }
+      }
+    },
+    {
+      "length": 1024,
+      "measured": 30,
+      "metrics": {
+        "host_return_to_server_complete_ms": {
+          "median_ms": 0.9973974999999999,
+          "p95_ms": 1.279506,
+          "max_ms": 1.347102
+        },
+        "server_to_client_complete_ms": {
+          "median_ms": 0.1334325,
+          "p95_ms": 0.171397,
+          "max_ms": 0.172031
+        }
+      }
+    },
+    {
+      "length": 2048,
+      "measured": 30,
+      "metrics": {
+        "host_return_to_server_complete_ms": {
+          "median_ms": 1.0606404999999999,
+          "p95_ms": 1.256655,
+          "max_ms": 1.275784
+        },
+        "server_to_client_complete_ms": {
+          "median_ms": 0.11722650000000001,
+          "p95_ms": 0.16681,
+          "max_ms": 0.169538
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Model-step host return is not a GPU completion timestamp",
+    "Per-tensor synchronizations and logging perturb execution; 8 output tokens, serial only",
+    "Interval includes any outstanding work and output handling and cannot be added as a pure CPU fee",
+    "Not formal validation, original calibration or a frozen cost"
+  ]
+}

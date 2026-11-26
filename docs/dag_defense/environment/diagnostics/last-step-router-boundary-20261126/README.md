@@ -1,0 +1,7 @@
+# Last consumer host step to streaming completion
+
+Reuses 120 real serial 1P1D requests in `serial-kv-install-20261126`: each of 512, 1024 and 2048 input-token shapes has ten warmups and 30 measured requests with eight outputs. Request IDs join the consumer worker and streaming router. All 90 measured requests show eight consumer host model-step returns before router stream completion and client stream completion.
+
+The interval from the last consumer model-step host return to router stream completion has median 1.0027, 0.9974 and 1.0606 ms for the three lengths respectively; p95 is 1.2470, 1.2795 and 1.2567 ms. The next router-completion-to-client-completion interval has medians 0.1264, 0.1334 and 0.1172 ms. Per-request IDs and raw timestamps are retained. These values are from a serial short-output run instrumented with per-tensor synchronization and logging; they are not formal E2E and must not be substituted for the 512/64 calibration or 1024/128 and 2048/128 validation workload.
+
+Model-step host return is not GPU completion. The first interval can include pending device work and output processing, so it is not a separately validated additive CPU cost. Router completion is after streaming response forwarding, while simulator completion is a model batch event; equivalence remains unresolved. This diagnostic estimates an observed host interval, not a frozen fee or an accuracy conclusion. Formal validation remains 0/30.
