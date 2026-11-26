@@ -1,0 +1,6 @@
+{
+  "intercept_s": 0.004505267199999999,
+  "per_input_token_s": 1.5727422116815474e-05,
+  "source": "independent split-fit; synchronized serial diagnostic",
+  "formal_validation": false
+}

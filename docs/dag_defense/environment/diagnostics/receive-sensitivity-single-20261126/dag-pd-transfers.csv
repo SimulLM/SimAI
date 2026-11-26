@@ -1,0 +1,2 @@
+request_id,source,destination,storage_bytes,wire_bytes,state,graph_ids,graph_id,prefill_completed_at_s,destination_reserved_at_s,kv_ready_at_s,first_decode_start_s,completed_at_s,source_reservations,destination_reservations,pins,transfer_started_at_s,transfer_completed_at_s,capacity_wait_s,network_resource_wait_work_s
+0,0,1,301989888,268435456,COMPLETED,['pd/0/stage0/migration0'],pd/0/stage0/migration0,0.023397013351301198,0.023397013351301198,0.03595472067511072,0.03683049967511072,1.0581126611955285,0,0,0,0.023397013351301198,0.03595472067511072,0.0,0.0

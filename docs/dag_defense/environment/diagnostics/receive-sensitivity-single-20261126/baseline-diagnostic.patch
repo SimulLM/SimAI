@@ -1,0 +1,84 @@
+diff --git a/vidur-alibabacloud/vidur/events/batch_end_event.py b/vidur-alibabacloud/vidur/events/batch_end_event.py
+index f60ced5..5bf544c 100644
+--- a/vidur-alibabacloud/vidur/events/batch_end_event.py
++++ b/vidur-alibabacloud/vidur/events/batch_end_event.py
+@@ -1,4 +1,7 @@
+ from typing import List
++import math
++import os
++import json
+ 
+ from vidur.entities import Batch
+ from vidur.events import BaseEvent
+@@ -14,6 +17,24 @@ from vidur.entities.replica import ReplicaType
+ 
+ logger = init_logger(__name__)
+ 
++class ConsumerFirstTokenDiagnosticEvent(BaseEvent):
++    """Single-request host-interval sensitivity, not a resource scheduler."""
++    def __init__(self, start, replica_id, request_id, duration):
++        super().__init__(start, EventType.REPLICA_SCHEDULE)
++        self.replica_id, self.request_id, self.duration = replica_id, request_id, duration
++
++    def handle_event(self, scheduler, metrics_store):
++        from vidur.events.replica_schedule_event import ReplicaScheduleEvent
++        trace = os.environ["SIMAI_SERIAL_FIRST_TOKEN_TRACE"]
++        with open(trace, "a") as f:
++            f.write(json.dumps(self.to_dict(), separators=(",", ":")) + "\n")
++        return [ReplicaScheduleEvent(self.time + self.duration, self.replica_id)]
++
++    def to_dict(self):
++        return {"time": self.time, "event_type": "consumer_first_token_diagnostic",
++                "replica_id": self.replica_id, "request_id": self.request_id,
++                "duration_s": self.duration, "end_s": self.time + self.duration}
++
+ 
+ # 一个micro-batch在pipeline上执行结束
+ # A micro-batch execution ends in the pipeline
+@@ -102,6 +123,14 @@ class BatchEndEvent(BaseEvent):
+                     assert request.pd_p2p_comm_size < float('inf') and request.pd_p2p_comm_size > 0 and request.pd_p2p_comm_bandwidth > 0, \
+                         "P2P communication size and bandwidth must be valid"
+                     request.pd_p2p_comm_time = request.pd_p2p_comm_size / request.pd_p2p_comm_bandwidth
++                    # Opt-in single-request diagnostic: inclusive receive+install
++                    # replaces the old communication fee, never adds to it.
++                    if os.environ.get("SIMAI_SERIAL_RECV_INTERCEPT_S") is not None:
++                        intercept = float(os.environ["SIMAI_SERIAL_RECV_INTERCEPT_S"])
++                        slope = float(os.environ["SIMAI_SERIAL_RECV_PER_TOKEN_S"])
++                        if not all(math.isfinite(x) and x >= 0 for x in (intercept, slope)) or slope == 0:
++                            raise ValueError("invalid serial receiver sensitivity coefficients")
++                        request.pd_p2p_comm_time = intercept + slope * request.num_prefill_tokens
+                     
+                     
+                     # 设置decode阶段的到达时间为prefill完成时间
+@@ -141,7 +170,15 @@ class BatchEndEvent(BaseEvent):
+                     
+                     # 生成D副本的调度事件
+                     # Generate D replica scheduling event
+-                    events.append(ReplicaScheduleEvent(request.decode_arrived_at, request.decode_replica_id))
++                    diagnostic = os.environ.get("SIMAI_SERIAL_FIRST_TOKEN_S")
++                    if diagnostic is None:
++                        events.append(ReplicaScheduleEvent(request.decode_arrived_at, request.decode_replica_id))
++                    else:
++                        duration = float(diagnostic)
++                        if not math.isfinite(duration) or duration <= 0:
++                            raise ValueError("diagnostic first-token duration must be positive and finite")
++                        events.append(ConsumerFirstTokenDiagnosticEvent(request.decode_arrived_at,
++                            request.decode_replica_id, request.id, duration))
+                     
+                     logger.debug(f"pd d-path time={self._time} Generates ReplicaScheduleEvent from event {self._id} {self._event_type}, "
+                         f"decode_replica_id={request.decode_replica_id} len(events)={len(events)}")
+diff --git a/vidur-alibabacloud/vidur/simulator.py b/vidur-alibabacloud/vidur/simulator.py
+index ed3bd96..0e103eb 100644
+--- a/vidur-alibabacloud/vidur/simulator.py
++++ b/vidur-alibabacloud/vidur/simulator.py
+@@ -142,6 +142,10 @@ class Simulator:
+ 
+     def _init_event_queue(self) -> None:
+         requests = self._request_generator.generate()
++        import os
++        if (os.environ.get("SIMAI_SERIAL_FIRST_TOKEN_S") is not None or
++                os.environ.get("SIMAI_SERIAL_RECV_INTERCEPT_S") is not None) and len(requests) != 1:
++            raise ValueError("first-token diagnostic only supports one request")
+ 
+         # 生成请求，把请求加入到时间队列中
+         # Generate requests and add them to the time queue

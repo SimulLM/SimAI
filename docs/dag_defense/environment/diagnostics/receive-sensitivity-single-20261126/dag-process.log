@@ -1,0 +1,165 @@
+INFO 11-26 16:25:55 trace_replay_request_generator.py:69] Loaded trace file /root/autodl-tmp/dag-handoff/runs/isolated-calibration-first-20261126/trace.csv with 1 requests
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model attn_pre_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 8.359223289805794%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model attn_post_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 18.495178375828196%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model mlp_up_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 5.979000785885047%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model mlp_down_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 14.661253788656362%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model mlp_act and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 13.526718737894603%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model input_layernorm and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 10.633841605561214%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model post_attention_layernorm and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 21.73503817470905%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model attn_rope and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model add and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model attn_kv_cache_save and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model schedule and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 15.793600007130829%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model sampler_e2e and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 2.3540676257125637%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model prepare_inputs_e2e and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 14.264161786262957%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model process_model_outputs and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 20.426134397387468%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model ray_comm_time and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model attn_prefill and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 35.589812553450834%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:490] Trained model attn_decode and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 2.945702183661686%
+INFO 11-26 16:25:55 sklearn_execution_time_predictor.py:547] Predicting execution time for model schedule
+INFO 11-26 16:25:56 sklearn_execution_time_predictor.py:547] Predicting execution time for model sampler_e2e
+INFO 11-26 16:25:56 sklearn_execution_time_predictor.py:547] Predicting execution time for model prepare_inputs_e2e
+INFO 11-26 16:25:56 sklearn_execution_time_predictor.py:547] Predicting execution time for model process_model_outputs
+INFO 11-26 16:25:57 sklearn_execution_time_predictor.py:547] Predicting execution time for model ray_comm_time
+INFO 11-26 16:25:57 sklearn_execution_time_predictor.py:547] Predicting execution time for model attn_prefill
+INFO 11-26 16:25:58 sklearn_execution_time_predictor.py:547] Predicting execution time for model attn_decode
+INFO 11-26 16:25:58 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 16:25:58 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 16:25:59 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 16:25:59 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 16:25:59 simulator.py:171] Starting simulation with cluster: Cluster({'id': 0, 'num_replicas': 2}) and 1 requests
+> Debug: time=0.0 Event 1 of type request_arrival Generates 1 GlobalScheduleEvent
+> Debug: time=0.0 Generates 1 ReplicaScheduleEvents                 from event #2 global_schedule, replica_id=0
+> Debug: time=0.0 Generates 1 BatchStageArrivalEvents             from event #3 replica_schedule 
+> Debug: time=0.0 Event #4 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=0 stage_id=0
+> Debug: time=0.03683049967511072 Generates 1 BatchStageArrivalEvents             from event #121 replica_schedule 
+> Debug: time=0.03683049967511072 Event #122 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.05304132763575283 Generates 1 BatchStageArrivalEvents             from event #228 replica_schedule 
+> Debug: time=0.05304132763575283 Event #229 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.06925215559639503 Generates 1 BatchStageArrivalEvents             from event #335 replica_schedule 
+> Debug: time=0.06925215559639503 Event #336 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.08546298355703735 Generates 1 BatchStageArrivalEvents             from event #442 replica_schedule 
+> Debug: time=0.08546298355703735 Event #443 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.10167381151767968 Generates 1 BatchStageArrivalEvents             from event #549 replica_schedule 
+> Debug: time=0.10167381151767968 Event #550 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.117884639478322 Generates 1 BatchStageArrivalEvents             from event #656 replica_schedule 
+> Debug: time=0.117884639478322 Event #657 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.13409546743896433 Generates 1 BatchStageArrivalEvents             from event #763 replica_schedule 
+> Debug: time=0.13409546743896433 Event #764 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.15030629539960666 Generates 1 BatchStageArrivalEvents             from event #870 replica_schedule 
+> Debug: time=0.15030629539960666 Event #871 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.166517123360249 Generates 1 BatchStageArrivalEvents             from event #977 replica_schedule 
+> Debug: time=0.166517123360249 Event #978 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.1827279513208913 Generates 1 BatchStageArrivalEvents             from event #1084 replica_schedule 
+> Debug: time=0.1827279513208913 Event #1085 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.19893877928153364 Generates 1 BatchStageArrivalEvents             from event #1191 replica_schedule 
+> Debug: time=0.19893877928153364 Event #1192 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.21514960724217597 Generates 1 BatchStageArrivalEvents             from event #1298 replica_schedule 
+> Debug: time=0.21514960724217597 Event #1299 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.2313604352028183 Generates 1 BatchStageArrivalEvents             from event #1405 replica_schedule 
+> Debug: time=0.2313604352028183 Event #1406 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.24757126316346062 Generates 1 BatchStageArrivalEvents             from event #1512 replica_schedule 
+> Debug: time=0.24757126316346062 Event #1513 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.2637820911241029 Generates 1 BatchStageArrivalEvents             from event #1619 replica_schedule 
+> Debug: time=0.2637820911241029 Event #1620 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.2799929190847452 Generates 1 BatchStageArrivalEvents             from event #1726 replica_schedule 
+> Debug: time=0.2799929190847452 Event #1727 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.29620374704538754 Generates 1 BatchStageArrivalEvents             from event #1833 replica_schedule 
+> Debug: time=0.29620374704538754 Event #1834 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.31241457500602987 Generates 1 BatchStageArrivalEvents             from event #1940 replica_schedule 
+> Debug: time=0.31241457500602987 Event #1941 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.3286254029666722 Generates 1 BatchStageArrivalEvents             from event #2047 replica_schedule 
+> Debug: time=0.3286254029666722 Event #2048 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.3448362309273145 Generates 1 BatchStageArrivalEvents             from event #2154 replica_schedule 
+> Debug: time=0.3448362309273145 Event #2155 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.36104705888795685 Generates 1 BatchStageArrivalEvents             from event #2261 replica_schedule 
+> Debug: time=0.36104705888795685 Event #2262 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.3772578868485992 Generates 1 BatchStageArrivalEvents             from event #2368 replica_schedule 
+> Debug: time=0.3772578868485992 Event #2369 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.3934687148092415 Generates 1 BatchStageArrivalEvents             from event #2475 replica_schedule 
+> Debug: time=0.3934687148092415 Event #2476 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.40967954276988383 Generates 1 BatchStageArrivalEvents             from event #2582 replica_schedule 
+> Debug: time=0.40967954276988383 Event #2583 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.42589037073052616 Generates 1 BatchStageArrivalEvents             from event #2689 replica_schedule 
+> Debug: time=0.42589037073052616 Event #2690 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.4421011986911685 Generates 1 BatchStageArrivalEvents             from event #2796 replica_schedule 
+> Debug: time=0.4421011986911685 Event #2797 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.4583120266518108 Generates 1 BatchStageArrivalEvents             from event #2903 replica_schedule 
+> Debug: time=0.4583120266518108 Event #2904 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.47452285461245314 Generates 1 BatchStageArrivalEvents             from event #3010 replica_schedule 
+> Debug: time=0.47452285461245314 Event #3011 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.49073368257309546 Generates 1 BatchStageArrivalEvents             from event #3117 replica_schedule 
+> Debug: time=0.49073368257309546 Event #3118 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.506944510533737 Generates 1 BatchStageArrivalEvents             from event #3224 replica_schedule 
+> Debug: time=0.506944510533737 Event #3225 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.5231553384943776 Generates 1 BatchStageArrivalEvents             from event #3331 replica_schedule 
+> Debug: time=0.5231553384943776 Event #3332 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.5393661664550181 Generates 1 BatchStageArrivalEvents             from event #3438 replica_schedule 
+> Debug: time=0.5393661664550181 Event #3439 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.5555769944156587 Generates 1 BatchStageArrivalEvents             from event #3545 replica_schedule 
+> Debug: time=0.5555769944156587 Event #3546 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.5717878223762992 Generates 1 BatchStageArrivalEvents             from event #3652 replica_schedule 
+> Debug: time=0.5717878223762992 Event #3653 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.5879986503369398 Generates 1 BatchStageArrivalEvents             from event #3759 replica_schedule 
+> Debug: time=0.5879986503369398 Event #3760 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.6042094782975803 Generates 1 BatchStageArrivalEvents             from event #3866 replica_schedule 
+> Debug: time=0.6042094782975803 Event #3867 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.6204203062582209 Generates 1 BatchStageArrivalEvents             from event #3973 replica_schedule 
+> Debug: time=0.6204203062582209 Event #3974 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.6366311342188614 Generates 1 BatchStageArrivalEvents             from event #4080 replica_schedule 
+> Debug: time=0.6366311342188614 Event #4081 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.652841962179502 Generates 1 BatchStageArrivalEvents             from event #4187 replica_schedule 
+> Debug: time=0.652841962179502 Event #4188 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.6690527901401425 Generates 1 BatchStageArrivalEvents             from event #4294 replica_schedule 
+> Debug: time=0.6690527901401425 Event #4295 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.6852636181007831 Generates 1 BatchStageArrivalEvents             from event #4401 replica_schedule 
+> Debug: time=0.6852636181007831 Event #4402 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.7014744460614236 Generates 1 BatchStageArrivalEvents             from event #4508 replica_schedule 
+> Debug: time=0.7014744460614236 Event #4509 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.7176852740220642 Generates 1 BatchStageArrivalEvents             from event #4615 replica_schedule 
+> Debug: time=0.7176852740220642 Event #4616 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.7338961019827047 Generates 1 BatchStageArrivalEvents             from event #4722 replica_schedule 
+> Debug: time=0.7338961019827047 Event #4723 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.7501069299433453 Generates 1 BatchStageArrivalEvents             from event #4829 replica_schedule 
+> Debug: time=0.7501069299433453 Event #4830 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.7663177579039858 Generates 1 BatchStageArrivalEvents             from event #4936 replica_schedule 
+> Debug: time=0.7663177579039858 Event #4937 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.7825285858646264 Generates 1 BatchStageArrivalEvents             from event #5043 replica_schedule 
+> Debug: time=0.7825285858646264 Event #5044 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.7987394138252669 Generates 1 BatchStageArrivalEvents             from event #5150 replica_schedule 
+> Debug: time=0.7987394138252669 Event #5151 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.8149502417859075 Generates 1 BatchStageArrivalEvents             from event #5257 replica_schedule 
+> Debug: time=0.8149502417859075 Event #5258 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.831161069746548 Generates 1 BatchStageArrivalEvents             from event #5364 replica_schedule 
+> Debug: time=0.831161069746548 Event #5365 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.8473718977071886 Generates 1 BatchStageArrivalEvents             from event #5471 replica_schedule 
+> Debug: time=0.8473718977071886 Event #5472 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.8635827256678291 Generates 1 BatchStageArrivalEvents             from event #5578 replica_schedule 
+> Debug: time=0.8635827256678291 Event #5579 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.8797935536284697 Generates 1 BatchStageArrivalEvents             from event #5685 replica_schedule 
+> Debug: time=0.8797935536284697 Event #5686 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.8960043815891102 Generates 1 BatchStageArrivalEvents             from event #5792 replica_schedule 
+> Debug: time=0.8960043815891102 Event #5793 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.9122152095497508 Generates 1 BatchStageArrivalEvents             from event #5899 replica_schedule 
+> Debug: time=0.9122152095497508 Event #5900 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.9284260375103913 Generates 1 BatchStageArrivalEvents             from event #6006 replica_schedule 
+> Debug: time=0.9284260375103913 Event #6007 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.9446368654710319 Generates 1 BatchStageArrivalEvents             from event #6113 replica_schedule 
+> Debug: time=0.9446368654710319 Event #6114 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.9608476934316724 Generates 1 BatchStageArrivalEvents             from event #6220 replica_schedule 
+> Debug: time=0.9608476934316724 Event #6221 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.977058521392313 Generates 1 BatchStageArrivalEvents             from event #6327 replica_schedule 
+> Debug: time=0.977058521392313 Event #6328 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=0.9932693493529535 Generates 1 BatchStageArrivalEvents             from event #6434 replica_schedule 
+> Debug: time=0.9932693493529535 Event #6435 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=1.0094801773135962 Generates 1 BatchStageArrivalEvents             from event #6541 replica_schedule 
+> Debug: time=1.0094801773135962 Event #6542 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=1.0256910052742403 Generates 1 BatchStageArrivalEvents             from event #6648 replica_schedule 
+> Debug: time=1.0256910052742403 Event #6649 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+> Debug: time=1.0419018332348844 Generates 1 BatchStageArrivalEvents             from event #6755 replica_schedule 
+> Debug: time=1.0419018332348844 Event #6756 of type batch_stage_arrival Generates 1 ReplicaStageScheduleEvent replica_id=1 stage_id=0
+INFO 11-26 16:26:03 simulator.py:230] Simulation ended at: 1.0581126611955285s
+INFO 11-26 16:26:03 simulator.py:241] Writing output
+INFO 11-26 16:26:06 simulator.py:295] Outputs written
