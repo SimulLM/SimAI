@@ -1,0 +1,11 @@
+{
+  "kind": "synthetic microbenchmark; not vLLM connector or E2E",
+  "payload_bytes": 545259520,
+  "payload_note": "1024 tokens KV plus hidden, represented as one FP16 tensor; excludes metadata",
+  "compute": "64 x 4096x4096 FP16 torch.mm on GPU0 non-default stream",
+  "backend": "torch.distributed NCCL point-to-point",
+  "timing": "CPU CLOCK_MONOTONIC, GPU compute CUDA events, explicit sync",
+  "warmups": 10,
+  "samples": 30,
+  "limitations": "GPU communication start/end are not directly anchored to host; comparison is diagnostic only"
+}

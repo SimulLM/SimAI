@@ -1,0 +1,62 @@
+{
+  "status": "microbenchmark_pass",
+  "summary": [
+    {
+      "rank": 0,
+      "mode": "compute_only",
+      "n": 30,
+      "host_median_ms": 15.52029,
+      "compute_gpu_median_ms": 15.487904071807861,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 0,
+      "mode": "transfer_only",
+      "n": 30,
+      "host_median_ms": 14.739674,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 0,
+      "mode": "concurrent",
+      "n": 30,
+      "host_median_ms": 18.2161665,
+      "compute_gpu_median_ms": 18.144895553588867,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 1,
+      "mode": "compute_only",
+      "n": 30,
+      "host_median_ms": 0.0069724999999999995,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 1,
+      "mode": "transfer_only",
+      "n": 30,
+      "host_median_ms": 14.771814,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "pass"
+    },
+    {
+      "rank": 1,
+      "mode": "concurrent",
+      "n": 30,
+      "host_median_ms": 15.7333095,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "pass"
+    }
+  ],
+  "concurrent_host_union_median_ms": 18.2161665,
+  "errors": [],
+  "limits": [
+    "synthetic FP16 GEMM and single NCCL tensor, not vLLM connector or model forward",
+    "host synchronization windows do not identify exact GPU overlap start/end",
+    "GPU kernel timing can include scheduling and contention",
+    "integrity sampled first/last payload values, not full payload",
+    "fixed sequence of modes and synchronization perturb normal execution"
+  ]
+}

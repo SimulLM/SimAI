@@ -1,0 +1,1 @@
+First audit invocation exited with KeyError: (0, 'concurrent', '10') because the CSV rank was a string while the lookup used integers. The corrected audit converts rank to int; no measurement rows were changed. The original stdout-only audit-failed.log was empty because the traceback went to stderr.
