@@ -1,0 +1,29 @@
+{
+  "requests": 20,
+  "first_host_to_router": {
+    "median_ms": 0.7620745,
+    "min_ms": 0.747803,
+    "p95_ms": 0.791921,
+    "max_ms": 0.815897
+  },
+  "last_host_to_choice": {
+    "median_ms": 0.74437,
+    "min_ms": 0.715013,
+    "p95_ms": 0.770924,
+    "max_ms": 0.789402
+  },
+  "choice_to_complete": {
+    "median_ms": 0.1879385,
+    "min_ms": 0.143321,
+    "p95_ms": 0.215251,
+    "max_ms": 0.232162
+  },
+  "source_sha256": "cabe2edbda50c75b71bd51dea009f18c2f4a99e8bbebe13c9387476255f61d63",
+  "limitations": [
+    "worker host return is not GPU completion",
+    "first and final intervals include frontend output handling and may include waiting for device work",
+    "one input and instrumented session, no independent restarts",
+    "observed quantiles are descriptive, not upper bounds",
+    "no additive fee or validation claim"
+  ]
+}

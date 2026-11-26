@@ -1,0 +1,7 @@
+# Paired first and final output host boundaries
+
+Reanalyses the same 20 warm measured 512/64 requests of `light-serial-512-20261126` on one shared host monotonic clock. For every router ID, it checks first consumer step host return <= router first-token observation <= last consumer step host return <= router final-choice observation <= router stream completion. Individual timestamps and all intervals are in `paired.csv`; source SHA-256 is in `summary.json`.
+
+Median [min, max] intervals: first worker host return to router first token 0.7621 [0.7478, 0.8159] ms; last worker host return to router final choice 0.7444 [0.7150, 0.7894] ms; final choice to router stream completion 0.1879 [0.1433, 0.2322] ms. These are descriptive statistics from one input and one instrumented service session, not independent service restarts or hard bounds. The first and final worker host returns do not establish GPU completion: each interval can include queued GPU work, scheduling, serialization, and forwarding. The final-choice event is observed before yielding the line to ASGI; the router completion event is after stream forwarding ends, not client receipt.
+
+The simulator's final modeled batch completion is not currently proven to equal either worker host return or router final-choice observation. These observations clarify the missing mapping but do not establish a separable additive router fee or close the single-request freeze gate. No request E2E value is used for fitting. Formal validation remains 0/30.
