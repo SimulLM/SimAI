@@ -1,0 +1,11 @@
+{
+  "model": "NousResearch/Llama-2-7b-hf",
+  "revision": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d",
+  "dtype": "float16",
+  "tp": 1,
+  "rope_theta": 10000.0,
+  "rope_scaling": null,
+  "warmups": 10,
+  "measured": 30,
+  "scope": "single GPU offline prepare_model_input through synchronized execute_model; separate disjoint schedule/output; no KV transport"
+}

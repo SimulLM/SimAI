@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "kind": "independent_receiver_microbenchmark",
+  "samples": 80,
+  "warmup_per_length": 10,
+  "measured_per_length": 30,
+  "boundary": "consumer prepare start after device synchronization through first-token execute completion followed by device synchronization",
+  "not_validation": true,
+  "instrument_sha256": "e1a885e58f6563ef06e1cbf6206ae98f554a49a2f76ee60c1686021f499362fb"
+}
