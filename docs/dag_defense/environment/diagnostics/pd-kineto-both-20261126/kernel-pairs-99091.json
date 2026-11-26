@@ -1,0 +1,13 @@
+[
+  {
+    "trace_pid": 99091,
+    "nccl_ts_us": 4806922118333.1,
+    "nccl_dur_us": 5.471,
+    "nccl_stream": 7,
+    "other_ts_us": 4806922118338.315,
+    "other_dur_us": 103.194,
+    "other_stream": 7,
+    "overlap_us": 0.2548828125,
+    "other_name": "void cutlass::device_kernel<flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::half_t, float, cutlass::arch::Sm90, true, false, false, true, false, false, false, true, true, false, false, false>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::half_t, cutlass::arch::Sm90, 256, true, false, false, false>, flash::VarlenDynamicPersistentTileScheduler<128, 256, 32, false, false, true> > > >(flash::enable_sm90_or_later<flash::FlashAttnFwdSm90<flash::CollectiveMainloopFwdSm90<2, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, 128, cutlass::half_t, float, cutlass::arch::Sm90, true, false, false, true, false, false, false, true, true, false, false, false>, flash::CollectiveEpilogueFwd<cute::tuple<cute::C<128>, cute::C<128>, cute::C<128> >, cute::tuple<cute::C<1>, cute::C<1>, cute::C<1> >, cutlass::half_t, cutlass::arch::Sm90, 256, true, false, false, false>, flash::VarlenDynamicPersistentTileScheduler<128, 256, 32, false, false, true> > >::Params)"
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "status": "diagnostic_complete",
+  "requests": 104,
+  "status_counts": {
+    "200": 104
+  },
+  "traces": [
+    {
+      "trace_pid": 99091,
+      "trace_file": "kineto-trace-99091.json",
+      "event_count": 231733,
+      "nccl_kernel_count": 371,
+      "other_kernel_count": 15241,
+      "nccl_context_streams": {
+        "(1, 7)": 371
+      },
+      "other_context_streams": {
+        "(1, 7)": 15241
+      },
+      "overlap_pairs": 1,
+      "different_stream_pairs": 0,
+      "max_overlap_us": 0.2548828125,
+      "control": [
+        {
+          "event": "started",
+          "pid": 99091,
+          "monotonic_ns": 1816266863576225,
+          "step": 3
+        },
+        {
+          "event": "finished",
+          "pid": 99091,
+          "monotonic_ns": 1816273387814318,
+          "step": 30,
+          "trace": "/root/autodl-tmp/dag-handoff/runs/pd-kineto-both-20261126/kineto-trace-99091.json"
+        }
+      ]
+    },
+    {
+      "trace_pid": 99096,
+      "trace_file": "kineto-trace-99096.json",
+      "event_count": 656264,
+      "nccl_kernel_count": 392,
+      "other_kernel_count": 46532,
+      "nccl_context_streams": {
+        "(1, 7)": 392
+      },
+      "other_context_streams": {
+        "(1, 7)": 46532
+      },
+      "overlap_pairs": 0,
+      "different_stream_pairs": 0,
+      "max_overlap_us": 0,
+      "control": [
+        {
+          "event": "started",
+          "pid": 99096,
+          "monotonic_ns": 1816266946466963,
+          "step": 3
+        },
+        {
+          "event": "finished",
+          "pid": 99096,
+          "monotonic_ns": 1816277389937880,
+          "step": 30,
+          "trace": "/root/autodl-tmp/dag-handoff/runs/pd-kineto-both-20261126/kineto-trace-99096.json"
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "limits": [
+    "Each process sees its assigned physical GPU as CUDA device 0; infer producer/consumer from corresponding worker logs, not device index alone",
+    "Trace captured GPU kernels only in profiler windows; no exact individual request or payload attribution",
+    "Profiler instrumentation and export perturb execution and output length is 8; not formal E2E",
+    "same-stream submicrosecond timestamp overlaps can be boundary artifacts; no independent SM occupancy measurement",
+    "does not imply both GPUs are exclusively occupied over entire host-level transfer"
+  ]
+}

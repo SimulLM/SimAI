@@ -1,0 +1,2 @@
+{"event":"started","pid":99091,"monotonic_ns":1816266863576225,"step":3}
+{"event":"finished","pid":99091,"monotonic_ns":1816273387814318,"step":30,"trace":"/root/autodl-tmp/dag-handoff/runs/pd-kineto-both-20261126/kineto-trace-99091.json"}
