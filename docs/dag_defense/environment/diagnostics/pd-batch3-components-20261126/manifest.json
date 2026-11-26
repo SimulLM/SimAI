@@ -1,0 +1,17 @@
+{
+  "rows": 160,
+  "sources": {
+    "/root/autodl-tmp/dag-handoff/runs/pd-context-batch3-20261126/client/requests.jsonl": "7647982806536d96cc4f78ef726aa1610885f984a5a2814cc4761bc3cce7b1a3",
+    "/root/autodl-tmp/dag-handoff/runs/pd-context-batch3-20261126/router-events.jsonl": "c2b1d125759dc0c6a96f33c0d51d422489a0d1d8e33973cbfdeb96e4a63756bf",
+    "/root/autodl-tmp/dag-handoff/runs/pd-context-batch3-20261126/compute-events-101928.jsonl": "2a74414bdaef0c3cc8a73a937df4b4566451caf6ab030682388e114008ef7c38",
+    "/root/autodl-tmp/dag-handoff/runs/pd-context-batch3-20261126/compute-events-101931.jsonl": "dafdaae63c36056d73c6944b002e568f578ad240c95631af6ae2c3921c5eb49a",
+    "/root/autodl-tmp/dag-handoff/runs/pd-batch3-1024-supplement-20261126/client/requests.jsonl": "c1c612123854311f5491ff445340d53d671f52fb04e6c5e15469b17909a5807f",
+    "/root/autodl-tmp/dag-handoff/runs/pd-batch3-1024-supplement-20261126/router-events.jsonl": "f06c2fe26517820fda616536ab69a5a3e7f34254ab2e91c277b631121a08be8c",
+    "/root/autodl-tmp/dag-handoff/runs/pd-batch3-1024-supplement-20261126/compute-events-112438.jsonl": "9090f6f0b6edcc5598bc51cada0bcd779e41b2cb09a47d81d2da7df565ced390",
+    "/root/autodl-tmp/dag-handoff/runs/pd-batch3-1024-supplement-20261126/compute-events-112441.jsonl": "25bc24e6b35537d647803aa82f6fbb1d55b05b6afe9723ad49969282c2e876bb"
+  },
+  "discarded": {
+    "context_span_gt_1": 370
+  },
+  "contract": "Each cell retains mixed/uniform separation and independent wave identity. Per-wave component medians summarized across measured waves. Layer 16 except full_model_forward. Components are not summed; GPU intervals may overlap. No CPU/KV/router costs or service E2E."
+}

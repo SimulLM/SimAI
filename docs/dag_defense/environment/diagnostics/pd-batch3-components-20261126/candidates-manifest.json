@@ -1,0 +1,18 @@
+{
+  "status": "diagnostic_candidates_not_frozen",
+  "base_sha256": "27eea40e042bd08ece0a0b506804e712f2e7f9512e8df4ae2682a75590d43877",
+  "component_sha256": "16d5f38a0abee2ef439a71e76912c76970cd179483c80041b5c7df0a81259a50",
+  "outputs": {
+    "uniform": {
+      "path": "/root/autodl-tmp/dag-handoff/runs/pd-batch3-attention-candidates-20261126/uniform-attention.csv",
+      "sha256": "c9948f03589ee7975e308b3315ba140a87bd4a8a8733efe189dc40ec1707e19a",
+      "added_cells": 8
+    },
+    "mixed": {
+      "path": "/root/autodl-tmp/dag-handoff/runs/pd-batch3-attention-candidates-20261126/mixed-attention.csv",
+      "sha256": "e8ba3be63bfa5f0bb4d26860836b580d52d0a41cc8279b630281170e7f667a1d",
+      "added_cells": 8
+    }
+  },
+  "scope": "Adds only layer-16 attention_combined CUDA event median to candidate attention profile, retaining uniform/mixed variants separately. No claim of service cost correctness; missing context selector, batch scheduling and CPU/KV overlap remain unresolved. Use same selected file for both comparators; no validation fitting."
+}
