@@ -1,0 +1,116 @@
+{
+  "status": "independent_candidate_not_frozen",
+  "inputs": 560,
+  "mapped_requests": 560,
+  "source_hashes": {
+    "compute-events-87574.jsonl": "04afc7eaa6a5c4a25fd0968eeed1ccc381ad4916cc04b6b1651fca706b8da3ac",
+    "compute-events-87571.jsonl": "cce3c2ce9fe839e709bba54c010e3e28dae3c03cf6c99bd5d9bdccc942bc6c18"
+  },
+  "summary": [
+    {
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "points": 8,
+      "eligible": 8,
+      "mixed_eligible": 0,
+      "bins": [
+        1040,
+        1056,
+        1072,
+        1088,
+        1104,
+        1120,
+        1136,
+        1152
+      ]
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "points": 16,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 3,
+      "points": 1,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "points": 16,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "points": 8,
+      "eligible": 8,
+      "mixed_eligible": 0,
+      "bins": [
+        2064,
+        2080,
+        2096,
+        2112,
+        2128,
+        2144,
+        2160,
+        2176
+      ]
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "points": 16,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 3,
+      "points": 1,
+      "eligible": 1,
+      "mixed_eligible": 0,
+      "bins": [
+        2176
+      ]
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "points": 8,
+      "eligible": 8,
+      "mixed_eligible": 8,
+      "bins": [
+        2064,
+        2080,
+        2096,
+        2112,
+        2128,
+        2144,
+        2160,
+        2176
+      ]
+    }
+  ],
+  "discarded_steps": {
+    "context_span_gt_1": 124
+  },
+  "contract": "average per-request sequence length truncated to integer, then ceil to 16-token blocks, matching predictor decode attention feature; group actual batch and mixed status; per-wave medians before across-wave median",
+  "limitations": [
+    "Full model forward CUDA event, not standalone attention cost; no CPU, router, logits, sampling or KV included",
+    "Polling/synchronization perturbs load; 128-token diagnostics may contain scheduler mixtures",
+    "Measured input token and mixed/uniform shape retained; no assertion that same rounded mean implies equivalent time",
+    "No extrapolation or imputation; 10 warmup and 30 distinct measured waves required per point",
+    "Different client requested batches can contribute separate waves; same physical wave counted once per shape; mixed and uniform remain separate",
+    "Candidate cannot be frozen until coupled fee/overlap semantics and missing shapes resolved"
+  ]
+}

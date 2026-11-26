@@ -1,0 +1,138 @@
+{
+  "status": "candidate_not_frozen",
+  "selection": "each selected source independently has >=10 distinct warmup and >=30 measured waves; choose most measured waves, never pool correlated steps across sources; preserve actual batch and mixed-context label",
+  "source_hashes": {
+    "original": {
+      "bins_sha256": "fec6cf5c0a697d0c0bc8687808a7c1e4df6dd3f1098b574ca93a32ea66e5c7a7",
+      "manifest_sha256": "ccf5929b57f5ac77d7482cafad7e320a98097c421c2c487188d60b5ec6c5686c"
+    },
+    "supplement": {
+      "bins_sha256": "61cc94aef850fc1c8bd9a91c12883e7ccdecb02bd5cb4653cb251466ca501bf3",
+      "manifest_sha256": "f334af6affa25aa138d40b6c7fd1d2ddaa8c1711d28a3f8079e601c2baf4f123"
+    }
+  },
+  "points": 50,
+  "summary": [
+    {
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "point_count": 8,
+      "uniform_bins": [
+        1040,
+        1056,
+        1072,
+        1088,
+        1104,
+        1120,
+        1136,
+        1152
+      ],
+      "mixed_bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "point_count": 8,
+      "uniform_bins": [
+        1040,
+        1056,
+        1072,
+        1088,
+        1104,
+        1120,
+        1136,
+        1152
+      ],
+      "mixed_bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 3,
+      "point_count": 1,
+      "uniform_bins": [
+        1152
+      ],
+      "mixed_bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "point_count": 8,
+      "uniform_bins": [],
+      "mixed_bins": [
+        1040,
+        1056,
+        1072,
+        1088,
+        1104,
+        1120,
+        1136,
+        1152
+      ]
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "point_count": 8,
+      "uniform_bins": [
+        2064,
+        2080,
+        2096,
+        2112,
+        2128,
+        2144,
+        2160,
+        2176
+      ],
+      "mixed_bins": []
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "point_count": 8,
+      "uniform_bins": [],
+      "mixed_bins": [
+        2064,
+        2080,
+        2096,
+        2112,
+        2128,
+        2144,
+        2160,
+        2176
+      ]
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 3,
+      "point_count": 1,
+      "uniform_bins": [
+        2176
+      ],
+      "mixed_bins": []
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "point_count": 8,
+      "uniform_bins": [],
+      "mixed_bins": [
+        2064,
+        2080,
+        2096,
+        2112,
+        2128,
+        2144,
+        2160,
+        2176
+      ]
+    }
+  ],
+  "limitations": [
+    "full model forward only; excludes logits, sampler, CPU, router and KV",
+    "context bins do not prove equivalence across mixed shapes",
+    "GPU events and synchronization perturb service",
+    "no interpolation or missing-point imputation",
+    "candidate is not a frozen complete common-cost profile"
+  ]
+}
