@@ -1,0 +1,236 @@
+{
+  "scope": "previous synthetic simultaneous wave replays; candidate fees and schedules, not validation or hardware",
+  "context_assumption": "input length + 1 + number of previously traced consumer batches for each request; inspect against strict adapter semantics",
+  "cases": [
+    {
+      "case": "1024-1",
+      "role": "baseline",
+      "synthetic_request_csv_sha256": "028e37b74d729b5bbd70acf1ec4bf8507301e7d9e00242e71f5836d0cc97f723",
+      "chrome_trace_sha256": "91584aced228a0902c69a7ba51911e5d2fc208d75050d700ea097d76d82b866b",
+      "counts": {
+        "decode_covered": 127,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127
+      }
+    },
+    {
+      "case": "1024-1",
+      "role": "dag",
+      "synthetic_request_csv_sha256": "028e37b74d729b5bbd70acf1ec4bf8507301e7d9e00242e71f5836d0cc97f723",
+      "chrome_trace_sha256": "249f6ca4316ab8bd905b18a8db5e6b1b5013ec98ef9cec09c40eba1a2fd2e8f2",
+      "counts": {
+        "decode_covered": 127,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127
+      }
+    },
+    {
+      "case": "1024-2",
+      "role": "baseline",
+      "synthetic_request_csv_sha256": "de1eac9df1023005e71f89d525b0ea4fb20fc6de760687d51f792ac60693e6c7",
+      "chrome_trace_sha256": "72e53893a1f5efc725b79bee8ed01aefc7527ab211772d3eba7fd5d4f67a4485",
+      "counts": {
+        "decode_covered": 127,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127
+      }
+    },
+    {
+      "case": "1024-2",
+      "role": "dag",
+      "synthetic_request_csv_sha256": "de1eac9df1023005e71f89d525b0ea4fb20fc6de760687d51f792ac60693e6c7",
+      "chrome_trace_sha256": "de52dc10b78915a221345bd067ac3d20ed607f271e0bc01d2f3a3bbe280176f2",
+      "counts": {
+        "decode_covered": 2,
+        "decode_missing": 126,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127
+      }
+    },
+    {
+      "case": "1024-4",
+      "role": "baseline",
+      "synthetic_request_csv_sha256": "b86faac97829dc19c396c39d2ecf54e55182a413cc64009a81c257a9f1dba9f1",
+      "chrome_trace_sha256": "c8dc6d468376f81913aba8593731d0ede8635fc47d732f9d9d317ef2c268e4e6",
+      "counts": {
+        "decode_covered": 127,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127,
+        "2": 127,
+        "3": 127
+      }
+    },
+    {
+      "case": "1024-4",
+      "role": "dag",
+      "synthetic_request_csv_sha256": "b86faac97829dc19c396c39d2ecf54e55182a413cc64009a81c257a9f1dba9f1",
+      "chrome_trace_sha256": "3df1b934741edbb9616810ce846fb844be88e2976fa325ce24ff7013b913f297",
+      "counts": {
+        "decode_covered": 128,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127,
+        "2": 127,
+        "3": 127
+      }
+    },
+    {
+      "case": "2048-1",
+      "role": "baseline",
+      "synthetic_request_csv_sha256": "4d718595d25bac999c352872f076c9fea4299bea9ce79c0699bbafe7aed30409",
+      "chrome_trace_sha256": "750adc8c96fd3a7342c25e68dbe57bac65745e43cec7dd4e081dd1ac7128456e",
+      "counts": {
+        "decode_covered": 127,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127
+      }
+    },
+    {
+      "case": "2048-1",
+      "role": "dag",
+      "synthetic_request_csv_sha256": "4d718595d25bac999c352872f076c9fea4299bea9ce79c0699bbafe7aed30409",
+      "chrome_trace_sha256": "970e49ae5e541bd541f2f7bdbc2010c443fff0a424a0d52a1ef285010a1e1793",
+      "counts": {
+        "decode_covered": 127,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127
+      }
+    },
+    {
+      "case": "2048-2",
+      "role": "baseline",
+      "synthetic_request_csv_sha256": "fc3b482bc503dda0e85156fb065c6e149dec60539b150bb7ed4c0705857154c3",
+      "chrome_trace_sha256": "f641b037b2b43d6370c538bb86c160746bef3957b1b620b91d65a1efc943573d",
+      "counts": {
+        "decode_covered": 127,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127
+      }
+    },
+    {
+      "case": "2048-2",
+      "role": "dag",
+      "synthetic_request_csv_sha256": "fc3b482bc503dda0e85156fb065c6e149dec60539b150bb7ed4c0705857154c3",
+      "chrome_trace_sha256": "48817124d466ad2d0b5aa229c7b594943083febd7ed42ddc3693908195beecba",
+      "counts": {
+        "decode_covered": 128,
+        "prefill_covered": 1
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127
+      }
+    },
+    {
+      "case": "2048-4",
+      "role": "baseline",
+      "synthetic_request_csv_sha256": "d025d6994ddf0b999057f36b52397adb7da828b575778c50d302bb1182ad888b",
+      "chrome_trace_sha256": "23df85173b7c4db9953b6dd19b012a636c944b603d970bf87cb24b53b52f4ad5",
+      "counts": {
+        "decode_covered": 16,
+        "decode_missing": 119,
+        "prefill_covered": 2
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127,
+        "2": 127,
+        "3": 127
+      }
+    },
+    {
+      "case": "2048-4",
+      "role": "dag",
+      "synthetic_request_csv_sha256": "d025d6994ddf0b999057f36b52397adb7da828b575778c50d302bb1182ad888b",
+      "chrome_trace_sha256": "72a5063ecae6777a58ed0e48b8078ed261e6e7c585b1d84b810cfe7be1d72beb",
+      "counts": {
+        "decode_covered": 19,
+        "decode_missing": 118,
+        "prefill_covered": 2
+      },
+      "decode_steps_per_request": {
+        "0": 127,
+        "1": 127,
+        "2": 127,
+        "3": 127
+      }
+    }
+  ],
+  "lookup_source_sha256": {
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pd-eager-profile-20261126/candidate/forward-cost.csv": "eff42e531a3917771c19c6c0829d9f3ab208b3bbdf751213c536981026913e15",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/uniform-forward-targeted-20261126/candidate-context-bins.csv": "8e6baa37200e926f746184eeaf6b91e530019fa920c390d48f8e2d358a7d3f1a",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/mixed-span-nine-20261126/coverage.csv": "30cb0184691c84edac09a5d8e460ab8679e7a3578e267c3a78c5888a47970036"
+  },
+  "context_reconstruction_checks": [
+    {
+      "run": "strict-forward-1024-final-20261126",
+      "role": "baseline",
+      "batches": 128,
+      "mismatch_count": 0,
+      "forward_sha256": "226512a7707337234d15ff6b379fc54fede4a58e92d96e4e89a3af2c84b980e5",
+      "chrome_sha256": "ecbbbe5f8f5f4d601518854c86f4907fc71679fe08e9653293b3b3cb837d42b9"
+    },
+    {
+      "run": "strict-forward-1024-final-20261126",
+      "role": "dag",
+      "batches": 128,
+      "mismatch_count": 0,
+      "forward_sha256": "a11aeefda5d945009eea2e2e976bf09cf5c40c0515c6675ff74c851a7b4c0d5b",
+      "chrome_sha256": "41e20c8df3ad0285a9d13dc04fa87ed4f72221ab69b05976ec0fce418ded7176"
+    },
+    {
+      "run": "strict-forward-2048-final-20261126",
+      "role": "baseline",
+      "batches": 128,
+      "mismatch_count": 0,
+      "forward_sha256": "5da2ad4181b5733bc2b0b92a448002ed76af02b4845f6b3dcd61a6b446cd8d19",
+      "chrome_sha256": "99315845c6aa5d17e7a35a8eba8700c6ade4a66db9dbaeb64b768d59443f6bbf"
+    },
+    {
+      "run": "strict-forward-2048-final-20261126",
+      "role": "dag",
+      "batches": 128,
+      "mismatch_count": 0,
+      "forward_sha256": "1633e5ce40af96cb7349f5d795186ebb9d7ad27826fd791d8abd1b951109aab1",
+      "chrome_sha256": "819de0fc2783f8991b73131f3b18d7666688d1a8e6d88f05041c66b1398b2cc9"
+    },
+    {
+      "run": "strict-forward-two-final-20261126",
+      "role": "baseline",
+      "batches": 128,
+      "mismatch_count": 0,
+      "forward_sha256": "a46eb09752cc6e19e5a6e00d1a9115c357a2ab8927df4a94177a2a2652035d91",
+      "chrome_sha256": "affa62c4d826f18ca47d311c9bd5ce1696b1459c15d0a5bc4a5c57744bbc5ac1"
+    },
+    {
+      "run": "strict-forward-two-final-20261126",
+      "role": "dag",
+      "batches": 128,
+      "mismatch_count": 0,
+      "forward_sha256": "efee84fab9fd80cd920c4023b8a00d08365259ba13b29ba7499d5e7c066de339",
+      "chrome_sha256": "e10d9c817cd4f2c27990b0526fb0403306cc8f96492a13456707fcede1505485"
+    }
+  ]
+}

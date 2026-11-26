@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:35:07.750446+00:00",
+  "updated_utc": "2026-11-26T12:36:23.407668+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Synthetic 1/2/4 replay batches reveal missing strict lookup keys in both adapted baseline and DAG including mixed contexts; actual validation arrivals and final schedules remain unknown. Concurrent receive/first-token ownership and CPU/GPU overlap remain unproven.",
-      "next_action": "Determine whether independent existing measured profiles cover observed missing shapes under a defensible explicit mapping; otherwise collect targeted independent profiles before final common-fee replay.",
+      "missing": "Later qualified single-GPU profiles cover uniform 1024 batch 4 and 2048 batch 2 in old traces; eight 1024 batch-2 mixed bins and exact 2048 batch-4 patterns remain missing in those traces. Concurrent receive/first-token and CPU/GPU overlap remain unproven.",
+      "next_action": "Inspect independent 1024 mixed batch-2 and 2048 mixed-pattern profiles for exact qualifying coverage; define a justified scoped interpolation or targeted profile and rerun final shared fees.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/observed-shape-coverage-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/observed-shape-supplement-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
