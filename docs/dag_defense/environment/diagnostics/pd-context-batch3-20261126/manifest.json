@@ -1,0 +1,98 @@
+{
+  "status": "independent_candidate_not_frozen",
+  "inputs": 360,
+  "mapped_requests": 360,
+  "source_hashes": {
+    "compute-events-101931.jsonl": "dafdaae63c36056d73c6944b002e568f578ad240c95631af6ae2c3921c5eb49a",
+    "compute-events-101928.jsonl": "2a74414bdaef0c3cc8a73a937df4b4566451caf6ab030682388e114008ef7c38"
+  },
+  "summary": [
+    {
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "points": 1,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "points": 1,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 3,
+      "points": 16,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "points": 0,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "points": 1,
+      "eligible": 1,
+      "mixed_eligible": 0,
+      "bins": [
+        2064
+      ]
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "points": 1,
+      "eligible": 1,
+      "mixed_eligible": 0,
+      "bins": [
+        2176
+      ]
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 3,
+      "points": 8,
+      "eligible": 8,
+      "mixed_eligible": 8,
+      "bins": [
+        2064,
+        2080,
+        2096,
+        2112,
+        2128,
+        2144,
+        2160,
+        2176
+      ]
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "points": 0,
+      "eligible": 0,
+      "mixed_eligible": 0,
+      "bins": []
+    }
+  ],
+  "discarded_steps": {},
+  "contract": "average per-request sequence length truncated to integer, then ceil to 16-token blocks, matching predictor decode attention feature; group actual batch and mixed status; per-wave medians before across-wave median",
+  "limitations": [
+    "Full model forward CUDA event, not standalone attention cost; no CPU, router, logits, sampling or KV included",
+    "Polling/synchronization perturbs load; 128-token diagnostics may contain scheduler mixtures",
+    "Measured input token and mixed/uniform shape retained; no assertion that same rounded mean implies equivalent time",
+    "No extrapolation or imputation; 10 warmup and 30 distinct measured waves required per point",
+    "Different client requested batches can contribute separate waves; same physical wave counted once per shape; mixed and uniform remain separate",
+    "Candidate cannot be frozen until coupled fee/overlap semantics and missing shapes resolved"
+  ]
+}
