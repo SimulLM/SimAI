@@ -1,0 +1,78 @@
+{
+  "status": "observed_instrumented_decode_logits_coverage",
+  "rows": [
+    {
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "warmup_waves": 23,
+      "measured_waves": 60,
+      "median_wave_median_ms": 0.14644800126552582,
+      "eligible_10_30": true
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_wave_median_ms": 0.14635200053453445,
+      "eligible_10_30": true
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 3,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_wave_median_ms": 0.14639999717473984,
+      "eligible_10_30": true
+    },
+    {
+      "input_tokens": 1024,
+      "actual_batch": 4,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_wave_median_ms": 0.14693600311875343,
+      "eligible_10_30": true
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "warmup_waves": 29,
+      "measured_waves": 90,
+      "median_wave_median_ms": 0.14665600284934044,
+      "eligible_10_30": true
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_wave_median_ms": 0.14606399834156036,
+      "eligible_10_30": true
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 3,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_wave_median_ms": 0.147039994597435,
+      "eligible_10_30": true
+    },
+    {
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "warmup_waves": 10,
+      "measured_waves": 29,
+      "median_wave_median_ms": 0.14718399941921234,
+      "eligible_10_30": false
+    }
+  ],
+  "requests": 560,
+  "deduplicated_steps": 1814,
+  "limitations": [
+    "8-output diagnostic only, not 128-output context coverage",
+    "GPU event intervals may contain idle gaps; sync and hooks perturb timing",
+    "multiple waves share one session; not independent restart repetitions",
+    "batch composition and requested concurrency differ",
+    "not a frozen or additive cost"
+  ]
+}
