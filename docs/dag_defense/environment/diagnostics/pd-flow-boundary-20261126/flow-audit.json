@@ -1,0 +1,276 @@
+{
+  "requests": 560,
+  "status": {
+    "200": 560
+  },
+  "counts": [
+    {
+      "length": 1024,
+      "requested_batch": 1,
+      "warmup": false,
+      "valid": true,
+      "n": 30
+    },
+    {
+      "length": 1024,
+      "requested_batch": 1,
+      "warmup": true,
+      "valid": true,
+      "n": 10
+    },
+    {
+      "length": 1024,
+      "requested_batch": 2,
+      "warmup": false,
+      "valid": true,
+      "n": 60
+    },
+    {
+      "length": 1024,
+      "requested_batch": 2,
+      "warmup": true,
+      "valid": true,
+      "n": 20
+    },
+    {
+      "length": 1024,
+      "requested_batch": 4,
+      "warmup": false,
+      "valid": true,
+      "n": 120
+    },
+    {
+      "length": 1024,
+      "requested_batch": 4,
+      "warmup": true,
+      "valid": true,
+      "n": 40
+    },
+    {
+      "length": 2048,
+      "requested_batch": 1,
+      "warmup": false,
+      "valid": true,
+      "n": 30
+    },
+    {
+      "length": 2048,
+      "requested_batch": 1,
+      "warmup": true,
+      "valid": true,
+      "n": 10
+    },
+    {
+      "length": 2048,
+      "requested_batch": 2,
+      "warmup": false,
+      "valid": true,
+      "n": 60
+    },
+    {
+      "length": 2048,
+      "requested_batch": 2,
+      "warmup": true,
+      "valid": true,
+      "n": 20
+    },
+    {
+      "length": 2048,
+      "requested_batch": 4,
+      "warmup": false,
+      "valid": true,
+      "n": 120
+    },
+    {
+      "length": 2048,
+      "requested_batch": 4,
+      "warmup": true,
+      "valid": true,
+      "n": 40
+    }
+  ],
+  "defects": [],
+  "step_summaries": [
+    {
+      "input_tokens": 1024,
+      "requested_batch": 1,
+      "phase": "consumer",
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "host_median_ms": 2.5383895,
+      "gpu_event_median_ms": 17.31492805480957
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 1,
+      "phase": "producer",
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "host_median_ms": 1.2917805,
+      "gpu_event_median_ms": 3.5913439989089966
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 2,
+      "phase": "consumer",
+      "actual_batch": 1,
+      "distinct_steps": 4,
+      "host_median_ms": 21.1357465,
+      "gpu_event_median_ms": 35.89612865447998
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 2,
+      "phase": "consumer",
+      "actual_batch": 2,
+      "distinct_steps": 28,
+      "host_median_ms": 19.839969,
+      "gpu_event_median_ms": 34.52417755126953
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 2,
+      "phase": "producer",
+      "actual_batch": 1,
+      "distinct_steps": 4,
+      "host_median_ms": 13.821469500000001,
+      "gpu_event_median_ms": 4.001408100128174
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 2,
+      "phase": "producer",
+      "actual_batch": 2,
+      "distinct_steps": 28,
+      "host_median_ms": 2.3252829999999998,
+      "gpu_event_median_ms": 8.405935764312744
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 4,
+      "phase": "consumer",
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "host_median_ms": 113.0105785,
+      "gpu_event_median_ms": 128.94114685058594
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 4,
+      "phase": "consumer",
+      "actual_batch": 3,
+      "distinct_steps": 30,
+      "host_median_ms": 34.923842,
+      "gpu_event_median_ms": 49.68871879577637
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 4,
+      "phase": "producer",
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "host_median_ms": 1.27295,
+      "gpu_event_median_ms": 3.613408088684082
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 4,
+      "phase": "producer",
+      "actual_batch": 3,
+      "distinct_steps": 30,
+      "host_median_ms": 100.373132,
+      "gpu_event_median_ms": 28.821279525756836
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 1,
+      "phase": "consumer",
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "host_median_ms": 3.0941535,
+      "gpu_event_median_ms": 33.84441566467285
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 1,
+      "phase": "producer",
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "host_median_ms": 1.313631,
+      "gpu_event_median_ms": 8.02017593383789
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 2,
+      "phase": "consumer",
+      "actual_batch": 1,
+      "distinct_steps": 58,
+      "host_median_ms": 42.0316265,
+      "gpu_event_median_ms": 72.81664085388184
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 2,
+      "phase": "consumer",
+      "actual_batch": 2,
+      "distinct_steps": 1,
+      "host_median_ms": 36.244876,
+      "gpu_event_median_ms": 66.06614685058594
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 2,
+      "phase": "producer",
+      "actual_batch": 1,
+      "distinct_steps": 58,
+      "host_median_ms": 33.7968895,
+      "gpu_event_median_ms": 8.350959777832031
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 2,
+      "phase": "producer",
+      "actual_batch": 2,
+      "distinct_steps": 1,
+      "host_median_ms": 2.441293,
+      "gpu_event_median_ms": 16.268512725830078
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 4,
+      "phase": "consumer",
+      "actual_batch": 1,
+      "distinct_steps": 60,
+      "host_median_ms": 78.3338605,
+      "gpu_event_median_ms": 109.2120304107666
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 4,
+      "phase": "consumer",
+      "actual_batch": 2,
+      "distinct_steps": 30,
+      "host_median_ms": 100.583421,
+      "gpu_event_median_ms": 130.6796646118164
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 4,
+      "phase": "producer",
+      "actual_batch": 1,
+      "distinct_steps": 60,
+      "host_median_ms": 1.2830564999999998,
+      "gpu_event_median_ms": 8.149263858795166
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 4,
+      "phase": "producer",
+      "actual_batch": 2,
+      "distinct_steps": 30,
+      "host_median_ms": 144.639442,
+      "gpu_event_median_ms": 46.97513771057129
+    }
+  ],
+  "limits": "Profiler only: GPU event elapsed can include queue/host delays; host intervals enclose asynchronous work and are not additive GPU time. Consumer interval includes select wait and cache installation; it is not pure wire latency. Producer and consumer timings overlap communication and must not be summed. Distinct steps can still share a wave."
+}
