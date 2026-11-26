@@ -1,0 +1,40 @@
+{
+  "status": "blocked",
+  "formal_validation": false,
+  "reason": "PD model-step measurement coverage and causal mapping incomplete; 5 GB connector buffer requires calibration and runtime freeze; synchronized diagnostic timings are not E2E validation",
+  "buffer_1gb_batch4": "4 client timeouts at 30 seconds",
+  "buffer_5gb_batch4_smoke": "4 HTTP 200 responses with two output tokens",
+  "buffer_5gb_profile_client": {
+    "requests": 840,
+    "http_200": 840,
+    "lengths": [
+      512,
+      1024,
+      2048
+    ],
+    "batch_wave_sizes": [
+      1,
+      2,
+      4
+    ],
+    "warmup_waves": 10,
+    "measurement_waves": 30
+  },
+  "candidate_replay": {
+    "dag": {
+      "median_request_e2e_s": 0.8583639012176718,
+      "cpu_overhead_skipped": true
+    },
+    "baseline": {
+      "median_request_e2e_s": 0.8530103281433741,
+      "cpu_overhead_skipped": true
+    },
+    "reference_actual_median_s": 0.841792883,
+    "limitations": [
+      "diagnostic 32-request calibration replay only",
+      "candidate profile includes short diagnostic samples and excludes host CPU cost",
+      "not a formal acceptance result; no claim that synchronization is free",
+      "routing, batch mapping, and exact same cost identities still require verification"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "arrival_replay_completed",
+  "request_count": 32,
+  "source": "calibration server_arrival CLOCK_MONOTONIC",
+  "dag_returncode": 0,
+  "baseline_returncode": 0,
+  "formal_validation": false
+}
