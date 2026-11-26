@@ -1,0 +1,22 @@
+{
+  "scope": "Instrumented 8-token diagnostic; observed receive steps only; step data from pid 85025. This is not proof of general vLLM behavior.",
+  "requests": 420,
+  "receive_steps": 301,
+  "distribution": [
+    {
+      "step_groups": 1,
+      "decode_groups": 0,
+      "steps": 212
+    },
+    {
+      "step_groups": 2,
+      "decode_groups": 0,
+      "steps": 59
+    },
+    {
+      "step_groups": 3,
+      "decode_groups": 0,
+      "steps": 30
+    }
+  ]
+}

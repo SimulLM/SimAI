@@ -1,0 +1,37 @@
+{
+  "scope": "Instrumented 8-token diagnostic, request pairs within waves only; equal step timestamps are shared step observations, not an ordering",
+  "groups": [
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 2,
+      "pair_counts": {
+        "same_consumer_step_time": 28,
+        "same_order": 2
+      }
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 4,
+      "pair_counts": {
+        "same_order": 90,
+        "same_consumer_step_time": 90
+      }
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 2,
+      "pair_counts": {
+        "same_order": 29,
+        "same_consumer_step_time": 1
+      }
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 4,
+      "pair_counts": {
+        "same_order": 150,
+        "same_consumer_step_time": 30
+      }
+    }
+  ]
+}
