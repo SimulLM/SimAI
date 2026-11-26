@@ -1,0 +1,830 @@
+[
+  {
+    "time_s": 0.0,
+    "operation": "reserve",
+    "request_id": "0",
+    "resource_id": "kv:gpu:0:0:0",
+    "storage_bytes": 301989888,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      }
+    }
+  },
+  {
+    "time_s": 0.0,
+    "operation": "commit",
+    "request_id": "0",
+    "resource_id": "kv:gpu:0:0:0",
+    "storage_bytes": 301989888,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      }
+    }
+  },
+  {
+    "time_s": 0.023397013351301198,
+    "operation": "pin",
+    "request_id": "0",
+    "resource_id": null,
+    "storage_bytes": null,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      }
+    }
+  },
+  {
+    "time_s": 0.023397013351301198,
+    "operation": "reserve",
+    "request_id": "0",
+    "resource_id": "kv:gpu:1:0:0",
+    "storage_bytes": 301989888,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 0.023397013351301198,
+    "operation": "pull_batch_selected",
+    "request_id": "0",
+    "resource_id": null,
+    "storage_bytes": null,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 0.03125546923365414,
+    "operation": "commit",
+    "request_id": "0",
+    "resource_id": "kv:gpu:1:0:0",
+    "storage_bytes": 301989888,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 0.03125546923365414,
+    "operation": "unpin",
+    "request_id": "0",
+    "resource_id": null,
+    "storage_bytes": null,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 0.03125546923365414,
+    "operation": "release",
+    "request_id": "0",
+    "resource_id": "kv:gpu:0:0:0",
+    "storage_bytes": 301989888,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 0.03125546923365414,
+    "operation": "kv_ready",
+    "request_id": "0",
+    "resource_id": null,
+    "storage_bytes": null,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 0.03125546923365414,
+    "operation": "consumer_first_token_submit",
+    "request_id": "0",
+    "resource_id": null,
+    "storage_bytes": null,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 0.03213124823365414,
+    "operation": "consumer_first_token_complete",
+    "request_id": "0",
+    "resource_id": null,
+    "storage_bytes": null,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 301989888,
+        "available": 5066719232
+      }
+    }
+  },
+  {
+    "time_s": 1.0534134097540713,
+    "operation": "release",
+    "request_id": "0",
+    "resource_id": "kv:gpu:1:0:0",
+    "storage_bytes": 301989888,
+    "usage": {
+      "stage:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "stage:1:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:0:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "link:gpu:1:0:0": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "cpu:1": {
+        "unit": "permits",
+        "capacity": 1,
+        "used": 0,
+        "available": 1
+      },
+      "kv:gpu:0:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      },
+      "kv:gpu:1:0:0": {
+        "unit": "bytes",
+        "capacity": 5368709120,
+        "used": 0,
+        "available": 5368709120
+      }
+    }
+  }
+]

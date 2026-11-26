@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.5",
+  "transfer_start_mode": "decode_pull_candidate",
+  "storage_dtype": "float16",
+  "capacity_bytes_per_shard": 5368709120,
+  "bandwidth_bytes_per_s": 34225520640.0,
+  "latency_s": 0,
+  "occupies_gpu": true,
+  "evidence": "instrumented 512-token serial post-KV host interval; sensitivity only",
+  "legacy_prefill_billing_extra_token": true,
+  "decode_dispatch_delay_s": 0.0,
+  "pull_wait_source_batch": false,
+  "consumer_first_token_host_s": 0.000875779
+}

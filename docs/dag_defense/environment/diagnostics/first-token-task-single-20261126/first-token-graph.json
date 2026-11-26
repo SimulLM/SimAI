@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "graph_id": "pd/0/first_token",
+  "context": {
+    "batch_id": "0",
+    "iteration_id": 0,
+    "replica_id": "1",
+    "stage_id": 0,
+    "request_ids": [
+      "0"
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "consumer.first_token",
+      "kind": "compute",
+      "placement": {
+        "device_ids": [
+          "gpu:1:0:0"
+        ],
+        "comm_group": "pd/0/first_token"
+      },
+      "demands": [
+        {
+          "resource_id": "gpu:1:0:0",
+          "amount": 1,
+          "unit": "permits"
+        }
+      ],
+      "cost": {
+        "duration_s": 0.000875779,
+        "source": "pd.consumer_first_token_host_interval",
+        "raw_value": 0.000875779,
+        "raw_unit": "s",
+        "conversion_to_s": 1,
+        "evidence": "instrumented 512-token serial post-KV host interval; sensitivity only",
+        "includes": [
+          "compute",
+          "cpu"
+        ],
+        "unknown_components": []
+      },
+      "metadata": {
+        "op": "consumer.first_token",
+        "request_id": "0",
+        "diagnostic_only": true,
+        "contains_cpu_gpu_wait": true
+      }
+    },
+    {
+      "task_id": "terminal",
+      "kind": "sync",
+      "placement": {
+        "device_ids": [],
+        "comm_group": null
+      },
+      "demands": [],
+      "cost": {
+        "duration_s": 0,
+        "source": "pd.first_token_join",
+        "raw_value": 0,
+        "raw_unit": "s",
+        "conversion_to_s": 1,
+        "evidence": "first-token task completed",
+        "includes": [
+          "sync"
+        ],
+        "unknown_components": []
+      },
+      "metadata": {}
+    }
+  ],
+  "edges": [
+    [
+      "consumer.first_token",
+      "terminal"
+    ]
+  ],
+  "terminal_task_id": "terminal"
+}

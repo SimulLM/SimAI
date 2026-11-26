@@ -22,6 +22,8 @@ class PDActionEvent(BaseEvent):
         self.coordinator.now = self.time
         if self.operation == "commit":
             return self.coordinator.receive(self.request_id, self.time)
+        if self.operation == "first_token_done":
+            return self.coordinator.first_token_done(self.request_id, self.time)
         if self.operation == "retry":
             return self.coordinator.retry(self.time)
         if self.operation == "dispatch":
@@ -110,6 +112,8 @@ class PDCoordinator:
                 continue
             rid = str(request.id)
             if is_prefill:
+                if self.config.consumer_first_token_host_s and self.migrations:
+                    raise RuntimeError("first-token diagnostic supports one request only")
                 if rid in self.migrations:
                     raise RuntimeError("chunked/restarted Prefill is not supported by DAG PD")
                 layout = self.layouts[rs.replica_id]
@@ -334,6 +338,47 @@ class PDCoordinator:
         request.pd_p2p_comm_bandwidth = self.config.bandwidth_bytes_per_s
         request.pd_p2p_comm_time = now - m.prefill_completed_at_s
         self.tx.record(now, "kv_ready", rid)
+        if self.config.consumer_first_token_host_s:
+            return self._submit_first_token(m, now)
+        return self._release_pull_batch(m, now)
+
+    def _submit_first_token(self, m, now):
+        # Diagnostic only: measured host interval is modeled as one non-overlapping
+        # destination-GPU task. It includes host and device work; do not add CUDA
+        # sampler/logits intervals again. It is not a calibrated production fee.
+        gid = f"pd/{m.request_id}/first_token"
+        destination = self.layouts[m.destination].shards(m.destination)[0]
+        m.state = "FIRST_TOKEN_RUNNING"
+        cost = self.config.consumer_first_token_host_s
+        task = TaskSpec("consumer.first_token", "compute", Placement((destination,), gid),
+            (ResourceDemand(destination, 1, "permits"),),
+            CostEstimate(cost, "pd.consumer_first_token_host_interval", cost, "s", 1,
+                self.config.evidence, ("compute", "cpu")),
+            {"op": "consumer.first_token", "request_id": m.request_id,
+             "diagnostic_only": True, "contains_cpu_gpu_wait": True})
+        terminal = TaskSpec("terminal", "sync", Placement(), (),
+            CostEstimate(0, "pd.first_token_join", 0, "s", 1, "first-token task completed", ("sync",)))
+        graph = GraphFragment("1.0", gid, GraphContext(m.request_id, 0, str(m.destination), 0, (m.request_id,)),
+            (task, terminal), (("consumer.first_token", "terminal"),), "terminal")
+        def completed(graph_id, time):
+            self.adapter._outbox.append(PDActionEvent(self, time, "first_token_done", m.request_id))
+            return ()
+        event = PDActionEvent(self, now, "first_token_done", m.request_id)
+        self.adapter.graph_anchors[gid] = event.id
+        self.tx.record(now, "consumer_first_token_submit", m.request_id)
+        handle = self.adapter.executor.submit(graph, now, completed)
+        return self.adapter._wrap(handle.initial_events)
+
+    def first_token_done(self, rid, now):
+        m = self.migrations[rid]
+        if m.state != "FIRST_TOKEN_RUNNING":
+            raise RuntimeError("unexpected first-token completion")
+        m.state = "KV_READY"
+        self.tx.record(now, "consumer_first_token_complete", rid)
+        return self._release_pull_batch(m, now)
+
+    def _release_pull_batch(self, m, now):
+        destination = self.scheduler.get_replica_scheduler(m.destination)
         if self.config.transfer_start_mode == "decode_pull_candidate":
             group = self.pull_groups[m.destination]
             next_rid = next((item for item in group if self.migrations[item].state == "PULL_QUEUED"), None)

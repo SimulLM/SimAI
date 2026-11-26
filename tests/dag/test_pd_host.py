@@ -366,3 +366,26 @@ def test_candidate_pull_waits_for_already_running_source_batch():
     assert m.kv_ready_at_s == 5 and pd.ready(req, 5)
     pd.abort(5, 'cleanup')
     assert all(x['used'] == 0 for x in pd.manager.usage_snapshot().values())
+
+
+def test_first_token_diagnostic_gates_decode_and_rejects_second_request():
+    from dataclasses import replace
+    pd, host, rs = setup(capacity=128)
+    pd.config = replace(pd.config, transfer_start_mode='decode_pull_candidate',
+                        consumer_first_token_host_s=0.5)
+    req = prefill(pd, rs)
+    with pytest.raises(RuntimeError, match='one request only'):
+        prefill(pd, rs)
+    rs[1]._num_running_batches = 0
+    events = pd.retry(1)
+    assert pd.next_batch(rs[1]) is None
+    drain_transfer(events)
+    m = pd.migrations[str(req.id)]
+    assert m.kv_ready_at_s == 3
+    graph = host.executor.graph_snapshot(f'pd/{req.id}/first_token')
+    assert graph.state == 'COMPLETED'
+    task = graph.tasks['consumer.first_token']
+    assert task.start_at == 3 and task.end_at == 3.5
+    pd.now = 3.5
+    assert pd.next_batch(rs[1]).requests == [req]
+    pd.abort(3.5, 'cleanup')

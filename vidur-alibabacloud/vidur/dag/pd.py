@@ -16,6 +16,7 @@ class PDConfig:
     transfer_start_mode: str = "push"
     decode_dispatch_delay_s: float = 0.0
     pull_wait_source_batch: bool = False
+    consumer_first_token_host_s: float = 0.0
 
     @classmethod
     def from_dict(cls, data):
@@ -34,6 +35,8 @@ class PDConfig:
             expected = fields | {"legacy_prefill_billing_extra_token", "transfer_start_mode", "decode_dispatch_delay_s"}
         elif version == "1.4":
             expected = fields | {"legacy_prefill_billing_extra_token", "transfer_start_mode", "decode_dispatch_delay_s", "pull_wait_source_batch"}
+        elif version == "1.5":
+            expected = fields | {"legacy_prefill_billing_extra_token", "transfer_start_mode", "decode_dispatch_delay_s", "pull_wait_source_batch", "consumer_first_token_host_s"}
         else:
             raise ValueError("unsupported PD configuration version")
         if set(data) != expected:
@@ -50,6 +53,9 @@ class PDConfig:
         wait_source = data.get("pull_wait_source_batch", False)
         if type(wait_source) is not bool or (wait_source and transfer_mode != "decode_pull_candidate"):
             raise ValueError("source batch wait requires candidate pull mode and boolean value")
+        first_token = finite_nonnegative(data.get("consumer_first_token_host_s", 0.0))
+        if first_token and transfer_mode != "decode_pull_candidate":
+            raise ValueError("first-token diagnostic requires candidate pull mode")
         if data["storage_dtype"] not in DTYPES:
             raise ValueError("unsupported storage dtype; wire dtype must equal storage dtype")
         capacity = positive_int(data["capacity_bytes_per_shard"], "capacity_bytes_per_shard")
@@ -62,7 +68,7 @@ class PDConfig:
         if extra_token and latency != 0:
             raise ValueError("legacy fee parity requires zero fixed latency")
         return cls(data["storage_dtype"], capacity, bandwidth, latency,
-                   data["occupies_gpu"], data["evidence"], extra_token, transfer_mode, dispatch_delay, wait_source)
+                   data["occupies_gpu"], data["evidence"], extra_token, transfer_mode, dispatch_delay, wait_source, first_token)
 
     @classmethod
     def load(cls, path):

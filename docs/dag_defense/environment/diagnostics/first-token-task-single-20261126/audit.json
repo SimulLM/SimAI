@@ -1,0 +1,18 @@
+{
+  "status": "single_request_mechanism_sensitivity_pass",
+  "candidate_cost_s": 0.000875779,
+  "kv_ready_s": 0.03125546923365414,
+  "first_token_start_s": 0.03125546923365414,
+  "first_token_end_s": 0.03213124823365414,
+  "later_decode_start_s": 0.03213124823365414,
+  "later_decode_batches": 63,
+  "old_e2e_s": 1.0525376307540713,
+  "new_e2e_s": 1.0534134097540713,
+  "delta_s": 0.000875779000000021,
+  "limitations": [
+    "DAG candidate only; adapted or pristine baseline has not been given this stage",
+    "Serial-only host interval with inserted device synchronization; not a frozen physical fee",
+    "Concurrency and CPU/GPU resource overlap are not modeled by this single-request diagnostic",
+    "No validation data or request E2E was used to set fee"
+  ]
+}
