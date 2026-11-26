@@ -1,0 +1,36 @@
+{
+  "status": "paused_by_user",
+  "paused_utc": "2026-11-26T16:22:03Z",
+  "reason": "User requested shutdown and restart without GPU",
+  "processes_stopped": [
+    {
+      "pid": 25640,
+      "ppid": 1,
+      "pgid": 25640,
+      "command": "/root/autodl-tmp/venvs/vllm-0.8.5/bin/python -u /root/autodl-tmp/dag-handoff/resume-frozen-replays-20261126.py"
+    },
+    {
+      "pid": 28335,
+      "ppid": 25640,
+      "pgid": 25640,
+      "command": "/root/autodl-tmp/venvs/vllm-0.8.5/bin/python /root/autodl-tmp/SimAI-handoff/scripts/dag_defense/replay_composite_fees.py --actual /root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-07-in2048-wave1-rep1 --fees /root/autodl-tmp/dag-handoff/runs/composite-fees-20261126-01/fees-synchronized.json --output /root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-07-in2048-wave1-rep1/predictions"
+    }
+  ],
+  "freeze_sha256": "0641087e94dec29ba93172d74454e1f5a90c71fc2ed6f5fce278a7741c7b2313",
+  "completed": [
+    "validation-00-in1024-wave1-rep4",
+    "validation-01-in1024-wave1-rep0",
+    "validation-02-in2048-wave1-rep3",
+    "validation-03-in2048-wave4-rep2",
+    "validation-04-in2048-wave4-rep4",
+    "validation-05-in2048-wave1-rep2",
+    "validation-06-in1024-wave2-rep0"
+  ],
+  "interrupted": [
+    "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-07-in2048-wave1-rep1/predictions"
+  ],
+  "original_data": "30 rounds /960 requests collected, unchanged",
+  "restart_policy": "Do not overwrite partial predictions; preserve interrupted directory and retry only unfinished rounds in new attempt directories after freeze hash verification.",
+  "remaining_live_pids": [],
+  "safe_to_shutdown": true
+}
