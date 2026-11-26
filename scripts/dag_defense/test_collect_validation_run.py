@@ -43,14 +43,18 @@ async def main():
    recovered_client=root/'recover-client.jsonl';rc=[json.loads(x) for x in (root/'timeout/client-events.jsonl').read_text().splitlines()];timed=next(x for x in rc if x['status']=='timeout');assert not timed.get('router_id');recovered_client.write_text(''.join(json.dumps(x)+'\n' for x in rc));recovered=reconcile(inputs,recovered_client,router,root/'recovered');resultrows=[json.loads(x) for x in (root/'recovered/requests.jsonl').read_text().splitlines()];row=next(x for x in resultrows if x['request_id']==timed['request_id']);assert row['router_id_recovered_from_client_id'] and row['router_id']=='fixture-'+timed['request_id'] and row['server_events'] and row['status']=='timeout' and recovered['status']=='incomplete'
    inputfile=root/'verified-input.jsonl';checked=[]
    for i in range(32):
-    ids=list(range(1023))+[2000+i];digest=hashlib.sha256((json.dumps(ids,separators=(',',':'))+'\n').encode()).hexdigest();checked.append({'request_id':str(i),'run_id':'checked','input_id':str(i),'input_ids':ids,'input_sha256':digest,'wave':i//2,'index_in_wave':i%2})
+    ids=[1]+[4]*1022+[2000+i];digest=hashlib.sha256((json.dumps(ids,separators=(',',':'))+'\n').encode()).hexdigest();checked.append({'request_id':str(i),'run_id':'checked','input_id':str(i),'input_ids':ids,'input_sha256':digest,'wave':i//2,'index_in_wave':i%2})
    inputfile.write_text(''.join(json.dumps(x)+'\n' for x in checked));manifest=root/'manifest.json'
    others=[]
    for length in (1024,2048):
     for concurrency in (1,2,4):
      for rep in range(5):
       if (length,concurrency,rep)==(1024,2,0):continue
-      path=root/f'other-{length}-{concurrency}-{rep}.jsonl';path.write_text('fixture')
+      path=root/f'other-{length}-{concurrency}-{rep}.jsonl';other_rows=[]
+      for i in range(32):
+       tokens=[1]+[4]*(length-2)+[3000+len(others)*32+i];digest=hashlib.sha256((json.dumps(tokens,separators=(',',':'))+'\n').encode()).hexdigest()
+       other_rows.append({'run_id':path.stem,'request_id':path.stem+str(i),'input_id':path.stem+'i'+str(i),'wave':i//concurrency,'index_in_wave':i%concurrency,'input_ids':tokens,'input_sha256':digest})
+      path.write_text(''.join(json.dumps(x)+'\n' for x in other_rows))
       others.append({'run_id':path.stem,'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'requests':32,'input_tokens':length,'output_tokens':128,'concurrency':concurrency,'repeat':rep})
    def matrix(primary):return {'runs':[primary,*others]}
    good_spec={'run_id':'checked','path':inputfile.name,'sha256':hashlib.sha256(inputfile.read_bytes()).hexdigest(),'requests':32,'input_tokens':1024,'output_tokens':128,'concurrency':2,'repeat':0}
