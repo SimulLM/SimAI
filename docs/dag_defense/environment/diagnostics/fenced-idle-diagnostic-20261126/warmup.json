@@ -1,0 +1,58 @@
+[
+  {
+    "index": 0,
+    "send_ns": 1845760739176434,
+    "done": true,
+    "status": 200,
+    "router_id": "b626f59b2c174cec938764bd3b7f8d2a",
+    "backend_id": "cmpl-f939f54544f24d48afe4268180954942",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "complete_ns": 1845761045116335
+  },
+  {
+    "index": 1,
+    "send_ns": 1845760739646324,
+    "done": true,
+    "status": 200,
+    "router_id": "4877b6c9641d4ea484bc1c7ba7a06f7d",
+    "backend_id": "cmpl-bb38cdca2e2a4441920659c4d515ca56",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "complete_ns": 1845761045494925
+  },
+  {
+    "index": 2,
+    "send_ns": 1845760739871429,
+    "done": true,
+    "status": 200,
+    "router_id": "5e7f2608e847402eb6f121a74fc42eb8",
+    "backend_id": "cmpl-969682fd36884b5ab6bc43ddc1308550",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "complete_ns": 1845761045692021
+  },
+  {
+    "index": 3,
+    "send_ns": 1845760740043907,
+    "done": true,
+    "status": 200,
+    "router_id": "b7120988e80c49f48d6cc83cd1b0638c",
+    "backend_id": "cmpl-f38ac948c0c946eeb67dd17e04048351",
+    "usage": {
+      "prompt_tokens": 512,
+      "total_tokens": 520,
+      "completion_tokens": 8
+    },
+    "complete_ns": 1845761046027498
+  }
+]
