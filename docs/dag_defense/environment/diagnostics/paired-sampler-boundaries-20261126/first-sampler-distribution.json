@@ -1,0 +1,9 @@
+{
+  "n": 30,
+  "min_ms": 5.738935,
+  "median_ms": 7.166003999999999,
+  "p95_nearest_rank_ms": 7.206752,
+  "max_ms": 7.212795,
+  "selected_request_ms": 7.173512,
+  "source": "pd-accounting-20261126 instrumented consumer steps, not post-KV exclusive interval"
+}

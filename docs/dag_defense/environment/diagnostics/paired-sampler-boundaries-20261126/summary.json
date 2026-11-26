@@ -1,0 +1,35 @@
+{
+  "request_id": "cmpl-82c506aba0bd4f12a189fc265fff4095-0",
+  "wave": 10,
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "finish_reason": "length",
+  "first": {
+    "step": 0,
+    "phase": "kv_bypass",
+    "context": 512,
+    "host_start_ns": 1809964167702204,
+    "logits_host_start_ns": 1809964171673831,
+    "logits_host_end_ns": 1809964171840601,
+    "sampler_host_start_ns": 1809964171848500,
+    "sampler_host_end_ns": 1809964179022012,
+    "host_after_sync_ns": 1809964179064113,
+    "full_forward_gpu_ms": null,
+    "logits_gpu_ms": 0.15539200603961945,
+    "sampler_gpu_ms": 0.24611200392246246,
+    "sampler_host_ms": 7.173512
+  },
+  "decode_steps": 63,
+  "decode_median_ms": {
+    "full_forward_gpu_ms": 12.858976364135742,
+    "logits_gpu_ms": 0.14659200608730316,
+    "sampler_gpu_ms": 0.2972800135612488,
+    "sampler_host_ms": 0.427242
+  },
+  "limitations": [
+    "One instrumented serial request, steps are correlated.",
+    "GPU event elapsed intervals can include device idle gaps; hooks and synchronization perturb execution.",
+    "Host sampler call may overlap queued device work; GPU sampler is not added to host sampler.",
+    "No timing is fitted to E2E; no uninstrumented router tail or cost freeze is established."
+  ]
+}
