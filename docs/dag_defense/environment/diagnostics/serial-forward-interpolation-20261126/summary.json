@@ -1,0 +1,23 @@
+{
+  "status": "single_request_forward_only_sensitivity",
+  "anchor_ms": {
+    "512": 13.360992431640625,
+    "575": 13.24892807006836
+  },
+  "old_mae_ms": 1.3079381053199648,
+  "candidate_mae_ms": 0.7005534096369668,
+  "old_signed_error_median_ms": 1.3198191258642424,
+  "candidate_signed_error_median_ms": -0.5531182516188853,
+  "iterations": 63,
+  "source_sha256": {
+    "docs/dag_defense/environment/diagnostics/pd-eager-profile-20261126/candidate/forward-cost.csv": "eff42e531a3917771c19c6c0829d9f3ab208b3bbdf751213c536981026913e15",
+    "docs/dag_defense/environment/diagnostics/single-forward-layer-compare-20261126/iterations.csv": "6ad4b2d51500988a70eafa3a9af115640dabe82831ce1654d6473761d99f555a"
+  },
+  "limitations": [
+    "One evaluation request with 63 correlated steps; not independent holdout sessions",
+    "Measurement hooks and synchronization perturb GPU forward timings",
+    "Full-forward versus layer-sum boundaries differ; candidate replaces layer sum and must never be added to it",
+    "Anchors belong to different profiling requests and contain only approximate context semantics; no extrapolation",
+    "Only serial batch 1 512/64 diagnostic, not a full simulator run, formal validation, frozen fee or E2E accuracy"
+  ]
+}

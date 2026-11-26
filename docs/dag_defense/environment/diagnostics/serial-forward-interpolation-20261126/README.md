@@ -1,0 +1,5 @@
+# Serial full-forward interpolation sensitivity
+
+Independent eager profiling gives batch-1 Decode full-forward medians at 512 and 575-token profile inputs with at least 10 warmup and 30 measured waves per endpoint. Linear interpolation between those endpoints was compared against the 63 GPU forward events from the separately instrumented same-input 512/64 request. The old candidate layer sum has mean absolute difference 1.30794 ms, and this whole-forward interpolation has mean absolute difference 0.70055 ms. Signed median differences are +1.31982 and -0.55312 ms respectively. Every step and source hash is retained.
+
+This is one evaluation request with 63 correlated steps, not independent run-level validation. The endpoint profiles use different requests, their context semantics are approximate, and synchronized profiling alters timing. Whole-forward and layer-sum scopes differ; the whole-forward figure would replace layer computation, not be added to it. This analysis does not implement a common predictor, establish concurrent coverage, use validation completion times or show E2E improvement. No fee is frozen.

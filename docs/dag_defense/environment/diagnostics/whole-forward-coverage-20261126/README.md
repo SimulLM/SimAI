@@ -1,0 +1,5 @@
+# Whole-forward profile coverage inventory
+
+This inventory combines the independent eager full-forward shape table with the independently sampled rounded-context table, without filling missing points. Six 1024/2048 Prefill batch shapes are covered and two larger Prefill batches exceed the 4096-token cap. Decode inventory records 50 observed context/bin/batch-type cells and 62 unobserved cells; 16 mixed cells for batch 1 are not applicable. The inventory is deliberately conservative: unobserved cells are not necessarily reached by the chosen workload, and mixed/uniform groups cannot be silently pooled. No synthetic extrapolation was performed.
+
+The simulator currently decomposes each forward into layer tasks; a full-forward interval would have to replace that computation rather than be added. These measurements exclude KV, logits, sampling, CPU and routing, include instrumentation/possible stream gaps, and lack an independently validated 512-token context-bin table and complete concurrent coverage. This inventory is not a frozen simulator fee or formal validation.
