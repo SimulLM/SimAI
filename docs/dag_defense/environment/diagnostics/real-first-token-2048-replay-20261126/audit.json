@@ -1,0 +1,84 @@
+{
+  "original": {
+    "batches": 21,
+    "decode_batches": 18,
+    "early_memberships": [
+      {
+        "request_id": 1,
+        "early_ms": 29.99190923605677
+      },
+      {
+        "request_id": 2,
+        "early_ms": 29.99190923605677
+      },
+      {
+        "request_id": 1,
+        "early_ms": 11.121203501285205
+      },
+      {
+        "request_id": 2,
+        "early_ms": 11.121203501285205
+      },
+      {
+        "request_id": 3,
+        "early_ms": 24.87763366918899
+      },
+      {
+        "request_id": 3,
+        "early_ms": 6.006927934417428
+      }
+    ]
+  },
+  "dag": {
+    "batches": 22,
+    "decode_batches": 19,
+    "early_memberships": []
+  },
+  "real_first_token_groups": [
+    [
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3
+    ]
+  ],
+  "dag_first_token_groups": [
+    [
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3
+    ]
+  ],
+  "paired_first_token_groups": 3,
+  "real_first_token_group_count": 3,
+  "dag_first_token_group_count": 3,
+  "paired_compute_batches": 20,
+  "max_paired_compute_cost_diff_s": 5.551115123125783e-17,
+  "first_decode_membership_difference": {
+    "index": 6,
+    "original_ids": [
+      0,
+      1,
+      2
+    ],
+    "dag_ids": [
+      0
+    ]
+  },
+  "limitations": [
+    "one 8-output instrumented wave, not validation or holdout",
+    "original lacks consumer first-token task; no full same-fee comparison",
+    "same capture contributed fee medians",
+    "arrival replay does not make simulated transfer model physical",
+    "paired compute cost excludes first-token and resource waits"
+  ]
+}

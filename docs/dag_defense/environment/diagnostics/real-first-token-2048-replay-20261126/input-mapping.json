@@ -1,0 +1,30 @@
+{
+  "source": "instrumented nonstream profiling, same capture as fee samples, not independent holdout",
+  "mapping": [
+    {
+      "sim_id": 0,
+      "router_id": "337c61f1383242569d9612afda5909bd",
+      "backend_id": "cmpl-4bdc26ae2474444c80957323ddabac4a",
+      "arrival_ns": 1811202747263222
+    },
+    {
+      "sim_id": 1,
+      "router_id": "3c20ad0dfb8d4dc8ac88c94d0413ab93",
+      "backend_id": "cmpl-db6372306b604f07a6f81ff9c02ee208",
+      "arrival_ns": 1811202748595926
+    },
+    {
+      "sim_id": 2,
+      "router_id": "6031f4b8c10f4df69e78b7a4c39a1cb9",
+      "backend_id": "cmpl-fdde897593e74faca4369549dea38e34",
+      "arrival_ns": 1811202749186373
+    },
+    {
+      "sim_id": 3,
+      "router_id": "80d3cdf8d305481e85053de8a9fdc0e1",
+      "backend_id": "cmpl-fb2de82e1f834188af85ae97e1beb4f4",
+      "arrival_ns": 1811202749647883
+    }
+  ],
+  "fees_source_sha256": "5617cd846e3e51c7262986442624a65ae78021c9327007577d7f5e1d40f0080d"
+}
