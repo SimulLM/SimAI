@@ -1,0 +1,29 @@
+{
+  "status": "serial_synchronized_transport_diagnostic",
+  "router_id": "d3c1252318944a8490148bfbab050b32",
+  "producer_worker_id": "cmpl-6bb1159300c340c89d38f0107c745ad2-0",
+  "consumer_worker_id": "cmpl-f98f061c25144b21aa0ba24540c7336d-0",
+  "producer_tensor_bytes": [
+    4096,
+    2048,
+    134217728,
+    134217728,
+    4194304
+  ],
+  "total_producer_tensor_bytes": 272635904,
+  "kv_install_calls": 32,
+  "first_producer_send_host_s": 0.038628117,
+  "last_producer_send_sync_s": 0.046992371,
+  "last_consumer_recv_sync_s": 0.047039595,
+  "last_install_api_start_s": 0.04848896,
+  "install_sync_complete_s": 0.048825443,
+  "server_first_token_s": 0.051069751,
+  "server_e2e_s": 0.896903151,
+  "limitations": [
+    "One serial request: background transport operations are associated by exclusive time window, not carried request ID",
+    "Each tensor uses explicit device-wide synchronization; time and overlap differ from noninstrumented service",
+    "API start and sync end bound operations but are not exact GPU start or completion timestamps",
+    "Bytes exclude control messages, metadata and transport framing",
+    "This is diagnostic, not production E2E, freeze or validation"
+  ]
+}
