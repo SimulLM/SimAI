@@ -1,0 +1,5 @@
+# 512-token batch-two post-KV first-step diagnostic
+
+Real dual-H800 1P1D synchronized diagnostic deliberately holds two Prefill responses before simultaneous Decode submissions. All 84 requests complete at 512 input and eight output; actual batch 2 occurred for all 12 warmup and 30 measured waves. The inclusive post-KV-sync-to-step-return host interval median is 0.833501 ms, p95 0.987034 ms, range 0.639005–1.468822 ms. Request-to-step mapping and all observations are retained in steps.jsonl and the hashed raw archive.
+
+This held routing is not natural scheduling. Per-tensor device synchronization and hooks perturb timing; the interval includes logits, sampling and final sync and their subintervals must not be added again. It uses one service session and eight outputs, not the 64-output calibration or 128-output validation workload; its use as exclusive GPU duration remains a modeling approximation. It is a candidate, not a frozen fee. Both GPUs released after exit 0. No validation occurred.

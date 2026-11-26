@@ -1,0 +1,200 @@
+{
+  "cases": {
+    "serial-0": {
+      "pristine": {
+        "exit_code": 0,
+        "requests": 32,
+        "batches": 1859,
+        "early_memberships": 7,
+        "early_examples": [
+          {
+            "request_id": 1,
+            "batch_id": 53,
+            "early_ms": 7.067970460141071
+          },
+          {
+            "request_id": 6,
+            "batch_id": 309,
+            "early_ms": 6.365961767672346
+          },
+          {
+            "request_id": 7,
+            "batch_id": 360,
+            "early_ms": 7.675611560547857
+          },
+          {
+            "request_id": 9,
+            "batch_id": 462,
+            "early_ms": 2.3629338083610563
+          },
+          {
+            "request_id": 12,
+            "batch_id": 614,
+            "early_ms": 4.734643384164627
+          },
+          {
+            "request_id": 14,
+            "batch_id": 715,
+            "early_ms": 7.449804613042232
+          },
+          {
+            "request_id": 21,
+            "batch_id": 1159,
+            "early_ms": 3.6641167479523062
+          }
+        ],
+        "decode_steps_per_request": 63
+      },
+      "dynamic": {
+        "exit_code": 0,
+        "requests": 32,
+        "batches": 1860,
+        "early_memberships": 0,
+        "early_examples": [],
+        "decode_steps_per_request": 63,
+        "first_token_groups": {
+          "1": 32
+        },
+        "first_token_task_count": 32
+      },
+      "dag": {
+        "exit_code": 0,
+        "requests": 32,
+        "batches": 1851,
+        "early_memberships": 0,
+        "early_examples": [],
+        "decode_steps_per_request": 63,
+        "first_token_groups": {
+          "1": 32
+        },
+        "first_token_task_count": 32
+      },
+      "pristine_vs_dag": {
+        "paired_batches": 1754,
+        "other_batches": 1859,
+        "dag_batches": 1851,
+        "max_paired_fee_difference_s": 1.734723475976807e-17,
+        "first_decode_difference": {
+          "position": 101,
+          "other": "(1, (1,), ((1, 50),), ((1, 1),))",
+          "dag": "(1, (1, 2), ((1, 50), (2, 0)), ((1, 1), (2, 1)))"
+        }
+      },
+      "dynamic_vs_dag": {
+        "paired_batches": 1750,
+        "other_batches": 1860,
+        "dag_batches": 1851,
+        "max_paired_fee_difference_s": 1.734723475976807e-17,
+        "first_decode_difference": {
+          "position": 51,
+          "other": "(1, (0,), ((0, 51),), ((0, 1),))",
+          "dag": "(1, (0, 1), ((0, 51), (1, 0)), ((0, 1), (1, 1)))"
+        }
+      }
+    },
+    "concurrent-0": {
+      "pristine": {
+        "exit_code": 0,
+        "requests": 32,
+        "batches": 1025,
+        "early_memberships": 16,
+        "early_examples": [
+          {
+            "request_id": 1,
+            "batch_id": 3,
+            "early_ms": 6.339958523305454
+          },
+          {
+            "request_id": 3,
+            "batch_id": 69,
+            "early_ms": 6.339958523305489
+          },
+          {
+            "request_id": 5,
+            "batch_id": 135,
+            "early_ms": 6.339958523305267
+          },
+          {
+            "request_id": 7,
+            "batch_id": 201,
+            "early_ms": 6.339958523305711
+          },
+          {
+            "request_id": 8,
+            "batch_id": 265,
+            "early_ms": 3.693638042695291
+          },
+          {
+            "request_id": 11,
+            "batch_id": 333,
+            "early_ms": 5.6111944306618255
+          },
+          {
+            "request_id": 13,
+            "batch_id": 399,
+            "early_ms": 6.339958523305711
+          },
+          {
+            "request_id": 15,
+            "batch_id": 465,
+            "early_ms": 6.339958523305711
+          }
+        ],
+        "decode_steps_per_request": 63
+      },
+      "dynamic": {
+        "exit_code": 0,
+        "requests": 32,
+        "batches": 1033,
+        "early_memberships": 0,
+        "early_examples": [],
+        "decode_steps_per_request": 63,
+        "first_token_groups": {
+          "1": 32
+        },
+        "first_token_task_count": 32
+      },
+      "dag": {
+        "exit_code": 0,
+        "requests": 32,
+        "batches": 1027,
+        "early_memberships": 0,
+        "early_examples": [],
+        "decode_steps_per_request": 63,
+        "first_token_groups": {
+          "1": 32
+        },
+        "first_token_task_count": 32
+      },
+      "pristine_vs_dag": {
+        "paired_batches": 107,
+        "other_batches": 1025,
+        "dag_batches": 1027,
+        "max_paired_fee_difference_s": 1.734723475976807e-17,
+        "first_decode_difference": {
+          "position": 1,
+          "other": "(1, (0, 1), ((0, 1), (1, 0)), ((0, 1), (1, 1)))",
+          "dag": "(1, (0,), ((0, 1),), ((0, 1),))"
+        }
+      },
+      "dynamic_vs_dag": {
+        "paired_batches": 986,
+        "other_batches": 1033,
+        "dag_batches": 1027,
+        "max_paired_fee_difference_s": 1.734723475976807e-17,
+        "first_decode_difference": {
+          "position": 258,
+          "other": "(1, (7,), ((7, 61),), ((7, 1),))",
+          "dag": "(1, (7, 8), ((7, 61), (8, 0)), ((7, 1), (8, 1)))"
+        }
+      }
+    }
+  },
+  "scope": "real calibration router arrivals; diagnostic modified baseline and DAG; not formal validation",
+  "limitations": [
+    "pristine lacks consumer first-token task",
+    "8-output synchronized first-token fees applied to 64-output replay",
+    "no proof of GPU occupancy or real connector overlap",
+    "natural schedule comparison is calibration only"
+  ]
+}
