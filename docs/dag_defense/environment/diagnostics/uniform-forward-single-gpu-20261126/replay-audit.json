@@ -1,0 +1,14 @@
+{
+  "1024_four": {
+    "baseline_batches": 128,
+    "dag_batches": 128,
+    "matched_forward_batches": 128,
+    "dag_graphs_with_one_forward_no_layers": 128
+  },
+  "2048_four": {
+    "status": "failed_missing_uniform_batch2_bin2064",
+    "baseline_exit": 1,
+    "dag_exit": 1
+  },
+  "scope": "synthetic trace, adapted baseline, candidate costs; no formal validation"
+}
