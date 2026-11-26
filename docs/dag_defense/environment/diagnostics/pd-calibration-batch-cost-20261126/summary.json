@@ -1,0 +1,169 @@
+{
+  "status": "matched_batch_diagnostic",
+  "cases": [
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 1010,
+          "baseline": 1004,
+          "matched": 135
+        }
+      },
+      "case": "concurrent-0",
+      "dag_batches": 1042,
+      "baseline_batches": 1036,
+      "matched_keys": 167,
+      "compared": 167,
+      "dag_only": 875,
+      "baseline_only": 869,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.3877787807814457e-17,
+      "within_1ns": 167,
+      "over_1ns": 0
+    },
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 878,
+          "baseline": 888,
+          "matched": 168
+        }
+      },
+      "case": "concurrent-1",
+      "dag_batches": 910,
+      "baseline_batches": 920,
+      "matched_keys": 200,
+      "compared": 200,
+      "dag_only": 710,
+      "baseline_only": 720,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.3877787807814457e-17,
+      "within_1ns": 200,
+      "over_1ns": 0
+    },
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 1037,
+          "baseline": 1024,
+          "matched": 90
+        }
+      },
+      "case": "concurrent-2",
+      "dag_batches": 1069,
+      "baseline_batches": 1056,
+      "matched_keys": 122,
+      "compared": 122,
+      "dag_only": 947,
+      "baseline_only": 934,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.3877787807814457e-17,
+      "within_1ns": 122,
+      "over_1ns": 0
+    },
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 1860,
+          "baseline": 1866,
+          "matched": 1791
+        }
+      },
+      "case": "serial-0",
+      "dag_batches": 1892,
+      "baseline_batches": 1898,
+      "matched_keys": 1823,
+      "compared": 1823,
+      "dag_only": 69,
+      "baseline_only": 75,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.3877787807814457e-17,
+      "within_1ns": 1823,
+      "over_1ns": 0
+    },
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 1765,
+          "baseline": 1780,
+          "matched": 1654
+        }
+      },
+      "case": "serial-1",
+      "dag_batches": 1797,
+      "baseline_batches": 1812,
+      "matched_keys": 1686,
+      "compared": 1686,
+      "dag_only": 111,
+      "baseline_only": 126,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.3877787807814457e-17,
+      "within_1ns": 1686,
+      "over_1ns": 0
+    },
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 1824,
+          "baseline": 1830,
+          "matched": 1764
+        }
+      },
+      "case": "serial-2",
+      "dag_batches": 1856,
+      "baseline_batches": 1862,
+      "matched_keys": 1796,
+      "compared": 1796,
+      "dag_only": 60,
+      "baseline_only": 66,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.3877787807814457e-17,
+      "within_1ns": 1796,
+      "over_1ns": 0
+    }
+  ],
+  "limitations": [
+    "Same request IDs, replica, per-request prior decode count and batch token counts are required to match",
+    "Compare summed DAG task costs against baseline batch duration, excluding DAG resource wait; not separate operator validation",
+    "Trace timestamps can tie; duplicate history keys are explicitly reported",
+    "Unmatched batches cannot establish equal costs",
+    "Calibration actual arrivals; no validation or accuracy claim",
+    "Adapted baseline is not pristine original"
+  ]
+}
