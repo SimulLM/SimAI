@@ -1,0 +1,52 @@
+diff --git a/vidur-alibabacloud/vidur/events/batch_end_event.py b/vidur-alibabacloud/vidur/events/batch_end_event.py
+index f60ced5..d7fe8c0 100644
+--- a/vidur-alibabacloud/vidur/events/batch_end_event.py
++++ b/vidur-alibabacloud/vidur/events/batch_end_event.py
+@@ -14,6 +14,25 @@ from vidur.entities.replica import ReplicaType
+ 
+ logger = init_logger(__name__)
+ 
++class DecodeReadyEnqueueEvent(BaseEvent):
++    """Diagnostic baseline: deliver a request at its modeled transfer finish."""
++    def __init__(self, time, replica_id, request):
++        super().__init__(time, EventType.REPLICA_SCHEDULE)
++        self.replica_id, self.request = replica_id, request
++
++    def handle_event(self, scheduler, metrics_store):
++        from vidur.events.replica_schedule_event import ReplicaScheduleEvent
++        if self.time < self.request.decode_arrived_at:
++            raise RuntimeError("premature decode enqueue")
++        rs = scheduler.get_replica_scheduler(self.replica_id)
++        if self.request in rs._request_queue:
++            raise RuntimeError("duplicate decode enqueue")
++        rs._request_queue.append(self.request)
++        return [ReplicaScheduleEvent(self.time, self.replica_id)]
++
++    def to_dict(self):
++        return {"time": self.time, "event_type": "decode_ready_enqueue", "request_id": self.request.id, "replica_id": self.replica_id}
++
+ 
+ # 一个micro-batch在pipeline上执行结束
+ # A micro-batch execution ends in the pipeline
+@@ -141,7 +160,7 @@ class BatchEndEvent(BaseEvent):
+                     
+                     # 生成D副本的调度事件
+                     # Generate D replica scheduling event
+-                    events.append(ReplicaScheduleEvent(request.decode_arrived_at, request.decode_replica_id))
++                    events.append(DecodeReadyEnqueueEvent(request.decode_arrived_at, request.decode_replica_id, request))
+                     
+                     logger.debug(f"pd d-path time={self._time} Generates ReplicaScheduleEvent from event {self._id} {self._event_type}, "
+                         f"decode_replica_id={request.decode_replica_id} len(events)={len(events)}")
+diff --git a/vidur-alibabacloud/vidur/scheduler/replica_scheduler/splitwise_replica_scheduler.py b/vidur-alibabacloud/vidur/scheduler/replica_scheduler/splitwise_replica_scheduler.py
+index 5219f68..02579c0 100644
+--- a/vidur-alibabacloud/vidur/scheduler/replica_scheduler/splitwise_replica_scheduler.py
++++ b/vidur-alibabacloud/vidur/scheduler/replica_scheduler/splitwise_replica_scheduler.py
+@@ -240,7 +240,7 @@ class SplitwiseReplicaScheduler(BaseReplicaScheduler):  # Define SplitwiseReplic
+                     
+                     d_replica_scheduler = request.global_scheduler.get_replica_scheduler(request.decode_replica_id)
+                     # d_replica_scheduler._preempted_requests.append(request)
+-                    d_replica_scheduler._request_queue.append(request)
++                    # Diagnostic: enqueue only at modeled KV-ready event.
+                 elif request.is_prefill_complete == False:
+                     self._preempted_requests.append(request)  
+         elif self.replica.replica_type == ReplicaType.DECODE:
