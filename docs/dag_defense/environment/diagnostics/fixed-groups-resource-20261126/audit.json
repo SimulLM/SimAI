@@ -1,0 +1,106 @@
+{
+  "predictor_sha256": "53b4f15d86385c9aad931223b1b58dc38beb3f385be049e27031ebf99146375d",
+  "first_decode_difference": null,
+  "status": "fixed_group_diagnostic_only",
+  "results": {
+    "fixed_baseline": {
+      "batch_count": 22,
+      "groups": [
+        {
+          "event": "submit",
+          "group": 0,
+          "request_ids": [
+            "0"
+          ],
+          "ready_s": 0.11444131107002163,
+          "time_s": 0.11444131107002163,
+          "cost_s": 0.0011103435
+        },
+        {
+          "event": "submit",
+          "group": 1,
+          "request_ids": [
+            "1",
+            "2"
+          ],
+          "ready_s": 0.24434214086454764,
+          "time_s": 0.24434214086454764,
+          "cost_s": 0.001115814
+        },
+        {
+          "event": "submit",
+          "group": 2,
+          "request_ids": [
+            "3"
+          ],
+          "ready_s": 0.3273955842875104,
+          "time_s": 0.3320792214333714,
+          "cost_s": 0.0011103435
+        }
+      ],
+      "subsequent_decode_count": {
+        "0": 7,
+        "1": 7,
+        "2": 7,
+        "3": 7
+      }
+    },
+    "dag": {
+      "batch_count": 22,
+      "groups": [
+        {
+          "event": "submit",
+          "request_ids": [
+            "0"
+          ],
+          "time_s": 0.1144413110700216,
+          "cost_s": 0.0011103435,
+          "key": "2048:1",
+          "graph_id": "pd/batch-first/0"
+        },
+        {
+          "event": "submit",
+          "request_ids": [
+            "1",
+            "2"
+          ],
+          "time_s": 0.3086782376260372,
+          "cost_s": 0.001115814,
+          "key": "2048:2",
+          "graph_id": "pd/batch-first/1,2"
+        },
+        {
+          "event": "submit",
+          "request_ids": [
+            "3"
+          ],
+          "time_s": 0.42780318584191723,
+          "cost_s": 0.0011103435,
+          "key": "2048:1",
+          "graph_id": "pd/batch-first/3"
+        }
+      ],
+      "subsequent_decode_count": {
+        "0": 7,
+        "1": 7,
+        "2": 7,
+        "3": 7
+      }
+    }
+  },
+  "matched_batches": 22,
+  "max_matched_cost_difference_s": 5.551115123125783e-17,
+  "first_positional_difference": {
+    "position": 8,
+    "baseline": "(0, (3,), ((3, 0),), ((3, 2048.0),))",
+    "dag": "(1, (0,), ((0, 6),), ((0, 1),))"
+  },
+  "limitations": [
+    "baseline modified, fixed groups chosen from instrumented real wave",
+    "not a natural-scheduling comparison or pristine baseline",
+    "baseline reserves decode scheduling slot but models whole batches, DAG resource details differ",
+    "profile includes selected wave and eight-output diagnostics",
+    "CPU/transfer overlap and response boundary not closed",
+    "not formal validation"
+  ]
+}

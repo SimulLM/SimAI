@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:02:59.475105+00:00",
+  "updated_utc": "2026-11-26T13:06:57.884152+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Fixed actual groups on one instrumented four-request wave pass same first-token fees and 22/22 batch cost parity, but baseline lacks equivalent GPU reservation, pristine baseline has no consumer-first-token stage, and transfer/CPU overlap is unresolved.",
-      "next_action": "Resolve or explicitly bound the divergent first-token resource occupation and transfer wait for a natural scheduling comparison with the pristine original retained separately.",
+      "missing": "Fixed real-wave group comparison now excludes modeled first-token/Decode slot overlap, with 22/22 paired batch fees; pristine still lacks first-token stage and transfer/resource scheduling plus physical CPU/GPU overlap are unresolved.",
+      "next_action": "Use the observed transfer and slot waits to determine the first remaining timing divergence on the fixed wave, then bound the resource approximation before natural scheduling comparison.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/fixed-groups-real-fee-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/fixed-groups-resource-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
