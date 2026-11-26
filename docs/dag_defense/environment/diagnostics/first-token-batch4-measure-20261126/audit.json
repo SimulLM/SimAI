@@ -1,0 +1,30 @@
+{
+  "status": "insufficient",
+  "requests": 160,
+  "steps": 41,
+  "batch_counts": {
+    "(True, 1)": 1,
+    "(True, 3)": 1,
+    "(True, 4)": 9,
+    "(False, 4)": 30
+  },
+  "batch4_warmup_waves": 9,
+  "batch4_measured_waves": 30,
+  "median_ms": 0.7420725,
+  "p95_ms": 1.045981,
+  "min_ms": 0.667726,
+  "max_ms": 2.331788,
+  "sources": {
+    "/root/autodl-tmp/dag-handoff/runs/first-token-batch4-measure-20261126/coverage/requests.jsonl": "502e46fba63d6cbff10c76c6bf9911a3801b499130214e5ccc666ca244feb55f",
+    "/root/autodl-tmp/dag-handoff/runs/first-token-batch4-measure-20261126/router-events.jsonl": "e509362de085ccbca2a837d3ac47abcf6d0dc9bd9a91f11f22eb6199e0b40ffb",
+    "/root/autodl-tmp/dag-handoff/runs/first-token-batch4-measure-20261126/compute-events-11743.jsonl": "50ff47c3f496d21b22593e6618d1e06becb325bdee227c02e820d97d351e9123",
+    "/root/autodl-tmp/dag-handoff/runs/first-token-batch4-measure-20261126/compute-events-11738.jsonl": "39566b996ed1a3f7ad8e37b5e1314ed2b5b0e12e41e1c9283d717b0b077395ae"
+  },
+  "limitations": [
+    "diagnostic holds decode until four prefill responses; not natural arrival scheduling",
+    "per-tensor synchronization perturbs measurement",
+    "one service session",
+    "8 output tokens, not 128",
+    "host interval contains logits sampler and final synchronization; no GPU exclusivity claim"
+  ]
+}

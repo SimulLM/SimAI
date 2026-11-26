@@ -1,0 +1,5 @@
+# First batch-four profile attempt: insufficient warmup
+
+A controlled real two-H800 1P1D diagnostic holds four Prefill responses before simultaneously submitting the corresponding Decode requests. 160 requests completed at 1024/8, but one warmup wave split into batches 1+3; actual batch 4 had only 9 warmup waves and 30 measured waves. The synchronized post-install-to-first-step-return median was 0.7420725 ms, p95 1.045981 ms. It fails the predeclared >=10 warmup requirement, so this sample is not the accepted candidate; all events and failure of coverage are preserved. See the separate repeat with 12 requested warmups.
+
+The gating changes natural timing, and hooks and per-tensor synchronization perturb host intervals. This is a cost profile, not formal validation; logits, sampling and final sync are contained in the interval, and must not be added again. It does not establish GPU-exclusive occupancy, production E2E timing or equivalence to 128-output behavior. Raw logs, commands and request IDs are in the shared hashed archive.
