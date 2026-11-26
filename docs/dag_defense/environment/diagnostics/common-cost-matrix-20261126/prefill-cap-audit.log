@@ -1,0 +1,116 @@
+{
+  "status": "pass",
+  "rows": [
+    {
+      "case": "1024-1",
+      "role": "dag",
+      "prefill_batch_tokens": [
+        1024
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "1024-1",
+      "role": "baseline",
+      "prefill_batch_tokens": [
+        1024.0
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "1024-2",
+      "role": "dag",
+      "prefill_batch_tokens": [
+        2048
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "1024-2",
+      "role": "baseline",
+      "prefill_batch_tokens": [
+        2048.0
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "1024-4",
+      "role": "dag",
+      "prefill_batch_tokens": [
+        4096
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "1024-4",
+      "role": "baseline",
+      "prefill_batch_tokens": [
+        4096.0
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "2048-1",
+      "role": "dag",
+      "prefill_batch_tokens": [
+        2048
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "2048-1",
+      "role": "baseline",
+      "prefill_batch_tokens": [
+        2048.0
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "2048-2",
+      "role": "dag",
+      "prefill_batch_tokens": [
+        4096
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "2048-2",
+      "role": "baseline",
+      "prefill_batch_tokens": [
+        4096.0
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "2048-4",
+      "role": "dag",
+      "prefill_batch_tokens": [
+        4096,
+        4096
+      ],
+      "limit": 4096,
+      "within_limit": true
+    },
+    {
+      "case": "2048-4",
+      "role": "baseline",
+      "prefill_batch_tokens": [
+        4096.0,
+        4096.0
+      ],
+      "limit": 4096,
+      "within_limit": true
+    }
+  ],
+  "limits": "This checks simulator trace, not service scheduling equivalence."
+}

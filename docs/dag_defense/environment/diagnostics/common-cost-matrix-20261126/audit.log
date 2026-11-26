@@ -1,0 +1,166 @@
+{
+  "status": "synthetic_matched_batch_audit_only",
+  "cases": [
+    {
+      "case": "1024-1",
+      "dag_events": 128,
+      "baseline_events": 128,
+      "matched_events": 128,
+      "dag_only": 0,
+      "baseline_only": 0,
+      "duplicate_keys": 0,
+      "max_matched_batch_total_difference_s": 5.495603971894525e-15,
+      "all_matched_within_1ns": true,
+      "training_predictions_equal": true,
+      "training_prediction_files": 17,
+      "dag_requests": 1,
+      "baseline_requests": 1,
+      "dag_pd_times_s": [
+        0.0157015931372549
+      ],
+      "baseline_pd_times_s": [
+        0.0157015931372549
+      ],
+      "dag_exit": 0,
+      "baseline_exit": 0
+    },
+    {
+      "case": "1024-2",
+      "dag_events": 129,
+      "baseline_events": 128,
+      "matched_events": 1,
+      "dag_only": 128,
+      "baseline_only": 127,
+      "duplicate_keys": 0,
+      "max_matched_batch_total_difference_s": 1.3877787807814457e-17,
+      "all_matched_within_1ns": true,
+      "training_predictions_equal": true,
+      "training_prediction_files": 17,
+      "dag_requests": 2,
+      "baseline_requests": 2,
+      "dag_pd_times_s": [
+        0.0157015931372549,
+        0.0314031862745098
+      ],
+      "baseline_pd_times_s": [
+        0.0157015931372549,
+        0.0157015931372549
+      ],
+      "dag_exit": 0,
+      "baseline_exit": 0
+    },
+    {
+      "case": "1024-4",
+      "dag_events": 129,
+      "baseline_events": 128,
+      "matched_events": 1,
+      "dag_only": 128,
+      "baseline_only": 127,
+      "duplicate_keys": 0,
+      "max_matched_batch_total_difference_s": 0.0,
+      "all_matched_within_1ns": true,
+      "training_predictions_equal": true,
+      "training_prediction_files": 17,
+      "dag_requests": 4,
+      "baseline_requests": 4,
+      "dag_pd_times_s": [
+        0.015701593137254916,
+        0.0314031862745098,
+        0.04710477941176469,
+        0.06280637254901958
+      ],
+      "baseline_pd_times_s": [
+        0.0157015931372549,
+        0.0157015931372549,
+        0.0157015931372549,
+        0.0157015931372549
+      ],
+      "dag_exit": 0,
+      "baseline_exit": 0
+    },
+    {
+      "case": "2048-1",
+      "dag_events": 128,
+      "baseline_events": 128,
+      "matched_events": 128,
+      "dag_only": 0,
+      "baseline_only": 0,
+      "duplicate_keys": 0,
+      "max_matched_batch_total_difference_s": 1.0318135235110049e-14,
+      "all_matched_within_1ns": true,
+      "training_predictions_equal": true,
+      "training_prediction_files": 17,
+      "dag_requests": 1,
+      "baseline_requests": 1,
+      "dag_pd_times_s": [
+        0.03138786764705882
+      ],
+      "baseline_pd_times_s": [
+        0.03138786764705882
+      ],
+      "dag_exit": 0,
+      "baseline_exit": 0
+    },
+    {
+      "case": "2048-2",
+      "dag_events": 129,
+      "baseline_events": 128,
+      "matched_events": 1,
+      "dag_only": 128,
+      "baseline_only": 127,
+      "duplicate_keys": 0,
+      "max_matched_batch_total_difference_s": 0.0,
+      "all_matched_within_1ns": true,
+      "training_predictions_equal": true,
+      "training_prediction_files": 17,
+      "dag_requests": 2,
+      "baseline_requests": 2,
+      "dag_pd_times_s": [
+        0.03138786764705881,
+        0.06277573529411762
+      ],
+      "baseline_pd_times_s": [
+        0.03138786764705882,
+        0.03138786764705882
+      ],
+      "dag_exit": 0,
+      "baseline_exit": 0
+    },
+    {
+      "case": "2048-4",
+      "dag_events": 139,
+      "baseline_events": 137,
+      "matched_events": 10,
+      "dag_only": 129,
+      "baseline_only": 127,
+      "duplicate_keys": 0,
+      "max_matched_batch_total_difference_s": 0.06102431479411757,
+      "all_matched_within_1ns": false,
+      "training_predictions_equal": true,
+      "training_prediction_files": 17,
+      "dag_requests": 4,
+      "baseline_requests": 4,
+      "dag_pd_times_s": [
+        0.03138786764705881,
+        0.06277573529411762,
+        0.03168746492267205,
+        0.06355064151857781
+      ],
+      "baseline_pd_times_s": [
+        0.03138786764705882,
+        0.03138786764705882,
+        0.03138786764705882,
+        0.03138786764705882
+      ],
+      "dag_exit": 0,
+      "baseline_exit": 0
+    }
+  ],
+  "limits": [
+    "Candidate profile, not frozen or calibrated; synthetic simultaneous arrivals, not real service data",
+    "Matching includes request IDs and their per-request previous decode iteration count, replica ID and number of tokens. GPU/CPU and PD fields must still be separately accounted",
+    "batch trace duration compares total execution only and does not prove matching of each component or mixed-length shapes",
+    "two schedulers may form different batches, so unmatched batches are not cost failures",
+    "adapter changes predictor compared with untouched original; original baseline separately preserved"
+  ]
+}

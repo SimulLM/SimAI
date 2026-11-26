@@ -1,0 +1,151 @@
+{
+  "status": "diagnostic",
+  "cases": [
+    {
+      "case": "1024-1",
+      "matched_batches": 128,
+      "max_abs_cost_difference_s": 0.0,
+      "max_resource_wait_s": 0.0,
+      "discrepancies": [],
+      "largest_waits": [
+        {
+          "key": "(1, (0,), ((0, 36),), (1,))",
+          "dag_total_s": 0.016441045105640928,
+          "dag_sum_task_cost_s": 0.01644104510563932,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.01644104510563932,
+          "cost_difference_s": 0.0,
+          "wait_tasks": []
+        },
+        {
+          "key": "(1, (0,), ((0, 25),), (1,))",
+          "dag_total_s": 0.016441045105639096,
+          "dag_sum_task_cost_s": 0.01644104510563932,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.01644104510563932,
+          "cost_difference_s": 0.0,
+          "wait_tasks": []
+        }
+      ]
+    },
+    {
+      "case": "1024-2",
+      "matched_batches": 1,
+      "max_abs_cost_difference_s": 1.3877787807814457e-17,
+      "max_resource_wait_s": 0.0,
+      "discrepancies": [],
+      "largest_waits": [
+        {
+          "key": "(0, (0, 1), ((0, 0), (1, 0)), (1024.0, 1024.0))",
+          "dag_total_s": 0.07376982732920676,
+          "dag_sum_task_cost_s": 0.07376982732920676,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.07376982732920677,
+          "cost_difference_s": -1.3877787807814457e-17,
+          "wait_tasks": []
+        }
+      ]
+    },
+    {
+      "case": "1024-4",
+      "matched_batches": 1,
+      "max_abs_cost_difference_s": 2.7755575615628914e-17,
+      "max_resource_wait_s": 0.0,
+      "discrepancies": [],
+      "largest_waits": [
+        {
+          "key": "(0, (0, 1, 2, 3), ((0, 0), (1, 0), (2, 0), (3, 0)), (1024.0, 1024.0, 1024.0, 1024.0))",
+          "dag_total_s": 0.1548103019848938,
+          "dag_sum_task_cost_s": 0.15481030198489382,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.1548103019848938,
+          "cost_difference_s": 2.7755575615628914e-17,
+          "wait_tasks": []
+        }
+      ]
+    },
+    {
+      "case": "2048-1",
+      "matched_batches": 128,
+      "max_abs_cost_difference_s": 0.0,
+      "max_resource_wait_s": 0.0,
+      "discrepancies": [],
+      "largest_waits": [
+        {
+          "key": "(1, (0,), ((0, 36),), (1,))",
+          "dag_total_s": 0.017105708214692927,
+          "dag_sum_task_cost_s": 0.017105708214692934,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.017105708214692934,
+          "cost_difference_s": 0.0,
+          "wait_tasks": []
+        },
+        {
+          "key": "(1, (0,), ((0, 25),), (1,))",
+          "dag_total_s": 0.017105708214692927,
+          "dag_sum_task_cost_s": 0.017105708214692934,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.017105708214692934,
+          "cost_difference_s": 0.0,
+          "wait_tasks": []
+        }
+      ]
+    },
+    {
+      "case": "2048-2",
+      "matched_batches": 1,
+      "max_abs_cost_difference_s": 0.0,
+      "max_resource_wait_s": 0.0,
+      "discrepancies": [],
+      "largest_waits": [
+        {
+          "key": "(0, (0, 1), ((0, 0), (1, 0)), (2048.0, 2048.0))",
+          "dag_total_s": 0.1583653596789093,
+          "dag_sum_task_cost_s": 0.1583653596789093,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.1583653596789093,
+          "cost_difference_s": 0.0,
+          "wait_tasks": []
+        }
+      ]
+    },
+    {
+      "case": "2048-4",
+      "matched_batches": 10,
+      "max_abs_cost_difference_s": 0.0,
+      "max_resource_wait_s": 0.06102431479411763,
+      "discrepancies": [],
+      "largest_waits": [
+        {
+          "key": "(0, (2, 3), ((2, 0), (3, 0)), (2048.0, 2048.0))",
+          "dag_total_s": 0.21938967447302687,
+          "dag_sum_task_cost_s": 0.1583653596789093,
+          "dag_sum_resource_wait_s": 0.06102431479411763,
+          "baseline_batch_total_s": 0.1583653596789093,
+          "cost_difference_s": 0.0,
+          "wait_tasks": [
+            {
+              "task": "layer0.attention.compute",
+              "wait_s": 0.06102431479411763
+            }
+          ]
+        },
+        {
+          "key": "(1, (2, 3), ((2, 122), (3, 122)), (1, 1))",
+          "dag_total_s": 0.0166869538630956,
+          "dag_sum_task_cost_s": 0.016686953863101383,
+          "dag_sum_resource_wait_s": 0.0,
+          "baseline_batch_total_s": 0.016686953863101383,
+          "cost_difference_s": 0.0,
+          "wait_tasks": []
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "One synthetic wave per shape. Matched batches only; many concurrent batch histories differ.",
+    "Compares DAG task duration sum against baseline batch total, not separate CPU/GPU components. Assumes task sum is comparable to baseline total for this TP1 graph.",
+    "DAG wait is a simulation consequence of configured resource occupancy, not evidence that real transport occupies both GPUs exclusively.",
+    "Candidate costs and service-vs-simulator semantics are not frozen."
+  ]
+}

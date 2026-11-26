@@ -1,0 +1,12 @@
+{"input": 1024, "requested_batch": 1, "role": "dag", "exit": 0}
+{"input": 1024, "requested_batch": 1, "role": "baseline", "exit": 0}
+{"input": 1024, "requested_batch": 2, "role": "dag", "exit": 0}
+{"input": 1024, "requested_batch": 2, "role": "baseline", "exit": 0}
+{"input": 1024, "requested_batch": 4, "role": "dag", "exit": 0}
+{"input": 1024, "requested_batch": 4, "role": "baseline", "exit": 0}
+{"input": 2048, "requested_batch": 1, "role": "dag", "exit": 0}
+{"input": 2048, "requested_batch": 1, "role": "baseline", "exit": 0}
+{"input": 2048, "requested_batch": 2, "role": "dag", "exit": 0}
+{"input": 2048, "requested_batch": 2, "role": "baseline", "exit": 0}
+{"input": 2048, "requested_batch": 4, "role": "dag", "exit": 0}
+{"input": 2048, "requested_batch": 4, "role": "baseline", "exit": 0}
