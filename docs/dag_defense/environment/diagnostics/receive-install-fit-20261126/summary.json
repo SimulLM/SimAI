@@ -1,0 +1,37 @@
+{
+  "status": "synchronized_serial_sensitivity_not_frozen",
+  "source_sha256": "2cb30a0bd0b62e22c802ebbb5096414993fb140aece9618fcb957c058825080f",
+  "train_count": 45,
+  "holdout_count": 45,
+  "split_fit_intercept_ms": 4.505267199999999,
+  "split_fit_ms_per_token": 0.015727422116815475,
+  "all_sample_intercept_ms": 4.941729566666666,
+  "all_sample_ms_per_token": 0.0154074212890625,
+  "holdout_groups": [
+    {
+      "input_tokens": 512,
+      "holdout_count": 15,
+      "candidate_mae_ms": 0.8639019784126983,
+      "original_effective_mae_ms": 5.198881117647058
+    },
+    {
+      "input_tokens": 1024,
+      "holdout_count": 15,
+      "candidate_mae_ms": 0.5660661631746026,
+      "original_effective_mae_ms": 5.1945386627450985
+    },
+    {
+      "input_tokens": 2048,
+      "holdout_count": 15,
+      "candidate_mae_ms": 0.8103149504761887,
+      "original_effective_mae_ms": 4.8665542862745115
+    }
+  ],
+  "limitations": [
+    "Held-out even/odd samples share one service session and are not independent sessions",
+    "Source includes explicit per-tensor synchronization, Python, waiting, KV receive and installation; not physical link bandwidth",
+    "The original effective transfer parameter omits installation and measures a different benchmark boundary; comparison is boundary diagnostic, not proof of accuracy",
+    "Only serial batch 1 and output length 8; no extrapolation beyond measured input lengths",
+    "Not fitted from validation completion time, not a common baseline/DAG fee or frozen production model"
+  ]
+}
