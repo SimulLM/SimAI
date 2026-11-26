@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "graph_id": "pd/0/stage0/migration0",
+  "context": {
+    "batch_id": "0",
+    "iteration_id": 0,
+    "replica_id": "0",
+    "stage_id": 0,
+    "request_ids": [
+      "0"
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "transfer.0",
+      "kind": "comm",
+      "placement": {
+        "device_ids": [
+          "gpu:0:0:0",
+          "gpu:1:0:0"
+        ],
+        "comm_group": "pd/0/stage0/migration0"
+      },
+      "demands": [
+        {
+          "resource_id": "gpu:0:0:0",
+          "amount": 1,
+          "unit": "permits"
+        },
+        {
+          "resource_id": "gpu:1:0:0",
+          "amount": 1,
+          "unit": "permits"
+        },
+        {
+          "resource_id": "link:gpu:0:0:0",
+          "amount": 1,
+          "unit": "permits"
+        },
+        {
+          "resource_id": "link:gpu:1:0:0",
+          "amount": 1,
+          "unit": "permits"
+        }
+      ],
+      "cost": {
+        "duration_s": 0.007858455882352941,
+        "source": "pd.latency_plus_billing_over_bandwidth",
+        "raw_value": 0.007858455882352941,
+        "raw_unit": "s",
+        "conversion_to_s": 1,
+        "evidence": "candidate independent calibration replay; not frozen",
+        "includes": [
+          "pd"
+        ],
+        "unknown_components": []
+      },
+      "metadata": {
+        "op": "pd.transfer",
+        "communication_type": "pd",
+        "payload_bytes": 268435456,
+        "wire_bytes": 268435456,
+        "billing_bytes": 268959744,
+        "billing_basis": "legacy_prefill_plus_one",
+        "storage_bytes": 301989888,
+        "source": "gpu:0:0:0",
+        "destination": "gpu:1:0:0",
+        "endpoints": [
+          "link:gpu:0:0:0",
+          "link:gpu:1:0:0"
+        ],
+        "occupies_gpu": true,
+        "bandwidth_bytes_per_s": 34225520640.0,
+        "latency_s": 0.0,
+        "evidence": "candidate independent calibration replay; not frozen"
+      }
+    },
+    {
+      "task_id": "terminal",
+      "kind": "sync",
+      "placement": {
+        "device_ids": [],
+        "comm_group": null
+      },
+      "demands": [],
+      "cost": {
+        "duration_s": 0,
+        "source": "pd.join",
+        "raw_value": 0,
+        "raw_unit": "s",
+        "conversion_to_s": 1,
+        "evidence": "all KV shards received",
+        "includes": [
+          "sync"
+        ],
+        "unknown_components": []
+      },
+      "metadata": {}
+    }
+  ],
+  "edges": [
+    [
+      "transfer.0",
+      "terminal"
+    ]
+  ],
+  "terminal_task_id": "terminal"
+}

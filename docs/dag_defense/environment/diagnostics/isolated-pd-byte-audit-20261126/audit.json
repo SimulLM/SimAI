@@ -1,0 +1,18 @@
+{
+  "status": "candidate_charging_equal_for_this_request",
+  "input_tokens": 512,
+  "kv_bytes_per_token": 524288,
+  "dag_reported_kv_wire_bytes": 268435456,
+  "dag_billing_bytes": 268959744,
+  "baseline_reported_and_billing_bytes": 268959744,
+  "billing_bandwidth_bytes_per_s": 34225520640.0,
+  "charge_seconds": 0.007858455882352941,
+  "extra_billing_bytes": 524288,
+  "dag_graph_sha256": "31430db428ce463937c4bb992bb88ad503e3fcfbc8f98a036da4eb9b6a5bc87b",
+  "limits": [
+    "Reported KV wire bytes omit hidden-state and connector control bytes; do not interpret as complete real traffic",
+    "The common 255 Gibit/s candidate is an effective fit to a KV-plus-hidden transfer microbenchmark and is not a raw physical link rate",
+    "Same charge for this shape does not prove physical cost accuracy, all batch shapes, no double counting, or first-token equivalence",
+    "Adapted baseline is not the pristine original; not a frozen validation"
+  ]
+}
