@@ -197,7 +197,10 @@ class PDCoordinator:
         destinations = dict.fromkeys(self.migrations[rid].destination for rid in self.waiting)
         for destination in destinations:
             rs = self.scheduler.get_replica_scheduler(destination)
-            if destination in self.pull_groups or rs._num_running_batches or rs._request_queue or rs._preempted_requests:
+            # A paused Decode batch must not prevent a pending receive step:
+            # captured vLLM traces show receives between Decode forward steps.
+            # Prior newly-ready requests retain priority until scheduled.
+            if destination in self.pull_groups or rs._num_running_batches or rs._request_queue:
                 continue
             selected, prefill_tokens = [], 0
             limit = min(rs._max_batch_size, rs._max_micro_batch_size)

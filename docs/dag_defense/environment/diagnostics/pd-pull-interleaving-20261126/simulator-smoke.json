@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scope": "synthetic arrivals and candidate fees; not validation or accuracy evidence",
+  "codes": {
+    "dag": 0,
+    "adapted_baseline": 0
+  },
+  "migrations": [
+    {
+      "request_id": "0",
+      "prefill_completed_at_s": 0.023482623124896396,
+      "transfer_started_at_s": 0.023482623124896396,
+      "transfer_completed_at_s": 0.030360686850386592,
+      "first_decode_start_s": 0.030360686850386592,
+      "completed_at_s": 2.2186541991486375
+    },
+    {
+      "request_id": "1",
+      "prefill_completed_at_s": 0.12348262312489636,
+      "transfer_started_at_s": 0.13427878350391717,
+      "transfer_completed_at_s": 0.14115684722940736,
+      "first_decode_start_s": 0.14115684722940736,
+      "completed_at_s": 2.320992777801919
+    }
+  ]
+}

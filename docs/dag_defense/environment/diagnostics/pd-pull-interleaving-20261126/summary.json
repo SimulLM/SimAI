@@ -1,0 +1,45 @@
+{
+  "scope": "Previously captured synchronized 8-output-token diagnostic; within-wave host step order only. A later Decode forward on the same request proves unfinished decode at this receive, but does not establish overlap or undisturbed timing.",
+  "source_sha256": {
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pd-flow-boundary-20261126/derived-boundaries.csv": "87cbf076735bc1f7ffcd1e1bf2d5cacee190a19f1fa0e88602aea9d97260b2bc",
+    "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pd-flow-boundary-20261126/raw.tar.gz": "12ba01d3e04b4c6ddbf24b15022b2965665dad85e303bfccb8644d3dd02b3a47"
+  },
+  "groups": [
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 1,
+      "receive_steps": 30
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 2,
+      "receive_steps": 32,
+      "receive_between_decode_steps": 2
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 4,
+      "receive_steps": 60,
+      "receive_between_decode_steps": 30
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 1,
+      "receive_steps": 30
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 2,
+      "receive_steps": 59,
+      "receive_between_decode_steps": 29
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 4,
+      "receive_steps": 90,
+      "receive_between_decode_steps": 60
+    }
+  ],
+  "total_interleaved_receive_steps": 121,
+  "detail_count": 301
+}

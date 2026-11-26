@@ -300,9 +300,6 @@ def test_candidate_pull_respects_prefill_token_budget_and_ready_priority():
     a, b = prefill(pd, rs), prefill(pd, rs)
     rs[1]._num_running_batches = 0
     rs[1]._config.max_tokens_in_batch = 2
-    rs[1]._preempted_requests.append(a)
-    assert pd.retry(1) == []
-    rs[1]._preempted_requests.clear()
     events = pd.retry(1)
     assert len(pd.pull_groups[1]) == 1 and str(b.id) in pd.waiting
     drain_transfer(events)
@@ -310,3 +307,25 @@ def test_candidate_pull_respects_prefill_token_budget_and_ready_priority():
     # A ready request takes priority over another receive batch.
     assert pd.retry(3) == []
     pd.abort(3, 'cleanup')
+
+
+def test_candidate_receive_may_interrupt_an_unfinished_decode_between_steps():
+    from dataclasses import replace
+    pd, host, rs = setup(capacity=128)
+    pd.config = replace(pd.config, transfer_start_mode='decode_pull_candidate')
+    a = prefill(pd, rs)
+    rs[1]._num_running_batches = 0
+    drain_transfer(pd.retry(1))
+    pd.now = 3
+    assert pd.next_batch(rs[1]).requests == [a]
+    # Existing Decode remains unfinished and awaits its next step.
+    rs[1]._preempted_requests.append(a)
+    b = prefill(pd, rs, at=4)
+    events = pd.retry(4)
+    assert pd.pull_groups[1] == [str(b.id)]
+    assert pd.next_batch(rs[1]) is None
+    drain_transfer(events)
+    pd.now = 6
+    assert {x.id for x in pd.next_batch(rs[1]).requests} == {a.id, b.id}
+    pd.abort(6, 'cleanup')
+    assert all(x['used'] == 0 for x in pd.manager.usage_snapshot().values())
