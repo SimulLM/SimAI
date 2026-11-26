@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:48:54.477022+00:00",
+  "updated_utc": "2026-11-26T13:51:28.099272+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
@@ -21,10 +21,10 @@
     "concurrent_readiness_batching": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/early-batch-minimal-20261126/README.md",
-      "missing": "Two real 32-request calibration arrival replays show zero modeled early Decode in dynamic and DAG, 1750/1860 vs 1851 and 986/1033 vs 1027 paired; pristine has 7/16 early memberships. Final cost and physical KV semantics remain unverified.",
-      "next_action": "Resolve or explicitly disclose the original early scheduling and first-token differences under a common fee contract, then lock validation replay rules.",
+      "missing": "The first divergence on one real-arrival calibration replay is traced to request 8 readiness and first-token timing relative to request 7 Decode; earlier resource/scheduler differences mean the ultimate single cause is not isolated. Final common fee and physical readiness remain unverified.",
+      "next_action": "Complete the common fee and timing contract, then retain natural batch differences and their first-event explanation in the preflight evidence.",
       "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/dynamic-calibration-512-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/calibration-first-divergence-20261126/README.md"
     },
     "freeze_and_preflight": {
       "status": "open",

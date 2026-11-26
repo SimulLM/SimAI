@@ -1,0 +1,347 @@
+{
+  "scope": "one calibration arrival replay, modeled event evidence",
+  "modes": {
+    "baseline": {
+      "batch_window": [
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            59,
+            57
+          ],
+          "start_s": 5.133871234325813,
+          "end_s": 5.151465012968849,
+          "batch_id": 262
+        },
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            60,
+            58
+          ],
+          "start_s": 5.15146501296885,
+          "end_s": 5.169058791611887,
+          "batch_id": 263
+        },
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            61,
+            59
+          ],
+          "start_s": 5.169058791611887,
+          "end_s": 5.186652570254923,
+          "batch_id": 264
+        },
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            62,
+            60
+          ],
+          "start_s": 5.186652570254924,
+          "end_s": 5.20424634889796,
+          "batch_id": 266
+        },
+        {
+          "ids": [
+            7
+          ],
+          "prior_decode": [
+            61
+          ],
+          "start_s": 5.204246348897961,
+          "end_s": 5.2211673609869775,
+          "batch_id": 268
+        },
+        {
+          "ids": [
+            7,
+            8
+          ],
+          "prior_decode": [
+            62,
+            0
+          ],
+          "start_s": 5.222043139986978,
+          "end_s": 5.239636918630014,
+          "batch_id": 269
+        },
+        {
+          "ids": [
+            8,
+            9
+          ],
+          "prior_decode": [
+            1,
+            0
+          ],
+          "start_s": 5.240512697630015,
+          "end_s": 5.258106476273052,
+          "batch_id": 270
+        },
+        {
+          "ids": [
+            8,
+            9
+          ],
+          "prior_decode": [
+            2,
+            1
+          ],
+          "start_s": 5.258106476273052,
+          "end_s": 5.275700254916088,
+          "batch_id": 271
+        }
+      ],
+      "requests": {
+        "7": {
+          "arrived_at": 4.064788094,
+          "prefill_completed_at": 4.110834784224645,
+          "decode_arrived_at": 4.118693240106998,
+          "completed_at": 5.239636918630015
+        },
+        "8": {
+          "arrived_at": 5.175741769,
+          "prefill_completed_at": 5.199002739612323,
+          "decode_arrived_at": 5.2068611954946755,
+          "completed_at": 6.331326973498303
+        },
+        "9": {
+          "arrived_at": 5.176217217,
+          "prefill_completed_at": 5.222263710224645,
+          "decode_arrived_at": 5.230122166106998,
+          "completed_at": 6.34824798558732
+        }
+      },
+      "first_token_events": [
+        {
+          "event": "submit",
+          "request_ids": [
+            "8"
+          ],
+          "time_s": 5.2211673609869775,
+          "key": "512:1",
+          "cost_s": 0.000875779
+        },
+        {
+          "event": "complete",
+          "request_ids": [
+            "8"
+          ],
+          "time_s": 5.222043139986978
+        },
+        {
+          "event": "submit",
+          "request_ids": [
+            "9"
+          ],
+          "time_s": 5.239636918630015,
+          "key": "512:1",
+          "cost_s": 0.000875779
+        },
+        {
+          "event": "complete",
+          "request_ids": [
+            "9"
+          ],
+          "time_s": 5.240512697630015
+        }
+      ],
+      "source_sha256": {
+        "/root/autodl-tmp/dag-handoff/runs/dynamic-calibration-512-20261126/concurrent-0/baseline/2026-11-26_21-44-56-196207/chrome_trace.json": "7a6523e1effd56693d9e36d2e32be466b86802ad58fb21276aaa475b580c9122",
+        "/root/autodl-tmp/dag-handoff/runs/dynamic-calibration-512-20261126/concurrent-0/baseline/2026-11-26_21-44-56-196207/request_metrics.csv": "4437d5a260893e43887223fca5f36950f1869263a6a7505f2f5c56ca6e467312",
+        "/root/autodl-tmp/dag-handoff/runs/dynamic-calibration-512-20261126/concurrent-0/baseline/first-token.jsonl": "75e1e46b0e33f88f8504109c009687774058fc524b2b8aba032454f96b3b3717"
+      }
+    },
+    "dag": {
+      "batch_window": [
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            59,
+            57
+          ],
+          "start_s": 5.141729690208572,
+          "end_s": 5.159323468851616,
+          "batch_id": 262
+        },
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            60,
+            58
+          ],
+          "start_s": 5.159323468851616,
+          "end_s": 5.176917247494659,
+          "batch_id": 263
+        },
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            61,
+            59
+          ],
+          "start_s": 5.176917247494661,
+          "end_s": 5.194511026137704,
+          "batch_id": 265
+        },
+        {
+          "ids": [
+            6,
+            7
+          ],
+          "prior_decode": [
+            62,
+            60
+          ],
+          "start_s": 5.194511026137704,
+          "end_s": 5.212104804780748,
+          "batch_id": 266
+        },
+        {
+          "ids": [
+            7,
+            8
+          ],
+          "prior_decode": [
+            61,
+            0
+          ],
+          "start_s": 5.221473116100611,
+          "end_s": 5.2390668947436545,
+          "batch_id": 268
+        },
+        {
+          "ids": [
+            7,
+            8,
+            9
+          ],
+          "prior_decode": [
+            62,
+            1,
+            0
+          ],
+          "start_s": 5.2478011296260085,
+          "end_s": 5.26667183536079,
+          "batch_id": 269
+        },
+        {
+          "ids": [
+            8,
+            9
+          ],
+          "prior_decode": [
+            2,
+            1
+          ],
+          "start_s": 5.26667183536079,
+          "end_s": 5.284265614003833,
+          "batch_id": 270
+        },
+        {
+          "ids": [
+            8,
+            9
+          ],
+          "prior_decode": [
+            3,
+            2
+          ],
+          "start_s": 5.284265614003834,
+          "end_s": 5.301859392646878,
+          "batch_id": 271
+        }
+      ],
+      "requests": {
+        "7": {
+          "arrived_at": 4.064788094,
+          "prefill_completed_at": 4.118061331427663,
+          "decode_arrived_at": 4.138008528555063,
+          "completed_at": 5.26667183536079
+        },
+        "8": {
+          "arrived_at": 5.175741769,
+          "prefill_completed_at": 5.199002739612347,
+          "decode_arrived_at": 5.220597337100611,
+          "completed_at": 6.339892332586475
+        },
+        "9": {
+          "arrived_at": 5.176217217,
+          "prefill_completed_at": 5.230122166107046,
+          "decode_arrived_at": 5.246925350626008,
+          "completed_at": 6.366566054166213
+        }
+      },
+      "first_token_events": [
+        {
+          "event": "submit",
+          "request_ids": [
+            "8"
+          ],
+          "time_s": 5.220597337100611,
+          "cost_s": 0.000875779,
+          "key": "512:1",
+          "graph_id": "pd/batch-first/8"
+        },
+        {
+          "event": "complete",
+          "request_ids": [
+            "8"
+          ],
+          "time_s": 5.221473116100611
+        },
+        {
+          "event": "submit",
+          "request_ids": [
+            "9"
+          ],
+          "time_s": 5.246925350626008,
+          "cost_s": 0.000875779,
+          "key": "512:1",
+          "graph_id": "pd/batch-first/9"
+        },
+        {
+          "event": "complete",
+          "request_ids": [
+            "9"
+          ],
+          "time_s": 5.2478011296260085
+        }
+      ],
+      "source_sha256": {
+        "/root/autodl-tmp/dag-handoff/runs/dynamic-calibration-512-20261126/concurrent-0/dag/2026-11-26_21-45-00-925061/chrome_trace.json": "7c92a4917aa6402c6f41966a78763af1995c4623b9196220a406fe7e11916f35",
+        "/root/autodl-tmp/dag-handoff/runs/dynamic-calibration-512-20261126/concurrent-0/dag/2026-11-26_21-45-00-925061/request_metrics.csv": "937d7dbf04a8daa29a5a80eec0a4b4b036a41cc45c3da4d846c8e8f17db7bab2",
+        "/root/autodl-tmp/dag-handoff/runs/dynamic-calibration-512-20261126/concurrent-0/dag/first-token.jsonl": "6f6de909fe1207a68dad4a55ac5a255f41ada5f01adc3fba1d75b8629715cc38"
+      }
+    }
+  },
+  "limitations": [
+    "not a single-variable causal experiment",
+    "modeled ready is not physical KVReady",
+    "different prior timeline and source transfer contention affect event timing",
+    "not formal validation"
+  ]
+}
