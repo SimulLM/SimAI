@@ -1,0 +1,23 @@
+{
+  "status": "single_request_equal_fee_mechanism_diagnostic",
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "first_token_fee_s": 0.000875779,
+  "baseline_event": {
+    "time": 0.03125546923365413,
+    "event_type": "consumer_first_token_diagnostic",
+    "replica_id": 1,
+    "request_id": 0,
+    "duration_s": 0.000875779,
+    "end_s": 0.03213124823365413
+  },
+  "baseline_e2e_s": 1.0534134097541064,
+  "dag_e2e_s": 1.0534134097540713,
+  "unmodified_adapted_baseline_e2e_s": 1.0525376307541063,
+  "limitations": [
+    "Adapted diagnostic baseline includes predictor and serial first-token changes; pristine original preserved separately",
+    "Baseline event does not schedule a GPU resource; valid only in this enforced single-request diagnostic",
+    "Synchronized host interval is a sensitivity fee, not a frozen noninstrumented physical cost",
+    "Does not establish concurrent scheduling or production-accuracy improvement"
+  ]
+}

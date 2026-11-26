@@ -1,0 +1,44 @@
+INFO 11-26 15:45:52 trace_replay_request_generator.py:69] Loaded trace file /root/autodl-tmp/dag-handoff/runs/pd-pull-calibration-replay-20261126/serial-0/trace.csv with 32 requests
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model attn_pre_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 8.359223289805794%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model attn_post_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 18.495178375828196%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model mlp_up_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 5.979000785885047%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model mlp_down_proj and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 14.661253788656362%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model mlp_act and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 13.526718737894603%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model input_layernorm and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 10.633841605561214%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model post_attention_layernorm and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 21.73503817470905%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model attn_rope and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model add and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model attn_kv_cache_save and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model schedule and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 15.793600007130829%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model sampler_e2e and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 2.3540676257125637%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model prepare_inputs_e2e and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 14.264161786262957%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model process_model_outputs and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 20.426134397387468%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model ray_comm_time and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 0.0%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model attn_prefill and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 35.589812553450834%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:490] Trained model attn_decode and found best parameters: {'max_depth': 2, 'min_samples_split': 2, 'n_estimators': 3} with mean absolute percentage error (MEAP) 2.945702183661686%
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:547] Predicting execution time for model schedule
+INFO 11-26 15:45:52 sklearn_execution_time_predictor.py:547] Predicting execution time for model sampler_e2e
+INFO 11-26 15:45:53 sklearn_execution_time_predictor.py:547] Predicting execution time for model prepare_inputs_e2e
+INFO 11-26 15:45:53 sklearn_execution_time_predictor.py:547] Predicting execution time for model process_model_outputs
+INFO 11-26 15:45:53 sklearn_execution_time_predictor.py:547] Predicting execution time for model ray_comm_time
+INFO 11-26 15:45:54 sklearn_execution_time_predictor.py:547] Predicting execution time for model attn_prefill
+INFO 11-26 15:45:55 sklearn_execution_time_predictor.py:547] Predicting execution time for model attn_decode
+INFO 11-26 15:45:55 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 15:45:55 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 15:45:55 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+INFO 11-26 15:45:55 sklearn_execution_time_predictor.py:242] Attention data filtering: original 63 rows, filtered 63 rows. Model config: n_embd=4096, n_q_head=32, n_kv_head=32, block_size=16, tp_workers=1
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/autodl-tmp/SimAI-baseline-first-token/vidur-alibabacloud/vidur/main.py", line 16, in <module>
+    main()
+  File "/root/autodl-tmp/SimAI-baseline-first-token/vidur-alibabacloud/vidur/main.py", line 11, in main
+    simulator = Simulator(config)
+                ^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/SimAI-baseline-first-token/vidur-alibabacloud/vidur/simulator.py", line 56, in __init__
+    self._init_event_queue()
+  File "/root/autodl-tmp/SimAI-baseline-first-token/vidur-alibabacloud/vidur/simulator.py", line 147, in _init_event_queue
+    raise ValueError("first-token diagnostic only supports one request")
+ValueError: first-token diagnostic only supports one request

@@ -1,0 +1,5 @@
+{
+  "status": "guard_pass",
+  "exit_code": 1,
+  "expected": "reject more than one request"
+}
