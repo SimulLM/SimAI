@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:31:03.331517+00:00",
+  "updated_utc": "2026-11-26T12:35:07.750446+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Strict forward inventory covers 59/112 applicable cells, with 53 potential cells missing; strict replay actually failed at 1024 batch 4 context 1040. Concurrent receive/first-token shared fees and CPU/GPU overlap remain unproven.",
-      "next_action": "Enumerate lookup keys reached by the candidate matrix, with input hashes, and isolate which missing strict cells are actually reachable.",
+      "missing": "Synthetic 1/2/4 replay batches reveal missing strict lookup keys in both adapted baseline and DAG including mixed contexts; actual validation arrivals and final schedules remain unknown. Concurrent receive/first-token ownership and CPU/GPU overlap remain unproven.",
+      "next_action": "Determine whether independent existing measured profiles cover observed missing shapes under a defensible explicit mapping; otherwise collect targeted independent profiles before final common-fee replay.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/freeze_gate/fee-and-event-evidence.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/observed-shape-coverage-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
