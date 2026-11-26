@@ -1,0 +1,89 @@
+{
+  "rows": [
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 2,
+      "actual_batch": 2,
+      "context_type": "uniform",
+      "warmup": false,
+      "steps": 3810,
+      "distinct_waves": 30,
+      "median_context_span_tokens": 0.0,
+      "p95_context_span_tokens": 0,
+      "max_context_span_tokens": 0
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 4,
+      "actual_batch": 3,
+      "context_type": "uniform",
+      "warmup": false,
+      "steps": 30,
+      "distinct_waves": 30,
+      "median_context_span_tokens": 0.0,
+      "p95_context_span_tokens": 0,
+      "max_context_span_tokens": 0
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 4,
+      "actual_batch": 4,
+      "context_type": "mixed",
+      "warmup": false,
+      "steps": 3780,
+      "distinct_waves": 30,
+      "median_context_span_tokens": 1.0,
+      "p95_context_span_tokens": 1,
+      "max_context_span_tokens": 1
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 2,
+      "actual_batch": 2,
+      "context_type": "mixed",
+      "warmup": false,
+      "steps": 3654,
+      "distinct_waves": 29,
+      "median_context_span_tokens": 1.0,
+      "p95_context_span_tokens": 1,
+      "max_context_span_tokens": 1
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 2,
+      "actual_batch": 2,
+      "context_type": "uniform",
+      "warmup": false,
+      "steps": 127,
+      "distinct_waves": 1,
+      "median_context_span_tokens": 0,
+      "p95_context_span_tokens": 0,
+      "max_context_span_tokens": 0
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 4,
+      "actual_batch": 3,
+      "context_type": "uniform",
+      "warmup": false,
+      "steps": 30,
+      "distinct_waves": 30,
+      "median_context_span_tokens": 0.0,
+      "p95_context_span_tokens": 0,
+      "max_context_span_tokens": 0
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 4,
+      "actual_batch": 4,
+      "context_type": "mixed",
+      "warmup": false,
+      "steps": 3780,
+      "distinct_waves": 30,
+      "median_context_span_tokens": 1.0,
+      "p95_context_span_tokens": 1,
+      "max_context_span_tokens": 1
+    }
+  ],
+  "dropped": {}
+}
