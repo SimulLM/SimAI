@@ -1,0 +1,10 @@
+{
+  "status": "blocked_idle_gate",
+  "gate": {
+    "ready": false,
+    "status": "blocked",
+    "reason": "Formal connector idle, fenced admission, worker identity and cleanup gate is not yet integrated; existing metrics-only probe cannot certify readiness."
+  },
+  "service_started": false,
+  "restart_required": true
+}

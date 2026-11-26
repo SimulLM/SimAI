@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "cases": {
+    "blocked": {
+      "exit": 2,
+      "status": "blocked_idle_gate",
+      "service_group_gone": true
+    },
+    "ok": {
+      "exit": 0,
+      "status": "client_collection_complete_reconciliation_required",
+      "service_group_gone": true
+    },
+    "failed": {
+      "exit": 1,
+      "status": "collector_failed",
+      "service_group_gone": true
+    },
+    "timeout": {
+      "exit": 1,
+      "status": "supervisor_error",
+      "service_group_gone": true
+    }
+  },
+  "orphan_group_gone": true,
+  "scope": "synthetic processes only"
+}
