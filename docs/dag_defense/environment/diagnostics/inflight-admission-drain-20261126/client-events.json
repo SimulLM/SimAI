@@ -1,0 +1,47 @@
+[
+  {
+    "event": "fence",
+    "time_ns": 1847540515299836,
+    "status": 200,
+    "state": {
+      "fenced": true,
+      "active": 1,
+      "accepted": 5,
+      "finished": 4,
+      "timestamp_ns": 1847540514887839
+    }
+  },
+  {
+    "event": "rejected",
+    "time_ns": 1847540515852012,
+    "status": 503,
+    "body": {
+      "error": "admission_fenced"
+    }
+  },
+  {
+    "event": "response",
+    "time_ns": 1847540606231713,
+    "status": 200,
+    "router_id": "2cf7e1c678ac43c58fd4b40072a5aef3",
+    "done": true,
+    "usage": {
+      "prompt_tokens": 2048,
+      "total_tokens": 2176,
+      "completion_tokens": 128
+    },
+    "end_ns": 1847543915499939
+  },
+  {
+    "event": "drained",
+    "time_ns": 1847543916158334,
+    "status": 200,
+    "state": {
+      "fenced": true,
+      "active": 0,
+      "accepted": 5,
+      "finished": 5,
+      "timestamp_ns": 1847543915844556
+    }
+  }
+]

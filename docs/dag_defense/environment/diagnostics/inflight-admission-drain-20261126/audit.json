@@ -1,0 +1,18 @@
+{
+  "status": "diagnostic_passed_not_formal_readiness",
+  "active_at_fence": 1,
+  "rejected_status": 503,
+  "drained_accepted": 5,
+  "drained_finished": 5,
+  "request_tokens": [
+    2048,
+    128
+  ],
+  "window_s": 15.087205436,
+  "limitations": [
+    "one successful in-flight request; not cancellation, crashes, or multiple routers",
+    "ASGI drain does not establish backend cleanup by itself",
+    "non-atomic snapshots and instrumentation perturbation",
+    "formal supervisor gate still not integrated"
+  ]
+}
