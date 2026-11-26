@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:29:23.726446+00:00",
+  "updated_utc": "2026-11-26T13:32:28.646164+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
@@ -21,10 +21,10 @@
     "concurrent_readiness_batching": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/early-batch-minimal-20261126/README.md",
-      "missing": "1024 and 2048 controlled 1/2/4 diagnostics finish with 127 later Decode steps, but 2048 four has 2/137 matched batches and first Decode differs; fixed baseline first-token groups differ from natural DAG groups. Pristine source still lacks consumer first-token stage.",
-      "next_action": "Determine first divergence using resource/arrival events in 2048 four and preserve natural batch distributions; verify same-shape fee parity without requiring identical total work.",
+      "missing": "2048 1/2/4 pristine, fixed baseline and DAG replayed. DAG and fixed have no modeled early Decode; pristine has one early membership in staggered two and four in simultaneous four. Fixed and DAG use different first-token grouping; natural full-run distribution and final fee contract remain unverified.",
+      "next_action": "Complete common first-token/transfer fee ownership and verify natural request batching with that fixed contract; retain pristine, fixed diagnostic and DAG separately.",
       "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-2048-shared-fees-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-2048-three-way-20261126/README.md"
     },
     "freeze_and_preflight": {
       "status": "open",

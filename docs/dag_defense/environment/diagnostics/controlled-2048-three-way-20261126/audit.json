@@ -1,0 +1,324 @@
+{
+  "status": "diagnostic_not_formal",
+  "baseline_commit": "cef83f9ddd96540e3e9f48934f11335d52d54fce",
+  "trace_sha256": {
+    "one": "4d718595d25bac999c352872f076c9fea4299bea9ce79c0699bbafe7aed30409",
+    "two_staggered": "ff2d095107ba50c7d1592d52086a3ba09dd41787740871e5484d1595698bd57f",
+    "two_simultaneous": "fc3b482bc503dda0e85156fb065c6e149dec60539b150bb7ed4c0705857154c3",
+    "four_simultaneous": "d025d6994ddf0b999057f36b52397adb7da828b575778c50d302bb1182ad888b"
+  },
+  "cases": {
+    "one": {
+      "pristine": {
+        "batches": 128,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127
+        },
+        "request_complete_s": {
+          "0": 2.229180129557626
+        }
+      },
+      "fixed_baseline": {
+        "batches": 128,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127
+        },
+        "request_complete_s": {
+          "0": 2.230290473057626
+        }
+      },
+      "dag": {
+        "batches": 128,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127
+        },
+        "request_complete_s": {
+          "0": 2.230290473057724
+        }
+      },
+      "pristine_vs_dag": {
+        "paired_batches": 128,
+        "other_batches": 128,
+        "dag_batches": 128,
+        "max_paired_model_cost_diff_s": 2.7755575615628914e-17,
+        "first_decode_difference": null
+      },
+      "fixed_baseline_vs_dag": {
+        "paired_batches": 128,
+        "other_batches": 128,
+        "dag_batches": 128,
+        "max_paired_model_cost_diff_s": 2.7755575615628914e-17,
+        "first_decode_difference": null
+      }
+    },
+    "two_staggered": {
+      "pristine": {
+        "batches": 133,
+        "early_decode_memberships": [
+          {
+            "request_id": 1,
+            "batch_id": 6,
+            "start_s": 0.18104725810900113,
+            "modeled_ready_s": 0.19749475449298443,
+            "early_ms": 16.447496383983296
+          }
+        ],
+        "decode_steps": {
+          "0": 127,
+          "1": 127
+        },
+        "request_complete_s": {
+          "0": 2.3119304157020695,
+          "1": 2.378536362741049
+        }
+      },
+      "fixed_baseline": {
+        "batches": 134,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127,
+          "1": 127
+        },
+        "request_complete_s": {
+          "0": 2.3134783361480493,
+          "1": 2.396735769946774
+        }
+      },
+      "dag": {
+        "batches": 134,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127,
+          "1": 127
+        },
+        "request_complete_s": {
+          "0": 2.344866203795193,
+          "1": 2.4281236375939264
+        }
+      },
+      "pristine_vs_dag": {
+        "paired_batches": 10,
+        "other_batches": 133,
+        "dag_batches": 134,
+        "max_paired_model_cost_diff_s": 2.7755575615628914e-17,
+        "first_decode_difference": {
+          "position": 4,
+          "other": {
+            "key": "(1, (0, 1), ((0, 4), (1, 0)), ((0, 1), (1, 1)))",
+            "start_s": 0.18104725810900113,
+            "ids": [
+              0,
+              1
+            ]
+          },
+          "dag": {
+            "key": "(1, (0,), ((0, 4),), ((0, 1),))",
+            "start_s": 0.1821576016090015,
+            "ids": [
+              0
+            ]
+          }
+        }
+      },
+      "fixed_baseline_vs_dag": {
+        "paired_batches": 134,
+        "other_batches": 134,
+        "dag_batches": 134,
+        "max_paired_model_cost_diff_s": 2.7755575615628914e-17,
+        "first_decode_difference": null
+      }
+    },
+    "two_simultaneous": {
+      "pristine": {
+        "batches": 128,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127,
+          "1": 127
+        },
+        "request_complete_s": {
+          "0": 2.3614688682897125,
+          "1": 2.3614688682897125
+        }
+      },
+      "fixed_baseline": {
+        "batches": 128,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127,
+          "1": 127
+        },
+        "request_complete_s": {
+          "0": 2.3636895552897124,
+          "1": 2.3636895552897124
+        }
+      },
+      "dag": {
+        "batches": 128,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127,
+          "1": 127
+        },
+        "request_complete_s": {
+          "0": 2.393972549936873,
+          "1": 2.393972549936873
+        }
+      },
+      "pristine_vs_dag": {
+        "paired_batches": 128,
+        "other_batches": 128,
+        "dag_batches": 128,
+        "max_paired_model_cost_diff_s": 5.551115123125783e-17,
+        "first_decode_difference": null
+      },
+      "fixed_baseline_vs_dag": {
+        "paired_batches": 128,
+        "other_batches": 128,
+        "dag_batches": 128,
+        "max_paired_model_cost_diff_s": 5.551115123125783e-17,
+        "first_decode_difference": null
+      }
+    },
+    "four_simultaneous": {
+      "pristine": {
+        "batches": 135,
+        "early_decode_memberships": [
+          {
+            "request_id": 2,
+            "batch_id": 8,
+            "start_s": 0.2652342173241733,
+            "modeled_ready_s": 0.2911895272361108,
+            "early_ms": 25.95530991193751
+          },
+          {
+            "request_id": 3,
+            "batch_id": 8,
+            "start_s": 0.2652342173241733,
+            "modeled_ready_s": 0.2911895272361108,
+            "early_ms": 25.95530991193751
+          },
+          {
+            "request_id": 2,
+            "batch_id": 9,
+            "start_s": 0.2830174985388859,
+            "modeled_ready_s": 0.2911895272361108,
+            "early_ms": 8.172028697224887
+          },
+          {
+            "request_id": 3,
+            "batch_id": 9,
+            "start_s": 0.2830174985388859,
+            "modeled_ready_s": 0.2911895272361108,
+            "early_ms": 8.172028697224887
+          }
+        ],
+        "decode_steps": {
+          "0": 127,
+          "1": 127,
+          "2": 127,
+          "3": 127
+        },
+        "request_complete_s": {
+          "0": 2.417011244304404,
+          "1": 2.417011244304404,
+          "2": 2.5209567641869937,
+          "3": 2.5209567641869937
+        }
+      },
+      "fixed_baseline": {
+        "batches": 137,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127,
+          "1": 127,
+          "2": 127,
+          "3": 127
+        },
+        "request_complete_s": {
+          "0": 2.4140475570703495,
+          "1": 2.565013202948523,
+          "2": 2.565013202948523,
+          "3": 2.565013202948523
+        }
+      },
+      "dag": {
+        "batches": 137,
+        "early_decode_memberships": [],
+        "decode_steps": {
+          "0": 127,
+          "1": 127,
+          "2": 127,
+          "3": 127
+        },
+        "request_complete_s": {
+          "0": 2.516496629610303,
+          "1": 2.516496629610303,
+          "2": 2.655090656120476,
+          "3": 2.655090656120476
+        }
+      },
+      "pristine_vs_dag": {
+        "paired_batches": 14,
+        "other_batches": 135,
+        "dag_batches": 137,
+        "max_paired_model_cost_diff_s": 5.551115123125783e-17,
+        "first_decode_difference": {
+          "position": 6,
+          "other": {
+            "key": "(1, (0, 1, 2, 3), ((0, 6), (1, 6), (2, 0), (3, 0)), ((0, 1), (1, 1), (2, 1), (3, 1)))",
+            "start_s": 0.2652342173241733,
+            "ids": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "dag": {
+            "key": "(1, (0, 1), ((0, 6), (1, 6)), ((0, 1), (1, 1)))",
+            "start_s": 0.30174610913799754,
+            "ids": [
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "fixed_baseline_vs_dag": {
+        "paired_batches": 2,
+        "other_batches": 137,
+        "dag_batches": 137,
+        "max_paired_model_cost_diff_s": 5.551115123125783e-17,
+        "first_decode_difference": {
+          "position": 0,
+          "other": {
+            "key": "(1, (0,), ((0, 0),), ((0, 1),))",
+            "start_s": 0.1623990409415848,
+            "ids": [
+              0
+            ]
+          },
+          "dag": {
+            "key": "(1, (0, 1), ((0, 0), (1, 0)), ((0, 1), (1, 1)))",
+            "start_s": 0.197800589255412,
+            "ids": [
+              0,
+              1
+            ]
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "synthetic arrivals",
+    "pristine lacks consumer first-token stage and cannot be considered same total fees",
+    "modified fixed baseline is diagnostic only",
+    "transfer modeled readiness is not physical KVReady",
+    "fee candidates not frozen, not formal validation"
+  ]
+}
