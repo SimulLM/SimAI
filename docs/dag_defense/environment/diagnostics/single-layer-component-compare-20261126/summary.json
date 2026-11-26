@@ -1,0 +1,69 @@
+{
+  "status": "one_request_layer16_diagnostic",
+  "input_sha256": "03248787c445a346991d4df45d6475702b8a28a9727599ef049158e4ab13a630",
+  "components": [
+    {
+      "component": "attention_combined",
+      "steps": 63,
+      "observed_median_ms": 0.16924799978733063,
+      "simulated_median_ms": 0.13130933708614775,
+      "paired_difference_median_ms": -0.037938662701182874
+    },
+    {
+      "component": "input_norm",
+      "steps": 63,
+      "observed_median_ms": 0.005632000043988228,
+      "simulated_median_ms": 0.005679999943822622,
+      "paired_difference_median_ms": 4.7999899834394455e-05
+    },
+    {
+      "component": "mlp_activation",
+      "steps": 63,
+      "observed_median_ms": 0.00979200005531311,
+      "simulated_median_ms": 0.009727999567985535,
+      "paired_difference_median_ms": -6.400048732757568e-05
+    },
+    {
+      "component": "mlp_down",
+      "steps": 63,
+      "observed_median_ms": 0.06147199869155884,
+      "simulated_median_ms": 0.06099199876189232,
+      "paired_difference_median_ms": -0.00047999992966651917
+    },
+    {
+      "component": "mlp_up",
+      "steps": 63,
+      "observed_median_ms": 0.13043199479579926,
+      "simulated_median_ms": 0.12598400563001633,
+      "paired_difference_median_ms": -0.0044479891657829285
+    },
+    {
+      "component": "post_norm",
+      "steps": 63,
+      "observed_median_ms": 0.025312000885605812,
+      "simulated_median_ms": 0.023584000766277313,
+      "paired_difference_median_ms": -0.0017280001193284988
+    },
+    {
+      "component": "post_projection",
+      "steps": 63,
+      "observed_median_ms": 0.049375999718904495,
+      "simulated_median_ms": 0.04809600114822388,
+      "paired_difference_median_ms": -0.0012799985706806183
+    },
+    {
+      "component": "pre_projection_plus_rope",
+      "steps": 63,
+      "observed_median_ms": 0.06886400142684579,
+      "simulated_median_ms": 0.06935999961569905,
+      "paired_difference_median_ms": 0.0004959981888532639
+    }
+  ],
+  "limitations": [
+    "Layer 16 only; cannot extrapolate its difference to all 32 layers without evidence",
+    "63 steps from one request are correlated, not independent measurements",
+    "Observed CUDA event intervals and candidate medians are from different instrumented sessions and timing scopes may overlap",
+    "Paired medians are not additive and cannot directly explain total E2E difference",
+    "No formal validation data or completion times were used to choose costs"
+  ]
+}
