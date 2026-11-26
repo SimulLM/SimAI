@@ -1,0 +1,102 @@
+{
+  "status": "incomplete_common_physical_contract",
+  "baseline_commit": "cef83f9ddd96540e3e9f48934f11335d52d54fce",
+  "predictor_sha256": "53b4f15d86385c9aad931223b1b58dc38beb3f385be049e27031ebf99146375d",
+  "shared_inputs": {
+    "--random_forrest_execution_time_predictor_config_compute_input_file": {
+      "value": "/root/autodl-tmp/dag-handoff/runs/pd-pull-calibration-replay-20261126/profile/compute.csv",
+      "sha256": "f9be52c0a0d30aeee08ccd586d5d5d8f9e23874b0c96548ac767caccf7a35b11"
+    },
+    "--random_forrest_execution_time_predictor_config_attention_input_file": {
+      "value": "/root/autodl-tmp/dag-handoff/runs/pd-pull-calibration-replay-20261126/profile/attention.csv",
+      "sha256": "cefc861f14a4cdf5609b6416e57d2ac11e9e4aab7ca68c388961414d6185c663"
+    },
+    "--random_forrest_execution_time_predictor_config_send_recv_input_file": {
+      "value": "/root/autodl-tmp/dag-handoff/runs/pd-pull-calibration-replay-20261126/profile/network.csv",
+      "sha256": "51b107cda87c210f7bb411430464327abd00935e3266288f9e07b1def55d416b"
+    },
+    "--random_forrest_execution_time_predictor_config_all_reduce_input_file": {
+      "value": "/root/autodl-tmp/dag-handoff/runs/pd-pull-calibration-replay-20261126/profile/network.csv",
+      "sha256": "51b107cda87c210f7bb411430464327abd00935e3266288f9e07b1def55d416b"
+    },
+    "--random_forrest_execution_time_predictor_config_cpu_overhead_input_file": {
+      "value": "/root/autodl-tmp/dag-handoff/runs/pd-pull-calibration-replay-20261126/profile/cpu.csv",
+      "sha256": "cb5d964a2af3edfff0d0289e848ad4520fae5304c462375a7d178c9f3c761a55"
+    },
+    "--replica_config_pd_p2p_comm_bandwidth": {
+      "value": "255"
+    },
+    "--trace_request_generator_config_trace_file": {
+      "value": "/root/autodl-tmp/dag-handoff/runs/controlled-2048-shared-fees-20261126/four_simultaneous/trace.csv",
+      "sha256": "d025d6994ddf0b999057f36b52397adb7da828b575778c50d302bb1182ad888b"
+    }
+  },
+  "transfer_records": [
+    {
+      "request_id": "0",
+      "pristine_billing_bytes": 1074266112,
+      "dag_reported_wire_bytes": 1073741824,
+      "common_transfer_task_s": 0.03138786764705882,
+      "dag_elapsed_prefill_to_ready_s": 0.03138786764705881,
+      "dag_elapsed_excess_over_task_s": -1.3877787807814457e-17
+    },
+    {
+      "request_id": "1",
+      "pristine_billing_bytes": 1074266112,
+      "dag_reported_wire_bytes": 1073741824,
+      "common_transfer_task_s": 0.03138786764705882,
+      "dag_elapsed_prefill_to_ready_s": 0.06678394546088606,
+      "dag_elapsed_excess_over_task_s": 0.03539607781382724
+    },
+    {
+      "request_id": "2",
+      "pristine_billing_bytes": 1074266112,
+      "dag_reported_wire_bytes": 1073741824,
+      "common_transfer_task_s": 0.03138786764705882,
+      "dag_elapsed_prefill_to_ready_s": 0.04620293830719335,
+      "dag_elapsed_excess_over_task_s": 0.01481507066013453
+    },
+    {
+      "request_id": "3",
+      "pristine_billing_bytes": 1074266112,
+      "dag_reported_wire_bytes": 1073741824,
+      "common_transfer_task_s": 0.03138786764705882,
+      "dag_elapsed_prefill_to_ready_s": 0.07759080595425216,
+      "dag_elapsed_excess_over_task_s": 0.04620293830719334
+    }
+  ],
+  "dag_first_token_tasks": [
+    {
+      "event": "submit",
+      "request_ids": [
+        "0",
+        "1"
+      ],
+      "time_s": 0.196684775255412,
+      "cost_s": 0.001115814,
+      "key": "2048:2",
+      "graph_id": "pd/batch-first/0,1"
+    },
+    {
+      "event": "submit",
+      "request_ids": [
+        "2",
+        "3"
+      ],
+      "time_s": 0.39917035105964366,
+      "cost_s": 0.001115814,
+      "key": "2048:2",
+      "graph_id": "pd/batch-first/2,3"
+    }
+  ],
+  "pristine_consumer_first_token_tasks": 0,
+  "limitations": [
+    "DAG elapsed transfer includes modeled resource waits; compare base fee not elapsed time",
+    "common profile hash does not prove additive physical scopes",
+    "original predictor missing separately modeled consumer first token",
+    "255 Gibit/s includes hidden transfer in fitted scope; do not charge hidden bytes again",
+    "model communication does not include measured paged KV installation",
+    "CPU synchronized sampler can include GPU work and must not be paired with a separate identical sampler fee",
+    "no validation duration used to fit costs"
+  ]
+}

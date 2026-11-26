@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:55:54.196887+00:00",
+  "updated_utc": "2026-11-26T13:59:26.521599+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Transfer GPU occupancy single-flag sensitivity changes paired batches from 986 to 265 on one calibration trace; neither setting is proven physically correct, and pristine first-token ownership plus full natural shape coverage remain open.",
-      "next_action": "Establish a defensible common model and explicitly disclose transfer contention and pristine first-token omissions before freeze; do not choose settings by matching or validation error.",
+      "missing": "Pristine and DAG common profile hashes and 2048 four-request transfer base fees verified, with distinct reported KV-byte semantics. Pristine lacks consumer first-token task; KV-install, CPU/GPU overlap and router tail are not proven common/non-overlapping.",
+      "next_action": "Implement or explicitly resolve the pristine consumer first-token and KV-install omissions under the required original/DAG comparison, keeping adapted variants separately labelled.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/calibration-transfer-occupancy-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/pristine-dag-fee-contract-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",

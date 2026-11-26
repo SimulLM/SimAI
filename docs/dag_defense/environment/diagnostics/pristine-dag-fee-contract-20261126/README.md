@@ -1,0 +1,17 @@
+# Pristine and DAG fee ownership: 2048/128 four-request diagnostic
+
+This is a reproducible accounting audit of the previously saved synthetic-arrival four-request replay, not a formal comparison. It verifies the pristine original tracked worktree and commit, identical original predictor SHA-256, identical input trace, identical measured candidate compute, attention, communication and CPU profile file hashes, and 255 Gibit/s transfer bandwidth. It checks four request metrics against DAG transfer task durations. These shared inputs and matched model batch fees do not prove that all physical operations are covered or non-overlapping.
+
+| Scope | Pristine original | Experimental DAG | Status |
+|---|---|---|---|
+| Model batches | Original predictor using common profile files | Same predictor and profile files; matched batch cost checked in `controlled-2048-three-way-20261126` | Same cost for matched keys in that replay; no claim for unmatched shapes |
+| Transfer base | Bills 2049 × 524288 bytes at 255 Gibit/s | Reports 2048 × 524288 valid KV bytes, but config bills one extra token | Both charge 31.387868 ms per transfer task. `wire_bytes` is modeled valid KV data, not all physical hidden/control/framing bytes |
+| Transfer elapsed/wait | Arithmetic delay per request | Transfer task plus modeled reservation/resource wait | Different scheduling; four DAG prefill-to-ready values span 31.388–77.591 ms. Wait is not a second transfer fee |
+| Consumer first token after KV | No separate task | Two batch-2 tasks, each 1.115814 ms from synchronized host interval | **Missing from original**; total modeled work is not fully same-fee |
+| Sampling | Synchronized sampler host interval from shared profile | Same profile; separate consumer-first-token interval contains sampling | Synchronized host interval contains GPU work and waits. Do not charge a separate duplicate GPU sampler or re-add first-token subevents |
+| KV installation | Not separately represented by microbenchmark transfer fee | Not separately established in this common transfer fee | Physical installation omission remains open; the receive-through-sync interval includes wait and install and cannot simply be stacked on the transfer microbenchmark |
+| Router stream tail | No explicit last-batch-to-stream completion task | No explicit equivalent in this candidate | Real server metric includes stream completion; scope mismatch remains open |
+
+The 255 Gibit/s fee was fitted to SimpleBuffer measurements already including hidden tensor transfer, although its legacy accounting basis is KV tokens plus one. Adding hidden bytes again at that same rate would double count the fitted work. The synchronized candidate first-token interval and GPU work overlap; the model assumes GPU occupancy without proving it for production. The DAG's reported prefill-to-ready elapsed interval includes waits and must not be interpreted as its independent transfer task fee.
+
+The initial audit attempts are preserved: first failed on CSV numeric strings like `1074266112.0`, second failed because it incorrectly asserted pristine billing bytes and DAG reported valid KV bytes must be identical. The corrected audit directly checks the actual task cost and the different byte semantics. `audit.json` records the common input hashes, per-request values and explicit missing consumer tasks. Exact commands and raw traces are in the sibling controlled-2048 archives. No E2E result was used to set a fee. Formal validation remains 0/30.

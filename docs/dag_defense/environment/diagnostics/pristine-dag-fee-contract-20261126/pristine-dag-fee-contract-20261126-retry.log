@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/SimAI-handoff/docs/dag_defense/environment/diagnostics/pristine-dag-fee-contract-20261126/audit.py", line 17, in <module>
+    a,b=metrics['pristine'][rid],metrics['dag'][rid];assert float(a['pd_p2p_comm_size'])==float(b['pd_p2p_comm_size']);base=float(a['pd_p2p_comm_time']);payload=int(float(a['pd_p2p_comm_size']));expected=payload/(255*1024**3/8);assert abs(base-expected)<1e-12
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
