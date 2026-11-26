@@ -1,0 +1,15 @@
+stage,kind,op,tasks,sum_seconds
+decode,compute,attention.compute,2016,0.5129618009924911
+decode,compute,cpu.finish,63,0.03561330149999999
+decode,compute,cpu.prepare,63,0.028606441500000024
+decode,compute,mlp.compute,2016,0.4441006175279706
+decode,compute,residual_add,2016,0.0
+decode,sync,terminal,63,0.0
+prefill,compute,attention.compute,32,0.008964607834815983
+prefill,compute,cpu.finish,1,0.000505253
+prefill,compute,cpu.prepare,1,0.0006294885
+prefill,compute,mlp.compute,32,0.013297664016485205
+prefill,compute,residual_add,32,0.0
+prefill,sync,terminal,1,0.0
+transfer,comm,pd.transfer,1,0.007858455882352941
+transfer,sync,,1,0.0

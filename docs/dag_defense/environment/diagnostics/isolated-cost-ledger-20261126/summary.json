@@ -1,0 +1,112 @@
+{
+  "status": "candidate_accounting_not_validated",
+  "source": "docs/dag_defense/environment/diagnostics/isolated-calibration-first-20261126/dag-cost-breakdown.csv",
+  "task_seconds_sum": 1.0525376307541159,
+  "rows": [
+    {
+      "stage": "decode",
+      "kind": "compute",
+      "op": "attention.compute",
+      "tasks": 2016,
+      "sum_seconds": 0.5129618009924911
+    },
+    {
+      "stage": "decode",
+      "kind": "compute",
+      "op": "cpu.finish",
+      "tasks": 63,
+      "sum_seconds": 0.03561330149999999
+    },
+    {
+      "stage": "decode",
+      "kind": "compute",
+      "op": "cpu.prepare",
+      "tasks": 63,
+      "sum_seconds": 0.028606441500000024
+    },
+    {
+      "stage": "decode",
+      "kind": "compute",
+      "op": "mlp.compute",
+      "tasks": 2016,
+      "sum_seconds": 0.4441006175279706
+    },
+    {
+      "stage": "decode",
+      "kind": "compute",
+      "op": "residual_add",
+      "tasks": 2016,
+      "sum_seconds": 0.0
+    },
+    {
+      "stage": "decode",
+      "kind": "sync",
+      "op": "terminal",
+      "tasks": 63,
+      "sum_seconds": 0.0
+    },
+    {
+      "stage": "prefill",
+      "kind": "compute",
+      "op": "attention.compute",
+      "tasks": 32,
+      "sum_seconds": 0.008964607834815983
+    },
+    {
+      "stage": "prefill",
+      "kind": "compute",
+      "op": "cpu.finish",
+      "tasks": 1,
+      "sum_seconds": 0.000505253
+    },
+    {
+      "stage": "prefill",
+      "kind": "compute",
+      "op": "cpu.prepare",
+      "tasks": 1,
+      "sum_seconds": 0.0006294885
+    },
+    {
+      "stage": "prefill",
+      "kind": "compute",
+      "op": "mlp.compute",
+      "tasks": 32,
+      "sum_seconds": 0.013297664016485205
+    },
+    {
+      "stage": "prefill",
+      "kind": "compute",
+      "op": "residual_add",
+      "tasks": 32,
+      "sum_seconds": 0.0
+    },
+    {
+      "stage": "prefill",
+      "kind": "sync",
+      "op": "terminal",
+      "tasks": 1,
+      "sum_seconds": 0.0
+    },
+    {
+      "stage": "transfer",
+      "kind": "comm",
+      "op": "pd.transfer",
+      "tasks": 1,
+      "sum_seconds": 0.007858455882352941
+    },
+    {
+      "stage": "transfer",
+      "kind": "sync",
+      "op": "",
+      "tasks": 1,
+      "sum_seconds": 0.0
+    }
+  ],
+  "limitations": [
+    "Task work totals are not additive to elapsed time when resources overlap",
+    "Sampler host timings can include GPU waiting; not additive with CUDA timings",
+    "Consumer KV-bypass first-token stage is absent",
+    "Resource wait, routing and host/backend boundaries are not fully represented",
+    "Adapted baseline comparison is diagnostic, not original-baseline acceptance"
+  ]
+}
