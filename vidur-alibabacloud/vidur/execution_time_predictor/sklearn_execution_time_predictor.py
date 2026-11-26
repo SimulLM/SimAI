@@ -1296,11 +1296,14 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             column = f"time_stats.{name}.median"
             df = getattr(self, "_compute_profile_df", None)
             if df is not None and column in df.columns:
-                direct = df[(df["phase_code"] == phase) &
-                            (df["input_tokens"] == context) &
-                            (df["num_tokens"].isin((actual_total, total)))]
-                if not direct.empty:
-                    return float(direct[column].median())
+                shape = df[(df["phase_code"] == phase) &
+                           (df["input_tokens"] == context)]
+                # A real batch of 1/2/4 is not the legacy rounded batch of 8.
+                # Prefer its measured row; only use the rounded row as a fallback.
+                for token_count in dict.fromkeys((actual_total, total)):
+                    direct = shape[shape["num_tokens"] == token_count]
+                    if not direct.empty:
+                        return float(direct[column].median())
             x = pd.DataFrame([{"phase_code": phase, "num_tokens": total,
                                "input_tokens": max(1, context)}])
             return float(self._models[name].predict(x)[0])
