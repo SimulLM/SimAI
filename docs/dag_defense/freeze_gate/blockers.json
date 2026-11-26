@@ -1,21 +1,22 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:27:24.024632+00:00",
+  "updated_utc": "2026-11-26T12:31:03.331517+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Common cost mapping for reachable concurrent shapes and exclusive assignment of receive/install, first token, forward, sampling, CPU and waits.",
-      "next_action": "Build a traceable common cost and task ownership ledger for actual validation shapes; reject missing shapes.",
+      "missing": "Strict forward inventory covers 59/112 applicable cells, with 53 potential cells missing; strict replay actually failed at 1024 batch 4 context 1040. Concurrent receive/first-token shared fees and CPU/GPU overlap remain unproven.",
+      "next_action": "Enumerate lookup keys reached by the candidate matrix, with input hashes, and isolate which missing strict cells are actually reachable.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/common-cost-serial-1024-2048-20261126/README.md"
+      "latest_progress": "docs/dag_defense/freeze_gate/fee-and-event-evidence.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/output-processing-repeat-20261126/README.md",
-      "missing": "Versioned mapping from server arrival through stream completion to simulator boundary, with separately characterized residual.",
+      "missing": "Versioned mapping and per-round router/client boundaries; existing synchronized tail measurements cover one diagnostic session and cannot be blindly added to costs.",
       "next_action": "Write the timestamp and completion contract using observed events and measured tail without duplicate charges.",
-      "close_when": "Token and Decode counts align; all endpoints have source timestamps and residual is quantified or disclosed without double counting."
+      "close_when": "Token and Decode counts align; all endpoints have source timestamps and residual is quantified or disclosed without double counting.",
+      "latest_progress": "docs/dag_defense/freeze_gate/fee-and-event-evidence.md"
     },
     "concurrent_readiness_batching": {
       "status": "open",
