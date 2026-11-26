@@ -1,0 +1,19 @@
+{
+  "lengths": [
+    575,
+    1151,
+    2175
+  ],
+  "batches": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "warmup_waves": 12,
+  "measured_waves": 35,
+  "model": "/root/autodl-tmp/models/Llama-2-7b-hf",
+  "max_tokens": 2,
+  "min_tokens": 2,
+  "nature": "independent real PD outer CUDA profile"
+}
