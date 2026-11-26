@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:24:48.251220+00:00",
+  "updated_utc": "2026-11-26T13:29:23.726446+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "1024 batch-four candidate measured at 11/30 and fixed retry passes; it is a synchronized 8-output profile. Pristine first-token stage, natural concurrent resource/transfer overlap and full 2048 cost remain unproven.",
-      "next_action": "Complete the 2048 1/2/4 shared-cost checks and reconcile pristine first-token/transfer ownership with the natural scheduling contract.",
+      "missing": "Both 1024 and 2048 controlled groups use shared first-token candidate table but may select different group shapes; pristine first-token accounting, transfer/CPU overlap and supported natural shape coverage remain unproven.",
+      "next_action": "Map pristine and DAG fee ownership and supported natural shapes, then independently justify or disclose timing/resource approximations without fitting validation.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-1024-batch4-rerun-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-2048-shared-fees-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
@@ -21,10 +21,10 @@
     "concurrent_readiness_batching": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/early-batch-minimal-20261126/README.md",
-      "missing": "All 1024 fixed-group 1/2 staggered/2 simultaneous/4 simultaneous diagnostics pass ready ordering and decode counts after batch-four candidate; natural scheduling, pristine baseline and 2048 final cost remain unverified.",
-      "next_action": "Run 2048 controlled groups with the same bounded candidate cost contract, preserve pristine results and report batch pairing and first divergence.",
+      "missing": "1024 and 2048 controlled 1/2/4 diagnostics finish with 127 later Decode steps, but 2048 four has 2/137 matched batches and first Decode differs; fixed baseline first-token groups differ from natural DAG groups. Pristine source still lacks consumer first-token stage.",
+      "next_action": "Determine first divergence using resource/arrival events in 2048 four and preserve natural batch distributions; verify same-shape fee parity without requiring identical total work.",
       "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-1024-batch4-rerun-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-2048-shared-fees-20261126/README.md"
     },
     "freeze_and_preflight": {
       "status": "open",
