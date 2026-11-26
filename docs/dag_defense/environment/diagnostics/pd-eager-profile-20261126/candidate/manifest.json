@@ -1,0 +1,23 @@
+{
+  "status": "candidate_not_frozen",
+  "required_points": 34,
+  "selected_points": 34,
+  "missing": [],
+  "selection": "for each shape choose one source with >=10 distinct warmup waves and >=30 distinct measured waves; maximum measured waves; median per wave then median across waves",
+  "sources": {
+    "main": {
+      "path": "/root/autodl-tmp/dag-handoff/runs/pd-mapped-eager-audit-20261126/mapped.csv",
+      "sha256": "e1d29d35356d59f6c4fc461bf36eb2d170820e7265770c27197bd0d25dd68d66"
+    },
+    "b4": {
+      "path": "/root/autodl-tmp/dag-handoff/runs/pd-mapped-eager-b4-audit-20261126/mapped.csv",
+      "sha256": "2e7fbd5a482530201e7e559804ba6f63280bbaed5d520807147973a76ee35e3c"
+    }
+  },
+  "limitations": [
+    "forward only; excludes KV, logits, sampling, CPU and router",
+    "b4 supplement uses context range input to input+7; not exact endpoint",
+    "eager execution, synchronization perturbs load",
+    "not a parameter freeze; interpolation and independent cost accounting not yet established"
+  ]
+}

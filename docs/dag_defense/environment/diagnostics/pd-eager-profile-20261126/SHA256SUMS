@@ -1,4 +1,14 @@
-b7f4ce422386fe64f1e7b78e4172aa77e42271653a6fda5a3f519fd78f9d8c5b  ./README.md
+4eff6029cf7349837722f2cf3fc1ce9493ac79e65ada45ede7451b601c4aa539  ./README.md
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./batch4/client-profile.exit
+7fcb73d98dea583ddb40940707979fdd723c260523517f19cdea59e389ae8167  ./batch4/client-spec.json
+6ad5787b5b24d7b68a5cd793f343b67f98823dcedca614b794c05214902e1386  ./batch4/compute-events-82263.jsonl.gz
+fae4f26e6e223ef5f4502da781b1395b42c671fe1a1e2e358e0e0254720c2f08  ./batch4/compute-events-82266.jsonl.gz
+23444c6696b9995ad264f6496ef714609d4e747a9eafd007c28595cf81599a25  ./batch4/coverage.csv
+66834eaedde2b99e4c79a68ea23e1a777ff53ffe6b5b3db17e67884543d05125  ./batch4/mapped.csv.gz
+83281b5a4d536afc27118ac096f08c01baebe76e59e19e7d9bd3a5c0469a7144  ./batch4/requests.jsonl.gz
+f65fdc639c385e94455ff74e36da5da53e50cb2875c3cd8193aa3972dcb6ab84  ./batch4/summary.json
+eff42e531a3917771c19c6c0829d9f3ab208b3bbdf751213c536981026913e15  ./candidate/forward-cost.csv
+9a584a5598a46462652312abbc97dba295a27513cd27396a5e9bd66baf3bb60c  ./candidate/manifest.json
 3c0d11ec1cfad5bff4aae34fa0abbf8914c5a92c051f295b67a022e2981e708f  ./coverage.csv
 eb2aa9641e5267cdce7b786f5d0c7c97e2f1e4320186817ef46c9bb64ec89a99  ./mapped.csv.gz
 560945606747a45334dc4ca156da0db6fac1042f6cad278ec87efc8b1bef9d7f  ./raw/client-check-requests.jsonl.gz
@@ -8,7 +18,9 @@ eb2aa9641e5267cdce7b786f5d0c7c97e2f1e4320186817ef46c9bb64ec89a99  ./mapped.csv.g
 19876219d50c4b8efd671436e710c0dd5cbf0025ce168f661feda3d140164253  ./raw/compute-events-80978.jsonl.gz
 a49eb0f8cd2bd88ec6dc8d4df7ca87b304a0b0c0540bf61673a917782ef747e4  ./raw/id-join-check.json
 0d60d9dc5ff03971e19029ed9bed064efdf13faa06bcaeb09b69b569224c0b0e  ./raw/requests.jsonl.gz
+71c41aab660b680e08d432e18f5cf8033c66dfc2619abccea7d452db58bdb06c  ./scripts/audit-pd-eager-b4.py
 7cda6c8be549aa44de19eb639e04ee3e7edcccdceb0752ab1cb5c50431ee27ff  ./scripts/audit-pd-eager-profile.py
+f7a08bbc14f751a0daa13654d41cf845c1e8bdfc943297cb4720756e212ad368  ./scripts/build-eager-forward-candidate.py
 0e79bbfb19fa62edc9fb556df5eb96d9daecb7e2d24d29dc6988767b8dcfb235  ./scripts/pd-mapped-forward-client.py
 7aba5ff56d959baf431720e5f6b4a27b2ce4f0bfbe8c4af19be345d213922950  ./scripts/sitecustomize.py
 19e7d30a91b40b428b396c71fc0a08d2c40e13da2e4b677bd102a0ff5a0cb59e  ./scripts/start-pd-mapped-forward-eager.sh

@@ -1,0 +1,20 @@
+{
+  "status": "shape_coverage_only_passed",
+  "client_requests": 880,
+  "client_waves": 220,
+  "pids": {
+    "prefill": "82266",
+    "decode": "82263"
+  },
+  "required_points": 5,
+  "passed_points": 5,
+  "missing": [],
+  "rejected_events": {
+    "outside_profile_windows": 2
+  },
+  "limitations": [
+    "consumer ID join is direct, producer association only by non-overlapping wave time",
+    "CUDA event forward excludes KV transfer, logits and sampler; GPU stream timing and synchronization can perturb execution",
+    "shape coverage does not prove cost/boundary compatibility or formal validation"
+  ]
+}

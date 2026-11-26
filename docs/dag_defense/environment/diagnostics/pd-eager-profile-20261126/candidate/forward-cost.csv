@@ -1,0 +1,35 @@
+nature,input_tokens,actual_batch,source,warmup_waves,measured_waves,median_of_wave_medians_ms,context_note
+producer_prefill,512,1,main,22,53,21.59974479675293,profile input and first decode step
+producer_prefill,512,2,main,17,40,34.492431640625,profile input and first decode step
+producer_prefill,512,3,main,15,53,50.40140914916992,profile input and first decode step
+producer_prefill,512,4,b4,13,37,67.77177429199219,profile input and first decode step
+producer_prefill,1024,1,main,16,41,35.5447998046875,profile input and first decode step
+producer_prefill,1024,2,main,16,40,70.13515090942383,profile input and first decode step
+producer_prefill,1024,3,main,14,41,108.53180694580078,profile input and first decode step
+producer_prefill,1024,4,main,15,39,144.94834899902344,profile input and first decode step
+producer_prefill,2048,1,main,42,116,73.01414489746094,profile input and first decode step
+producer_prefill,2048,2,main,45,120,149.93523406982422,profile input and first decode step
+consumer_decode,512,1,main,22,53,13.360992431640625,profile input and first decode step
+consumer_decode,512,2,main,17,40,13.49787187576294,profile input and first decode step
+consumer_decode,512,3,main,15,53,13.224096298217773,profile input and first decode step
+consumer_decode,512,4,b4,15,40,13.067296028137207,decode context spans input through input+7 tokens
+consumer_decode,575,1,main,20,62,13.24892807006836,profile input and first decode step
+consumer_decode,575,2,main,15,41,13.164511680603027,profile input and first decode step
+consumer_decode,575,3,main,20,60,13.208719730377197,profile input and first decode step
+consumer_decode,575,4,b4,15,40,13.408352375030518,decode context spans input through input+7 tokens
+consumer_decode,1024,1,main,16,41,13.267904281616211,profile input and first decode step
+consumer_decode,1024,2,main,16,40,13.253952026367188,profile input and first decode step
+consumer_decode,1024,3,main,14,41,13.354880332946777,profile input and first decode step
+consumer_decode,1024,4,main,15,39,13.601984024047852,profile input and first decode step
+consumer_decode,1151,1,main,18,41,13.321727752685547,profile input and first decode step
+consumer_decode,1151,2,main,15,40,13.420495986938477,profile input and first decode step
+consumer_decode,1151,3,main,18,41,13.345248222351074,profile input and first decode step
+consumer_decode,1151,4,main,12,39,13.443072319030762,profile input and first decode step
+consumer_decode,2048,1,main,32,89,13.366527557373047,profile input and first decode step
+consumer_decode,2048,2,main,20,53,13.546048164367676,profile input and first decode step
+consumer_decode,2048,3,main,22,63,13.497823715209961,profile input and first decode step
+consumer_decode,2048,4,b4,15,40,13.072656154632568,decode context spans input through input+7 tokens
+consumer_decode,2175,1,main,60,160,13.356679916381836,profile input and first decode step
+consumer_decode,2175,2,main,15,41,13.216480255126953,profile input and first decode step
+consumer_decode,2175,3,b4,15,40,13.579728126525879,decode context spans input through input+7 tokens
+consumer_decode,2175,4,b4,15,40,13.64186406135559,decode context spans input through input+7 tokens
