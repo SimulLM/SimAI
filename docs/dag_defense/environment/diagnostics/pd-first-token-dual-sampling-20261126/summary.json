@@ -1,0 +1,26 @@
+{
+  "status": "diagnostic_only",
+  "requests": 40,
+  "measured": 30,
+  "median_ms": {
+    "producer_logits_gpu_ms": 0.16654399782419205,
+    "producer_sampler_gpu_ms": 0.3635680079460144,
+    "consumer_logits_gpu_ms": 0.15534400194883347,
+    "consumer_sampler_gpu_ms": 0.35446400940418243,
+    "producer_sampler_host_ms": 0.6425475,
+    "consumer_sampler_host_ms": 7.229992
+  },
+  "source_hashes": {
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/client/requests.jsonl": "15f1a2667badc0cab63dd394e0d3a251ba9d7d0bc5b31753b7e95046ae278782",
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/router-events.jsonl": "2ccb36d1afd2705e17441a8c1caa026ff424fef4d8f39d0df667963706859c0f",
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/compute-events-123580.jsonl": "c9639f297ae794e78887a49b8a33705717fc6b073eb2b3dcb8b47507fc9362eb",
+    "/root/autodl-tmp/dag-handoff/runs/pd-dispatch-512-independent-20261126/compute-events-123663.jsonl": "f289c231685457638be56152ab0ebb07b5ebeb212d3b40d45bab50d1838d1ed9"
+  },
+  "limitations": [
+    "Instrumented synchronized 512-input/8-output serial diagnostic only",
+    "GPU CUDA event and CPU host intervals can overlap and cannot be added as independent fees",
+    "Consumer first-step interval includes KV receive; no exact GPU KVReady",
+    "Simulator Prefill accounting and consumer first token are not yet reconciled",
+    "No formal validation or calibrated fee claim"
+  ]
+}
