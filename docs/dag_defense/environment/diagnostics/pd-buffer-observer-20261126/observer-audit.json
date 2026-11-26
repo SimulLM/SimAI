@@ -1,0 +1,165 @@
+{
+  "status": "diagnostic_observations_consistent",
+  "request_id": "fbf8cba39fb44fa3a75f66490c8a1f5b",
+  "samples": [
+    {
+      "sample": 0,
+      "monotonic_ns": 1825479529436232,
+      "roles": {
+        "producer": {
+          "pid": 120199,
+          "age_s": 0.229975009,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          }
+        },
+        "consumer": {
+          "pid": 120200,
+          "age_s": 0.372324357,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          }
+        }
+      }
+    },
+    {
+      "sample": 1,
+      "monotonic_ns": 1825484587500922,
+      "roles": {
+        "producer": {
+          "pid": 120199,
+          "age_s": 0.284158521,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          }
+        },
+        "consumer": {
+          "pid": 120200,
+          "age_s": 0.426344772,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          }
+        }
+      }
+    },
+    {
+      "sample": 2,
+      "monotonic_ns": 1825489604846237,
+      "roles": {
+        "producer": {
+          "pid": 120199,
+          "age_s": 0.298078532,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          }
+        },
+        "consumer": {
+          "pid": 120200,
+          "age_s": 0.439920093,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          }
+        }
+      }
+    },
+    {
+      "sample": 3,
+      "monotonic_ns": 1825494622404347,
+      "roles": {
+        "producer": {
+          "pid": 120199,
+          "age_s": 0.312965309,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 1,
+            "insert_completed": 1,
+            "select_started": 0,
+            "select_completed": 0
+          }
+        },
+        "consumer": {
+          "pid": 120200,
+          "age_s": 0.454868353,
+          "queue_items": 0,
+          "buffer_bytes": 0,
+          "active": {
+            "insert": 0,
+            "select": 0
+          },
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 1,
+            "select_completed": 1
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Observation thread and monkey patch alter the process; effect on timing is not measured",
+    "Host send/receive call completion and empty queue do not prove all asynchronous device operations complete",
+    "A 0.5 second sample can miss transient states; counters cover insert/select calls but not every device task",
+    "No timeout/failure cleanup case or concurrent workload was tested",
+    "No formal readiness or validation claim"
+  ]
+}

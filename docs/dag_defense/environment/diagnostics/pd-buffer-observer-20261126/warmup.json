@@ -1,0 +1,12 @@
+{
+  "nature": "diagnostic warmup only",
+  "status": 200,
+  "router_id": "fbf8cba39fb44fa3a75f66490c8a1f5b",
+  "backend_id": "cmpl-f2099bcfb0a74bee9d8eacd7f2ba0bd7",
+  "done": true,
+  "usage": {
+    "prompt_tokens": 512,
+    "total_tokens": 576,
+    "completion_tokens": 64
+  }
+}
