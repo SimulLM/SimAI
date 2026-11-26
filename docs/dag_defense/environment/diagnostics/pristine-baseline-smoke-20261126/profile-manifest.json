@@ -1,0 +1,43 @@
+{
+  "status": "candidate_hardware_profile_v5",
+  "model": "NousResearch/Llama-2-7b-hf",
+  "revision": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d",
+  "dtype": "float16",
+  "hardware": "NVIDIA H800 PCIe; GPU0/GPU1; TP1",
+  "mapping_contract": {
+    "version": "v1",
+    "rope_policy": "merge_into_attn_pre_proj",
+    "attention_policy": "combined_interval_to_phase_attention",
+    "kv_save_policy": "zero_when_combined_attention_includes_kv",
+    "boundary_policy": "synchronized_sampler_cpu_only",
+    "residual_policy": "fused_norm_bucket_and_zero_add"
+  },
+  "source_files": [
+    "/root/autodl-tmp/dag-handoff/runs/compute-profile-summary-20261126/samples.csv",
+    "/root/autodl-tmp/dag-handoff/runs/compute-profile-summary-20261126/samples.csv",
+    "/root/autodl-tmp/dag-handoff/runs/cpu-profile-summary-v2-20261126/samples.csv",
+    "/root/autodl-tmp/dag-handoff/runs/cpu-exclusive-summary-20261126/summary.csv"
+  ],
+  "source_sha256": {
+    "/root/autodl-tmp/dag-handoff/runs/compute-profile-summary-20261126/samples.csv": "0da517d984a0a5ef7b2f86029ae00417baad5f50d2bac140f9f4a4c7b66bda39",
+    "/root/autodl-tmp/dag-handoff/runs/cpu-profile-summary-v2-20261126/samples.csv": "e2dcc39178eecc0177e2bc3b6752d3ffb320a2de02e00ce32fb35ab95b752994"
+  },
+  "files": {
+    "compute.csv": "f9be52c0a0d30aeee08ccd586d5d5d8f9e23874b0c96548ac767caccf7a35b11",
+    "attention.csv": "27eea40e042bd08ece0a0b506804e712f2e7f9512e8df4ae2682a75590d43877",
+    "cpu.csv": "cb5d964a2af3edfff0d0289e848ad4520fae5304c462375a7d178c9f3c761a55",
+    "network.csv": "51b107cda87c210f7bb411430464327abd00935e3266288f9e07b1def55d416b"
+  },
+  "coverage": {
+    "compute_rows": 47,
+    "attention_rows": 47,
+    "cpu_rows": 17
+  },
+  "limitations": [
+    "diagnostic CUDA-event synchronization perturbs timing",
+    "combined attention includes FlashAttention/KV work; cache-save is zero to avoid double count",
+    "sampler_host_call is an inclusive boundary bucket and is not pure CPU time",
+    "router/frontend/IPC and non-KV PD payloads are outside this profile",
+    "sampler values use a separate synchronized diagnostic; synchronization changes execution and is diagnostic only"
+  ]
+}
