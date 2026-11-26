@@ -1,0 +1,190 @@
+{
+  "status": "instrumented_real_wave_diagnostic",
+  "cases": [
+    {
+      "case": "in1024-c1",
+      "real_decode_steps": 7,
+      "real_batch_sizes": {
+        "1": 7
+      },
+      "roles": {
+        "dag": {
+          "sim_decode_steps": 7,
+          "sim_batch_sizes": {
+            "1": 7
+          },
+          "per_request_step_group_matches": 7,
+          "per_request_steps": 7,
+          "interpretation": "compares members at each request decode index, not execution time"
+        },
+        "adapted_baseline": {
+          "sim_decode_steps": 7,
+          "sim_batch_sizes": {
+            "1": 7
+          },
+          "per_request_step_group_matches": 7,
+          "per_request_steps": 7,
+          "interpretation": "compares members at each request decode index, not execution time"
+        }
+      }
+    },
+    {
+      "case": "in1024-c2",
+      "real_decode_steps": 7,
+      "real_batch_sizes": {
+        "2": 7
+      },
+      "roles": {
+        "dag": {
+          "sim_decode_steps": 10,
+          "sim_batch_sizes": {
+            "1": 6,
+            "2": 4
+          },
+          "per_request_step_group_matches": 8,
+          "per_request_steps": 14,
+          "interpretation": "compares members at each request decode index, not execution time"
+        },
+        "adapted_baseline": {
+          "sim_decode_steps": 9,
+          "sim_batch_sizes": {
+            "1": 4,
+            "2": 5
+          },
+          "per_request_step_group_matches": 10,
+          "per_request_steps": 14,
+          "interpretation": "compares members at each request decode index, not execution time"
+        }
+      }
+    },
+    {
+      "case": "in1024-c4",
+      "real_decode_steps": 8,
+      "real_batch_sizes": {
+        "1": 1,
+        "4": 6,
+        "3": 1
+      },
+      "roles": {
+        "dag": {
+          "sim_decode_steps": 14,
+          "sim_batch_sizes": {
+            "1": 7,
+            "3": 7
+          },
+          "per_request_step_group_matches": 4,
+          "per_request_steps": 28,
+          "interpretation": "compares members at each request decode index, not execution time"
+        },
+        "adapted_baseline": {
+          "sim_decode_steps": 14,
+          "sim_batch_sizes": {
+            "1": 7,
+            "3": 7
+          },
+          "per_request_step_group_matches": 4,
+          "per_request_steps": 28,
+          "interpretation": "compares members at each request decode index, not execution time"
+        }
+      }
+    },
+    {
+      "case": "in2048-c1",
+      "real_decode_steps": 7,
+      "real_batch_sizes": {
+        "1": 7
+      },
+      "roles": {
+        "dag": {
+          "sim_decode_steps": 7,
+          "sim_batch_sizes": {
+            "1": 7
+          },
+          "per_request_step_group_matches": 7,
+          "per_request_steps": 7,
+          "interpretation": "compares members at each request decode index, not execution time"
+        },
+        "adapted_baseline": {
+          "sim_decode_steps": 7,
+          "sim_batch_sizes": {
+            "1": 7
+          },
+          "per_request_step_group_matches": 7,
+          "per_request_steps": 7,
+          "interpretation": "compares members at each request decode index, not execution time"
+        }
+      }
+    },
+    {
+      "case": "in2048-c2",
+      "real_decode_steps": 8,
+      "real_batch_sizes": {
+        "1": 2,
+        "2": 6
+      },
+      "roles": {
+        "dag": {
+          "sim_decode_steps": 12,
+          "sim_batch_sizes": {
+            "1": 10,
+            "2": 2
+          },
+          "per_request_step_group_matches": 6,
+          "per_request_steps": 14,
+          "interpretation": "compares members at each request decode index, not execution time"
+        },
+        "adapted_baseline": {
+          "sim_decode_steps": 10,
+          "sim_batch_sizes": {
+            "1": 6,
+            "2": 4
+          },
+          "per_request_step_group_matches": 10,
+          "per_request_steps": 14,
+          "interpretation": "compares members at each request decode index, not execution time"
+        }
+      }
+    },
+    {
+      "case": "in2048-c4",
+      "real_decode_steps": 8,
+      "real_batch_sizes": {
+        "1": 1,
+        "4": 6,
+        "3": 1
+      },
+      "roles": {
+        "dag": {
+          "sim_decode_steps": 19,
+          "sim_batch_sizes": {
+            "1": 12,
+            "2": 5,
+            "3": 2
+          },
+          "per_request_step_group_matches": 3,
+          "per_request_steps": 28,
+          "interpretation": "compares members at each request decode index, not execution time"
+        },
+        "adapted_baseline": {
+          "sim_decode_steps": 17,
+          "sim_batch_sizes": {
+            "1": 10,
+            "2": 3,
+            "3": 4
+          },
+          "per_request_step_group_matches": 3,
+          "per_request_steps": 28,
+          "interpretation": "compares members at each request decode index, not execution time"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "One preselected measured wave per shape, 8 output tokens; not representative of full validation",
+    "Real synchronization and hooks perturb scheduling",
+    "Exact request-step membership compares model grouping, not its predicted fee or timing",
+    "Candidate transfer cost and scheduling still provisional",
+    "Adapted baseline is not pristine original",
+    "No formal validation or accuracy claim"
+  ]
+}

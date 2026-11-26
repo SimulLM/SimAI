@@ -329,3 +329,40 @@ def test_candidate_receive_may_interrupt_an_unfinished_decode_between_steps():
     assert {x.id for x in pd.next_batch(rs[1]).requests} == {a.id, b.id}
     pd.abort(6, 'cleanup')
     assert all(x['used'] == 0 for x in pd.manager.usage_snapshot().values())
+
+def test_candidate_dispatch_delay_preserves_source_until_dispatch():
+    from dataclasses import replace
+    pd, host, rs = setup(capacity=64)
+    pd.config = replace(pd.config, transfer_start_mode='decode_pull_candidate', decode_dispatch_delay_s=0.5)
+    req = prefill(pd, rs)
+    rs[1]._num_running_batches = 0
+    m = pd.migrations[str(req.id)]
+    assert m.state == 'WAITING_DISPATCH' and not pd.waiting and m.source_handles
+    events = pd.notifications(1)
+    dispatch = next(e for e in events if isinstance(e, PDActionEvent) and e.operation == 'dispatch')
+    assert dispatch.time == 1.5 and pd.retry(1) == []
+    next_events = dispatch.handle_event(None, None)
+    assert m.state == 'WAITING_DESTINATION' and str(req.id) in pd.waiting
+    drain_transfer(next_events)
+    assert m.kv_ready_at_s == 3.5 and pd.ready(req, 3.5)
+    pd.abort(3.5, 'cleanup')
+    assert all(x['used'] == 0 for x in pd.manager.usage_snapshot().values())
+
+def test_candidate_pull_waits_for_already_running_source_batch():
+    from dataclasses import replace
+    pd, host, rs = setup(capacity=64)
+    pd.config = replace(pd.config, transfer_start_mode='decode_pull_candidate', pull_wait_source_batch=True)
+    req = prefill(pd, rs)
+    rs[1]._num_running_batches = 0
+    rs[0]._num_running_batches = 1  # a later Prefill batch is executing
+    assert pd.retry(1) == []
+    m = pd.migrations[str(req.id)]
+    assert m.state == 'PULL_WAIT_SOURCE' and pd.next_batch(rs[1]) is None
+    assert pd.retry(2) == []
+    rs[0]._num_running_batches = 0
+    events = pd.retry(3)
+    assert m.state == 'TRANSFERRING'
+    drain_transfer(events)
+    assert m.kv_ready_at_s == 5 and pd.ready(req, 5)
+    pd.abort(5, 'cleanup')
+    assert all(x['used'] == 0 for x in pd.manager.usage_snapshot().values())

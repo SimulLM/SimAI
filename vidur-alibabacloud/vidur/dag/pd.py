@@ -14,6 +14,8 @@ class PDConfig:
     evidence: str
     legacy_prefill_billing_extra_token: bool = False
     transfer_start_mode: str = "push"
+    decode_dispatch_delay_s: float = 0.0
+    pull_wait_source_batch: bool = False
 
     @classmethod
     def from_dict(cls, data):
@@ -28,6 +30,10 @@ class PDConfig:
             expected = fields | {"legacy_prefill_billing_extra_token"}
         elif version == "1.2":
             expected = fields | {"legacy_prefill_billing_extra_token", "transfer_start_mode"}
+        elif version == "1.3":
+            expected = fields | {"legacy_prefill_billing_extra_token", "transfer_start_mode", "decode_dispatch_delay_s"}
+        elif version == "1.4":
+            expected = fields | {"legacy_prefill_billing_extra_token", "transfer_start_mode", "decode_dispatch_delay_s", "pull_wait_source_batch"}
         else:
             raise ValueError("unsupported PD configuration version")
         if set(data) != expected:
@@ -38,6 +44,12 @@ class PDConfig:
         transfer_mode = data.get("transfer_start_mode", "push")
         if transfer_mode not in ("push", "decode_pull_candidate"):
             raise ValueError("unsupported PD transfer start mode")
+        dispatch_delay = finite_nonnegative(data.get("decode_dispatch_delay_s", 0.0))
+        if dispatch_delay and transfer_mode != "decode_pull_candidate":
+            raise ValueError("decode dispatch delay requires candidate pull mode")
+        wait_source = data.get("pull_wait_source_batch", False)
+        if type(wait_source) is not bool or (wait_source and transfer_mode != "decode_pull_candidate"):
+            raise ValueError("source batch wait requires candidate pull mode and boolean value")
         if data["storage_dtype"] not in DTYPES:
             raise ValueError("unsupported storage dtype; wire dtype must equal storage dtype")
         capacity = positive_int(data["capacity_bytes_per_shard"], "capacity_bytes_per_shard")
@@ -50,7 +62,7 @@ class PDConfig:
         if extra_token and latency != 0:
             raise ValueError("legacy fee parity requires zero fixed latency")
         return cls(data["storage_dtype"], capacity, bandwidth, latency,
-                   data["occupies_gpu"], data["evidence"], extra_token, transfer_mode)
+                   data["occupies_gpu"], data["evidence"], extra_token, transfer_mode, dispatch_delay, wait_source)
 
     @classmethod
     def load(cls, path):

@@ -84,3 +84,24 @@ def test_decode_pull_candidate_is_opt_in_and_strict():
             PDConfig.from_dict(dict(candidate, transfer_start_mode=bad))
     with pytest.raises(ValueError):
         PDConfig.from_dict(dict(old, transfer_start_mode='decode_pull_candidate'))
+
+def test_decode_dispatch_delay_is_explicit_and_nonnegative():
+    old = config()
+    candidate = dict(old, schema_version='1.3', legacy_prefill_billing_extra_token=False, transfer_start_mode='decode_pull_candidate', decode_dispatch_delay_s=0.005)
+    assert PDConfig.from_dict(candidate).decode_dispatch_delay_s == 0.005
+    assert PDConfig.from_dict(old).decode_dispatch_delay_s == 0
+    for bad in (-0.1, float('nan'), float('inf')):
+        with pytest.raises(ValueError):
+            PDConfig.from_dict(dict(candidate, decode_dispatch_delay_s=bad))
+    with pytest.raises(ValueError):
+        PDConfig.from_dict(dict(candidate, transfer_start_mode='push'))
+
+def test_source_batch_wait_is_opt_in_boolean():
+    old = config()
+    candidate = dict(old, schema_version='1.4', legacy_prefill_billing_extra_token=False, transfer_start_mode='decode_pull_candidate', decode_dispatch_delay_s=0.005, pull_wait_source_batch=True)
+    assert PDConfig.from_dict(candidate).pull_wait_source_batch is True
+    assert PDConfig.from_dict(old).pull_wait_source_batch is False
+    with pytest.raises(ValueError):
+        PDConfig.from_dict(dict(candidate, pull_wait_source_batch='true'))
+    with pytest.raises(ValueError):
+        PDConfig.from_dict(dict(candidate, transfer_start_mode='push', decode_dispatch_delay_s=0))

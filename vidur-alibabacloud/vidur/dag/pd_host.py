@@ -24,6 +24,8 @@ class PDActionEvent(BaseEvent):
             return self.coordinator.receive(self.request_id, self.time)
         if self.operation == "retry":
             return self.coordinator.retry(self.time)
+        if self.operation == "dispatch":
+            return self.coordinator.dispatch(self.request_id, self.time)
         raise RuntimeError(f"unknown PD operation: {self.operation}")
 
     def to_dict(self):
@@ -39,6 +41,7 @@ class PDCoordinator:
         self.waiting = {}  # Insertion order is stable across capacity retries.
         self.layouts = {}
         self.pull_groups = {}  # destination -> ordered migrations held by a receive step
+        self.pending_dispatch = []
         capacities = {key: ResourceCapacity(value["capacity"], value["unit"])
                       for key, value in adapter.executor._resources.usage_snapshot().items()}
         first = None
@@ -158,15 +161,30 @@ class PDCoordinator:
                     raise RuntimeError("duplicate PD Prefill completion")
                 self.tx.pin(m, self.now)
                 m.prefill_completed_at_s = self.now
-                m.state = "WAITING_DESTINATION"
-                self.waiting[m.request_id] = None
+                if self.config.decode_dispatch_delay_s:
+                    m.state = "WAITING_DISPATCH"
+                    self.pending_dispatch.append((m.request_id, self.now + self.config.decode_dispatch_delay_s))
+                else:
+                    m.state = "WAITING_DESTINATION"
+                    self.waiting[m.request_id] = None
             else:
                 rs._preempted_requests.append(request)
 
     def notifications(self, now):
         from vidur.events.replica_schedule_event import ReplicaScheduleEvent
-        return [PDActionEvent(self, now, "retry")] + [ReplicaScheduleEvent(now, rid)
-                    for rid in sorted(self.scheduler._replica_schedulers)]
+        pending, self.pending_dispatch = self.pending_dispatch, []
+        return ([PDActionEvent(self, when, "dispatch", rid) for rid, when in pending]
+                + [PDActionEvent(self, now, "retry")]
+                + [ReplicaScheduleEvent(now, rid) for rid in sorted(self.scheduler._replica_schedulers)])
+
+    def dispatch(self, rid, now):
+        m = self.migrations[rid]
+        if m.state != "WAITING_DISPATCH":
+            raise RuntimeError("duplicate or stale decode dispatch")
+        m.state = "WAITING_DESTINATION"
+        self.waiting[rid] = None
+        self.tx.record(now, "decode_dispatch", rid)
+        return self.notifications(now)
 
     def retry(self, now):
         if self.config.transfer_start_mode == "decode_pull_candidate":
@@ -194,6 +212,15 @@ class PDCoordinator:
         is an opt-in scheduling diagnostic, not a validated vLLM timing model.
         """
         events = []
+        # Optional approximation: a source batch submitted earlier owns its stream
+        # until batch completion, even between individual DAG layer tasks.
+        for group in list(self.pull_groups.values()):
+            for rid in group:
+                m = self.migrations[rid]
+                if m.state == "PULL_WAIT_SOURCE" and not self.scheduler.get_replica_scheduler(m.source)._num_running_batches:
+                    m.state = "TRANSFERRING"
+                    events.extend(self._submit_transfer(m, now))
+                    break
         destinations = dict.fromkeys(self.migrations[rid].destination for rid in self.waiting)
         for destination in destinations:
             rs = self.scheduler.get_replica_scheduler(destination)
@@ -225,9 +252,16 @@ class PDCoordinator:
                 self.pull_groups[destination] = selected
                 self.tx.record(now, "pull_batch_selected", ",".join(selected))
                 first = self.migrations[selected[0]]
-                first.state = "TRANSFERRING"
-                events.extend(self._submit_transfer(first, now))
+                events.extend(self._start_or_wait_for_source(first, now))
         return events
+
+    def _start_or_wait_for_source(self, m, now):
+        if self.config.pull_wait_source_batch and self.scheduler.get_replica_scheduler(m.source)._num_running_batches:
+            m.state = "PULL_WAIT_SOURCE"
+            self.tx.record(now, "pull_wait_source_batch", m.request_id)
+            return []
+        m.state = "TRANSFERRING"
+        return self._submit_transfer(m, now)
 
     def _submit_transfer(self, m, now):
         if m.graph_id is not None:
@@ -305,8 +339,7 @@ class PDCoordinator:
             next_rid = next((item for item in group if self.migrations[item].state == "PULL_QUEUED"), None)
             if next_rid is not None:
                 following = self.migrations[next_rid]
-                following.state = "TRANSFERRING"
-                return self._submit_transfer(following, now)
+                return self._start_or_wait_for_source(following, now)
             for item in group:
                 queued = self.requests[item]
                 if queued not in destination._request_queue:
@@ -319,6 +352,7 @@ class PDCoordinator:
             return
         self.failure = str(reason)
         self.waiting.clear()
+        self.pending_dispatch.clear()
         self.pull_groups.clear()
         for rid, m in self.migrations.items():
             if m.state == "COMPLETED":
@@ -339,7 +373,7 @@ class PDCoordinator:
             self.manager.cancel_waiters(((f"pd:{rid}", "source"), (f"pd:{rid}", "destination")))
 
     def assert_completed(self):
-        if self.waiting or self.pull_groups or any(m.state != "COMPLETED" for m in self.migrations.values()):
+        if self.waiting or self.pending_dispatch or self.pull_groups or any(m.state != "COMPLETED" for m in self.migrations.values()):
             raise RuntimeError("PD stopped with unfinished migrations or capacity waiters")
         if any(m.source_handles or m.destination_handles or m.pins for m in self.migrations.values()):
             raise RuntimeError("PD completed with retained KV handles")
