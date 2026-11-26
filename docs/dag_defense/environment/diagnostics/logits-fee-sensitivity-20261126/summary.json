@@ -1,0 +1,18 @@
+{
+  "requests": 30,
+  "steps_each": 63,
+  "median_of_request_medians_ms": 0.14662399888038635,
+  "min_ms": 0.14636799693107605,
+  "max_ms": 0.2592960000038147,
+  "p95_ms": 0.2526080012321472,
+  "source_sha256": {
+    "/root/autodl-tmp/dag-handoff/runs/accounting-reanalysis-20261126/coverage-retry/requests.jsonl": "366bdb5a7aaea2a5ad26a56c7b7e576aebc66b2b4bb6ca6a73ad498c78c06d65",
+    "/root/autodl-tmp/dag-handoff/runs/accounting-reanalysis-20261126/compute-events-83657.jsonl": "45ae3e6e3508b905e5a8e6b04da897b519b39cd46e8cfb9311b57cd409eb9ebb"
+  },
+  "limitations": [
+    "one session and fixed input; requests not independent service restarts",
+    "GPU event interval may include idle gaps; instrumentation perturbs timing",
+    "does not establish additive wall time or concurrent coverage",
+    "not formal validation or fitted E2E correction"
+  ]
+}
