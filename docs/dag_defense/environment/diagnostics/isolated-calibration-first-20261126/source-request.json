@@ -1,0 +1,8 @@
+{
+  "simulator_request_id": 0,
+  "router_id": "a2880062cdab466a925d6b1976290c42",
+  "input_sha256": "03248787c445a346991d4df45d6475702b8a28a9727599ef049158e4ab13a630",
+  "server_arrival_ns": 1818510180734341,
+  "server_complete_ns": 1818511048434602,
+  "server_e2e_s": 0.867700261
+}

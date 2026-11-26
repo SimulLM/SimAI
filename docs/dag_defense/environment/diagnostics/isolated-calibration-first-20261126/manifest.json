@@ -1,0 +1,14 @@
+{
+  "status": "diagnostic_not_frozen",
+  "note": "Isolated first measured 512/64 calibration request; same candidate costs, adapted baseline not pristine",
+  "mapping": {
+    "simulator_request_id": 0,
+    "router_id": "a2880062cdab466a925d6b1976290c42",
+    "input_sha256": "03248787c445a346991d4df45d6475702b8a28a9727599ef049158e4ab13a630",
+    "server_arrival_ns": 1818510180734341,
+    "server_complete_ns": 1818511048434602,
+    "server_e2e_s": 0.867700261
+  },
+  "trace_sha256": "f57294707dd2e691e9f5805a6c5db9ce6a3cf4ea461b9ba3c053e7a850cbecc7",
+  "source_trace_sha256": "cef11f4589d23fb97de5e453df4a2acb84d455d34e3d10af3924963e1629bb6d"
+}

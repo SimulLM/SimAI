@@ -1,0 +1,13 @@
+{
+  "results": [
+    {
+      "version": "dag",
+      "exit": 0
+    },
+    {
+      "version": "adapted_baseline",
+      "exit": 0
+    }
+  ],
+  "formal_validation": false
+}

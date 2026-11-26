@@ -1,0 +1,8 @@
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "server_arrival", "timestamp_ns": 1818510180734341, "clock_id": "CLOCK_MONOTONIC", "pid": 103757}
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "prefill_send", "timestamp_ns": 1818510180839530, "clock_id": "CLOCK_MONOTONIC", "pid": 103757}
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "prefill_response", "timestamp_ns": 1818510209246258, "clock_id": "CLOCK_MONOTONIC", "pid": 103757, "status": 200}
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "prefill_mapping", "timestamp_ns": 1818510209303804, "clock_id": "CLOCK_MONOTONIC", "pid": 103757, "backend_request_id": "cmpl-57f1b6d34beb4d14b2c5a7ecdc1c2ad0"}
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "decode_send", "timestamp_ns": 1818510209332395, "clock_id": "CLOCK_MONOTONIC", "pid": 103757}
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "decode_mapping", "timestamp_ns": 1818510224273385, "clock_id": "CLOCK_MONOTONIC", "pid": 103757, "backend_request_id": "cmpl-f6fa4a06ad5d4efa9df7c6b1747e3530"}
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "server_first_token", "timestamp_ns": 1818510224313730, "clock_id": "CLOCK_MONOTONIC", "pid": 103757}
+{"request_id": "a2880062cdab466a925d6b1976290c42", "event": "server_complete", "timestamp_ns": 1818511048434602, "clock_id": "CLOCK_MONOTONIC", "pid": 103757, "usage": {"prompt_tokens": 512, "total_tokens": 576, "completion_tokens": 64}}
