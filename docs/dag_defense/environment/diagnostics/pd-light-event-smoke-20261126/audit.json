@@ -1,0 +1,87 @@
+{
+  "status": "host_event_smoke_pass",
+  "router_id": "3dce614352ad4a5fbe71971e120c7cf1",
+  "prefill_id": "cmpl-49496dff2f4c4eccaec76551b1bb4b31-0",
+  "decode_id": "cmpl-a5900f2c5696456796a81ae7223ecb7b-0",
+  "kv_bypass": true,
+  "events": [
+    {
+      "event": "send_kv_caches_and_hidden_states_host_start",
+      "timestamp_ns": 1829734644523878,
+      "clock_id": "CLOCK_MONOTONIC",
+      "role": "producer",
+      "pid": 125941,
+      "thread_id": 140083966789440,
+      "step_id": "125941-140083966789440-1829734628793552",
+      "groups": [
+        {
+          "request_id": "cmpl-49496dff2f4c4eccaec76551b1bb4b31-0",
+          "is_prompt": true,
+          "seq_ids": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "event": "send_kv_caches_and_hidden_states_host_return",
+      "timestamp_ns": 1829734649116238,
+      "clock_id": "CLOCK_MONOTONIC",
+      "role": "producer",
+      "pid": 125941,
+      "thread_id": 140083966789440,
+      "step_id": "125941-140083966789440-1829734628793552",
+      "groups": [
+        {
+          "request_id": "cmpl-49496dff2f4c4eccaec76551b1bb4b31-0",
+          "is_prompt": true,
+          "seq_ids": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "event": "recv_kv_caches_and_hidden_states_host_start",
+      "timestamp_ns": 1829734676485032,
+      "clock_id": "CLOCK_MONOTONIC",
+      "role": "consumer",
+      "pid": 125944,
+      "thread_id": 139949863421760,
+      "step_id": "125944-139949863421760-1829734676314769",
+      "groups": [
+        {
+          "request_id": "cmpl-a5900f2c5696456796a81ae7223ecb7b-0",
+          "is_prompt": true,
+          "seq_ids": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "event": "recv_kv_caches_and_hidden_states_host_return",
+      "timestamp_ns": 1829734750963593,
+      "clock_id": "CLOCK_MONOTONIC",
+      "role": "consumer",
+      "pid": 125944,
+      "thread_id": 139949863421760,
+      "step_id": "125944-139949863421760-1829734676314769",
+      "groups": [
+        {
+          "request_id": "cmpl-a5900f2c5696456796a81ae7223ecb7b-0",
+          "is_prompt": true,
+          "seq_ids": [
+            0
+          ]
+        }
+      ],
+      "kv_bypass": true
+    }
+  ],
+  "limitations": [
+    "Host return is not GPU completion or exact KVReady",
+    "Single success only; concurrency, timeout cleanup and logging overhead not validated",
+    "Diagnostic smoke, not formal validation"
+  ]
+}

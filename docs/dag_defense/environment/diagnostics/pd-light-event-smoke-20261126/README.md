@@ -1,0 +1,5 @@
+# Lightweight host event smoke
+
+One real 1P1D vLLM 0.8.5 request completed (512 input / 64 output tokens); router IDs map to both model-worker IDs and the consumer returned KV bypass true. The raw archive has launcher, server, router, client and event logs, request and exit status; `audit_light_event_smoke.py` checks the mapping and ordered host timestamps. Both GPUs were released after the run. The launcher and instrumentation are candidates, not frozen production configuration.
+
+The instrumentation records host model-step and connector API start/return, with per-batch request IDs and CLOCK_MONOTONIC, without explicit CUDA synchronization. These host timestamps are not GPU completion or exact KVReady; actual transport start/end and GPU ready remain unobserved in this light trace. The separate synchronized diagnostic establishes a bounded GPU completion interval and must not be presented as nonperturbed E2E. This single smoke does not establish concurrency/timeout cleanup or quantify event-logging overhead. No formal validation was run.
