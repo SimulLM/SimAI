@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:11:14.866765+00:00",
+  "updated_utc": "2026-11-26T13:19:22.116896+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "First fixed-wave divergence is caused by DAG transfer occupying source GPU, an unverified physical hypothesis. Removing occupancy aligns Prefill but changes Decode batches (10/22 vs 10/17 paired); no general shared resource treatment or pristine first-token stage exists.",
-      "next_action": "Define a common fee and resource contract from measured scopes, retaining both transfer-occupancy assumptions as sensitivity and identifying the pristine baseline limitation before natural 1/2/4 checks.",
+      "missing": "Same candidate first-token fee passes fixed one and two 1024/128 cases, but simultaneous four selects unmeasured first-token batch 4 and fails closed; pristine baseline first-token stage and physical resource overlap remain open.",
+      "next_action": "Independently measure or defensibly bound the 1024 batch-four first-token interval, then rerun the preserved four-request case with the same fees.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/transfer-occupancy-sensitivity-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-1024-shared-fees-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
@@ -21,9 +21,10 @@
     "concurrent_readiness_batching": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/early-batch-minimal-20261126/README.md",
-      "missing": "Acceptance of corrected and pristine natural scheduling differences under the final shared fee mapping and 1/2/4 cases.",
+      "missing": "Controlled one/two 1024 cases pass ready ordering and 127 later decode steps; four-request DAG aborts at missing batch-four first-token fee, and final common costs/2048 remain unverified.",
       "next_action": "Run controlled first-divergence checks using final mapping and document pristine, corrected and DAG separately.",
-      "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained."
+      "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained.",
+      "latest_progress": "docs/dag_defense/environment/diagnostics/controlled-1024-shared-fees-20261126/README.md"
     },
     "freeze_and_preflight": {
       "status": "open",

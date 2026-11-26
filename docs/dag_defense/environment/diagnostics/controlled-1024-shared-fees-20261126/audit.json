@@ -1,0 +1,176 @@
+{
+  "one": {
+    "baseline": {
+      "exit_code": 0,
+      "batch_count": 128,
+      "groups": [
+        [
+          "0"
+        ]
+      ],
+      "decode_counts": {
+        "0": 127
+      },
+      "request_complete_s": {
+        "0": 2.2078434325036222
+      }
+    },
+    "dag": {
+      "exit_code": 0,
+      "batch_count": 128,
+      "groups": [
+        [
+          "0"
+        ]
+      ],
+      "decode_counts": {
+        "0": 127
+      },
+      "request_complete_s": {
+        "0": 2.207843432503792
+      }
+    },
+    "comparison": {
+      "paired": 128,
+      "baseline_batches": 128,
+      "dag_batches": 128,
+      "max_paired_fee_difference_s": 3.469446951953614e-17,
+      "first_decode_difference": null
+    }
+  },
+  "two_staggered": {
+    "baseline": {
+      "exit_code": 0,
+      "batch_count": 132,
+      "groups": [
+        [
+          "0"
+        ],
+        [
+          "1"
+        ]
+      ],
+      "decode_counts": {
+        "0": 127,
+        "1": 127
+      },
+      "request_complete_s": {
+        "0": 2.292032079202085,
+        "1": 2.3427951154691358
+      }
+    },
+    "dag": {
+      "exit_code": 0,
+      "batch_count": 132,
+      "groups": [
+        [
+          "0"
+        ],
+        [
+          "1"
+        ]
+      ],
+      "decode_counts": {
+        "0": 127,
+        "1": 127
+      },
+      "request_complete_s": {
+        "0": 2.30773367233926,
+        "1": 2.3584967086063187
+      }
+    },
+    "comparison": {
+      "paired": 132,
+      "baseline_batches": 132,
+      "dag_batches": 132,
+      "max_paired_fee_difference_s": 3.469446951953614e-17,
+      "first_decode_difference": null
+    }
+  },
+  "two_simultaneous": {
+    "baseline": {
+      "exit_code": 0,
+      "batch_count": 128,
+      "groups": [
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "decode_counts": {
+        "0": 127,
+        "1": 127
+      },
+      "request_complete_s": {
+        "0": 2.3321427936975847,
+        "1": 2.3321427936975847
+      }
+    },
+    "dag": {
+      "exit_code": 0,
+      "batch_count": 128,
+      "groups": [
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "decode_counts": {
+        "0": 127,
+        "1": 127
+      },
+      "request_complete_s": {
+        "0": 2.3478443868347445,
+        "1": 2.3478443868347445
+      }
+    },
+    "comparison": {
+      "paired": 128,
+      "baseline_batches": 128,
+      "dag_batches": 128,
+      "max_paired_fee_difference_s": 1.3877787807814457e-17,
+      "first_decode_difference": null
+    }
+  },
+  "four_simultaneous": {
+    "baseline": {
+      "exit_code": 0,
+      "batch_count": 128,
+      "groups": [
+        [
+          "0"
+        ],
+        [
+          "1",
+          "2",
+          "3"
+        ]
+      ],
+      "decode_counts": {
+        "0": 127,
+        "1": 127,
+        "2": 127,
+        "3": 127
+      },
+      "request_complete_s": {
+        "0": 2.4057093417379862,
+        "1": 2.4057093417379862,
+        "2": 2.4057093417379862,
+        "3": 2.4057093417379862
+      }
+    },
+    "dag": {
+      "exit_code": 1,
+      "failure_tail": [
+        "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "  File \"/root/autodl-tmp/SimAI-pristine-predictor-repro/vidur-alibabacloud/vidur/dag/pd_host.py\", line 343, in receive",
+        "    return self._release_pull_batch(m, now)",
+        "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "  File \"/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/batch_first_token_diagnostic/patch.py\", line 21, in release",
+        "    if key not in costs:raise ValueError('unmeasured first-token batch '+key)",
+        "                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "ValueError: unmeasured first-token batch 1024:4"
+      ]
+    }
+  }
+}
