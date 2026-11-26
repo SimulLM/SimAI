@@ -40,7 +40,7 @@ async def complete(request:Request):
   if resp.status!=200:
    raw=await resp.read();status=resp.status;resp.release();event(rid,'server_error',stage='decode',status=status);return Response(raw,status_code=status,media_type='application/json',headers={'X-Experiment-Request-ID':rid})
   async def stream():
-   first=False;done=False;seen_id=False;usage=None
+   first=False;done=False;seen_id=False;usage=None;terminal_choice_seen=False
    try:
     async for line in resp.content:
      if line.startswith(b'data: '):
@@ -51,6 +51,10 @@ async def complete(request:Request):
         data=json.loads(val)
         if data.get('id') and not seen_id:event(rid,'decode_mapping',backend_request_id=data['id']);seen_id=True
         choices=data.get('choices') or []
+        if not terminal_choice_seen:
+         terminal=[c for c in choices if isinstance(c,dict) and c.get('finish_reason') is not None]
+         if terminal:
+          event(rid,'server_final_choice_observed',finish_reasons=[c['finish_reason'] for c in terminal],completion_tokens=(data.get('usage') or {}).get('completion_tokens'));terminal_choice_seen=True
         if data.get('usage') and data['usage'].get('completion_tokens',0)>0 and not first:event(rid,'server_first_token');first=True
         if data.get('usage') is not None:usage=data['usage']
        except (ValueError,TypeError):pass

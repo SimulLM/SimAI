@@ -14,7 +14,7 @@ async def main():
   app.router.add_post('/v1/completions',prefill);runner=web.AppRunner(app);await runner.setup();site=web.TCPSite(runner,'127.0.0.1',18100);await site.start()
   app2=web.Application()
   async def decode(req):
-   payload='data: '+json.dumps({'id':'fake-decode','usage':{'completion_tokens':1}})+'\n\ndata: [DONE]\n\n';return web.Response(text=payload,content_type='text/event-stream')
+   payload='data: '+json.dumps({'id':'fake-decode','usage':{'completion_tokens':1},'choices':[{'finish_reason':'length'}]})+'\n\ndata: [DONE]\n\n';return web.Response(text=payload,content_type='text/event-stream')
   app2.router.add_post('/v1/completions',decode);runner2=web.AppRunner(app2);await runner2.setup();await web.TCPSite(runner2,'127.0.0.1',18200).start()
   try:
    async with module.app.router.lifespan_context(module.app):
@@ -25,6 +25,7 @@ async def main():
      except asyncio.TimeoutError:pass
      bad=await client.post('/v1/completions',headers={'X-Experiment-Client-ID':'bad id'},json={'stream':True});assert bad.status_code==400
    events=[json.loads(x) for x in (pathlib.Path(temp)/'router-events.jsonl').read_text().splitlines()];arrivals=[x for x in events if x['event']=='server_arrival'];assert len(arrivals)==2 and {x['client_request_id'] for x in arrivals}=={'run-req0','run-req1'} and next(x for x in arrivals if x['client_request_id']=='run-req0')['request_id']==rid
+   ordered=[e for e in events if e['request_id']==rid]; names=[e['event'] for e in ordered]; assert names.index('server_final_choice_observed') < names.index('server_complete'); final=next(e for e in ordered if e['event']=='server_final_choice_observed'); assert final['finish_reasons']==['length'] and final['completion_tokens']==1
    print('PASS: actual router records stable client ID before backend response; timeout and invalid ID covered; fake backends only')
   finally:await runner.cleanup();await runner2.cleanup()
 asyncio.run(main())
