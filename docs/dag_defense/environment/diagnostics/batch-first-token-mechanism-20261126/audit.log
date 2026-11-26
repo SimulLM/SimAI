@@ -1,0 +1,19 @@
+{
+  "simultaneous2": {
+    "requests": 2,
+    "shared_tasks": 1,
+    "all_kv_ready_before_submit": true,
+    "decode_after_task": true,
+    "all_released": true,
+    "cost_s": 0.0015
+  },
+  "simultaneous4": {
+    "requests": 4,
+    "shared_tasks": 1,
+    "all_kv_ready_before_submit": true,
+    "decode_after_task": true,
+    "all_released": true,
+    "cost_s": 0.002
+  }
+}
+PASS missing cost rejected
