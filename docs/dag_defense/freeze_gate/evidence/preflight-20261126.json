@@ -1,0 +1,35 @@
+{
+  "status": "blocked",
+  "checks": [
+    {
+      "name": "model_files",
+      "status": "passed",
+      "detail": "both weights verified and required tokenizer/config/license files present; revision must be recorded in freeze"
+    },
+    {
+      "name": "pristine_baseline",
+      "status": "passed",
+      "detail": {
+        "commit": "cef83f9ddd96540e3e9f48934f11335d52d54fce",
+        "untracked_note": "untracked files require separate provenance review"
+      }
+    },
+    {
+      "name": "validation_inputs",
+      "status": "passed",
+      "detail": "30 files, 960 unique request identities and tokens checked"
+    },
+    {
+      "name": "blocker_register",
+      "status": "open",
+      "detail": "ValueError: open blockers: common_cost_and_no_double_charge, arrival_completion_boundary, concurrent_readiness_batching, freeze_and_preflight"
+    },
+    {
+      "name": "freeze_manifest",
+      "status": "open",
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/dag-handoff/parameter-freeze.json'"
+    }
+  ],
+  "formal_validation_started": false,
+  "caveat": "Read-only static checks do not validate live service idle or prove scientific validity of evidence."
+}

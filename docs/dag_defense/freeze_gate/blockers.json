@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-11-26T12:24:30.428985+00:00",
+  "required": {
+    "common_cost_and_no_double_charge": {
+      "status": "open",
+      "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
+      "missing": "Common cost mapping for reachable concurrent shapes and exclusive assignment of receive/install, first token, forward, sampling, CPU and waits.",
+      "next_action": "Build a traceable common cost and task ownership ledger for actual validation shapes; reject missing shapes.",
+      "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations."
+    },
+    "arrival_completion_boundary": {
+      "status": "open",
+      "evidence": "docs/dag_defense/environment/diagnostics/output-processing-repeat-20261126/README.md",
+      "missing": "Versioned mapping from server arrival through stream completion to simulator boundary, with separately characterized residual.",
+      "next_action": "Write the timestamp and completion contract using observed events and measured tail without duplicate charges.",
+      "close_when": "Token and Decode counts align; all endpoints have source timestamps and residual is quantified or disclosed without double counting."
+    },
+    "concurrent_readiness_batching": {
+      "status": "open",
+      "evidence": "docs/dag_defense/environment/diagnostics/early-batch-minimal-20261126/README.md",
+      "missing": "Acceptance of corrected and pristine natural scheduling differences under the final shared fee mapping and 1/2/4 cases.",
+      "next_action": "Run controlled first-divergence checks using final mapping and document pristine, corrected and DAG separately.",
+      "close_when": "No early Decode in intended DAG, no missing/duplicate tokens, matching fractions and first differences reported; pristine retained."
+    },
+    "freeze_and_preflight": {
+      "status": "open",
+      "evidence": "docs/dag_defense/environment/diagnostics/inflight-admission-drain-20261126/README.md",
+      "missing": "Frozen artifact manifest, scoring rules and integrated conservative per-round idle/failure procedure.",
+      "next_action": "After the other gates close, bind exact hashes, service configuration, input, scoring and restart/idle evidence in a freeze manifest.",
+      "close_when": "All required evidence and immutable hashes validate, service is idle per documented checks, and failures abort and retain retry lineage."
+    }
+  },
+  "reportable_limitations": [
+    "H800 PCIe SYS link; no NVLink assumed",
+    "profile instrumentation and timing variability",
+    "natural batching may differ",
+    "measured router-tail residual with quantified scope",
+    "DAG may be worse or unchanged"
+  ],
+  "not_gates": [
+    "near-zero prediction error",
+    "DAG improvement",
+    "automatic reopening after cancellation"
+  ]
+}
