@@ -1,0 +1,37 @@
+{
+  "status": "observed_token_identity",
+  "input_sha256": "03248787c445a346991d4df45d6475702b8a28a9727599ef049158e4ab13a630",
+  "rows": [
+    {
+      "stage": "warmup",
+      "producer_id": "cmpl-4e647dbe783e4eb1afdb2e4d2c270316",
+      "consumer_id": "cmpl-d68e661f3ad34a8fae129fd9a09dcfd4",
+      "producer_token": "token_id:29891",
+      "consumer_first_token": "token_id:29891",
+      "same": true,
+      "consumer_token_count": 64,
+      "producer_send_ns": 1831666956592544,
+      "producer_complete_ns": 1831667035561517,
+      "consumer_send_ns": 1831667035679262,
+      "consumer_complete_ns": 1831668033622976
+    },
+    {
+      "stage": "measured",
+      "producer_id": "cmpl-87083a5842904c4ea113482a968ba357",
+      "consumer_id": "cmpl-a8adbc9b7d644e91af1b3c87a1056c71",
+      "producer_token": "token_id:29891",
+      "consumer_first_token": "token_id:29891",
+      "same": true,
+      "consumer_token_count": 64,
+      "producer_send_ns": 1831668033714668,
+      "producer_complete_ns": 1831668062956720,
+      "consumer_send_ns": 1831668063022579,
+      "consumer_complete_ns": 1831668909750957
+    }
+  ],
+  "limitations": [
+    "One fixed input repeated twice; equality is not a guarantee for other inputs or nondeterministic settings",
+    "Non-stream direct endpoint requests with logprobs enabled; not formal E2E or router timing",
+    "This test alone does not timestamp transport or GPU KVReady; separate instrumented trace supplies those bounds"
+  ]
+}
