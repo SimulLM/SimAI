@@ -1,0 +1,7 @@
+{
+  "rows": 560,
+  "ordered": 560,
+  "violations": [],
+  "recv_exec_after_decode_submit": 560,
+  "kv_ready_upper_bound": "synchronize after entire first consumer step, includes logits and sampling; not exact KVReady"
+}
