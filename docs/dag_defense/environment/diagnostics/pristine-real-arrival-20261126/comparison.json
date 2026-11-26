@@ -1,0 +1,14 @@
+{
+  "serial-0": {
+    "requests": 32,
+    "real_median_s": 1.0337618745000001,
+    "dag_mae_s": 0.27501438885862767,
+    "baseline_mae_s": 0.2692967644240444
+  },
+  "concurrent-0": {
+    "requests": 32,
+    "real_median_s": 1.1564678609999999,
+    "dag_mae_s": 0.1591342052629776,
+    "baseline_mae_s": 0.15384490871066867
+  }
+}

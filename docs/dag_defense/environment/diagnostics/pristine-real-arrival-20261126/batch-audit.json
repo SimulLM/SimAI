@@ -1,0 +1,65 @@
+{
+  "status": "matched_batch_diagnostic",
+  "cases": [
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 995,
+          "baseline": 993,
+          "matched": 193
+        }
+      },
+      "case": "concurrent-0",
+      "dag_batches": 1027,
+      "baseline_batches": 1025,
+      "matched_keys": 225,
+      "compared": 225,
+      "dag_only": 802,
+      "baseline_only": 800,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.734723475976807e-17,
+      "within_1ns": 225,
+      "over_1ns": 0
+    },
+    {
+      "by_replica": {
+        "0": {
+          "dag": 32,
+          "baseline": 32,
+          "matched": 32
+        },
+        "1": {
+          "dag": 1821,
+          "baseline": 1827,
+          "matched": 1752
+        }
+      },
+      "case": "serial-0",
+      "dag_batches": 1853,
+      "baseline_batches": 1859,
+      "matched_keys": 1784,
+      "compared": 1784,
+      "dag_only": 69,
+      "baseline_only": 75,
+      "duplicate_keys": 0,
+      "mapping_errors": [],
+      "max_abs_difference_s": 1.734723475976807e-17,
+      "within_1ns": 1784,
+      "over_1ns": 0
+    }
+  ],
+  "limitations": [
+    "Same request IDs, replica, per-request prior decode count and batch token counts are required to match",
+    "Compare summed DAG task costs against baseline batch duration, excluding DAG resource wait; not separate operator validation",
+    "Trace timestamps can tie; duplicate history keys are explicitly reported",
+    "Unmatched batches cannot establish equal costs",
+    "Calibration actual arrivals; no validation or accuracy claim",
+    "Adapted baseline is not pristine original"
+  ]
+}

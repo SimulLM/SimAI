@@ -1,0 +1,54 @@
+{
+  "serial-0": {
+    "first_sequence_index": 101,
+    "dag": {
+      "ts_us": 1763931.7578984061,
+      "duration_us": 17593.778643037127,
+      "request_ids": [
+        1,
+        2
+      ],
+      "num_tokens": [
+        1,
+        1
+      ]
+    },
+    "baseline": {
+      "ts_us": 1748214.8461336151,
+      "duration_us": 16921.012089016833,
+      "request_ids": [
+        1
+      ],
+      "num_tokens": [
+        1
+      ]
+    },
+    "limitations": "first positional divergence; not itself proof of cause; timing and prior history must be inspected"
+  },
+  "concurrent-0": {
+    "first_sequence_index": 1,
+    "dag": {
+      "ts_us": 48040.438583691976,
+      "duration_us": 16921.012089016738,
+      "request_ids": [
+        0
+      ],
+      "num_tokens": [
+        1
+      ]
+    },
+    "baseline": {
+      "ts_us": 48040.438583692056,
+      "duration_us": 17593.778643036712,
+      "request_ids": [
+        0,
+        1
+      ],
+      "num_tokens": [
+        1,
+        1
+      ]
+    },
+    "limitations": "first positional divergence; not itself proof of cause; timing and prior history must be inspected"
+  }
+}
