@@ -1,0 +1,17 @@
+{
+  "status": "single_repeated_request_diagnostic_only",
+  "input_sha256": "03248787c445a346991d4df45d6475702b8a28a9727599ef049158e4ab13a630",
+  "iterations": 63,
+  "gpu_forward_median_ms": 13.871647834777832,
+  "simulated_layer_sum_median_ms": 15.191466960642074,
+  "difference_median_ms": 1.3198191258642424,
+  "difference_min_ms": -2.832180347707535,
+  "difference_max_ms": 1.595722827646469,
+  "limitations": [
+    "Real events are from a separate same-input repeat, not the original calibration request",
+    "One request gives 63 correlated steps, not 63 independent samples",
+    "GPU forward includes full model executable including embeddings/final norm but excludes connector, logits and sampler; simulation uses 32 layer components",
+    "GPU events and synchronization include instrumentation and possible stream gaps; cost boundaries are not identical",
+    "Calibration diagnostic only, no validation completion times used and no fee selected"
+  ]
+}
