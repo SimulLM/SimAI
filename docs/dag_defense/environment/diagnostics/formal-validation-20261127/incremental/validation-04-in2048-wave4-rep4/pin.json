@@ -1,0 +1,16 @@
+{
+  "files": {
+    "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-04-in2048-wave4-rep4/inputs.jsonl": "e52bab1668e0f9d130d7516cd04296ba305818ce400c46fca05d272c0766c514",
+    "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-04-in2048-wave4-rep4/trace.csv": "311f7cf81de578baaa7aa391fa3633abcd8818ae5696b1a2c36626fa6656e08d",
+    "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-04-in2048-wave4-rep4/reconciled/requests.jsonl": "15bab4d9e5ab998d95c8c94049ec7baccd2437ce61acd811f6a39f0ce17a99d5",
+    "/root/autodl-tmp/dag-handoff/runs/composite-fees-20261126-01/fees-synchronized.json": "80ec07d96981dbfa1e7071f76427f7e0974baf678696c2e048faef5c8dc1a7c0",
+    "/root/autodl-tmp/SimAI-handoff/scripts/dag_defense/composite_fee_bootstrap.py": "45227d585266cb12a5f392edcddc9604757ebdd610382e1b2ecabb26b383290e"
+  },
+  "pristine_unchanged_reference": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-04-in2048-wave4-rep4/prediction-retry-01/baseline-predictions.csv",
+  "not_formal_validation": true,
+  "roles": [
+    "pristine-original",
+    "fee-adapted-reference",
+    "dag"
+  ]
+}

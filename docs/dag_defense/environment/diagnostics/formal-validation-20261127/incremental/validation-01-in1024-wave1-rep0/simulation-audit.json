@@ -1,0 +1,25 @@
+{
+  "baseline": {
+    "batches": 4096,
+    "early_events": [],
+    "early_is_gate": false,
+    "token_counts_passed": true
+  },
+  "dag": {
+    "batches": 4096,
+    "early_events": [],
+    "early_is_gate": true,
+    "token_counts_passed": true
+  },
+  "paired_batches": {
+    "count": 4096,
+    "baseline_fraction": 1.0,
+    "dag_fraction": 1.0,
+    "max_fee_difference_s": 1.734723475976807e-18,
+    "not_a_pairing_threshold": true
+  },
+  "task_ledger": {
+    "duplicate_keys": 0,
+    "invalid_or_early_tasks": []
+  }
+}

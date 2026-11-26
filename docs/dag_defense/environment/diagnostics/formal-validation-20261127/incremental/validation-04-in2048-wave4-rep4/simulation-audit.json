@@ -1,0 +1,458 @@
+{
+  "baseline": {
+    "batches": 1160,
+    "early_events": [
+      {
+        "request_id": 1,
+        "batch_id": 13,
+        "start_s": 0.23239068049999997,
+        "ready_s": 0.258617331
+      },
+      {
+        "request_id": 2,
+        "batch_id": 13,
+        "start_s": 0.23239068049999997,
+        "ready_s": 0.258617331
+      },
+      {
+        "request_id": 1,
+        "batch_id": 14,
+        "start_s": 0.24512655249999996,
+        "ready_s": 0.258617331
+      },
+      {
+        "request_id": 2,
+        "batch_id": 14,
+        "start_s": 0.24512655249999996,
+        "ready_s": 0.258617331
+      },
+      {
+        "request_id": 1,
+        "batch_id": 15,
+        "start_s": 0.2577765481666666,
+        "ready_s": 0.258617331
+      },
+      {
+        "request_id": 2,
+        "batch_id": 15,
+        "start_s": 0.2577765481666666,
+        "ready_s": 0.258617331
+      },
+      {
+        "request_id": 3,
+        "batch_id": 18,
+        "start_s": 0.2955056508333333,
+        "ready_s": 0.33200818149999994
+      },
+      {
+        "request_id": 3,
+        "batch_id": 19,
+        "start_s": 0.3090249815833333,
+        "ready_s": 0.33200818149999994
+      },
+      {
+        "request_id": 3,
+        "batch_id": 20,
+        "start_s": 0.3225317937083333,
+        "ready_s": 0.33200818149999994
+      },
+      {
+        "request_id": 5,
+        "batch_id": 158,
+        "start_s": 2.5105531795,
+        "ready_s": 2.53677983
+      },
+      {
+        "request_id": 6,
+        "batch_id": 158,
+        "start_s": 2.5105531795,
+        "ready_s": 2.53677983
+      },
+      {
+        "request_id": 5,
+        "batch_id": 159,
+        "start_s": 2.5232890515,
+        "ready_s": 2.53677983
+      },
+      {
+        "request_id": 6,
+        "batch_id": 159,
+        "start_s": 2.5232890515,
+        "ready_s": 2.53677983
+      },
+      {
+        "request_id": 5,
+        "batch_id": 160,
+        "start_s": 2.5359390471666665,
+        "ready_s": 2.53677983
+      },
+      {
+        "request_id": 6,
+        "batch_id": 160,
+        "start_s": 2.5359390471666665,
+        "ready_s": 2.53677983
+      },
+      {
+        "request_id": 7,
+        "batch_id": 163,
+        "start_s": 2.573668149833333,
+        "ready_s": 2.6101706805
+      },
+      {
+        "request_id": 7,
+        "batch_id": 164,
+        "start_s": 2.587187480583333,
+        "ready_s": 2.6101706805
+      },
+      {
+        "request_id": 7,
+        "batch_id": 165,
+        "start_s": 2.600694292708333,
+        "ready_s": 2.6101706805
+      },
+      {
+        "request_id": 9,
+        "batch_id": 303,
+        "start_s": 4.796693147500001,
+        "ready_s": 4.822919798
+      },
+      {
+        "request_id": 10,
+        "batch_id": 303,
+        "start_s": 4.796693147500001,
+        "ready_s": 4.822919798
+      },
+      {
+        "request_id": 9,
+        "batch_id": 304,
+        "start_s": 4.809429019500001,
+        "ready_s": 4.822919798
+      },
+      {
+        "request_id": 10,
+        "batch_id": 304,
+        "start_s": 4.809429019500001,
+        "ready_s": 4.822919798
+      },
+      {
+        "request_id": 9,
+        "batch_id": 305,
+        "start_s": 4.822079015166668,
+        "ready_s": 4.822919798
+      },
+      {
+        "request_id": 10,
+        "batch_id": 305,
+        "start_s": 4.822079015166668,
+        "ready_s": 4.822919798
+      },
+      {
+        "request_id": 11,
+        "batch_id": 308,
+        "start_s": 4.859808117833335,
+        "ready_s": 4.8963106485
+      },
+      {
+        "request_id": 11,
+        "batch_id": 309,
+        "start_s": 4.8733274485833356,
+        "ready_s": 4.8963106485
+      },
+      {
+        "request_id": 11,
+        "batch_id": 310,
+        "start_s": 4.886834260708335,
+        "ready_s": 4.8963106485
+      },
+      {
+        "request_id": 13,
+        "batch_id": 448,
+        "start_s": 7.076325604500001,
+        "ready_s": 7.102552255
+      },
+      {
+        "request_id": 14,
+        "batch_id": 448,
+        "start_s": 7.076325604500001,
+        "ready_s": 7.102552255
+      },
+      {
+        "request_id": 13,
+        "batch_id": 449,
+        "start_s": 7.089061476500002,
+        "ready_s": 7.102552255
+      },
+      {
+        "request_id": 14,
+        "batch_id": 449,
+        "start_s": 7.089061476500002,
+        "ready_s": 7.102552255
+      },
+      {
+        "request_id": 13,
+        "batch_id": 450,
+        "start_s": 7.101711472166668,
+        "ready_s": 7.102552255
+      },
+      {
+        "request_id": 14,
+        "batch_id": 450,
+        "start_s": 7.101711472166668,
+        "ready_s": 7.102552255
+      },
+      {
+        "request_id": 15,
+        "batch_id": 453,
+        "start_s": 7.139440574833335,
+        "ready_s": 7.1759431055
+      },
+      {
+        "request_id": 15,
+        "batch_id": 454,
+        "start_s": 7.1529599055833355,
+        "ready_s": 7.1759431055
+      },
+      {
+        "request_id": 15,
+        "batch_id": 455,
+        "start_s": 7.166466717708335,
+        "ready_s": 7.1759431055
+      },
+      {
+        "request_id": 17,
+        "batch_id": 593,
+        "start_s": 9.3375328945,
+        "ready_s": 9.363759545
+      },
+      {
+        "request_id": 18,
+        "batch_id": 593,
+        "start_s": 9.3375328945,
+        "ready_s": 9.363759545
+      },
+      {
+        "request_id": 17,
+        "batch_id": 594,
+        "start_s": 9.350268766500001,
+        "ready_s": 9.363759545
+      },
+      {
+        "request_id": 18,
+        "batch_id": 594,
+        "start_s": 9.350268766500001,
+        "ready_s": 9.363759545
+      },
+      {
+        "request_id": 17,
+        "batch_id": 595,
+        "start_s": 9.362918762166668,
+        "ready_s": 9.363759545
+      },
+      {
+        "request_id": 18,
+        "batch_id": 595,
+        "start_s": 9.362918762166668,
+        "ready_s": 9.363759545
+      },
+      {
+        "request_id": 19,
+        "batch_id": 598,
+        "start_s": 9.400647864833335,
+        "ready_s": 9.4371503955
+      },
+      {
+        "request_id": 19,
+        "batch_id": 599,
+        "start_s": 9.414167195583335,
+        "ready_s": 9.4371503955
+      },
+      {
+        "request_id": 19,
+        "batch_id": 600,
+        "start_s": 9.427674007708335,
+        "ready_s": 9.4371503955
+      },
+      {
+        "request_id": 21,
+        "batch_id": 738,
+        "start_s": 11.5973690965,
+        "ready_s": 11.623595747
+      },
+      {
+        "request_id": 22,
+        "batch_id": 738,
+        "start_s": 11.5973690965,
+        "ready_s": 11.623595747
+      },
+      {
+        "request_id": 21,
+        "batch_id": 739,
+        "start_s": 11.6101049685,
+        "ready_s": 11.623595747
+      },
+      {
+        "request_id": 22,
+        "batch_id": 739,
+        "start_s": 11.6101049685,
+        "ready_s": 11.623595747
+      },
+      {
+        "request_id": 21,
+        "batch_id": 740,
+        "start_s": 11.622754964166667,
+        "ready_s": 11.623595747
+      },
+      {
+        "request_id": 22,
+        "batch_id": 740,
+        "start_s": 11.622754964166667,
+        "ready_s": 11.623595747
+      },
+      {
+        "request_id": 23,
+        "batch_id": 743,
+        "start_s": 11.660484066833334,
+        "ready_s": 11.696986597499999
+      },
+      {
+        "request_id": 23,
+        "batch_id": 744,
+        "start_s": 11.674003397583334,
+        "ready_s": 11.696986597499999
+      },
+      {
+        "request_id": 23,
+        "batch_id": 745,
+        "start_s": 11.687510209708334,
+        "ready_s": 11.696986597499999
+      },
+      {
+        "request_id": 25,
+        "batch_id": 883,
+        "start_s": 13.8476800895,
+        "ready_s": 13.87390674
+      },
+      {
+        "request_id": 26,
+        "batch_id": 883,
+        "start_s": 13.8476800895,
+        "ready_s": 13.87390674
+      },
+      {
+        "request_id": 25,
+        "batch_id": 884,
+        "start_s": 13.8604159615,
+        "ready_s": 13.87390674
+      },
+      {
+        "request_id": 26,
+        "batch_id": 884,
+        "start_s": 13.8604159615,
+        "ready_s": 13.87390674
+      },
+      {
+        "request_id": 25,
+        "batch_id": 885,
+        "start_s": 13.873065957166668,
+        "ready_s": 13.87390674
+      },
+      {
+        "request_id": 26,
+        "batch_id": 885,
+        "start_s": 13.873065957166668,
+        "ready_s": 13.87390674
+      },
+      {
+        "request_id": 27,
+        "batch_id": 888,
+        "start_s": 13.910795059833335,
+        "ready_s": 13.9472975905
+      },
+      {
+        "request_id": 27,
+        "batch_id": 889,
+        "start_s": 13.924314390583335,
+        "ready_s": 13.9472975905
+      },
+      {
+        "request_id": 27,
+        "batch_id": 890,
+        "start_s": 13.937821202708335,
+        "ready_s": 13.9472975905
+      },
+      {
+        "request_id": 29,
+        "batch_id": 1028,
+        "start_s": 16.096505136500003,
+        "ready_s": 16.122731786999996
+      },
+      {
+        "request_id": 30,
+        "batch_id": 1028,
+        "start_s": 16.096505136500003,
+        "ready_s": 16.122731786999996
+      },
+      {
+        "request_id": 29,
+        "batch_id": 1029,
+        "start_s": 16.109241008500003,
+        "ready_s": 16.122731786999996
+      },
+      {
+        "request_id": 30,
+        "batch_id": 1029,
+        "start_s": 16.109241008500003,
+        "ready_s": 16.122731786999996
+      },
+      {
+        "request_id": 29,
+        "batch_id": 1030,
+        "start_s": 16.12189100416667,
+        "ready_s": 16.122731786999996
+      },
+      {
+        "request_id": 30,
+        "batch_id": 1030,
+        "start_s": 16.12189100416667,
+        "ready_s": 16.122731786999996
+      },
+      {
+        "request_id": 31,
+        "batch_id": 1033,
+        "start_s": 16.159620106833337,
+        "ready_s": 16.196122637499997
+      },
+      {
+        "request_id": 31,
+        "batch_id": 1034,
+        "start_s": 16.173139437583337,
+        "ready_s": 16.196122637499997
+      },
+      {
+        "request_id": 31,
+        "batch_id": 1035,
+        "start_s": 16.18664624970834,
+        "ready_s": 16.196122637499997
+      }
+    ],
+    "early_is_gate": false,
+    "token_counts_passed": true
+  },
+  "dag": {
+    "batches": 1152,
+    "early_events": [],
+    "early_is_gate": true,
+    "token_counts_passed": true
+  },
+  "paired_batches": {
+    "count": 112,
+    "baseline_fraction": 0.09655172413793103,
+    "dag_fraction": 0.09722222222222222,
+    "max_fee_difference_s": 1.3877787807814457e-17,
+    "not_a_pairing_threshold": true
+  },
+  "task_ledger": {
+    "duplicate_keys": 0,
+    "invalid_or_early_tasks": []
+  }
+}
