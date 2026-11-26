@@ -1,0 +1,54 @@
+[
+  {
+    "input_tokens": 1024,
+    "wave": 11,
+    "warmup": false,
+    "guaranteed_overlap_ms": 6.67554,
+    "forward": {
+      "name": "model_forward",
+      "start_lower": 1815083736426970,
+      "end_lower": 1815083802706062,
+      "start_upper": 1815083736881529,
+      "end_upper": 1815083869186212,
+      "metadata": {
+        "request_ids": [
+          "cmpl-d29df8761db544b4803c30651eb7776c-0",
+          "cmpl-2a6eee86a68c4118a93cb92e9d81ee70-0",
+          "cmpl-403de1bb73eb4b7e8496a27e93707627-0"
+        ],
+        "seq_lens": [
+          1024,
+          1024,
+          1024
+        ],
+        "query_lens": [
+          1024,
+          1024,
+          1024
+        ]
+      },
+      "event": "cuda_event_bounds",
+      "pid": 95769,
+      "clock_id": "CLOCK_MONOTONIC"
+    },
+    "send": {
+      "name": "nccl_send",
+      "start_lower": 1815083794914843,
+      "end_lower": 1815083802149127,
+      "start_upper": 1815083795473587,
+      "end_upper": 1815083802707819,
+      "metadata": {
+        "bytes": 268435456,
+        "shape": [
+          32,
+          1024,
+          32,
+          128
+        ]
+      },
+      "event": "cuda_event_bounds",
+      "pid": 95769,
+      "clock_id": "CLOCK_MONOTONIC"
+    }
+  }
+]

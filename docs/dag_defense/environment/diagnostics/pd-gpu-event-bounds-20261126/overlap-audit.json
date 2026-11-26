@@ -1,0 +1,36 @@
+{
+  "requests": 320,
+  "status_counts": {
+    "200": 320
+  },
+  "summary": [
+    {
+      "input_tokens": 1024,
+      "measured_waves": 30,
+      "waves_with_guaranteed_overlap": 1,
+      "minimum_large_sends_per_wave": 8,
+      "fully_mapped_waves": 30,
+      "largest_lower_bound_ms": 6.67554
+    },
+    {
+      "input_tokens": 2048,
+      "measured_waves": 30,
+      "waves_with_guaranteed_overlap": 0,
+      "minimum_large_sends_per_wave": 8,
+      "fully_mapped_waves": 30,
+      "largest_lower_bound_ms": 0
+    }
+  ],
+  "invalid_or_error_events": [],
+  "producer_pids": [
+    95769
+  ],
+  "client_wave_window_conflicts": [],
+  "limits": [
+    "CUDA event query polling bounds events by host CLOCK_MONOTONIC, but polling and instrumentation perturb execution",
+    "A positive lower bound proves intervals between recorded CUDA events overlap; events can enclose launch gaps and do not prove individual GPU kernels run simultaneously",
+    "NCCL sends lack request IDs; send-to-wave association uses non-overlapping client time windows and transfer payload threshold, not request-level matching",
+    "A missing positive overlap is inconclusive when bounds are wide; CUDA event queries are not formal E2E measurements",
+    "8 output tokens and diagnostic router buffering differ from formal 128-token streaming validation"
+  ]
+}
