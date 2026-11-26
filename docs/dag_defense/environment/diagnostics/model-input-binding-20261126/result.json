@@ -1,0 +1,28 @@
+{
+  "status": "model_and_candidate_input_checks_only_not_freeze",
+  "model": "NousResearch/Llama-2-7b-hf",
+  "revision": "8efe6c9b93655b934e27bd9981e3ec13e55aee9d",
+  "model_manifest_sha256": "c1396cdbb7b1019f58d5ddcc418dfa28547286052f56873a5bffb833b25df62c",
+  "weights": {
+    "model-00001-of-00002.safetensors": "4ec71fd53e99766de38f24753b30c9e8942630e9e576a1ba27b0ec531e87be41",
+    "model-00002-of-00002.safetensors": "41780b5dac322ac35598737e99208d90bdc632a1ba3389ebedbb46a1d8385a7f"
+  },
+  "file_check_log_sha256": "d04640aa559330132119ecc3b5054107627513716733ec82aaa42f0081b782d8",
+  "validation_manifest_sha256": "3957d74470b04125ac6a28f7840d956316cbfd013bc6e268cd8b203f856ece04",
+  "candidate_runs": 30,
+  "candidate_requests": 960,
+  "tokenizer_class": "LlamaTokenizerFast",
+  "vocab_size": 32000,
+  "bos": 1,
+  "eos": 2,
+  "tokenizer_pad": 0,
+  "model_pad": 0,
+  "raw_generation_pad": 32000,
+  "config_rope_theta": 10000.0,
+  "config_rope_scaling": null,
+  "limitations": [
+    "Does not verify actual server runtime settings or historical weight equivalence to Meta",
+    "Candidate input is not frozen; no validation requests run",
+    "Raw generation pad is outside vocabulary; runtime override and observed service behavior must be frozen and verified"
+  ]
+}
