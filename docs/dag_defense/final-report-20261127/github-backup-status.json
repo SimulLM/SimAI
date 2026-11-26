@@ -1,28 +1,107 @@
 {
-  "checked_utc": "2026-11-26T17:20:52.813530+00:00",
-  "release": "https://github.com/SimulLM/SimAI/releases/tag/dev-formal-predictions-20261127",
-  "detailed_parts_uploaded": 7,
+  "status": "complete",
+  "checked_utc": "2026-11-26T17:37:13.154474+00:00",
+  "formal_rounds": 30,
+  "formal_requests": 960,
+  "detailed_parts_uploaded": 10,
   "detailed_parts_total": 10,
-  "remaining": [
+  "remaining": [],
+  "remaining_bytes": 0,
+  "release": "https://github.com/SimulLM/SimAI/releases/tag/dev-formal-predictions-20261127",
+  "assets": [
+    {
+      "name": "formal-predictions-part-01.tar.gz",
+      "bytes": 83803065,
+      "sha256": "62c56bc4008b85aaf76ccc34535ac9d2234691a2b2cbae5da509c46d9bcaa1b7",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-01.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "formal-predictions-part-02.tar.gz",
+      "bytes": 43912471,
+      "sha256": "b1be9ac40babd2a32f476d7b91d6a682c172dd3be62eda614c1de8adfa9b65e3",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-02.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "formal-predictions-part-03.tar.gz",
+      "bytes": 57005428,
+      "sha256": "4f6ffcb965792ab7117aad80b6406e6d8bbe216176dd4b148f9a23edd09cb0b0",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-03.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "formal-predictions-part-04.tar.gz",
+      "bytes": 30816789,
+      "sha256": "3d42305b02bfa786b11e53a366f581b3f60d6f4ca1df90fa9905b5f77372d5a2",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-04.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "formal-predictions-part-05.tar.gz",
+      "bytes": 37077102,
+      "sha256": "325c8c4f00b0d4642626c99c8d3f80e376c5ee63e5a3acab810e7ba7164e4e10",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-05.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "formal-predictions-part-06.tar.gz",
+      "bytes": 23444233,
+      "sha256": "12e22431ae79adb82efe880174a86a4b41b7030372f7356aacf59619e9f0161d",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-06.tar.gz",
+      "github_digest_verified": true
+    },
     {
       "name": "formal-predictions-part-07.tar.gz",
-      "bytes": 57331024
+      "bytes": 57331024,
+      "sha256": "60ba1964e446101b2564c436b3ac9083324d2f567652b5baaefae0e0f7d5137d",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-07.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "formal-predictions-part-08.tar.gz",
+      "bytes": 37072815,
+      "sha256": "37c5b75e6856ef4b600b48c7057cb305dd6e90840817897db2b6cb132b1140d5",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-08.tar.gz",
+      "github_digest_verified": true
     },
     {
       "name": "formal-predictions-part-09.tar.gz",
-      "bytes": 70785407
+      "bytes": 70785407,
+      "sha256": "65f15b632968467ad69cadc2ec74bac63968fda5cf155fa8a734172d12c4385a",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-09.tar.gz",
+      "github_digest_verified": true
     },
     {
       "name": "formal-predictions-part-10.tar.gz",
-      "bytes": 63676563
+      "bytes": 63676563,
+      "sha256": "afb849590c60ed945ec8a8d544c69621b15cb28328e180ab48d3eff517c94b76",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-10.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "formal-raw-30rounds-20261127.tar.gz",
+      "bytes": 7129951,
+      "sha256": "d82eaeb8a27d22fea05c4e558381ab13726e1778cc3ce09df9532fcfbc09f966",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-raw-30rounds-20261127/formal-raw-30rounds-20261127.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "preacceptance-2048-128-c4-20261126-evidence.tar.gz",
+      "bytes": 15546265,
+      "sha256": "91cf35b0eb069112864be6b6d235d39c2e3c628a74ea1e02c9c9eb73073159e6",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-preaccept-2048-c4-20261126/preacceptance-2048-128-c4-20261126-evidence.tar.gz",
+      "github_digest_verified": true
+    },
+    {
+      "name": "final-support-and-summary-20261127.tar.gz",
+      "bytes": 7568984,
+      "sha256": "147b48004ec819cc68206fe3c892785ecc8fd38b8cf2f90d4cd4fb62bd4564d9",
+      "url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/final-support-and-summary-20261127.tar.gz",
+      "github_digest_verified": true
     }
   ],
-  "remaining_bytes": 191792994,
-  "support_package": {
-    "sha256": "147b48004ec819cc68206fe3c892785ecc8fd38b8cf2f90d4cd4fb62bd4564d9",
-    "asset_url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/final-support-and-summary-20261127.tar.gz",
-    "bytes": 7568984
-  },
+  "local_core_backup_verified": true,
   "report_commit": "d70bd28",
-  "local_core_backup_verified": true
+  "scope": "Archival completion only; experimental limitations in the report remain unchanged."
 }
