@@ -1,0 +1,60 @@
+{
+  "status": "diagnostic_only",
+  "cases": [
+    {
+      "case": "concurrent-0",
+      "requests": 32,
+      "median_router_arrival_to_prefill_response_s": 0.046773977,
+      "median_router_arrival_to_first_token_s": 0.073780122,
+      "median_router_first_token_to_complete_s": 1.0790131619999999,
+      "median_sim_first_decode_start_to_complete_s": 1.0649058866623746
+    },
+    {
+      "case": "concurrent-1",
+      "requests": 32,
+      "median_router_arrival_to_prefill_response_s": 0.0459656625,
+      "median_router_arrival_to_first_token_s": 0.07223964699999999,
+      "median_router_first_token_to_complete_s": 0.8262644605,
+      "median_sim_first_decode_start_to_complete_s": 1.0877066648339078
+    },
+    {
+      "case": "concurrent-2",
+      "requests": 32,
+      "median_router_arrival_to_prefill_response_s": 0.0469946875,
+      "median_router_arrival_to_first_token_s": 0.0764716735,
+      "median_router_first_token_to_complete_s": 1.2206513645000001,
+      "median_sim_first_decode_start_to_complete_s": 1.0649058866575105
+    },
+    {
+      "case": "serial-0",
+      "requests": 32,
+      "median_router_arrival_to_prefill_response_s": 0.0286422385,
+      "median_router_arrival_to_first_token_s": 0.043647861499999996,
+      "median_router_first_token_to_complete_s": 0.984687888,
+      "median_sim_first_decode_start_to_complete_s": 1.0248000568585862
+    },
+    {
+      "case": "serial-1",
+      "requests": 32,
+      "median_router_arrival_to_prefill_response_s": 0.029256841,
+      "median_router_arrival_to_first_token_s": 0.044439661500000005,
+      "median_router_first_token_to_complete_s": 0.8545592735,
+      "median_sim_first_decode_start_to_complete_s": 1.0385216716353973
+    },
+    {
+      "case": "serial-2",
+      "requests": 32,
+      "median_router_arrival_to_prefill_response_s": 0.02885654,
+      "median_router_arrival_to_first_token_s": 0.04408952,
+      "median_router_first_token_to_complete_s": 0.8182968205,
+      "median_sim_first_decode_start_to_complete_s": 1.035003776298924
+    }
+  ],
+  "limitations": [
+    "router first-token event derives from streamed usage; not a GPU event",
+    "simulator first Decode start is a different boundary and does not equal router first-token time",
+    "simulator Decode start-to-completion includes the first modeled Decode step; router first-token-to-completion begins after first emitted token",
+    "These summaries cannot be added or subtracted as matched component fees",
+    "No validation or accuracy claim"
+  ]
+}

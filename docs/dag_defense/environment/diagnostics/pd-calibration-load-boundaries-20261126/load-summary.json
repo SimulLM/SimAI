@@ -1,0 +1,60 @@
+{
+  "status": "diagnostic_only",
+  "groups": [
+    {
+      "case": "concurrent-0",
+      "requests": 32,
+      "actual_any_previous_inflight": 16,
+      "dag_any_previous_inflight": 21,
+      "adapted_baseline_any_previous_inflight": 20,
+      "dag_max_previous_inflight": 3,
+      "adapted_baseline_max_previous_inflight": 3
+    },
+    {
+      "case": "concurrent-1",
+      "requests": 32,
+      "actual_any_previous_inflight": 16,
+      "dag_any_previous_inflight": 29,
+      "adapted_baseline_any_previous_inflight": 29,
+      "dag_max_previous_inflight": 3,
+      "adapted_baseline_max_previous_inflight": 3
+    },
+    {
+      "case": "concurrent-2",
+      "requests": 32,
+      "actual_any_previous_inflight": 16,
+      "dag_any_previous_inflight": 19,
+      "adapted_baseline_any_previous_inflight": 18,
+      "dag_max_previous_inflight": 3,
+      "adapted_baseline_max_previous_inflight": 3
+    },
+    {
+      "case": "serial-0",
+      "requests": 32,
+      "actual_any_previous_inflight": 0,
+      "dag_any_previous_inflight": 17,
+      "adapted_baseline_any_previous_inflight": 17,
+      "dag_max_previous_inflight": 1,
+      "adapted_baseline_max_previous_inflight": 1
+    },
+    {
+      "case": "serial-1",
+      "requests": 32,
+      "actual_any_previous_inflight": 0,
+      "dag_any_previous_inflight": 31,
+      "adapted_baseline_any_previous_inflight": 31,
+      "dag_max_previous_inflight": 1,
+      "adapted_baseline_max_previous_inflight": 1
+    },
+    {
+      "case": "serial-2",
+      "requests": 32,
+      "actual_any_previous_inflight": 0,
+      "dag_any_previous_inflight": 19,
+      "adapted_baseline_any_previous_inflight": 19,
+      "dag_max_previous_inflight": 1,
+      "adapted_baseline_max_previous_inflight": 1
+    }
+  ],
+  "scope": "Prior requests whose completion occurs strictly after each request server arrival; actual times from router, predicted completion from replay. Concurrent within-wave arrival staggering is retained. Counts do not measure queue size, causation, GPU concurrency, or simulator correctness."
+}
