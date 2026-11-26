@@ -1,0 +1,66 @@
+{
+  "status": "microbenchmark_pass",
+  "summary": [
+    {
+      "rank": 0,
+      "mode": "compute_only",
+      "n": 30,
+      "host_median_ms": 15.8145595,
+      "compute_gpu_median_ms": 15.781152248382568,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 0,
+      "mode": "transfer_only",
+      "n": 30,
+      "host_median_ms": 0.0006215000000000001,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 0,
+      "mode": "concurrent",
+      "n": 30,
+      "host_median_ms": 30.077577,
+      "compute_gpu_median_ms": 29.193039894104004,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 1,
+      "mode": "compute_only",
+      "n": 30,
+      "host_median_ms": 0.000181,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "not_applicable"
+    },
+    {
+      "rank": 1,
+      "mode": "transfer_only",
+      "n": 30,
+      "host_median_ms": 15.852981499999999,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "pass"
+    },
+    {
+      "rank": 1,
+      "mode": "concurrent",
+      "n": 30,
+      "host_median_ms": 17.0268175,
+      "compute_gpu_median_ms": null,
+      "sampled_integrity": "pass"
+    }
+  ],
+  "concurrent_host_union_median_ms": 30.0782725,
+  "errors": [],
+  "limits": [
+    "synthetic GEMM plus vLLM SimpleBuffer token lookup; compute starts after matched signal, not real model forward",
+    "host synchronization windows do not identify exact GPU overlap start/end",
+    "GPU kernel timing can include scheduling and contention",
+    "token IDs and ROI plus samples of key/value/hidden were checked, not full KV payload",
+    "fixed sequence of modes and synchronization perturb normal execution"
+  ],
+  "match_order": {
+    "valid": 30,
+    "total": 30
+  }
+}
