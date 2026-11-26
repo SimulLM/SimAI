@@ -36,12 +36,17 @@ def reconcile(inputs,client_path,router_path,output):
   if row['server_arrival_ns'] is not None and row['server_complete_ns'] is not None:row['server_e2e_s']=(row['server_complete_ns']-row['server_arrival_ns'])/1e9
   if c['status']=='success':
    problems=[]
-   ordered=('server_arrival','prefill_send','prefill_response','prefill_mapping','decode_send','decode_mapping','server_first_token','server_complete')
+   ordered=('server_arrival','prefill_send','prefill_response','prefill_mapping','decode_send','decode_mapping','server_first_token','server_final_choice_observed','server_complete')
    if any(len(ev[name])!=1 for name in ordered):problems.append('missing or duplicate required server event')
    elif any(ev[name][0].get('clock_id')!='CLOCK_MONOTONIC' for name in ordered):problems.append('clock mismatch')
    elif any(ev[a][0]['timestamp_ns']>ev[b][0]['timestamp_ns'] for a,b in zip(ordered,ordered[1:])):problems.append('server event order mismatch')
    elif ev['prefill_response'][0].get('status')!=200 or ev['server_error']:problems.append('server error or prefill failure')
    elif complete[0].get('usage')!=c.get('usage'):problems.append('completion usage mismatch')
+   final=ev['server_final_choice_observed']
+   if len(final)==1:
+    row['server_final_choice_ns']=final[0].get('timestamp_ns')
+    if row['server_complete_ns'] is not None and row['server_final_choice_ns'] is not None:row['server_final_choice_to_complete_s']=(row['server_complete_ns']-row['server_final_choice_ns'])/1e9
+    if final[0].get('finish_reasons')!=['length'] or final[0].get('completion_tokens')!=(c.get('usage') or {}).get('completion_tokens'):problems.append('final choice reason or token count mismatch')
    if len(arrival)!=1 or len(complete)!=1 or len(mapping)!=1:problems.append('missing or duplicate server boundaries/mapping')
    elif row['server_e2e_s']<0 or mapping[0].get('backend_request_id')!=c.get('backend_request_id'):problems.append('server clock order or backend ID mismatch')
    elif any(x.get('clock_id')!='CLOCK_MONOTONIC' for x in (arrival[0],complete[0],mapping[0])):problems.append('clock mismatch')
@@ -56,6 +61,6 @@ def reconcile(inputs,client_path,router_path,output):
  output.mkdir(parents=True,exist_ok=False)
  with (output/'requests.jsonl').open('w') as f:
   for r in rows:f.write(json.dumps(r,separators=(',',':'))+'\n')
- counts=dict(collections.Counter(x['status'] for x in rows));status='complete' if len(rows)==32 and counts=={'success':32} and not errors else 'incomplete';summary={'status':status,'request_count':len(rows),'status_counts':counts,'errors':errors,'clock_id':'CLOCK_MONOTONIC','metric':'server_complete_ns - server_arrival_ns','limitations':['router completion is stream completion, not GPU completion','separate pre-run idle evidence and frozen configuration verification remain required','incomplete or failed rows must be retained; no missing server timestamp is fabricated']};(output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');return summary
+ counts=dict(collections.Counter(x['status'] for x in rows));status='complete' if len(rows)==32 and counts=={'success':32} and not errors else 'incomplete';summary={'status':status,'request_count':len(rows),'status_counts':counts,'errors':errors,'clock_id':'CLOCK_MONOTONIC','metric':'server_complete_ns - server_arrival_ns','final_choice_required':True,'limitations':['router completion is stream completion, not GPU completion','separate pre-run idle evidence and frozen configuration verification remain required','incomplete or failed rows must be retained; no missing server timestamp is fabricated']};(output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');return summary
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--inputs',type=pathlib.Path,required=True);p.add_argument('--client',type=pathlib.Path,required=True);p.add_argument('--router',type=pathlib.Path,required=True);p.add_argument('--output',type=pathlib.Path,required=True);a=p.parse_args();r=reconcile(a.inputs,a.client,a.router,a.output);print(json.dumps(r,indent=2));sys.exit(0 if r['status']=='complete' else 1)

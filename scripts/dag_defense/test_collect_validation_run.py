@@ -19,14 +19,24 @@ async def main():
     records=[json.loads(x) for x in (root/mode/'client-events.jsonl').read_text().splitlines()];counts={k:sum(x['status']==k for x in records) for k in expected};assert counts==expected,(mode,counts);assert len({x['request_id'] for x in records})==32;events=[json.loads(x) for x in (root/mode/'wave-events.jsonl').read_text().splitlines()];assert all(events[2*i]['event']=='scheduled' and events[2*i+1]['event']=='complete' for i in range(len(events)//2));results[mode]={'counts':counts,'waves_sent':len(events)//2}
    inputs=root/'fixture-input.jsonl';inputs.write_text(''.join(json.dumps(r)+'\n' for r in rows));router=root/'fixture-router.jsonl';server=[]
    for i in range(32):
-    for name,t in [('server_arrival',100),('prefill_send',110),('prefill_response',120),('prefill_mapping',130),('decode_send',140),('decode_mapping',150),('server_first_token',160),('server_complete',200)]:
+    for name,t in [('server_arrival',100),('prefill_send',110),('prefill_response',120),('prefill_mapping',130),('decode_send',140),('decode_mapping',150),('server_first_token',160),('server_final_choice_observed',190),('server_complete',200)]:
      item={'request_id':'fixture-'+str(i),'event':name,'timestamp_ns':t,'clock_id':'CLOCK_MONOTONIC'}
      if name=='server_arrival':item['client_request_id']=str(i)
      if name=='decode_mapping':item['backend_request_id']='fake-'+str(i)
      if name=='prefill_response':item['status']=200
+     if name=='server_final_choice_observed':item.update(finish_reasons=['length'],completion_tokens=128)
      if name=='server_complete':item['usage']={'prompt_tokens':4,'completion_tokens':128}
      server.append(item)
    router.write_text(''.join(json.dumps(r)+'\n' for r in server));good=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-good');assert good['status']=='complete',good
+   for mode in ('missing','duplicate','bad_reason','bad_count','order'):
+    revised=[dict(x) for x in server];target=next(x for x in revised if x['request_id']=='fixture-0' and x['event']=='server_final_choice_observed')
+    if mode=='missing':revised.remove(target)
+    elif mode=='duplicate':revised.append(dict(target))
+    elif mode=='bad_reason':target['finish_reasons']=['stop']
+    elif mode=='bad_count':target['completion_tokens']=127
+    else:target['timestamp_ns']=201
+    router.write_text(''.join(json.dumps(x)+'\n' for x in revised));result=reconcile(inputs,root/'success/client-events.jsonl',router,root/('final-'+mode));assert result['status']=='incomplete' and result['errors'],(mode,result)
+   router.write_text(''.join(json.dumps(r)+'\n' for r in server))
    router.write_text(router.read_text()+json.dumps(server[0])+'\n');bad=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-duplicate');assert bad['status']=='incomplete' and bad['errors'],bad
    partial=reconcile(inputs,root/'timeout/client-events.jsonl',router,root/'reconciled-timeout');assert partial['status']=='incomplete' and partial['status_counts']['not_submitted']==28,partial
    truncated=root/'truncated.jsonl';truncated.write_text('\n'.join((root/'success/client-events.jsonl').read_text().splitlines()[:3])+'\n');interrupted=reconcile(inputs,truncated,router,root/'reconciled-interrupted');assert interrupted['status']=='incomplete' and interrupted['status_counts']['missing_client']==29,interrupted;interrupted_rows=[json.loads(x) for x in (root/'reconciled-interrupted/requests.jsonl').read_text().splitlines()];assert all(x.get('server_events') and x.get('router_id_recovered_from_client_id') for x in interrupted_rows if x['status']=='missing_client')
