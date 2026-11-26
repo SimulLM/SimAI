@@ -5,7 +5,9 @@ from collect_validation_run import run_case,preflight
 from reconcile_validation_run import reconcile
 async def main():
  async def handle(req):
-  body=await req.json();i=body['prompt'][1];mode=body['model'];assert req.headers['X-Experiment-Client-ID']==str(i)
+  body=await req.json();i=body['prompt'][1];mode=body['model']
+  if mode=='cli-fail':return web.Response(status=503,text='injected failure')
+  assert req.headers['X-Experiment-Client-ID']==str(i)
   if mode=='fail' and i==1:return web.Response(status=503,text='injected failure')
   if mode=='timeout' and i==2:await asyncio.sleep(.35)
   usage={'prompt_tokens':4,'completion_tokens':128};payload='data: '+json.dumps({'id':'fake-'+str(i),'usage':usage})+'\n\ndata: [DONE]\n\n'
@@ -15,7 +17,11 @@ async def main():
   with tempfile.TemporaryDirectory() as td:
    root=pathlib.Path(td);rows=[{'run_id':'fixture','request_id':str(i),'input_id':'input'+str(i),'input_sha256':'fixture','wave':i//2,'input_ids':[1,i]} for i in range(32)];spec={'run_id':'fixture','input_tokens':4,'concurrency':2,'requests':32};results={}
    for mode,expected in [('success',{'success':32,'failed':0,'timeout':0,'not_submitted':0}),('fail',{'success':1,'failed':1,'timeout':0,'not_submitted':30}),('timeout',{'success':3,'failed':0,'timeout':1,'not_submitted':28})]:
-    await run_case(spec,rows,root/mode,f'http://127.0.0.1:{port}/v1/completions',mode,.15)
+    summary=await run_case(spec,rows,root/mode,f'http://127.0.0.1:{port}/v1/completions',mode,.15)
+    assert summary['status']==('client_collection_complete' if mode=='success' else 'incomplete_restart_required')
+    marker=root/mode/'restart-required.jsonl';assert marker.exists()==(mode!='success')
+    if mode!='success':
+     evidence=json.loads(marker.read_text());assert evidence['wave']==(0 if mode=='fail' else 1) and 'service must be stopped' in evidence['reason']
     records=[json.loads(x) for x in (root/mode/'client-events.jsonl').read_text().splitlines()];counts={k:sum(x['status']==k for x in records) for k in expected};assert counts==expected,(mode,counts);assert len({x['request_id'] for x in records})==32;events=[json.loads(x) for x in (root/mode/'wave-events.jsonl').read_text().splitlines()];assert all(events[2*i]['event']=='scheduled' and events[2*i+1]['event']=='complete' for i in range(len(events)//2));results[mode]={'counts':counts,'waves_sent':len(events)//2}
    inputs=root/'fixture-input.jsonl';inputs.write_text(''.join(json.dumps(r)+'\n' for r in rows));router=root/'fixture-router.jsonl';server=[]
    for i in range(32):
@@ -59,6 +65,11 @@ async def main():
    def matrix(primary):return {'runs':[primary,*others]}
    good_spec={'run_id':'checked','path':inputfile.name,'sha256':hashlib.sha256(inputfile.read_bytes()).hexdigest(),'requests':32,'input_tokens':1024,'output_tokens':128,'concurrency':2,'repeat':0}
    manifest.write_text(json.dumps(matrix(good_spec)));artifact=root/'artifact';artifact.write_text('fixture');keys=('source','baseline_source','compute_cost','communication_cost','service_configuration','scoring_rule','compatibility_evidence');freeze=root/'freeze.json';freeze.write_text(json.dumps({'status':'frozen','validation_manifest_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest(),'artifacts':{k:{'path':str(artifact),'sha256':hashlib.sha256(artifact.read_bytes()).hexdigest()} for k in keys}}));preflight(freeze,manifest,'checked')
+   import sys
+   cli_out=root/'cli-failure';proc=await asyncio.create_subprocess_exec(sys.executable,str(pathlib.Path(__file__).with_name('collect_validation_run.py')),'--freeze',str(freeze),'--manifest',str(manifest),'--run-id','checked','--output',str(cli_out),'--url',f'http://127.0.0.1:{port}/v1/completions','--model','cli-fail',stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.PIPE)
+   _,stderr=await proc.communicate();assert proc.returncode==1,(proc.returncode,stderr.decode())
+   cli_rows=[json.loads(x) for x in (cli_out/'client-events.jsonl').read_text().splitlines()];assert len(cli_rows)==32 and sum(x['status']=='failed' for x in cli_rows)==2 and sum(x['status']=='not_submitted' for x in cli_rows)==30
+   assert json.loads((cli_out/'client-complete.json').read_text())['status']=='incomplete_restart_required' and (cli_out/'restart-required.jsonl').exists()
    # Re-hash deliberately invalid input to exercise semantic checks, not checksum rejection.
    for kind in ('duplicate_request','duplicate_tokens','wrong_wave_index','wrong_run','wrong_output','bad_concurrency'):
     bad=[dict(x) for x in checked];bad_spec={'run_id':'checked','path':inputfile.name,'requests':32,'input_tokens':4,'output_tokens':128,'concurrency':2}

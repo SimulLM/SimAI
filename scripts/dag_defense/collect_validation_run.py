@@ -63,15 +63,20 @@ async def run_case(spec,rows,output,url,model,timeout_s):
   except Exception as exc:row.update(status='failed',error=type(exc).__name__+': '+str(exc)[:512])
   finally:row['client_complete_ns']=time.monotonic_ns();await write_record(path,row)
   return row
+ failure=None
  async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=timeout_s)) as session:
   for w in range((len(rows)+spec['concurrency']-1)//spec['concurrency']):
    batch=[r for r in rows if r['wave']==w];scheduled=time.monotonic_ns();await write_record(output/'wave-events.jsonl',{'wave':w,'event':'scheduled','timestamp_ns':scheduled,'request_count':len(batch)});result=await asyncio.gather(*(one(session,r,scheduled) for r in batch),return_exceptions=True);errors=[x for x in result if isinstance(x,BaseException)];
    if errors:raise errors[0]
    await write_record(output/'wave-events.jsonl',{'wave':w,'event':'complete','timestamp_ns':time.monotonic_ns(),'status_counts':{s:sum(x['status']==s for x in result) for s in ('success','failed','timeout')}})
    if any(x['status']!='success' for x in result):
+    failure={'wave':w,'status_counts':{s:sum(x['status']==s for x in result) for s in ('success','failed','timeout')},'reason':'request failed or timed out; service must be stopped before another run'}
+    append(output/'restart-required.jsonl',failure)
     for r in rows:
      if r['wave']>w:await write_record(path,{'run_id':r['run_id'],'request_id':r['request_id'],'input_id':r['input_id'],'input_sha256':r['input_sha256'],'wave':r['wave'],'status':'not_submitted','error':'earlier wave failed or timed out; server idle is unverified'})
     break
- (output/'client-complete.json').write_text(json.dumps({'finished_ns':time.monotonic_ns(),'requested':len(rows),'note':'client collection ended; server events, idle and validity must be verified separately'},indent=2)+'\n')
+ summary={'finished_ns':time.monotonic_ns(),'requested':len(rows),'status':'incomplete_restart_required' if failure else 'client_collection_complete','failure':failure,'note':'client collection ended; server events, idle and validity must be verified separately'}
+ (output/'client-complete.json').write_text(json.dumps(summary,indent=2)+'\n')
+ return summary
 if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('--freeze',type=pathlib.Path,required=True);ap.add_argument('--manifest',type=pathlib.Path,required=True);ap.add_argument('--run-id',required=True);ap.add_argument('--output',type=pathlib.Path,required=True);ap.add_argument('--url',default='http://127.0.0.1:18300/v1/completions');ap.add_argument('--model',default='/root/autodl-tmp/models/Llama-2-7b-hf');ap.add_argument('--timeout',type=float,default=180);args=ap.parse_args();freeze,manifest,spec,rows=preflight(args.freeze,args.manifest,args.run_id);asyncio.run(run_case(spec,rows,args.output,args.url,args.model,args.timeout))
+ ap=argparse.ArgumentParser();ap.add_argument('--freeze',type=pathlib.Path,required=True);ap.add_argument('--manifest',type=pathlib.Path,required=True);ap.add_argument('--run-id',required=True);ap.add_argument('--output',type=pathlib.Path,required=True);ap.add_argument('--url',default='http://127.0.0.1:18300/v1/completions');ap.add_argument('--model',default='/root/autodl-tmp/models/Llama-2-7b-hf');ap.add_argument('--timeout',type=float,default=180);args=ap.parse_args();freeze,manifest,spec,rows=preflight(args.freeze,args.manifest,args.run_id);result=asyncio.run(run_case(spec,rows,args.output,args.url,args.model,args.timeout));raise SystemExit(1 if result['status']!='client_collection_complete' else 0)
