@@ -1,0 +1,165 @@
+{
+  "status": "host_observations_consistent_gpu_unverified",
+  "window_s": 15.091864505,
+  "expected_requests": 4,
+  "samples": [
+    {
+      "sample": 0,
+      "monotonic_ns": 1833194370328943,
+      "roles": {
+        "producer": {
+          "pid": 135686,
+          "snapshot_age_s": 0.132926783,
+          "counts": {
+            "insert_started": 4,
+            "insert_completed": 4,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 20,
+            "send_completed": 20,
+            "recv_started": 8,
+            "recv_completed": 8
+          }
+        },
+        "consumer": {
+          "pid": 135691,
+          "snapshot_age_s": 0.019386527,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 4,
+            "select_completed": 4
+          },
+          "pipe_counts": {
+            "send_started": 8,
+            "send_completed": 8,
+            "recv_started": 20,
+            "recv_completed": 20
+          }
+        }
+      }
+    },
+    {
+      "sample": 1,
+      "monotonic_ns": 1833199426906188,
+      "roles": {
+        "producer": {
+          "pid": 135686,
+          "snapshot_age_s": 0.184763621,
+          "counts": {
+            "insert_started": 4,
+            "insert_completed": 4,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 20,
+            "send_completed": 20,
+            "recv_started": 8,
+            "recv_completed": 8
+          }
+        },
+        "consumer": {
+          "pid": 135691,
+          "snapshot_age_s": 0.071662136,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 4,
+            "select_completed": 4
+          },
+          "pipe_counts": {
+            "send_started": 8,
+            "send_completed": 8,
+            "recv_started": 20,
+            "recv_completed": 20
+          }
+        }
+      }
+    },
+    {
+      "sample": 2,
+      "monotonic_ns": 1833204444404598,
+      "roles": {
+        "producer": {
+          "pid": 135686,
+          "snapshot_age_s": 0.197922231,
+          "counts": {
+            "insert_started": 4,
+            "insert_completed": 4,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 20,
+            "send_completed": 20,
+            "recv_started": 8,
+            "recv_completed": 8
+          }
+        },
+        "consumer": {
+          "pid": 135691,
+          "snapshot_age_s": 0.085256928,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 4,
+            "select_completed": 4
+          },
+          "pipe_counts": {
+            "send_started": 8,
+            "send_completed": 8,
+            "recv_started": 20,
+            "recv_completed": 20
+          }
+        }
+      }
+    },
+    {
+      "sample": 3,
+      "monotonic_ns": 1833209462193448,
+      "roles": {
+        "producer": {
+          "pid": 135686,
+          "snapshot_age_s": 0.211351733,
+          "counts": {
+            "insert_started": 4,
+            "insert_completed": 4,
+            "select_started": 0,
+            "select_completed": 0
+          },
+          "pipe_counts": {
+            "send_started": 20,
+            "send_completed": 20,
+            "recv_started": 8,
+            "recv_completed": 8
+          }
+        },
+        "consumer": {
+          "pid": 135691,
+          "snapshot_age_s": 0.09882876,
+          "counts": {
+            "insert_started": 0,
+            "insert_completed": 0,
+            "select_started": 4,
+            "select_completed": 4
+          },
+          "pipe_counts": {
+            "send_started": 8,
+            "send_completed": 8,
+            "recv_started": 20,
+            "recv_completed": 20
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Recorded host calls and zero buffers do not prove GPU or NCCL work has completed",
+    "Process identities are not checked for live ownership by this offline checker",
+    "Observer may perturb timing; signal pipe and transient states are not fully observed",
+    "Timeout and crash cleanup require separate evidence; no formal readiness certification"
+  ]
+}
