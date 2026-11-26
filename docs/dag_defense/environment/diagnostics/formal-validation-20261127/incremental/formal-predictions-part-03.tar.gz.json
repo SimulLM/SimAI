@@ -1,0 +1,14 @@
+{
+  "name": "formal-predictions-part-03.tar.gz",
+  "path": "incremental-backup-20261127/formal-predictions-part-03.tar.gz",
+  "sha256": "4f6ffcb965792ab7117aad80b6406e6d8bbe216176dd4b148f9a23edd09cb0b0",
+  "bytes": 57005428,
+  "runs": [
+    "validation-06-in1024-wave2-rep0",
+    "validation-07-in2048-wave1-rep1",
+    "validation-08-in1024-wave2-rep1"
+  ],
+  "asset_url": "https://github.com/SimulLM/SimAI/releases/download/dev-formal-predictions-20261127/formal-predictions-part-03.tar.gz",
+  "release": "https://github.com/SimulLM/SimAI/releases/tag/dev-formal-predictions-20261127",
+  "local_sha256_verified": true
+}
