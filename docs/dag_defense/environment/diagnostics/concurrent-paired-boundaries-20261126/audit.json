@@ -1,0 +1,15 @@
+{
+  "source_sha256": "5e54a9110c245f884400f6d437ffd5c17b33dc3ebe477fcab4c209af1361e416",
+  "requests": 560,
+  "steps": 402,
+  "all_request_ids_reconciled": true,
+  "step_subintervals_nonoverlapping": true,
+  "notes": [
+    "host boundaries not exact GPU transfer completion",
+    "per-tensor sync perturbs scheduling",
+    "same service session",
+    "grouped by requested concurrency and actual batch; multiple steps per wave aggregated",
+    "cannot add combined interval to subintervals or KV-install fee",
+    "8 outputs; no production E2E claim"
+  ]
+}

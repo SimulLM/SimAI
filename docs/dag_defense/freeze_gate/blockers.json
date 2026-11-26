@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:42:31.636089+00:00",
+  "updated_utc": "2026-11-26T12:45:40.967496+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Independent single-GPU mixed 1024 batch-2 and 2048 span-8 coverage collected; synthetic 2048 four-request forward-only replay completed, but concurrent receive/first-token, CPU/GPU overlap and common production fee remain unproven.",
-      "next_action": "Map existing concurrent receive and first-token intervals into one shared non-overlapping fee for both simulators, then replay controlled 1/2/4 cases and reject unsupported shapes.",
+      "missing": "Paired concurrent host intervals reconcile 560 request IDs but inclusive receive wait for equal actual batch changes substantially with requested concurrency; GPU occupancy and service-to-simulator pull semantics remain unproven. Shared first-token interval must be charged once per modeled group.",
+      "next_action": "Choose and validate an explicit common treatment of concurrent waits and GPU overlap on controlled groups, or report the full-matrix comparison unsupported if measured scopes do not justify a treatment.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/mixed-targeted-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/concurrent-paired-boundaries-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
