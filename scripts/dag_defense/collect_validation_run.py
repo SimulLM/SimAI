@@ -5,8 +5,11 @@ import aiohttp
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def append(p,row):
  with p.open('a',encoding='utf8') as f:f.write(json.dumps(row,separators=(',',':'))+'\n');f.flush();os.fsync(f.fileno())
+from validation_matrix import validate_matrix
+
 def preflight(freeze_file,manifest_file,run_id):
  freeze=json.loads(freeze_file.read_text());manifest=json.loads(manifest_file.read_text())
+ validate_matrix(manifest,manifest_file)
  if freeze.get('status')!='frozen' or freeze.get('validation_manifest_sha256')!=sha(manifest_file):raise ValueError('freeze absent, not frozen, or manifest digest mismatch')
  required=('source','baseline_source','compute_cost','communication_cost','service_configuration','scoring_rule','compatibility_evidence')
  artifacts=freeze.get('artifacts',{})

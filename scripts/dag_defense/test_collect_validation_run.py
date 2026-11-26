@@ -43,8 +43,18 @@ async def main():
    recovered_client=root/'recover-client.jsonl';rc=[json.loads(x) for x in (root/'timeout/client-events.jsonl').read_text().splitlines()];timed=next(x for x in rc if x['status']=='timeout');assert not timed.get('router_id');recovered_client.write_text(''.join(json.dumps(x)+'\n' for x in rc));recovered=reconcile(inputs,recovered_client,router,root/'recovered');resultrows=[json.loads(x) for x in (root/'recovered/requests.jsonl').read_text().splitlines()];row=next(x for x in resultrows if x['request_id']==timed['request_id']);assert row['router_id_recovered_from_client_id'] and row['router_id']=='fixture-'+timed['request_id'] and row['server_events'] and row['status']=='timeout' and recovered['status']=='incomplete'
    inputfile=root/'verified-input.jsonl';checked=[]
    for i in range(32):
-    ids=[1,4,5,6+i];digest=hashlib.sha256((json.dumps(ids,separators=(',',':'))+'\n').encode()).hexdigest();checked.append({'request_id':str(i),'run_id':'checked','input_id':str(i),'input_ids':ids,'input_sha256':digest,'wave':i//2,'index_in_wave':i%2})
-   inputfile.write_text(''.join(json.dumps(x)+'\n' for x in checked));manifest=root/'manifest.json';manifest.write_text(json.dumps({'runs':[{'run_id':'checked','path':inputfile.name,'sha256':hashlib.sha256(inputfile.read_bytes()).hexdigest(),'requests':32,'input_tokens':4,'output_tokens':128,'concurrency':2}]}));artifact=root/'artifact';artifact.write_text('fixture');keys=('source','baseline_source','compute_cost','communication_cost','service_configuration','scoring_rule','compatibility_evidence');freeze=root/'freeze.json';freeze.write_text(json.dumps({'status':'frozen','validation_manifest_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest(),'artifacts':{k:{'path':str(artifact),'sha256':hashlib.sha256(artifact.read_bytes()).hexdigest()} for k in keys}}));preflight(freeze,manifest,'checked')
+    ids=list(range(1023))+[2000+i];digest=hashlib.sha256((json.dumps(ids,separators=(',',':'))+'\n').encode()).hexdigest();checked.append({'request_id':str(i),'run_id':'checked','input_id':str(i),'input_ids':ids,'input_sha256':digest,'wave':i//2,'index_in_wave':i%2})
+   inputfile.write_text(''.join(json.dumps(x)+'\n' for x in checked));manifest=root/'manifest.json'
+   others=[]
+   for length in (1024,2048):
+    for concurrency in (1,2,4):
+     for rep in range(5):
+      if (length,concurrency,rep)==(1024,2,0):continue
+      path=root/f'other-{length}-{concurrency}-{rep}.jsonl';path.write_text('fixture')
+      others.append({'run_id':path.stem,'path':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'requests':32,'input_tokens':length,'output_tokens':128,'concurrency':concurrency,'repeat':rep})
+   def matrix(primary):return {'runs':[primary,*others]}
+   good_spec={'run_id':'checked','path':inputfile.name,'sha256':hashlib.sha256(inputfile.read_bytes()).hexdigest(),'requests':32,'input_tokens':1024,'output_tokens':128,'concurrency':2,'repeat':0}
+   manifest.write_text(json.dumps(matrix(good_spec)));artifact=root/'artifact';artifact.write_text('fixture');keys=('source','baseline_source','compute_cost','communication_cost','service_configuration','scoring_rule','compatibility_evidence');freeze=root/'freeze.json';freeze.write_text(json.dumps({'status':'frozen','validation_manifest_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest(),'artifacts':{k:{'path':str(artifact),'sha256':hashlib.sha256(artifact.read_bytes()).hexdigest()} for k in keys}}));preflight(freeze,manifest,'checked')
    # Re-hash deliberately invalid input to exercise semantic checks, not checksum rejection.
    for kind in ('duplicate_request','duplicate_tokens','wrong_wave_index','wrong_run','wrong_output','bad_concurrency'):
     bad=[dict(x) for x in checked];bad_spec={'run_id':'checked','path':inputfile.name,'requests':32,'input_tokens':4,'output_tokens':128,'concurrency':2}
@@ -54,10 +64,10 @@ async def main():
     if kind=='wrong_run':bad[1]['run_id']='other'
     if kind=='wrong_output':bad_spec['output_tokens']=64
     if kind=='bad_concurrency':bad_spec['concurrency']=3
-    inputfile.write_text(''.join(json.dumps(x)+'\n' for x in bad));bad_spec['sha256']=hashlib.sha256(inputfile.read_bytes()).hexdigest();manifest.write_text(json.dumps({'runs':[bad_spec]}));data=json.loads(freeze.read_text());data['validation_manifest_sha256']=hashlib.sha256(manifest.read_bytes()).hexdigest();freeze.write_text(json.dumps(data))
+    inputfile.write_text(''.join(json.dumps(x)+'\n' for x in bad));bad_spec['sha256']=hashlib.sha256(inputfile.read_bytes()).hexdigest();manifest.write_text(json.dumps(matrix(bad_spec)));data=json.loads(freeze.read_text());data['validation_manifest_sha256']=hashlib.sha256(manifest.read_bytes()).hexdigest();freeze.write_text(json.dumps(data))
     try:preflight(freeze,manifest,'checked');raise AssertionError(kind+' accepted')
     except ValueError:pass
-   inputfile.write_text(''.join(json.dumps(x)+'\n' for x in checked));manifest.write_text(json.dumps({'runs':[{'run_id':'checked','path':inputfile.name,'sha256':hashlib.sha256(inputfile.read_bytes()).hexdigest(),'requests':32,'input_tokens':4,'output_tokens':128,'concurrency':2}]}));data=json.loads(freeze.read_text());data['validation_manifest_sha256']=hashlib.sha256(manifest.read_bytes()).hexdigest();freeze.write_text(json.dumps(data));artifact.write_text('tampered')
+   inputfile.write_text(''.join(json.dumps(x)+'\n' for x in checked));manifest.write_text(json.dumps(matrix(good_spec)));data=json.loads(freeze.read_text());data['validation_manifest_sha256']=hashlib.sha256(manifest.read_bytes()).hexdigest();freeze.write_text(json.dumps(data));artifact.write_text('tampered')
    try:preflight(freeze,manifest,'checked');raise AssertionError('tampered artifact accepted')
    except ValueError:pass
    try:preflight(root/'missing-freeze',root/'missing-manifest','x');raise AssertionError('preflight should reject missing freeze')
