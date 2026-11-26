@@ -1,0 +1,17 @@
+{
+  "status": "incomplete",
+  "samples": 4,
+  "missing": [
+    "decode:vllm:cpu_cache_usage_perc",
+    "decode:vllm:num_requests_swapped",
+    "prefill:vllm:cpu_cache_usage_perc",
+    "prefill:vllm:num_requests_swapped"
+  ],
+  "nonzero": [],
+  "limitations": [
+    "Prometheus gauges can be stale and do not expose the SimpleBuffer connector queue",
+    "Router terminal or client timeout does not establish that GPU and backend work stopped",
+    "Zero gauges cannot alone certify connector empty, warmup cleanup, service identity, or freeze validity",
+    "No formal validation was run"
+  ]
+}
