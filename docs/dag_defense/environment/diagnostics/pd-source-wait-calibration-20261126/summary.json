@@ -1,0 +1,69 @@
+{
+  "status": "diagnostic_only",
+  "requests": 192,
+  "cases": [
+    {
+      "case": "concurrent-0",
+      "requests": 32,
+      "observed_median_s": 1.1564678609999999,
+      "dag_median_s": 1.1358738285948298,
+      "adapted_baseline_median_s": 1.1031791684283663,
+      "dag_mean_absolute_error_s": 0.164641909678438,
+      "adapted_baseline_mean_absolute_error_s": 0.17081830121344366
+    },
+    {
+      "case": "concurrent-1",
+      "requests": 32,
+      "observed_median_s": 0.898022479,
+      "dag_median_s": 1.1627477161519155,
+      "adapted_baseline_median_s": 1.1060441187590766,
+      "dag_mean_absolute_error_s": 0.3622914463339204,
+      "adapted_baseline_mean_absolute_error_s": 0.3213882637966699
+    },
+    {
+      "case": "concurrent-2",
+      "requests": 32,
+      "observed_median_s": 1.2991617455000002,
+      "dag_median_s": 1.1282391500568698,
+      "adapted_baseline_median_s": 1.0966905228835762,
+      "dag_mean_absolute_error_s": 0.26548783560779127,
+      "adapted_baseline_mean_absolute_error_s": 0.28118849982283517
+    },
+    {
+      "case": "serial-0",
+      "requests": 32,
+      "observed_median_s": 1.0337618745000001,
+      "dag_median_s": 1.068054887809712,
+      "adapted_baseline_median_s": 1.0546576984234513,
+      "dag_mean_absolute_error_s": 0.271445071510594,
+      "adapted_baseline_mean_absolute_error_s": 0.2632894625893623
+    },
+    {
+      "case": "serial-1",
+      "requests": 32,
+      "observed_median_s": 0.8991771315,
+      "dag_median_s": 1.0815564270739069,
+      "adapted_baseline_median_s": 1.0621992031900565,
+      "dag_mean_absolute_error_s": 0.18785807548367198,
+      "adapted_baseline_mean_absolute_error_s": 0.16736807161595907
+    },
+    {
+      "case": "serial-2",
+      "requests": 32,
+      "observed_median_s": 0.86239782,
+      "dag_median_s": 1.0717979790328513,
+      "adapted_baseline_median_s": 1.0584007896490872,
+      "dag_mean_absolute_error_s": 0.27396403837698957,
+      "adapted_baseline_mean_absolute_error_s": 0.26560482183722156
+    }
+  ],
+  "source_manifest_sha256": "ad53f5b9e8e0f041d12507fb01fa908fd0e0ea1566ff97ab100341de472a8838",
+  "limitations": [
+    "Candidate compute, CPU, transfer costs and device occupancy not frozen",
+    "Real router boundaries are not demonstrably equal to simulator boundaries",
+    "Adapted baseline is not the untouched original",
+    "A replayed arrival schedule does not reproduce real service batching",
+    "Calibrations show high variability and warmup KV idle is not proven",
+    "No hardware accuracy, improvement, or validation claim"
+  ]
+}

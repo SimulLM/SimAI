@@ -1,7 +1,20 @@
 """Join diagnostic replay outputs to independent calibration; do not infer validity."""
 import collections,csv,hashlib,json,math,pathlib,statistics,sys
 p=pathlib.Path(sys.argv[1]);out=pathlib.Path(sys.argv[2]);out.mkdir(exist_ok=False);status=json.loads((p/'status.json').read_text());manifest=json.loads((p/'manifest.json').read_text())
-if status['status']!='completed' or status['runs']!=12:raise ValueError('replay incomplete')
+if status['status']!='completed':raise ValueError('replay incomplete')
+if status['runs']==6 and status.get('adapted_baseline')=='reused from prior same-arrival calibration replay':
+ prior=pathlib.Path('/root/autodl-tmp/dag-handoff/runs/pd-pull-calibration-replay-20261126')
+ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+ for case in manifest['cases']:
+  current=p/case['case'];old=prior/case['case']
+  for filename in ('trace.csv','request-map.json'):
+   if sha(current/filename)!=sha(old/filename):raise ValueError('reused baseline input mismatch')
+  for glob in ('*/request_metrics.csv','*/chrome_trace.json'):
+   a=list((current/'adapted_baseline').glob(glob));b=list((old/'adapted_baseline').glob(glob))
+   if len(a)!=1 or len(b)!=1 or sha(a[0])!=sha(b[0]):raise ValueError('reused baseline output mismatch')
+ for file in (p/'profile').iterdir():
+  if sha(file)!=sha(prior/'profile'/file.name):raise ValueError('reused baseline profile mismatch')
+elif status['runs']!=12:raise ValueError('unexpected replay run count')
 rows=[];errors=[]
 for case in manifest['cases']:
  d=p/case['case'];mapping=json.loads((d/'request-map.json').read_text());trace=list(csv.DictReader((d/'trace.csv').open())); maps={str(x['simulator_request_id']):x for x in mapping}

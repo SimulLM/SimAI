@@ -1,0 +1,7 @@
+{
+  "status": "completed",
+  "runs": 6,
+  "failed": [],
+  "formal_validation": false,
+  "adapted_baseline": "reused from prior same-arrival calibration replay"
+}

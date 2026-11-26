@@ -1,0 +1,6 @@
+{"case": "serial-1", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795675457.4144175}
+{"case": "serial-0", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795675463.47207}
+{"case": "concurrent-0", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795675583.5405977}
+{"case": "serial-2", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795675667.2623498}
+{"case": "concurrent-1", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795675690.298755}
+{"case": "concurrent-2", "simulator": "dag", "exit_code": 0, "error": "", "finished_unix_s": 1795675788.0936267}

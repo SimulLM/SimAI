@@ -1,14 +1,26 @@
 """Check identical configured inputs and generated prediction tables in replay."""
-import hashlib,json,pathlib,sys
+import hashlib,json,pathlib,re,sys
 p=pathlib.Path(sys.argv[1]); flags=['--replica_config_pd_p2p_comm_bandwidth','--random_forrest_execution_time_predictor_config_compute_input_file','--random_forrest_execution_time_predictor_config_attention_input_file','--random_forrest_execution_time_predictor_config_cpu_overhead_input_file','--random_forrest_execution_time_predictor_config_send_recv_input_file','--random_forrest_execution_time_predictor_config_all_reduce_input_file','--trace_request_generator_config_trace_file']; sha=lambda path:hashlib.sha256(path.read_bytes()).hexdigest();out=[]
 for case in sorted(x for x in p.iterdir() if (x/'request-map.json').exists()):
  commands={n:json.loads((case/n/'command.json').read_text()) for n in ('dag','adapted_baseline')};values={}
  for flag in flags:
   a,b=(commands[n][commands[n].index(flag)+1] for n in ('dag','adapted_baseline'))
-  if a!=b:raise ValueError(f'different {flag} in {case.name}')
-  values[flag]=a
+  if flag==flags[0]:
+   if a!=b:raise ValueError(f'different {flag} in {case.name}')
+   values[flag]=a
+  else:
+   pa,pb=pathlib.Path(a),pathlib.Path(b)
+   if not pa.is_file() or not pb.is_file() or sha(pa)!=sha(pb):raise ValueError(f'different file content for {flag} in {case.name}')
+   values[flag]={'dag_path':a,'baseline_path':b,'sha256':sha(pa)}
  if values[flags[0]]!='255':raise ValueError('unexpected bandwidth')
- tables=[{f.name:sha(f) for f in (case/n/'cache').glob('*predictions.csv')} for n in ('dag','adapted_baseline')]
+ def tables_for(role):
+  result={}
+  for f in (case/role/'cache').glob('*predictions.csv'):
+   key=re.sub(r'_[0-9a-f]{8}_(training_predictions|predictions)\.csv$',r'_\1.csv',f.name)
+   if key in result:raise ValueError('duplicate logical prediction table: '+key)
+   result[key]=sha(f)
+  return result
+ tables=[tables_for(n) for n in ('dag','adapted_baseline')]
  if not tables[0] or tables[0]!=tables[1]:raise ValueError(f'different prediction tables in {case.name}')
  out.append({'case':case.name,'matching_prediction_tables':len(tables[0]),'table_sha256':tables[0],'matched_arguments':values})
 if len(out)!=6:raise ValueError('expected six cases')

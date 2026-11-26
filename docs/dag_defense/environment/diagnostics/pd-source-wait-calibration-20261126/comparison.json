@@ -1,0 +1,59 @@
+{
+  "status": "calibration_diagnostic_only",
+  "cases": [
+    {
+      "case": "concurrent-0",
+      "requests": 32,
+      "old_dag_mae_s": 0.1693243977412387,
+      "new_dag_mae_s": 0.164641909678438,
+      "baseline_mae_s": 0.17081830121344366,
+      "new_minus_old_mae_s": -0.004682488062800694
+    },
+    {
+      "case": "concurrent-1",
+      "requests": 32,
+      "old_dag_mae_s": 0.3479220206141387,
+      "new_dag_mae_s": 0.3622914463339204,
+      "baseline_mae_s": 0.3213882637966699,
+      "new_minus_old_mae_s": 0.014369425719781725
+    },
+    {
+      "case": "concurrent-2",
+      "requests": 32,
+      "old_dag_mae_s": 0.2736914943067152,
+      "new_dag_mae_s": 0.26548783560779127,
+      "baseline_mae_s": 0.28118849982283517,
+      "new_minus_old_mae_s": -0.008203658698923921
+    },
+    {
+      "case": "serial-0",
+      "requests": 32,
+      "old_dag_mae_s": 0.27109890066684483,
+      "new_dag_mae_s": 0.271445071510594,
+      "baseline_mae_s": 0.2632894625893623,
+      "new_minus_old_mae_s": 0.00034617084374916063
+    },
+    {
+      "case": "serial-1",
+      "requests": 32,
+      "old_dag_mae_s": 0.18231934198367006,
+      "new_dag_mae_s": 0.18785807548367198,
+      "baseline_mae_s": 0.16736807161595907,
+      "new_minus_old_mae_s": 0.005538733500001919
+    },
+    {
+      "case": "serial-2",
+      "requests": 32,
+      "old_dag_mae_s": 0.27257935500199004,
+      "new_dag_mae_s": 0.27396403837698957,
+      "baseline_mae_s": 0.26560482183722156,
+      "new_minus_old_mae_s": 0.001384683374999529
+    }
+  ],
+  "limitations": [
+    "Not validation; no claim of final accuracy",
+    "Same calibration real arrivals, source-wait candidate and 512 serial dispatch measurement",
+    "Router and simulated timing boundaries not proven equivalent",
+    "Previous baseline results reused"
+  ]
+}
