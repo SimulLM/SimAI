@@ -6,15 +6,20 @@ from reconcile_validation_run import reconcile
 from export_validation_requests import export
 ROOT=pathlib.Path('/root/autodl-tmp');REPO=ROOT/'SimAI-handoff'
 
-def verify(freeze):
+def verify(freeze,weights=False):
     obj=json.loads(freeze.read_text());require(obj['status']=='frozen','not frozen')
     for name,a in obj['artifacts'].items():require(sha(a['path'])==a['sha256'],'frozen artifact changed '+name)
     for name,digest in obj['files'].items():require(sha(name)==digest,'frozen file changed '+name)
+    from freeze_preflight import digest as streamed_digest
+    for name,entry in obj['model_weights'].items():
+        p=pathlib.Path(name);st=p.stat()
+        require((st.st_size,st.st_mtime_ns,st.st_ino)==(entry['size'],entry['mtime_ns'],entry['inode']),'weight file identity changed '+name)
+        if weights:require(streamed_digest(p)==entry['sha256'],'weight hash changed '+name)
     return obj
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--freeze',type=pathlib.Path,default=ROOT/'dag-handoff/parameter-freeze.json');p.add_argument('--manifest',type=pathlib.Path,default=ROOT/'dag-handoff/validation-input-candidate-20261126/candidate-manifest.json');p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--collect-only',action='store_true');a=p.parse_args()
-    obj=verify(a.freeze);matrix=json.loads(a.manifest.read_text());out=a.output;out.mkdir(parents=True,exist_ok=False);proc=None
+    obj=verify(a.freeze,weights=True);matrix=json.loads(a.manifest.read_text());out=a.output;out.mkdir(parents=True,exist_ok=False);proc=None
     ledger={'status':'starting','freeze_sha256':sha(a.freeze),'formal':True,'planned_rounds':30,'planned_requests':960,'completed_rounds':0,'completed_requests':0,'attempts':[]};dump(out/'matrix-status.json',ledger)
     try:
         require(not subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader'],text=True).strip(),'GPU in use before formal service')

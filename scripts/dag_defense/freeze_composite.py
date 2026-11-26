@@ -34,6 +34,12 @@ def main():
     all_files.update(source['handoff_runtime_files']);all_files.update({str(p):sha(p) for p in paths});all_files.update({r['path']:r['sha256'] for r in fee.data['sources']})
     for p in (ROOT/'models/Llama-2-7b-hf').iterdir():
         if p.is_file() and (p.suffix in ('.json','.model') or p.name=='SHA256SUMS'):all_files[str(p)]=sha(p)
+    from freeze_preflight import WEIGHTS,digest
+    model_weights={}
+    for name,wanted in WEIGHTS.items():
+        p=ROOT/'models/Llama-2-7b-hf'/name;require(digest(p)==wanted,'weight hash mismatch '+name);st=p.stat()
+        model_weights[str(p)]={'sha256':wanted,'size':st.st_size,'mtime_ns':st.st_mtime_ns,'inode':st.st_ino}
     freeze={'status':'frozen','version':'composite-fees-v1','frozen_utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'validation_manifest_sha256':sha(manifest),'artifacts':artifacts,'files':all_files,'source_identities':{'dag':source['dag']['head'],'pristine':baseline['head']},'failure_policy':{'on_failure':'abort_round_and_matrix','retain_all_attempts':True,'restart_before_retry':True,'automatic_reopen':False},'resource_assumption_status':'待验证近似; fixed modelling assumption, not a claim of proven physical GPU occupancy','formal_entry':'scripts/dag_defense/run_frozen_matrix.py','acceptance_not_accuracy':True}
+    freeze['model_weights']=model_weights
     dump(a.output,freeze);print(json.dumps({'status':'frozen','path':str(a.output),'files':len(all_files),'sha256':sha(a.output)},indent=2))
 if __name__=='__main__':main()

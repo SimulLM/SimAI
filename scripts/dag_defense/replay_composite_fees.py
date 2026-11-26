@@ -15,14 +15,14 @@ def launch(mode,trace,dest,fees_path,n):
     options={'--trace_request_generator_config_trace_file':str(trace),'--trace_request_generator_config_max_tokens':str(n+128),
              '--metrics_config_output_dir':str(dest),'--metrics_config_cache_dir':str(dest/'cache'),
              '--random_forrest_execution_time_predictor_config_simai_dir':str(dest),
-             '--replica_config_pd_p2p_comm_bandwidth':str(gibit)}
+             '--replica_config_pd_p2p_comm_bandwidth':'255'}
     if dag:
         original_pd=ROOT/'dag-handoff/runs/pd-pull-calibration-replay-20261126/pd-config.json'
         pd=json.loads(original_pd.read_text());pd.update(bandwidth_bytes_per_s=bytes_per_s,evidence=str(fees_path)+'; composite receiver coefficient, NOT physical link bandwidth')
         dump(dest/'pd-config.json',pd);options['--dag_pd_config']=str(dest/'pd-config.json')
     for i,x in enumerate(cmd):
         if x in options:cmd[i+1]=options[x]
-    ledger=dest/'fee-calls.jsonl';env=dict(os.environ,PYTHONPATH=str(original/'vidur-alibabacloud')+':'+str(original)+':'+str(REPO/'scripts/dag_defense'),WANDB_MODE='disabled',PYTHONDONTWRITEBYTECODE='1',COMPOSITE_FEES=str(fees_path),COMPOSITE_LEDGER=str(ledger),COMPOSITE_MODE=mode)
+    ledger=dest/'fee-calls.jsonl';env=dict(os.environ,PYTHONPATH=str(original/'vidur-alibabacloud')+':'+str(original)+':'+str(REPO/'scripts/dag_defense'),WANDB_MODE='disabled',PYTHONDONTWRITEBYTECODE='1',COMPOSITE_FEES=str(fees_path),COMPOSITE_LEDGER=str(ledger),COMPOSITE_MODE=mode,COMPOSITE_RECEIVER_GIBIT=str(gibit))
     for k in list(env):
         if k.startswith(('BATCH_FIRST_TOKEN','FORWARD_','FIXED_','SIMAI_SERIAL_')):env.pop(k)
     dump(dest/'command.json',cmd);dump(dest/'identity.json',{'role':mode,'source':str(original),'commit':subprocess.check_output(['git','-C',str(original),'rev-parse','HEAD'],text=True).strip(),'source_diff_sha256':hashlib.sha256(subprocess.check_output(['git','-C',str(original),'diff','HEAD'])).hexdigest(),'bootstrap_sha256':sha(bootstrap),'fees_sha256':sha(fees_path),'receiver_s':receiver_s,'effective_bandwidth_is_fee_coefficient':True,'scheduler_patch':False,'readiness_patch':False})

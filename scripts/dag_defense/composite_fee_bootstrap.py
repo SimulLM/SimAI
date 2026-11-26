@@ -8,6 +8,14 @@ from vidur.execution_time_predictor.base_execution_time_predictor import BaseExe
 from vidur.entities.execution_time import ExecutionTime
 fees=CompositeFees(os.environ['COMPOSITE_FEES']);ledger=pathlib.Path(os.environ['COMPOSITE_LEDGER']);mode=os.environ['COMPOSITE_MODE']
 require(mode in ('fee-adapted-reference','dag'),'invalid role')
+# The legacy CLI types this fee coefficient as int. Bind the measured floating
+# coefficient after Replica construction; no event/scheduler function is changed.
+from vidur.entities.replica import Replica
+old_replica_init=Replica.__init__
+def replica_init(self,*args,**kw):
+    old_replica_init(self,*args,**kw)
+    self.pd_p2p_comm_bandwidth=float(os.environ['COMPOSITE_RECEIVER_GIBIT'])
+Replica.__init__=replica_init
 original_model=ExecutionTime.model_time.fget
 ExecutionTime.model_time=property(lambda self:self._composite_worker_ms*.001 if hasattr(self,'_composite_worker_ms') else original_model(self))
 def get(self,batch,pipeline_stage):
