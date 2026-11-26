@@ -1,3 +1,5 @@
+> **Correction:** The previous calibration replays used 255 Gi-bit/s for DAG and the default 800 Gi-bit/s for baseline. They are not same-cost comparisons. The preliminary v8 profile also combined producer and consumer measurements; see `../pd-profile-wave-audit-20261126/README.md`. All figures here are exploratory and formal validation remains blocked.
+
 # PD connector buffer and model-step diagnostic
 
 The vLLM 0.8.5 PyNcclConnector default `kv_buffer_size=1000000000` deadlocked on a four-request 512-token wave: all four clients timed out after 30 seconds. The prefill path waits for all producer responses before the proxy starts decode, while the producer buffer blocks insert when full. A 512-token Llama-2-7B FP16 KV payload is approximately 256 MiB per request, so four items exceed the default limit. This diagnosis is supported by the buffer backpressure source and the observed wave behavior; the timeout is retained in `raw/buffer1g-b4-timeouts.jsonl`.
