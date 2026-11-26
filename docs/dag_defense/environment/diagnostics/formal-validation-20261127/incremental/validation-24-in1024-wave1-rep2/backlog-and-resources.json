@@ -1,0 +1,694 @@
+{
+  "actual_waves": [
+    {
+      "wave": 0,
+      "arrival_ns": 1859929167288828,
+      "complete_ns": 1859930891448325,
+      "previous_complete_to_arrival_s": 0.0
+    },
+    {
+      "wave": 1,
+      "arrival_ns": 1859930893290129,
+      "complete_ns": 1859932613481762,
+      "previous_complete_to_arrival_s": 0.001841804
+    },
+    {
+      "wave": 2,
+      "arrival_ns": 1859932615055398,
+      "complete_ns": 1859934327948811,
+      "previous_complete_to_arrival_s": 0.001573636
+    },
+    {
+      "wave": 3,
+      "arrival_ns": 1859934329478612,
+      "complete_ns": 1859936057307892,
+      "previous_complete_to_arrival_s": 0.001529801
+    },
+    {
+      "wave": 4,
+      "arrival_ns": 1859936059122888,
+      "complete_ns": 1859937797940942,
+      "previous_complete_to_arrival_s": 0.001814996
+    },
+    {
+      "wave": 5,
+      "arrival_ns": 1859937799640043,
+      "complete_ns": 1859939522147277,
+      "previous_complete_to_arrival_s": 0.001699101
+    },
+    {
+      "wave": 6,
+      "arrival_ns": 1859939523912987,
+      "complete_ns": 1859941250417382,
+      "previous_complete_to_arrival_s": 0.00176571
+    },
+    {
+      "wave": 7,
+      "arrival_ns": 1859941252079390,
+      "complete_ns": 1859942999810408,
+      "previous_complete_to_arrival_s": 0.001662008
+    },
+    {
+      "wave": 8,
+      "arrival_ns": 1859943001910069,
+      "complete_ns": 1859944731549048,
+      "previous_complete_to_arrival_s": 0.002099661
+    },
+    {
+      "wave": 9,
+      "arrival_ns": 1859944733594773,
+      "complete_ns": 1859946459242165,
+      "previous_complete_to_arrival_s": 0.002045725
+    },
+    {
+      "wave": 10,
+      "arrival_ns": 1859946461474053,
+      "complete_ns": 1859948176653092,
+      "previous_complete_to_arrival_s": 0.002231888
+    },
+    {
+      "wave": 11,
+      "arrival_ns": 1859948178810854,
+      "complete_ns": 1859949892842600,
+      "previous_complete_to_arrival_s": 0.002157762
+    },
+    {
+      "wave": 12,
+      "arrival_ns": 1859949895165820,
+      "complete_ns": 1859951625486054,
+      "previous_complete_to_arrival_s": 0.00232322
+    },
+    {
+      "wave": 13,
+      "arrival_ns": 1859951627481354,
+      "complete_ns": 1859953352928399,
+      "previous_complete_to_arrival_s": 0.0019953
+    },
+    {
+      "wave": 14,
+      "arrival_ns": 1859953355103609,
+      "complete_ns": 1859955068747968,
+      "previous_complete_to_arrival_s": 0.00217521
+    },
+    {
+      "wave": 15,
+      "arrival_ns": 1859955070758405,
+      "complete_ns": 1859956787357465,
+      "previous_complete_to_arrival_s": 0.002010437
+    },
+    {
+      "wave": 16,
+      "arrival_ns": 1859956788760874,
+      "complete_ns": 1859958512825818,
+      "previous_complete_to_arrival_s": 0.001403409
+    },
+    {
+      "wave": 17,
+      "arrival_ns": 1859958514765553,
+      "complete_ns": 1859960255392800,
+      "previous_complete_to_arrival_s": 0.001939735
+    },
+    {
+      "wave": 18,
+      "arrival_ns": 1859960257553211,
+      "complete_ns": 1859962009576419,
+      "previous_complete_to_arrival_s": 0.002160411
+    },
+    {
+      "wave": 19,
+      "arrival_ns": 1859962011614549,
+      "complete_ns": 1859963735080042,
+      "previous_complete_to_arrival_s": 0.00203813
+    },
+    {
+      "wave": 20,
+      "arrival_ns": 1859963736651604,
+      "complete_ns": 1859965476619430,
+      "previous_complete_to_arrival_s": 0.001571562
+    },
+    {
+      "wave": 21,
+      "arrival_ns": 1859965478682031,
+      "complete_ns": 1859967206214764,
+      "previous_complete_to_arrival_s": 0.002062601
+    },
+    {
+      "wave": 22,
+      "arrival_ns": 1859967207910954,
+      "complete_ns": 1859968931767245,
+      "previous_complete_to_arrival_s": 0.00169619
+    },
+    {
+      "wave": 23,
+      "arrival_ns": 1859968933525946,
+      "complete_ns": 1859970648228062,
+      "previous_complete_to_arrival_s": 0.001758701
+    },
+    {
+      "wave": 24,
+      "arrival_ns": 1859970649703034,
+      "complete_ns": 1859972360975975,
+      "previous_complete_to_arrival_s": 0.001474972
+    },
+    {
+      "wave": 25,
+      "arrival_ns": 1859972362560609,
+      "complete_ns": 1859974077268746,
+      "previous_complete_to_arrival_s": 0.001584634
+    },
+    {
+      "wave": 26,
+      "arrival_ns": 1859974079231017,
+      "complete_ns": 1859975822511138,
+      "previous_complete_to_arrival_s": 0.001962271
+    },
+    {
+      "wave": 27,
+      "arrival_ns": 1859975824517837,
+      "complete_ns": 1859977576668619,
+      "previous_complete_to_arrival_s": 0.002006699
+    },
+    {
+      "wave": 28,
+      "arrival_ns": 1859977578337650,
+      "complete_ns": 1859979331473140,
+      "previous_complete_to_arrival_s": 0.001669031
+    },
+    {
+      "wave": 29,
+      "arrival_ns": 1859979333115733,
+      "complete_ns": 1859981087083305,
+      "previous_complete_to_arrival_s": 0.001642593
+    },
+    {
+      "wave": 30,
+      "arrival_ns": 1859981089398740,
+      "complete_ns": 1859982850301290,
+      "previous_complete_to_arrival_s": 0.002315435
+    },
+    {
+      "wave": 31,
+      "arrival_ns": 1859982852285615,
+      "complete_ns": 1859984592064496,
+      "previous_complete_to_arrival_s": 0.001984325
+    }
+  ],
+  "resource_assumptions": {
+    "validation_status": "\u5f85\u9a8c\u8bc1\u8fd1\u4f3c / unvalidated approximation",
+    "worker": "one opaque GPU permit for the entire synchronized host/device envelope; GPU can be idle inside this envelope",
+    "engine_cpu": "existing per-replica CPU prepare/finish resources; schedule/output disjoint in profiling",
+    "receiver": "existing transfer task holds source GPU, destination GPU and endpoints; serial per-request envelope; occupancy is an unvalidated approximation",
+    "internal_overlap": "none inside a composite; host/device overlap within the measurement counted once",
+    "between_batches": "existing scheduler and DAG resources unchanged"
+  },
+  "models": {
+    "baseline": {
+      "cross_wave_backlog": [
+        {
+          "wave": 0,
+          "actual_arrival_s": 0.0,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 1,
+          "actual_arrival_s": 1.726001301,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 2,
+          "actual_arrival_s": 3.44776657,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 3,
+          "actual_arrival_s": 5.162189784,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 4,
+          "actual_arrival_s": 6.89183406,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 5,
+          "actual_arrival_s": 8.632351215,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 6,
+          "actual_arrival_s": 10.356624159,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 7,
+          "actual_arrival_s": 12.084790562,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 8,
+          "actual_arrival_s": 13.834621241,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 9,
+          "actual_arrival_s": 15.566305945,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 10,
+          "actual_arrival_s": 17.294185225,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 11,
+          "actual_arrival_s": 19.011522026,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 12,
+          "actual_arrival_s": 20.727876992,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 13,
+          "actual_arrival_s": 22.460192526,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 14,
+          "actual_arrival_s": 24.187814781,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 15,
+          "actual_arrival_s": 25.903469577,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 16,
+          "actual_arrival_s": 27.621472046,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 17,
+          "actual_arrival_s": 29.347476725,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 18,
+          "actual_arrival_s": 31.090264383,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 19,
+          "actual_arrival_s": 32.844325721,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 20,
+          "actual_arrival_s": 34.569362776,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 21,
+          "actual_arrival_s": 36.311393203,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 22,
+          "actual_arrival_s": 38.040622126,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 23,
+          "actual_arrival_s": 39.766237118,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 24,
+          "actual_arrival_s": 41.482414206,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 25,
+          "actual_arrival_s": 43.195271781,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 26,
+          "actual_arrival_s": 44.911942189,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 27,
+          "actual_arrival_s": 46.657229009,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 28,
+          "actual_arrival_s": 48.411048822,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 29,
+          "actual_arrival_s": 50.165826905,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 30,
+          "actual_arrival_s": 51.922109912,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 31,
+          "actual_arrival_s": 53.684996787,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        }
+      ],
+      "max_prior_backlog_requests": 0,
+      "classification": "Prediction-induced backlog is reported, not an accuracy threshold. Resource accounting and dependency correctness are checked independently."
+    },
+    "dag": {
+      "cross_wave_backlog": [
+        {
+          "wave": 0,
+          "actual_arrival_s": 0.0,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 1,
+          "actual_arrival_s": 1.726001301,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 2,
+          "actual_arrival_s": 3.44776657,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 3,
+          "actual_arrival_s": 5.162189784,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 4,
+          "actual_arrival_s": 6.89183406,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 5,
+          "actual_arrival_s": 8.632351215,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 6,
+          "actual_arrival_s": 10.356624159,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 7,
+          "actual_arrival_s": 12.084790562,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 8,
+          "actual_arrival_s": 13.834621241,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 9,
+          "actual_arrival_s": 15.566305945,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 10,
+          "actual_arrival_s": 17.294185225,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 11,
+          "actual_arrival_s": 19.011522026,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 12,
+          "actual_arrival_s": 20.727876992,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 13,
+          "actual_arrival_s": 22.460192526,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 14,
+          "actual_arrival_s": 24.187814781,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 15,
+          "actual_arrival_s": 25.903469577,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 16,
+          "actual_arrival_s": 27.621472046,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 17,
+          "actual_arrival_s": 29.347476725,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 18,
+          "actual_arrival_s": 31.090264383,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 19,
+          "actual_arrival_s": 32.844325721,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 20,
+          "actual_arrival_s": 34.569362776,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 21,
+          "actual_arrival_s": 36.311393203,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 22,
+          "actual_arrival_s": 38.040622126,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 23,
+          "actual_arrival_s": 39.766237118,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 24,
+          "actual_arrival_s": 41.482414206,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 25,
+          "actual_arrival_s": 43.195271781,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 26,
+          "actual_arrival_s": 44.911942189,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 27,
+          "actual_arrival_s": 46.657229009,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 28,
+          "actual_arrival_s": 48.411048822,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 29,
+          "actual_arrival_s": 50.165826905,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 30,
+          "actual_arrival_s": 51.922109912,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        },
+        {
+          "wave": 31,
+          "actual_arrival_s": 53.684996787,
+          "prior_requests_not_completed": [],
+          "backlog_requests": 0,
+          "model_previous_completion_lag_s": 0
+        }
+      ],
+      "max_prior_backlog_requests": 0,
+      "classification": "Prediction-induced backlog is reported, not an accuracy threshold. Resource accounting and dependency correctness are checked independently.",
+      "resource_wait_by_scope": {
+        "engine_cpu": {
+          "tasks": 8192,
+          "service_s": 0.7764727679999969,
+          "resource_wait_s": 0.0,
+          "max_wait_s": 0.0
+        },
+        "worker": {
+          "tasks": 4096,
+          "service_s": 49.54305115200005,
+          "resource_wait_s": 0.0,
+          "max_wait_s": 0.0
+        },
+        "zero_excluded": {
+          "tasks": 393216,
+          "service_s": 0.0,
+          "resource_wait_s": 0.0,
+          "max_wait_s": 0.0
+        },
+        "receiver": {
+          "tasks": 64,
+          "service_s": 0.6768174400000003,
+          "resource_wait_s": 0.0,
+          "max_wait_s": 0.0
+        }
+      },
+      "exclusive_resources_checked": 6,
+      "overlapping_resource_intervals": 0
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "status": "running",
-  "updated_utc": "2026-11-26T16:42:18Z",
-  "completed_replays": 13,
+  "status": "complete",
+  "updated_utc": "2026-11-26T17:06:18Z",
+  "completed_replays": 30,
   "total": 30,
   "runs": [
     {
@@ -653,6 +653,60 @@
       ]
     },
     {
+      "run_id": "validation-12-in2048-wave2-rep4",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-12-in2048-wave2-rep4/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/result.json",
+          "sha256": "dbbf25e0d9fb329f1f54b433fffb86ee8279f9c33966a6f8e596819cdd75c7b7",
+          "bytes": 1510
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/score-summary.json",
+          "sha256": "96e792722bbe07ab6c613a6600b61aeba5eb1c3af4aa3e09c8cc2f7a3a83b4ed",
+          "bytes": 514
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/three-way-scores.csv",
+          "sha256": "b3b7eba691a454374c235c542bac262866509d9088f04c28d059cde07514657d",
+          "bytes": 7643
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/baseline-predictions.csv",
+          "sha256": "ab915f00753e48a0af2a58671a0aa30bdc4ddab08f9148b9cecb37cc090af2a0",
+          "bytes": 3145
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/dag-predictions.csv",
+          "sha256": "314089d6f2ebd52f2ff8ce3e0c25940abfd43f77727b123bf9b200745eb8c376",
+          "bytes": 3158
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/backlog-and-resources.json",
+          "sha256": "9079bda3044352bcaaa84d3fd806bcd65eac0cb39a8ff841e448d5702e05b9ce",
+          "bytes": 11365
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/simulation-audit.json",
+          "sha256": "e361cee423f0b0936826a47c1a1ea242550e11accf53c60b0c7991ce98cae6fd",
+          "bytes": 7236
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-12-in2048-wave2-rep4/pin.json",
+          "sha256": "99b70fde428fccbd0672693b747e66cf8e1e0f48007d3143c66a369eac2b4d71",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
       "run_id": "validation-13-in1024-wave4-rep2",
       "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-13-in1024-wave4-rep2/predictions-parallel-03",
       "files": [
@@ -705,6 +759,870 @@
           "bytes": 1227
         }
       ]
+    },
+    {
+      "run_id": "validation-14-in1024-wave2-rep3",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-14-in1024-wave2-rep3/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/result.json",
+          "sha256": "acd2b7e3a456a5c72c87acdfae7c8141cb65dca89d904a245c3fc6cba09f909a",
+          "bytes": 1510
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/score-summary.json",
+          "sha256": "69c40db9b6c8f99af60cc28ae78f8483de359467ed23f2d4d7e0f09dff487dad",
+          "bytes": 514
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/three-way-scores.csv",
+          "sha256": "8aacec68c6d7baabff7111e78bf9b1f269298f4589f15f734d7dabe8c01c35c5",
+          "bytes": 7686
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/baseline-predictions.csv",
+          "sha256": "a3b75d141c66b3f1bb1e1c1d6f3ee96aca638ba1f9317f1a5d8de473d0802d36",
+          "bytes": 3163
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/dag-predictions.csv",
+          "sha256": "5d6185f2eb55f48545d6808fd7a3bb00d9e818898aee358e5780c227b614bdab",
+          "bytes": 3163
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/backlog-and-resources.json",
+          "sha256": "6f73ab0d24fe02fad39e89fc5485796ded8b0e3343299bed7fec4c78b9d30843",
+          "bytes": 11379
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/simulation-audit.json",
+          "sha256": "deb7093c42671f247611fb9b689ac026f2db9ec6e77de901fc03cf1b21741df5",
+          "bytes": 2735
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-14-in1024-wave2-rep3/pin.json",
+          "sha256": "847f0140ecef9fab4b7e6af4e8e870dfc6d2d549ce285eaa7d8c2344e18d855e",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-15-in2048-wave4-rep0",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-15-in2048-wave4-rep0/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/result.json",
+          "sha256": "bf9fab45ff8bba236d7580c59d313082446dd7ade9762dcff6020d3ca99acb8d",
+          "bytes": 1510
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/score-summary.json",
+          "sha256": "c11b888d93b6937cff719ad49d7fd0c762550e982794e1876562329eeead15b9",
+          "bytes": 514
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/three-way-scores.csv",
+          "sha256": "bb956e81eb3987dac794e18dda9a78daff51244ea9ca4c9d04eaf8e8036b1a4c",
+          "bytes": 7658
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/baseline-predictions.csv",
+          "sha256": "f6041849efa1c52306dbedd816ab0cc10a48277a916b83e3c511effaf09688cb",
+          "bytes": 3164
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/dag-predictions.csv",
+          "sha256": "8e747e82b75392792bfb8370a49632c7c75cc68b84b106005c32050a73332600",
+          "bytes": 3159
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/backlog-and-resources.json",
+          "sha256": "ee7dce27b56cf2426e516d2542b85a71189286e2c1948f78390e9d2d278f76f9",
+          "bytes": 6737
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/simulation-audit.json",
+          "sha256": "f18c66a836947dec99fc85201bb02f2e87144e32e4e364b82ff753316a62fda4",
+          "bytes": 10498
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-15-in2048-wave4-rep0/pin.json",
+          "sha256": "6a5e2d9f5f323694eb709a1e3044910fe95a4d49122ac57e33387f4ea14820bd",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-16-in1024-wave4-rep1",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-16-in1024-wave4-rep1/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/result.json",
+          "sha256": "6eda397bf03be26435cfb1faa7302a0bd7c0f5c6c1b9ca4034add866be86ee2d",
+          "bytes": 1510
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/score-summary.json",
+          "sha256": "8c82cbe552f365ff32f04472cbad531d1781d26170a6f79e0c44c3e23721e3bc",
+          "bytes": 514
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/three-way-scores.csv",
+          "sha256": "4a8d0470deb9aeb5d7d9a785aa04517bb09d24ffa472cee1734133a5b1564b64",
+          "bytes": 7690
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/baseline-predictions.csv",
+          "sha256": "4b27ab64bad7fcc9bf1689845c395d943063f787ad93c03030f7cd96267b9592",
+          "bytes": 3166
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/dag-predictions.csv",
+          "sha256": "90a8c3cf2c3169bf18a5eefc3f742a266f55688c3db59e375a90abdd56079b57",
+          "bytes": 3168
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/backlog-and-resources.json",
+          "sha256": "1cb01d92881979fc2b19e21435eceb9c6f678316276a536dd56b2fcdc9a353b7",
+          "bytes": 6700
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/simulation-audit.json",
+          "sha256": "c95a1fd8940744147a16c7081aae0d6778a8437815bde4baec56620a6f28721d",
+          "bytes": 7134
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-16-in1024-wave4-rep1/pin.json",
+          "sha256": "df458e1e3fe2247261a14b1da91ed445df49db6b1393390b6d6a7b4669470f3a",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-17-in1024-wave4-rep3",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-17-in1024-wave4-rep3/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/result.json",
+          "sha256": "a155e89c2c7ec3e71581196ad911b30565fcfda38beb4ae5fa691083e07ea571",
+          "bytes": 1512
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/score-summary.json",
+          "sha256": "1c98a8d4592ceadfd7b03f3ea5757cb13499b00da47e6c9e6ebe6a36b927752a",
+          "bytes": 516
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/three-way-scores.csv",
+          "sha256": "853b21fa3d7f42b2f169734a5dd4e27e53672de6b31a3ea015225ad594c22451",
+          "bytes": 7673
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/baseline-predictions.csv",
+          "sha256": "4a793b161b0790b1373b218906af6d68f7bd1621e7519b00677d88eff77aad3f",
+          "bytes": 3165
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/dag-predictions.csv",
+          "sha256": "5fa3c7e4ee456f33f649c822b4329bd5c2fcfdd3b3a128dedf13d237555dacc4",
+          "bytes": 3166
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/backlog-and-resources.json",
+          "sha256": "d644b09953cbad887c84db1e8ec9bbfddd57e45c879bc571995845231681d27c",
+          "bytes": 6695
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/simulation-audit.json",
+          "sha256": "f3c0f621e39f2265cdde9d4da8b31c4246bb335dbfcf469c021f58750f4b4b9c",
+          "bytes": 7104
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-17-in1024-wave4-rep3/pin.json",
+          "sha256": "e3f7330f2f4890ffdf28d42fbea2865a2094835633ae9d7be4477faf64a5d9ea",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-18-in1024-wave1-rep3",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-18-in1024-wave1-rep3/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/result.json",
+          "sha256": "49b8856bf12dd4005a01f492764f7f41713af8d1146cb95bb820c98ab0d58dd2",
+          "bytes": 1512
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/score-summary.json",
+          "sha256": "5fa1d18bbed32626b64770338adc096deba33ba042f9de209fb8c7c31f53a0b4",
+          "bytes": 516
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/three-way-scores.csv",
+          "sha256": "66080d5f472d4f620b5dbcec6dc6c8b52bf8e0886dcb9fbe451b060f5a5e3590",
+          "bytes": 7670
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/baseline-predictions.csv",
+          "sha256": "b275adf2bace94978ca1f782d1980c0d2e997ebbd8edef15f1f4c32a674555ac",
+          "bytes": 3156
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/dag-predictions.csv",
+          "sha256": "c13c714026ea31e8b5a6163e42714eaf065915d549ee63787a91b4d1c9164b71",
+          "bytes": 3163
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/backlog-and-resources.json",
+          "sha256": "cda6ebfc10f46a7c376d7e8943b38649306af374c42f89b3b7e78a39b9646c78",
+          "bytes": 20721
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/simulation-audit.json",
+          "sha256": "e90b44523392be41c5a8382c96e762650ce740144b4516a1b512f683a5ed8b26",
+          "bytes": 519
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-18-in1024-wave1-rep3/pin.json",
+          "sha256": "5813dce22870339dd3d6f0fd3b52a457bcdf6c11ee4632bed5b010f35cdecfb9",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-19-in2048-wave2-rep3",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-19-in2048-wave2-rep3/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/result.json",
+          "sha256": "bd50a27861affe5cf0db564c87ccfad654c05a6ace14307de2b99107747ee43b",
+          "bytes": 1510
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/score-summary.json",
+          "sha256": "be079f3227be7ef1f8acbd078200e62a8917132368ce0eb316ac7208d5e869d6",
+          "bytes": 514
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/three-way-scores.csv",
+          "sha256": "5c7d488c540a88fdb26e4fe620b04030fae2cfe17fb18358b909d7bca1d2c761",
+          "bytes": 7670
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/baseline-predictions.csv",
+          "sha256": "109b25b5cc9ca357e60996ca80174c50144539dd7084021b7fa44add4c34b3b7",
+          "bytes": 3162
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/dag-predictions.csv",
+          "sha256": "22c39e0c63e2bcabd9cda4bef39573c4de3239f252dfa4953129a8e3aeb982e8",
+          "bytes": 3160
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/backlog-and-resources.json",
+          "sha256": "43ecc875199330f81d7dd9972614847046550800e19523d9f6414abba560cfbb",
+          "bytes": 11375
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/simulation-audit.json",
+          "sha256": "38a4ede9fcc30ea1b9d230d9ae83cba235df64850071b52ee9573a80a967bb5d",
+          "bytes": 7258
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-19-in2048-wave2-rep3/pin.json",
+          "sha256": "236a89620b1574e45259aac539edf38e4107a950a1071287de4f5fc65cd0c463",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-20-in1024-wave2-rep2",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-20-in1024-wave2-rep2/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/result.json",
+          "sha256": "a8717bb272373e64a3cffa56f575977ab4d89be7096fe8797e1ff14ef77ec006",
+          "bytes": 1511
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/score-summary.json",
+          "sha256": "237cd9699a161cd46748f781453a82088541aecdc341ff0404c544d83bea45c6",
+          "bytes": 515
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/three-way-scores.csv",
+          "sha256": "e511d76b1d9b6cb1cb197e1447f3275143999fc7a47abe08f1116ffe3dc8abc8",
+          "bytes": 7657
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/baseline-predictions.csv",
+          "sha256": "cb1e2e93e0dc97f1e4dea365044d4dc7f4cbdd4239a38c69c4d5afe34ca40e2a",
+          "bytes": 3155
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/dag-predictions.csv",
+          "sha256": "171e7acc39140c9d226b7a1d41262dd4c9163111f758923c6d96c1c4ad34f187",
+          "bytes": 3165
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/backlog-and-resources.json",
+          "sha256": "811f040bae8942c6731f4326381350da2086d571f7e762207736c311df17d0a5",
+          "bytes": 11383
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/simulation-audit.json",
+          "sha256": "91d0f8f45bfdeeeb087432de074cbdee8f70c24e226c7e81690d84fcaadfc706",
+          "bytes": 2742
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-20-in1024-wave2-rep2/pin.json",
+          "sha256": "b0965da98e05a1b3ec54d10ef68cf6d934783b6ae4aa510a3839297b399182b4",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-21-in2048-wave2-rep0",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-21-in2048-wave2-rep0/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/result.json",
+          "sha256": "4c9d7ea41d6e6b996400dbed81bbf960b0655abc020417daaec9ff90be5d1a5e",
+          "bytes": 1512
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/score-summary.json",
+          "sha256": "f58fdcf6a944736834a2c88e37f644fd16c54452ccc8ecbe38048df2cd0964b4",
+          "bytes": 516
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/three-way-scores.csv",
+          "sha256": "2a32baffdefc12aa4431c17ac026a9e621826b69b5beff3b4194bc4a4c05b0e6",
+          "bytes": 7660
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/baseline-predictions.csv",
+          "sha256": "32b2bf7f9566ed9225324355eb77ba28b106caa9d7e4c16817aa22ea856721ef",
+          "bytes": 3155
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/dag-predictions.csv",
+          "sha256": "14131b1f58454d24a1bc8cc2a87564c594f6e70cfec7fe8230d6e4832a348df3",
+          "bytes": 3161
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/backlog-and-resources.json",
+          "sha256": "fee909ff9ac716c935a5b685f3b408a79d75b062522bb93baf051a6d9d0bc3af",
+          "bytes": 11374
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/simulation-audit.json",
+          "sha256": "4d737449a33ac8f6c01dd355c6bf4eff377e8210d6e22658a06d8edb79a2ffeb",
+          "bytes": 7260
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-21-in2048-wave2-rep0/pin.json",
+          "sha256": "d356d9c1a5565bae41a1f5f971b574bda7ff00c4c86b1a1f332ea514d11bdd75",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-22-in1024-wave4-rep0",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-22-in1024-wave4-rep0/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/result.json",
+          "sha256": "168147699a7ec6bbca4c24b84ee43aaaf701ba7cdeb156e26da8bfc263451bbc",
+          "bytes": 1510
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/score-summary.json",
+          "sha256": "fd8f9d0e4f96271f19bf97d9ed82126efd8255b68e5099273bced8d379e7c5f3",
+          "bytes": 514
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/three-way-scores.csv",
+          "sha256": "11a7830486037237d4bcbcfe3a61619202e5e560cd03cb509e0373fff0f98023",
+          "bytes": 7676
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/baseline-predictions.csv",
+          "sha256": "1c9739bbb7030231d4b2a6da02df9fe718fdded2da446d61a8011c475027a3a5",
+          "bytes": 3166
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/dag-predictions.csv",
+          "sha256": "f76807ed48eea2c1c70efa105f82058237eb1dfc10cca990e48e4531101066ef",
+          "bytes": 3165
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/backlog-and-resources.json",
+          "sha256": "14368c0c26236656ff59fe4ad80650c308ad3f3ca0b28e430c6a0f314f3c48ae",
+          "bytes": 6691
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/simulation-audit.json",
+          "sha256": "7730be69b1470cb8856381c90b4ca81f7f399776933ec80f6fbc9e9ab9711553",
+          "bytes": 7092
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-22-in1024-wave4-rep0/pin.json",
+          "sha256": "9521191ae02cd4138a89c929827af4a71456ef293386997bd057b65cea77296d",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-23-in1024-wave2-rep4",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-23-in1024-wave2-rep4/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/result.json",
+          "sha256": "4f971380ef1ff8fe0135dcb24b304f61fe8d493e3e75c89197f77ff7d257050d",
+          "bytes": 1510
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/score-summary.json",
+          "sha256": "c47ecb6689417569acf6e65bd04c79d07f4eb84dbaa54f6796f83c67db58c815",
+          "bytes": 514
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/three-way-scores.csv",
+          "sha256": "e7e21c34d97f068365f746a809b108d0cdf350bb3671741d4e1fa64eff3af186",
+          "bytes": 7662
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/baseline-predictions.csv",
+          "sha256": "1df8d145b5ff113ae4fe2022adc2353db4d2c7b36f6936514d283ca85492de36",
+          "bytes": 3151
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/dag-predictions.csv",
+          "sha256": "dc614c6cee81b3fad1848b116119302ec2c0634f8d190fcccd34358f91a4eae7",
+          "bytes": 3160
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/backlog-and-resources.json",
+          "sha256": "33b3438fccfd4cdcd38f6a6237a61b514647cb89734c293a4b6ee23a37114d94",
+          "bytes": 11382
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/simulation-audit.json",
+          "sha256": "43aa5b15bfe2852212845635eb4007cae388b5f9756d4a978c7101c49c28381a",
+          "bytes": 2728
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-23-in1024-wave2-rep4/pin.json",
+          "sha256": "14ff007871e0a5d298ab6f0f5072ba77a74e9f50b6582c29e821dc1340810c43",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-24-in1024-wave1-rep2",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-24-in1024-wave1-rep2/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/result.json",
+          "sha256": "9b65f664671c4c5e34d2bbfe68cb507e21a38b1b1e02c045d0a5faa0f7323a2e",
+          "bytes": 1511
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/score-summary.json",
+          "sha256": "b78d4559933a863d9bdf33c6fbae568e4a0eb84c2e1b823487ab7fb6c7a787be",
+          "bytes": 515
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/three-way-scores.csv",
+          "sha256": "5d69631cb25b544e55da9a08c0c833451fec26321c0f24ab4a9cdb61bf05ecbd",
+          "bytes": 7683
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/baseline-predictions.csv",
+          "sha256": "a24299689433741c9db1a56cdea07e094b348bf195f5c1b69aa314a601d62712",
+          "bytes": 3162
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/dag-predictions.csv",
+          "sha256": "5094c1e0cd9b8bb8ac03b5fad9eb27d5423e398445c9d2e543258aaa5c13115a",
+          "bytes": 3162
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/backlog-and-resources.json",
+          "sha256": "717d224998346f4b5d312c20c4d292b9be7ca48d5662ac54b79c565056588816",
+          "bytes": 20717
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/simulation-audit.json",
+          "sha256": "e90b44523392be41c5a8382c96e762650ce740144b4516a1b512f683a5ed8b26",
+          "bytes": 519
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-24-in1024-wave1-rep2/pin.json",
+          "sha256": "a79ebebf110e85b446fcc515217023c0287323e31a45511f1b576fcbd677d842",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-25-in2048-wave2-rep1",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-25-in2048-wave2-rep1/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/result.json",
+          "sha256": "8b42c733d2c648f73004d9b385b522baf989743b2dbb6233c495f2a6cfe94a3d",
+          "bytes": 1511
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/score-summary.json",
+          "sha256": "9d97e37755e3f49d79df595eac8913ef251ddb4b19e67c1f99f5c65712312903",
+          "bytes": 515
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/three-way-scores.csv",
+          "sha256": "77892e72884afb57af1dca9a1d61c10264cd6ccd652df083cb0c7e2d3eb10fa9",
+          "bytes": 7652
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/baseline-predictions.csv",
+          "sha256": "805efc8e3eee827a5f04b5adf5424c7e92baa29a9885f41aa8d8a95fcba4b219",
+          "bytes": 3152
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/dag-predictions.csv",
+          "sha256": "a59381444524a1411a18a933f7c1ca788be0b08b1b6921cbc6ec501b942bb141",
+          "bytes": 3161
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/backlog-and-resources.json",
+          "sha256": "71f85da1386a96d6c14a26b85f04534d072c910e8ed64604a3bbe2fb07ea60a6",
+          "bytes": 11372
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/simulation-audit.json",
+          "sha256": "60e3ec4775ceaeada218ea358138fa87a5919ba54204d7cea07da4e11f625245",
+          "bytes": 7233
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-25-in2048-wave2-rep1/pin.json",
+          "sha256": "ebc773d45f048b9fdac2c3d943ebfa8f303ca4eaf0f92b3ad12d735f57e5c5c5",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-26-in2048-wave1-rep4",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-26-in2048-wave1-rep4/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/result.json",
+          "sha256": "e3baa22740764547ba97f19ad784f43a863fe98c27799d2de7b30ab4da4d5997",
+          "bytes": 1511
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/score-summary.json",
+          "sha256": "3811358a9e8f94df9145f07819719973ad6516059653c97124f215808da31d54",
+          "bytes": 515
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/three-way-scores.csv",
+          "sha256": "433ebf9a2cd6f881dee4fe86f9c00b0ba87f801c1e4bb26f84c8d7a588984e69",
+          "bytes": 7693
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/baseline-predictions.csv",
+          "sha256": "d9286788b759d390bae170e3ae09ebb805480669bc6b726517a57eadf3cb38c5",
+          "bytes": 3173
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/dag-predictions.csv",
+          "sha256": "b22019336e99d047d1617f1fff43d59a490ec90ba44023dc28297e04b6d0715c",
+          "bytes": 3172
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/backlog-and-resources.json",
+          "sha256": "91c3a5dd41e38bd91a13f50d7d687f89a13c0aa5444a9eda948f316baba4b832",
+          "bytes": 20720
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/simulation-audit.json",
+          "sha256": "9c922c345d6609e986be870f6306ffe8da7c2c60406be7d865801e9b3b87190f",
+          "bytes": 520
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-26-in2048-wave1-rep4/pin.json",
+          "sha256": "f0d4620f85b758fcafa2296fc92c99e0a05d148da4981c12ef6510d24a895c22",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-27-in1024-wave1-rep1",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-27-in1024-wave1-rep1/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/result.json",
+          "sha256": "f98b14a52711479cc0705b59069158c9d47181a8b670fb129236e9b03599a190",
+          "bytes": 1512
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/score-summary.json",
+          "sha256": "b0204d56accea3762004e3a908ef56cc0e9cb0b9c80e989c281877164eb3cfd8",
+          "bytes": 516
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/three-way-scores.csv",
+          "sha256": "7ecab2a2d51b4c1790f8501aece37747c1ac562617fb46a360a008052eb293cd",
+          "bytes": 7673
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/baseline-predictions.csv",
+          "sha256": "00b83febd7c7b0baf897ab1a03bbf66eb58533389e47f49208ec766bf0f97751",
+          "bytes": 3162
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/dag-predictions.csv",
+          "sha256": "3d70595d9092959195e4cf84f2121c5193f73e706b5c96bab9cb438f95747bd4",
+          "bytes": 3163
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/backlog-and-resources.json",
+          "sha256": "d495cdffe5b4ad8b0a63994970c9d73c3a3460dc709e1527278187f37452a486",
+          "bytes": 20713
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/simulation-audit.json",
+          "sha256": "e90b44523392be41c5a8382c96e762650ce740144b4516a1b512f683a5ed8b26",
+          "bytes": 519
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-27-in1024-wave1-rep1/pin.json",
+          "sha256": "4ea417a6c1b56f86165819511c230b515149715cc476289dcb8e693d805b0862",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-28-in1024-wave4-rep4",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-28-in1024-wave4-rep4/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/result.json",
+          "sha256": "7eca217707640e5345ca56d1011c93c3a497528a2491b55a4974afbdae24a65c",
+          "bytes": 1511
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/score-summary.json",
+          "sha256": "e02e955564536fa1b59aa3cf79cc3628d470af27f994627a54703bf5e942b5e0",
+          "bytes": 515
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/three-way-scores.csv",
+          "sha256": "4472104982bb588f099a71cfc94566222752db73cbcefeb0cdc0aaf696510893",
+          "bytes": 7670
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/baseline-predictions.csv",
+          "sha256": "14d3f27d424d7def00592e95cdf6c522ffd34e51fb8c82d42bf4aba7ff5df97b",
+          "bytes": 3163
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/dag-predictions.csv",
+          "sha256": "c0867e4e131c10693112cff93be8ca06e5026d56a59562f02fbeb6c0e7050775",
+          "bytes": 3166
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/backlog-and-resources.json",
+          "sha256": "0b1203491cfabf54b2638dc154c1cf8485a0668ed820d7faff7981c9e6a514d8",
+          "bytes": 6704
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/simulation-audit.json",
+          "sha256": "b7b23412731e20e6b71e17f793b40d71eed606fcf1dff71bbb3903b20a7131c7",
+          "bytes": 7170
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-28-in1024-wave4-rep4/pin.json",
+          "sha256": "43864036ea731c74d862f546ceb8d32bffbb389df8147af971ca16a8b841bcc1",
+          "bytes": 1227
+        }
+      ]
+    },
+    {
+      "run_id": "validation-29-in2048-wave1-rep0",
+      "selected_prediction": "/root/autodl-tmp/dag-handoff/runs/formal-validation-composite-20261126-01/validation-29-in2048-wave1-rep0/predictions-parallel-03",
+      "files": [
+        {
+          "name": "result.json",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/result.json",
+          "sha256": "699e926092f56f6236d9346b7ffec0ccd3526bd1709f0ad57efb473087d924df",
+          "bytes": 1511
+        },
+        {
+          "name": "score-summary.json",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/score-summary.json",
+          "sha256": "d6ea0b45d29190d52defd5adbdbd1c0f734ae5266588d730132d13d4e694c985",
+          "bytes": 515
+        },
+        {
+          "name": "three-way-scores.csv",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/three-way-scores.csv",
+          "sha256": "0151b113011cf4f647bc78e5656ae7734eac9dbb2a5ac5f3f0b3ac0a0fe516a8",
+          "bytes": 7699
+        },
+        {
+          "name": "baseline-predictions.csv",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/baseline-predictions.csv",
+          "sha256": "12827a81839adb8fcdf599b8307ba9e5d24657407b4661acce7906d15b0b1cb2",
+          "bytes": 3173
+        },
+        {
+          "name": "dag-predictions.csv",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/dag-predictions.csv",
+          "sha256": "ee92a88608ad56eaa0705e59adf6d13575b4f133270d7cb3580a3579f0be715c",
+          "bytes": 3172
+        },
+        {
+          "name": "backlog-and-resources.json",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/backlog-and-resources.json",
+          "sha256": "715bd78ed2973b0f05b75a17b30a377464d668226bcaedba9a0e9a142f97c600",
+          "bytes": 20720
+        },
+        {
+          "name": "simulation-audit.json",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/simulation-audit.json",
+          "sha256": "9c922c345d6609e986be870f6306ffe8da7c2c60406be7d865801e9b3b87190f",
+          "bytes": 520
+        },
+        {
+          "name": "pin.json",
+          "path": "incremental-backup-20261127/validation-29-in2048-wave1-rep0/pin.json",
+          "sha256": "9294faf820620abdae28f200d833f832554cd838cdd28b66c1cf9b3086169a4e",
+          "bytes": 1227
+        }
+      ]
     }
   ],
   "archives": [
@@ -750,6 +1668,72 @@
         "validation-09-in2048-wave4-rep1",
         "validation-10-in2048-wave2-rep2",
         "validation-11-in2048-wave4-rep3"
+      ]
+    },
+    {
+      "name": "formal-predictions-part-05.tar.gz",
+      "path": "incremental-backup-20261127/formal-predictions-part-05.tar.gz",
+      "sha256": "325c8c4f00b0d4642626c99c8d3f80e376c5ee63e5a3acab810e7ba7164e4e10",
+      "bytes": 37077102,
+      "runs": [
+        "validation-12-in2048-wave2-rep4",
+        "validation-13-in1024-wave4-rep2",
+        "validation-14-in1024-wave2-rep3"
+      ]
+    },
+    {
+      "name": "formal-predictions-part-06.tar.gz",
+      "path": "incremental-backup-20261127/formal-predictions-part-06.tar.gz",
+      "sha256": "12e22431ae79adb82efe880174a86a4b41b7030372f7356aacf59619e9f0161d",
+      "bytes": 23444233,
+      "runs": [
+        "validation-15-in2048-wave4-rep0",
+        "validation-16-in1024-wave4-rep1",
+        "validation-17-in1024-wave4-rep3"
+      ]
+    },
+    {
+      "name": "formal-predictions-part-07.tar.gz",
+      "path": "incremental-backup-20261127/formal-predictions-part-07.tar.gz",
+      "sha256": "60ba1964e446101b2564c436b3ac9083324d2f567652b5baaefae0e0f7d5137d",
+      "bytes": 57331024,
+      "runs": [
+        "validation-18-in1024-wave1-rep3",
+        "validation-19-in2048-wave2-rep3",
+        "validation-20-in1024-wave2-rep2"
+      ]
+    },
+    {
+      "name": "formal-predictions-part-08.tar.gz",
+      "path": "incremental-backup-20261127/formal-predictions-part-08.tar.gz",
+      "sha256": "37c5b75e6856ef4b600b48c7057cb305dd6e90840817897db2b6cb132b1140d5",
+      "bytes": 37072815,
+      "runs": [
+        "validation-21-in2048-wave2-rep0",
+        "validation-22-in1024-wave4-rep0",
+        "validation-23-in1024-wave2-rep4"
+      ]
+    },
+    {
+      "name": "formal-predictions-part-09.tar.gz",
+      "path": "incremental-backup-20261127/formal-predictions-part-09.tar.gz",
+      "sha256": "65f15b632968467ad69cadc2ec74bac63968fda5cf155fa8a734172d12c4385a",
+      "bytes": 70785407,
+      "runs": [
+        "validation-24-in1024-wave1-rep2",
+        "validation-25-in2048-wave2-rep1",
+        "validation-26-in2048-wave1-rep4"
+      ]
+    },
+    {
+      "name": "formal-predictions-part-10.tar.gz",
+      "path": "incremental-backup-20261127/formal-predictions-part-10.tar.gz",
+      "sha256": "afb849590c60ed945ec8a8d544c69621b15cb28328e180ab48d3eff517c94b76",
+      "bytes": 63676563,
+      "runs": [
+        "validation-27-in1024-wave1-rep1",
+        "validation-28-in1024-wave4-rep4",
+        "validation-29-in2048-wave1-rep0"
       ]
     }
   ],

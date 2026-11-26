@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "kind": "fee-only_reacceptance_not_validation",
+  "actual_requests_reused": 32,
+  "new_gpu_e2e_requests": 0,
+  "fee_calls": {
+    "baseline": 4096,
+    "dag": 4096
+  },
+  "receiver_charges": 32,
+  "checks": [
+    "actual arrivals and token rounds",
+    "complete measured-domain lookup",
+    "one worker envelope and no old sampler/head/prepare/layer subfees",
+    "one receiver composite and no first-token subfee",
+    "exclusive resources and waiting arithmetic",
+    "cross-wave backlog reported",
+    "same paired batch fees",
+    "scoring boundaries and all failures retained"
+  ],
+  "score": {
+    "kind": "preacceptance_not_validation",
+    "requests": 32,
+    "baseline_mae_s": 0.13656991718750067,
+    "dag_mae_s": 0.1365699171875011,
+    "baseline_mean_relative_error": 0.07887233318643098,
+    "dag_mean_relative_error": 0.07887233318643122,
+    "boundary": {
+      "actual": "router stream completion minus router arrival",
+      "prediction": "last modeled batch end minus same actual router arrival",
+      "correction_s": 0,
+      "residual": "Unmodeled router/host tail stays in error; not subtracted or fitted."
+    }
+  },
+  "baseline_column_role": "fee-adapted-reference; untouched original is separate",
+  "resource_assumption_status": "\u5f85\u9a8c\u8bc1\u8fd1\u4f3c",
+  "resource_wait_and_backlog_report": "backlog-and-resources.json",
+  "not_gates": [
+    "small prediction error",
+    "no predicted backlog",
+    "matching batches",
+    "DAG improvement"
+  ]
+}
