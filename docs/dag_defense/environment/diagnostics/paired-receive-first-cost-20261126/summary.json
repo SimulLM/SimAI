@@ -1,0 +1,82 @@
+{
+  "status": "paired_instrumented_candidate_not_frozen",
+  "rows": [
+    {
+      "input_tokens": 512,
+      "warmup": 10,
+      "measured": 30,
+      "receive_ms": {
+        "median": 12.265418,
+        "min": 11.81967,
+        "p95": 15.881882,
+        "max": 16.793801
+      },
+      "post_ms": {
+        "median": 0.73054,
+        "min": 0.598197,
+        "p95": 0.900778,
+        "max": 1.594755
+      },
+      "combined_ms": {
+        "median": 12.973652999999999,
+        "min": 12.417867,
+        "p95": 16.719262,
+        "max": 17.471775
+      }
+    },
+    {
+      "input_tokens": 1024,
+      "warmup": 10,
+      "measured": 30,
+      "receive_ms": {
+        "median": 20.5336,
+        "min": 19.760276,
+        "p95": 23.23007,
+        "max": 23.473357
+      },
+      "post_ms": {
+        "median": 0.773865,
+        "min": 0.665329,
+        "p95": 1.015313,
+        "max": 1.079418
+      },
+      "combined_ms": {
+        "median": 21.302509,
+        "min": 20.463949,
+        "p95": 24.245383,
+        "max": 24.296096
+      }
+    },
+    {
+      "input_tokens": 2048,
+      "warmup": 10,
+      "measured": 30,
+      "receive_ms": {
+        "median": 36.356543,
+        "min": 35.220998,
+        "p95": 38.094835,
+        "max": 38.712527
+      },
+      "post_ms": {
+        "median": 0.815027,
+        "min": 0.752595,
+        "p95": 1.044521,
+        "max": 1.066341
+      },
+      "combined_ms": {
+        "median": 37.256628500000005,
+        "min": 36.012641,
+        "p95": 38.903578,
+        "max": 39.551871
+      }
+    }
+  ],
+  "source_sha256": "2cb30a0bd0b62e22c802ebbb5096414993fb140aece9618fcb957c058825080f",
+  "limitations": [
+    "intrusive per-tensor synchronization alters overlap",
+    "serial eight-output only; no concurrent coverage",
+    "different lengths share one session; no independent restart variance",
+    "combined interval excludes dispatch and router, not a physical additive component",
+    "no validation E2E fitting"
+  ]
+}
