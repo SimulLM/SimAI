@@ -1,0 +1,6 @@
+{
+  "exit_code": 1,
+  "output_directory_exists": false,
+  "stderr_last_line": "FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/dag-handoff/missing-freeze-20261126.json'",
+  "no_network_expected": true
+}

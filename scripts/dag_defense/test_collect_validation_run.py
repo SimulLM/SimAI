@@ -1,0 +1,42 @@
+"""Test only against an isolated synthetic local service."""
+import asyncio,json,pathlib,tempfile,hashlib
+from aiohttp import web
+from collect_validation_run import run_case,preflight
+from reconcile_validation_run import reconcile
+async def main():
+ async def handle(req):
+  body=await req.json();i=body['prompt'][1];mode=body['model']
+  if mode=='fail' and i==1:return web.Response(status=503,text='injected failure')
+  if mode=='timeout' and i==2:await asyncio.sleep(.35)
+  usage={'prompt_tokens':4,'completion_tokens':128};payload='data: '+json.dumps({'id':'fake-'+str(i),'usage':usage})+'\n\ndata: [DONE]\n\n'
+  return web.Response(text=payload,content_type='text/event-stream',headers={'X-Experiment-Request-ID':'fixture-'+str(i)})
+ app=web.Application();app.router.add_post('/v1/completions',handle);runner=web.AppRunner(app);await runner.setup();site=web.TCPSite(runner,'127.0.0.1',0);await site.start();port=site._server.sockets[0].getsockname()[1]
+ try:
+  with tempfile.TemporaryDirectory() as td:
+   root=pathlib.Path(td);rows=[{'run_id':'fixture','request_id':str(i),'input_id':'input'+str(i),'input_sha256':'fixture','wave':i//2,'input_ids':[1,i]} for i in range(32)];spec={'run_id':'fixture','input_tokens':4,'concurrency':2,'requests':32};results={}
+   for mode,expected in [('success',{'success':32,'failed':0,'timeout':0,'not_submitted':0}),('fail',{'success':1,'failed':1,'timeout':0,'not_submitted':30}),('timeout',{'success':3,'failed':0,'timeout':1,'not_submitted':28})]:
+    await run_case(spec,rows,root/mode,f'http://127.0.0.1:{port}/v1/completions',mode,.15)
+    records=[json.loads(x) for x in (root/mode/'client-events.jsonl').read_text().splitlines()];counts={k:sum(x['status']==k for x in records) for k in expected};assert counts==expected,(mode,counts);assert len({x['request_id'] for x in records})==32;events=[json.loads(x) for x in (root/mode/'wave-events.jsonl').read_text().splitlines()];assert all(events[2*i]['event']=='scheduled' and events[2*i+1]['event']=='complete' for i in range(len(events)//2));results[mode]={'counts':counts,'waves_sent':len(events)//2}
+   inputs=root/'fixture-input.jsonl';inputs.write_text(''.join(json.dumps(r)+'\n' for r in rows));router=root/'fixture-router.jsonl';server=[]
+   for i in range(32):
+    for name,t in [('server_arrival',100),('prefill_send',110),('prefill_response',120),('prefill_mapping',130),('decode_send',140),('decode_mapping',150),('server_first_token',160),('server_complete',200)]:
+     item={'request_id':'fixture-'+str(i),'event':name,'timestamp_ns':t,'clock_id':'CLOCK_MONOTONIC'}
+     if name=='decode_mapping':item['backend_request_id']='fake-'+str(i)
+     if name=='prefill_response':item['status']=200
+     if name=='server_complete':item['usage']={'prompt_tokens':4,'completion_tokens':128}
+     server.append(item)
+   router.write_text(''.join(json.dumps(r)+'\n' for r in server));good=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-good');assert good['status']=='complete',good
+   router.write_text(router.read_text()+json.dumps(server[0])+'\n');bad=reconcile(inputs,root/'success/client-events.jsonl',router,root/'reconciled-duplicate');assert bad['status']=='incomplete' and bad['errors'],bad
+   partial=reconcile(inputs,root/'timeout/client-events.jsonl',router,root/'reconciled-timeout');assert partial['status']=='incomplete' and partial['status_counts']['not_submitted']==28,partial
+   truncated=root/'truncated.jsonl';truncated.write_text('\n'.join((root/'success/client-events.jsonl').read_text().splitlines()[:3])+'\n');interrupted=reconcile(inputs,truncated,router,root/'reconciled-interrupted');assert interrupted['status']=='incomplete' and interrupted['status_counts']['missing_client']==29,interrupted
+   inputfile=root/'verified-input.jsonl';checked=[]
+   for i in range(32):
+    ids=[1,4,5,6];digest=hashlib.sha256((json.dumps(ids,separators=(',',':'))+'\n').encode()).hexdigest();checked.append({'request_id':str(i),'run_id':'checked','input_id':str(i),'input_ids':ids,'input_sha256':digest,'wave':i//2})
+   inputfile.write_text(''.join(json.dumps(x)+'\n' for x in checked));manifest=root/'manifest.json';manifest.write_text(json.dumps({'runs':[{'run_id':'checked','path':inputfile.name,'sha256':hashlib.sha256(inputfile.read_bytes()).hexdigest(),'requests':32,'input_tokens':4,'concurrency':2}]}));artifact=root/'artifact';artifact.write_text('fixture');keys=('source','baseline_source','compute_cost','communication_cost','service_configuration','scoring_rule','compatibility_evidence');freeze=root/'freeze.json';freeze.write_text(json.dumps({'status':'frozen','validation_manifest_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest(),'artifacts':{k:{'path':str(artifact),'sha256':hashlib.sha256(artifact.read_bytes()).hexdigest()} for k in keys}}));preflight(freeze,manifest,'checked');artifact.write_text('tampered')
+   try:preflight(freeze,manifest,'checked');raise AssertionError('tampered artifact accepted')
+   except ValueError:pass
+   try:preflight(root/'missing-freeze',root/'missing-manifest','x');raise AssertionError('preflight should reject missing freeze')
+   except FileNotFoundError:pass
+   print(json.dumps({'status':'passed','fixture_results':results,'server_reconciliation_good_and_incomplete_cases':True,'missing_freeze_and_changed_artifact_rejected':True,'scope':'synthetic local service; not real validation'},indent=2))
+ finally:await runner.cleanup()
+asyncio.run(main())
