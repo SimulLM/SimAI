@@ -1,0 +1,188 @@
+{
+  "status": "diagnostic_passed",
+  "requests": 28,
+  "patterns": [
+    {
+      "prefill_bypass_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0,
+      "requests": 28
+    }
+  ],
+  "formal_validation": false,
+  "records": [
+    {
+      "decode_id": "cmpl-5a02b492044a4c3db858314caafad569-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-de7c8364282b4dd59cca6d3a53bbc6a0-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-1bcdecf3664b49e6b63df7985c2cc6e0-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-81e52fce13f5464793b5f222b83837c9-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-166175ff556943089c50e2eef9310af5-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-bee50ec0045d47a1aac5abbbff5b5f4a-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-7cce2a1b8f3a4d4a8de7a13d47d1e1de-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-fcd7a84c03d74f8e88017edab31d095f-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-f7b536820f2f4cc7a6d2678addbe4f76-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-4e26d87c58234c108f8a06910611875e-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-acadfcb1676d42b2a7e99baab2e57ad7-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-90adb736f2f6460490817d0ea787f8bc-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-339100e38e2c4450b2573d3f2b5e6e8d-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-edd1411608b84f24a796d7de74ca4a8f-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-f2732b7f7b5a4f3aafcaec33c4344997-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-370bff65f15940bbb55003be9a3f4212-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-99c6e8f3c2bc4f69a7d1f5da431849ed-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-f968978185bf4a08b4cba7eb0215cfa3-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-8c6a7de9236f496185a65523c6b03f2a-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-297ccc41619e4e9f986f56c9b618fd03-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-a4d62bd71207430b89f4d7e24243743c-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-be4d2be0ad8742a883b790c431589b8f-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-9716705cc1564abb85fb3144f0fef036-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-d8599dbdfa6c4a3a844c455de266c1f7-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-f9f0deb9c46345c692317841d7ac434a-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-1efd4efc09954ff08d38dea00bd8f0fd-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-abd78c7e27194917aaf9e7e69968685e-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    },
+    {
+      "decode_id": "cmpl-02e08182366b46339d65466efeaae3df-0",
+      "prefill_calls": 1,
+      "decode_calls": 63,
+      "host_sync_after_client": 0
+    }
+  ],
+  "limitations": [
+    "synchronized diagnostic may perturb timing",
+    "host sync and client completion are not equivalent to GPU completion timestamp",
+    "consumer decode ID mapping does not itself map producer ID"
+  ]
+}
