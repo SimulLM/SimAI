@@ -1,4 +1,14 @@
-7bfed090ae78fbd4782486f215ea659c21bef8a20213a371c29c5ec970f21626  ./README.md
+ec8ba02319d1eca7a73de1f4d92e3bb64840625fdfa401ed5a8bf10320d3aec3  ./README.md
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./batch3/client-full.exit
+530ac0249eb27f1298887037cadfa5f4711833b88661bf8e07ad6bc8042a62c7  ./batch3/client-spec.json
+7e7e75456af674a12b407f083044a6e8f0b8efc297015550a55bbf6e16b2ea81  ./batch3/compute-events-75059.jsonl.gz
+494a30db8fecfed8193a193b43f0d1e9d56afd9b860301c2fc143301a60aa913  ./batch3/compute-events-75064.jsonl.gz
+fb381c3709ca610237f13a4dd60359714abceacabcc6151d4fd675773ef02e2f  ./batch3/coverage.csv
+2bc8378e4284379c830707adb2f2e02ab33430f805ce66c9c66d5e9222807320  ./batch3/events-mapped.csv.gz
+babd9f3d7c8097a7ef95b203bd06f6cfc28a5e6fdf3b271d4bffc70128f31d41  ./batch3/requests.jsonl.gz
+093c759b7a860df3f34f4240494861d7a5fe9aac38ca0842cb7b4f2dc2c4de02  ./batch3/summary.json
+36a059d2e205e7bc03e6e931a73053d4eba2dfd0eed6a40df77f07393afc2bc6  ./combined/selected.csv
+f87d9856c7d8485c97e40ec8e32745baff2c610ae299840384e4d94c98eb9f8e  ./combined/summary.json
 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./initial/client-full.exit
 9f2b7a625f395f7de7e2ceeae7ee1ebe8b4465175a39469a7cddd04e6cbc2405  ./initial/client-spec.json
 36aa95d443d2f8a1f681783bfda3a2bf1e1695db16b5aa10a7549dc3dc6ed646  ./initial/compute-events-72747.jsonl.gz
@@ -7,6 +17,7 @@ d5b2570b3e9eb4a942d9caefc40eccfd75aa82f5bd8176080f05e06b4cfb2ae6  ./initial/cove
 3b3e20e68be98b9b5887e04c0f772eec7e3276b2772bf8cc01cd6dfb75b374e1  ./initial/events-mapped.csv.gz
 a43ddf0b62742b2bb1d3ccab6504c692d59c9b63026a05e704106f804cf898c1  ./initial/requests.jsonl.gz
 0999bf283bf84a3d45e4200c743809cee6d1fa696c6d522b96fb917af3f7f2de  ./initial/summary.json
+89f52b614bba8c74f2c5dbba8754a8c45406a879902603f749d47bcb540713cb  ./scripts/audit-pd-forward-batch3-v2.py
 5dcc57ef84faca83f21e58f2155f1062f0a967876e61cb0e01ec35eeb37a0031  ./scripts/audit-pd-forward-supplement.py
 0e2b856ea77767cbbccf46d5c87c71aa46ac89d04b31ef148409023b7c0851b5  ./scripts/audit-pd-forward-waves.py
 5b34fd7faea91095518e3513ce935df47c01efb0027e222939feadb4e60aede9  ./scripts/pd-profile-client.py

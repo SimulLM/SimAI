@@ -1,0 +1,14 @@
+{
+  "status": "shape_coverage_only_passed",
+  "points_required": 22,
+  "points_selected": 22,
+  "missing": [],
+  "selection": "one independently qualified collection per shape; most measured events; no pooling",
+  "excluded": "prefill 2048 batch 3 or 4 exceeds fixed max_num_batched_tokens 4096",
+  "limitations": [
+    "wave time mapping is not request mapping",
+    "post-response model steps excluded",
+    "CPU/router/KV and boundary compatibility still unresolved",
+    "formal validation not started"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "status": "blocked",
+  "method": "unique non-overlapping client wave time interval; not request ID mapping",
+  "client_requests": 1470,
+  "client_waves": 420,
+  "rejected_events": {
+    "outside_client_wave": 2,
+    "end_after_wave": 420
+  },
+  "expected_points": 18,
+  "passed_points": 7,
+  "missing_points": [
+    {
+      "nature": "producer_prefill",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "reason": "insufficient warmup or measured events"
+    },
+    {
+      "nature": "producer_prefill",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "producer_prefill",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "producer_prefill",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "producer_prefill",
+      "input_tokens": 2048,
+      "actual_batch": 4,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "consumer_decode",
+      "input_tokens": 512,
+      "actual_batch": 1,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "consumer_decode",
+      "input_tokens": 512,
+      "actual_batch": 2,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "consumer_decode",
+      "input_tokens": 1024,
+      "actual_batch": 1,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "consumer_decode",
+      "input_tokens": 1024,
+      "actual_batch": 2,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "consumer_decode",
+      "input_tokens": 2048,
+      "actual_batch": 1,
+      "reason": "no eligible event"
+    },
+    {
+      "nature": "consumer_decode",
+      "input_tokens": 2048,
+      "actual_batch": 2,
+      "reason": "no eligible event"
+    }
+  ],
+  "limitations": [
+    "same host monotonic clock; event association is per wave, not per request",
+    "forward event brackets model execution excluding connector recv/send, logits and sampler; CUDA event includes stream ordering and may include GPU idle gaps",
+    "consumer prefill / KV receive not counted as transformer prefill",
+    "events require accurate source role and separate non-overlapping billing contract"
+  ]
+}
