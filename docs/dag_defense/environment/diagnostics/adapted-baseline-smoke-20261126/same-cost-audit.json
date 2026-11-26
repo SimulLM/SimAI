@@ -1,0 +1,82 @@
+{
+  "status": "single_synthetic_request_equal_fee_smoke_only",
+  "checks": {
+    "predictor_source_equal": true,
+    "training_file_names_equal": true,
+    "training_predictions_equal": true,
+    "model_execution_time_equal": true,
+    "pd_billed_time_equal": true,
+    "pd_bandwidth_equal": true,
+    "both_exited_zero": true
+  },
+  "source_sha256": {
+    "dag": "64c05498962f12af1228eacb1ece6b4c75dfa107c1f953a5a75a172b38a592a9",
+    "adapted_baseline": "64c05498962f12af1228eacb1ece6b4c75dfa107c1f953a5a75a172b38a592a9"
+  },
+  "training_predictions_sha256": {
+    "dag": {
+      "attn_pre_proj_bbecdf9f_training_predictions.csv": "d8b47b1209d308c8742a6f17bbeeaca3b7dab3e47537ada809c01b05fc20c113",
+      "attn_post_proj_46068333_training_predictions.csv": "36bc24358ba66e4c99fd8c0ee7df56efcdf0c985ec329803db82270e6432013e",
+      "mlp_up_proj_ff1b0293_training_predictions.csv": "2c9d8e90627b1089c1d14212de922e935690cc2ae2d8b60277b377b07de2e2a9",
+      "mlp_down_proj_6d35f69b_training_predictions.csv": "d0fdd7ad14c62a4daf9960d37a96ef3398d396495b89486d947042a898500e4e",
+      "mlp_act_db28817e_training_predictions.csv": "a3b5de5d3e688405325cab05a5122f67a861790945444fa51584cefb58e5c1c2",
+      "input_layernorm_613d3f98_training_predictions.csv": "028f6d7a32b4eb2674498bc9da53d4a87bf6d63d0e3acd2c9c1b6288766efcba",
+      "post_attention_layernorm_456bec23_training_predictions.csv": "313b38b29593a04d254fff919d441b6f65b32dbbc4a026481fd03502cde6139c",
+      "attn_rope_79db73aa_training_predictions.csv": "5c4df1677d7185d0f9571aafafcaa3c0e681f65ae38a8b2a03c009a88d16393b",
+      "add_e9219940_training_predictions.csv": "b30da7178eb501400caaaed27ec2d11455f15e610c4aee7a05ab43c36aeffbd2",
+      "attn_kv_cache_save_ee51f04d_training_predictions.csv": "9de859b86ac5c384b225018a8c1c623699da95975c0fd8cba821e23e8564e7bf",
+      "schedule_871bc531_training_predictions.csv": "b2c8f27d443e1f178d3611380740948053a7a6696be9daadfe19270ce36fdb62",
+      "sampler_e2e_80fe3e26_training_predictions.csv": "f790d93bf0928ec473f9a34ac7e7243fcd954a5aca8586ca0d5d09bf4f209c6d",
+      "prepare_inputs_e2e_d8c8914e_training_predictions.csv": "8605b1be5fb6da93f3620f6e556261677b331ec791013336ea54bd7efb9d5ff9",
+      "process_model_outputs_09e3d668_training_predictions.csv": "7ae3758aa8cacf2517b1d08f003cf75eda6471bebb10d22d6bbf5ee412f9c0f5",
+      "ray_comm_time_ef0dca1e_training_predictions.csv": "7772bbd6ce0b0fd03b6403a0e72e21633cf4f0a4bfc54025397c690bcf0db650",
+      "attn_prefill_8e9f5cc0_training_predictions.csv": "092fb6f372009f5d7b5ba608125c3830eb836646dacb7e92295d1c1825ddf626",
+      "attn_decode_d1bf869d_training_predictions.csv": "a9b6362096bf34fb7b55b1ad7a7636cd4fd26d4dd4f31405b8ff341ff8afb6e1"
+    },
+    "adapted_baseline": {
+      "attn_pre_proj_bbecdf9f_training_predictions.csv": "d8b47b1209d308c8742a6f17bbeeaca3b7dab3e47537ada809c01b05fc20c113",
+      "attn_post_proj_46068333_training_predictions.csv": "36bc24358ba66e4c99fd8c0ee7df56efcdf0c985ec329803db82270e6432013e",
+      "mlp_up_proj_ff1b0293_training_predictions.csv": "2c9d8e90627b1089c1d14212de922e935690cc2ae2d8b60277b377b07de2e2a9",
+      "mlp_down_proj_6d35f69b_training_predictions.csv": "d0fdd7ad14c62a4daf9960d37a96ef3398d396495b89486d947042a898500e4e",
+      "mlp_act_db28817e_training_predictions.csv": "a3b5de5d3e688405325cab05a5122f67a861790945444fa51584cefb58e5c1c2",
+      "input_layernorm_613d3f98_training_predictions.csv": "028f6d7a32b4eb2674498bc9da53d4a87bf6d63d0e3acd2c9c1b6288766efcba",
+      "post_attention_layernorm_456bec23_training_predictions.csv": "313b38b29593a04d254fff919d441b6f65b32dbbc4a026481fd03502cde6139c",
+      "attn_rope_79db73aa_training_predictions.csv": "5c4df1677d7185d0f9571aafafcaa3c0e681f65ae38a8b2a03c009a88d16393b",
+      "add_e9219940_training_predictions.csv": "b30da7178eb501400caaaed27ec2d11455f15e610c4aee7a05ab43c36aeffbd2",
+      "attn_kv_cache_save_ee51f04d_training_predictions.csv": "9de859b86ac5c384b225018a8c1c623699da95975c0fd8cba821e23e8564e7bf",
+      "schedule_871bc531_training_predictions.csv": "b2c8f27d443e1f178d3611380740948053a7a6696be9daadfe19270ce36fdb62",
+      "sampler_e2e_80fe3e26_training_predictions.csv": "f790d93bf0928ec473f9a34ac7e7243fcd954a5aca8586ca0d5d09bf4f209c6d",
+      "prepare_inputs_e2e_d8c8914e_training_predictions.csv": "8605b1be5fb6da93f3620f6e556261677b331ec791013336ea54bd7efb9d5ff9",
+      "process_model_outputs_09e3d668_training_predictions.csv": "7ae3758aa8cacf2517b1d08f003cf75eda6471bebb10d22d6bbf5ee412f9c0f5",
+      "ray_comm_time_ef0dca1e_training_predictions.csv": "7772bbd6ce0b0fd03b6403a0e72e21633cf4f0a4bfc54025397c690bcf0db650",
+      "attn_prefill_8e9f5cc0_training_predictions.csv": "092fb6f372009f5d7b5ba608125c3830eb836646dacb7e92295d1c1825ddf626",
+      "attn_decode_d1bf869d_training_predictions.csv": "a9b6362096bf34fb7b55b1ad7a7636cd4fd26d4dd4f31405b8ff341ff8afb6e1"
+    }
+  },
+  "results": {
+    "dag": {
+      "request_e2e_time": 1.0525376307540713,
+      "request_model_execution_time": 0.9793246903717526,
+      "pd_p2p_comm_size": 268435456.0,
+      "pd_p2p_comm_time": 0.007858455882352941,
+      "pd_p2p_comm_bandwidth": 34225520640.0,
+      "exit": 0
+    },
+    "baseline": {
+      "request_e2e_time": 1.0525376307541063,
+      "request_model_execution_time": 0.9793246903717526,
+      "pd_p2p_comm_size": 268959744.0,
+      "pd_p2p_comm_time": 0.007858455882352941,
+      "pd_p2p_comm_bandwidth": 34225520640.0,
+      "exit": 0
+    }
+  },
+  "limits": [
+    "candidate profile is unfrozen and contains known source/mode and accounting limitations",
+    "training prediction hashes are not an exhaustive proof of runtime costs for all shapes or batches",
+    "baseline uses recorded adapter patch, not unmodified original predictor",
+    "one synthetic 512/64 input is not formal validation",
+    "DAG reported transfer size is wire bytes; adapted baseline reports billing bytes; both bill prefill plus one token",
+    "service KV pull timing is still different from both simulators"
+  ]
+}
