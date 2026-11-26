@@ -1,0 +1,83 @@
+{
+  "request_count": 560,
+  "status_counts": {
+    "200": 560
+  },
+  "mapped": 560,
+  "issues": [],
+  "summary": [
+    {
+      "input_tokens": 1024,
+      "requested_batch": 1,
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "median_bound_width_ms": 14.739976500000001,
+      "max_bound_width_ms": 15.091252,
+      "median_sync_wait_ms": 14.575712
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 2,
+      "actual_batch": 2,
+      "distinct_steps": 30,
+      "median_bound_width_ms": 14.610019999999999,
+      "max_bound_width_ms": 14.89024,
+      "median_sync_wait_ms": 14.401461000000001
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 4,
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "median_bound_width_ms": 16.430031,
+      "max_bound_width_ms": 89.250225,
+      "median_sync_wait_ms": 16.228149000000002
+    },
+    {
+      "input_tokens": 1024,
+      "requested_batch": 4,
+      "actual_batch": 3,
+      "distinct_steps": 30,
+      "median_bound_width_ms": 14.716757,
+      "max_bound_width_ms": 14.871414,
+      "median_sync_wait_ms": 14.548846000000001
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 1,
+      "actual_batch": 1,
+      "distinct_steps": 30,
+      "median_bound_width_ms": 30.767708,
+      "max_bound_width_ms": 31.795309,
+      "median_sync_wait_ms": 30.5637525
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 2,
+      "actual_batch": 1,
+      "distinct_steps": 60,
+      "median_bound_width_ms": 30.576054,
+      "max_bound_width_ms": 38.093977,
+      "median_sync_wait_ms": 30.317068
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 4,
+      "actual_batch": 1,
+      "distinct_steps": 60,
+      "median_bound_width_ms": 30.462287500000002,
+      "max_bound_width_ms": 33.367812,
+      "median_sync_wait_ms": 30.145181
+    },
+    {
+      "input_tokens": 2048,
+      "requested_batch": 4,
+      "actual_batch": 2,
+      "distinct_steps": 30,
+      "median_bound_width_ms": 30.0911695,
+      "max_bound_width_ms": 30.399593,
+      "median_sync_wait_ms": 29.894478
+    }
+  ],
+  "meaning": "Bounds apply to completion of all KV cache installations in the consumer batch: lower is CPU entry into its last install call, upper follows device-wide sync after all calls. For an individual request the lower bound is recv_start_ns, because earlier requests may be ready sooner. Not an exact GPU timestamp; synchronization changes execution."
+}
