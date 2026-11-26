@@ -1,0 +1,55 @@
+{
+  "status": "diagnostic_worker_sync_and_host_window_observed",
+  "warmup_requests": 4,
+  "last_client_complete_ns": 1834734873678273,
+  "first_observation_ns": 1834746738184101,
+  "workers": {
+    "producer": {
+      "pid": 139013,
+      "gpu_uuid": "GPU-6a82e02c-388a-2044-141e-d9ba86b3f201",
+      "sync_start_ns": 1834740724630155,
+      "sync_end_ns": 1834740724795224,
+      "before_ns": 1834740724056225,
+      "after_ns": 1834741224996750,
+      "counts": {
+        "insert_started": 4,
+        "insert_completed": 4,
+        "select_started": 0,
+        "select_completed": 0
+      },
+      "pipe_counts": {
+        "send_started": 20,
+        "send_completed": 20,
+        "recv_started": 8,
+        "recv_completed": 8
+      }
+    },
+    "consumer": {
+      "pid": 139021,
+      "gpu_uuid": "GPU-2269d925-3345-06c6-0c8b-5332760d64bc",
+      "sync_start_ns": 1834740909687711,
+      "sync_end_ns": 1834740909826243,
+      "before_ns": 1834740909189203,
+      "after_ns": 1834741410008827,
+      "counts": {
+        "insert_started": 0,
+        "insert_completed": 0,
+        "select_started": 4,
+        "select_completed": 4
+      },
+      "pipe_counts": {
+        "send_started": 8,
+        "send_completed": 8,
+        "recv_started": 20,
+        "recv_completed": 20
+      }
+    }
+  },
+  "limitations": [
+    "CUDA synchronization covers prior work in each responding process context, not all system or future work",
+    "Host snapshots bracket synchronization but are not atomic across threads or processes",
+    "No active-request injection or live identity verification during formal collection; timeout and crash cleanup remain unverified",
+    "Synchronization occurs before the window and must not run in the E2E measurement path",
+    "This is one diagnostic session, not a formal readiness or validation claim"
+  ]
+}
