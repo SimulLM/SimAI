@@ -1,0 +1,87 @@
+{
+  "status": "inclusive_receiver_diagnostic_not_frozen",
+  "groups": [
+    {
+      "input_tokens": 512,
+      "warmup": 10,
+      "measured": 30,
+      "metrics": {
+        "receive_to_install_sync_ms": {
+          "median_ms": 12.265418,
+          "min_ms": 11.81967,
+          "max_ms": 16.793801,
+          "p95_ms": 15.881882
+        },
+        "install_to_sync_ms": {
+          "median_ms": 2.0241775,
+          "min_ms": 1.901664,
+          "max_ms": 6.432577,
+          "p95_ms": 2.663621
+        },
+        "post_sync_host_return_ms": {
+          "median_ms": 0.73054,
+          "min_ms": 0.598197,
+          "max_ms": 1.594755,
+          "p95_ms": 0.900778
+        }
+      }
+    },
+    {
+      "input_tokens": 1024,
+      "warmup": 10,
+      "measured": 30,
+      "metrics": {
+        "receive_to_install_sync_ms": {
+          "median_ms": 20.5336,
+          "min_ms": 19.760276,
+          "max_ms": 23.473357,
+          "p95_ms": 23.23007
+        },
+        "install_to_sync_ms": {
+          "median_ms": 2.0646315,
+          "min_ms": 1.93558,
+          "max_ms": 2.243809,
+          "p95_ms": 2.203172
+        },
+        "post_sync_host_return_ms": {
+          "median_ms": 0.773865,
+          "min_ms": 0.665329,
+          "max_ms": 1.079418,
+          "p95_ms": 1.015313
+        }
+      }
+    },
+    {
+      "input_tokens": 2048,
+      "warmup": 10,
+      "measured": 30,
+      "metrics": {
+        "receive_to_install_sync_ms": {
+          "median_ms": 36.356543,
+          "min_ms": 35.220998,
+          "max_ms": 38.712527,
+          "p95_ms": 38.094835
+        },
+        "install_to_sync_ms": {
+          "median_ms": 2.1449525,
+          "min_ms": 1.974614,
+          "max_ms": 2.874271,
+          "p95_ms": 2.389246
+        },
+        "post_sync_host_return_ms": {
+          "median_ms": 0.815027,
+          "min_ms": 0.752595,
+          "max_ms": 1.066341,
+          "p95_ms": 1.044521
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Receive-to-install-sync is an inclusive host interval containing waits, transport, installation, Python and added synchronization",
+    "Installation interval is a subset of receive interval and must not be added to it",
+    "Post-sync host return is a separate subsequent host boundary but does not include all router/scheduler work",
+    "Per-tensor device synchronization perturbs execution; serial output-8 only",
+    "Not a validated common physical cost or formal validation"
+  ]
+}
