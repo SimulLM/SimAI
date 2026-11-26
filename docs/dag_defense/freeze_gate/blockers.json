@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T13:51:28.099272+00:00",
+  "updated_utc": "2026-11-26T13:55:54.196887+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "Shared 512 first-token candidates work on two 32-request calibration traces, all batch 1. Pristine lacks the consumer first-token stage; physical transfer/CPU overlap and full 1024/2048 natural shapes remain unverified.",
-      "next_action": "Map pristine and DAG fee ownership and supported natural shapes, then independently justify or disclose timing/resource approximations without fitting validation.",
+      "missing": "Transfer GPU occupancy single-flag sensitivity changes paired batches from 986 to 265 on one calibration trace; neither setting is proven physically correct, and pristine first-token ownership plus full natural shape coverage remain open.",
+      "next_action": "Establish a defensible common model and explicitly disclose transfer contention and pristine first-token omissions before freeze; do not choose settings by matching or validation error.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/dynamic-calibration-512-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/calibration-transfer-occupancy-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
