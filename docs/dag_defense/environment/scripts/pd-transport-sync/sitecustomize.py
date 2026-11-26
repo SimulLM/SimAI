@@ -55,7 +55,9 @@ if os.environ.get('PD_LIGHT_EVENTS_DIR'):
  old_put=model_aware_kv_ops_helper.put_kv_to_cache
  def put(self,*args,**kwargs):
   emit('kv_install_api_start',step_id=getattr(local,'step',None),groups=getattr(local,'groups',[]))
-  return old_put(self,*args,**kwargs)
+  result=old_put(self,*args,**kwargs)
+  emit('kv_install_api_return',step_id=getattr(local,'step',None),groups=getattr(local,'groups',[]))
+  return result
  model_aware_kv_ops_helper.put_kv_to_cache=put
  old_recv=SimpleConnector.recv_kv_caches_and_hidden_states
  def receive(self,*args,**kwargs):

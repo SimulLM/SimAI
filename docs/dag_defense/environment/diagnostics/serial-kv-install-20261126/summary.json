@@ -1,0 +1,68 @@
+{
+  "status": "synchronized_install_diagnostic_not_frozen",
+  "groups": [
+    {
+      "length": 512,
+      "warmups": 10,
+      "measured": 30,
+      "metrics": {
+        "first_api_to_sync_ms": {
+          "median": 2.0241775,
+          "min": 1.901664,
+          "max": 6.432577,
+          "p95_nearest_rank": 2.663621
+        },
+        "last_return_to_sync_ms": {
+          "median": 0.24208200000000002,
+          "min": 0.218371,
+          "max": 0.488824,
+          "p95_nearest_rank": 0.287099
+        }
+      }
+    },
+    {
+      "length": 1024,
+      "warmups": 10,
+      "measured": 30,
+      "metrics": {
+        "first_api_to_sync_ms": {
+          "median": 2.0646315,
+          "min": 1.93558,
+          "max": 2.243809,
+          "p95_nearest_rank": 2.203172
+        },
+        "last_return_to_sync_ms": {
+          "median": 0.25044849999999996,
+          "min": 0.219019,
+          "max": 0.344036,
+          "p95_nearest_rank": 0.342091
+        }
+      }
+    },
+    {
+      "length": 2048,
+      "warmups": 10,
+      "measured": 30,
+      "metrics": {
+        "first_api_to_sync_ms": {
+          "median": 2.1449525,
+          "min": 1.974614,
+          "max": 2.874271,
+          "p95_nearest_rank": 2.389246
+        },
+        "last_return_to_sync_ms": {
+          "median": 0.27363950000000004,
+          "min": 0.230601,
+          "max": 0.390627,
+          "p95_nearest_rank": 0.354891
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Interval from first install API start to device synchronization includes enqueue, concurrent GPU work, host overhead and waiting; it is not an isolated non-overlap fee",
+    "Last API return to device sync is only a bound on outstanding work, not total installation cost",
+    "Per-tensor transport synchronizations perturb scheduling",
+    "Serial only, output length 8, no formal validation or CPU/GPU overlap contract"
+  ]
+}
