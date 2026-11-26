@@ -1,0 +1,5 @@
+# Consumer first step after KV synchronization
+
+Reanalysis of the existing 560-request instrumented real PD diagnostic, not a new GPU run or validation. Run `python3 scripts/dag_defense/audit_first_token_after_kv.py docs/dag_defense/environment/diagnostics/pd-kv-ready-bound-20261126/raw.tar.gz OUTPUT_DIR`. The archive hash and coverage by actual batch are recorded in summary.json. Steps are deduplicated by process and start timestamp because multiple requests may share a step.
+
+The host interval starts after the explicitly inserted device synchronization following KV reception and ends after the first consumer step's final synchronization. It includes logits, sampling, Python and waiting; measured median values in groups with measured steps range from 0.690 to 1.116 ms. Individual CUDA logits/sampler measurements overlap this host interval and must not be added to it. The synchronization alters execution and cannot establish an uninstrumented CPU cost; 512-token and some actual batch warmup coverage are missing. This is neither a frozen fee nor formal validation. The KV-ready bound and its limits remain in the original diagnostic.

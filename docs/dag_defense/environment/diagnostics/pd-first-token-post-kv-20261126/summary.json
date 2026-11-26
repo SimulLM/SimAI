@@ -1,0 +1,156 @@
+{
+  "status": "instrumented_diagnostic_only",
+  "archive_sha256": "5e54a9110c245f884400f6d437ffd5c17b33dc3ebe477fcab4c209af1361e416",
+  "requests": 560,
+  "distinct_steps": 402,
+  "groups": [
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 1,
+      "actual_batch": 1,
+      "measured_steps": 30,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 10,
+      "medians_ms": {
+        "post_sync_host_ms": 0.8740475,
+        "logits_gpu_ms": 0.3537280112504959,
+        "sampler_gpu_ms": 0.4223199933767319
+      },
+      "sample_threshold_met": true
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 2,
+      "actual_batch": 1,
+      "measured_steps": 0,
+      "measured_distinct_waves": 0,
+      "warmup_distinct_waves": 3,
+      "medians_ms": {
+        "post_sync_host_ms": null,
+        "logits_gpu_ms": null,
+        "sampler_gpu_ms": null
+      },
+      "sample_threshold_met": false
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 2,
+      "actual_batch": 2,
+      "measured_steps": 30,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 7,
+      "medians_ms": {
+        "post_sync_host_ms": 0.912567,
+        "logits_gpu_ms": 0.35995200276374817,
+        "sampler_gpu_ms": 0.4602240025997162
+      },
+      "sample_threshold_met": false
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 4,
+      "actual_batch": 1,
+      "measured_steps": 30,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 10,
+      "medians_ms": {
+        "post_sync_host_ms": 0.765594,
+        "logits_gpu_ms": 0.29628799855709076,
+        "sampler_gpu_ms": 0.391184002161026
+      },
+      "sample_threshold_met": true
+    },
+    {
+      "input_tokens": 1024,
+      "requested_concurrency": 4,
+      "actual_batch": 3,
+      "measured_steps": 30,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 10,
+      "medians_ms": {
+        "post_sync_host_ms": 0.7040415,
+        "logits_gpu_ms": 0.26868800818920135,
+        "sampler_gpu_ms": 0.36422400176525116
+      },
+      "sample_threshold_met": true
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 1,
+      "actual_batch": 1,
+      "measured_steps": 30,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 10,
+      "medians_ms": {
+        "post_sync_host_ms": 0.6902794999999999,
+        "logits_gpu_ms": 0.2818720042705536,
+        "sampler_gpu_ms": 0.3389119952917099
+      },
+      "sample_threshold_met": true
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 2,
+      "actual_batch": 1,
+      "measured_steps": 60,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 9,
+      "medians_ms": {
+        "post_sync_host_ms": 0.797136,
+        "logits_gpu_ms": 0.317440003156662,
+        "sampler_gpu_ms": 0.39737600088119507
+      },
+      "sample_threshold_met": false
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 2,
+      "actual_batch": 2,
+      "measured_steps": 0,
+      "measured_distinct_waves": 0,
+      "warmup_distinct_waves": 1,
+      "medians_ms": {
+        "post_sync_host_ms": null,
+        "logits_gpu_ms": null,
+        "sampler_gpu_ms": null
+      },
+      "sample_threshold_met": false
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 4,
+      "actual_batch": 1,
+      "measured_steps": 60,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 10,
+      "medians_ms": {
+        "post_sync_host_ms": 1.1103435,
+        "logits_gpu_ms": 0.3685919940471649,
+        "sampler_gpu_ms": 0.5518399775028229
+      },
+      "sample_threshold_met": true
+    },
+    {
+      "input_tokens": 2048,
+      "requested_concurrency": 4,
+      "actual_batch": 2,
+      "measured_steps": 30,
+      "measured_distinct_waves": 30,
+      "warmup_distinct_waves": 10,
+      "medians_ms": {
+        "post_sync_host_ms": 1.1158139999999999,
+        "logits_gpu_ms": 0.39528000354766846,
+        "sampler_gpu_ms": 0.5729119777679443
+      },
+      "sample_threshold_met": true
+    }
+  ],
+  "limitations": [
+    "Explicit device synchronize after KV receive alters execution",
+    "Host post-sync interval includes logits, sampling, Python and final synchronization",
+    "CUDA and host intervals overlap and must not be summed",
+    "No separate non-instrumented CPU cost or 512-token measurement",
+    "Batch-shape coverage is determined by actual groups; no formal acceptance",
+    "Not validation or final common fee"
+  ]
+}
