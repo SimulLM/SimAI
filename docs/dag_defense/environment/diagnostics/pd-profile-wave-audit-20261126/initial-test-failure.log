@@ -1,0 +1,13 @@
+F......                                                                  [100%]
+=================================== FAILURES ===================================
+_______________ test_real_decode_shape_precedes_rounded_profile ________________
+
+    def test_real_decode_shape_precedes_rounded_profile():
+>       predictor = object.__new__(SklearnExecutionTimePredictor)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class SklearnExecutionTimePredictor without an implementation for abstract methods '_get_estimator', '_get_grid_search_params'
+
+tests/dag/test_hardware_direct_lookup.py:8: TypeError
+=========================== short test summary info ============================
+FAILED tests/dag/test_hardware_direct_lookup.py::test_real_decode_shape_precedes_rounded_profile
+1 failed, 6 passed in 1.29s
