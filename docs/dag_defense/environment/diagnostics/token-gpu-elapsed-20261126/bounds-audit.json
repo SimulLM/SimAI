@@ -1,0 +1,36 @@
+{
+  "status": "complete",
+  "request_count": 20,
+  "measured_step_count": 1008,
+  "errors": [],
+  "invalid_events": [],
+  "groups": [
+    {
+      "group": "gap_le_20",
+      "n": 625,
+      "median_token_gap_ms": 13.24895,
+      "median_gpu_lower_ms": 0,
+      "median_gpu_upper_ms": 12.051781,
+      "median_start_uncertainty_ms": 0.198746,
+      "median_end_uncertainty_ms": 11.965662,
+      "gpu_end_upper_before_client_next": 625
+    },
+    {
+      "group": "gap_gt_20",
+      "n": 383,
+      "median_token_gap_ms": 24.667879,
+      "median_gpu_lower_ms": 0,
+      "median_gpu_upper_ms": 21.979791,
+      "median_start_uncertainty_ms": 0.416357,
+      "median_end_uncertainty_ms": 21.969416,
+      "gpu_end_upper_before_client_next": 383
+    }
+  ],
+  "limits": [
+    "Nonblocking CUDA event polling and Python hooks perturb scheduling; separate diagnostic, not formal E2E",
+    "GPU event interval bounds may include asynchronous queue and host launch gaps, not exact kernel duration",
+    "Per-request sequence ordinal aligns one post-first token interval with one decode model forward; asynchronous processing and output buffering may shift observed client gaps",
+    "If event bounds are wide the inference is inconclusive; no GPU/CPU causation proved",
+    "No validation results used to tune fees"
+  ]
+}
