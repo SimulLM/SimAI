@@ -1,0 +1,14 @@
+{
+  "status": "candidate_checked",
+  "run_count": 30,
+  "request_count": 960,
+  "unique_requests": 960,
+  "unique_inputs": 960,
+  "manifest_sha256": "3957d74470b04125ac6a28f7840d956316cbfd013bc6e268cd8b203f856ece04",
+  "errors": [],
+  "limits": [
+    "not a parameter freeze; service tokenizer/usage and model compatibility still need verification",
+    "no requests sent or validation run",
+    "fixed pseudo-random token IDs are synthetic inputs; they are not synthetic measurement results"
+  ]
+}
