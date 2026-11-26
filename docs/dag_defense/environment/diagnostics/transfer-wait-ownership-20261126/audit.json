@@ -1,0 +1,138 @@
+{
+  "simultaneous2": {
+    "metrics": {
+      "original": [
+        {
+          "id": 0,
+          "prefill_end_s": 0.04285513094097111,
+          "ready_s": 0.05071358682332405,
+          "reported_comm_s": 0.007858455882352941
+        },
+        {
+          "id": 1,
+          "prefill_end_s": 0.04285513094097111,
+          "ready_s": 0.05071358682332405,
+          "reported_comm_s": 0.007858455882352941
+        }
+      ],
+      "dag": [
+        {
+          "id": 0,
+          "prefill_end_s": 0.04285513094097113,
+          "ready_s": 0.050713586823324074,
+          "reported_comm_s": 0.007858455882352941
+        },
+        {
+          "id": 1,
+          "prefill_end_s": 0.04285513094097113,
+          "ready_s": 0.058572042705677015,
+          "reported_comm_s": 0.015716911764705882
+        }
+      ]
+    },
+    "dag_transfers": [
+      {
+        "graph_id": "pd/0/stage0/migration0",
+        "start_s": 0.04285513094097113,
+        "end_s": 0.050713586823324074,
+        "duration_s": 0.007858455882352941,
+        "resource_wait_s": 0.0
+      },
+      {
+        "graph_id": "pd/1/stage0/migration0",
+        "start_s": 0.050713586823324074,
+        "end_s": 0.058572042705677015,
+        "duration_s": 0.007858455882352941,
+        "resource_wait_s": 0.0
+      }
+    ],
+    "note": "DAG request reported comm is ready minus prefill end; it includes queued time; do not add it to transfer task duration or resource wait."
+  },
+  "simultaneous4": {
+    "metrics": {
+      "original": [
+        {
+          "id": 0,
+          "prefill_end_s": 0.08071457886632387,
+          "ready_s": 0.08857303474867681,
+          "reported_comm_s": 0.007858455882352941
+        },
+        {
+          "id": 1,
+          "prefill_end_s": 0.08071457886632387,
+          "ready_s": 0.08857303474867681,
+          "reported_comm_s": 0.007858455882352941
+        },
+        {
+          "id": 2,
+          "prefill_end_s": 0.08071457886632387,
+          "ready_s": 0.08857303474867681,
+          "reported_comm_s": 0.007858455882352941
+        },
+        {
+          "id": 3,
+          "prefill_end_s": 0.08071457886632387,
+          "ready_s": 0.08857303474867681,
+          "reported_comm_s": 0.007858455882352941
+        }
+      ],
+      "dag": [
+        {
+          "id": 0,
+          "prefill_end_s": 0.08071457886632386,
+          "ready_s": 0.0885730347486768,
+          "reported_comm_s": 0.007858455882352941
+        },
+        {
+          "id": 1,
+          "prefill_end_s": 0.08071457886632386,
+          "ready_s": 0.09643149063102974,
+          "reported_comm_s": 0.015716911764705882
+        },
+        {
+          "id": 2,
+          "prefill_end_s": 0.08071457886632386,
+          "ready_s": 0.10428994651338268,
+          "reported_comm_s": 0.023575367647058823
+        },
+        {
+          "id": 3,
+          "prefill_end_s": 0.08071457886632386,
+          "ready_s": 0.11214840239573562,
+          "reported_comm_s": 0.031433823529411764
+        }
+      ]
+    },
+    "dag_transfers": [
+      {
+        "graph_id": "pd/0/stage0/migration0",
+        "start_s": 0.08071457886632386,
+        "end_s": 0.0885730347486768,
+        "duration_s": 0.007858455882352941,
+        "resource_wait_s": 0.0
+      },
+      {
+        "graph_id": "pd/1/stage0/migration0",
+        "start_s": 0.0885730347486768,
+        "end_s": 0.09643149063102974,
+        "duration_s": 0.007858455882352941,
+        "resource_wait_s": 0.0
+      },
+      {
+        "graph_id": "pd/2/stage0/migration0",
+        "start_s": 0.09643149063102974,
+        "end_s": 0.10428994651338268,
+        "duration_s": 0.007858455882352941,
+        "resource_wait_s": 0.0
+      },
+      {
+        "graph_id": "pd/3/stage0/migration0",
+        "start_s": 0.10428994651338268,
+        "end_s": 0.11214840239573562,
+        "duration_s": 0.007858455882352941,
+        "resource_wait_s": 0.0
+      }
+    ],
+    "note": "DAG request reported comm is ready minus prefill end; it includes queued time; do not add it to transfer task duration or resource wait."
+  }
+}
