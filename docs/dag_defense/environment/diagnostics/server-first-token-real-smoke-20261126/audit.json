@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "stage": "warmup",
+      "router_id": "e1e89681a9ea44dfb8a3bdc19aaeb6ce",
+      "backend_id": "cmpl-a950e7f2864248239ed0260e301a8c27",
+      "timestamps_ns": {
+        "server_arrival": 1850041007963656,
+        "prefill_send": 1850041008181764,
+        "prefill_response": 1850041043980924,
+        "prefill_mapping": 1850041044060471,
+        "decode_send": 1850041044102573,
+        "decode_mapping": 1850041141197235,
+        "server_first_token": 1850041141250613,
+        "server_final_choice_observed": 1850042028555753,
+        "server_complete": 1850042028771237
+      },
+      "client_first_token_ns": 1850041141315897,
+      "client_complete_ns": 1850042028878298,
+      "server_e2e_s": 1.020807581,
+      "first_router_to_client_ms": 0.065284,
+      "final_choice_to_complete_ms": 0.215484
+    },
+    {
+      "stage": "measured",
+      "router_id": "94e968e6726844aaafbc6a4fe5cd93b7",
+      "backend_id": "cmpl-2e79fc63ae2a4e239995218531f1143c",
+      "timestamps_ns": {
+        "server_arrival": 1850042030897791,
+        "prefill_send": 1850042031013730,
+        "prefill_response": 1850042059711843,
+        "prefill_mapping": 1850042059759602,
+        "decode_send": 1850042059787365,
+        "decode_mapping": 1850042074688202,
+        "server_first_token": 1850042074730264,
+        "server_final_choice_observed": 1850042875781040,
+        "server_complete": 1850042875980576
+      },
+      "client_first_token_ns": 1850042074778287,
+      "client_complete_ns": 1850042876090810,
+      "server_e2e_s": 0.845082785,
+      "first_router_to_client_ms": 0.048023,
+      "final_choice_to_complete_ms": 0.199536
+    }
+  ],
+  "input_tokens": 512,
+  "output_tokens": 64,
+  "limitations": [
+    "one warmup and one measured request",
+    "not formal collector or validation",
+    "host timestamps do not establish exact GPU KVReady",
+    "does not close simulator completion boundary"
+  ]
+}
