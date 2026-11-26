@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-26T12:57:49.343765+00:00",
+  "updated_utc": "2026-11-26T13:02:59.475105+00:00",
   "required": {
     "common_cost_and_no_double_charge": {
       "status": "open",
       "evidence": "docs/dag_defense/environment/diagnostics/single-charge-ledger-20261126/README.md",
-      "missing": "1024 fixed two-request modeled group passes once-per-group measured candidate fee, but only 7 warmup waves, shared production resource occupancy, transfer/compute overlap, and natural concurrent groups remain unresolved.",
-      "next_action": "Establish a bounded common model for receive waits and shared first-token occupancy without repeating inclusive work, then test controlled 1/2/4 against actual event semantics.",
+      "missing": "Fixed actual groups on one instrumented four-request wave pass same first-token fees and 22/22 batch cost parity, but baseline lacks equivalent GPU reservation, pristine baseline has no consumer-first-token stage, and transfer/CPU overlap is unresolved.",
+      "next_action": "Resolve or explicitly bound the divergent first-token resource occupation and transfer wait for a natural scheduling comparison with the pristine original retained separately.",
       "close_when": "Measured sources, shapes, overlap exclusions and matched-batch parity verified for both implementations.",
-      "latest_progress": "docs/dag_defense/environment/diagnostics/paired-first-token-measured-20261126/README.md"
+      "latest_progress": "docs/dag_defense/environment/diagnostics/fixed-groups-real-fee-20261126/README.md"
     },
     "arrival_completion_boundary": {
       "status": "open",
