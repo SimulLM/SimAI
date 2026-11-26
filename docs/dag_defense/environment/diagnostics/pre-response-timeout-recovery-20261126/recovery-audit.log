@@ -1,0 +1,189 @@
+{
+  "status": "consistent_fenced_diagnostic_not_formal_readiness",
+  "warmups": 4,
+  "fenced_rejection_http": 503,
+  "window_seconds": 15.090134329,
+  "worker_gpu_uuid": {
+    "consumer": "GPU-2269d925-3345-06c6-0c8b-5332760d64bc",
+    "producer": "GPU-6a82e02c-388a-2044-141e-d9ba86b3f201"
+  },
+  "sync_before_and_after": true,
+  "samples": [
+    {
+      "sample": 0,
+      "role": "producer",
+      "pid": 164748,
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      },
+      "signal_counts": {
+        "send_started": 0,
+        "send_completed": 0,
+        "recv_started": 5,
+        "recv_completed": 4
+      },
+      "pipe_counts": {
+        "send_started": 20,
+        "send_completed": 20,
+        "recv_started": 8,
+        "recv_completed": 8
+      }
+    },
+    {
+      "sample": 0,
+      "role": "consumer",
+      "pid": 164745,
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      },
+      "signal_counts": {
+        "send_started": 4,
+        "send_completed": 4,
+        "recv_started": 0,
+        "recv_completed": 0
+      },
+      "pipe_counts": {
+        "send_started": 8,
+        "send_completed": 8,
+        "recv_started": 20,
+        "recv_completed": 20
+      }
+    },
+    {
+      "sample": 1,
+      "role": "producer",
+      "pid": 164748,
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      },
+      "signal_counts": {
+        "send_started": 0,
+        "send_completed": 0,
+        "recv_started": 5,
+        "recv_completed": 4
+      },
+      "pipe_counts": {
+        "send_started": 20,
+        "send_completed": 20,
+        "recv_started": 8,
+        "recv_completed": 8
+      }
+    },
+    {
+      "sample": 1,
+      "role": "consumer",
+      "pid": 164745,
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      },
+      "signal_counts": {
+        "send_started": 4,
+        "send_completed": 4,
+        "recv_started": 0,
+        "recv_completed": 0
+      },
+      "pipe_counts": {
+        "send_started": 8,
+        "send_completed": 8,
+        "recv_started": 20,
+        "recv_completed": 20
+      }
+    },
+    {
+      "sample": 2,
+      "role": "producer",
+      "pid": 164748,
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      },
+      "signal_counts": {
+        "send_started": 0,
+        "send_completed": 0,
+        "recv_started": 5,
+        "recv_completed": 4
+      },
+      "pipe_counts": {
+        "send_started": 20,
+        "send_completed": 20,
+        "recv_started": 8,
+        "recv_completed": 8
+      }
+    },
+    {
+      "sample": 2,
+      "role": "consumer",
+      "pid": 164745,
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      },
+      "signal_counts": {
+        "send_started": 4,
+        "send_completed": 4,
+        "recv_started": 0,
+        "recv_completed": 0
+      },
+      "pipe_counts": {
+        "send_started": 8,
+        "send_completed": 8,
+        "recv_started": 20,
+        "recv_completed": 20
+      }
+    },
+    {
+      "sample": 3,
+      "role": "producer",
+      "pid": 164748,
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      },
+      "signal_counts": {
+        "send_started": 0,
+        "send_completed": 0,
+        "recv_started": 5,
+        "recv_completed": 4
+      },
+      "pipe_counts": {
+        "send_started": 20,
+        "send_completed": 20,
+        "recv_started": 8,
+        "recv_completed": 8
+      }
+    },
+    {
+      "sample": 3,
+      "role": "consumer",
+      "pid": 164745,
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      },
+      "signal_counts": {
+        "send_started": 4,
+        "send_completed": 4,
+        "recv_started": 0,
+        "recv_completed": 0
+      },
+      "pipe_counts": {
+        "send_started": 8,
+        "send_completed": 8,
+        "recv_started": 20,
+        "recv_completed": 20
+      }
+    }
+  ],
+  "limitations": [
+    "diagnostic router and observer modify running service",
+    "fence is process-local file check, not verified against requests already accepted before fence",
+    "host snapshots are non-atomic and signal listener may remain blocked",
+    "worker CUDA synchronization covers only prior submissions within each process",
+    "no crash or pre-response timeout cleanup test",
+    "formal service and preflight are not yet integrated"
+  ]
+}

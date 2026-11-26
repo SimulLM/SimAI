@@ -1,0 +1,157 @@
+{
+  "status": "unsafe_to_reuse_service",
+  "client": {
+    "client_id": "timeout-before-first",
+    "send_ns": 1845967516350511,
+    "status": "cancelled_after_server_arrival_before_headers",
+    "router_id": "982f0061c36e4102a5dcc75047ca86b1",
+    "arrival_seen_ns": 1845967518781891,
+    "client_done_ns": 1845967518901635
+  },
+  "router_event_sequence": [
+    "server_arrival",
+    "prefill_send",
+    "prefill_response",
+    "prefill_mapping",
+    "decode_send",
+    "server_error"
+  ],
+  "prefill_completed_after_client_cancel_ms": 86.639366,
+  "probe_exit": 1,
+  "sampled_state": [
+    {
+      "sample": 0,
+      "role": "producer",
+      "queue_items": 1,
+      "buffer_bytes": 1090537472,
+      "counts": {
+        "insert_started": 5,
+        "insert_completed": 5,
+        "select_started": 0,
+        "select_completed": 0
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      }
+    },
+    {
+      "sample": 0,
+      "role": "consumer",
+      "queue_items": 0,
+      "buffer_bytes": 0,
+      "counts": {
+        "insert_started": 0,
+        "insert_completed": 0,
+        "select_started": 4,
+        "select_completed": 4
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      }
+    },
+    {
+      "sample": 1,
+      "role": "producer",
+      "queue_items": 1,
+      "buffer_bytes": 1090537472,
+      "counts": {
+        "insert_started": 5,
+        "insert_completed": 5,
+        "select_started": 0,
+        "select_completed": 0
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      }
+    },
+    {
+      "sample": 1,
+      "role": "consumer",
+      "queue_items": 0,
+      "buffer_bytes": 0,
+      "counts": {
+        "insert_started": 0,
+        "insert_completed": 0,
+        "select_started": 4,
+        "select_completed": 4
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      }
+    },
+    {
+      "sample": 2,
+      "role": "producer",
+      "queue_items": 1,
+      "buffer_bytes": 1090537472,
+      "counts": {
+        "insert_started": 5,
+        "insert_completed": 5,
+        "select_started": 0,
+        "select_completed": 0
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      }
+    },
+    {
+      "sample": 2,
+      "role": "consumer",
+      "queue_items": 0,
+      "buffer_bytes": 0,
+      "counts": {
+        "insert_started": 0,
+        "insert_completed": 0,
+        "select_started": 4,
+        "select_completed": 4
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      }
+    },
+    {
+      "sample": 3,
+      "role": "producer",
+      "queue_items": 1,
+      "buffer_bytes": 1090537472,
+      "counts": {
+        "insert_started": 5,
+        "insert_completed": 5,
+        "select_started": 0,
+        "select_completed": 0
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 1
+      }
+    },
+    {
+      "sample": 3,
+      "role": "consumer",
+      "queue_items": 0,
+      "buffer_bytes": 0,
+      "counts": {
+        "insert_started": 0,
+        "insert_completed": 0,
+        "select_started": 4,
+        "select_completed": 4
+      },
+      "signal_active": {
+        "send": 0,
+        "recv": 0
+      }
+    }
+  ],
+  "limitations": [
+    "one cancellation before headers, not every timeout stage",
+    "host observer is non-atomic and intrusive",
+    "queue item content and device work not proven from gauges alone",
+    "stop and restart service before any new run; preserve failure"
+  ]
+}
