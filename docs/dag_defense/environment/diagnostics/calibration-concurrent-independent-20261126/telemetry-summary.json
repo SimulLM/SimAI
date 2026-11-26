@@ -1,0 +1,75 @@
+{
+  "summary": [
+    {
+      "repeat": 0,
+      "gpu": 0,
+      "samples": 23,
+      "sm_mhz_min": 1530.0,
+      "sm_mhz_median": 1755.0,
+      "sm_mhz_max": 1755.0,
+      "temperature_c_min": 42.0,
+      "temperature_c_max": 45.0,
+      "power_w_median": 99.05
+    },
+    {
+      "repeat": 0,
+      "gpu": 1,
+      "samples": 23,
+      "sm_mhz_min": 1755.0,
+      "sm_mhz_median": 1755.0,
+      "sm_mhz_max": 1755.0,
+      "temperature_c_min": 37.0,
+      "temperature_c_max": 43.0,
+      "power_w_median": 181.63
+    },
+    {
+      "repeat": 1,
+      "gpu": 0,
+      "samples": 22,
+      "sm_mhz_min": 1650.0,
+      "sm_mhz_median": 1755.0,
+      "sm_mhz_max": 1755.0,
+      "temperature_c_min": 43.0,
+      "temperature_c_max": 47.0,
+      "power_w_median": 99.485
+    },
+    {
+      "repeat": 1,
+      "gpu": 1,
+      "samples": 22,
+      "sm_mhz_min": 1755.0,
+      "sm_mhz_median": 1755.0,
+      "sm_mhz_max": 1755.0,
+      "temperature_c_min": 39.0,
+      "temperature_c_max": 45.0,
+      "power_w_median": 208.70999999999998
+    },
+    {
+      "repeat": 2,
+      "gpu": 0,
+      "samples": 25,
+      "sm_mhz_min": 1335.0,
+      "sm_mhz_median": 1755.0,
+      "sm_mhz_max": 1755.0,
+      "temperature_c_min": 44.0,
+      "temperature_c_max": 48.0,
+      "power_w_median": 99.55
+    },
+    {
+      "repeat": 2,
+      "gpu": 1,
+      "samples": 25,
+      "sm_mhz_min": 1755.0,
+      "sm_mhz_median": 1755.0,
+      "sm_mhz_max": 1755.0,
+      "temperature_c_min": 39.0,
+      "temperature_c_max": 45.0,
+      "power_w_median": 163.77
+    }
+  ],
+  "limits": [
+    "One-second device samples cannot attribute request latency to clocks or identify short throttling.",
+    "Wall-clock telemetry was not directly correlated to monotonic request timestamps.",
+    "GPU clocks/temperature do not include CPU scheduling, network, storage, or software contention; causation remains unknown."
+  ]
+}

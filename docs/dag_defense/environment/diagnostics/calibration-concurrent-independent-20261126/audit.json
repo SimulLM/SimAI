@@ -1,0 +1,34 @@
+{
+  "status": "concurrent_repeats_recorded",
+  "summary": [
+    {
+      "repeat": 0,
+      "measured": 32,
+      "median_server_e2e_ms": 1156.467861,
+      "telemetry_rows": 46,
+      "resource_after": "0, 0 MiB, 0 %\n1, 0 MiB, 0 %"
+    },
+    {
+      "repeat": 1,
+      "measured": 32,
+      "median_server_e2e_ms": 898.022479,
+      "telemetry_rows": 44,
+      "resource_after": "0, 0 MiB, 0 %\n1, 0 MiB, 0 %"
+    },
+    {
+      "repeat": 2,
+      "measured": 32,
+      "median_server_e2e_ms": 1299.1617455,
+      "telemetry_rows": 50,
+      "resource_after": "0, 0 MiB, 0 %\n1, 0 MiB, 0 %"
+    }
+  ],
+  "errors": [],
+  "unique_input_hashes": 108,
+  "limitations": [
+    "Separate service restart and completion of each client wave do not prove internal KV cleanup after warmup",
+    "server completion is router stream completion, not GPU completion",
+    "telemetry is sampled at 1 second with wall timestamps; short GPU events are not resolved",
+    "fee compatibility and actual service scheduling remain separate, no validation completion times used to fit fees"
+  ]
+}
