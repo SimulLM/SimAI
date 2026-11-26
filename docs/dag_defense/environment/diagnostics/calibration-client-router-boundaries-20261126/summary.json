@@ -1,0 +1,174 @@
+{
+  "status": "calibration_client_router_clock_boundaries_observed",
+  "requests": 192,
+  "groups": [
+    {
+      "mode": "serial",
+      "repeat": 0,
+      "count": 32,
+      "metrics": {
+        "send_to_arrival_ms": {
+          "median": 0.4616455,
+          "p95_nearest_rank": 0.537846,
+          "max": 0.818163
+        },
+        "first_forward_ms": {
+          "median": 0.13362449999999998,
+          "p95_nearest_rank": 0.143571,
+          "max": 0.144982
+        },
+        "completion_forward_ms": {
+          "median": 0.175314,
+          "p95_nearest_rank": 0.186307,
+          "max": 0.195666
+        },
+        "server_e2e_ms": {
+          "median": 1033.7618745,
+          "p95_nearest_rank": 1684.653433,
+          "max": 1718.308722
+        }
+      }
+    },
+    {
+      "mode": "serial",
+      "repeat": 1,
+      "count": 32,
+      "metrics": {
+        "send_to_arrival_ms": {
+          "median": 0.5440130000000001,
+          "p95_nearest_rank": 0.603131,
+          "max": 0.603468
+        },
+        "first_forward_ms": {
+          "median": 0.106352,
+          "p95_nearest_rank": 0.158997,
+          "max": 0.46997
+        },
+        "completion_forward_ms": {
+          "median": 0.194472,
+          "p95_nearest_rank": 0.229029,
+          "max": 0.439114
+        },
+        "server_e2e_ms": {
+          "median": 899.1771315000001,
+          "p95_nearest_rank": 907.555688,
+          "max": 907.783608
+        }
+      }
+    },
+    {
+      "mode": "serial",
+      "repeat": 2,
+      "count": 32,
+      "metrics": {
+        "send_to_arrival_ms": {
+          "median": 0.5158235,
+          "p95_nearest_rank": 0.586161,
+          "max": 0.680509
+        },
+        "first_forward_ms": {
+          "median": 0.1143805,
+          "p95_nearest_rank": 0.192747,
+          "max": 0.202884
+        },
+        "completion_forward_ms": {
+          "median": 0.178433,
+          "p95_nearest_rank": 0.204514,
+          "max": 0.207582
+        },
+        "server_e2e_ms": {
+          "median": 862.39782,
+          "p95_nearest_rank": 1662.132542,
+          "max": 1668.651284
+        }
+      }
+    },
+    {
+      "mode": "concurrent",
+      "repeat": 0,
+      "count": 32,
+      "metrics": {
+        "send_to_arrival_ms": {
+          "median": 0.46432450000000003,
+          "p95_nearest_rank": 0.521932,
+          "max": 0.537971
+        },
+        "first_forward_ms": {
+          "median": 0.0999785,
+          "p95_nearest_rank": 0.199267,
+          "max": 0.253684
+        },
+        "completion_forward_ms": {
+          "median": 0.2762425,
+          "p95_nearest_rank": 5.037963,
+          "max": 27.270911
+        },
+        "server_e2e_ms": {
+          "median": 1156.467861,
+          "p95_nearest_rank": 1723.57475,
+          "max": 1723.712736
+        }
+      }
+    },
+    {
+      "mode": "concurrent",
+      "repeat": 1,
+      "count": 32,
+      "metrics": {
+        "send_to_arrival_ms": {
+          "median": 0.467509,
+          "p95_nearest_rank": 0.594842,
+          "max": 0.597493
+        },
+        "first_forward_ms": {
+          "median": 0.09735650000000001,
+          "p95_nearest_rank": 0.130718,
+          "max": 0.156923
+        },
+        "completion_forward_ms": {
+          "median": 0.3694455,
+          "p95_nearest_rank": 0.927644,
+          "max": 1.197476
+        },
+        "server_e2e_ms": {
+          "median": 898.022479,
+          "p95_nearest_rank": 2214.011201,
+          "max": 2214.100076
+        }
+      }
+    },
+    {
+      "mode": "concurrent",
+      "repeat": 2,
+      "count": 32,
+      "metrics": {
+        "send_to_arrival_ms": {
+          "median": 0.478691,
+          "p95_nearest_rank": 0.631099,
+          "max": 0.641568
+        },
+        "first_forward_ms": {
+          "median": 0.1113315,
+          "p95_nearest_rank": 0.186509,
+          "max": 0.201763
+        },
+        "completion_forward_ms": {
+          "median": 0.37149999999999994,
+          "p95_nearest_rank": 64.298089,
+          "max": 98.099996
+        },
+        "server_e2e_ms": {
+          "median": 1299.1617455,
+          "p95_nearest_rank": 1828.664334,
+          "max": 1828.894934
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Router server_complete is stream consumption/forwarding completion, not last GPU completion",
+    "Same-host client-server forwarding differences do not measure missing GPU-to-router or backend serialization cost",
+    "All requests succeeded; failure and timeout boundaries are not characterized",
+    "These are calibration data, not validation and not a fitted fee"
+  ]
+}
