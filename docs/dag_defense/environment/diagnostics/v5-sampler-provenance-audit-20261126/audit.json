@@ -1,0 +1,152 @@
+{
+  "status": "source_values_verified_manifest_hash_missing",
+  "profile_cpu_sha256": "cb5d964a2af3edfff0d0289e848ad4520fae5304c462375a7d178c9f3c761a55",
+  "manifest_sha256": "fedcf10832b7705e174581bf025fc41adb6d89994c5bfce01420b6ac623eb186",
+  "sampler_source_path": "/root/autodl-tmp/dag-handoff/runs/cpu-exclusive-summary-20261126/summary.csv",
+  "sampler_source_sha256": "f4e569d0c62e969a100ee5ad017dbe474fb73fd6b0e8d37b57efdd653dc3151d",
+  "rows_verified": 17,
+  "checks": [
+    {
+      "phase": "decode",
+      "input_tokens": 512,
+      "batch_size": 1,
+      "samples": 35,
+      "profile_ms": 0.418706,
+      "source_ms": 0.418706
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 512,
+      "batch_size": 2,
+      "samples": 35,
+      "profile_ms": 0.435425,
+      "source_ms": 0.435425
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 512,
+      "batch_size": 4,
+      "samples": 35,
+      "profile_ms": 0.450032,
+      "source_ms": 0.450032
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 1024,
+      "batch_size": 1,
+      "samples": 35,
+      "profile_ms": 0.422387,
+      "source_ms": 0.422387
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 1024,
+      "batch_size": 2,
+      "samples": 35,
+      "profile_ms": 0.438969,
+      "source_ms": 0.438969
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 1024,
+      "batch_size": 4,
+      "samples": 35,
+      "profile_ms": 0.455996,
+      "source_ms": 0.455996
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 2048,
+      "batch_size": 1,
+      "samples": 35,
+      "profile_ms": 0.428064,
+      "source_ms": 0.428064
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 2048,
+      "batch_size": 2,
+      "samples": 35,
+      "profile_ms": 0.451983,
+      "source_ms": 0.451983
+    },
+    {
+      "phase": "decode",
+      "input_tokens": 2048,
+      "batch_size": 4,
+      "samples": 35,
+      "profile_ms": 0.465486,
+      "source_ms": 0.465486
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 512,
+      "batch_size": 1,
+      "samples": 35,
+      "profile_ms": 0.421795,
+      "source_ms": 0.421795
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 512,
+      "batch_size": 2,
+      "samples": 35,
+      "profile_ms": 0.438776,
+      "source_ms": 0.438776
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 512,
+      "batch_size": 4,
+      "samples": 35,
+      "profile_ms": 0.461068,
+      "source_ms": 0.461068
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "batch_size": 1,
+      "samples": 37,
+      "profile_ms": 0.430936,
+      "source_ms": 0.430936
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "batch_size": 2,
+      "samples": 34,
+      "profile_ms": 0.446665,
+      "source_ms": 0.446665
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 1024,
+      "batch_size": 4,
+      "samples": 35,
+      "profile_ms": 0.479521,
+      "source_ms": 0.479521
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "batch_size": 1,
+      "samples": 49,
+      "profile_ms": 0.449137,
+      "source_ms": 0.449137
+    },
+    {
+      "phase": "prefill",
+      "input_tokens": 2048,
+      "batch_size": 2,
+      "samples": 98,
+      "profile_ms": 0.5261065,
+      "source_ms": 0.5261065
+    }
+  ],
+  "limitations": [
+    "Source sampler timer encloses device synchronization and sampler host call, including GPU work and waiting; it is an inclusive interval rather than pure CPU",
+    "Layer compute profile excludes logits and sampler, but scheduling and CPU overlap remain unproven",
+    "Matching values and source hash do not validate extrapolation, first-token or concurrent semantics",
+    "Historical manifest is not mutated; this audit records the missing source digest separately"
+  ]
+}
