@@ -1,0 +1,192 @@
+{
+  "rows": 192,
+  "errors": [],
+  "summary": [
+    {
+      "mode": "serial",
+      "repeat": 0,
+      "n": 32,
+      "server_e2e_ms": {
+        "median": 1033.7618745,
+        "min": 845.775957,
+        "max": 1718.308722
+      },
+      "prefill_response_ms": {
+        "median": 28.537594,
+        "min": 28.189633,
+        "max": 41.506491
+      },
+      "router_pre_to_decode_ms": {
+        "median": 0.097283,
+        "min": 0.076837,
+        "max": 0.146612
+      },
+      "decode_to_first_ms": {
+        "median": 14.894576,
+        "min": 14.596925,
+        "max": 18.615444
+      },
+      "first_to_finish_ms": {
+        "median": 984.6878879999999,
+        "min": 802.722275,
+        "max": 1664.682034
+      }
+    },
+    {
+      "mode": "serial",
+      "repeat": 1,
+      "n": 32,
+      "server_e2e_ms": {
+        "median": 899.1771315000001,
+        "min": 870.815074,
+        "max": 907.783608
+      },
+      "prefill_response_ms": {
+        "median": 29.1386265,
+        "min": 28.507591,
+        "max": 31.147137
+      },
+      "router_pre_to_decode_ms": {
+        "median": 0.07914550000000001,
+        "min": 0.068797,
+        "max": 0.155703
+      },
+      "decode_to_first_ms": {
+        "median": 15.048156500000001,
+        "min": 14.269975,
+        "max": 18.264434
+      },
+      "first_to_finish_ms": {
+        "median": 854.5592735,
+        "min": 826.72082,
+        "max": 863.303993
+      }
+    },
+    {
+      "mode": "serial",
+      "repeat": 2,
+      "n": 32,
+      "server_e2e_ms": {
+        "median": 862.39782,
+        "min": 849.14865,
+        "max": 1668.651284
+      },
+      "prefill_response_ms": {
+        "median": 28.742357,
+        "min": 28.306299,
+        "max": 37.526733
+      },
+      "router_pre_to_decode_ms": {
+        "median": 0.09405849999999999,
+        "min": 0.082141,
+        "max": 0.1591
+      },
+      "decode_to_first_ms": {
+        "median": 15.171916,
+        "min": 14.696991,
+        "max": 19.246576
+      },
+      "first_to_finish_ms": {
+        "median": 818.2968205,
+        "min": 804.70025,
+        "max": 1624.396194
+      }
+    },
+    {
+      "mode": "concurrent",
+      "repeat": 0,
+      "n": 32,
+      "server_e2e_ms": {
+        "median": 1156.467861,
+        "min": 937.64719,
+        "max": 1723.712736
+      },
+      "prefill_response_ms": {
+        "median": 46.694844,
+        "min": 45.227391,
+        "max": 50.001684
+      },
+      "router_pre_to_decode_ms": {
+        "median": 0.081818,
+        "min": 0.050647,
+        "max": 0.159429
+      },
+      "decode_to_first_ms": {
+        "median": 26.2179055,
+        "min": 24.709928,
+        "max": 30.184558
+      },
+      "first_to_finish_ms": {
+        "median": 1079.013162,
+        "min": 864.890153,
+        "max": 1644.323359
+      }
+    },
+    {
+      "mode": "concurrent",
+      "repeat": 1,
+      "n": 32,
+      "server_e2e_ms": {
+        "median": 898.022479,
+        "min": 890.94892,
+        "max": 2214.100076
+      },
+      "prefill_response_ms": {
+        "median": 45.861132999999995,
+        "min": 44.904405,
+        "max": 46.632947
+      },
+      "router_pre_to_decode_ms": {
+        "median": 0.089502,
+        "min": 0.051151,
+        "max": 0.179271
+      },
+      "decode_to_first_ms": {
+        "median": 26.1075045,
+        "min": 25.220831,
+        "max": 31.259847
+      },
+      "first_to_finish_ms": {
+        "median": 826.2644605,
+        "min": 818.628045,
+        "max": 2136.582242
+      }
+    },
+    {
+      "mode": "concurrent",
+      "repeat": 2,
+      "n": 32,
+      "server_e2e_ms": {
+        "median": 1299.1617455,
+        "min": 1010.633725,
+        "max": 1828.894934
+      },
+      "prefill_response_ms": {
+        "median": 46.879975,
+        "min": 44.696951,
+        "max": 51.139939
+      },
+      "router_pre_to_decode_ms": {
+        "median": 0.0798445,
+        "min": 0.052121,
+        "max": 0.138
+      },
+      "decode_to_first_ms": {
+        "median": 29.2850435,
+        "min": 25.455842,
+        "max": 30.854657
+      },
+      "first_to_finish_ms": {
+        "median": 1220.6513645,
+        "min": 939.563973,
+        "max": 1752.625875
+      }
+    }
+  ],
+  "limitations": [
+    "Router host intervals include service queueing, network and CPU work; they do not identify GPU kernel durations or isolate causal bottlenecks.",
+    "First token and completion are router stream observations, not GPU timestamps.",
+    "Different input arrays across runs; no frozen costs or validation outcomes used.",
+    "Concurrent requests share batches and are not independent samples."
+  ]
+}
