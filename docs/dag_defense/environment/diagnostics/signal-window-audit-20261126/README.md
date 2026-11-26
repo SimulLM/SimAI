@@ -1,0 +1,5 @@
+# Signal observation window audit
+
+Reuses `signal-observer-20261126` raw data; no new requests. The audit verifies four unique successful warmups, matching router arrivals, both worker CUDA acknowledgments after the last client completion and before the observation window, four zero router/queue/cache gauge samples, fresh per-worker host snapshots with empty buffers and no active data-pipe calls, and unchanged signal/data counters throughout the window. It records the stable producer signal receive separately; the existing readiness probe returned 2, not success.
+
+This is internally consistent **diagnostic evidence**, not an idle gate. Snapshots are non-atomic; this run did not record live worker PID-to-GPU UUID association, did not fence new requests, and cannot establish crash/timeout cleanup. Worker synchronization covers only earlier work in that process context. Four previous worker IDs were not reused for formal readiness. Audit paths refer to `/root/autodl-tmp/dag-handoff/runs/signal-observer-20261126/`; original archive/hash are in the sibling diagnostic. Formal validation remains 0/30.
