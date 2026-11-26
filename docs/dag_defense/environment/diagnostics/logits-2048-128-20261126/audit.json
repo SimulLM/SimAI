@@ -1,0 +1,142 @@
+{
+  "requests": 160,
+  "warmup_waves": 10,
+  "measured_waves": 30,
+  "deduplicated_steps": 5111,
+  "coverage": [
+    {
+      "actual_batch": 1,
+      "context_bin": 0,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.1467519998550415,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 1,
+      "context_bin": 3,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "context_bin": 0,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 2,
+      "context_bin": 3,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "context_bin": 0,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "context_bin": 1,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "context_bin": 2,
+      "warmup_waves": 0,
+      "measured_waves": 0,
+      "median_ms": null,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 3,
+      "context_bin": 3,
+      "warmup_waves": 2,
+      "measured_waves": 29,
+      "median_ms": 0.1467519998550415,
+      "meets_10_30": false
+    },
+    {
+      "actual_batch": 4,
+      "context_bin": 0,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_ms": 0.14720000326633453,
+      "meets_10_30": true
+    },
+    {
+      "actual_batch": 4,
+      "context_bin": 1,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_ms": 0.1472640037536621,
+      "meets_10_30": true
+    },
+    {
+      "actual_batch": 4,
+      "context_bin": 2,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_ms": 0.1472719982266426,
+      "meets_10_30": true
+    },
+    {
+      "actual_batch": 4,
+      "context_bin": 3,
+      "warmup_waves": 10,
+      "measured_waves": 30,
+      "median_ms": 0.1472639963030815,
+      "meets_10_30": true
+    }
+  ],
+  "limitations": [
+    "Detailed instrumentation adds synchronization and is not formal E2E",
+    "Different actual batch groups can appear within a wave; contexts within a batch need not be equal",
+    "One service session, no independent restart variability",
+    "Host sampler and GPU event intervals can overlap; no additive cost claim"
+  ]
+}
