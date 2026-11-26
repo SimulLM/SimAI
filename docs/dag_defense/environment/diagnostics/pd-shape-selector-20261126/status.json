@@ -1,0 +1,8 @@
+{
+  "status": "diagnostic_only",
+  "codes": {
+    "dag": 0,
+    "adapted_baseline": 0
+  },
+  "note": "synthetic arrivals; candidate fees; not calibration, validation, or proof of scheduling parity"
+}

@@ -1,0 +1,2 @@
+PASS: legacy lookup, uniform/mixed selection, unsupported/missing rejection, unclassified fallback, and exclusion of tagged rows from shape-blind training
+PASS: 16 measured candidate cells selected correctly

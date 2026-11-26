@@ -686,9 +686,20 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
     def _train_attention_layer_models(self) -> Dict[str, BaseEstimator]:
         attention_df = self._load_attention_df(self._attention_input_file)
         attention_df = self._get_attention_df_with_derived_features(attention_df)
+        if "context_shape" in attention_df.columns:
+            attention_df["context_shape"] = attention_df["context_shape"].fillna("unclassified")
+            invalid = set(attention_df["context_shape"]) - {"unclassified", "uniform", "mixed"}
+            if invalid:
+                raise ValueError(f"invalid attention context shapes: {sorted(invalid)}")
         self._attention_profile_df = attention_df.copy()
         prefill_df = attention_df[~attention_df["is_decode"]]
         decode_df = attention_df[attention_df["is_decode"]]
+        # Shape-specific direct measurements must not silently enter a regressor
+        # that has no shape feature. Legacy rows still supply its training data.
+        if "context_shape" in decode_df.columns:
+            decode_df = decode_df[decode_df["context_shape"] == "unclassified"]
+            if decode_df.empty:
+                raise ValueError("shape-aware attention profile requires unclassified decode rows for fallback")
 
         models = {}
 
@@ -1383,8 +1394,22 @@ class SklearnExecutionTimePredictor(BaseExecutionTimePredictor):
             direct = df[(df["is_decode"]) & (df["batch_size"] == decode_batch_size) &
                         (df["kv_cache_size"] == decode_avg_kv_cache_size)]
             if not direct.empty:
-                return float(direct["time_stats.attn_decode.median"].median()) * (
-                    1 + self._attention_decode_batching_overhead_fraction * int(decode_batch_size > 1))
+                if "context_shape" in direct.columns:
+                    tagged = direct[direct["context_shape"].isin(("uniform", "mixed"))]
+                    if not tagged.empty:
+                        lengths = [r.num_processed_tokens for r in batch.requests if r._is_prefill_complete]
+                        span = max(lengths) - min(lengths)
+                        if span > 1:
+                            raise ValueError("no measured attention context shape for span > 1")
+                        shape = "uniform" if span == 0 else "mixed"
+                        direct = tagged[tagged["context_shape"] == shape]
+                        if direct.empty:
+                            raise ValueError(f"missing attention context shape: {shape}")
+                    else:
+                        direct = direct[direct["context_shape"] == "unclassified"]
+                if not direct.empty:
+                    return float(direct["time_stats.attn_decode.median"].median()) * (
+                        1 + self._attention_decode_batching_overhead_fraction * int(decode_batch_size > 1))
         # TODO(tianhao909): add decode output logging
         # TODO(tianhao909): 添加 decode 输出日志
         return self._predictions["attn_decode"][

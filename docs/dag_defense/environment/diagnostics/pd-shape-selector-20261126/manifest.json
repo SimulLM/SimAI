@@ -1,0 +1,19 @@
+{
+  "status": "candidate_not_frozen",
+  "original_rows": 47,
+  "uniform_rows": 8,
+  "mixed_rows": 8,
+  "sha256": {
+    "docs/dag_defense/environment/diagnostics/pd-batch3-components-20261126/base-attention.csv": "27eea40e042bd08ece0a0b506804e712f2e7f9512e8df4ae2682a75590d43877",
+    "docs/dag_defense/environment/diagnostics/pd-batch3-components-20261126/uniform-attention.csv": "c9948f03589ee7975e308b3315ba140a87bd4a8a8733efe189dc40ec1707e19a",
+    "docs/dag_defense/environment/diagnostics/pd-batch3-components-20261126/mixed-attention.csv": "e8ba3be63bfa5f0bb4d26860836b580d52d0a41cc8279b630281170e7f667a1d",
+    "/root/autodl-tmp/dag-handoff/runs/pd-batch3-shape-aware-profile-20261126/attention.csv": "cefc861f14a4cdf5609b6416e57d2ac11e9e4aab7ca68c388961414d6185c663"
+  },
+  "limitations": [
+    "Only actual batch 3 / 1024 input bins have classified shapes",
+    "Unclassified and interpolation fallback retain existing candidate behavior",
+    "Unsupported context spans or missing matching shape in classified bins fail closed",
+    "Mixed-context numerical correspondence with real batching remains unverified",
+    "Not a complete end-to-end cost or formal validation"
+  ]
+}
