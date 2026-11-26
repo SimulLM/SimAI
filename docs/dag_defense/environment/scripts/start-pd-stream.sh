@@ -18,7 +18,8 @@ for i in $(seq 1 180); do
 done
 curl -sf http://127.0.0.1:18100/v1/models >/dev/null && curl -sf http://127.0.0.1:18200/v1/models >/dev/null || { echo 'health timeout';exit 1; }
 export PD_ROUTE_DIR="$run"
-uvicorn --app-dir "$root/dag-handoff/scripts" pd_stream_proxy:app --host 127.0.0.1 --port 18300 > "$run/router.log" 2>&1 & pids+=("$!")
+script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+uvicorn --app-dir "$script_dir" pd_stream_proxy:app --host 127.0.0.1 --port 18300 > "$run/router.log" 2>&1 & pids+=("$!")
 printf '%s\n' "${pids[@]}" > "$run/pids"
 for i in $(seq 1 30); do
  for p in "${pids[@]}"; do kill -0 "$p" 2>/dev/null || { echo "child $p exited";exit 1; }; done

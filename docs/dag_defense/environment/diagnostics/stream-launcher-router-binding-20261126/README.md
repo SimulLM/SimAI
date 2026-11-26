@@ -1,0 +1,3 @@
+# Stream launcher router binding
+
+The ordinary stream launcher previously selected `/root/autodl-tmp/dag-handoff/scripts/pd_stream_proxy.py`, a stale server-local copy lacking the current client-ID and final-choice events. The launcher now resolves its own directory and starts the adjacent version-controlled router, the same router exercised by the existing correlation test and required by reconciliation. This does not change prior run artifacts or the separately used light-events launcher. Shell syntax and actual router behavior against fake local backends passed; the test includes successful ID mapping, final choice, timeout, and invalid ID. This is not a fresh GPU service validation or freeze; the formal launcher/configuration still requires identity and idle checks.
