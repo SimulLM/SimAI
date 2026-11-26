@@ -1,0 +1,5 @@
+# Candidate request CSV export
+
+`export_validation_requests.py` converts 32 reconciled client/router JSONL records into requests.csv and missing-fields.json. It preserves failed, timed-out and not-submitted rows; missing timestamps remain blank with a reason. Nanosecond CLOCK_MONOTONIC timestamps are expressed as seconds relative to the collection origin; server E2E, client E2E, TTFT and TPOT use the definitions recorded in missing-fields.json. Client completion includes receiving the stream terminator; server completion is router stream forwarding, not GPU completion. The exporter rejects duplicate request IDs, mixed run IDs, negative intervals and timestamps preceding the run origin. It does not itself establish that service and simulator boundaries are equivalent.
+
+A synthetic test covers successful, timeout and not-submitted rows, clock conversion, TPOT, missing fields and invalid order. It is not a real validation run. Reconciliation, pre-run idle verification, per-request internal events, freeze and full run orchestration are still required. Python optimization is rejected because assertions enforce input validation.
